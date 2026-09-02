@@ -1,0 +1,20 @@
+RGSP/H700 Android 11 userspace alpha
+
+This image combines the RGSP vendor Linux 4.9.170 kernel and RG34XXSP DTB
+with a modified LineageOS 18.1 system-as-root userspace.
+
+Expected first milestone:
+- Android init reaches userspace
+- serial recovery shell remains available
+- adbd starts if the H700 USB gadget path is compatible
+
+Intentionally disabled for the first boot:
+- RK3326 graphics composer and allocator
+- RK3326 audio HAL
+- RK3326 power/lights HAL
+- RK3326 Wi-Fi service
+- SurfaceFlinger and boot animation
+
+This is not a daily-use Android release. It must not be flashed to the
+internal mmcblk0 bootloader, env, boot, rootfs, or vendor partitions.
+

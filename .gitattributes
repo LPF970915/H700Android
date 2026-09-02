@@ -1,0 +1,14 @@
+* text=auto
+*.c text eol=lf
+*.patch text eol=lf
+*.py text eol=lf
+*.sh text eol=lf
+*.rc text eol=lf
+*.mk text eol=lf
+*.xml text eol=lf
+*.txt text eol=lf
+*.template text eol=lf
+fstab.* text eol=lf
+archive/android11-r36s/ramdisk/* text eol=lf
+*.ps1 text eol=crlf
+*.md text eol=lf

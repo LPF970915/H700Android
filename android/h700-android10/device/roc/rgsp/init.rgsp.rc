@@ -1,0 +1,2 @@
+on post-fs-data
+    mkdir /data/vendor/h700 0770 system system

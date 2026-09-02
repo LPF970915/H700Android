@@ -1,0 +1,20 @@
+# RGSP H700 input template
+#
+# Do not install this file yet. The current kernel reports the D-pad as
+# ABS_HAT0X/ABS_HAT0Y and game buttons as BTN_*; Android may expose those
+# through a joystick device instead of KEY events. Confirm with getevent first.
+# Place the final device-specific file under /system/usr/keylayout/ using the
+# exact EventHub device name or VID/PID-derived filename.
+
+# Typical Linux KEY_* examples only; uncomment only after verification.
+# key 103   DPAD_UP
+# key 108   DPAD_DOWN
+# key 105   DPAD_LEFT
+# key 106   DPAD_RIGHT
+# key 28    ENTER
+# key _BACK  BACK
+# key 102   HOME
+# key 139   MENU
+
+# If the device is exposed as a gamepad, prefer Android gamepad mapping or an
+# InputReader calibration rather than guessing key numbers here.

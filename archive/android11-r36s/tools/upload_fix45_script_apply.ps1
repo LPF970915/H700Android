@@ -1,0 +1,12 @@
+$ErrorActionPreference='Stop'
+$port='COM4'
+$serial=[IO.Ports.SerialPort]::new($port,115200,[IO.Ports.Parity]::None,8,[IO.Ports.StopBits]::One)
+$serial.Handshake='None';$serial.ReadTimeout=200;$serial.WriteTimeout=1000;$serial.Encoding=[Text.Encoding]::UTF8
+$log=[IO.Path]::GetFullPath("out/logs/uart/rgsp/rgsp_serial_exec_fix45_script_$(Get-Date -Format yyyyMMdd_HHmmss)_115200.log")
+$sb=[Text.StringBuilder]::new()
+function Read-Now { $x=$serial.ReadExisting(); if($x.Length -gt 0){[void]$sb.Append($x);[Console]::Write($x)} }
+function Send([string]$s){$serial.Write($s+"`r")}
+function WaitPrompt([int]$sec=60){$d=(Get-Date).AddSeconds($sec);$userSent=$false;$passSent=$false;while((Get-Date)-lt $d){Read-Now;$t=$sb.ToString();if(-not $userSent -and $t -match '(?im)login\s*:\s*$'){Send 'root';$userSent=$true;Start-Sleep -Milliseconds 500}elseif($userSent -and -not $passSent -and $t -match '(?im)(password|密码)\s*[:：>]?\s*$'){Send 'root';$passSent=$true;Start-Sleep -Milliseconds 800}elseif($t -match '(?m)[#\$]\s*$'){return};Start-Sleep -Milliseconds 50};throw 'prompt timeout'}
+function Upload([string]$remote,[byte[]]$bytes){$b64=[Convert]::ToBase64String($bytes);Send "stty -icanon min 1 time 0 -echo; base64 -d > $remote";Start-Sleep -Milliseconds 500;$chunk=4096;for($i=0;$i-lt$b64.Length;$i+=$chunk){$n=[Math]::Min($chunk,$b64.Length-$i);$serial.Write($b64.Substring($i,$n));Start-Sleep -Milliseconds 4};$serial.Write("`r");Start-Sleep -Milliseconds 200;$serial.BaseStream.Write([byte[]](4),0,1);WaitPrompt 60;Send 'stty sane';WaitPrompt 20}
+function Run([string]$cmd){$tok=[Guid]::NewGuid().ToString('N');$end="__END_${tok}__";Send "printf '\n$end\n'; /bin/sh -c '"+$cmd.Replace("'","'`"'`"'")+"'; rc=`$?; printf '\n${end}:%s\n' `"`$rc`"";$d=(Get-Date).AddSeconds(300);while((Get-Date)-lt $d){Read-Now;if($sb.ToString()-match([regex]::Escape($end)+':\d+')){break};Start-Sleep -Milliseconds 50};if($sb.ToString()-notmatch([regex]::Escape($end)+':0')){throw "remote failed: $cmd"}}
+try{$serial.Open();Send '';WaitPrompt;Upload '/tmp/apply_rgsp_android_fix45_metrics_headless.sh' ([IO.File]::ReadAllBytes('device/apply_rgsp_android_fix45_metrics_headless.sh'));Run "chmod 0755 /tmp/apply_rgsp_android_fix45_metrics_headless.sh; sha256sum /tmp/rgsp-services-fix45.jar; /bin/sh /tmp/apply_rgsp_android_fix45_metrics_headless.sh";Write-Host 'FIX45_SYSTEM_APPLY_OK'}finally{if($serial.IsOpen){$serial.Close()};$serial.Dispose();[IO.File]::WriteAllText($log,$sb.ToString(),[Text.Encoding]::UTF8)}

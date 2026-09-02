@@ -1,0 +1,49 @@
+# Large proprietary/reference inputs and generated images
+/H700_Android_Example/
+/input/
+/work/
+/out/
+/.wsl/
+
+# Extracted root filesystems and transient mount points
+/.tmp/
+/META-INF/
+/bin/
+/dev/
+/etc/
+/home/
+/lib/
+/lib64
+/media/
+/mnt/
+/opt/
+/p/
+/proc/
+/root/
+/sbin/
+/sys/
+/tmp/
+/usr/
+/var/
+/init
+/run
+/ssh-askpass.cmd
+
+# External upstream checkouts retained outside this repository history
+/reference/andr36oid-docker-build/
+/reference/aosp-platform-manifest-android10/
+/reference/lineage-manifest-18.1/
+/reference/r36s-device/
+/reference/r36s-multiboot/
+
+# Local tooling
+__pycache__/
+*.pyc
+*.log
+*.img
+*.img.gz
+*.tar
+*.tar.gz
+
+# Machine-local device access details
+/docs/SSH_CONNECTION_RGSP_H700.md

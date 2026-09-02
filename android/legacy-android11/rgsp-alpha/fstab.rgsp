@@ -1,0 +1,6 @@
+# RGSP/H700 Android 11 alpha. TF2 layout created on 2026-08-26.
+# The handoff init switch_root's directly into mmcblk1p2. Do not mount that
+# system-as-root image again at /system.
+/dev/mmcblk1p4  /data  ext4  noatime,nosuid,nodev,noauto_da_alloc  wait,latemount,check,formattable,reservedsize=128M
+
+/dev/zram0  none  swap  defaults  zramsize=50%,max_comp_streams=4

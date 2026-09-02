@@ -1,0 +1,17 @@
+/dev/ttyS*               0660   root       system
+/dev/fb0                 0660   system     graphics
+/dev/graphics/fb0        0660   system     graphics
+/dev/disp                0660   system     graphics
+/dev/ion                 0666   system     graphics
+/dev/mali0               0666   system     graphics
+/dev/binder              0666   root       root
+/dev/hwbinder            0666   root       root
+/dev/vndbinder           0666   root       root
+/dev/input/event*        0660   root       input
+/dev/snd/*               0660   system     audio
+/dev/rfkill              0660   bluetooth  wifi
+/dev/uhid                0660   bluetooth  bluetooth
+
+/sys/class/power_supply/axp2202-battery/brightness  brightness  0660  system system
+/sys/class/power_supply/axp2202-battery/hallkey     hallkey     0440  system system
+/sys/class/power_supply/axp2202-battery/spk_state   spk_state   0660  system audio

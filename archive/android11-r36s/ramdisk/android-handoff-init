@@ -1,0 +1,159 @@
+#!/bin/sh
+set -u
+
+exec </dev/console >/dev/console 2>&1
+
+mount -t proc proc /proc 2>/dev/null || true
+mount -t sysfs sysfs /sys 2>/dev/null || true
+mount -t devtmpfs devtmpfs /dev 2>/dev/null || true
+mkdir -p /dev/pts /dev/socket /android-root /rgsp-boot
+mount -t devpts devpts /dev/pts 2>/dev/null || true
+echo 10 > /proc/sys/kernel/panic 2>/dev/null || true
+
+BOOT_DEV=/dev/mmcblk1p1
+SYSTEM_DEV=/dev/mmcblk1p2
+LINUX_BOOT_DEV=/dev/mmcblk0p4
+LINUX_BOOT_IMAGE=/rgsp-boot/rgsp-linux-boot-original.img
+LINUX_BOOT_SHA=d42252f30730d35ca7759a651da7260ba482144130e58f05f23ea5e33270a6f5
+HANDOFF_VERSION=fix31
+BOOT_MOUNTED=0
+LINUX_BOOT_RESTORED=0
+LOG=/dev/null
+
+log() {
+  echo "$*"
+  if [ "$LOG" != /dev/null ]; then
+    echo "$*" >> "$LOG" 2>/dev/null || true
+    sync
+  fi
+}
+
+fail_reboot() {
+  log "[rgsp-android] ERROR: $*"
+  if [ "$LINUX_BOOT_RESTORED" -eq 1 ]; then
+    log '[rgsp-android] rebooting into the restored TF1 Linux boot image'
+    sleep 5
+    /bin/busybox reboot -f
+    sleep 30
+  fi
+  log '[rgsp-android] TF1 boot was not restored; refusing an automatic reboot loop'
+  exec /bin/ash
+}
+
+echo '[rgsp-android] handoff init reached'
+tries=0
+while { [ ! -b "$BOOT_DEV" ] || [ ! -b "$SYSTEM_DEV" ] || [ ! -b "$LINUX_BOOT_DEV" ]; } && [ "$tries" -lt 30 ]; do
+  echo "[rgsp-android] waiting for TF2 devices ($tries/30)"
+  sleep 1
+  tries=$((tries + 1))
+done
+
+if [ -b "$BOOT_DEV" ] && mount -t vfat -o rw "$BOOT_DEV" /rgsp-boot; then
+  BOOT_MOUNTED=1
+  LOG=/rgsp-boot/RGSP_ANDROID_BOOT_LAST.log
+  : > "$LOG"
+  log '[rgsp-android] persistent log opened'
+  log "[rgsp-android] handoff version: $HANDOFF_VERSION"
+  log "[rgsp-android] date: $(date 2>/dev/null || true)"
+  log "[rgsp-android] cmdline: $(cat /proc/cmdline 2>/dev/null || true)"
+  log "[rgsp-android] devices: $(ls /dev/mmcblk* 2>/dev/null || true)"
+else
+  echo '[rgsp-android] ERROR: unable to mount TF2 boot partition for recovery and logging'
+  exec /bin/ash
+fi
+
+if [ ! -f "$LINUX_BOOT_IMAGE" ]; then
+  fail_reboot "missing TF1 boot recovery image: $LINUX_BOOT_IMAGE"
+fi
+
+SOURCE_SHA=$(/bin/busybox sha256sum "$LINUX_BOOT_IMAGE" 2>/dev/null | /bin/busybox awk '{print $1}')
+if [ "$SOURCE_SHA" != "$LINUX_BOOT_SHA" ]; then
+  fail_reboot "TF1 boot recovery image hash mismatch: $SOURCE_SHA"
+fi
+
+log '[rgsp-android] restoring the original TF1 Linux boot image before Android handoff'
+if ! dd if="$LINUX_BOOT_IMAGE" of="$LINUX_BOOT_DEV" bs=1M >> "$LOG" 2>&1; then
+  fail_reboot "failed to restore $LINUX_BOOT_DEV"
+fi
+sync
+TARGET_SHA=$(/bin/busybox sha256sum "$LINUX_BOOT_DEV" 2>/dev/null | /bin/busybox awk '{print $1}')
+if [ "$TARGET_SHA" != "$LINUX_BOOT_SHA" ]; then
+  fail_reboot "restored TF1 boot hash mismatch: $TARGET_SHA"
+fi
+LINUX_BOOT_RESTORED=1
+log '[rgsp-android] original TF1 Linux boot image restored and verified'
+
+if [ -f /rgsp-boot/RGSP_ANDROID_TRY.ONCE ]; then
+  rm -f /rgsp-boot/RGSP_ANDROID_TRY.ONCE
+  log '[rgsp-android] one-shot marker consumed'
+else
+  log '[rgsp-android] one-shot marker absent; returning directly to TF1 Linux'
+  fail_reboot 'Android one-shot request is absent'
+fi
+
+if [ ! -b "$SYSTEM_DEV" ]; then
+  fail_reboot "missing $SYSTEM_DEV"
+fi
+
+if ! mount -t ext4 -o ro "$SYSTEM_DEV" /android-root; then
+  fail_reboot "failed to mount Android system from $SYSTEM_DEV"
+fi
+
+if [ ! -x /android-root/system/bin/init ]; then
+  umount /android-root 2>/dev/null || true
+  fail_reboot 'Android /system/bin/init is missing or not executable'
+fi
+
+if [ ! -d /android-root/system/apex ] || [ ! -d /android-root/apex ]; then
+  fail_reboot 'Android flattened APEX directories are missing'
+fi
+if ! /bin/busybox mount -o bind /android-root/system/apex /android-root/apex; then
+  fail_reboot 'failed to expose flattened APEX packages at /apex'
+fi
+log '[rgsp-android] flattened APEX packages exposed at /apex'
+
+log '[rgsp-android] Android root mounted; preparing switch_root'
+if ! /bin/busybox mount -o bind /dev /android-root/dev; then
+  fail_reboot 'failed to bind /dev under Android root'
+fi
+if ! /bin/busybox mount -o bind /proc /android-root/proc; then
+  fail_reboot 'failed to bind /proc under Android root'
+fi
+if ! /bin/busybox mount -o bind /sys /android-root/sys; then
+  fail_reboot 'failed to bind /sys under Android root'
+fi
+if ! mount -t tmpfs -o mode=0755 tmpfs /android-root/mnt; then
+  fail_reboot 'failed to mount Android /mnt tmpfs'
+fi
+if ! mount -t tmpfs -o mode=0755 tmpfs /android-root/debug_ramdisk; then
+  fail_reboot 'failed to mount Android debug ramdisk tmpfs'
+fi
+if [ "$BOOT_MOUNTED" -eq 1 ]; then
+  if [ ! -d /android-root/rgsp-persist ]; then
+    fail_reboot 'missing persistent mount point in Android root: /rgsp-persist'
+  fi
+  /bin/busybox mount -o bind /rgsp-boot /android-root/rgsp-persist || fail_reboot 'failed to bind boot-log partition at /rgsp-persist'
+fi
+
+KMSG_LOG=/rgsp-boot/RGSP_ANDROID_KMSG_LAST.log
+: > "$KMSG_LOG" || fail_reboot 'failed to create persistent Android kmsg log'
+chmod 0666 "$KMSG_LOG" 2>/dev/null || true
+/bin/busybox cat /dev/kmsg >> "$KMSG_LOG" 2>&1 &
+sleep 1
+log '[rgsp-android] persistent Android kernel-log reader started'
+
+INIT_LOG=/rgsp-boot/RGSP_ANDROID_INIT_LAST.log
+: > "$INIT_LOG" || fail_reboot 'failed to create persistent Android init log'
+chmod 0666 "$INIT_LOG" 2>/dev/null || true
+rm -f /android-root/dev/kmsg || fail_reboot 'failed to unlink the transient kmsg node'
+/bin/busybox ln -s /rgsp-persist/RGSP_ANDROID_INIT_LAST.log /android-root/dev/kmsg || \
+  fail_reboot 'failed to redirect Android init kmsg output'
+log '[rgsp-android] Android init kernel logger redirected to persistent storage'
+
+if [ "$BOOT_MOUNTED" -eq 1 ]; then
+  echo '[rgsp-android] executing Android init; subsequent stdout/stderr follows' >> /android-root/rgsp-persist/RGSP_ANDROID_BOOT_LAST.log
+  sync
+  exec /bin/busybox switch_root /android-root /init second_stage >> /android-root/rgsp-persist/RGSP_ANDROID_BOOT_LAST.log 2>&1
+else
+  exec /bin/busybox switch_root /android-root /init second_stage
+fi

@@ -1,0 +1,18 @@
+#!/bin/sh
+set -u
+
+echo '[rgsp-probe] init start' >/dev/kmsg 2>/dev/null || true
+mount -t proc proc /proc 2>/dev/null || true
+mount -t sysfs sysfs /sys 2>/dev/null || true
+mount -t devtmpfs devtmpfs /dev 2>/dev/null || true
+mkdir -p /dev/pts /dev/shm /run 2>/dev/null || true
+mount -t devpts devpts /dev/pts 2>/dev/null || true
+
+if [ -x /sbin/adbd ]; then
+  /sbin/adbd --root_seclabel=u:r:su:s0 &
+fi
+
+echo '[rgsp-probe] mounts ready' >/dev/kmsg 2>/dev/null || true
+while :; do
+  sleep 60
+done
