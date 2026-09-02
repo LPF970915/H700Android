@@ -50,6 +50,10 @@ system-as-root 镜像组成。RK3326 bootloader 和硬件 HAL 没有进入 H700 
 `tools/prepare_h616_android10_source.ps1` 会拒绝使用不在项目 `.wsl` 目录中的
 Ubuntu 发行版，也会拒绝非空目标目录，防止完整源码再次误落到 C 盘。
 
+轻量代码、脚本和文档已纳入私人仓库：
+`https://github.com/LPF970915/H700Android`。完整源码、镜像、日志、构建输出和
+D 盘 WSL2 VHDX 不进入 Git 历史。
+
 ## 使用方式
 
 ```powershell
