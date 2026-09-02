@@ -39,3 +39,4 @@ explicitly in `device/roc/h700-common/device.mk`.
 8. Add AXP2202 health, power, lights, Hall, rumble and wireless support.
 
 The files here are a product overlay scaffold. They are not a flashable image.
+The active execution plan is `docs/H700_ANDROID10_NEXT_DEVELOPMENT_PLAN_20260902.md`.

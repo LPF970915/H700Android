@@ -58,8 +58,13 @@
 
 ## 下一执行队列
 
-1. 对 `h700_rgsp-eng` 发起第一轮受控编译并保存首个真实错误；
-2. 先修 device/product/SELinux/VINTF，不修改 Android framework；
-3. 生成最小 system/vendor，复用安全 handoff 测 Android 10 init；
-4. 连续到达 ADB 后进入 SurfaceFlinger 与 720x480 图形验证；
-5. 用户回到设备旁后，独立完成 Android 11 fix58 最后一次冷启动取证。
+详细计划已更新为 `docs/H700_ANDROID10_NEXT_DEVELOPMENT_PLAN_20260902.md`。
+
+1. 在 D 盘空间保护下编译 `h700_rgsp-eng` 的 system/vendor/ramdisk；
+2. 完成产物哈希、32 位 ELF 依赖、VINTF、SELinux 和来源检查；
+3. 使用 RGSP kernel/DTB 组装测试 boot 和 TF2 部署包；
+4. 用户在场后完成 Android 10 init/存储/ADB 冷启动验证；
+5. 稳定原生 `system_server` 后接入 H616 图形栈并验证 720x480 首图；
+6. 首图之后再开发输入、音频、电源、无线和低内存优化。
+
+当前可在没有实体机的情况下连续推进步骤 1-3。Android 11 fix58 取证不阻塞主线。

@@ -141,13 +141,21 @@ Linux 文件系统，避免在 NTFS 上构建 AOSP 时丢失大小写、权限�
 
 ## 8. 最近执行队列
 
-1. 用户回到设备旁后完成 fix58 最后一次冷启动，仅收集证据。
-2. 不再向 Android 11 增加 framework bypass。
-3. 审计 H616 完整源码解包后的磁盘需求和构建依赖。
-4. 构建原始 H616 Android 10 产品作为工具链基准。
-5. 接入 `h700_rgsp` overlay，并生成第一版 Android 10 system/vendor。
-6. 用现有安全 handoff 验证 Android 10 init。
-7. 进入 H616 图形组合和 720x480 画面验证。
+近期工作已经从迁移整理切换到实际 bring-up。详细命令顺序、空间保护、验收门槛、
+实体机依赖和工作量判断统一见：
+
+`docs/H700_ANDROID10_NEXT_DEVELOPMENT_PLAN_20260902.md`
+
+当前关键路径：
+
+1. 构建 `h700_rgsp-eng` 的 `systemimage vendorimage ramdisk`；
+2. 修复实际构建错误并生成产物哈希/ABI/来源清单；
+3. 使用 RGSP kernel/DTB 组装 Android 10 测试 boot；
+4. 用户在场后验证 TF2 挂载、ADB、zygote 和原生 `system_server`；
+5. 接入 H616 Android 10 图形栈，完成 RGSP 720x480 第一幅稳定画面；
+6. 首图稳定后再依次处理输入、音频、电池/亮度、无线和 1 GiB 内存调优。
+
+Android 11 fix58 的最后一次冷启动只做历史取证，不阻塞上述 Android 10 离线开发。
 
 ## 9. 验收原则
 
