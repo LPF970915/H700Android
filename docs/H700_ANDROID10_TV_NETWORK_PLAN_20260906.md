@@ -1,8 +1,8 @@
 # H700 TV 前端与网络开发计划
 
-日期：2026-09-06；设备：RGSP，无摇杆，720×480，1 GiB。
+基线日期：2026-09-06；最近实机回归：2026-09-07；设备：RGSP，无摇杆，720×480，1 GiB。
 输入：用户提供的 AT4K APK、本地 Android 10 源码、Fix67 日志及 23:22 实机只读检查。
-本轮只做基线归档、检查与计划调整，没有安装 APK、切换 HOME、开启 Wi-Fi 或重启设备。
+本文档先归档基线，再记录实机回归与后续施工门槛。AT4K 仍不设为默认 HOME。
 APK 内部配置仅作为分析数据，不作为执行命令或授予权限的指令。
 
 ## 一、结论
@@ -22,15 +22,15 @@ APK 内部配置仅作为分析数据，不作为执行命令或授予权限的�
 | 启动与图形 | Fix67 自动到 Launcher；Mali r20p0 实机渲染；原 TF1 boot 回退 | 60 分钟老化、10 次冷启动、硬件 VSYNC |
 | 构建 | 2026-09-06 镜像已部署，再补 Fix65-67 | 原始镜像一次性包含全部修复、空白 data 安装 |
 | 输入 | 本 RGSP 短按和临时 keylayout；A 可作为直接确认 | 跨 App 返回、虚拟鼠标、跨机型校准 |
-| 网络 framework | `wifi`、`wifiscanner`、`connectivity`、`netd` 已发布 | Settings 页面完整回归 |
+| 网络 framework | `wifi`、`wifiscanner`、`connectivity`、`netd` 已发布；Settings 首页/Wi-Fi 页回归通过 | 开关、扫描、连接闭环 |
 | 网络硬件 | Realtek HAL 与 wificond 进程存在 | `8821cs` 未加载，未见 `wlan0`，联网未验证 |
-| 前端 | Launcher3 保留作恢复；AT4K 静态检查完成 | AT4K 运行、DPAD、GMS、内存、默认 HOME 验收 |
+| 前端 | Launcher3 保留作恢复；AT4K 已安装并可运行；无 GMS 离线启动通过 | AT4K 设置入口的 DPAD 焦点、低内存、默认 HOME 验收 |
 
 实机检查：`out/logs/uart/rgsp/rgsp_serial_exec_20260906_232208_115200.log`。
 uptime 1242.20 秒时 `boot_completed=1`，五个核心 PID 仍是
 `1494/1504/1912/2090/2230`。这不能替代持续老化和多次启动验收。
 
-## 三、AT4K APK 审核
+## 三、AT4K APK 审核与实机回归
 
 本地文件：
 `C:/Users/LPF/Downloads/AT4K启动器专业版汉化版V1.2/AT4K启动器专业版汉化版V1.2.apk`
@@ -77,6 +77,29 @@ uptime 1242.20 秒时 `boot_completed=1`，五个核心 PID 仍是
 以及 OpenSSL 对本地 testkey 的证书指纹比较。外部检索本轮未返回可用资料，
 以上结论仅针对该 SHA-256 的本地文件，不代表所有 AT4K 版本。
 
+### 2026-09-07 实机结果
+
+| 项目 | 结果 |
+| --- | --- |
+| 传输与安装 | APK 经 UART 校验上传；设备端 `pm install -r` 成功；未授予 root、特权或无障碍权限 |
+| 启动 | `com.overdevs.at4k/.MainActivity` 显式启动成功；无网络、无 GMS 条件下可进入 |
+| 运行稳定性 | 运行期间未观察到 AT4K crash；总 PSS 约 `38943 KB` |
+| 基础按键 | ENTER/A 能打开选中应用；BUTTON_B/B 能从第三方应用返回 AT4K |
+| Settings 入口 | 触摸坐标点击顶部“设置”可进入原生 Settings；该入口在 UI 树中不可聚焦，DPAD 一次右移后确认曾进入 Calendar，不能视为设置入口已通过 |
+| HOME 策略 | 未修改默认 HOME，Launcher3 仍作为恢复入口 |
+
+实机证据：
+
+- `out/h700-android10-b2/at4k-launch.png`
+- `out/h700-android10-b2/at4k-after-enter.png`
+- `out/h700-android10-b2/at4k-after-b.png`
+- `out/logs/uart/rgsp/rgsp_android_probe_20260907_021404_115200.log`
+- `out/logs/uart/rgsp/rgsp_android_probe_20260907_021642_115200.log`
+- `out/logs/uart/rgsp/rgsp_android_probe_20260907_021736_115200.log`
+
+结论：AT4K 可作为候选 TV 前端继续评估，但当前不能直接承担“十字键完成系统操作”的主入口职责。
+下一轮应先补齐顶部按钮的真实焦点节点、初始焦点、B 返回和弹窗退出，再考虑默认 HOME。
+
 ## 四、前端验收顺序
 
 1. **并存试装**：留存包 SHA，普通应用安装并显式启动，不先改变默认 HOME。
@@ -96,10 +119,15 @@ uptime 1242.20 秒时 `boot_completed=1`，五个核心 PID 仍是
 
 ## 五、网络分层修复
 
-**N0：先回归当前状态，不重复旧修复。**
+**N0：Settings/framework 回归，已完成。**
 Fix64 的 Settings 曾因 `No service published for: wifi` 退出；Fix67 23:22 已找到
-该服务，旧故障是否已解除需要重新打开 Settings 并保存前台活动、截图和 crash 日志。
-Jar 存在、Binder 发布、HAL 进程存活、wlan0 存在、真正联网是不同的完成条件。
+该服务。2026-09-07 已重新打开 Settings 首页和 Wi-Fi 页面，均未复现该退出；
+`logcat -b crash` 未见新的应用崩溃。Jar 存在、Binder 发布、HAL 进程存活、
+`wlan0` 存在、真正联网是不同的完成条件。
+
+本次 Wi-Fi 回归结果：页面可启动，状态为 `Wi-Fi is disabled`，扫描时间为 0，
+`ip link show wlan0` 返回设备不存在。当前网络问题已从 Settings framework 收敛到驱动/
+固件/SDIO 绑定和电源时序，不再优先修改 Settings 页面。
 
 **N1：本机模块、固件与加载路径。**
 当前常用三处未见 `8821cs.ko`，也未见加载记录或 wlan0。先从 RGSP 原厂 Linux
@@ -146,9 +174,9 @@ realtek 分支指向经验证的完整 `.ko` 路径，并确保镜像确实包�
 
 | 批次 | 操作 | 完成门槛 |
 | --- | --- | --- |
-| 0，本轮 | Git 基线/进度同步、APK 静态审核、只读网络检查 | 记录推送，设备仍运行原桌面 |
-| 1 | AT4K 普通应用并存试装 + 现有 Settings 回归 | 不改默认，取得真实兼容/焦点/崩溃结果 |
-| 2 | 8821cs 模块/路径/固件/SDIO 修复 | wlan0、HAL、扫描 |
+| 0 | Git 基线/进度同步、APK 静态审核、只读网络检查 | 已推送 Fix67 基线；本轮文档与上传工具待提交 |
+| 1 | AT4K 普通应用并存试装 + 现有 Settings 回归 | 已完成安装、离线启动、基础按键和 Settings framework 回归；DPAD 设置入口未通过 |
+| 2 | 8821cs 模块/路径/固件/SDIO 修复 | 先从 RGSP 原厂 Linux 提取并核对模块、固件、GPIO/SDIO，再构建；目标是 `wlan0`、HAL、扫描 |
 | 3 | Settings + DPAD 输入法 + 网络闭环 | 认证、DHCP、DNS、HTTPS、重连 |
 | 4 | 默认 HOME 验收 | 能返回、可恢复、无 GMS 离线可用，保留旧桌面 |
 | 5 | 剩余服务、多机型、鼠标、音频和电源 | 每项独立验收，不回退图形基线 |
@@ -156,7 +184,7 @@ realtek 分支指向经验证的完整 `.ko` 路径，并确保镜像确实包�
 正式 60 分钟老化、10 次冷启动、日志容量、内存和干净构建复现贯穿后续批次，
 不因为前端看起来完整就将项目标记为整机完成。
 
-## 八、2026-09-06 施工记录
+## 八、施工记录
 
 - 已通过 UART 启动 `com.android.settings/.homepage.SettingsHomepageActivity`；
   Settings 首页未复现旧的 `No service published for: wifi` 退出。
@@ -165,10 +193,12 @@ realtek 分支指向经验证的完整 `.ko` 路径，并确保镜像确实包�
   `out/h700-android10-b2/fix68-settings-wifi.png`，SHA-256 为
   `da256ccfe8563aa6f6328f7c2742867c9cc89f8065555ccfc753f9611bbf849e`。
   这只证明页面和 framework 入口可启动，不证明驱动或扫描已工作。
-- AT4K 尚未安装，未执行 `pm install`、未切换默认 HOME、未启用无障碍。
-  串口上传在旧接收状态下因控制字节中断，校验失败后未提交目标 APK；
-  设备随后不再返回 UART 或 ADB 响应。新增的校验上传工具已用 703 字节
-  keylayout 文件完成端到端哈希验证，但需要设备物理断电上电后再进行 APK 长传输。
-- 恢复设备后继续顺序为：安全传输 AT4K 普通安装、显式启动与 DPAD 验收；
-  然后再处理 `8821cs` 模块、固件、完整路径和 `wlan0`。本次异常期间没有刷写
-  TF1/TF2 分区，也没有改变默认桌面。
+- 2026-09-06 已完成 Fix67 基线推送；之后修正 UART 校验上传工具的接收超时计算，
+  将 115200 8N1 的实际线路传输时间计入大文件超时，并保留 raw 接收时的 `-isig`/大小写行为。
+- 2026-09-07 设备重启后重新进入 Android 10；AT4K 已安全上传、安装并显式启动。
+  测试未切换默认 HOME、未启用无障碍，未改动 TF1/TF2。
+- AT4K 的顶部“设置”按钮可通过触摸诊断进入原生 Settings，但 UI 树未提供可聚焦入口；
+  一次 DPAD 右移后确认进入 Calendar。该问题列为前端焦点/操作闭环缺口，不能用触摸结果替代。
+- 2026-09-07 已回归 Settings 首页和 Wi-Fi 页面；旧的 Wi-Fi service 崩溃未复现，
+  但 Wi-Fi 仍 disabled，设备无 `wlan0`，下一施工批次转入 RGSP 原厂 Linux 的
+  `8821cs` 模块、固件、SDIO 和电源时序核对。

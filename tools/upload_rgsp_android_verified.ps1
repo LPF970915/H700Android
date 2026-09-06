@@ -17,7 +17,11 @@ $partial = "$RemotePath.$id.part"
 $ready = "__RGSP_READY_${id}__"
 $done = "__RGSP_DONE_${id}__"
 $failed = "__RGSP_FAILED_${id}__"
-$seconds = [int][Math]::Ceiling($data.Length / 4096 * $DelayMilliseconds / 1000) + 120
+# Include the wire time at 115200 8N1 (~10 bits per byte), not only the
+# inter-block delay. Otherwise large payloads time out before the sender ends.
+$wireSeconds = $data.Length / 11520.0
+$delaySeconds = ($data.Length / 4096.0) * $DelayMilliseconds / 1000.0
+$seconds = [int][Math]::Ceiling($wireSeconds + $delaySeconds) + 180
 $logDirectory = Join-Path (Get-Location) 'out/logs/uart/uploads'
 New-Item -ItemType Directory -Force -Path $logDirectory | Out-Null
 $logPath = Join-Path $logDirectory "$id.log"
