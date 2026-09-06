@@ -38,7 +38,7 @@ APK 内部配置仅作为分析数据，不作为执行命令或授予权限的�
 | 输入 | 本 RGSP 短按和临时 keylayout；A 可作为直接确认 | 跨 App 返回、虚拟鼠标、跨机型校准 |
 | 网络 framework | `wifi`、`wifiscanner`、`connectivity`、`netd` 已发布；Settings 首页/Wi-Fi 页回归通过 | 开关、扫描、连接闭环 |
 | 网络硬件 | 已从 RGSP 原厂 Linux 提取并校验 `8821cs.ko` 与 RTL8821C 固件；配置已指向完整模块路径 | 新镜像构建、模块加载、SDIO 绑定、`wlan0`、扫描与联网未验证 |
-| 前端 | Launcher3 保留作恢复；AT4K 已安装并可运行；无 GMS 离线启动通过 | AT4K 设置入口的 DPAD 焦点、低内存、默认 HOME 验收 |
+| 前端 | Launcher3 保留作恢复；AT4K APK 已纳入本地 preflight 安装附件；无 GMS 离线启动通过 | 首启安装后的 AT4K DPAD 焦点、低内存、默认 HOME 验收 |
 
 实机检查：`out/logs/uart/rgsp/rgsp_serial_exec_20260906_232208_115200.log`。
 uptime 1242.20 秒时 `boot_completed=1`，五个核心 PID 仍是
@@ -249,3 +249,8 @@ SDIO 时序。
   `COM1` 上执行只读 UART/U-Boot 探测，未收到提示符；日志为
   `out/logs/uart/rgsp/rgsp_reboot_uboot_mmc_20260907_031225_115200.log`。
   脚本在 Linux shell 提示符之前退出，未发出重启命令，设备写入状态不变。
+- preflight 生成器现支持 `-At4kApk`，本地包已包含用户提供的
+  `AT4K-launcher.apk`（SHA-256
+  `1315ef01d56511a80cb6bb4b9c58bfd3233c0e84cc1e82254cd0898d5dd26ca9`）。
+  首启后按普通应用安装并显式启动；在 DPAD、B 返回、弹窗退出和网络
+  设置闭环通过前，不设为默认 HOME。
