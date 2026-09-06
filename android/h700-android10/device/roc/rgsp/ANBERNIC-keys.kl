@@ -1,6 +1,7 @@
 # RGSP only: physical observations in RGSP_INPUT_CALIBRATION_20260906.md.
 # Generic.kcm supplies unhandled BUTTON_A/B -> confirm/back fallbacks.
-key 304 BUTTON_A
+# Lock-screen bring-up policy: physical A must be a direct confirm/unlock.
+key 304 ENTER
 key 305 BUTTON_B
 key 307 BUTTON_X
 key 306 BUTTON_Y

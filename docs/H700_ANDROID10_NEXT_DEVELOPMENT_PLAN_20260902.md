@@ -1,18 +1,24 @@
 # H700 Android 10 近期开发执行计划
 
 日期：2026-09-02  
-基线：提交 `fb451d6`，H616 Android 10 主线，RGSP H700 硬件事实
+运行基线：提交 `94ca82e` / Fix67，H616 Android 10 主线，RGSP H700 硬件事实
 
 ## 1. 当前起点
 
-2026-09-06 更新：已有实机运行的 Android 10 镜像，Fix64 已实现原生框架、
-Launcher、应用列表和真实 LCD 输出，用户已确认实体画面。当前是 B4 首图已实现、
-稳定性验收未完成，开始并行推进 B5.1 输入接入。
+2026-09-06 23:22 更新：Fix67 自动进入 Launcher，基本短按映射已完成，A 为临时
+ENTER 解锁/确认。五个核心 PID 与本次启动基线一致，uptime 为 1242.20 秒。
+B4 首图已实现但正式老化与冷启动验收未完成，B5 当前优先 TV 前端和网络。
+本节及第 9 节是当前执行顺序；B1/B2 中的首次编译、离线组装描述是历史步骤。
+
+同日已恢复 H21S-700-V3.0 投影仪主板 RX，并通过 UART 双向实测完整进入其
+Android 10 Launcher。投影仪现在可以作为服务契约和 H700 runtime donor；其
+`rtl8822bs`、投影显示链、电源和产品专有服务仍不得直接移植到 RGSP。
 
 近期工作不再从首轮编译开始。需保留的验收欠项包括：60 分钟老化、连续冷启动、
 ADB 单独验证、将所有现场修复纳入干净构建。显示证据见
-`H700_ANDROID10_FIX64_VISIBLE_UI_20260906.md`；输入准备见
-`H700_ANDROID10_INPUT_PRECALIBRATION_20260906.md`。
+`H700_ANDROID10_FIX67_STABLE_DESKTOP_20260906.md`；输入结果见
+`RGSP_INPUT_CALIBRATION_20260906.md`；前端和网络计划见
+`H700_ANDROID10_TV_NETWORK_PLAN_20260906.md`。
 
 ## 2. 固定边界
 
@@ -61,6 +67,12 @@ out/target/product/rgsp/ramdisk.img
 
 ## 4. 阶段 A10-B2：测试 boot 与 TF2 部署包
 
+2026-09-06 更新：B2 离线预检已完成。当前包位于
+`out/h700-android10-preflight/`，包含当前 Android 10 `system.img`、
+`vendor.img`、固定 8 GiB/2 GiB raw 镜像、64 MiB 测试 boot、完整 SHA-256
+清单和确认保护的 TF2 写入脚本。两个 raw 镜像均通过 `e2fsck -fn`，本阶段
+没有写入设备。详细记录见 `docs/H700_ANDROID10_PREFLIGHT_20260906.md`。
+
 目标：在不写设备的情况下准备完整、可回退的 Android 10 测试包。
 
 1. 从 RGSP 已验证启动链取 kernel、DTB、boot header 和 cmdline；
@@ -72,7 +84,8 @@ out/target/product/rgsp/ramdisk.img
 5. 生成仅面向 TF2 的部署目录、SHA-256 清单和回退说明；
 6. 在用户不在设备旁时只准备文件，不执行写卡、U-Boot env 修改或重启。
 
-退出条件：部署包可重复生成，所有输入都有来源和哈希，写入动作仍为显式人工步骤。
+历史 B2 离线产物检查已通过，随后已进入 B3/Fix67 实机阶段。
+原 B2 boot 不等同于 Fix67 已验证入口，不能跳过后续部署修复。
 
 ## 5. 阶段 A10-B3：init、存储和无画面启动
 
@@ -97,11 +110,14 @@ out/target/product/rgsp/ramdisk.img
 
 ## 6. 阶段 A10-B4：H616 图形栈与第一幅画面
 
-2026-09-06 更新：Fix64 已取得真实 720×480 锁屏、桌面和应用列表截图，
+2026-09-06 历史更新：Fix64 已取得真实 720×480 锁屏、桌面和应用列表截图，
 修复 GPU/ION 应用访问权限及 Homlet 编译路径，并加入本机专用的软件 VSYNC
 兼容选项。完整证据和剩余问题见 `H700_ANDROID10_FIX64_VISIBLE_UI_20260906.md`。
 用户已确认实体 LCD 与桌面截图一致，Fix64 完整重启和看门狗自动退出验证通过。
 这不代表下述 60 分钟和 10 次冷启动退出条件已经满足。
+
+同日后续 Fix67 已修复干净镜像缺 EGL、缺 Mali 模块、未挂 data 和 framework
+未触发的问题，自动到达桌面；保持下面的稳定性门槛不变。
 
 目标：得到稳定的 RGSP 720x480 Android 画面。
 
@@ -128,13 +144,14 @@ buffer 泄漏。
 
 首图稳定后按以下顺序展开：
 
-1. 物理按键、休眠键、Hall 和无触摸导航；
-2. H616 Audio HAL 5.0 对接 H700 `audiocodec` card 0/device 0，并以 H700 投影仪
+1. 基于已有短按映射，优先 TV 桌面、无触摸屏幕键盘、Settings 和 Wi-Fi 联网；
+2. 后续完善虚拟鼠标、多机型校准、休眠键及 Hall；
+3. H616 Audio HAL 5.0 对接 H700 `audiocodec` card 0/device 0，并以 H700 投影仪
    Android 10 日志校验服务顺序和 mixer 路由；
-3. AXP2202 电量、充电、关机、背光和亮度；
-4. 振动、RTL8821CS Wi-Fi 和蓝牙；
-5. zram、LMKD、dexpreopt 和后台限制的 1 GiB 内存调优；
-6. Launcher、文件管理、音乐/视频、阅读、RetroArch 和 PPSSPP 应用验收。
+4. AXP2202 电量、充电、关机、背光和亮度；
+5. 振动和蓝牙；
+6. zram、LMKD、dexpreopt 和后台限制的 1 GiB 内存调优；
+7. Launcher、文件管理、音乐/视频、阅读、RetroArch 和 PPSSPP 应用验收。
 
 音频不再沿用 Android 11 fix58 的二进制拼装方式；fix58 只作为 H616 HAL 与 H700
 ALSA 设备已经具备可行性的证据。
@@ -156,22 +173,23 @@ ALSA 设备已经具备可行性的证据。
 
 ## 9. 近期十项执行队列（2026-09-06 调整）
 
-1. 保留 Fix64 制品、GPU/显示证据、恢复哈希和运行期日志上限；
-2. 修复 `/dev/input/event*` 权限和标签，确认三个本机输入设备进入 EventHub；
-3. 已完成 RGSP 短按逐键记录并安装临时基础 keylayout；长按、重复、斜向和组合键
-   延后到映射工具阶段，其他 H700 机型必须独立校准；
-4. 验证桌面 DPAD+A/B 导航，并保留游戏中的标准 BUTTON/HAT 语义；
-5. 评测 ARM32/API29、无 GMS、720x480、低内存的轻量 TV 式桌面和屏幕键盘；
-6. 实现虚拟鼠标模式、滚动/拖动与紧急退出，避免重复输入及抢占游戏 Select；
-7. 修复设置服务依赖（当前首要是 wifi 未发布），完成设置、文件管理、PPSSPP 的
-   无触摸操作闭环；
-8. 交叉执行 60 分钟老化、多次冷启动、GPU 帧时间与内存检查，不降低 B3/B4 门槛；
-9. 继续音频、电池/亮度、电源、无线和内存调优；
-10. 完整回收现场补丁，验证干净构建、部署与恢复的可重复性。
+1. 同步 Fix67 与本机 A→ENTER keylayout 的产品配置和证据；输入基础已完成；
+2. AT4K 1.2 只作为候选，先普通应用试装，不覆盖 Launcher3 或设默认 HOME；
+3. 检查离线、无 GMS、低分辨率、DPAD+A/B、弹窗退出与内存，不重做逐键长按校准；
+4. 回归 Settings 首页/网络页；实机已存在 WifiService，旧“缺 wifi 服务”诊断降为历史；
+5. 补齐本机 `8821cs.ko` 与固件，核对 realtek HAL 模块完整路径及 4.9.170 内核 ABI；
+6. 从 wlan0、HAL/supplicant、扫描、认证到 DHCP、DNS、联网验证，完成一次重连；
+7. 用 DPAD 屏幕键盘完成 Wi-Fi 密码输入，之后再验收默认 HOME 与重启恢复；
+8. 随后按需实现 Select 虚拟鼠标、剩余 Settings 服务和文件管理/PPSSPP 操作闭环；
+9. 音频、电量、亮度、Hall、蓝牙及低内存调优按独立后端推进；
+10. 交叉执行 60 分钟老化、10 次冷启动与完整构建/空白 data 复现，不降低门槛。
+
+AT4K 不是 framework 或网络服务的替代品。试装失败不切换整个产品为 Homlet，
+也不启用全部电视 feature 来规避依赖。
 
 ## 10. 工作量判断
 
-按当前资料完整度，首图不是从零开始，但也不是一次编译即可完成：
+以下是 2026-09-02 的首图前历史估计，已被 Fix67 实机结果超越，不再作为剩余工期：
 
 - 首轮镜像编译与产品依赖收敛：预计 1-3 个主要修复回合；
 - init/存储/SELinux/VINTF：预计 2-6 次实体冷启动回合；

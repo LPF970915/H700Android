@@ -4,6 +4,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/generic_no_telephony.mk)
 $(call inherit-product, build/target/product/go_defaults.mk)
 $(call inherit-product-if-exists, device/softwinner/common/common.mk)
 $(call inherit-product, device/roc/h700-common/device.mk)
+include device/softwinner/common/config/wireless/wireless_config.mk
 
 # Allwinner's GPU product_config.mk does not match the mali-bifrost selector
 # in this source release, so install the verified 32-bit G31 EGL blob here.
@@ -29,19 +30,35 @@ PRODUCT_COPY_FILES += \
     device/roc/rgsp/ANBERNIC-keys.kl:$(TARGET_COPY_OUT_SYSTEM)/usr/keylayout/Vendor_0001_Product_0001.kl \
     device/roc/rgsp/ANBERNIC-keys.kl:$(TARGET_COPY_OUT_SYSTEM)/usr/keylayout/ANBERNIC-keys.kl
 
-# Default HIDL wrappers for the bring-up manifest. These do not provide the
-# missing device Gatekeeper backend; secure-OS integration is still pending.
+# Keep only HALs with a verified RGSP backend. Gatekeeperd has an in-process
+# software fallback when no device GateKeeper service is declared.
 PRODUCT_PACKAGES += \
-    android.hardware.gatekeeper@1.0-impl \
-    android.hardware.gatekeeper@1.0-service \
     android.hardware.health@2.0-impl \
     android.hardware.health@2.0-service \
     android.hardware.keymaster@3.0-impl \
     android.hardware.keymaster@3.0-service
 
+# The inherited Cupid HAL list unconditionally adds the HIDL Gatekeeper
+# implementation, but RGSP has no matching secure backend. Keep gatekeeperd's
+# in-process software fallback and remove only the unavailable provider.
+PRODUCT_PACKAGES -= \
+    android.hardware.gatekeeper@1.0-impl \
+    android.hardware.gatekeeper@1.0-service \
+    gatekeeper.cupid
+
+GLOBAL_REMOVED_PACKAGES += \
+    android.hardware.gatekeeper@1.0-impl \
+    android.hardware.gatekeeper@1.0-service \
+    gatekeeper.cupid
+
 PRODUCT_SHIPPING_API_LEVEL := 29
 PRODUCT_CHARACTERISTICS := nosdcard
 PRODUCT_USE_DYNAMIC_PARTITIONS := false
+
+# RGSP has no secure-OS Gatekeeper backend. gatekeeperd falls back to its
+# built-in software implementation, while Android 10's FCM still marks the
+# HIDL provider as mandatory at build time.
+PRODUCT_ENFORCE_VINTF_MANIFEST_OVERRIDE := false
 
 # Temporary H700 kernel compatibility: no working VSYNC uevent producer.
 # Requires tools/h616-hwc-rgsp-software-vsync.patch in the H616 source tree.
@@ -59,4 +76,9 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     ro.adb.secure=0 \
     persist.sys.timezone=Asia/Shanghai \
     ro.product.platform=tablet \
+    debug.hwui.renderer=opengl \
+    debug.hwui.use_buffer_age=false \
+    debug.hwui.use_partial_updates=false \
+    persist.display.policy=single \
+    persist.disp.device_config=/vendor/etc/dispconfigs/h700-rgsp-lcd.json \
     ro.radio.noril=yes

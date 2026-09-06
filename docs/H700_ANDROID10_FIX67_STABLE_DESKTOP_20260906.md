@@ -4,8 +4,10 @@ Date: 2026-09-06. Device: RGSP/H700. UART: COM4, 115200 8N1.
 
 ## Result
 
-Fix67 boots the clean Android 10 system/vendor images into Launcher without an
-interactive serial command. At uptime 90.85 seconds, `/data` was mounted,
+Fix67 boots Android 10 system/vendor images AFTER the deployment repairs below
+into Launcher without an interactive serial command. This is not yet a clean,
+unpatched image or blank-data installation result.
+At uptime 90.85 seconds, `/data` was mounted,
 `sys.boot_completed=1`, SurfaceFlinger and zygote were running, and the five
 core PIDs were:
 
@@ -95,6 +97,8 @@ env first 128 KiB: d1a0856a8fb4c6f3b785943929a59206424a189f92efcbea48c26b31f472a
 The deploy entry point is
 `tools/prepare_h700_android10_b3_fix67_framework_trigger.sh`; its complete
 device-side payload list is `out/h700-android10-b2/fix67-payload.sha256`.
+A Git-tracked copy is `docs/baselines/fix67-payload.sha256`. The image binaries,
+kernel module and proprietary EGL are not distributed through Git.
 
 ## Evidence
 
@@ -109,10 +113,21 @@ device-side payload list is `out/h700-android10-b2/fix67-payload.sha256`.
 
 ## Remaining Work
 
+Update at 23:22 CST: a read-only UART probe found `wifi`, `wifiscanner`,
+`connectivity` and `netd` registered. `vendor.wifi_hal_legacy` and `wificond`
+were running. No `wlan0` or loaded `8821cs` was present, and the module was not
+found at `/vendor/modules/8821cs.ko`, `/vendor/lib/modules/8821cs.ko` or
+`/system/lib/modules/8821cs.ko`. The old missing-WifiService diagnosis is
+historical, not the current network blocker.
+Evidence: `out/logs/uart/rgsp/rgsp_serial_exec_20260906_232208_115200.log`.
+At uptime 1242.20 seconds all five core PIDs still matched the Fix67 baseline.
+
 - Run the formal 60-minute soak and ten cold-start qualification.
-- Continue model-specific controller mapping and boot-time calibration. RGSP
+- Basic RGSP short-press mapping is complete, including temporary A-to-ENTER.
+  Continue model-specific boot-time calibration later. RGSP
   has no analog sticks and must not share one fixed map with all H700 devices.
-- Repair Settings paths that assume Wi-Fi and other absent services.
+- Regress Settings after WifiService publication; bring up the real Wi-Fi
+  driver/interface and other missing hardware backends.
 - Adapt audio, suspend/resume, battery/brightness, Wi-Fi, and Bluetooth.
 - Replace permissive bring-up policy and broad GPU/ION permissions with a
   production SELinux/device-label policy.

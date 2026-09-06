@@ -3,6 +3,14 @@
 Date: 2026-09-06. Status: short-press profile verified; basic RGSP
 keylayout installed for bring-up, not a final multi-model mapping.
 
+Latest check at 23:22 CST: the live Fix67 keylayout SHA-256 matches the
+repository's current A-to-ENTER profile:
+`99b729a799e47db82a389527e4cc232e186d4a1c431f119326fb093a9def9056`.
+Basic short-press calibration is complete; subsequent development should
+test the TV frontend and Settings rather than repeat this capture sequence.
+Historical references below to missing WifiService describe earlier boots:
+the Fix67 runtime now publishes that service, but has no working wlan0 yet.
+
 ## Model Scope
 
 - This session applies only to the user's RGSP, which has no analog sticks.
@@ -586,9 +594,7 @@ Long-press, repeat, diagonal, and chord tests are intentionally deferred
 to the mapping-tool phase. No active mouse-mode switch is assigned.
 No active mapping was installed before the basic bring-up described below.
 Next development work is outside this calibration sequence.
-holds/repeats, diagonals, and
-selected chords. Power and lid-close are
-not part of the initial key sequence.
+Power and lid-close are not part of the initial key sequence.
 
 ## Basic Mapping Bring-up
 
@@ -611,3 +617,17 @@ missing `wifi` framework service.
 
 The profile is RGSP-only and must not be copied to other H700 models
 without independent first-boot calibration.
+
+The current Android runtime also showed no system-wide input freeze after
+the A long-press UI state. The apparent lock was a Launcher/lock-screen
+navigation gap, resolved for bring-up by mapping physical A to ENTER.
+
+## A Unlock Bring-up
+
+The user reported that the physical A button did not unlock the current
+screen. For this bring-up profile, raw A code `0x130` is therefore changed
+from `BUTTON_A` to direct Android `ENTER`, so the lock screen receives an
+explicit confirm/unlock key. This is intentionally a temporary system-UI
+policy; a later per-context mapping tool should restore standard gamepad
+`BUTTON_A` semantics inside games while retaining an explicit lock-screen
+unlock path.

@@ -3,7 +3,14 @@
 日期：2026-09-02  
 状态：生效，取代此前以 R36S Android 11 为运行基线的路线
 
-2026-09-02 基线进展：完整 H616 Android+Longan 源码已在 D 盘 WSL2 落盘；原厂
+2026-09-06 23:22 当前进展：Fix67 在构建镜像加部署修复后自动进入 Launcher，
+Mali-G31/r20p0 硬件渲染已验证，基础按键已完成，不再从逐键采集开始。
+`wifi`、`wifiscanner`、`connectivity`、`netd` 已在实机发布；目前未见
+`8821cs` 模块和 `wlan0`，网络瓶颈已移至驱动及其加载链。
+当前 P2/B4 首图已完成，稳定性验收尚未结束；P3/B5 改为优先 TV 前端与网络。
+60 分钟老化、10 次冷启动以及干净重建可复现性仍未完成。
+
+2026-09-02 历史基线进展：完整 H616 Android+Longan 源码已在 D 盘 WSL2 落盘；原厂
 `cupid_perf1-eng` 和新 `h700_rgsp-eng` 均已通过 `lunch` 与 `m nothing`。当前进入
 首轮实际镜像编译阶段，详见 `docs/H700_ANDROID10_BASELINE_STATUS_20260902.md`。
 
@@ -94,8 +101,8 @@ VINTF、权限和资源配置，不能先删除 SystemServer 服务。
 4. 先构建原始 `cupid_perf1`，确认 H616 源码本身可重现。
 5. 再构建 `h700_rgsp-eng`。
 
-当前完成度：步骤 1-3 已完成；步骤 4-5 已完成产品解析和全量构建图验证，实际镜像
-编译尚未开始。
+当前完成度：已有实际 Android 10 镜像并在设备运行；HWC 等组件增量构建已经
+实测。现场累积修复仍需完整回收进构建输入，两次干净构建的退出条件尚未满足。
 
 源码准备使用 `tools/prepare_h616_android10_source.ps1`。目标必须位于 WSL2
 Linux 文件系统，避免在 NTFS 上构建 AOSP 时丢失大小写、权限或符号链接语义。
@@ -124,11 +131,13 @@ Linux 文件系统，避免在 NTFS 上构建 AOSP 时丢失大小写、权限�
 
 ### A10-P3：掌机基本功能
 
-1. 输入和无触摸鼠标/按键导航；
-2. H616 Audio HAL 5.0 对接 `audiocodec` card 0/device 0；
-3. AXP2202 电量、充电、亮度、关机和 Hall；
-4. 振动、RTL8821CS Wi-Fi 和蓝牙；
-5. low-RAM、zram、LMKD 和后台进程调优。
+1. 使用现有 RGSP 映射，试装 TV Launcher 和可用的无触摸屏幕键盘；
+2. 优先补齐 Settings 网络操作、RTL8821CS 驱动、扫描、认证与联网；
+3. 保留 Launcher3 回退后确定默认 HOME，逐项补齐 Settings 真实后端；
+4. 按需实现 Select 虚拟鼠标兜底及多机型校准，不抢占游戏手柄语义；
+5. H616 Audio HAL 5.0 对接 `audiocodec` card 0/device 0；
+6. AXP2202 电量、充电、亮度、关机、Hall、振动和蓝牙；
+7. low-RAM、zram、LMKD 和后台进程调优。
 
 退出条件：Launcher、音乐、阅读、RetroArch 和 PPSSPP 可以完成基本操作。
 
@@ -148,12 +157,17 @@ Linux 文件系统，避免在 NTFS 上构建 AOSP 时丢失大小写、权限�
 
 当前关键路径：
 
-1. 构建 `h700_rgsp-eng` 的 `systemimage vendorimage ramdisk`；
-2. 修复实际构建错误并生成产物哈希/ABI/来源清单；
-3. 使用 RGSP kernel/DTB 组装 Android 10 测试 boot；
-4. 用户在场后验证 TF2 挂载、ADB、zygote 和原生 `system_server`；
-5. 接入 H616 Android 10 图形栈，完成 RGSP 720x480 第一幅稳定画面；
-6. 首图稳定后再依次处理输入、音频、电池/亮度、无线和 1 GiB 内存调优。
+1. 固定 Fix67、当前 RGSP keylayout、payload 哈希和回退证据；
+2. 审核用户提供的 AT4K APK，以普通应用试装验证；暂不设默认、不授予特权；
+3. 用现有按键验证 TV 焦点、确认/返回、弹窗退出和无触摸屏幕键盘；
+4. 补齐 RTL8821CS 模块与加载路径，再通过 Settings 完成扫描和联网；
+5. 验收通过才切换默认 HOME，Launcher3 与串口恢复保持可用；
+6. 逐页补齐 Settings，随后推进音频、电源、虚拟鼠标、多机型校准和游戏闭环；
+7. 交叉完成老化、冷启动、低内存和干净构建复现。
+
+TV 前端是用户操作入口，不替代 Settings、SystemUI、framework、HAL 和驱动；
+不继承 Homlet/投影仪整机配置，也不把完整电视产品依赖引入掌机。
+APK 检查与网络分层门槛见 `H700_ANDROID10_TV_NETWORK_PLAN_20260906.md`。
 
 Android 11 fix58 的最后一次冷启动只做历史取证，不阻塞上述 Android 10 离线开发。
 
