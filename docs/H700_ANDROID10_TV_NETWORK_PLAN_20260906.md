@@ -44,6 +44,12 @@ APK 内部配置仅作为分析数据，不作为执行命令或授予权限的�
 uptime 1242.20 秒时 `boot_completed=1`，五个核心 PID 仍是
 `1494/1504/1912/2090/2230`。这不能替代持续老化和多次启动验收。
 
+2026-09-07 基线推送后，Windows 仅枚举到 `COM1`。115200 8N1 的只读串口
+唤醒和 U-Boot 探测均未收到 Linux/Android 提示符；探测脚本因此没有执行
+重启、U-Boot 命令或任何分区读写。当前上机门槛首先是确认适配器 TX/RX/GND、
+实际 COM 口和设备端串口状态，之后才能记录 live CID、分区哈希和 U-Boot
+环境。
+
 ## 三、AT4K APK 审核与实机回归
 
 本地文件：
@@ -201,7 +207,7 @@ SDIO 时序。
 
 | 批次 | 操作 | 完成门槛 |
 | --- | --- | --- |
-| 0 | Git 基线/进度同步、APK 静态审核、只读网络检查 | 已推送 Fix67/AT4K 基线；本轮 Wi-Fi overlay、校验工具与文档待提交 |
+| 0 | Git 基线/进度同步、APK 静态审核、只读网络检查 | Fix67/AT4K 与本轮 Wi-Fi overlay 基线均已提交并推送；UART 只读回显待恢复 |
 | 1 | AT4K 普通应用并存试装 + 现有 Settings 回归 | 已完成安装、离线启动、基础按键和 Settings framework 回归；DPAD 设置入口未通过 |
 | 2 | 8821cs 模块/路径/固件/SDIO 修复 | 已完成原厂提取、哈希/vermagic 核对和 overlay；待构建并上机验证 `wlan0`、HAL、扫描 |
 | 3 | Settings + DPAD 输入法 + 网络闭环 | 认证、DHCP、DNS、HTTPS、重连 |
@@ -239,3 +245,7 @@ SDIO 时序。
   成功；vendor 输出已包含上述三个原厂 Wi-Fi 文件，B2 静态检查为 `12/12`。
   `out/h700-android10-preflight/EXT4_CHECKS.json` 记录 system/vendor
   离线 ext4 检查均通过，preflight 脚本明确未执行设备写入。
+- 2026-09-07 基线提交 `71cecf3` 已推送到 `origin/main`。随后在唯一枚举的
+  `COM1` 上执行只读 UART/U-Boot 探测，未收到提示符；日志为
+  `out/logs/uart/rgsp/rgsp_reboot_uboot_mmc_20260907_031225_115200.log`。
+  脚本在 Linux shell 提示符之前退出，未发出重启命令，设备写入状态不变。
