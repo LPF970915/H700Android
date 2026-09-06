@@ -19,6 +19,8 @@ from pathlib import Path
 
 MAGIC = b"ANDROID!"
 LEGACY_HEADER_SIZE = 1632
+CMDLINE_OFFSET = 64
+CMDLINE_SIZE = 512
 
 
 def align(value: int, page: int) -> int:
@@ -101,6 +103,30 @@ def inspect(args: argparse.Namespace) -> None:
     print(json.dumps(h, indent=2))
 
 
+def patch_cmdline(args: argparse.Namespace) -> None:
+    source = Path(args.image)
+    data = bytearray(source.read_bytes())
+    read_header(source)
+    try:
+        cmdline = args.cmdline.encode("ascii")
+    except UnicodeEncodeError as exc:
+        raise ValueError("boot cmdline must contain ASCII characters only") from exc
+    if len(cmdline) >= CMDLINE_SIZE:
+        raise ValueError(f"boot cmdline is too long ({len(cmdline)} >= {CMDLINE_SIZE})")
+
+    data[CMDLINE_OFFSET:CMDLINE_OFFSET + CMDLINE_SIZE] = b"\0" * CMDLINE_SIZE
+    data[CMDLINE_OFFSET:CMDLINE_OFFSET + len(cmdline)] = cmdline
+    out = Path(args.out)
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_bytes(data)
+    print(json.dumps({
+        "out": str(out),
+        "bytes": len(data),
+        "sha256": hashlib.sha256(data).hexdigest(),
+        "cmdline": args.cmdline,
+    }, indent=2))
+
+
 def pack(args: argparse.Namespace) -> None:
     template = Path(args.template)
     header, h = read_header(template)
@@ -158,6 +184,11 @@ def main() -> int:
         p = sub.add_parser(command)
         p.add_argument("image")
         p.set_defaults(func=inspect)
+    p = sub.add_parser("patch-cmdline")
+    p.add_argument("image")
+    p.add_argument("out")
+    p.add_argument("cmdline")
+    p.set_defaults(func=patch_cmdline)
     p = sub.add_parser("extract")
     p.add_argument("image")
     p.add_argument("out")

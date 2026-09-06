@@ -19,6 +19,7 @@ function Read-Chunk([int]$ms=250) {
   while((Get-Date)-lt $end) { $c=$serial.ReadExisting(); if($c.Length){[void]$transcript.Append($c);[Console]::Write($c)}; Start-Sleep -Milliseconds 20 }
 }
 function Wait-Any([string[]]$patterns,[datetime]$deadline) {
+  foreach($p in $patterns){if($transcript.ToString()-match $p){return $p}}
   while((Get-Date)-lt $deadline) {
     $c=$serial.ReadExisting()
     if($c.Length){[void]$transcript.Append($c);[Console]::Write($c); foreach($p in $patterns){if($transcript.ToString()-match $p){return $p}}}
@@ -27,6 +28,11 @@ function Wait-Any([string[]]$patterns,[datetime]$deadline) {
   return $null
 }
 function Send([string]$s){$serial.Write($s+"`r"); Read-Chunk 300}
+function Send-Key([byte]$b){
+  $bytes = [byte[]]@($b)
+  $serial.BaseStream.Write($bytes,0,1)
+  $serial.BaseStream.Flush()
+}
 $login='(?im)(login|username|\u7528\u6237\u540D)\s*[:\uFF1A]\s*$'
 $password='(?im)(password|\u5BC6\u7801)\s*[:\uFF1A]\s*$'
 $prompt='(?m)[#\$]\s*$'
@@ -45,10 +51,41 @@ try {
     $state=Wait-Any @($prompt) ((Get-Date).AddSeconds(25))
   }
   if($state -ne $prompt){throw 'Linux shell prompt was not reached.'}
-  Send 'sleep 3; /sbin/reboot -f'
-  # The vendor U-Boot prompt is reported too late over this UART. Spam a key
-  # from immediately after reboot until the autoboot window is covered.
-  1..160 | ForEach-Object { $serial.Write(' '); Read-Chunk 50 }
+  Send 'sleep 1; /sbin/reboot -f'
+  # This vendor U-Boot prints the autoboot line very late in a buffered UART
+  # chunk.  Once reboot is issued, send a short burst of raw candidate keys so
+  # at least one lands inside the stop window; the burst ends before Linux
+  # getty is expected to become interactive.
+  $autobootDeadline=(Get-Date).AddSeconds(20)
+  $stopBurstStart=$null
+  $nextKey=$null
+  $stopped=$false
+  $keyBytes = [byte[]](0x20,0x0D,0x0A,0x20,0x20,0x20)
+  $keyIndex=0
+  while((Get-Date)-lt $autobootDeadline){
+    $c=$serial.ReadExisting()
+    if($c.Length){
+      [void]$transcript.Append($c);[Console]::Write($c)
+      if($transcript.ToString()-match '(?i)Hit any key to stop autoboot'){$stopped=$true}
+      if($transcript.ToString()-match '(?m)=>\s*$'){break}
+      if($null -eq $stopBurstStart -and $transcript.ToString()-match '(?i)U-Boot 2018\.05'){
+        # The vendor boot0/BL31 stages discard early UART input. Start the
+        # burst only after the second-stage U-Boot banner is visible.
+        $stopBurstStart=(Get-Date).AddMilliseconds(40)
+        $nextKey=$stopBurstStart
+      }
+    }
+    if($null -ne $stopBurstStart -and (Get-Date)-ge $nextKey -and (Get-Date)-lt $stopBurstStart.AddSeconds(2.5)){
+      Send-Key $keyBytes[$keyIndex]
+      $keyIndex=($keyIndex+1) % $keyBytes.Length
+      $nextKey=(Get-Date).AddMilliseconds(8)
+    }
+    Start-Sleep -Milliseconds 10
+  }
+  if(!$stopped -and $transcript.ToString()-notmatch '(?m)=>\s*$'){
+    throw 'U-Boot autoboot window was not caught after reboot.'
+  }
+  if(!$stopped){throw 'U-Boot autoboot line was not observed after reboot.'}
   $state=Wait-Any @('(?m)=>\s*$') ((Get-Date).AddSeconds(8))
   if($state -ne '(?m)=>\s*$'){throw 'U-Boot prompt was not reached after stopping autoboot.'}
   foreach($cmd in @('mmc list','mmc dev 0','mmc info','mmc dev 1','mmc info','fatls mmc 1:1','ext4ls mmc 1:2 /','mmc dev 2','mmc info','fatls mmc 2:1','ext4ls mmc 2:2 /')){Write-Host "U-Boot> $cmd"; Send $cmd}

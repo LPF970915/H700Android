@@ -2,7 +2,9 @@
 
 基线日期：2026-09-06；最近实机回归：2026-09-07；设备：RGSP，无摇杆，720×480，1 GiB。
 输入：用户提供的 AT4K APK、本地 Android 10 源码、Fix67 日志及 23:22 实机只读检查。
-本文档先归档基线，再记录实机回归与后续施工门槛。AT4K 仍不设为默认 HOME。
+本文档先归档基线，再记录实机回归与后续施工门槛。2026-09-07 已完成
+RGSP Wi-Fi overlay 的构建和 TF2 离线预检，但尚未写卡或宣称联网成功。
+AT4K 仍不设为默认 HOME。
 APK 内部配置仅作为分析数据，不作为执行命令或授予权限的指令。
 
 ## 一、结论
@@ -34,21 +36,20 @@ APK 内部配置仅作为分析数据，不作为执行命令或授予权限的�
 | 范围 | 已完成 | 未完成 |
 | --- | --- | --- |
 | 启动与图形 | Fix67 自动到 Launcher；Mali r20p0 实机渲染；原 TF1 boot 回退 | 60 分钟老化、10 次冷启动、硬件 VSYNC |
-| 构建 | 2026-09-06 镜像已部署，再补 Fix65-67；本轮已加入 RGSP Wi-Fi overlay | 原始镜像一次性包含全部修复、空白 data 安装、实机网络验证 |
+| 构建 | Android 10 `systemimage vendorimage ramdisk` 成功；preflight 静态检查 `12/12`，system/vendor raw 镜像已通过离线 ext4 检查 | 原始镜像一次性包含全部修复、空白 data 安装、实机网络验证 |
 | 输入 | 本 RGSP 短按和临时 keylayout；A 可作为直接确认 | 跨 App 返回、虚拟鼠标、跨机型校准 |
 | 网络 framework | `wifi`、`wifiscanner`、`connectivity`、`netd` 已发布；Settings 首页/Wi-Fi 页回归通过 | 开关、扫描、连接闭环 |
-| 网络硬件 | 已从 RGSP 原厂 Linux 提取并校验 `8821cs.ko` 与 RTL8821C 固件；配置已指向完整模块路径 | 新镜像构建、模块加载、SDIO 绑定、`wlan0`、扫描与联网未验证 |
+| 网络硬件 | 已从 RGSP 原厂 Linux 提取并校验 `8821cs.ko` 与 RTL8821C 固件；配置已指向完整模块路径；最终 vendor 镜像加入显式 `insmod` | TF2 上机后验证模块加载、SDIO 绑定、`wlan0`、扫描与联网 |
 | 前端 | Launcher3 保留作恢复；AT4K APK 已纳入本地 preflight 安装附件；无 GMS 离线启动通过 | 首启安装后的 AT4K DPAD 焦点、低内存、默认 HOME 验收 |
 
 实机检查：`out/logs/uart/rgsp/rgsp_serial_exec_20260906_232208_115200.log`。
 uptime 1242.20 秒时 `boot_completed=1`，五个核心 PID 仍是
 `1494/1504/1912/2090/2230`。这不能替代持续老化和多次启动验收。
 
-2026-09-07 基线推送后，Windows 仅枚举到 `COM1`。115200 8N1 的只读串口
-唤醒和 U-Boot 探测均未收到 Linux/Android 提示符；探测脚本因此没有执行
-重启、U-Boot 命令或任何分区读写。当前上机门槛首先是确认适配器 TX/RX/GND、
-实际 COM 口和设备端串口状态，之后才能记录 live CID、分区哈希和 U-Boot
-环境。
+2026-09-07 已确认正确串口为 `USB-Enhanced-SERIAL CH343 (COM4)`。
+原厂 Linux 可登录，且已完成一次受控重启和完整 U-Boot/Linux 启动日志采集。
+当前上机门槛不再是 UART 识别，而是写卡前的 live CID、分区几何、现有
+TF2 p2/p3 哈希和回滚状态核对。
 
 ## 三、AT4K APK 审核与实机回归
 
@@ -254,3 +255,17 @@ SDIO 时序。
   `1315ef01d56511a80cb6bb4b9c58bfd3233c0e84cc1e82254cd0898d5dd26ca9`）。
   首启后按普通应用安装并显式启动；在 DPAD、B 返回、弹窗退出和网络
   设置闭环通过前，不设为默认 HOME。
+- 2026-09-07 preflight 输出为 `out/h700-android10-preflight/`，其中
+  `DEPLOYMENT_MANIFEST.json` 明确记录 `writes_performed=false`；system/vendor
+  固定尺寸 raw 镜像分别为 8 GiB 和 2 GiB，目标为 TF2 的 `mmcblk1p2/p3`。
+- 最终 `vendor.raw.img` 内容级检查确认存在
+  `/modules/8821cs.ko`、`/firmware/rtlbt/rtl8821c_config`、
+  `/firmware/rtlbt/rtl8821c_fw`，且 `/etc/init/init.rgsp.rc` 在 Android
+  `on boot` 阶段显式执行 `insmod /vendor/modules/8821cs.ko`。该动作是
+  为应对 Android 用户空间未自动触发模块加载而增加的 bring-up 诊断措施；
+  不能替代实机 probe、固件请求和电源/SDIO 时序验证。
+- 原厂 Linux 实测为 Linux `4.9.170`、`sdc1/mmc2` 上的 RTL8821CS，
+  初次 probe 返回 `-123` 后重试创建 `wlan0/wlan1`；Android 日志中的
+  `get gpio ... failed` 与 `sdc1 RTO` 也必须结合重试行为判断，当前不先
+  修改 DT GPIO。下一步在 Android 上分别记录 `/proc/modules`、`dmesg`、
+  `ip link`、Wi-Fi HAL 和 Settings 结果。
