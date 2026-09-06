@@ -1,11 +1,12 @@
 include device/roc/h700-common/BoardConfigCommon.mk
 
-# Product-level Wi-Fi service configuration for the known RTL8821CS module.
-# Driver bring-up remains a separate hardware validation step.
+# Product-level Wi-Fi service configuration for the RGSP RTL8821CS module.
+# The path is intentionally a complete .ko path: this Android 10 HAL branch
+# passes non-COMMON vendor paths directly to finit_module().
 BOARD_WIFI_VENDOR := realtek
 BOARD_USR_WIFI := RTL8821CS
 WIFI_DRIVER_MODULE_NAME := 8821cs
-WIFI_DRIVER_MODULE_PATH := /vendor/modules/
+WIFI_DRIVER_MODULE_PATH := /vendor/modules/8821cs.ko
 
 # The RGSP kernel and DTB are verified external inputs. Android's build graph
 # must not require a source-tree kernel to produce system/vendor/ramdisk.

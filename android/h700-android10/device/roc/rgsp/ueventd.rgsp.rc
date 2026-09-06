@@ -7,3 +7,4 @@
 /dev/disp              0660   system     graphics
 /dev/graphics/fb0      0660   system     graphics
 /dev/input/event*     0660   root       input
+firmware_directories /vendor/firmware/ /vendor/etc/firmware/ /firmware/image/

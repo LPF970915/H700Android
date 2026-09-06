@@ -17,6 +17,14 @@ PRODUCT_COPY_FILES += \
     device/roc/rgsp/init.rgsp.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.rgsp.rc \
     device/roc/rgsp/ueventd.rgsp.rc:$(TARGET_COPY_OUT_VENDOR)/ueventd.rc
 
+# The module and RTL Bluetooth firmware were extracted from this RGSP's
+# original Linux image. They are hardware-specific and must not be replaced
+# by the projector's RTL8822BS files.
+PRODUCT_COPY_FILES += \
+    device/roc/rgsp/prebuilts/wifi/8821cs.ko:$(TARGET_COPY_OUT_VENDOR)/modules/8821cs.ko \
+    device/roc/rgsp/prebuilts/wifi/rtl8821c_config:$(TARGET_COPY_OUT_VENDOR)/firmware/rtlbt/rtl8821c_config \
+    device/roc/rgsp/prebuilts/wifi/rtl8821c_fw:$(TARGET_COPY_OUT_VENDOR)/firmware/rtlbt/rtl8821c_fw
+
 PRODUCT_COPY_FILES += \
     device/roc/rgsp/rgsp-input-bringup.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/rgsp-input-bringup.rc \
     device/roc/rgsp/rgsp-input-prepare.sh:$(TARGET_COPY_OUT_VENDOR)/bin/rgsp-input-prepare.sh \

@@ -11,6 +11,20 @@ APK 内部配置仅作为分析数据，不作为执行命令或授予权限的�
 先让候选前端作为普通应用通过基础测试，再补齐网络和设置闭环，最后设为默认 HOME。
 不把 Launcher 当作完整安卓系统，也不因前端面向 TV 就恢复 Homlet/投影仪产品配置。
 
+本轮计划调整为“三条线并行、两道切换闸门”：
+
+- **网络线优先解除系统阻塞**：先完成 RGSP 本机 `8821cs.ko`、固件、SDIO
+  和电源时序，再验证 Settings 的开关、扫描、认证、DHCP、DNS 与重连。
+- **TV 前端线先普通应用并存**：AT4K 继续作为候选前端验证；重点修复真实焦点、
+  初始焦点、B 返回和弹窗退出，不把触摸可用误判为十字键可用。没有源码时不对
+  APK 做不可审计的系统级改造。
+- **Settings 服务线按实际硬件补齐**：网络闭环后再处理电池、电源、音频、蓝牙、
+  显示和输入法服务；不通过伪造 Binder service 或删除页面来掩盖后端缺失。
+
+第一道闸门是“Wi-Fi 驱动加载并出现 `wlan0`”；第二道闸门是“前端全程 DPAD
+可操作且网络设置可完成”。两道闸门均通过后，才切换默认 HOME。Select 虚拟鼠标、
+跨机型校准和长按语义继续后置。
+
 基础按键映射已有，不再从逐键短按或长按采集开始。当前 A→ENTER 是临时系统 UI
 策略，B 保留 BUTTON_B；第三方 App 是否正确响应仍需测，不能当成统一 BACK 已实现。
 后续映射工具再分离桌面与游戏语义，游戏中恢复标准 BUTTON_A/B/HAT/Select。
@@ -20,10 +34,10 @@ APK 内部配置仅作为分析数据，不作为执行命令或授予权限的�
 | 范围 | 已完成 | 未完成 |
 | --- | --- | --- |
 | 启动与图形 | Fix67 自动到 Launcher；Mali r20p0 实机渲染；原 TF1 boot 回退 | 60 分钟老化、10 次冷启动、硬件 VSYNC |
-| 构建 | 2026-09-06 镜像已部署，再补 Fix65-67 | 原始镜像一次性包含全部修复、空白 data 安装 |
+| 构建 | 2026-09-06 镜像已部署，再补 Fix65-67；本轮已加入 RGSP Wi-Fi overlay | 原始镜像一次性包含全部修复、空白 data 安装、实机网络验证 |
 | 输入 | 本 RGSP 短按和临时 keylayout；A 可作为直接确认 | 跨 App 返回、虚拟鼠标、跨机型校准 |
 | 网络 framework | `wifi`、`wifiscanner`、`connectivity`、`netd` 已发布；Settings 首页/Wi-Fi 页回归通过 | 开关、扫描、连接闭环 |
-| 网络硬件 | Realtek HAL 与 wificond 进程存在 | `8821cs` 未加载，未见 `wlan0`，联网未验证 |
+| 网络硬件 | 已从 RGSP 原厂 Linux 提取并校验 `8821cs.ko` 与 RTL8821C 固件；配置已指向完整模块路径 | 新镜像构建、模块加载、SDIO 绑定、`wlan0`、扫描与联网未验证 |
 | 前端 | Launcher3 保留作恢复；AT4K 已安装并可运行；无 GMS 离线启动通过 | AT4K 设置入口的 DPAD 焦点、低内存、默认 HOME 验收 |
 
 实机检查：`out/logs/uart/rgsp/rgsp_serial_exec_20260906_232208_115200.log`。
@@ -135,12 +149,25 @@ Fix64 的 Settings 曾因 `No service published for: wifi` 退出；Fix67 23:22 
 模块须匹配当前 H700 4.9.170 内核，不复制投影仪的 rtl8822bs 或其他 SoC 模块。
 Android 用户空间 ARM32 不改变内核模块必须匹配 AArch64 内核的要求。
 
-源码中另有明确的路径配置风险：当前 BoardConfig 为
-`BOARD_WIFI_VENDOR := realtek`、`WIFI_DRIVER_MODULE_PATH := /vendor/modules/`。
+源码中已确认路径配置风险：当前 Android 10 分支的 BoardConfig 为
+`BOARD_WIFI_VENDOR := realtek`、`WIFI_DRIVER_MODULE_PATH := /vendor/modules/8821cs.ko`。
 `frameworks/opt/net/wifi/libwifi_hal/wifi_hal_common.cpp` 的非 COMMON 分支把
-该宏直接交给 `insmod`，只有 COMMON 分支会拼接模块名。因此下一轮应把
-realtek 分支指向经验证的完整 `.ko` 路径，并确保镜像确实包含该模块；
-仅修改路径或仅放入文件都不够。本轮保留构建快照，没有把未上机的路径改动伪装成已修复。
+该宏直接交给 `finit_module`，只有 COMMON 分支会拼接模块名。现已将本机
+原厂文件放入 RGSP 设备 overlay，并复制到 `/vendor/modules/8821cs.ko`
+和 `/vendor/firmware/rtlbt/`。这只是离线配置完成，不能替代实机加载结果。
+
+已保存的来源与指纹：
+
+- `out/reference/rgsp-linux-wifi/8821cs.ko`
+  SHA-256 `59933ce6ca29c88d5c8382e0aa7bf794b1fb42c2595b03f2694901bbfa206a72`
+- `out/reference/rgsp-linux-wifi/rtl8821c_config`
+  SHA-256 `dec80607c1bb6cbbcf59e085997bfc32fe6aa3dd3919c95b827778254805a37f`
+- `out/reference/rgsp-linux-wifi/rtl8821c_fw`
+  SHA-256 `897698b5aa750afa20db1a984bf66ac60dca06e896e32748f9b0cf7f3492fa2a`
+
+模块 vermagic 为 `4.9.170 SMP preempt mod_unload modversions aarch64`，
+与 RGSP 当前内核 ABI 记录一致；仍需在设备上确认 probe、固件请求及电源/
+SDIO 时序。
 
 门槛：模块正确加载、SDIO 绑定且 wlan0 出现，无符号/固件/电源错误。
 
@@ -174,9 +201,9 @@ realtek 分支指向经验证的完整 `.ko` 路径，并确保镜像确实包�
 
 | 批次 | 操作 | 完成门槛 |
 | --- | --- | --- |
-| 0 | Git 基线/进度同步、APK 静态审核、只读网络检查 | 已推送 Fix67 基线；本轮文档与上传工具待提交 |
+| 0 | Git 基线/进度同步、APK 静态审核、只读网络检查 | 已推送 Fix67/AT4K 基线；本轮 Wi-Fi overlay、校验工具与文档待提交 |
 | 1 | AT4K 普通应用并存试装 + 现有 Settings 回归 | 已完成安装、离线启动、基础按键和 Settings framework 回归；DPAD 设置入口未通过 |
-| 2 | 8821cs 模块/路径/固件/SDIO 修复 | 先从 RGSP 原厂 Linux 提取并核对模块、固件、GPIO/SDIO，再构建；目标是 `wlan0`、HAL、扫描 |
+| 2 | 8821cs 模块/路径/固件/SDIO 修复 | 已完成原厂提取、哈希/vermagic 核对和 overlay；待构建并上机验证 `wlan0`、HAL、扫描 |
 | 3 | Settings + DPAD 输入法 + 网络闭环 | 认证、DHCP、DNS、HTTPS、重连 |
 | 4 | 默认 HOME 验收 | 能返回、可恢复、无 GMS 离线可用，保留旧桌面 |
 | 5 | 剩余服务、多机型、鼠标、音频和电源 | 每项独立验收，不回退图形基线 |
@@ -202,3 +229,13 @@ realtek 分支指向经验证的完整 `.ko` 路径，并确保镜像确实包�
 - 2026-09-07 已回归 Settings 首页和 Wi-Fi 页面；旧的 Wi-Fi service 崩溃未复现，
   但 Wi-Fi 仍 disabled，设备无 `wlan0`，下一施工批次转入 RGSP 原厂 Linux 的
   `8821cs` 模块、固件、SDIO 和电源时序核对。
+- 已将 RGSP 原厂 `8821cs.ko`、`rtl8821c_config`、`rtl8821c_fw` 纳入
+  `android/h700-android10/device/roc/rgsp/prebuilts/wifi/`；BoardConfig
+  已改为完整 `.ko` 路径，`h700_rgsp.mk` 已增加 vendor 复制规则，
+  `ueventd.rgsp.rc` 已声明 Android firmware 搜索目录。
+- 本轮施工后的下一门槛是离线镜像检查和 Android 设备实测；在该门槛通过
+  前不切换 AT4K 默认 HOME，也不把 Wi-Fi 页面显示为“已联网”。
+- 本轮已完成 Android 10 增量构建：`systemimage vendorimage ramdisk`
+  成功；vendor 输出已包含上述三个原厂 Wi-Fi 文件，B2 静态检查为 `12/12`。
+  `out/h700-android10-preflight/EXT4_CHECKS.json` 记录 system/vendor
+  离线 ext4 检查均通过，preflight 脚本明确未执行设备写入。
