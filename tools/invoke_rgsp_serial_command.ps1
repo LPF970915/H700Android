@@ -6,8 +6,10 @@ param(
     [int]$TimeoutSeconds = 30,
     [string]$Username = "root",
     [string]$Password = "root",
+    [string]$ShellPath = "/bin/sh",
     [string]$OutputDirectory = "out/logs/uart/rgsp",
-    [switch]$FireAndForget
+    [switch]$FireAndForget,
+    [switch]$Quiet
 )
 
 $ErrorActionPreference = "Stop"
@@ -47,7 +49,7 @@ function Read-SerialUntil {
         $chunk = $serial.ReadExisting()
         if ($chunk.Length -gt 0) {
             [void]$transcript.Append($chunk)
-            [Console]::Write($chunk)
+            if (-not $Quiet) { [Console]::Write($chunk) }
             foreach ($pattern in $Patterns) {
                 if ($transcript.ToString() -match $pattern) {
                     return $pattern
@@ -69,15 +71,15 @@ $deadline = (Get-Date).AddSeconds($TimeoutSeconds)
 $token = [Guid]::NewGuid().ToString("N")
 $beginMarker = "__CODEX_SERIAL_BEGIN_${token}__"
 $endMarker = "__CODEX_SERIAL_END_${token}__"
-$loginPattern = '(?im)\blogin\s*:\s*$'
-$passwordPattern = '(?im)(password|密码)\s*[:：>]?\s*$'
+$loginPattern = '(?im)\blogin\s*:'
+$passwordPattern = '(?im)(password|密码)\s*[:：>]?'
 
 try {
     $serial.Open()
     Write-Host "Using $Port at $BaudRate 8N1. Transcript: $absoluteOutputPath"
     Write-SerialLine ""
 
-    $promptPattern = '(?m)[#\$]\s*$'
+    $promptPattern = '(?m)[#\$][ \t]*(?:\r?\n|$)'
     $state = Read-SerialUntil -Patterns @($loginPattern, $promptPattern) -Deadline $deadline
     if ($state -eq $loginPattern) {
         Write-SerialLine $Username
@@ -91,7 +93,8 @@ try {
     }
 
     $escapedCommand = $Command.Replace("'", "'`"'`"'")
-    $wireCommand = "printf '\n$beginMarker\n'; /bin/sh -c '$escapedCommand'; rc=`$?; printf '\n${endMarker}:%s\n' `"`$rc`""
+    if ($ShellPath -notin @('/bin/sh', '/system/bin/sh')) { throw 'Unsupported remote shell path.' }
+    $wireCommand = "printf '\n$beginMarker\n'; $ShellPath -c '$escapedCommand'; rc=`$?; printf '\n${endMarker}:%s\n' `"`$rc`""
     Write-SerialLine $wireCommand
 
     if ($FireAndForget) {

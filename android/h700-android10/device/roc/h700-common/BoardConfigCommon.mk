@@ -1,6 +1,9 @@
 include device/softwinner/common/BoardConfigCommon.mk
 
-TARGET_PLATFORM := homlet
+# RGSP is a fixed internal LCD handheld, not an HDMI/CVBS Homlet product.
+# Keep the H616/Cupid board selector for the 4.9/ION ABI, but compile future
+# display components through their non-Homlet path.
+TARGET_PLATFORM := tablet
 TARGET_BOARD_PLATFORM := cupid
 TARGET_BOARD_CHIP := sun50iw9p1
 # Keep the H616 selector for the Android 10 vendor build. H700 is the product

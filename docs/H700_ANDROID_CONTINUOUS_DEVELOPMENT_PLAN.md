@@ -4,6 +4,11 @@
 > 当前权威路线已经切换到 `H700_ANDROID10_MASTER_PLAN_20260902.md`，不得继续把
 > R36S Android 11 framework 作为产品基线。
 
+> **Android 10 当前进度（2026-09-06）**：Fix64 已取得 RGSP 720×480 安卓桌面截图。
+> 用户已确认实体 LCD 显示一致；完整重启验证通过，长时老化和多次冷启动尚未完成。
+> 当前证据与验收边界见 `H700_ANDROID10_FIX64_VISIBLE_UI_20260906.md`；
+> 本文下方的 Android 11/headless 状态仍为历史记录，不作为当前状态。
+
 **版本**：0.3
 **日期**：2026-09-01
 **状态**：执行基线（headless framework 已推进至 fix46；H616/H618 donor inventory 已完成初步结论）
