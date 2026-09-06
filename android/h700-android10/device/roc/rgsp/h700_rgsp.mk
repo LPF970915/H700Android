@@ -11,6 +11,19 @@ PRODUCT_COPY_FILES += \
     device/roc/rgsp/init.rgsp.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.rgsp.rc \
     device/roc/rgsp/ueventd.rgsp.rc:$(TARGET_COPY_OUT_VENDOR)/ueventd.rc
 
+PRODUCT_COPY_FILES += \
+    device/roc/rgsp/rgsp-input-bringup.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/rgsp-input-bringup.rc \
+    device/roc/rgsp/rgsp-input-prepare.sh:$(TARGET_COPY_OUT_VENDOR)/bin/rgsp-input-prepare.sh \
+    device/roc/rgsp/rgsp-kmsg-start.sh:$(TARGET_COPY_OUT_VENDOR)/bin/rgsp-kmsg-start.sh
+
+PRODUCT_PACKAGES += rgsp_kmsg_logger
+
+# This product is RGSP-specific, not a shared H700 input profile.
+PRODUCT_COPY_FILES += \
+    device/roc/rgsp/ANBERNIC-keys.kl:$(TARGET_COPY_OUT_SYSTEM)/usr/keylayout/Vendor_0001_Product_0001_Version_0100.kl \
+    device/roc/rgsp/ANBERNIC-keys.kl:$(TARGET_COPY_OUT_SYSTEM)/usr/keylayout/Vendor_0001_Product_0001.kl \
+    device/roc/rgsp/ANBERNIC-keys.kl:$(TARGET_COPY_OUT_SYSTEM)/usr/keylayout/ANBERNIC-keys.kl
+
 # Default HIDL wrappers for the bring-up manifest. These do not provide the
 # missing device Gatekeeper backend; secure-OS integration is still pending.
 PRODUCT_PACKAGES += \

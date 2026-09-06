@@ -5,16 +5,14 @@
 
 ## 1. 当前起点
 
-已经完成源码校验、D 盘 WSL2 落盘、产品 overlay、Android 11 封存、H618 精简和
-构建图解析。`cupid_perf1-eng` 与 `h700_rgsp-eng` 均可完成 `lunch` 和
-`m nothing`，但还没有完成一次真实镜像编译，也没有 Android 10 实机启动结果。
+2026-09-06 更新：已有实机运行的 Android 10 镜像，Fix64 已实现原生框架、
+Launcher、应用列表和真实 LCD 输出，用户已确认实体画面。当前是 B4 首图已实现、
+稳定性验收未完成，开始并行推进 B5.1 输入接入。
 
-当前距离第一幅安卓画面还有三道门槛：
-
-1. 生成可用的 `system.img`、`vendor.img` 和 Android 10 ramdisk；
-2. 使用 RGSP kernel/DTB 启动 Android 10 init，并稳定到达 ADB、zygote 和原生
-   `system_server`；
-3. 让 H616 Mali-G31、Gralloc、HWC2、ION/disp 与 RGSP 720x480 面板闭合。
+近期工作不再从首轮编译开始。需保留的验收欠项包括：60 分钟老化、连续冷启动、
+ADB 单独验证、将所有现场修复纳入干净构建。显示证据见
+`H700_ANDROID10_FIX64_VISIBLE_UI_20260906.md`；输入准备见
+`H700_ANDROID10_INPUT_PRECALIBRATION_20260906.md`。
 
 ## 2. 固定边界
 
@@ -156,18 +154,20 @@ ALSA 设备已经具备可行性的证据。
 - 屏幕、按键、音频、电池、无线和休眠的功能验收；
 - Android 11 fix58 最后一次冷启动取证。该取证不阻塞 Android 10 离线开发。
 
-## 9. 近期十项执行队列
+## 9. 近期十项执行队列（2026-09-06 调整）
 
-1. 生成构建环境与磁盘基线记录；
-2. 启动 `h700_rgsp-eng` 首轮 `systemimage vendorimage ramdisk` 编译；
-3. 分类并修复首个真实构建错误；
-4. 循环至三类镜像生成并完成增量复编；
-5. 生成产物 SHA-256、ELF ABI、动态依赖和来源清单；
-6. 使用 RGSP kernel/DTB 组装 Android 10 测试 boot；
-7. 静态验证 fstab、VINTF、SELinux、Binder、APEX 和 boot header；
-8. 生成 TF2 部署包与自动回退说明；
-9. 用户在场后完成首次 Android 10 冷启动和全日志采集；
-10. 稳定 init/system_server 后进入 H616 图形栈和 720x480 首图验证。
+1. 保留 Fix64 制品、GPU/显示证据、恢复哈希和运行期日志上限；
+2. 修复 `/dev/input/event*` 权限和标签，确认三个本机输入设备进入 EventHub；
+3. 已完成 RGSP 短按逐键记录并安装临时基础 keylayout；长按、重复、斜向和组合键
+   延后到映射工具阶段，其他 H700 机型必须独立校准；
+4. 验证桌面 DPAD+A/B 导航，并保留游戏中的标准 BUTTON/HAT 语义；
+5. 评测 ARM32/API29、无 GMS、720x480、低内存的轻量 TV 式桌面和屏幕键盘；
+6. 实现虚拟鼠标模式、滚动/拖动与紧急退出，避免重复输入及抢占游戏 Select；
+7. 修复设置服务依赖（当前首要是 wifi 未发布），完成设置、文件管理、PPSSPP 的
+   无触摸操作闭环；
+8. 交叉执行 60 分钟老化、多次冷启动、GPU 帧时间与内存检查，不降低 B3/B4 门槛；
+9. 继续音频、电池/亮度、电源、无线和内存调优；
+10. 完整回收现场补丁，验证干净构建、部署与恢复的可重复性。
 
 ## 10. 工作量判断
 

@@ -1,5 +1,9 @@
 include device/roc/h700-common/BoardConfigCommon.mk
 
+# The RGSP kernel and DTB are verified external inputs. Android's build graph
+# must not require a source-tree kernel to produce system/vendor/ramdisk.
+TARGET_NO_KERNEL := true
+
 TARGET_BOOTLOADER_BOARD_NAME := rgsp
 TARGET_NO_BOOTLOADER := true
 
@@ -11,3 +15,4 @@ BOARD_VENDORIMAGE_PARTITION_SIZE := 2147483648
 
 TARGET_RECOVERY_FSTAB := device/roc/rgsp/fstab.sun50iw9p1
 DEVICE_MANIFEST_FILE += device/roc/rgsp/manifest.xml
+BOARD_ROOT_EXTRA_FOLDERS += rgsp-persist
