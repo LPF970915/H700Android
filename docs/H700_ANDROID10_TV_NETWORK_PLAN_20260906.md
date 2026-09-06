@@ -155,3 +155,20 @@ realtek 分支指向经验证的完整 `.ko` 路径，并确保镜像确实包�
 
 正式 60 分钟老化、10 次冷启动、日志容量、内存和干净构建复现贯穿后续批次，
 不因为前端看起来完整就将项目标记为整机完成。
+
+## 八、2026-09-06 施工记录
+
+- 已通过 UART 启动 `com.android.settings/.homepage.SettingsHomepageActivity`；
+  Settings 首页未复现旧的 `No service published for: wifi` 退出。
+- 已通过 UART 启动 `com.android.settings/.Settings$WifiSettingsActivity`；
+  Wi-Fi 页面可显示开关和“打开 Wi-Fi 后扫描”的正常空状态，截图为
+  `out/h700-android10-b2/fix68-settings-wifi.png`，SHA-256 为
+  `da256ccfe8563aa6f6328f7c2742867c9cc89f8065555ccfc753f9611bbf849e`。
+  这只证明页面和 framework 入口可启动，不证明驱动或扫描已工作。
+- AT4K 尚未安装，未执行 `pm install`、未切换默认 HOME、未启用无障碍。
+  串口上传在旧接收状态下因控制字节中断，校验失败后未提交目标 APK；
+  设备随后不再返回 UART 或 ADB 响应。新增的校验上传工具已用 703 字节
+  keylayout 文件完成端到端哈希验证，但需要设备物理断电上电后再进行 APK 长传输。
+- 恢复设备后继续顺序为：安全传输 AT4K 普通安装、显式启动与 DPAD 验收；
+  然后再处理 `8821cs` 模块、固件、完整路径和 `wlan0`。本次异常期间没有刷写
+  TF1/TF2 分区，也没有改变默认桌面。
