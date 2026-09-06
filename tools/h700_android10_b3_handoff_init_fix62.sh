@@ -14,10 +14,11 @@ echo 0 > /proc/sys/kernel/printk_ratelimit 2>/dev/null || true
 BOOT_DEV=/dev/mmcblk1p1
 SYSTEM_DEV=/dev/mmcblk1p2
 VENDOR_DEV=/dev/mmcblk1p3
+DATA_DEV=/dev/mmcblk1p4
 LINUX_BOOT_DEV=/dev/mmcblk0p4
 LINUX_BOOT_IMAGE=/rgsp-boot/rgsp-linux-boot-original.img
 LINUX_BOOT_SHA=d42252f30730d35ca7759a651da7260ba482144130e58f05f23ea5e33270a6f5
-HANDOFF_VERSION=a10-b3-fix64-static-verified-watchdog
+HANDOFF_VERSION=a10-b3-fix66-data-mali-static-verified-watchdog
 BOOT_MOUNTED=0
 LINUX_BOOT_RESTORED=0
 LOG=/dev/null
@@ -44,7 +45,7 @@ fail_reboot() {
 
 echo '[rgsp-android] handoff init reached'
 tries=0
-while { [ ! -b "$BOOT_DEV" ] || [ ! -b "$SYSTEM_DEV" ] || [ ! -b "$VENDOR_DEV" ] || [ ! -b "$LINUX_BOOT_DEV" ]; } && [ "$tries" -lt 30 ]; do
+while { [ ! -b "$BOOT_DEV" ] || [ ! -b "$SYSTEM_DEV" ] || [ ! -b "$VENDOR_DEV" ] || [ ! -b "$DATA_DEV" ] || [ ! -b "$LINUX_BOOT_DEV" ]; } && [ "$tries" -lt 30 ]; do
   echo "[rgsp-android] waiting for TF2 devices ($tries/30)"
   sleep 1
   tries=$((tries + 1))
@@ -93,8 +94,8 @@ else
   fail_reboot 'Android one-shot request is absent'
 fi
 
-if [ ! -b "$SYSTEM_DEV" ] || [ ! -b "$VENDOR_DEV" ]; then
-  fail_reboot "missing Android partitions: system=$SYSTEM_DEV vendor=$VENDOR_DEV"
+if [ ! -b "$SYSTEM_DEV" ] || [ ! -b "$VENDOR_DEV" ] || [ ! -b "$DATA_DEV" ]; then
+  fail_reboot "missing Android partitions: system=$SYSTEM_DEV vendor=$VENDOR_DEV data=$DATA_DEV"
 fi
 
 if ! mount -t ext4 -o ro "$SYSTEM_DEV" /android-root; then
@@ -105,6 +106,12 @@ if ! mount -t ext4 -o ro "$VENDOR_DEV" /android-root/vendor; then
   fail_reboot "failed to mount Android vendor from $VENDOR_DEV"
 fi
 log '[rgsp-android] Android vendor mounted at /vendor'
+
+mkdir -p /android-root/data || fail_reboot 'failed to create Android /data mount point'
+if ! mount -t ext4 -o rw,noatime,nosuid,nodev,noauto_da_alloc "$DATA_DEV" /android-root/data; then
+  fail_reboot "failed to mount Android data from $DATA_DEV"
+fi
+log '[rgsp-android] Android data mounted read-write at /data'
 
 if [ ! -x /android-root/system/bin/init ]; then
   umount /android-root 2>/dev/null || true

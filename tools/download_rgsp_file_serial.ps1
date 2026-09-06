@@ -6,7 +6,7 @@ param(
     [int]$TimeoutSeconds = 120
 )
 $ErrorActionPreference = 'Stop'
-if ($RemotePath -notmatch '^/[A-Za-z0-9_./-]+$') { throw 'Unsupported remote path.' }
+if ($RemotePath -notmatch '^/[A-Za-z0-9_./@:+-]+$') { throw 'Unsupported remote path.' }
 $id = [Guid]::NewGuid().ToString('N')
 $logDir = "out/logs/uart/download-$id"
 $begin = "__RGSP_FILE_${id}_BEGIN__"

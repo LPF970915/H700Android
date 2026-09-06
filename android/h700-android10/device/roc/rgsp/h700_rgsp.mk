@@ -5,6 +5,11 @@ $(call inherit-product, build/target/product/go_defaults.mk)
 $(call inherit-product-if-exists, device/softwinner/common/common.mk)
 $(call inherit-product, device/roc/h700-common/device.mk)
 
+# Allwinner's GPU product_config.mk does not match the mali-bifrost selector
+# in this source release, so install the verified 32-bit G31 EGL blob here.
+PRODUCT_COPY_FILES += \
+    hardware/aw/gpu/mali-bifrost/mali-g31/arm/lib/libGLES_mali.so:$(TARGET_COPY_OUT_VENDOR)/lib/egl/libGLES_mali.so
+
 PRODUCT_COPY_FILES += \
     device/roc/rgsp/fstab.sun50iw9p1:$(TARGET_COPY_OUT_RAMDISK)/fstab.sun50iw9p1 \
     device/roc/rgsp/fstab.sun50iw9p1:$(TARGET_COPY_OUT_VENDOR)/etc/fstab.sun50iw9p1 \
