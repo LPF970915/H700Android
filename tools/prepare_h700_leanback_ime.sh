@@ -26,4 +26,4 @@ else
     echo LEANBACK_RGSP_PATCH_APPLIED
 fi
 echo "SOURCE_REVISION=$revision"
-echo 'Build with the Android 10 h700_rgsp-eng environment: m -j4 LeanbackIME'
+echo 'Build through tools/build_h700_low_pressure.ps1 -Targets LeanbackIME -Execute'

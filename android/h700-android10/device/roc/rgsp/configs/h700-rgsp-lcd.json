@@ -1,0 +1,32 @@
+{
+  "DisplayEngineVersion": 2,
+  "DisplayNumber": 2,
+  "Display0": {
+    "InterfaceType": "LCD",
+    "DisplayEnginePortId": 0,
+    "OverrideFramebufferSize": 1,
+    "FramebufferWidth": 720,
+    "FramebufferHeight": 480,
+    "DpiX": 160,
+    "DpiY": 160,
+    "HotplugSupported": 0,
+    "AfbcSupported": 0,
+    "HardwareRotateSupported": 0,
+    "BandwidthLimited": 338800,
+    "DefaultOutputMode": 0
+  },
+  "Display1": {
+    "InterfaceType": "HDMI",
+    "DisplayEnginePortId": 1,
+    "OverrideFramebufferSize": 1,
+    "FramebufferWidth": 720,
+    "FramebufferHeight": 480,
+    "DpiX": 160,
+    "DpiY": 160,
+    "HotplugSupported": 1,
+    "AfbcSupported": 0,
+    "HardwareRotateSupported": 0,
+    "BandwidthLimited": 338800,
+    "DefaultOutputMode": 0
+  }
+}

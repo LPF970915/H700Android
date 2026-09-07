@@ -58,9 +58,13 @@ Reproduction:
 
 ```sh
 bash tools/prepare_h700_leanback_ime.sh /home/lpf/h700-android10/android
-# Sync the RGSP device overlay, then in the Android 10 build environment:
-m -j4 LeanbackIME
+# Sync the RGSP device overlay before invoking the low-pressure wrapper below.
 ```
+
+For subsequent builds, use PowerShell
+`.\tools\build_h700_low_pressure.ps1 -Targets LeanbackIME -Execute`.
+Fix72 enforces `-j1` and host resource limits; the original higher-parallelism
+command is no longer the supported reproduction entry.
 
 The preparation tool pins origin and revision, checks the patch, supports
 an exact idempotent re-run, and rejects unrelated source modifications.

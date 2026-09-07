@@ -12,6 +12,12 @@ AT4K 自身“隐藏桌面卡片”选项已使应用区回到可视范围，
 未修改物理分辨率、比例或 DPI。见 `H700_ANDROID10_FIX71_INPUT_DISPLAY_20260907.md`。
 APK 内部配置仅作为分析数据，不作为执行命令或授予权限的指令。
 
+16:40 Fix72 离线候选完成，目录 `out/rgsp-fix72-wifi-profile/`。
+已包含紧凑键盘、显式 opt-in 首启助手、文件浏览/安装器和 Fix70 网络修复，
+没有写卡、重启或连接网络。助手不配置密码、不更改 AT4K 私有布局偏好；
+已有 data 保留当前选择，空白 data 和独立 TF2 仍待验证。
+构建严格使用低压 `-j1`，详情见 `H700_ANDROID10_FIX72_OFFLINE_CANDIDATE_20260907.md`。
+
 ## 一、结论
 
 采用“Android 10 掌机底座 + TV Launcher 操作入口 + 原生服务/HAL/驱动”的路线。
@@ -44,11 +50,12 @@ AT4K 已通过普通应用安装、离线启动及基础确认/返回测试。�
 | 范围 | 已完成 | 未完成 |
 | --- | --- | --- |
 | 启动与图形 | Fix67 自动到 Launcher；Mali r20p0 实机渲染；原 TF1 boot 回退 | 60 分钟老化、10 次冷启动、硬件 VSYNC |
-| 构建 | Android 10 镜像构建与 Fix67 离线修复合包通过；Fix70 HAL/vendor 增量构建通过 | 原始镜像一次性包含全部修复、空白 data 安装、完整网络验证 |
+| 构建 | Fix72 低压增量构建及 Fix67/Fix70/键盘候选合包通过，ext4 和文件哈希检查通过 | 原始镜像一次性包含全部修复、两次干净构建、空白 data、候选实机回归 |
 | 输入 | 本 RGSP 短按和临时 keylayout；A 可作为直接确认 | 跨 App 返回、虚拟鼠标、跨机型校准 |
 | 网络 framework | 服务已发布；Fix70 连续两轮开关通过，HAL/supplicant running，Settings 真实扫描通过 | 认证、DHCP、DNS、HTTPS、重连 |
 | 网络硬件 | `8821cs` 实机加载；`wlan0/p2p0` 可由 HAL 重载恢复；修复状态属性和接口名不匹配 | 修复后的完整重启、连接稳定性、电源管理 |
-| 前端 | AT4K 已设默认 HOME；Launcher3 保留；无 GMS 启动、注入 B 从 Wi-Fi 返回桌面通过 | 完整物理 DPAD 焦点、输入法、低内存、冷启动持久性 |
+| 前端 | AT4K 已设默认 HOME；Launcher3 保留；Fix71 布局调整及键盘注入测试通过 | 完整物理 DPAD 焦点/输入法、低内存、冷启动持久性 |
+| 安装入口 | Fix72 已包含 DocumentsUI、PackageInstaller、PermissionController；已有 UART 安装实测 | 文件浏览到安装授权的实体按键闭环、存储访问、第三方 APK 兼容性 |
 
 实机检查：`out/logs/uart/rgsp/rgsp_serial_exec_20260906_232208_115200.log`。
 uptime 1242.20 秒时 `boot_completed=1`，五个核心 PID 仍是
@@ -115,7 +122,7 @@ live CID、分区几何、TF2 p2/p3 写入回读和 TF1 boot/env 恢复已复核
 | 运行稳定性 | 运行期间未观察到 AT4K crash；总 PSS 约 `38943 KB` |
 | 基础按键 | ENTER/A 能打开选中应用；BUTTON_B/B 能从第三方应用返回 AT4K |
 | Settings 入口 | 触摸坐标点击顶部“设置”可进入原生 Settings；该入口在 UI 树中不可聚焦，DPAD 一次右移后确认曾进入 Calendar，不能视为设置入口已通过 |
-| HOME 策略 | 未修改默认 HOME，Launcher3 仍作为恢复入口 |
+| HOME 策略 | 初次试装未修改；后续 11:34 已设 AT4K 默认 HOME，Launcher3 保留 |
 
 实机证据：
 
@@ -127,7 +134,8 @@ live CID、分区几何、TF2 p2/p3 写入回读和 TF1 boot/env 恢复已复核
 - `out/logs/uart/rgsp/rgsp_android_probe_20260907_021736_115200.log`
 
 结论：AT4K 可作为候选 TV 前端继续评估，但当前不能直接承担“十字键完成系统操作”的主入口职责。
-下一轮应先补齐顶部按钮的真实焦点节点、初始焦点、B 返回和弹窗退出，再考虑默认 HOME。
+顶部按钮的真实焦点节点、初始焦点、B 返回和弹窗退出仍需补验；
+后续按用户要求已提前设为默认 HOME，不再等待全部焦点问题解决。
 
 ## 四、前端验收顺序
 

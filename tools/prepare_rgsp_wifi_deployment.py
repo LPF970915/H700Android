@@ -75,6 +75,10 @@ def main():
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--wifi-fix70", type=Path,
                         help="Directory with the two hash-pinned, hardware-tested Fix70 files")
+    parser.add_argument("--preflight", type=Path,
+                        help="Separate, newly staged preflight; never overwrite Fix69/70 packages")
+    parser.add_argument("--include-profile", action="store_true",
+                        help="Verify the built Fix71 IME and Fix72 explicit first-run helpers")
     args = parser.parse_args()
     root = args.workspace.resolve()
     output = args.output.resolve()
@@ -83,7 +87,9 @@ def main():
     if output.exists():
         raise ValueError("Refusing to overwrite an existing deployment package")
     wifi_fix = verify_wifi_fix(args.wifi_fix70)
-    preflight = root / "out/h700-android10-preflight"
+    preflight = (args.preflight or root / "out/h700-android10-preflight").resolve()
+    if not preflight.is_relative_to(root / "out") or not preflight.is_dir():
+        raise ValueError("Preflight must be a directory inside workspace out")
     payload = root / "out/h700-android10-b2"
     source_manifest = json.loads((preflight / "DEPLOYMENT_MANIFEST.json").read_text(encoding="utf-8-sig"))
     for name in ("system.raw.img", "vendor.raw.img"):
@@ -132,6 +138,10 @@ def main():
             update_rc(s / "system/etc/init/displayservice.rc", lambda text:
                       re.sub(r"(?m)^[ \t]*start displayservice[ \t]*\n", "", text))
             install(payload / "rgsp_fix63_graphics.rc", s / "system/etc/init/rgsp_fix63_graphics.rc")
+            if args.include_profile:
+                # Keep the diagnostic service available, but never start password screenshots.
+                update_rc(s / "system/etc/init/rgsp_fix63_graphics.rc", lambda text:
+                          text.replace("    start rgsp-graphics-diag\n", ""))
             install(payload / "rgsp-graphics-diag.sh", s / "system/etc/rgsp-graphics-diag.sh", 0o755)
             install(payload / "rgsp-logcat-bounded.sh", s / "system/bin/rgsp-fix47-logcat.sh", 0o755)
             (s / "system/etc/init/rgsp_fix47_logcat.rc").write_text(
@@ -186,6 +196,18 @@ def main():
                 checks.append({"partition": mountpoint.name, "path": rel, "sha256": sha(mountpoint / rel)})
             if "setprop vold.decrypt trigger_restart_framework" not in (s / "system/etc/init/rgsp_fix63_graphics.rc").read_text():
                 raise ValueError("Framework trigger missing")
+            if args.include_profile:
+                for rel in (
+                    "system/app/LeanbackIME/LeanbackIME.apk",
+                    "system/bin/rgsp-firstboot.sh", "system/bin/set_rgsp_home.sh",
+                    "system/etc/init/rgsp-firstboot.rc", "system/etc/rgsp/leanback.sha256",
+                    "system/priv-app/DocumentsUI/DocumentsUI.apk",
+                    "system/priv-app/PackageInstaller/PackageInstaller.apk",
+                ):
+                    checks.append({"partition": "system", "path": rel, "sha256": sha(s / rel)})
+                expected = (s / "system/etc/rgsp/leanback.sha256").read_text().strip()
+                if sha(s / "system/app/LeanbackIME/LeanbackIME.apk") != expected:
+                    raise ValueError("Built IME does not match reviewed Fix71 artifact")
             for rel in ("dev", "proc", "sys", "apex", "vendor", "data", "rgsp-persist"):
                 if not (s / rel).is_dir():
                     raise ValueError(f"Handoff mount point missing: {rel}")
@@ -210,6 +232,7 @@ def main():
                       for p in sorted(output.iterdir()) if p.is_file()},
         "parent_artifacts": source_manifest["artifacts"],
         "wifi_fix70": wifi_fix,
+        "firstboot_profile": "explicit opt-in; not hardware-qualified" if args.include_profile else None,
     }
     (output / "DEPLOYMENT_MANIFEST.json").write_text(json.dumps(manifest, indent=2) + "\n")
     print(f"DEPLOYMENT_READY={output}", flush=True)

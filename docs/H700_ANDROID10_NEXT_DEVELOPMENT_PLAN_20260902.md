@@ -5,6 +5,13 @@
 
 ## 1. 当前起点
 
+2026-09-07 Fix72 更新：AT4K 已是实机默认 HOME；Fix70 开关/扫描和 Fix71
+输入法注入测试已有证据。Fix72 已低压增量构建并合包，尚未部署。
+当前优先实体密码输入和完整联网，其次 APK 操作闭环、首启与独立 TF2。
+构建入口统一为 `tools/build_h700_low_pressure.ps1 -Execute`：
+最多两个逻辑核、总配额一核、`-j1`、内存 6 GiB、swap 512 MiB。
+不因构建失败提高限额。详见 `H700_ANDROID10_FIX72_OFFLINE_CANDIDATE_20260907.md`。
+
 2026-09-06 23:22 更新：Fix67 自动进入 Launcher，基本短按映射已完成，A 为临时
 ENTER 解锁/确认。五个核心 PID 与本次启动基线一致，uptime 为 1242.20 秒。
 B4 首图已实现但正式老化与冷启动验收未完成，B5 当前优先 TV 前端和网络。
@@ -42,7 +49,7 @@ ADB 单独验证、将所有现场修复纳入干净构建。显示证据见
 1. 记录 JDK、Python、Git、内核、内存、swap、磁盘和源码提交/校验信息；
 2. 确认 D 盘可用空间不少于 180 GiB，再开始首轮完整编译；
 3. 在 `/home/lpf/h700-android10/android` 选择 `h700_rgsp-eng`；
-4. 先以 `-j4` 构建 `systemimage vendorimage ramdisk`，完整日志写入 D 盘；
+4. 通过低压入口以 `-j1` 构建 `systemimage vendorimage ramdisk`，完整日志写入 D 盘；
 5. 保存第一个真实错误，不并行堆叠补丁；
 6. 如果错误位于公共 H616 工具链或源码，再用 `cupid_perf1-eng` 复现以区分 donor
    问题和 H700 overlay 问题；
@@ -171,16 +178,16 @@ ALSA 设备已经具备可行性的证据。
 - 屏幕、按键、音频、电池、无线和休眠的功能验收；
 - Android 11 fix58 最后一次冷启动取证。该取证不阻塞 Android 10 离线开发。
 
-## 9. 近期十项执行队列（2026-09-06 调整）
+## 9. 近期十项执行队列（2026-09-07 调整）
 
 1. 同步 Fix67 与本机 A→ENTER keylayout 的产品配置和证据；输入基础已完成；
-2. AT4K 1.2 只作为候选，先普通应用试装，不覆盖 Launcher3 或设默认 HOME；
-3. 检查离线、无 GMS、低分辨率、DPAD+A/B、弹窗退出与内存，不重做逐键长按校准；
-4. 回归 Settings 首页/网络页；实机已存在 WifiService，旧“缺 wifi 服务”诊断降为历史；
-5. 补齐本机 `8821cs.ko` 与固件，核对 realtek HAL 模块完整路径及 4.9.170 内核 ABI；
-6. 从 wlan0、HAL/supplicant、扫描、认证到 DHCP、DNS、联网验证，完成一次重连；
-7. 用 DPAD 屏幕键盘完成 Wi-Fi 密码输入，之后再验收默认 HOME 与重启恢复；
-8. 随后按需实现 Select 虚拟鼠标、剩余 Settings 服务和文件管理/PPSSPP 操作闭环；
+2. 保持已设好的 AT4K 默认 HOME，保留 Launcher3；不授予额外特权；
+3. 复核 720x480 布局、DPAD+A/B、弹窗退出与内存，不重做逐键长按校准；
+4. Fix72 候选先离线验收，再由用户在场安排保留 data 的部署回归；
+5. 保留本机 `8821cs.ko`、固件和 Fix70 两个固定哈希文件，补验重启恢复；
+6. 用 DPAD 屏幕键盘实际输入密码，完成认证、DHCP、DNS、HTTPS 和重连；
+7. 验证 DocumentsUI、安装器、授权、应用启动与 AT4K 返回，补验 HOME/IME 持久性；
+8. 单独验证空白 data 首启和 TF2 独立冷启动，随后按需实现 Select 虚拟鼠标；
 9. 音频、电量、亮度、Hall、蓝牙及低内存调优按独立后端推进；
 10. 交叉执行 60 分钟老化、10 次冷启动与完整构建/空白 data 复现，不降低门槛。
 

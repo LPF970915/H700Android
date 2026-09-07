@@ -37,6 +37,22 @@ PRODUCT_PACKAGES += rgsp_kmsg_logger
 PRODUCT_PACKAGES += LeanbackIME
 PRODUCT_PACKAGE_OVERLAYS += device/roc/rgsp/overlay
 
+# Staged from local, hash-verified Fix67 inputs by prepare_rgsp_build_inputs.py.
+# These generated files and the proprietary kernel module are not in Git.
+PRODUCT_COPY_FILES += \
+    device/roc/rgsp/prebuilts/local/mali_kbase.ko:$(TARGET_COPY_OUT_SYSTEM)/lib/modules/mali_kbase.ko \
+    device/roc/rgsp/prebuilts/local/rgsp_fix63_graphics.rc:$(TARGET_COPY_OUT_SYSTEM)/etc/init/rgsp_fix63_graphics.rc \
+    device/roc/rgsp/prebuilts/local/rgsp-graphics-diag.sh:$(TARGET_COPY_OUT_SYSTEM)/etc/rgsp-graphics-diag.sh \
+    device/roc/rgsp/prebuilts/local/set_rgsp_home.sh:$(TARGET_COPY_OUT_SYSTEM)/bin/set_rgsp_home.sh \
+    device/roc/rgsp/rgsp-firstboot.sh:$(TARGET_COPY_OUT_SYSTEM)/bin/rgsp-firstboot.sh \
+    device/roc/rgsp/rgsp-firstboot.rc:$(TARGET_COPY_OUT_SYSTEM)/etc/init/rgsp-firstboot.rc \
+    device/roc/rgsp/configs/leanback.sha256:$(TARGET_COPY_OUT_SYSTEM)/etc/rgsp/leanback.sha256 \
+    device/roc/rgsp/configs/display-config.json:$(TARGET_COPY_OUT_VENDOR)/etc/dispconfigs/config.json \
+    device/roc/rgsp/configs/h700-rgsp-lcd.json:$(TARGET_COPY_OUT_VENDOR)/etc/dispconfigs/h700-rgsp-lcd.json
+
+# Keep a visible local file browser and the ordinary, permission-gated installer.
+PRODUCT_PACKAGES += DocumentsUI PackageInstaller
+
 # This product is RGSP-specific, not a shared H700 input profile.
 PRODUCT_COPY_FILES += \
     device/roc/rgsp/ANBERNIC-keys.kl:$(TARGET_COPY_OUT_SYSTEM)/usr/keylayout/Vendor_0001_Product_0001_Version_0100.kl \

@@ -40,6 +40,7 @@
 __pycache__/
 *.pyc
 *.log
+/android/h700-android10/device/roc/rgsp/prebuilts/local/
 *.img
 *.img.gz
 *.tar
