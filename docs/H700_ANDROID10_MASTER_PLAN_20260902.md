@@ -3,6 +3,13 @@
 日期：2026-09-02  
 状态：生效，取代此前以 R36S Android 11 为运行基线的路线
 
+2026-09-07 10:55 当前部署进展：Fix69 已将 RGSP Wi-Fi 模块、固件和 HAL
+加载路径与 Fix67 启动修复离线合包，并写入 TF2 p2/p3；全量回读哈希通过。
+旧 system/vendor、ANBOOT、GPT 已备份，TF1 和 TF2 data/ROM 分区未写入。
+下一步是插回 RGSP，通过 COM4 验证受保护启动、`wlan0`、扫描及联网；
+不能据此认定已联网或已具备脱离 TF1 的 TF2 独立冷启动能力。详见
+`H700_ANDROID10_FIX69_WIFI_DEPLOYMENT_20260907.md`。
+
 2026-09-06 23:22 当前进展：Fix67 在构建镜像加部署修复后自动进入 Launcher，
 Mali-G31/r20p0 硬件渲染已验证，基础按键已完成，不再从逐键采集开始。
 `wifi`、`wifiscanner`、`connectivity`、`netd` 已在实机发布；目前未见

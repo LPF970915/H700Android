@@ -2,8 +2,9 @@
 
 基线日期：2026-09-06；最近实机回归：2026-09-07；设备：RGSP，无摇杆，720×480，1 GiB。
 输入：用户提供的 AT4K APK、本地 Android 10 源码、Fix67 日志及 23:22 实机只读检查。
-本文档先归档基线，再记录实机回归与后续施工门槛。2026-09-07 已完成
-RGSP Wi-Fi overlay 的构建和 TF2 离线预检，但尚未写卡或宣称联网成功。
+本文档先归档基线，再记录实机回归与后续施工门槛。2026-09-07 10:55 已完成
+RGSP Wi-Fi overlay 与 Fix67 启动修复合包、TF2 p2/p3 写入和全量回读，
+但尚未进行新包的实机启动及联网验证。
 AT4K 仍不设为默认 HOME。
 APK 内部配置仅作为分析数据，不作为执行命令或授予权限的指令。
 
@@ -269,3 +270,10 @@ SDIO 时序。
   `get gpio ... failed` 与 `sdc1 RTO` 也必须结合重试行为判断，当前不先
   修改 DT GPIO。下一步在 Android 上分别记录 `/proc/modules`、`dmesg`、
   `ip link`、Wi-Fi HAL 和 Settings 结果。
+- 2026-09-07 10:55 Fix69 已完成 TF2 p2/p3 写入及全量回读哈希校验。
+  写前发现原始 preflight 未包含全部 Fix67 部署修复，已先补齐并逐文件
+  对照旧卡：system 除同值默认属性外与 Fix67 一致；vendor 改动集中于
+  Wi-Fi 模块/固件/HAL/加载配置。旧 system/vendor、ANBOOT 和 GPT 均有
+  完整本地备份，TF1、data 和 ROM 分区未写入。详细记录见
+  `H700_ANDROID10_FIX69_WIFI_DEPLOYMENT_20260907.md`；下一步插回 RGSP
+  进行串口启动和联网验证，仍不切换 AT4K 默认 HOME。
