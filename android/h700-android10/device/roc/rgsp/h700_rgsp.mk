@@ -30,7 +30,7 @@ PRODUCT_COPY_FILES += \
     device/roc/rgsp/rgsp-input-prepare.sh:$(TARGET_COPY_OUT_VENDOR)/bin/rgsp-input-prepare.sh \
     device/roc/rgsp/rgsp-kmsg-start.sh:$(TARGET_COPY_OUT_VENDOR)/bin/rgsp-kmsg-start.sh
 
-PRODUCT_PACKAGES += rgsp_kmsg_logger
+PRODUCT_PACKAGES += rgsp_kmsg_logger RGSPLauncher
 
 # Fetch the pinned AOSP source with tools/prepare_h700_leanback_ime.sh first.
 # Keep LatinIME available for recovery and future touch-capable devices.

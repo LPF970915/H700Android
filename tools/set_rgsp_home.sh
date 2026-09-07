@@ -4,7 +4,7 @@ set -eu
 export PATH=/system/bin:/vendor/bin
 
 mode=${1:-status}
-case "$mode" in at4k|launcher3|status) ;; *) echo 'Usage: set_rgsp_home.sh at4k|launcher3|status' >&2; exit 2 ;; esac
+case "$mode" in at4k|rgsp|launcher3|status) ;; *) echo 'Usage: set_rgsp_home.sh at4k|rgsp|launcher3|status' >&2; exit 2 ;; esac
 [ "$(getprop ro.product.device)" = rgsp ]
 [ "$(getprop sys.boot_completed)" = 1 ]
 
@@ -31,6 +31,13 @@ if [ "$mode" = at4k ]; then
         echo 'AT4K_APK_HASH_MISMATCH: stop for review.' >&2
         exit 1
     }
+elif [ "$mode" = rgsp ]; then
+    target=com.roc.rgsp.launcher/.MainActivity
+    apk=$(pm path com.roc.rgsp.launcher | sed -n 's/^package://p' | head -n 1)
+    [ -n "$apk" ] && [ -f "$apk" ] || {
+        echo 'RGSP_LAUNCHER_NOT_INSTALLED: build and install RGSPLauncher first.' >&2
+        exit 1
+    }
 fi
 
 # Retain a local record; no system-image remount, APK privileges or accessibility.
@@ -49,7 +56,7 @@ grep -q '^Status: ok' "$record/launch.txt" || {
 
 rollback=$fallback
 case "$previous" in
-    com.android.launcher3/*|com.overdevs.at4k/*) rollback=$previous ;;
+    com.android.launcher3/*|com.overdevs.at4k/*|com.roc.rgsp.launcher/*) rollback=$previous ;;
 esac
 restore() {
     rc=$?

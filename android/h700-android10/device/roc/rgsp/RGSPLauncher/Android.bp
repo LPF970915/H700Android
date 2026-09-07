@@ -1,0 +1,10 @@
+android_app {
+    name: "RGSPLauncher",
+    srcs: ["src/**/*.java"],
+    manifest: "AndroidManifest.xml",
+    sdk_version: "current",
+    min_sdk_version: "29",
+    certificate: "platform",
+    privileged: false,
+    product_specific: true,
+}
