@@ -319,3 +319,12 @@ SDIO 时序。
 - 12:33 Fix71 已构建并试装紧凑 LeanbackIME，保留 LatinIME；两个临时字符
   完成选字和删除，B 只收起键盘、A 可重开，密码框已清空留给用户。
   物理短按/符号切换/实际密码连接仍待用户验证，不把注入测试当作整机完成。
+- 2026-09-07 20:11 已由用户输入密码连接 `Xiaomi_0421`，实机状态为
+  `wlan0=192.168.31.164/24`，网关 `192.168.31.1`，DNS 为
+  `192.168.31.1`。串口实测 `www.baidu.com` 解析到
+  `www.a.shifen.com (223.109.82.212)`，ICMP 3/3 成功，TCP/HTTP 返回
+  `HTTP/1.1 200 OK` 和约 29 KiB 页面，证明设备已具备实际外网访问能力。
+  Android 仍显示 `PARTIAL_CONNECTIVITY`，原因是 NetworkMonitor 的
+  `www.google.com/generate_204` HTTPS 探测被当前网络重置、备用 Google
+  探测超时；这不是 Wi-Fi 关联、DHCP、DNS 或默认路由故障。当前网络验证
+  记录不应把 Google 探测失败当作百度等国内站点不可用。

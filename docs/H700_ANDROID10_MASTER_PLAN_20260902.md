@@ -11,6 +11,11 @@ PackageInstaller，以及固定哈希的 Fix67 图形/Fix70 Wi-Fi 修复。
 本次并非两次干净重建，也未完成 TF2 独立冷启动或联网验收。详情见
 `H700_ANDROID10_FIX72_OFFLINE_CANDIDATE_20260907.md`。
 
+补充：2026-09-07 20:11 已在实机连接 `Xiaomi_0421` 并通过串口访问
+`www.baidu.com`；DNS、ICMP 和 HTTP `200 OK` 均通过。Android 的
+`PARTIAL_CONNECTIVITY` 仅反映 Google `generate_204` HTTPS 探测受当前
+网络重置/超时，实际外网访问已成立。
+
 以下按时间倒序保留实机和历史状态。
 
 2026-09-07 12:33 最新交互进展：Fix71 已编译并试装 AOSP TV 输入法，
@@ -20,6 +25,13 @@ A 重开及 X 删空测试，等待物理键复核。AT4K 通过自身“隐藏�
 仍未提交网络密码，联网验收未完成。Fix70 已推送为 `f7445b8`，
 其离线镜像不包含这次数据分区侧的键盘试装。详见
 `H700_ANDROID10_FIX71_INPUT_DISPLAY_20260907.md`。
+
+2026-09-07 20:11 网络实测更新：用户已输入密码并连接 `Xiaomi_0421`。
+设备 `wlan0` 获取 `192.168.31.164/24`，网关和 DNS 均为 `192.168.31.1`；
+通过串口访问 `www.baidu.com` 成功，DNS 解析、3 次 ICMP、HTTP `200 OK`
+均通过。Android 状态仍为 `PARTIAL_CONNECTIVITY`，仅因为当前网络对
+Google `generate_204` HTTPS 探测重置、Google 备用探测超时；实际外网
+访问已成立，不能把该标记解释为 Wi-Fi 或 DHCP 失败。
 
 2026-09-07 11:54 最新实机进展：Fix69 已通过受保护 Fix67 handoff 进入
 Android，AT4K 已实际设为默认 HOME，Launcher3 保留恢复。Fix70 修复
