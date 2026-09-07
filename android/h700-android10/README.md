@@ -27,6 +27,24 @@ cupid-common.mk`, because that file adds HDMI-CEC, AC100/HDMI audio, PPPoE,
 PlayReady/Widevine and television defaults. Required H616 components are listed
 explicitly in `device/roc/h700-common/device.mk`.
 
+## TV Input Method Source
+
+Before building the updated RGSP product, fetch the pinned AOSP LeanbackIME
+application and apply its small input adapter:
+
+```sh
+bash tools/prepare_h700_leanback_ime.sh /home/lpf/h700-android10/android
+```
+
+The imported application is pinned to commit
+`1667592ee5924122e43b611fa813c8f894087cd6`, originally imported in January 2020
+and available on AOSP's `android11-release` branch. It is compiled against
+this project's Android 10 SDK; no Android 11 framework binaries are imported.
+The helper refuses another revision or an unrelated dirty source tree.
+The source retains its Apache-2.0 notices. LatinIME remains installed as
+recovery. The compact resource overlay applies only to this RGSP product.
+Do not copy its key or display profile to every H700 handheld.
+
 ## Bring-up order
 
 1. Reproduce the Android 10 source build.

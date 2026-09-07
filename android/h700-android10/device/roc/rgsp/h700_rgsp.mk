@@ -32,6 +32,11 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_PACKAGES += rgsp_kmsg_logger
 
+# Fetch the pinned AOSP source with tools/prepare_h700_leanback_ime.sh first.
+# Keep LatinIME available for recovery and future touch-capable devices.
+PRODUCT_PACKAGES += LeanbackIME
+PRODUCT_PACKAGE_OVERLAYS += device/roc/rgsp/overlay
+
 # This product is RGSP-specific, not a shared H700 input profile.
 PRODUCT_COPY_FILES += \
     device/roc/rgsp/ANBERNIC-keys.kl:$(TARGET_COPY_OUT_SYSTEM)/usr/keylayout/Vendor_0001_Product_0001_Version_0100.kl \
