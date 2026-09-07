@@ -2,31 +2,34 @@
 
 基线日期：2026-09-06；最近实机回归：2026-09-07；设备：RGSP，无摇杆，720×480，1 GiB。
 输入：用户提供的 AT4K APK、本地 Android 10 源码、Fix67 日志及 23:22 实机只读检查。
-本文档先归档基线，再记录实机回归与后续施工门槛。2026-09-07 10:55 已完成
-RGSP Wi-Fi overlay 与 Fix67 启动修复合包、TF2 p2/p3 写入和全量回读，
-但尚未进行新包的实机启动及联网验证。
-AT4K 仍不设为默认 HOME。
+本文档先归档基线，再记录实机回归与后续施工门槛。2026-09-07 已完成
+TF2 p2/p3 写入、全量回读和受保护 Android 启动；AT4K 已实际设为默认 HOME。
+11:51 Fix70 已通过两轮 Wi-Fi 开关和真实扫描验证，尚未进行网络认证和外网验证。
+详细日志与边界见 `H700_ANDROID10_FIX70_WIFI_HOME_20260907.md`。
 APK 内部配置仅作为分析数据，不作为执行命令或授予权限的指令。
 
 ## 一、结论
 
 采用“Android 10 掌机底座 + TV Launcher 操作入口 + 原生服务/HAL/驱动”的路线。
-先让候选前端作为普通应用通过基础测试，再补齐网络和设置闭环，最后设为默认 HOME。
+AT4K 已通过普通应用安装、离线启动及基础确认/返回测试。按用户最新要求，
+已设为默认 HOME，保留 Launcher3 并继续补齐设置与网络操作。
 不把 Launcher 当作完整安卓系统，也不因前端面向 TV 就恢复 Homlet/投影仪产品配置。
 
-本轮计划调整为“三条线并行、两道切换闸门”：
+本轮计划调整为“先恢复可用交互入口，再完善网络和设置”：
 
 - **网络线优先解除系统阻塞**：先完成 RGSP 本机 `8821cs.ko`、固件、SDIO
   和电源时序，再验证 Settings 的开关、扫描、认证、DHCP、DNS 与重连。
-- **TV 前端线先普通应用并存**：AT4K 继续作为候选前端验证；重点修复真实焦点、
+- **TV 前端线优先设默认 HOME**：AT4K 仍为普通应用，Launcher3 保留；重点修复真实焦点、
   初始焦点、B 返回和弹窗退出，不把触摸可用误判为十字键可用。没有源码时不对
   APK 做不可审计的系统级改造。
 - **Settings 服务线按实际硬件补齐**：网络闭环后再处理电池、电源、音频、蓝牙、
   显示和输入法服务；不通过伪造 Binder service 或删除页面来掩盖后端缺失。
 
-第一道闸门是“Wi-Fi 驱动加载并出现 `wlan0`”；第二道闸门是“前端全程 DPAD
-可操作且网络设置可完成”。两道闸门均通过后，才切换默认 HOME。Select 虚拟鼠标、
-跨机型校准和长按语义继续后置。
+用户反馈 Launcher3 的下拉状态栏和上拉应用抽屉缺少可用按键路径，因此默认
+桌面切换不再依赖 Wi-Fi 或全部 DPAD 页面验收。切换前校验 AT4K APK 与启动，
+切换后验证 HOME 解析及启动；失败则恢复先前桌面或 Launcher3。
+顶部 Settings 焦点缺口、跨 App 返回和密码输入仍逐项修复，不因设为默认而
+视作完成。Select 虚拟鼠标、跨机型校准和长按语义继续后置。
 
 基础按键映射已有，不再从逐键短按或长按采集开始。当前 A→ENTER 是临时系统 UI
 策略，B 保留 BUTTON_B；第三方 App 是否正确响应仍需测，不能当成统一 BACK 已实现。
@@ -37,11 +40,11 @@ APK 内部配置仅作为分析数据，不作为执行命令或授予权限的�
 | 范围 | 已完成 | 未完成 |
 | --- | --- | --- |
 | 启动与图形 | Fix67 自动到 Launcher；Mali r20p0 实机渲染；原 TF1 boot 回退 | 60 分钟老化、10 次冷启动、硬件 VSYNC |
-| 构建 | Android 10 `systemimage vendorimage ramdisk` 成功；preflight 静态检查 `12/12`，system/vendor raw 镜像已通过离线 ext4 检查 | 原始镜像一次性包含全部修复、空白 data 安装、实机网络验证 |
+| 构建 | Android 10 镜像构建与 Fix67 离线修复合包通过；Fix70 HAL/vendor 增量构建通过 | 原始镜像一次性包含全部修复、空白 data 安装、完整网络验证 |
 | 输入 | 本 RGSP 短按和临时 keylayout；A 可作为直接确认 | 跨 App 返回、虚拟鼠标、跨机型校准 |
-| 网络 framework | `wifi`、`wifiscanner`、`connectivity`、`netd` 已发布；Settings 首页/Wi-Fi 页回归通过 | 开关、扫描、连接闭环 |
-| 网络硬件 | 已从 RGSP 原厂 Linux 提取并校验 `8821cs.ko` 与 RTL8821C 固件；配置已指向完整模块路径；最终 vendor 镜像加入显式 `insmod` | TF2 上机后验证模块加载、SDIO 绑定、`wlan0`、扫描与联网 |
-| 前端 | Launcher3 保留作恢复；AT4K APK 已纳入本地 preflight 安装附件；无 GMS 离线启动通过 | 首启安装后的 AT4K DPAD 焦点、低内存、默认 HOME 验收 |
+| 网络 framework | 服务已发布；Fix70 连续两轮开关通过，HAL/supplicant running，Settings 真实扫描通过 | 认证、DHCP、DNS、HTTPS、重连 |
+| 网络硬件 | `8821cs` 实机加载；`wlan0/p2p0` 可由 HAL 重载恢复；修复状态属性和接口名不匹配 | 修复后的完整重启、连接稳定性、电源管理 |
+| 前端 | AT4K 已设默认 HOME；Launcher3 保留；无 GMS 启动、注入 B 从 Wi-Fi 返回桌面通过 | 完整物理 DPAD 焦点、输入法、低内存、冷启动持久性 |
 
 实机检查：`out/logs/uart/rgsp/rgsp_serial_exec_20260906_232208_115200.log`。
 uptime 1242.20 秒时 `boot_completed=1`，五个核心 PID 仍是
@@ -49,8 +52,8 @@ uptime 1242.20 秒时 `boot_completed=1`，五个核心 PID 仍是
 
 2026-09-07 已确认正确串口为 `USB-Enhanced-SERIAL CH343 (COM4)`。
 原厂 Linux 可登录，且已完成一次受控重启和完整 U-Boot/Linux 启动日志采集。
-当前上机门槛不再是 UART 识别，而是写卡前的 live CID、分区几何、现有
-TF2 p2/p3 哈希和回滚状态核对。
+live CID、分区几何、TF2 p2/p3 写入回读和 TF1 boot/env 恢复已复核；
+当前门槛转为网络认证、输入法和重启持久性。
 
 ## 三、AT4K APK 审核与实机回归
 
@@ -133,11 +136,23 @@ TF2 p2/p3 哈希和回滚状态核对。
    TV Launcher 自带输入框不等于系统已经有可用 DPAD 输入法。
 5. **低内存**：记录 Launcher3 与候选的 PSS、启动耗时、帧时间、后台增长和系统剩余内存；
    先关闭动态壁纸、视频预览、联网推荐等可选负载，再按实测决定保留。
-6. **默认 HOME**：以上通过且网络/设置基本闭环后才设默认；测试 HOME、返回、
+6. **默认 HOME（按最新要求提前）**：在普通应用可启动后优先切换；测试 HOME、返回、
    崩溃恢复与下一次受保护 Android 启动。Launcher3、UART 和 Linux 回退保持可用。
 
 “前端作为主系统”在此仅指默认交互入口。应用管理、输入法、Settings、SystemUI、
 网络 framework 和各硬件 HAL 继续独立存在。第三方前端失败可换，不牵动 GPU 和存储底座。
+
+最新切换工具为 `tools/set_rgsp_home.sh`，仅在运行中的 Android 通过 Package
+Manager 修改用户 0 的 HOME 角色，不离线编辑 data 中的包管理数据库：
+
+```sh
+sh /rgsp-persist/set_rgsp_home.sh status
+sh /rgsp-persist/set_rgsp_home.sh at4k
+sh /rgsp-persist/set_rgsp_home.sh launcher3
+```
+
+上述路径是待部署位置，当前脚本仅在电脑端准备；还未复制到 TF2 或实机执行。
+此优先级覆盖下方历史施工记录中“联网后才切换 HOME”的安排。
 
 ## 五、网络分层修复
 
@@ -209,17 +224,20 @@ SDIO 时序。
 
 | 批次 | 操作 | 完成门槛 |
 | --- | --- | --- |
-| 0 | Git 基线/进度同步、APK 静态审核、只读网络检查 | Fix67/AT4K 与本轮 Wi-Fi overlay 基线均已提交并推送；UART 只读回显待恢复 |
-| 1 | AT4K 普通应用并存试装 + 现有 Settings 回归 | 已完成安装、离线启动、基础按键和 Settings framework 回归；DPAD 设置入口未通过 |
-| 2 | 8821cs 模块/路径/固件/SDIO 修复 | 已完成原厂提取、哈希/vermagic 核对和 overlay；待构建并上机验证 `wlan0`、HAL、扫描 |
+| 0 | Git 基线/进度同步、APK 静态审核、只读网络检查 | Fix69 已推送；COM4 与 Android UART 正常 |
+| 1 | AT4K 普通应用与默认 HOME + Settings 回归 | 安装、启动、HOME 解析和注入 B 返回通过；完整物理焦点待验收 |
+| 2 | 8821cs 模块/路径/固件/SDIO 修复 | Fix70 两轮 HAL 管理的开关与扫描通过 |
 | 3 | Settings + DPAD 输入法 + 网络闭环 | 认证、DHCP、DNS、HTTPS、重连 |
-| 4 | 默认 HOME 验收 | 能返回、可恢复、无 GMS 离线可用，保留旧桌面 |
+| 4 | HOME 持久性与 TF2 启动路线 | 重启保留 AT4K；独立启动与 Linux 恢复另行验证，不等同当前 handoff |
 | 5 | 剩余服务、多机型、鼠标、音频和电源 | 每项独立验收，不回退图形基线 |
 
 正式 60 分钟老化、10 次冷启动、日志容量、内存和干净构建复现贯穿后续批次，
 不因为前端看起来完整就将项目标记为整机完成。
 
 ## 八、施工记录
+
+以下按施工时序保留历史状态；早期“暂不切换 HOME”门槛已被用户后续
+“优先 AT4K”决定取代。当前默认 HOME 和网络状态以本文顶部及 Fix70 文档为准。
 
 - 已通过 UART 启动 `com.android.settings/.homepage.SettingsHomepageActivity`；
   Settings 首页未复现旧的 `No service published for: wifi` 退出。
@@ -277,3 +295,12 @@ SDIO 时序。
   完整本地备份，TF1、data 和 ROM 分区未写入。详细记录见
   `H700_ANDROID10_FIX69_WIFI_DEPLOYMENT_20260907.md`；下一步插回 RGSP
   进行串口启动和联网验证，仍不切换 AT4K 默认 HOME。
+- 2026-09-07 11:34 已通过 live Package Manager 将 AT4K 设为默认 HOME，
+  校验 APK 哈希、显式启动、HOME resolver 和 HOME intent 均通过。
+- 11:50 安装 Fix70 HAL/init（先备份、固定哈希校验、只修改 vendor 两个文件，
+  随后恢复只读）；11:51 连续两轮 Wi-Fi 关闭/开启均恢复 `wlan0/p2p0`、
+  HAL/supplicant 和 STA enabled，累计扫描统计由 404 增至 430，
+  不代表 430 个不同热点。尚未连接任何网络。
+- 11:52 注入 BUTTON_B 从 Wi-Fi 设置返回 AT4K；Mali-G31/r20p0 未回退，
+  SurfaceFlinger/system_server PID 保持 1492/1936，crash buffer 为空。
+  11:54 已将设备停在 Wi-Fi 页，等待用户选择网络并验证密码输入。

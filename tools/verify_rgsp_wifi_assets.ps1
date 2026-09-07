@@ -30,6 +30,14 @@ $boardConfig = Get-Content -LiteralPath (Join-Path $Root 'android/h700-android10
 if ($boardConfig -notmatch '(?m)^WIFI_DRIVER_MODULE_PATH\s*:=\s*/vendor/modules/8821cs\.ko\s*$') {
     throw 'BoardConfig.mk does not use the complete 8821cs.ko module path.'
 }
+if ($boardConfig -notmatch '(?m)^WIFI_DRIVER_MODULE_ARG\s*:=\s*if2name=p2p0\s*$') {
+    throw 'The Wi-Fi HAL reload path must request the p2p0 interface name.'
+}
+$init = Get-Content -LiteralPath (Join-Path $Root 'android/h700-android10/device/roc/rgsp/init.rgsp.rc') -Raw
+if ($init -notmatch '(?m)^\s+setprop wlan\.driver\.status unloaded\s*$' -or
+    $init -notmatch '(?m)^\s+insmod /vendor/modules/8821cs\.ko if2name=p2p0\s*$') {
+    throw 'Wi-Fi init must initialize the status property and use matching module arguments.'
+}
 
 $product = Get-Content -LiteralPath (Join-Path $Root 'android/h700-android10/device/roc/rgsp/h700_rgsp.mk') -Raw
 foreach ($needle in @(

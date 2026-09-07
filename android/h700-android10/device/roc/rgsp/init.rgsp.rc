@@ -1,4 +1,6 @@
 on early-init
+    # This BSP checks that the property exists before checking /proc/modules.
+    setprop wlan.driver.status unloaded
     chown root root /dev/binder
     chown root root /dev/hwbinder
     chown root root /dev/vndbinder
@@ -16,4 +18,4 @@ on post-fs-data
 # framework HAL will observe the already loaded module through /proc/modules
 # when Wi-Fi is enabled, while the kernel gets its normal SDIO probe path.
 on boot
-    insmod /vendor/modules/8821cs.ko
+    insmod /vendor/modules/8821cs.ko if2name=p2p0

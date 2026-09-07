@@ -3,12 +3,27 @@
 日期：2026-09-02  
 状态：生效，取代此前以 R36S Android 11 为运行基线的路线
 
+2026-09-07 11:54 最新实机进展：Fix69 已通过受保护 Fix67 handoff 进入
+Android，AT4K 已实际设为默认 HOME，Launcher3 保留恢复。Fix70 修复
+Wi-Fi 驱动状态属性缺失和重载接口名不匹配；已安装重新编译的 HAL 与 init，
+连续两轮开关通过，Settings 显示真实扫描结果。尚未输入网络凭据，
+认证、DHCP、DNS、HTTPS 和重连未验收。SurfaceFlinger 仍为 Mali-G31/r20p0，
+核心 PID 未变，检查时 crash buffer 为空；这不是完整稳定性验收。
+TF1 原 boot/env 哈希已在 Android 内复核恢复，TF2 独立冷启动仍未完成。
+详见 `H700_ANDROID10_FIX70_WIFI_HOME_20260907.md`。
+
+以下 10:55 记录为写卡阶段历史状态，不代表当前仍在等待插卡。
+
 2026-09-07 10:55 当前部署进展：Fix69 已将 RGSP Wi-Fi 模块、固件和 HAL
 加载路径与 Fix67 启动修复离线合包，并写入 TF2 p2/p3；全量回读哈希通过。
 旧 system/vendor、ANBOOT、GPT 已备份，TF1 和 TF2 data/ROM 分区未写入。
 下一步是插回 RGSP，通过 COM4 验证受保护启动、`wlan0`、扫描及联网；
 不能据此认定已联网或已具备脱离 TF1 的 TF2 独立冷启动能力。详见
 `H700_ANDROID10_FIX69_WIFI_DEPLOYMENT_20260907.md`。
+
+用户随后明确调整优先级：Launcher3 的触摸手势入口不适合当前无触摸掌机，
+因此优先切换 AT4K 为默认 HOME，并保留 Launcher3 恢复入口；不再以联网
+或全部焦点问题解决作为切换前提。Wi-Fi、Settings、返回和输入法继续独立验收。
 
 2026-09-06 23:22 当前进展：Fix67 在构建镜像加部署修复后自动进入 Launcher，
 Mali-G31/r20p0 硬件渲染已验证，基础按键已完成，不再从逐键采集开始。

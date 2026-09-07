@@ -7,7 +7,7 @@ import unittest
 from unittest.mock import patch
 
 from compare_rgsp_image_files import inventory
-from prepare_rgsp_wifi_deployment import main, props, sha
+from prepare_rgsp_wifi_deployment import main, props, sha, verify_wifi_fix, WIFI_FIX70
 
 
 class DeploymentHelpersTest(unittest.TestCase):
@@ -44,6 +44,29 @@ class DeploymentHelpersTest(unittest.TestCase):
                     with self.assertRaises(ValueError):
                         main()
             self.assertFalse(outside.exists())
+
+    def test_wifi_fix_is_optional(self):
+        self.assertEqual(verify_wifi_fix(None), {})
+
+    def test_wifi_fix_rejects_missing_or_modified_artifacts(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            with self.assertRaises(ValueError):
+                verify_wifi_fix(root)
+            for name in WIFI_FIX70:
+                (root / name).write_bytes(b"wrong")
+            with self.assertRaises(ValueError):
+                verify_wifi_fix(root)
+
+    def test_wifi_fix_checks_both_hashes(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            for name in WIFI_FIX70:
+                (root / name).write_bytes(b"fixture")
+            with patch("prepare_rgsp_wifi_deployment.sha",
+                       side_effect=lambda path: WIFI_FIX70[path.name][1]) as hash_file:
+                self.assertEqual(set(verify_wifi_fix(root)), set(WIFI_FIX70))
+                self.assertEqual(hash_file.call_count, 2)
 
 
 if __name__ == "__main__":

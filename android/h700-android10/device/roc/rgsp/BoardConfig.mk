@@ -7,6 +7,8 @@ BOARD_WIFI_VENDOR := realtek
 BOARD_USR_WIFI := RTL8821CS
 WIFI_DRIVER_MODULE_NAME := 8821cs
 WIFI_DRIVER_MODULE_PATH := /vendor/modules/8821cs.ko
+# The BSP reload path waits for wlan0 and p2p0, not the stock Linux wlan1.
+WIFI_DRIVER_MODULE_ARG := if2name=p2p0
 
 # The RGSP kernel and DTB are verified external inputs. Android's build graph
 # must not require a source-tree kernel to produce system/vendor/ramdisk.

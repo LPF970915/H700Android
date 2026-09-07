@@ -43,6 +43,26 @@ def install(source, target, mode=0o644):
     os.chown(target, 0, 0)
 
 
+WIFI_FIX70 = {
+    "libwifi-hal.so": ("lib/libwifi-hal.so",
+                       "9b88a56176b190a0bcada45e2571742d9f5cab8ffa66557bb0edb940c9e0a7e3"),
+    "init.rgsp.rc": ("etc/init/init.rgsp.rc",
+                     "72b4fc47d8e68203fa4f45578d250b91f7578c854963e2808e7217f09edf8506"),
+}
+
+
+def verify_wifi_fix(directory):
+    if directory is None:
+        return {}
+    result = {}
+    for name, (target, expected) in WIFI_FIX70.items():
+        source = directory / name
+        if not source.is_file() or sha(source) != expected:
+            raise ValueError(f"Fix70 artifact mismatch: {name}")
+        result[name] = {"target": target, "sha256": expected}
+    return result
+
+
 def props(path, values):
     lines = path.read_text().splitlines()
     lines = [line for line in lines if line.split("=", 1)[0] not in values]
@@ -53,6 +73,8 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--workspace", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--wifi-fix70", type=Path,
+                        help="Directory with the two hash-pinned, hardware-tested Fix70 files")
     args = parser.parse_args()
     root = args.workspace.resolve()
     output = args.output.resolve()
@@ -60,6 +82,7 @@ def main():
         raise ValueError("Output must be a new directory inside workspace out")
     if output.exists():
         raise ValueError("Refusing to overwrite an existing deployment package")
+    wifi_fix = verify_wifi_fix(args.wifi_fix70)
     preflight = root / "out/h700-android10-preflight"
     payload = root / "out/h700-android10-b2"
     source_manifest = json.loads((preflight / "DEPLOYMENT_MANIFEST.json").read_text(encoding="utf-8-sig"))
@@ -145,6 +168,8 @@ def main():
             (disp_dir / "config.json").write_text(json.dumps({"DeviceConfig": "h700-rgsp-lcd.json"}, indent=2) + "\n")
             (disp_dir / "h700-rgsp-lcd.json").write_text(json.dumps(display, indent=2) + "\n")
             props(v / "build.prop", {"persist.vendor.hwc.software_vsync": "true"})
+            for name, entry in wifi_fix.items():
+                install(args.wifi_fix70 / name, v / entry["target"])
             wifi_rc = (v / "etc/init/init.rgsp.rc").read_text()
             if "insmod /vendor/modules/8821cs.ko" not in wifi_rc:
                 raise ValueError("Wi-Fi module loading missing")
@@ -155,6 +180,7 @@ def main():
                 (v, "lib/egl/libGLES_mali.so"), (v, "lib/hw/hwcomposer.cupid.so"),
                 (v, "modules/8821cs.ko"), (v, "firmware/rtlbt/rtl8821c_config"),
                 (v, "firmware/rtlbt/rtl8821c_fw"), (v, "etc/init/init.rgsp.rc"),
+                (v, "lib/libwifi-hal.so"),
             ]
             for mountpoint, rel in check_paths:
                 checks.append({"partition": mountpoint.name, "path": rel, "sha256": sha(mountpoint / rel)})
@@ -183,6 +209,7 @@ def main():
         "artifacts": {p.name: {"bytes": p.stat().st_size, "sha256": sha(p)}
                       for p in sorted(output.iterdir()) if p.is_file()},
         "parent_artifacts": source_manifest["artifacts"],
+        "wifi_fix70": wifi_fix,
     }
     (output / "DEPLOYMENT_MANIFEST.json").write_text(json.dumps(manifest, indent=2) + "\n")
     print(f"DEPLOYMENT_READY={output}", flush=True)

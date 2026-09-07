@@ -8,7 +8,11 @@ The offline package, TF2 backups, physical write and full readback are
 complete. The writer exited 0 at 2026-09-07 10:55:16 +08:00 with
 `TF2_WRITE_READBACK_OK`. Both physical partition hashes match the final
 image hashes below; GPT and ANBOOT match the reviewed protected snapshots.
-This does not yet claim a successful Android boot or Wi-Fi connection.
+At that deployment checkpoint, Android boot and Wi-Fi were not yet tested.
+Subsequently the protected Fix67 handoff reached Android, and AT4K became
+the default HOME. Fix70 repaired Wi-Fi enable/reload and verified scanning;
+authentication and Internet access are still pending. See
+`H700_ANDROID10_FIX70_WIFI_HOME_20260907.md`.
 
 This is the existing Fix67 bring-up configuration plus the RGSP Wi-Fi
 changes, not a production image, clean-data qualification, or proof of
@@ -121,7 +125,7 @@ system/vendor, and the retried write uses this explicitly reviewed boot
 snapshot while still checking the original system/vendor backup hashes.
 It does not silently accept an arbitrary changed ANBOOT.
 
-## Next Hardware Gate
+## Hardware Gate Follow-Up
 
 1. Write/readback is complete and all writer handles are closed. Safely
    remove the USB card reader before moving the card.
@@ -133,9 +137,19 @@ It does not silently accept an arbitrary changed ANBOOT.
    SDIO probe, `wlan0`, Wi-Fi HAL, Settings switch and scanning.
 6. Test authentication, DHCP, DNS, HTTPS and reconnect with user-supplied
    network credentials. Do not store credentials in Git.
-7. Regress AT4K DPAD focus, A confirm, B return and network settings before
-   changing default HOME.
+7. Per the user's subsequent explicit request, make AT4K the default HOME
+   as soon as Android is running and its installed APK/launch is verified;
+   do not wait for Wi-Fi qualification. Keep Launcher3 as recovery and
+   continue DPAD, return and Settings tests. `tools/set_rgsp_home.sh`
+   performed this reversible live change successfully at 11:34.
 
-Persistent TF2 boot selection remains separate work. This session does not
-write U-Boot, its environment or TF1 boot, and does not establish that the
-device can cold boot from TF2 without TF1.
+Steps 1-5 have now been exercised, with Wi-Fi enable/reload repaired in Fix70.
+Step 6 is pending user network selection and credentials. AT4K default HOME
+is complete; remaining physical focus/navigation checks are separate.
+
+Persistent TF2 boot selection remains separate work. The Windows writer
+did not write TF1. The subsequent protected handoff temporarily replaced
+TF1 boot and restored it; boot/env hashes were verified from Android.
+No explicit U-Boot/environment write was issued (the vendor boot log does
+report its own boot0 DRAM update). This does not establish that the device
+can cold boot from TF2 without TF1.
