@@ -37,6 +37,19 @@ The Fix70 package is unchanged. Only regular local image files were mounted.
 An initial non-root mount attempt failed before patching; the incomplete copies
 were discarded and packaging completed under WSL root.
 
+The 2026-09-07 baseline cleanup intentionally retained sparse preflight images
+and removed their generated `system.raw.img` and `vendor.raw.img`. Regenerate
+those raw files only when a legacy preflight workflow explicitly requires them:
+
+```powershell
+wsl.exe -d Ubuntu -- taskset -c 0 nice -n 19 ionice -c 3 python3 /mnt/d/Works/H700Android/tools/android_sparse_to_raw.py /mnt/d/Works/H700Android/out/rgsp-fix72-preflight/system.img /mnt/d/Works/H700Android/out/rgsp-fix72-preflight/system.raw.img
+wsl.exe -d Ubuntu -- taskset -c 0 nice -n 19 ionice -c 3 python3 /mnt/d/Works/H700Android/tools/android_sparse_to_raw.py /mnt/d/Works/H700Android/out/rgsp-fix72-preflight/vendor.img /mnt/d/Works/H700Android/out/rgsp-fix72-preflight/vendor.raw.img
+```
+
+Verify the regenerated size and SHA-256 against the retained preflight manifest
+before deployment. This does not change the final Fix72 package, whose raw
+images remain retained.
+
 Reproduce the final packaging from a new output directory:
 
 ```powershell

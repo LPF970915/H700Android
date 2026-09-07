@@ -293,7 +293,9 @@ BusyBox `switch_root` 执行 Android `/init`。
 
 ## 2026-08-28 当前推进判断与 fix11 离线准备
 
-- 对照 `H700_ANDROID_CONTINUOUS_DEVELOPMENT_PLAN.md`，项目仍处于 **P3 Android init、ADB 和挂载**；P0/P1 为部分完成，P2 构建基线未完成，P4 及以后暂不启动。
+- 这是 Android 11 探针时期的状态记录。Android 10 主线的当前计划和完成情况见
+  `docs/H700_ANDROID10_MASTER_PLAN_20260902.md` 与
+  `docs/H700_ANDROID10_FIX72_OFFLINE_CANDIDATE_20260907.md`。
 - 当前实机停点仍是 Android second-stage 在 `SELinux: Loaded file_contexts` 之后、`early-init` 之前；TF1 Linux 回退、原厂 boot/env 哈希保护和 TF2 持久日志均正常。
 - 已完成 fix11 的 **本地 system-only 兼容补丁**，未写入真实设备：复制 `rgsp-android11-system-alpha.img`，对 `system/lib64/libselinux.so` 的三个入口做 AArch64 最小返回补丁，绕过 `selinux=0` 时不可用的 file-context handle、restorecon 和 sethandle 路径。
 - fix11 产物：`out/rgsp-android11-system-alpha-fix11.img`，最终可重复生成 SHA-256 `e6ffc8563aa6e29e6b47cf3582b5bce7ab6dcf9fe6268a5cd886a1d5232fc04c`；补丁后 ELF SHA-256 `fac1800b68852e92c90e05a03ae27987c6d926ed3b1f1a96d4497d81e76f3e46`。
