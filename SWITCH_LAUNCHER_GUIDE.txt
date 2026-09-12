@@ -1,0 +1,45 @@
+【切换Android桌面 - 手动操作指引】
+
+由于串口主要用于日志监控，无法直接操作系统UI。
+以下是两种解决方案：
+
+=== 方案1: 通过设备按键操作（推荐）===
+1. 按 HOME 键返回主屏幕
+2. 进入 设置 (Settings)
+3. 找到 应用 (Apps) 或 应用管理 (Applications)
+4. 点击右上角三点菜单 → 默认应用 (Default apps)
+5. 选择 主屏幕 (Home) 或 启动器 (Launcher)
+6. 选择 Launcher3 或 Android桌面
+
+=== 方案2: 通过ADB命令（需要USB连接）===
+如果H700通过USB连接到电脑，执行以下步骤：
+
+1. 在设备上启用USB调试：
+   设置 → 关于平板电脑 → 连续点击版本号7次 → 返回 → 开发者选项 → USB调试
+
+2. 用USB线连接H700到电脑
+
+3. 下载ADB工具（如果没有）：
+   https://developer.android.com/studio/releases/platform-tools
+
+4. 执行以下命令清除默认桌面设置：
+   adb shell pm clear com.android.launcher3
+   adb shell pm set-home-activity com.android.launcher3/.Launcher
+
+=== 方案3: 临时绕过（快速）===
+1. 长按 电源键 重启设备
+2. 重启后再次出现桌面选择时，选择 "Launcher3" 或 "Android桌面"
+3. 这次勾选 "始终使用此应用" 或 "Always"
+
+=== 当前状态确认 ===
+✓ Android系统已正常启动
+✓ 新写入的单卡系统工作正常
+✗ 桌面选择错误，需要手动切换
+
+你当前有哪些操作方式可用？
+□ 设备有实体按键（HOME/BACK/MENU等）
+□ 设备有触摸屏
+□ 设备通过USB连接到电脑
+□ 只有十字键和确认键
+
+请告诉我你的情况，我会提供更精确的操作步骤。

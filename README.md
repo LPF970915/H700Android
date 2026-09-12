@@ -10,9 +10,14 @@ input profiles.
   (`e3566a9cfbf0d86dbb576631497adc6ea5ee94ce`).
 - Current candidate: Fix72 offline package. It includes the Fix70 Wi-Fi/HOME
   deployment path and Fix71 calibrated basic A/DPAD behavior.
-- Hardware qualification is still pending. Fix72 is not a standalone TF2 boot
-  system and has not yet proven Wi-Fi authentication, APK installation, or
-  long-run stability on the RGSP.
+- The September 11, 2026 Scheme-A card failed its latest main-slot boot test:
+  the user reports a black screen with no visible response to the power button.
+  The retained partition readback log predates the 8 MiB boot-area capture;
+  it does not qualify the revised boot-area write or the whole card.
+  A fresh 22:31 read-only capture confirms Boot0-area bytes are present,
+  but both Brandy boot-package candidate locations overlap Android boot and
+  contain no TOC1 header. The old 8 MiB writer/finalizer are quarantined.
+  See `docs/H700_ANDROID10_SINGLE_CARD_FAILURE_20260911.md`.
 - The Android 11 bring-up work is historical evidence only. Do not restart its
   framework-bypass patch chain.
 
@@ -24,6 +29,7 @@ Read these documents before changing images or device state:
 - `docs/RGSP_INPUT_CALIBRATION_20260906.md`
 - `docs/H700_ANDROID10_TV_NETWORK_PLAN_20260906.md`
 - `docs/H700_FIX72_BASELINE_CLEANUP_20260907.md`
+- `docs/H700_ANDROID10_RELEASE_READINESS_20260911.md`
 
 ## Working Boundaries
 
@@ -57,6 +63,20 @@ py -3 .\tools\inspect_rgsp_apk.py "C:\path\to\app.apk"
 The current RGSP profile supports basic UI navigation only. Long-press behavior,
 analog axes, model-specific mapping selection, and virtual-mouse fallback remain
 separate follow-up work.
+
+## Release Boundary
+
+The current priority is to qualify the Scheme-A single-card Android image on
+the original RGSP. The intended 64GB layout contains the preserved H700 boot
+payload, Android boot/system/vendor/data, and a FAT32 `ROMS` partition.
+Actual boot-area contents must be read back before another write. The second TF
+slot is expected to remain optional expansion storage, but that behavior must
+be verified on hardware.
+
+Do not publish until the release-readiness checklist is closed. In particular,
+single-card boot success alone does not prove cold-boot reliability, suspend
+resume, physical-button APK workflows, audio/power acceptance, or reproducible
+image production.
 
 ## Storage And Recovery
 

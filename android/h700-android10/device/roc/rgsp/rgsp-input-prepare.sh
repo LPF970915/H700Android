@@ -9,4 +9,14 @@ for node in /dev/input/event*; do
     chmod 0660 "$node"
     restorecon "$node"
 done
-log -t RGSPInput "inherited evdev permissions restored; key calibration pending"
+for node in /dev/snd/controlC* /dev/snd/pcmC*; do
+    [ -c "$node" ] || continue
+    case "$node" in
+        /dev/snd/controlC*|/dev/snd/pcmC*) ;;
+        *) continue ;;
+    esac
+    chown system:audio "$node"
+    chmod 0660 "$node"
+    restorecon "$node"
+done
+log -t RGSPInput "inherited evdev and sound-node permissions restored; key calibration pending"

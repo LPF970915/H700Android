@@ -53,6 +53,13 @@ PRODUCT_COPY_FILES += \
 # Keep a visible local file browser and the ordinary, permission-gated installer.
 PRODUCT_PACKAGES += DocumentsUI PackageInstaller
 
+# IOmxStore requires a catalog even with the separate Codec2 software APEX.
+# Qualify software codecs first; do not advertise the donor's hardware codecs.
+PRODUCT_COPY_FILES += \
+    device/roc/rgsp/configs/media_codecs.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs.xml \
+    frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_audio.xml \
+    frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_video.xml
+
 # This product is RGSP-specific, not a shared H700 input profile.
 PRODUCT_COPY_FILES += \
     device/roc/rgsp/ANBERNIC-keys.kl:$(TARGET_COPY_OUT_SYSTEM)/usr/keylayout/Vendor_0001_Product_0001_Version_0100.kl \

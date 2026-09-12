@@ -7,4 +7,6 @@
 /dev/disp              0660   system     graphics
 /dev/graphics/fb0      0660   system     graphics
 /dev/input/event*     0660   root       input
+/dev/snd/controlC*    0660   system     audio
+/dev/snd/pcmC*        0660   system     audio
 firmware_directories /vendor/firmware/ /vendor/etc/firmware/ /firmware/image/

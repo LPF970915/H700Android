@@ -44,7 +44,7 @@ try {
   $separator = if ($commandText.EndsWith('&')) { ' ' } else { '; ' }
   $wire = "printf '\n${begin}\n'; ${commandText}${separator}rc=`$?; printf '\n${end}:%s\n' `"`$rc`""
   $serial.Write($wire + "`r")
-  $endWaitSeconds = if ($Command -match '(?i)\breboot\b') { 30 } else { 150 }
+  $endWaitSeconds = if ($Command -match '(?i)\breboot\b') { 30 } else { [Math]::Max(150, $CaptureSeconds) }
   $endDeadline=(Get-Date).AddSeconds($endWaitSeconds)
   while((Get-Date)-lt $endDeadline){ Read-Chunk; if($sb.ToString() -match ([regex]::Escape($end)+':\d+')){break}; Start-Sleep -Milliseconds 50 }
   if($sb.ToString() -notmatch ([regex]::Escape($end)+':(\d+)')) {

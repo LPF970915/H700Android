@@ -4,7 +4,8 @@ param(
     [Parameter(Mandatory = $true)][int]$DiskNumber,
     [Parameter(Mandatory = $true)][string]$BackupDirectory,
     [string]$PackageDirectory,
-    [string]$BootSnapshotDirectory
+    [string]$BootSnapshotDirectory,
+    [switch]$IncludeDataBackup
 )
 
 $ErrorActionPreference = 'Stop'
@@ -17,6 +18,9 @@ $raw = $null
 $locks = @()
 $exitCode = 1
 try {
+    if ($Mode -eq 'BackupBoot' -and $IncludeDataBackup) {
+        throw 'IncludeDataBackup requires Backup or Write mode.'
+    }
     $disk = Get-Disk -Number $DiskNumber
     if ($disk.BusType -ne 'USB' -or $disk.Size -ne 125069950976L -or
         $disk.PartitionStyle -ne 'GPT' -or $disk.IsBoot -or $disk.IsSystem -or
@@ -49,6 +53,15 @@ try {
         throw 'An unconsumed Android boot request exists.'
     }
     $receiptPath = Join-Path $backup 'backup.json'
+    $receipt = $null
+    if ($Mode -eq 'Write') {
+        $receipt = Get-Content -LiteralPath $receiptPath -Raw | ConvertFrom-Json
+        if ($receipt.disk_unique_id -ne $disk.UniqueId) { throw 'Reader identity changed since backup.' }
+        $hasDataBackup = @($receipt.ranges | Where-Object file -eq 'data.before.img').Count -eq 1
+        if ($IncludeDataBackup -and !$hasDataBackup) { throw 'Required data backup is missing.' }
+    } else {
+        $hasDataBackup = [bool]$IncludeDataBackup
+    }
     $ranges = @(
         @{ Name = 'gpt-head.bin'; Offset = 0L; Length = 1048576L },
         @{ Name = 'anboot.img'; Offset = 1048576L; Length = 268435456L },
@@ -56,6 +69,14 @@ try {
         @{ Name = 'vendor.before.img'; Offset = 8859418624L; Length = 2147483648L },
         @{ Name = 'gpt-tail.bin'; Offset = 125069934080L; Length = 16896L }
     )
+    if ($hasDataBackup) {
+        $ranges += @{ Name = 'data.before.img'; Offset = 11006902272L; Length = 17179869184L }
+    }
+    if ($Mode -eq 'Backup') {
+        $requiredBytes = ($ranges | ForEach-Object { [long]$_.Length } | Measure-Object -Sum).Sum + 2GB
+        $drive = [IO.DriveInfo]::new([IO.Path]::GetPathRoot($backup))
+        if ($drive.AvailableFreeSpace -lt $requiredBytes) { throw 'Insufficient backup disk space.' }
+    }
     $buffer = New-Object byte[] (4MB)
     function Hash-Range($stream, [long]$offset, [long]$length) {
         [void]$stream.Seek($offset, [IO.SeekOrigin]::Begin)
@@ -79,7 +100,7 @@ try {
     }
     $devicePath = "\\.\PhysicalDrive$DiskNumber"
     Write-Host "MODE=$Mode TARGET=$devicePath SERIAL=$($disk.SerialNumber)"
-    if ($Mode -in @('BackupBoot', 'Write')) {
+    if ($Mode -in @('Backup', 'BackupBoot', 'Write')) {
         Add-Type -TypeDefinition @'
 using System;
 using System.Runtime.InteropServices;
@@ -92,7 +113,8 @@ public static class RgspVolumeLock {
 }
 '@
         $toLock = @($parts[0])
-        if ($Mode -eq 'Write') { $toLock += @($parts[1], $parts[2]) }
+        if ($Mode -in @('Backup', 'Write')) { $toLock += @($parts[1], $parts[2]) }
+        if ($hasDataBackup) { $toLock += @($parts[3]) }
         foreach ($part in $toLock) {
             $volume = @($part.AccessPaths | Where-Object { $_ -like '\\?\Volume{*' })[0]
             if (!$volume) { throw 'Partition volume path missing.' }
@@ -149,8 +171,6 @@ public static class RgspVolumeLock {
         Write-Host 'TF2_BACKUP_OK'
     } else {
         if (!$PackageDirectory) { throw 'PackageDirectory required for Write.' }
-        $receipt = Get-Content -LiteralPath $receiptPath -Raw | ConvertFrom-Json
-        if ($receipt.disk_unique_id -ne $disk.UniqueId) { throw 'Reader identity changed since backup.' }
         $manifest = Get-Content -LiteralPath (Join-Path $PackageDirectory 'DEPLOYMENT_MANIFEST.json') -Raw | ConvertFrom-Json
         foreach ($name in @('system.raw.img', 'vendor.raw.img')) {
             $image = Join-Path $PackageDirectory $name
@@ -223,11 +243,14 @@ public static class RgspVolumeLock {
             $written += @{ image = $name; sha256 = $actual; partition = $i + 1 }
             Write-Host "READBACK_VERIFIED=$name SHA256=$actual"
         }
-        foreach ($name in @('gpt-head.bin', 'anboot.img', 'gpt-tail.bin')) {
+        $protectedNames = @('gpt-head.bin', 'anboot.img', 'gpt-tail.bin')
+        if ($hasDataBackup) { $protectedNames += 'data.before.img' }
+        foreach ($name in $protectedNames) {
             $r = @($receipt.ranges | Where-Object file -eq $name)[0]
             if ((Hash-Range $raw $r.offset $r.bytes) -ne $r.sha256) { throw "Protected range changed: $name" }
         }
-        @{ completed = (Get-Date).ToString('o'); written = $written; untouched_partitions = @(1, 4, 5) } |
+        @{ completed = (Get-Date).ToString('o'); written = $written
+            untouched_partitions = @(1, 4, 5); data_hash_verified = $hasDataBackup } |
             ConvertTo-Json -Depth 6 | Set-Content -LiteralPath (Join-Path $backup 'write.json') -Encoding UTF8
         Write-Host 'TF2_WRITE_READBACK_OK'
     }

@@ -14,7 +14,12 @@ $end = "__RGSP_FILE_${id}_END__"
 # Split markers in the command so terminal echo cannot masquerade as output.
 $command = "test -f '$RemotePath' && printf '\n__RGSP_FILE_%s_BEGIN__\n' '$id' && base64 '$RemotePath' && printf '\n__RGSP_FILE_%s_END__\n' '$id' && sha256sum '$RemotePath'"
 $helper = Join-Path $PSScriptRoot 'invoke_rgsp_serial_command.ps1'
-& ([Environment]::ProcessPath) -NoProfile -File $helper -Port $Port -ShellPath $ShellPath `
+$processPath = if ([string]::IsNullOrWhiteSpace([Environment]::ProcessPath)) {
+    (Get-Command pwsh.exe -ErrorAction Stop).Source
+} else {
+    [Environment]::ProcessPath
+}
+& $processPath -NoProfile -File $helper -Port $Port -ShellPath $ShellPath `
     -Command $command -TimeoutSeconds $TimeoutSeconds -OutputDirectory $logDir -Quiet
 if ($LASTEXITCODE -ne 0) { throw "Remote transfer failed: $LASTEXITCODE" }
 $log = Get-ChildItem -LiteralPath $logDir -Filter '*.log' | Select-Object -First 1

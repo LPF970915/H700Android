@@ -24,8 +24,16 @@ PRODUCT_COPY_FILES += \
     device/softwinner/cupid-common/configs/audio_platform_info.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_platform_info.xml \
     device/softwinner/cupid-common/configs/audio_effects.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_effects.xml \
     device/softwinner/cupid-common/configs/audio_policy_volumes_drc.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_volumes_drc.xml \
-    device/softwinner/cupid-common/configs/usb_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/usb_audio_policy_configuration.xml \
+    device/softwinner/cupid-common/configs/usb_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/usb_audio_policy_configuration.xml
+
+# Select at the source: inherited PRODUCT_COPY_FILES entries are expanded later.
+ifeq ($(TARGET_PRODUCT),h700_rgsp)
+PRODUCT_COPY_FILES += \
+    device/roc/rgsp/configs/audio_mixer_paths.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_mixer_paths.xml
+else
+PRODUCT_COPY_FILES += \
     device/softwinner/cupid-perf1/configs/audio_mixer_paths.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_mixer_paths.xml
+endif
 
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     ro.config.low_ram=true \
