@@ -47,7 +47,7 @@ try {
     catch [Threading.AbandonedMutexException] { $held = $true }
     if (!$held) { throw 'Another target-card IO operation is active.' }
     $targets = @(Get-Disk | Where-Object {
-        $_.BusType -eq 'USB' -and $_.SerialNumber.Trim() -eq '000000001539' -and $_.Size -eq 62239277056L
+        $_.BusType -eq 'USB' -and $_.SerialNumber.Trim() -eq '000000001539' -and $_.Size -eq 62914560000L
     })
     if ($targets.Count -ne 1) { throw 'Expected exactly one target card.' }
     $disk = $targets[0]
@@ -128,3 +128,4 @@ try {
     if ($held) { $mutex.ReleaseMutex() }
     if ($mutex) { $mutex.Dispose() }
 }
+

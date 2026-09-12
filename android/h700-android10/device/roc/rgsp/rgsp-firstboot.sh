@@ -38,7 +38,7 @@ expected=$(cat /system/etc/rgsp/leanback.sha256)
 # A request is an explicit choice for this RGSP, not an H700-wide default.
 # Installer/operator places only a known local APK at this fixed location.
 at4k=/rgsp-persist/provision/AT4K-launcher.apk
-at4k_sha=1315ef01d56511a80cb6bb4b9c58bfd3233c0e84cc1e82254cd0898d5dd26ca9
+at4k_sha=cd0568b8476cb8020e72c667444f8673b66e7081adbb305a3d9c8028028e7e89
 installed=$(pm path com.overdevs.at4k | sed -n 's/^package://p' | head -n 1)
 if [ -n "$installed" ]; then
     [ -f "$installed" ]
