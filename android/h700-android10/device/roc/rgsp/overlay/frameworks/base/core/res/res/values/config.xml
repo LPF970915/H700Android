@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Force TV UI mode - critical for D-pad focus visibility -->
+    <bool name="config_defaultUiModeTypeIsTelevision">true</bool>
+    
+    <!-- Hide navigation bar on TV devices -->
+    <bool name="config_showNavigationBar">false</bool>
+    
+    <!-- Always show focus highlights for D-pad navigation -->
+    <bool name="config_showNavigationBarAlways">false</bool>
+    
+    <!-- Enable hardware keyboard presence for focus mode -->
+    <bool name="config_hasPermanentDpad">true</bool>
+    
+    <!-- Touch mode disabled to force focus mode -->
+    <bool name="config_defaultInTouchMode">false</bool>
+    
+    <!-- Enable key repeat for D-pad -->
+    <integer name="config_longPressOnPowerBehavior">1</integer>
+    
+    <!-- Leanback launcher as default -->
+    <bool name="config_dreamsActivatedOnDockByDefault">false</bool>
+</resources>

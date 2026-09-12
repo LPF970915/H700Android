@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Force touchscreen to report as absent for focus navigation -->
+    <bool name="config_support_bluetooth_handsfree_profile">true</bool>
+</resources>
