@@ -5,6 +5,7 @@ import subprocess
 import tempfile
 import unittest
 import zlib
+from build_rgsp_compact_image import default_baseline
 
 ROOT = Path(__file__).resolve().parents[1]
 BUILD = Path("/home/lpf/rgsp-grow-build")
@@ -15,7 +16,7 @@ MIN_SIZE = START + SEED_SIZE + 1536
 
 
 def make_gpt(size):
-    with (ROOT / "out/rgsp-single-card-v3b-20260912/prefix-212m.bin").open("rb") as f:
+    with default_baseline().open("rb") as f:
         head = bytearray(f.read(2048))
     entries = bytearray(head[1024:])
     struct.pack_into("<Q", entries, 7 * 128 + 40, size // 512 - 4)

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- PackageManager applies this factory default before the first HOME launch.
+     Candidate activities are discovered at runtime; recovery launchers remain installed. -->
+<preferred-activities>
+    <item name="com.overdevs.at4k/.MainActivity">
+        <filter>
+            <action name="android.intent.action.MAIN" />
+            <cat name="android.intent.category.HOME" />
+            <cat name="android.intent.category.DEFAULT" />
+        </filter>
+    </item>
+</preferred-activities>

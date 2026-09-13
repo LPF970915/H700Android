@@ -6,15 +6,22 @@ input profiles.
 
 ## Current Baseline
 
-- Current baseline (2026-09-13): v5c single-card SettingsDpad candidate.
-  The user confirms Android/AT4K desktop startup and basic physical D-pad
-  navigation after Rufus flashing. Settings language selection, Files,
-  Wi-Fi keyboard entry and AT4K menu scrolling remain blocked.
+- Current integration baseline: v5e AT4KDefault. AT4K is the factory HOME,
+  with the corrected bottom shortcut row, menu scrolling and IMG_3111 as its
+  initial custom-image wallpaper. Other bundled images can be added later.
+- Accepted keyboard/Settings behavior, built-in gray focus navigation and
+  the single-console fix are retained. AT4K layout/wallpaper and injected
+  menu-navigation checks passed on the live device; complete fresh-flash
+  and physical-key acceptance still require testing.
+- The new ramdisk includes checked dirty-FAT/stale-FSInfo recovery.
+  Earlier v5d physically failed a reboot and must not be treated as reboot
+  qualified. v5e still needs two normal physical reboot checks after flashing.
 - UART reports successful GPT/FAT32 growth to about 96.93 GB of ROMS on the
   nominal 128 GB card. Android shared-storage exposure and file persistence
   remain unverified; the user sees 32G total in a storage screen.
-- This is a development checkpoint, not a release. No complete physical-card
-  readback was obtained for the current Rufus write.
+- This is a development integration checkpoint, not a production release.
+  The v5e baseline manifest is authoritative for offline verification status;
+  it does not establish physical boot qualification.
 - Archived Fix72 and failed September 11 card records remain historical
   evidence. The old 8 MiB writer/finalizer remain quarantined.
 - The Android 11 bring-up work is historical evidence only. Do not restart its
@@ -22,6 +29,11 @@ input profiles.
 
 Read these documents before changing images or device state:
 
+- `docs/H700_V5E_AT4K_BASELINE.md`
+- `docs/baselines/h700-v5e-at4k/README.md`
+- `docs/H700_AT4K_DEFAULT_HOME_20260914.md`
+- `docs/H700_AT4K_DOCK_PATCH_20260913.md`
+- `docs/H700_V5D_REBOOT_AND_VIDEO_20260913.md`
 - `docs/H700_V5C_USER_ACCEPTANCE_20260913.md`
 - `docs/H700_V5C_RUFUS_BOOT_HANDOFF_20260913.md`
 - `docs/baselines/h700-v5c-20260913/README.md`
@@ -44,10 +56,12 @@ Read these documents before changing images or device state:
   Do not write boot0, U-Boot, GPT or device data through ad hoc commands.
 - Retain `out/rgsp-fix72-wifi-profile/`, `out/rgsp-fix70-wifi-deployment/`,
   `out/tf2-deploy-20260907/`, `out/h700-android10-preflight/`, and the Fix67
-  payloads where retained. Preserve the current v5c image, manifest, WSL
-  source/build outputs and all available rollback inputs.
-- Full sources, images, private logs, APK inputs, and the WSL VHDX remain local
-  and are intentionally excluded from Git.
+  payloads where retained. Preserve the v5d packaging input, v5e output,
+  manifests, WSL source/build outputs and all available rollback inputs.
+  The old v5c image is no longer present locally.
+- Full upstream sources, complete images, private logs, signing keys and the
+  WSL VHDX remain local. The selected product APK, bundled wallpapers and
+  sanitized image manifests are versioned with the integration source.
 
 ## Active Tooling
 

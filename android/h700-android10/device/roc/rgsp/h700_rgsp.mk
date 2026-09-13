@@ -30,7 +30,17 @@ PRODUCT_COPY_FILES += \
     device/roc/rgsp/rgsp-input-prepare.sh:$(TARGET_COPY_OUT_VENDOR)/bin/rgsp-input-prepare.sh \
     device/roc/rgsp/rgsp-kmsg-start.sh:$(TARGET_COPY_OUT_VENDOR)/bin/rgsp-kmsg-start.sh
 
-PRODUCT_PACKAGES += rgsp_kmsg_logger RGSPLauncher AT4K
+PRODUCT_PACKAGES += rgsp_kmsg_logger RGSPLauncher AT4K RGSPNavigation
+
+# Select AT4K before the first HOME intent, independently of late IME provisioning.
+PRODUCT_COPY_FILES += \
+    device/roc/rgsp/configs/at4k-home.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/preferred-apps/at4k-home.xml
+
+# Keep originals browsable; additional JPEGs in this directory join the next image.
+PRODUCT_COPY_FILES += \
+    $(foreach image,$(wildcard device/roc/rgsp/wallpapers/*.jpg),$(image):$(TARGET_COPY_OUT_SYSTEM)/media/wallpapers/$(notdir $(image))) \
+    device/roc/rgsp/rgsp-wallpapers.sh:$(TARGET_COPY_OUT_SYSTEM)/bin/rgsp-wallpapers.sh \
+    device/roc/rgsp/rgsp-wallpapers.rc:$(TARGET_COPY_OUT_SYSTEM)/etc/init/rgsp-wallpapers.rc
 
 # Fetch the pinned AOSP source with tools/prepare_h700_leanback_ime.sh first.
 # Keep LatinIME available for recovery and future touch-capable devices.
@@ -46,6 +56,9 @@ PRODUCT_COPY_FILES += \
     device/roc/rgsp/prebuilts/local/set_rgsp_home.sh:$(TARGET_COPY_OUT_SYSTEM)/bin/set_rgsp_home.sh \
     device/roc/rgsp/rgsp-firstboot.sh:$(TARGET_COPY_OUT_SYSTEM)/bin/rgsp-firstboot.sh \
     device/roc/rgsp/rgsp-firstboot.rc:$(TARGET_COPY_OUT_SYSTEM)/etc/init/rgsp-firstboot.rc \
+    device/roc/rgsp/rgsp-navigation-defaults.sh:$(TARGET_COPY_OUT_SYSTEM)/bin/rgsp-navigation-defaults.sh \
+    device/roc/rgsp/rgsp-navigation-defaults.rc:$(TARGET_COPY_OUT_SYSTEM)/etc/init/rgsp-navigation-defaults.rc \
+    device/roc/rgsp/rgsp-single-console.rc:$(TARGET_COPY_OUT_SYSTEM)/etc/init/rgsp-single-console.rc \
     device/roc/rgsp/configs/leanback.sha256:$(TARGET_COPY_OUT_SYSTEM)/etc/rgsp/leanback.sha256 \
     device/roc/rgsp/configs/display-config.json:$(TARGET_COPY_OUT_VENDOR)/etc/dispconfigs/config.json \
     device/roc/rgsp/configs/h700-rgsp-lcd.json:$(TARGET_COPY_OUT_VENDOR)/etc/dispconfigs/h700-rgsp-lcd.json

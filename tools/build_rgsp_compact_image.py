@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build a compact universal-card candidate from the proven v3b boot baseline.
+"""Build a compact universal-card candidate from a hash-pinned local baseline.
 
 This runs in WSL and only accepts regular local image files. No card writes.
 """
@@ -22,7 +22,30 @@ ROOT = Path(__file__).resolve().parents[1]
 START = 28139585536
 ROMS_SIZE = 4 * 1024**3
 IMAGE_SIZE = START + ROMS_SIZE + 1536
-DEX_SHA = "590718211152c842b9f13d508d96671e66134c806442e4f23b91cdc9a7e10ed2"
+DEX_SHA = "e54181a4c6b8149d65199abe4bbb4231109bb425ab92bf793b3d5f7eb2e948b9"
+V5C_SHA = "cf481773dd2658a0a7307222f2a19679fd74c88a53923a0d72a13bfe7ef711cb"
+V5C_PREFIX_SHA = "a6798b27211ebe1148cd4d2125eef6ae4c55e21aeccd588d937fe2a18338ebcb"
+V5D_SHA = "96e31e46273dbe1882295e031e56bb3a7bb502b59482b26a09cf6db23cffc2e4"
+V5D_PREFIX_SHA = "aaf0558ae5062c3698d116f546c85320336689e3bfc6952b4cc7305f7d8d3da6"
+BASELINES = {
+    "H700_Android_SingleCard_v5c_SettingsDpad.img": (V5C_SHA, V5C_PREFIX_SHA),
+    "H700_Android_SingleCard_v5d_BootInput.img": (V5D_SHA, V5D_PREFIX_SHA),
+}
+
+
+def default_baseline():
+    for name in BASELINES:
+        path = ROOT/"out"/name
+        if path.is_file():
+            return path
+    raise FileNotFoundError("No pinned v5c/v5d packaging baseline is available")
+
+
+def baseline_identity(path):
+    try:
+        return BASELINES[path.name]
+    except KeyError:
+        raise ValueError("Unrecognized packaging baseline name") from None
 
 
 def sha(path):
@@ -78,24 +101,61 @@ def ramdisk(prefix, build, runtime):
     old_names = {e["name"] for e in entries}
     init = next(e for e in entries if e["name"]=="init")
     text = init["data"].decode()
+    old_hook = '/bin/sh /grow/auto-grow.sh || fail "capacity preparation failed"\n'
+    if text.count(old_hook) > 1:
+        raise ValueError("Duplicate baseline grow hook")
     marker = 'mount -t vfat -o rw "$ROMS_DEV" /single-card-roms ||'
     if text.count(marker)!=1:
         raise ValueError("Unexpected baseline init mount logic")
-    text = text.replace(marker,
-        '/bin/sh /grow/auto-grow.sh || fail "capacity preparation failed"\n\n'+marker)
+    if 'ROMS_DEV=/dev/block/mmcblk0p8' in text:
+        if text.count(old_hook) != 1:
+            raise ValueError("Existing Android ROMS handoff requires one grow hook")
+    else:
+        text = text.replace(old_hook, "")
+        text = text.replace(marker,
+            old_hook+
+            '# Android shutdown only enumerates /dev/block-backed mounts.\n'
+            'mkdir -p /dev/block\n'
+            'IFS=: read -r roms_major roms_minor < /sys/class/block/mmcblk0p8/dev\n'
+            'ROMS_DEV=/dev/block/mmcblk0p8\n'
+            'mknod "$ROMS_DEV" b "$roms_major" "$roms_minor" ||\n'
+            '    fail "unable to create Android ROMS block node"\n\n'+marker)
+    roms_bind = 'mount -o bind /single-card-roms /android-root/rgsp-persist'
+    roms_move = 'mount -o move /single-card-roms /android-root/rgsp-persist'
+    if text.count(roms_bind) + text.count(roms_move) != 1:
+        raise ValueError("Unexpected baseline ROMS mount handoff")
+    text = text.replace(roms_bind, roms_move)
+    if "LOG=/android-root/rgsp-persist/RGSP_SINGLE_CARD_BOOT.log" not in text:
+        text = text.replace(
+            "echo '[rgsp-single-card] Android root ready; switching root' >> \"$LOG\"",
+            "LOG=/android-root/rgsp-persist/RGSP_SINGLE_CARD_BOOT.log\n"
+            "echo '[rgsp-single-card] Android root ready; switching root' >> \"$LOG\"")
     console_marker = 'mount -t devtmpfs devtmpfs /dev 2>/dev/null || true'
-    text = text.replace(console_marker,console_marker+"""
+    if 'exec </dev/ttyS0 >/dev/ttyS0 2>&1' not in text:
+        text = text.replace(console_marker,console_marker+"""
 if [ -c /dev/ttyS0 ]; then
     exec </dev/ttyS0 >/dev/ttyS0 2>&1
 fi
 echo '[rgsp-single-card] universal v5 ramdisk running'
 """)
+    text = text.replace("universal v5 ramdisk running", "universal v5e ramdisk running")
+    text = text.replace("universal v5d ramdisk running", "universal v5e ramdisk running")
     init["data"] = text.encode()
     assert entries[-1]["name"] == "TRAILER!!!"
     entries = entries[:-1]
     old_names.remove("TRAILER!!!")
     def add(name, data=b"", directory=False):
-        if name in old_names: raise ValueError("Unexpected duplicate ramdisk path")
+        if name in old_names:
+            if name != "grow" and not name.startswith("grow/"):
+                raise ValueError("Unexpected duplicate ramdisk path")
+            entry = next(e for e in entries if e["name"] == name)
+            if directory != stat.S_ISDIR(entry["mode"]):
+                raise ValueError("Unexpected baseline grow entry type")
+            if not directory:
+                if not stat.S_ISREG(entry["mode"]):
+                    raise ValueError("Refusing non-regular grow payload")
+                entry["data"] = data
+            return
         entries.append(dict(name=name, ino=30000+len(entries),
             mode=(stat.S_IFDIR|0o755) if directory else (stat.S_IFREG|0o755),
             uid=0,gid=0,nlink=1,mtime=0,data=data,devmajor=0,devminor=0,
@@ -103,9 +163,19 @@ echo '[rgsp-single-card] universal v5 ramdisk running'
     add("grow",directory=True)
     add("grow/lib",directory=True)
     add("grow/auto-grow.sh",(ROOT/"tools/rgsp_auto_grow.sh").read_bytes())
+    add("grow/check-fat.sh",(ROOT/"tools/rgsp_check_fat.sh").read_bytes())
     for name in ["rgsp-grow-gpt","rgsp-grow-fat"]:
         add("grow/"+name,(build/name).read_bytes())
     add("grow/fatlabel",(runtime/"usr/sbin/fatlabel").read_bytes())
+    add("grow/fsck.fat",(runtime/"usr/sbin/fsck.fat").read_bytes())
+    add("grow/lib/gconv",directory=True)
+    add("grow/lib/gconv/gconv-modules",b"""alias CP850// IBM850//
+alias 850// IBM850//
+module IBM850// INTERNAL IBM850 1
+module INTERNAL IBM850// IBM850 1
+""")
+    add("grow/lib/gconv/IBM850.so",
+        (runtime/"usr/lib/aarch64-linux-gnu/gconv/IBM850.so").read_bytes())
     # Copy dependency SONAMEs as regular files, isolated from Android's Bionic.
     libs = ["ld-linux-aarch64.so.1","libc.so.6","libm.so.6","libparted.so.2",
         "libparted-fs-resize.so.0","libuuid.so.1","libblkid.so.1",
@@ -133,21 +203,29 @@ def main():
     parser=argparse.ArgumentParser()
     parser.add_argument("--system",type=Path,required=True)
     parser.add_argument("--output",type=Path,required=True)
+    parser.add_argument("--baseline",type=Path)
     parser.add_argument("--build",type=Path,default=Path("/home/lpf/rgsp-grow-build"))
     parser.add_argument("--runtime",type=Path,default=Path("/home/lpf/rgsp-grow-runtime/runtime"))
     a=parser.parse_args()
-    baseline=ROOT/"out/H700_Android_SingleCard_v3b.img"
+    baseline=a.baseline or default_baseline()
+    baseline_sha, prefix_sha = baseline_identity(baseline)
     if a.output.exists() or a.output.with_suffix(".partial").exists():
         raise ValueError("New output paths required")
-    if a.system.stat().st_size!=8589934592 or baseline.stat().st_size!=62239277056:
+    if a.system.stat().st_size!=8589934592 or baseline.stat().st_size!=IMAGE_SIZE:
         raise ValueError("Unexpected source lengths")
+    for path in (a.system, baseline):
+        if not path.is_file() or path.is_symlink():
+            raise ValueError("Only regular local image inputs are allowed")
+    print("VERIFYING_BASELINE_SHA256", baseline.name, flush=True)
+    if sha(baseline) != baseline_sha:
+        raise ValueError("Baseline does not match its pinned full-image hash")
     for path,offset in [(baseline,10959716352),(a.system,0)]:
         with path.open("rb") as f:
             f.seek(offset+1080)
             if f.read(2)!=b"\x53\xef": raise ValueError("Missing ext4 superblock: "+str(path))
     with baseline.open("rb") as f:
         prefix=bytearray(f.read(212*1024**2))
-    if hashlib.sha256(prefix).hexdigest()!="bcca9ba02e60cb34843d88fbe69be77ce69d309e0d1096421e12829a4b5743f5":
+    if hashlib.sha256(prefix).hexdigest()!=prefix_sha:
         raise ValueError("Unrecognized proven prefix")
     before=package(prefix[32800*512:])
     prefix=ramdisk(prefix,a.build,a.runtime)
@@ -194,7 +272,10 @@ def main():
         image=a.output.name,image_bytes=IMAGE_SIZE,sha256=digest,
         partitions=parts,ranges=ranges,at4k_dex_sha256=DEX_SHA,
         TV_UI_MODE_TYPE=4,auto_expand="GPT p8 plus FAT32, no formatting",
-        hardware_vendor_source="v3b",data_source="v3b valid ext4",
+        hardware_vendor_source=baseline.name+" (preserved v3b hardware)",
+        data_source=baseline.name+" empty ext4",
+        baseline=dict(image=baseline.name,sha256=baseline_sha,prefix_sha256=prefix_sha),
+        release="v5e AT4KDefault",
         boot_package=before,physical_boot_verified=False)
     a.output.with_suffix(".json").write_text(json.dumps(receipt,indent=2)+"\n")
     print(json.dumps(receipt,indent=2),flush=True)

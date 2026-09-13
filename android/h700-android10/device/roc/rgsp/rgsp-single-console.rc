@@ -1,0 +1,3 @@
+# The donor starts console too; keep the physically verified root UART owner.
+on property:init.svc.console=running
+    stop console

@@ -7,6 +7,7 @@ from pathlib import Path
 import subprocess
 import tempfile
 import unittest
+import xml.etree.ElementTree as ET
 
 from inspect_rgsp_apk import assess, parse_badging
 from audit_rgsp_services import package_paths
@@ -31,7 +32,11 @@ if command == "getprop":
 elif command == "id":
     output = str(s["uid"])
 elif command == "am":
-    output = str(s["user"])
+    if a[0] == "get-current-user":
+        output = str(s["user"])
+    else:
+        rc = 1 if s.get("fail_launch", False) else 0
+        output = "Status: error" if rc else "Status: ok"
 elif command == "cmd":
     output = s["home"]
 elif command == "settings":
@@ -45,7 +50,10 @@ elif command == "pm":
         s["packages"]["com.overdevs.at4k"] = s["at4k"]
         output = "Success"
     elif a[0] == "set-home-activity":
-        s["home"] = a[-1]
+        if s.get("fail_set_home", False) and a[-1] == "com.overdevs.at4k/.MainActivity":
+            rc = 1
+        else:
+            s["home"] = a[-1]
     else:
         rc = 2
 elif command == "ime":
@@ -175,6 +183,24 @@ class FirstbootTest(unittest.TestCase):
         self.assertNotEqual(self.run_script().returncode, 0)
         self.assertEqual(self.load()["ime"], LATIN)
 
+    def test_dock_update_hash_is_accepted(self):
+        text = self.script.read_text().replace(
+            "8c2a7cc5c7bcf08706ffc13f6a2140bc52305f82299703006bc08a9bc557cf08",
+            hashlib.sha256(b"dock APK fixture").hexdigest())
+        self.script.write_text(text)
+        self.apk.write_bytes(b"dock APK fixture")
+        self.assertEqual(self.run_script().returncode, 0)
+        self.assertEqual(self.load()["home"], AT4K)
+
+    def test_factory_wallpaper_apk_is_accepted(self):
+        text = self.script.read_text().replace(
+            "b2fa0343e903ad01c3854999dba70335ba4df5f5522dd931ed9d7189cf841a7d",
+            hashlib.sha256(b"factory APK fixture").hexdigest())
+        self.script.write_text(text)
+        self.apk.write_bytes(b"factory APK fixture")
+        self.assertEqual(self.run_script().returncode, 0)
+        self.assertEqual(self.load()["home"], AT4K)
+
     def test_install_local_apk_path(self):
         state = self.load()
         del state["packages"]["com.overdevs.at4k"]
@@ -194,6 +220,76 @@ class FirstbootTest(unittest.TestCase):
         self.assertEqual(state["home"], LAUNCHER)
         self.assertFalse((self.profile / "complete-v1").exists())
         self.assertFalse((self.profile / "lock").exists())
+
+
+class HomeDefaultsTest(unittest.TestCase):
+    setUp = FirstbootTest.setUp
+    save = FirstbootTest.save
+    load = FirstbootTest.load
+
+    def run_home(self, mode="at4k"):
+        script = (ROOT / "tools/set_rgsp_home.sh").read_text()
+        script = script.replace("export PATH=/system/bin:/vendor/bin",
+                                f"export PATH={self.bin}:/usr/bin:/bin")
+        script = script.replace("/data/local/tmp/rgsp-home.", str(self.root / "home."))
+        script = script.replace(
+            "8c2a7cc5c7bcf08706ffc13f6a2140bc52305f82299703006bc08a9bc557cf08",
+            hashlib.sha256(b"test fixture, not an APK").hexdigest())
+        path = self.root / "switch-home.sh"
+        path.write_text(script)
+        return subprocess.run(["sh", str(path), mode], text=True, capture_output=True,
+                              timeout=15, env={**os.environ, "MOCK_STATE": str(self.state)})
+
+    def test_home_xml_is_factory_home_only_with_dynamic_candidates(self):
+        product = ROOT / "android/h700-android10/device/roc/rgsp"
+        root = ET.parse(product / "configs/at4k-home.xml").getroot()
+        self.assertEqual(root.tag, "preferred-activities")
+        item, = root.findall("item")
+        self.assertEqual(item.attrib, {"name": AT4K})
+        self.assertEqual(item.findall("set"), [])
+        filt, = item.findall("filter")
+        self.assertEqual([(e.tag, e.get("name")) for e in filt], [
+            ("action", "android.intent.action.MAIN"),
+            ("cat", "android.intent.category.HOME"),
+            ("cat", "android.intent.category.DEFAULT")])
+        self.assertIn("configs/at4k-home.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/"
+                      "preferred-apps/at4k-home.xml",
+                      (product / "h700_rgsp.mk").read_text())
+        self.assertIn("system/etc/preferred-apps/at4k-home.xml",
+                      (ROOT / "tools/verify_rgsp_compact_image.py").read_text())
+
+    def test_dock_update_can_be_selected_without_touching_ime(self):
+        result = self.run_home()
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertIn("HOME_SWITCH_OK", result.stdout)
+        self.assertEqual(self.load()["home"], AT4K)
+        self.assertEqual(self.load()["ime"], LATIN)
+        self.assertIn(["pm", "set-home-activity", "--user", "0", AT4K],
+                      self.load()["calls"])
+
+    def test_unrecognized_apk_rejected_before_switch(self):
+        self.apk.write_bytes(b"unknown")
+        self.assertNotEqual(self.run_home().returncode, 0)
+        self.assertEqual(self.load()["home"], LAUNCHER)
+        self.assertFalse(any(c[:2] == ["pm", "set-home-activity"]
+                             for c in self.load()["calls"]))
+
+    def test_launch_failure_preserves_default(self):
+        self.save({**self.load(), "fail_launch": True})
+        self.assertNotEqual(self.run_home().returncode, 0)
+        self.assertEqual(self.load()["home"], LAUNCHER)
+
+    def test_switch_failure_restores_recovery_home(self):
+        self.save({**self.load(), "fail_set_home": True})
+        self.assertNotEqual(self.run_home().returncode, 0)
+        self.assertEqual(self.load()["home"], LAUNCHER)
+        self.assertIn(["pm", "set-home-activity", "--user", "0", LAUNCHER],
+                      self.load()["calls"])
+
+    def test_status_does_not_write_default(self):
+        self.assertEqual(self.run_home("status").returncode, 0)
+        self.assertEqual(self.load()["home"], LAUNCHER)
+        self.assertFalse([p for p in self.root.glob("home.*") if p.is_dir()])
 
 
 class ServiceInventoryTest(unittest.TestCase):

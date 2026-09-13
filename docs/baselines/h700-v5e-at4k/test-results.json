@@ -1,0 +1,27 @@
+{
+  "release": "v5e AT4KDefault",
+  "host_suites": [
+    {"suite": "test_rgsp_offline", "tests": 23, "result": "PASS"},
+    {"suite": "test_rgsp_wallpapers", "tests": 7, "result": "PASS"},
+    {"suite": "test_rgsp_dirty_fat", "tests": 13, "result": "PASS"},
+    {"suite": "test_rgsp_auto_grow", "tests": 5, "result": "PASS"},
+    {"suite": "test_rgsp_navigation", "tests": 6, "result": "PASS"},
+    {"suite": "test_rgsp_capacity", "tests": 7, "result": "PASS"}
+  ],
+  "host_total": 61,
+  "java_direction_cases": {"cases": 10, "result": "PASS"},
+  "packaged_arm_dirty_fat": {"tests": 13, "result": "PASS"},
+  "packaged_arm_mount_move_and_clean_unmount": "PASS",
+  "android_systemimage_build": "PASS",
+  "signed_apk_matches_built_system_apk": "PASS",
+  "apk_v2_v3_signatures_and_api29_verification": "PASS",
+  "live_apk_replacement_preserves_preferences": "PASS",
+  "live_unset_theme_initialization_and_app_restart": "PASS",
+  "live_home_intent_resolves_at4k": "PASS",
+  "live_dock_and_injected_menu_directions": "PASS",
+  "live_tests_are_not_fresh_flash_acceptance": true,
+  "physical_boot_verified": false,
+  "physical_reboot_verified": false,
+  "full_image_independent_verification": "PASS",
+  "full_image_verification_status_source": "image-manifest.json"
+}

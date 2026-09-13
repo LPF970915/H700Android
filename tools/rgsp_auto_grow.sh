@@ -13,7 +13,8 @@ fat() {
     /grow/lib/ld-linux-aarch64.so.1 --library-path /grow/lib \
         /grow/rgsp-grow-fat "$roms" "$@"
 }
-awk -v d="$disk" -v p="$roms" '$1==d || $1==p {bad=1} END {exit bad}' /proc/mounts ||
+awk -v d="$disk" -v p="$roms" \
+    '$1==d || $1==p || $1=="/dev/block/mmcblk0" || $1=="/dev/block/mmcblk0p8" {bad=1} END {exit bad}' /proc/mounts ||
     stop 'boot disk or ROMS already mounted'
 [ -b "$disk" ] && [ -b "$roms" ] && [ -b "$data" ] || stop 'missing boot partitions'
 /grow/rgsp-grow-gpt --check "$disk" || stop 'GPT check failed'
@@ -21,7 +22,8 @@ mkdir -p "$state"
 mount -t ext4 -o rw,noatime "$data" "$state" || stop 'Android data is not a mountable ext4 volume'
 trap 'umount "$state" || true' EXIT
 [ ! -f "$pending" ] || stop 'previous filesystem resize was interrupted; offline recovery required'
-/sbin/fsck.fat -n "$roms" || stop 'FAT32 consistency check failed before resize'
+/bin/sh /grow/check-fat.sh "$roms" "$state" ||
+    stop 'FAT32 consistency check failed before resize'
 rc=0
 /grow/rgsp-grow-gpt --apply "$disk" || rc=$?
 if [ "$rc" = 3 ]; then

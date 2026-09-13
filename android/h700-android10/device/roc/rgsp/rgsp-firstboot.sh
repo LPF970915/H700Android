@@ -41,17 +41,21 @@ at4k=/rgsp-persist/provision/AT4K-launcher.apk
 at4k_sha=700276cb79c1e11e974c3fc10ab2edebbb2d381e5af8c60a241b52d3f6e039af
 # Android's PRESIGNED packaging changes the ZIP, not the adapted dex/resources.
 packaged_sha=b6b2a3db335e5f2a27c284fc48ece6de9ccaf46a8886222aef07c17a26ee5d5b
+dock_sha=8c2a7cc5c7bcf08706ffc13f6a2140bc52305f82299703006bc08a9bc557cf08
+factory_sha=b2fa0343e903ad01c3854999dba70335ba4df5f5522dd931ed9d7189cf841a7d
 installed=$(pm path com.overdevs.at4k | sed -n 's/^package://p' | head -n 1)
 if [ -n "$installed" ]; then
     [ -f "$installed" ]
     installed_sha=$(sha256sum "$installed" | cut -d ' ' -f 1)
-    [ "$installed_sha" = "$packaged_sha" ] || [ "$installed_sha" = "$at4k_sha" ]
+    [ "$installed_sha" = "$packaged_sha" ] || [ "$installed_sha" = "$at4k_sha" ] \
+        || [ "$installed_sha" = "$dock_sha" ] || [ "$installed_sha" = "$factory_sha" ]
 else
     [ -f "$at4k" ] || { echo 'AT4K_LOCAL_APK_REQUIRED; no preferences changed' >&2; exit 1; }
-    [ "$(sha256sum "$at4k" | cut -d ' ' -f 1)" = "$at4k_sha" ]
+    staged_sha=$(sha256sum "$at4k" | cut -d ' ' -f 1)
+    [ "$staged_sha" = "$at4k_sha" ] || [ "$staged_sha" = "$factory_sha" ]
     # Keep the root-owned verified copy out of shared storage during install.
     cp "$at4k" "$state/AT4K-launcher.apk"
-    [ "$(sha256sum "$state/AT4K-launcher.apk" | cut -d ' ' -f 1)" = "$at4k_sha" ]
+    [ "$(sha256sum "$state/AT4K-launcher.apk" | cut -d ' ' -f 1)" = "$staged_sha" ]
     pm install --user 0 "$state/AT4K-launcher.apk"
     rm "$state/AT4K-launcher.apk"
 fi

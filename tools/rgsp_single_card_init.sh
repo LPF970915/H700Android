@@ -40,6 +40,12 @@ done
 [ -b "$DATA_DEV" ] || fail "missing $DATA_DEV"
 [ -b "$ROMS_DEV" ] || fail "missing $ROMS_DEV"
 
+# Android init's shutdown scan only recognizes /dev/block-backed mounts.
+mkdir -p /dev/block
+IFS=: read -r roms_major roms_minor < /sys/class/block/mmcblk0p8/dev
+ROMS_DEV=/dev/block/mmcblk0p8
+mknod "$ROMS_DEV" b "$roms_major" "$roms_minor" ||
+    fail 'unable to create Android ROMS block node'
 mount -t vfat -o rw "$ROMS_DEV" /single-card-roms ||
     fail "unable to mount $ROMS_DEV"
 touch "$LOG"
@@ -103,8 +109,9 @@ mount -t tmpfs -o mode=0755 tmpfs /android-root/mnt ||
 mount -t tmpfs -o mode=0755 tmpfs /android-root/debug_ramdisk ||
     fail 'unable to mount debug ramdisk'
 
-mount -o bind /single-card-roms /android-root/rgsp-persist ||
-    fail 'unable to bind persistent ROMS storage'
+mount -o move /single-card-roms /android-root/rgsp-persist ||
+    fail 'unable to move persistent ROMS storage'
+LOG=/android-root/rgsp-persist/RGSP_SINGLE_CARD_BOOT.log
 echo '[rgsp-single-card] Android root ready; switching root' >> "$LOG"
 
 INIT_STARTED_AT=$(awk '{printf "%d", $1 * 1000}' /proc/uptime)

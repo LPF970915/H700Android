@@ -1,9 +1,0 @@
-android_app_import {
-    name: "AT4K",
-    apk: "AT4K.apk",
-    certificate: "PRESIGNED",
-    privileged: true,
-    dex_preopt: {
-        enabled: false,
-    },
-}

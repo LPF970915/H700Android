@@ -27,7 +27,7 @@ elif name=="rgsp-grow-fat":
     else:
         rc=s["fat_apply"]
         if not rc: s["grown"]=True
-elif name=="fsck.fat":
+elif name in ("fsck.fat", "check-fat.sh"):
     rc=s["fsck"]
 p.write_text(json.dumps(s))
 sys.exit(rc)
@@ -47,6 +47,9 @@ class GrowShellTest(unittest.TestCase):
                      self.grow/"rgsp-grow-gpt", self.grow/"lib/ld-linux-aarch64.so.1"]:
             path.write_text(MOCK)
             path.chmod(0o755)
+        # auto-grow invokes its checker explicitly with /bin/sh.
+        (self.grow/"check-fat.sh").write_text(
+            f'#!/bin/sh\nexec "{self.bin}/fsck.fat" "$@"\n')
         self.state_dir = self.root/"data"
         self.pending = self.state_dir/".rgsp-fat-grow-pending-v1"
         self.state = self.root/"state.json"
