@@ -102,7 +102,7 @@ class FirstbootTest(unittest.TestCase):
             ("/system/etc/rgsp/leanback.sha256", str(self.hashfile)),
             ("/rgsp-persist/provision/AT4K-launcher.apk", str(self.staged)),
             ("/system/bin/set_rgsp_home.sh", str(self.helper)),
-            ("1315ef01d56511a80cb6bb4b9c58bfd3233c0e84cc1e82254cd0898d5dd26ca9",
+            ("700276cb79c1e11e974c3fc10ab2edebbb2d381e5af8c60a241b52d3f6e039af",
              hashlib.sha256(self.apk.read_bytes()).hexdigest()),
         ):
             script = script.replace(before, after)
@@ -157,6 +157,16 @@ class FirstbootTest(unittest.TestCase):
         self.apk.write_bytes(b"changed")
         self.assertNotEqual(self.run_script().returncode, 0)
         self.assertEqual(self.load()["ime"], LATIN)
+
+    def test_packaged_at4k_hash_is_accepted(self):
+        text = self.script.read_text()
+        text = text.replace(
+            "b6b2a3db335e5f2a27c284fc48ece6de9ccaf46a8886222aef07c17a26ee5d5b",
+            hashlib.sha256(b"packaged APK fixture").hexdigest())
+        self.script.write_text(text)
+        self.apk.write_bytes(b"packaged APK fixture")
+        self.assertEqual(self.run_script().returncode, 0)
+        self.assertEqual(self.load()["home"], AT4K)
 
     def test_missing_at4k_does_not_change_choices(self):
         state = self.load()

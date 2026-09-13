@@ -26,8 +26,10 @@ if [ "$mode" = at4k ]; then
         echo 'AT4K_NOT_INSTALLED: install the verified user APK as an ordinary app first.' >&2
         exit 1
     }
-    expected=1315ef01d56511a80cb6bb4b9c58bfd3233c0e84cc1e82254cd0898d5dd26ca9
-    [ "$(sha256sum "$apk" | cut -d ' ' -f 1)" = "$expected" ] || {
+    expected=b6b2a3db335e5f2a27c284fc48ece6de9ccaf46a8886222aef07c17a26ee5d5b
+    input_sha=700276cb79c1e11e974c3fc10ab2edebbb2d381e5af8c60a241b52d3f6e039af
+    actual_sha=$(sha256sum "$apk" | cut -d ' ' -f 1)
+    [ "$actual_sha" = "$expected" ] || [ "$actual_sha" = "$input_sha" ] || {
         echo 'AT4K_APK_HASH_MISMATCH: stop for review.' >&2
         exit 1
     }

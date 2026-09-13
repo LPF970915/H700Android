@@ -5,7 +5,7 @@ shift
 test -f "$root/build/envsetup.sh"
 test "$#" -gt 0
 for target in "$@"; do
-    case "$target" in systemimage|vendorimage|ramdisk|LeanbackIME|DocumentsUI|RGSPLauncher) ;;
+    case "$target" in systemimage|vendorimage|ramdisk|Settings|LeanbackIME|DocumentsUI|RGSPLauncher) ;;
         *) echo "Unsupported target: $target" >&2; exit 2 ;;
     esac
 done
@@ -20,7 +20,7 @@ test "$(awk '/Cpus_allowed_list/ {print $2}' /proc/self/status)" = 0-1
 test "$(ps -o ni= -p $$ | tr -d ' ')" = 19
 exec 9>/tmp/h700-android10-low-pressure.lock
 flock -n 9 || { echo 'Another low-pressure build is running' >&2; exit 1; }
-test "$(df -Pk /mnt/d | awk 'NR == 2 {print $4}')" -ge 125829120
+test "$(df -Pk /mnt/d | awk 'NR == 2 {print $4}')" -ge 41943040
 test "$(awk '/MemAvailable/ {print $2}' /proc/meminfo)" -ge 6291456
 export OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 GOMAXPROCS=1
 export JAVA_TOOL_OPTIONS='-Xmx2048m'

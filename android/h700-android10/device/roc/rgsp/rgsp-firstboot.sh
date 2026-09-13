@@ -1,5 +1,5 @@
 #!/system/bin/sh
-# Explicit local provisioning only. Never source commands from removable media.
+# Factory provisioning for the full-flash image. Never source removable commands.
 set -eu
 export PATH=/system/bin:/vendor/bin
 mode=${1:-status}
@@ -38,11 +38,14 @@ expected=$(cat /system/etc/rgsp/leanback.sha256)
 # A request is an explicit choice for this RGSP, not an H700-wide default.
 # Installer/operator places only a known local APK at this fixed location.
 at4k=/rgsp-persist/provision/AT4K-launcher.apk
-at4k_sha=cd0568b8476cb8020e72c667444f8673b66e7081adbb305a3d9c8028028e7e89
+at4k_sha=700276cb79c1e11e974c3fc10ab2edebbb2d381e5af8c60a241b52d3f6e039af
+# Android's PRESIGNED packaging changes the ZIP, not the adapted dex/resources.
+packaged_sha=b6b2a3db335e5f2a27c284fc48ece6de9ccaf46a8886222aef07c17a26ee5d5b
 installed=$(pm path com.overdevs.at4k | sed -n 's/^package://p' | head -n 1)
 if [ -n "$installed" ]; then
     [ -f "$installed" ]
-    [ "$(sha256sum "$installed" | cut -d ' ' -f 1)" = "$at4k_sha" ]
+    installed_sha=$(sha256sum "$installed" | cut -d ' ' -f 1)
+    [ "$installed_sha" = "$packaged_sha" ] || [ "$installed_sha" = "$at4k_sha" ]
 else
     [ -f "$at4k" ] || { echo 'AT4K_LOCAL_APK_REQUIRED; no preferences changed' >&2; exit 1; }
     [ "$(sha256sum "$at4k" | cut -d ' ' -f 1)" = "$at4k_sha" ]
@@ -77,4 +80,4 @@ printf 'rgsp-fix72-v1\n' > "$state/complete-v1.tmp"
 mv "$state/complete-v1.tmp" "$marker"
 trap 'rmdir "$state/lock"' EXIT
 echo 'FIRSTBOOT=complete'
-echo 'AT4K_LAYOUT=manual: Appearance / Desktop cards / Hide desktop cards'
+echo 'AT4K_LAYOUT=preserved-small-screen-build; physical verification required'

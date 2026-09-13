@@ -6,23 +6,26 @@ input profiles.
 
 ## Current Baseline
 
-- Frozen source baseline: `baseline/rgsp-fix72-offline-20260907`
-  (`e3566a9cfbf0d86dbb576631497adc6ea5ee94ce`).
-- Current candidate: Fix72 offline package. It includes the Fix70 Wi-Fi/HOME
-  deployment path and Fix71 calibrated basic A/DPAD behavior.
-- The September 11, 2026 Scheme-A card failed its latest main-slot boot test:
-  the user reports a black screen with no visible response to the power button.
-  The retained partition readback log predates the 8 MiB boot-area capture;
-  it does not qualify the revised boot-area write or the whole card.
-  A fresh 22:31 read-only capture confirms Boot0-area bytes are present,
-  but both Brandy boot-package candidate locations overlap Android boot and
-  contain no TOC1 header. The old 8 MiB writer/finalizer are quarantined.
-  See `docs/H700_ANDROID10_SINGLE_CARD_FAILURE_20260911.md`.
+- Current baseline (2026-09-13): v5c single-card SettingsDpad candidate.
+  The user confirms Android/AT4K desktop startup and basic physical D-pad
+  navigation after Rufus flashing. Settings language selection, Files,
+  Wi-Fi keyboard entry and AT4K menu scrolling remain blocked.
+- UART reports successful GPT/FAT32 growth to about 96.93 GB of ROMS on the
+  nominal 128 GB card. Android shared-storage exposure and file persistence
+  remain unverified; the user sees 32G total in a storage screen.
+- This is a development checkpoint, not a release. No complete physical-card
+  readback was obtained for the current Rufus write.
+- Archived Fix72 and failed September 11 card records remain historical
+  evidence. The old 8 MiB writer/finalizer remain quarantined.
 - The Android 11 bring-up work is historical evidence only. Do not restart its
   framework-bypass patch chain.
 
 Read these documents before changing images or device state:
 
+- `docs/H700_V5C_USER_ACCEPTANCE_20260913.md`
+- `docs/H700_V5C_RUFUS_BOOT_HANDOFF_20260913.md`
+- `docs/baselines/h700-v5c-20260913/README.md`
+- `docs/H700_SINGLE_CARD_V5_BUILD_AND_ACCEPTANCE_20260912.md`
 - `docs/H700_ANDROID10_FIX72_OFFLINE_CANDIDATE_20260907.md`
 - `docs/H700_ANDROID10_FIX70_WIFI_HOME_20260907.md`
 - `docs/H700_ANDROID10_FIX71_INPUT_DISPLAY_20260907.md`
@@ -35,12 +38,14 @@ Read these documents before changing images or device state:
 
 - Build only through `tools/build_h700_low_pressure.ps1 -Execute`. It constrains
   compilation to CPU 0-1, aggregate one CPU, `-j1`, 6 GiB RAM and 512 MiB swap.
-- Use `tools/invoke_rgsp_tf2_guarded_deploy.ps1` for device deployment. Do not
-  write TF1, U-Boot, boot0, GPT, or device data through ad hoc commands.
+- The old TF2 guarded deployment tool is for the historical dual-card layout,
+  not the current eight-partition single-card product. Diagnose and validate
+  reversible runtime changes first; rebuild and flash only after acceptance.
+  Do not write boot0, U-Boot, GPT or device data through ad hoc commands.
 - Retain `out/rgsp-fix72-wifi-profile/`, `out/rgsp-fix70-wifi-deployment/`,
   `out/tf2-deploy-20260907/`, `out/h700-android10-preflight/`, and the Fix67
-  payloads. They are the current candidate, rollback inputs, and protected
-  handoff chain.
+  payloads where retained. Preserve the current v5c image, manifest, WSL
+  source/build outputs and all available rollback inputs.
 - Full sources, images, private logs, APK inputs, and the WSL VHDX remain local
   and are intentionally excluded from Git.
 
@@ -67,7 +72,8 @@ separate follow-up work.
 ## Release Boundary
 
 The current priority is to qualify the Scheme-A single-card Android image on
-the original RGSP. The intended 64GB layout contains the preserved H700 boot
+the original RGSP. The compact image requires at least 32,434,554,368 actual
+bytes and targets 64 GB or larger supported cards. It contains the H700 boot
 payload, Android boot/system/vendor/data, and a FAT32 `ROMS` partition.
 Actual boot-area contents must be read back before another write. The second TF
 slot is expected to remain optional expansion storage, but that behavior must

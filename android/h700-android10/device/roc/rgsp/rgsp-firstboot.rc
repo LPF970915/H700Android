@@ -1,6 +1,6 @@
-# An installer must explicitly request this for the current RGSP. No automatic
-# provisioning of existing data, no boot-time APK replacement or network setup.
-on property:sys.boot_completed=1 && property:sys.rgsp.firstboot=1
+# Factory defaults for this full-flash product. The script's completion marker
+# preserves later user choices. Do not deploy this RC to unprovisioned live data.
+on property:sys.boot_completed=1
     start rgsp-firstboot
 
 service rgsp-firstboot /system/bin/sh /system/bin/rgsp-firstboot.sh apply
