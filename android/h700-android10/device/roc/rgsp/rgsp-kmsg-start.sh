@@ -2,7 +2,9 @@
 set -eu
 export PATH=/system/bin:/vendor/bin
 
-LOG=/rgsp-persist/RGSP_ANDROID_KMSG_BOUNDED.log
+LOG=/data/rgsp-persist/RGSP_ANDROID_KMSG_BOUNDED.log
+mkdir -p /data/rgsp-persist
+chmod 0700 /data/rgsp-persist
 /vendor/bin/rgsp_kmsg_logger "$LOG" &
 reader=$!
 trap 'kill "$reader" 2>/dev/null || true; wait "$reader" 2>/dev/null || true' EXIT

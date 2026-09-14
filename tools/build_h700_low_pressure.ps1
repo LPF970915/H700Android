@@ -2,7 +2,7 @@
 param(
     [string]$Distro = 'Ubuntu',
     [string]$SourceRoot = '/home/lpf/h700-android10/android',
-[ValidateSet('systemimage', 'vendorimage', 'ramdisk', 'Settings', 'LeanbackIME', 'DocumentsUI', 'RGSPLauncher')]
+[ValidateSet('systemimage', 'vendorimage', 'ramdisk', 'vold', 'Settings', 'LeanbackIME', 'DocumentsUI', 'RGSPLauncher')]
     [string[]]$Targets = @('systemimage', 'vendorimage', 'ramdisk'),
     [switch]$Execute
 )

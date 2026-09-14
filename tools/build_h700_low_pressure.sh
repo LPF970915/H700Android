@@ -5,7 +5,7 @@ shift
 test -f "$root/build/envsetup.sh"
 test "$#" -gt 0
 for target in "$@"; do
-    case "$target" in systemimage|vendorimage|ramdisk|Settings|LeanbackIME|DocumentsUI|RGSPLauncher) ;;
+    case "$target" in systemimage|vendorimage|ramdisk|vold|Settings|LeanbackIME|DocumentsUI|RGSPLauncher) ;;
         *) echo "Unsupported target: $target" >&2; exit 2 ;;
     esac
 done

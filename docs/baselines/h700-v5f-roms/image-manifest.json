@@ -1,0 +1,170 @@
+{
+  "status": "OFFLINE_VERIFIED_READY_FOR_FLASH",
+  "image": "H700_Android_SingleCard_v5f_ROMSPublic.img",
+  "image_bytes": 32434554368,
+  "sha256": "fed34834be77931bc38f1bf925bf66451c242c2b5dc6bde75e7a107e55be21bb",
+  "partitions": [
+    {
+      "number": 1,
+      "name": "special",
+      "start": 37748736,
+      "end_exclusive": 104857600
+    },
+    {
+      "number": 2,
+      "name": "boot-resource",
+      "start": 104857600,
+      "end_exclusive": 138412032
+    },
+    {
+      "number": 3,
+      "name": "env",
+      "start": 138412032,
+      "end_exclusive": 155189248
+    },
+    {
+      "number": 4,
+      "name": "boot",
+      "start": 155189248,
+      "end_exclusive": 222298112
+    },
+    {
+      "number": 5,
+      "name": "system",
+      "start": 222298112,
+      "end_exclusive": 8812232704
+    },
+    {
+      "number": 6,
+      "name": "vendor",
+      "start": 8812232704,
+      "end_exclusive": 10959716352
+    },
+    {
+      "number": 7,
+      "name": "data",
+      "start": 10959716352,
+      "end_exclusive": 28139585536
+    },
+    {
+      "number": 8,
+      "name": "ROMS",
+      "start": 28139585536,
+      "end_exclusive": 32434552832
+    }
+  ],
+  "ranges": [
+    {
+      "name": "prefix",
+      "offset": 0,
+      "bytes": 222298112,
+      "sha256": "b2484137c531bb9b87d15bf4d0b10fafd8de685112504933c9a0c1208981460a"
+    },
+    {
+      "name": "system",
+      "offset": 222298112,
+      "bytes": 8589934592,
+      "sha256": "09f78472df73ae618e5120a74188e91885e95a3bf2dfbd9640475fbce7d99c9c"
+    },
+    {
+      "name": "vendor",
+      "offset": 8812232704,
+      "bytes": 2147483648,
+      "sha256": "d0a7a9b31c01989fdb99d105714badb0ae9ac2500090e87aa8d827c9dfc8424f"
+    },
+    {
+      "name": "data",
+      "offset": 10959716352,
+      "bytes": 17179869184,
+      "sha256": "e672795e0480568d736f0ece45e48f46d987509baec75e32d2a0fdf47de2253f"
+    }
+  ],
+  "at4k_dex_sha256": "e54181a4c6b8149d65199abe4bbb4231109bb425ab92bf793b3d5f7eb2e948b9",
+  "TV_UI_MODE_TYPE": 4,
+  "auto_expand": "GPT p8 plus FAT32, no formatting",
+  "hardware_vendor_source": "/home/lpf/rgsp-grow-build/vendor.raw.v5f.img",
+  "data_source": "H700_Android_SingleCard_v5d_BootInput.img empty ext4",
+  "baseline": {
+    "image": "H700_Android_SingleCard_v5d_BootInput.img",
+    "sha256": "96e31e46273dbe1882295e031e56bb3a7bb502b59482b26a09cf6db23cffc2e4",
+    "prefix_sha256": "aaf0558ae5062c3698d116f546c85320336689e3bfc6952b4cc7305f7d8d3da6"
+  },
+  "release": "v5f ROMSPublic",
+  "roms_vold": true,
+  "boot_package": {
+    "bytes": 1310720,
+    "sha256": "957929afa2879e18ff758d93eafa98879b21aec70dedcb731d7862a2c20f075c",
+    "items": [
+      {
+        "name": "u-boot",
+        "offset": 2048,
+        "bytes": 1048576,
+        "sha256": "a11271e1276173cee48bd5705d068fd8446cfc0ffb43fca70b3b6808c2e9d0db"
+      },
+      {
+        "name": "monitor",
+        "offset": 1050624,
+        "bytes": 107216,
+        "sha256": "ba5a3412aed772abd262048cde574555f5cb0638a2180ce414f603702ee50788"
+      },
+      {
+        "name": "dtbo",
+        "offset": 1158144,
+        "bytes": 2336,
+        "sha256": "4bee281701610f96dcbdd1d38cb8df28386224d8c68b668b9a7a7a9df8e73ec2"
+      },
+      {
+        "name": "dtb",
+        "offset": 1161216,
+        "bytes": 143872,
+        "sha256": "61c9b4e02d01931c57a8d28cd328e7cdd7f66a9267f7a1d5de96635896c6af35"
+      }
+    ]
+  },
+  "physical_boot_verified": false,
+  "system_components": {
+    "at4k": {
+      "apk_sha256": "b2fa0343e903ad01c3854999dba70335ba4df5f5522dd931ed9d7189cf841a7d",
+      "dex_sha256": "e54181a4c6b8149d65199abe4bbb4231109bb425ab92bf793b3d5f7eb2e948b9",
+      "resources_sha256": "9cafe0ec2ec20680e2fe319dceae5ed1f5a42bcb6c92585492d464ea63b0d8f9",
+      "factory_home": "com.overdevs.at4k/.MainActivity",
+      "factory_theme": "customi",
+      "factory_wallpaper": "IMG_3111.jpg",
+      "wallpaper_sha256": "0d99ad08346620e240fa6eb7e765bb55996d4a311c8141a209626e08cad88997"
+    },
+    "navigation": {
+      "package": "com.roc.rgsp.navtrial",
+      "version": "1.0",
+      "apk_sha256": "d6e417bbc76be29962eaf9eab4dee7a33101203e85df10ea666d7c7d87ba9b56",
+      "factory_enabled_once": true,
+      "implementation": "scoped accessibility overlay, gray fill"
+    },
+    "leanback_apk_sha256": "2a57b52cbac36d09138f7d94ba43f5d7fa9c4175966f7f1b43bb004b1a83ff18",
+    "settings_apk_sha256": "f1756b7dca7b92e4b3946c9b66701aa289363b8646e2b1b5b8cae25be03bfc83",
+    "roms": {
+      "vold_sha256": "9869fa1e7c4f9584504ef8ffa407381fd9236d711b7b917bd3bab6cb02d012ce",
+      "services_jar_sha256": "299d97f020f97ca4bfc400773870983f52df8fa8b036ae245640cdad58b04413",
+      "handoff_sha256": "e5dce65ed9eaa0ff9a4828b52219ee9ff42f2c0dc03eeaa79c9ba24f5ddb71e5",
+      "volume": "public:179,8",
+      "label": "ROMS",
+      "primary": false,
+      "adoptable": false,
+      "boot_card_format_and_repartition": "denied",
+      "logs": "/data/rgsp-persist"
+    }
+  },
+  "offline_checks": [
+    "GPT_CRC_AND_BOUNDS",
+    "BOOT0_TOC_KERNEL_DTB_PRESERVED",
+    "PACKED_RAMDISK_AND_ARM_RUNTIME",
+    "FOUR_FILESYSTEMS_CLEAN",
+    "TV_MODE_4_DPAD_TRUE_TOUCH_FALSE",
+    "AT4K_ADAPTED_DEX_RESOURCES_AND_FACTORY_DEFAULT",
+    "DIRTY_AND_STALE_FSINFO_RECOVERY_AND_ROMS_SHUTDOWN_PATH",
+    "BUNDLED_WALLPAPER_AND_FIRST_THEME_DEFAULT",
+    "BUILTIN_GRAY_DPAD_NAVIGATION_AND_SINGLE_CONSOLE",
+    "ACCEPTED_LEANBACK_AND_SETTINGS_APK_HASHES",
+    "FULL_IMAGE_SHA256",
+    "ROMS_PROTECTED_VOLD_VISIBLE_FRAMEWORK_AND_SINGLE_MOUNT_OWNER"
+  ]
+}

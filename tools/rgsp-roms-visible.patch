@@ -1,0 +1,16 @@
+diff -ruN original/services/core/java/com/android/server/StorageManagerService.java patched/services/core/java/com/android/server/StorageManagerService.java
+--- original/services/core/java/com/android/server/StorageManagerService.java	2026-09-14 10:38:03.663547800 +0800
++++ patched/services/core/java/com/android/server/StorageManagerService.java	2026-09-14 10:38:22.293233400 +0800
+@@ -1282,7 +1282,11 @@
+ 
+             // Adoptable public disks are visible to apps, since they meet
+             // public API requirement of being in a stable location.
+-            if (vol.disk.isAdoptable()) {
++            // RGSP ROMS is stable shared storage, not an adoptable boot card.
++            final boolean rgspRoms = "rgsp".equals(SystemProperties.get("ro.product.device"))
++                    && "disk:179,0".equals(vol.disk.getId())
++                    && "public:179,8".equals(vol.id);
++            if (vol.disk.isAdoptable() || rgspRoms) {
+                 vol.mountFlags |= VolumeInfo.MOUNT_FLAG_VISIBLE;
+             }
+ 

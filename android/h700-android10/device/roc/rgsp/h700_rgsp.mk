@@ -32,6 +32,10 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_PACKAGES += rgsp_kmsg_logger RGSPLauncher AT4K RGSPNavigation
 
+PRODUCT_COPY_FILES += \
+    device/roc/rgsp/rgsp-roms-handoff.sh:$(TARGET_COPY_OUT_SYSTEM)/bin/rgsp-roms-handoff.sh \
+    device/roc/rgsp/rgsp-roms-handoff.rc:$(TARGET_COPY_OUT_SYSTEM)/etc/init/rgsp-roms-handoff.rc
+
 # Select AT4K before the first HOME intent, independently of late IME provisioning.
 PRODUCT_COPY_FILES += \
     device/roc/rgsp/configs/at4k-home.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/preferred-apps/at4k-home.xml

@@ -108,7 +108,7 @@ class FirstbootTest(unittest.TestCase):
             ("export PATH=/system/bin:/vendor/bin", f"export PATH={self.bin}:/usr/bin:/bin"),
             ("/data/local/rgsp-firstboot", str(self.profile)),
             ("/system/etc/rgsp/leanback.sha256", str(self.hashfile)),
-            ("/rgsp-persist/provision/AT4K-launcher.apk", str(self.staged)),
+            ("/data/rgsp-persist/provision/AT4K-launcher.apk", str(self.staged)),
             ("/system/bin/set_rgsp_home.sh", str(self.helper)),
             ("700276cb79c1e11e974c3fc10ab2edebbb2d381e5af8c60a241b52d3f6e039af",
              hashlib.sha256(self.apk.read_bytes()).hexdigest()),

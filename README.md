@@ -6,7 +6,7 @@ input profiles.
 
 ## Current Baseline
 
-- Current integration baseline: v5e AT4KDefault. AT4K is the factory HOME,
+- Current integration baseline: v5f ROMSPublic. AT4K is the factory HOME,
   with the corrected bottom shortcut row, menu scrolling and IMG_3111 as its
   initial custom-image wallpaper. Other bundled images can be added later.
 - Accepted keyboard/Settings behavior, built-in gray focus navigation and
@@ -15,12 +15,14 @@ input profiles.
   and physical-key acceptance still require testing.
 - The new ramdisk includes checked dirty-FAT/stale-FSInfo recovery.
   Earlier v5d physically failed a reboot and must not be treated as reboot
-  qualified. v5e still needs two normal physical reboot checks after flashing.
-- UART reports successful GPT/FAT32 growth to about 96.93 GB of ROMS on the
-  nominal 128 GB card. Android shared-storage exposure and file persistence
-  remain unverified; the user sees 32G total in a storage screen.
+  qualified. v5f still needs two normal physical reboot checks after flashing.
+- ROMS is now a visible portable volume managed by protected vold. The live
+  device passed ordinary-app SAF read/write/rename/delete and remount
+  persistence checks, showing about 96.91 GB for ROMS on the tested card.
+  Internal app storage remains separate; its nominal 32 GB summary is not
+  whole-card capacity. New ramdisk logs use private data instead of ROMS.
 - This is a development integration checkpoint, not a production release.
-  The v5e baseline manifest is authoritative for offline verification status;
+  The v5f baseline manifest is authoritative for offline verification status;
   it does not establish physical boot qualification.
 - Archived Fix72 and failed September 11 card records remain historical
   evidence. The old 8 MiB writer/finalizer remain quarantined.
@@ -29,6 +31,10 @@ input profiles.
 
 Read these documents before changing images or device state:
 
+- `docs/H700_V5F_ROMS_BASELINE.md`
+- `docs/baselines/h700-v5f-roms/README.md`
+- `docs/H700_ROMS_PUBLIC_STORAGE_20260914.md`
+- `docs/H700_STORAGE_RUNTIME_DIAGNOSIS_20260914.md`
 - `docs/H700_V5E_AT4K_BASELINE.md`
 - `docs/baselines/h700-v5e-at4k/README.md`
 - `docs/H700_AT4K_DEFAULT_HOME_20260914.md`
@@ -56,7 +62,7 @@ Read these documents before changing images or device state:
   Do not write boot0, U-Boot, GPT or device data through ad hoc commands.
 - Retain `out/rgsp-fix72-wifi-profile/`, `out/rgsp-fix70-wifi-deployment/`,
   `out/tf2-deploy-20260907/`, `out/h700-android10-preflight/`, and the Fix67
-  payloads where retained. Preserve the v5d packaging input, v5e output,
+  payloads where retained. Preserve the v5d packaging input, v5e/v5f outputs,
   manifests, WSL source/build outputs and all available rollback inputs.
   The old v5c image is no longer present locally.
 - Full upstream sources, complete images, private logs, signing keys and the

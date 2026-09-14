@@ -90,46 +90,43 @@ def copy_range(source, out, offset, count, dest=None):
     return digest.hexdigest()
 
 
-def ramdisk(prefix, build, runtime):
-    original = bytes(prefix[148*1024**2:212*1024**2])
-    template = build/"boot-template.img"
-    template.write_bytes(original)
-    _, h = read_header(template)
-    offsets = component_offsets(h)
-    start = offsets["ramdisk"]
-    entries = parse(gzip.decompress(original[start:start+h["ramdisk_size"]]))
-    old_names = {e["name"] for e in entries}
-    init = next(e for e in entries if e["name"]=="init")
-    text = init["data"].decode()
+def prepare_init(text, roms_vold=False):
     old_hook = '/bin/sh /grow/auto-grow.sh || fail "capacity preparation failed"\n'
     if text.count(old_hook) > 1:
         raise ValueError("Duplicate baseline grow hook")
     marker = 'mount -t vfat -o rw "$ROMS_DEV" /single-card-roms ||'
-    if text.count(marker)!=1:
+    if text.count(marker) != 1:
         raise ValueError("Unexpected baseline init mount logic")
-    if 'ROMS_DEV=/dev/block/mmcblk0p8' in text:
-        if text.count(old_hook) != 1:
-            raise ValueError("Existing Android ROMS handoff requires one grow hook")
+    if roms_vold:
+        text = (ROOT/"tools/rgsp_single_card_init.sh").read_text()
+        system_mount = 'mount -t ext4 -o ro "$SYSTEM_DEV" /android-root ||'
+        if text.count(system_mount) != 1 or old_hook in text or "mount -t vfat" in text:
+            raise ValueError("Unexpected canonical ROMS delegation init")
+        text = text.replace(system_mount, old_hook + "\n" + system_mount)
     else:
-        text = text.replace(old_hook, "")
-        text = text.replace(marker,
-            old_hook+
-            '# Android shutdown only enumerates /dev/block-backed mounts.\n'
-            'mkdir -p /dev/block\n'
-            'IFS=: read -r roms_major roms_minor < /sys/class/block/mmcblk0p8/dev\n'
-            'ROMS_DEV=/dev/block/mmcblk0p8\n'
-            'mknod "$ROMS_DEV" b "$roms_major" "$roms_minor" ||\n'
-            '    fail "unable to create Android ROMS block node"\n\n'+marker)
-    roms_bind = 'mount -o bind /single-card-roms /android-root/rgsp-persist'
-    roms_move = 'mount -o move /single-card-roms /android-root/rgsp-persist'
-    if text.count(roms_bind) + text.count(roms_move) != 1:
-        raise ValueError("Unexpected baseline ROMS mount handoff")
-    text = text.replace(roms_bind, roms_move)
-    if "LOG=/android-root/rgsp-persist/RGSP_SINGLE_CARD_BOOT.log" not in text:
-        text = text.replace(
-            "echo '[rgsp-single-card] Android root ready; switching root' >> \"$LOG\"",
-            "LOG=/android-root/rgsp-persist/RGSP_SINGLE_CARD_BOOT.log\n"
-            "echo '[rgsp-single-card] Android root ready; switching root' >> \"$LOG\"")
+        if 'ROMS_DEV=/dev/block/mmcblk0p8' in text:
+            if text.count(old_hook) != 1:
+                raise ValueError("Existing Android ROMS handoff requires one grow hook")
+        else:
+            text = text.replace(old_hook, "")
+            text = text.replace(marker,
+                old_hook+
+                '# Android shutdown only enumerates /dev/block-backed mounts.\n'
+                'mkdir -p /dev/block\n'
+                'IFS=: read -r roms_major roms_minor < /sys/class/block/mmcblk0p8/dev\n'
+                'ROMS_DEV=/dev/block/mmcblk0p8\n'
+                'mknod "$ROMS_DEV" b "$roms_major" "$roms_minor" ||\n'
+                '    fail "unable to create Android ROMS block node"\n\n'+marker)
+        roms_bind = 'mount -o bind /single-card-roms /android-root/rgsp-persist'
+        roms_move = 'mount -o move /single-card-roms /android-root/rgsp-persist'
+        if text.count(roms_bind) + text.count(roms_move) != 1:
+            raise ValueError("Unexpected baseline ROMS mount handoff")
+        text = text.replace(roms_bind, roms_move)
+        if "LOG=/android-root/rgsp-persist/RGSP_SINGLE_CARD_BOOT.log" not in text:
+            text = text.replace(
+                "echo '[rgsp-single-card] Android root ready; switching root' >> \"$LOG\"",
+                "LOG=/android-root/rgsp-persist/RGSP_SINGLE_CARD_BOOT.log\n"
+                "echo '[rgsp-single-card] Android root ready; switching root' >> \"$LOG\"")
     console_marker = 'mount -t devtmpfs devtmpfs /dev 2>/dev/null || true'
     if 'exec </dev/ttyS0 >/dev/ttyS0 2>&1' not in text:
         text = text.replace(console_marker,console_marker+"""
@@ -140,7 +137,22 @@ echo '[rgsp-single-card] universal v5 ramdisk running'
 """)
     text = text.replace("universal v5 ramdisk running", "universal v5e ramdisk running")
     text = text.replace("universal v5d ramdisk running", "universal v5e ramdisk running")
-    init["data"] = text.encode()
+    if roms_vold:
+        text = text.replace("universal v5e ramdisk running", "v5f ROMS vold ramdisk running")
+    return text
+
+
+def ramdisk(prefix, build, runtime, roms_vold=False):
+    original = bytes(prefix[148*1024**2:212*1024**2])
+    template = build/"boot-template.img"
+    template.write_bytes(original)
+    _, h = read_header(template)
+    offsets = component_offsets(h)
+    start = offsets["ramdisk"]
+    entries = parse(gzip.decompress(original[start:start+h["ramdisk_size"]]))
+    old_names = {e["name"] for e in entries}
+    init = next(e for e in entries if e["name"]=="init")
+    init["data"] = prepare_init(init["data"].decode(), roms_vold).encode()
     assert entries[-1]["name"] == "TRAILER!!!"
     entries = entries[:-1]
     old_names.remove("TRAILER!!!")
@@ -204,18 +216,24 @@ def main():
     parser.add_argument("--system",type=Path,required=True)
     parser.add_argument("--output",type=Path,required=True)
     parser.add_argument("--baseline",type=Path)
+    parser.add_argument("--roms-vold", action="store_true")
+    parser.add_argument("--vendor", type=Path)
     parser.add_argument("--build",type=Path,default=Path("/home/lpf/rgsp-grow-build"))
     parser.add_argument("--runtime",type=Path,default=Path("/home/lpf/rgsp-grow-runtime/runtime"))
     a=parser.parse_args()
+    if a.roms_vold != (a.vendor is not None):
+        raise ValueError("ROMS vold integration requires the matching raw vendor image")
     baseline=a.baseline or default_baseline()
     baseline_sha, prefix_sha = baseline_identity(baseline)
     if a.output.exists() or a.output.with_suffix(".partial").exists():
         raise ValueError("New output paths required")
     if a.system.stat().st_size!=8589934592 or baseline.stat().st_size!=IMAGE_SIZE:
         raise ValueError("Unexpected source lengths")
-    for path in (a.system, baseline):
+    for path in (a.system, baseline, *([a.vendor] if a.vendor else [])):
         if not path.is_file() or path.is_symlink():
             raise ValueError("Only regular local image inputs are allowed")
+    if a.vendor and a.vendor.stat().st_size != 2147483648:
+        raise ValueError("Expected raw 2 GiB vendor image")
     print("VERIFYING_BASELINE_SHA256", baseline.name, flush=True)
     if sha(baseline) != baseline_sha:
         raise ValueError("Baseline does not match its pinned full-image hash")
@@ -228,7 +246,7 @@ def main():
     if hashlib.sha256(prefix).hexdigest()!=prefix_sha:
         raise ValueError("Unrecognized proven prefix")
     before=package(prefix[32800*512:])
-    prefix=ramdisk(prefix,a.build,a.runtime)
+    prefix=ramdisk(prefix,a.build,a.runtime,a.roms_vold)
     prefix,tail=compact_gpt(prefix,IMAGE_SIZE)
     assert before==package(prefix[32800*512:])
     parts=gpt(prefix)
@@ -247,13 +265,14 @@ def main():
     partial=a.output.with_suffix(".partial")
     a.output.parent.mkdir(parents=True,exist_ok=True)
     ranges=[]
-    with partial.open("xb") as out, baseline.open("rb") as base, a.system.open("rb") as system:
+    with partial.open("xb") as out, baseline.open("rb") as base, \
+            a.system.open("rb") as system, (a.vendor or baseline).open("rb") as vendor:
         out.truncate(IMAGE_SIZE)
         out.write(prefix)
         ranges.append(dict(name="prefix",offset=0,bytes=len(prefix),sha256=hashlib.sha256(prefix).hexdigest()))
         for name,source,offset,count,dest in [
             ("system",system,0,8589934592,222298112),
-            ("vendor",base,8812232704,2147483648,8812232704),
+            ("vendor",vendor,0 if a.vendor else 8812232704,2147483648,8812232704),
             ("data",base,10959716352,17179869184,10959716352)]:
             print("COPYING",name,flush=True)
             digest=copy_range(source,out,offset,count,dest)
@@ -272,10 +291,11 @@ def main():
         image=a.output.name,image_bytes=IMAGE_SIZE,sha256=digest,
         partitions=parts,ranges=ranges,at4k_dex_sha256=DEX_SHA,
         TV_UI_MODE_TYPE=4,auto_expand="GPT p8 plus FAT32, no formatting",
-        hardware_vendor_source=baseline.name+" (preserved v3b hardware)",
+        hardware_vendor_source=str(a.vendor) if a.vendor else baseline.name+" (preserved v3b hardware)",
         data_source=baseline.name+" empty ext4",
         baseline=dict(image=baseline.name,sha256=baseline_sha,prefix_sha256=prefix_sha),
-        release="v5e AT4KDefault",
+        release="v5f ROMSPublic" if a.roms_vold else "v5e AT4KDefault",
+        roms_vold=a.roms_vold,
         boot_package=before,physical_boot_verified=False)
     a.output.with_suffix(".json").write_text(json.dumps(receipt,indent=2)+"\n")
     print(json.dumps(receipt,indent=2),flush=True)

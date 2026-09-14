@@ -37,7 +37,7 @@ expected=$(cat /system/etc/rgsp/leanback.sha256)
 
 # A request is an explicit choice for this RGSP, not an H700-wide default.
 # Installer/operator places only a known local APK at this fixed location.
-at4k=/rgsp-persist/provision/AT4K-launcher.apk
+at4k=/data/rgsp-persist/provision/AT4K-launcher.apk
 at4k_sha=700276cb79c1e11e974c3fc10ab2edebbb2d381e5af8c60a241b52d3f6e039af
 # Android's PRESIGNED packaging changes the ZIP, not the adapted dex/resources.
 packaged_sha=b6b2a3db335e5f2a27c284fc48ece6de9ccaf46a8886222aef07c17a26ee5d5b

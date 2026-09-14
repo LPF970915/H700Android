@@ -24,6 +24,8 @@ ANDROID = Path("/home/lpf/h700-android10/android")
 DEX = "e54181a4c6b8149d65199abe4bbb4231109bb425ab92bf793b3d5f7eb2e948b9"
 RES = "9cafe0ec2ec20680e2fe319dceae5ed1f5a42bcb6c92585492d464ea63b0d8f9"
 APK = "b2fa0343e903ad01c3854999dba70335ba4df5f5522dd931ed9d7189cf841a7d"
+ROMS_VOLD = "9869fa1e7c4f9584504ef8ffa407381fd9236d711b7b917bd3bab6cb02d012ce"
+ROMS_SERVICES = "299d97f020f97ca4bfc400773870983f52df8fa8b036ae245640cdad58b04413"
 
 
 def sha(path, progress=False):
@@ -75,7 +77,7 @@ def mounted(loop, root):
         run("umount", root)
 
 
-def verify_ramdisk(prefix, baseline, temp):
+def verify_ramdisk(prefix, baseline, temp, expected_roms_vold=None):
     boot = temp / "boot.img"
     boot.write_bytes(prefix[148*1024**2:212*1024**2])
     original = temp / "original.img"
@@ -98,11 +100,20 @@ def verify_ramdisk(prefix, baseline, temp):
     init = names["init"]["data"].decode()
     hook = '/bin/sh /grow/auto-grow.sh || fail "capacity preparation failed"'
     assert init.count(hook) == 1
-    assert init.index(hook) < init.index('mount -t vfat')
-    assert 'ROMS_DEV=/dev/block/mmcblk0p8' in init
-    assert 'mount -o move /single-card-roms /android-root/rgsp-persist' in init
-    assert 'mount -o bind /single-card-roms /android-root/rgsp-persist' not in init
-    assert 'LOG=/android-root/rgsp-persist/RGSP_SINGLE_CARD_BOOT.log' in init
+    if expected_roms_vold is not None:
+        assert ("ROMS delegated to Android vold" in init) == expected_roms_vold
+    if "ROMS delegated to Android vold" in init:
+        assert init.index(hook) < init.index('mount -t ext4')
+        assert 'ROMS_DEV=/dev/mmcblk0p8' in init
+        assert 'mount -t vfat' not in init
+        assert 'LOG=/android-root/data/rgsp-persist/RGSP_SINGLE_CARD_BOOT.log' in init
+        assert init.index('touch "$LOG"') > init.index('fail "unable to mount Android data"')
+    else:
+        assert init.index(hook) < init.index('mount -t vfat')
+        assert 'ROMS_DEV=/dev/block/mmcblk0p8' in init
+        assert 'mount -o move /single-card-roms /android-root/rgsp-persist' in init
+        assert 'mount -o bind /single-card-roms /android-root/rgsp-persist' not in init
+        assert 'LOG=/android-root/rgsp-persist/RGSP_SINGLE_CARD_BOOT.log' in init
     assert 'exec </dev/ttyS0 >/dev/ttyS0 2>&1' in init
     assert names["grow/auto-grow.sh"]["data"] == (ROOT/"tools/rgsp_auto_grow.sh").read_bytes()
     assert names["grow/check-fat.sh"]["data"] == (ROOT/"tools/rgsp_check_fat.sh").read_bytes()
@@ -142,7 +153,7 @@ def verify_ramdisk(prefix, baseline, temp):
     return root
 
 
-def verify_system(root):
+def verify_system(root, roms_vold=False):
     framework = root/"system/framework/framework-res.apk"
     output = run(ANDROID/"out/host/linux-x86/bin/aapt2", "dump", "resources", framework)
     for key, value in [("integer/config_defaultUiModeType", "4"),
@@ -198,7 +209,16 @@ def verify_system(root):
         assert list((root/"system").glob(f"**/{app}.apk")), app
     settings, = list((root/"system").glob("**/Settings.apk"))
     assert sha(settings) == "f1756b7dca7b92e4b3946c9b66701aa289363b8646e2b1b5b8cae25be03bfc83"
-    return {
+    if roms_vold:
+        assert sha(root/"system/bin/vold") == ROMS_VOLD
+        assert sha(root/"system/framework/services.jar") == ROMS_SERVICES
+        for target, source in [
+            ("system/bin/rgsp-roms-handoff.sh", "rgsp-roms-handoff.sh"),
+            ("system/etc/init/rgsp-roms-handoff.rc", "rgsp-roms-handoff.rc"),
+        ]:
+            assert (root/target).read_bytes() == \
+                (ROOT/"android/h700-android10/device/roc/rgsp"/source).read_bytes()
+    components = {
         "at4k": {"apk_sha256": APK, "dex_sha256": DEX, "resources_sha256": RES,
                  "factory_home": "com.overdevs.at4k/.MainActivity",
                  "factory_theme": "customi",
@@ -210,6 +230,19 @@ def verify_system(root):
         "leanback_apk_sha256": sha(ime),
         "settings_apk_sha256": sha(settings),
     }
+    if roms_vold:
+        components["roms"] = {
+            "vold_sha256": sha(root/"system/bin/vold"),
+            "services_jar_sha256": sha(root/"system/framework/services.jar"),
+            "handoff_sha256": sha(root/"system/bin/rgsp-roms-handoff.sh"),
+            "volume": "public:179,8",
+            "label": "ROMS",
+            "primary": False,
+            "adoptable": False,
+            "boot_card_format_and_repartition": "denied",
+            "logs": "/data/rgsp-persist",
+        }
+    return components
 
 
 def main():
@@ -240,7 +273,8 @@ def main():
     components = None
     with tempfile.TemporaryDirectory(prefix="verify-", dir=BUILD) as temp:
         temp = Path(temp)
-        ramroot = verify_ramdisk(prefix, baseline, temp)
+        roms_vold = bool(manifest.get("roms_vold", False))
+        ramroot = verify_ramdisk(prefix, baseline, temp, roms_vold)
         for part in parts[4:]:
             with volume(a.image, part) as loop:
                 if part["name"] == "ROMS":
@@ -259,10 +293,17 @@ def main():
                 run("e2fsck", "-f", "-n", loop)
                 with mounted(loop, temp/part["name"]) as root:
                     if part["name"] == "system":
-                        components = verify_system(root)
+                        components = verify_system(root, roms_vold)
                     elif part["name"] == "data":
                         assert {x.name for x in root.iterdir()} <= {"lost+found"}
                     else:
+                        if roms_vold:
+                            for target, source in [
+                                ("etc/fstab.sun50iw9p1", "fstab.sun50iw9p1"),
+                                ("bin/rgsp-kmsg-start.sh", "rgsp-kmsg-start.sh"),
+                            ]:
+                                assert (root/target).read_bytes() == \
+                                    (ROOT/"android/h700-android10/device/roc/rgsp"/source).read_bytes()
                         for path in ["lib/egl/libGLES_mali.so", "modules/8821cs.ko",
                                      "etc/dispconfigs/h700-rgsp-lcd.json"]:
                             assert (root/path).exists(), path
@@ -281,6 +322,8 @@ def main():
                                     "ACCEPTED_LEANBACK_AND_SETTINGS_APK_HASHES",
                                     "FULL_IMAGE_SHA256"],
                     physical_boot_verified=False)
+    if manifest.get("roms_vold"):
+        manifest["offline_checks"].append("ROMS_PROTECTED_VOLD_VISIBLE_FRAMEWORK_AND_SINGLE_MOUNT_OWNER")
     manifest_path.write_text(json.dumps(manifest, indent=2)+"\n")
     print("OFFLINE_VERIFIED_READY_FOR_FLASH", flush=True)
 
