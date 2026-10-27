@@ -1,7 +1,0 @@
-# Optional character map for a physical keyboard/remote.
-# This file is not required for DPAD-only use.
-type FULL
-
-map key 28 ENTER
-map key 1 ESC
-map key 102 HOME

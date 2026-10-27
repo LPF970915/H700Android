@@ -14,7 +14,6 @@
 *.txt text eol=lf
 *.template text eol=lf
 fstab.* text eol=lf
-archive/android11-r36s/ramdisk/* text eol=lf
 *.ps1 text eol=crlf
 *.md text eol=lf
 android/h700-android10/device/roc/rgsp/ANBERNIC-keys.kl text eol=lf

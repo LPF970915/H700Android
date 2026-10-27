@@ -1,60 +1,14 @@
-# H700 Android 10 Mainline
+# H700 Android 10 产品与源码覆盖层
 
-This directory is the clean product baseline for RGSP-class H700 handhelds.
+这是当前 Android 10/API29、32 位用户空间产品配置与实测修改覆盖层，完整 AOSP 在 WSL。
 
-Implementation sources:
+- `device/roc/rgsp/`：产品、输入、键盘、系统/应用资源与 USB/网络配置。
+- `device/roc/h700-common/`：共用构建配置。
+- `snapshots/v5i-native35-20261028/`：364 个冻结源文件，保留原字节和上游通知。
+- 源码锁：`docs/baselines/h700-v5i-usb-network-20261028/source-lock.json`。
 
-- Android 10 / API 29 from the complete H616 source archive.
-- Allwinner `sun50iw9p1` / `cupid` HALs from the H616 tree.
-- The RGSP H700 kernel, DTB, panel, PMIC, input and storage facts.
+源自 H616 Android 10 的芯片级 HAL/BSP，与当前 H700 实机 boot/kernel/DTB 配套使用。不能整体导入 Orange Pi 启动链、设备树或电视产品配置。
 
-Reference only:
+原 Settings-v5c 重复快照、Android 11 scaffold 与历史 prepare 链已经移出当前分支。LeanbackIME 完整固定版输入已包含在当前覆盖层，不需重放旧的拉取/补丁脚本。
 
-- The frozen R36S Android 11 bring-up branch.
-- The selected H618 Android 12 files under `reference/h618-android12`.
-
-The initial product is 32-bit userspace on the existing AArch64 kernel, with
-64-bit Binder, flattened APEX, low-RAM configuration and no GMS. A dual-ABI
-profile may be added only after the 32-bit product reaches a stable launcher.
-
-Do not import an Orange Pi bootloader, whole DTS, PMIC configuration, partition
-table, projector services or television product overlay. `cupid` and the H616
-board selector are retained only to select the compatible Android 10 HAL family;
-the product identity, kernel and DTB remain H700/RGSP.
-
-The product deliberately does not inherit `device/softwinner/cupid-common/
-cupid-common.mk`, because that file adds HDMI-CEC, AC100/HDMI audio, PPPoE,
-PlayReady/Widevine and television defaults. Required H616 components are listed
-explicitly in `device/roc/h700-common/device.mk`.
-
-## TV Input Method Source
-
-Before building the updated RGSP product, fetch the pinned AOSP LeanbackIME
-application and apply its small input adapter:
-
-```sh
-bash tools/prepare_h700_leanback_ime.sh /home/lpf/h700-android10/android
-```
-
-The imported application is pinned to commit
-`1667592ee5924122e43b611fa813c8f894087cd6`, originally imported in January 2020
-and available on AOSP's `android11-release` branch. It is compiled against
-this project's Android 10 SDK; no Android 11 framework binaries are imported.
-The helper refuses another revision or an unrelated dirty source tree.
-The source retains its Apache-2.0 notices. LatinIME remains installed as
-recovery. The compact resource overlay applies only to this RGSP product.
-Do not copy its key or display profile to every H700 handheld.
-
-## Bring-up order
-
-1. Reproduce the Android 10 source build.
-2. Boot the existing RGSP kernel and DTB with the Android 10 ramdisk.
-3. Mount TF2 system, vendor and data using the recorded PARTUUIDs.
-4. Reach init, ADB, zygote and an unmodified system_server.
-5. Enable the H616 Mali-G31, Gralloc, HWC2 and ION stack.
-6. Adapt the 720x480 panel and physical controls.
-7. Enable H616 audio against H700 `audiocodec` card 0/device 0.
-8. Add AXP2202 health, power, lights, Hall, rumble and wireless support.
-
-The files here are a product overlay scaffold. They are not a flashable image.
-The active execution plan is `docs/H700_ANDROID10_NEXT_DEVELOPMENT_PLAN_20260902.md`.
+恢复与输入缺口见根目录 `docs/REPRODUCE_BASELINE_20261028.md`。新原生改动须纳入新的 Git 覆盖层和证明，避免只保存在无法完整 git diff 的 WSL 树中。

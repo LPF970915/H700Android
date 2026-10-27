@@ -28,7 +28,7 @@ HAL、Mali-G31、Gralloc、HWC2、Audio HAL 5.0 和 low-RAM 配置的唯一主�
 - MD5：`11a2855d8b5c3430e3dd9dff6f40867e`；
 - 厂商 sidecar 与 2026-09-02 本机完整回读结果一致。
 
-当前已提取的可检索副本位于：
+历史检索副本位于以下目录，已在 2026-10-28 清理。原始源码包和 WSL Longan 树继续保留，后续不要再依赖该历史路径：
 
 `work/h700-source-analysis/h616/longan/`
 

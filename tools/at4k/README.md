@@ -15,6 +15,8 @@ upstream launcher's original source tree.
   SHA-256 `0d99ad08346620e240fa6eb7e765bb55996d4a311c8141a209626e08cad88997`.
 - Toolchain used: apktool 3.0.3, Android build-tools 34.0.0 apksigner,
   and the existing Android 10 tree's zip2zip/zipalign.
+  apktool is an external dependency; its redundant repository JAR was removed
+  during the 2026-10-28 cleanup and remains available in the historical tag.
 - Signing uses the existing local compatible development key. The key is
   not included in Git. Certificate SHA-256:
   `270d448f3fcab1889d110b8b9852d1d99c867d50c77819c2654494f91eb5ab81`.
