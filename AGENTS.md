@@ -2,7 +2,7 @@
 
 Read `docs/CURRENT_BASELINE_20261028.md`, `docs/REPRODUCE_BASELINE_20261028.md`, and `docs/STORAGE_RETENTION_20261028.md` before changing build inputs, device state, or storage.
 
-- Current working-tree checkpoint: `baseline/h700-clean-20261028`; immutable source freeze: `baseline/h700-v5i-usb-network-20261028`. Read `docs/CLEANUP_20261028.md` for removed historical content. The delivered v5i IMG predates the USB/network fixes; do not describe it as already containing them.
+- Current working-tree checkpoint: `baseline/h700-storage-trim-20261028`; immutable source freeze: `baseline/h700-v5i-usb-network-20261028`. Read `docs/CLEANUP_20261028.md` for removed historical content and `docs/SPACE_REVIEW_20261028.md` for the subsequent WSL/source/image storage pass. The delivered v5i IMG predates the USB/network fixes; do not describe it as already containing them.
 - `docs/baselines/h700-v5i-usb-network-20261028/source-lock.json` locks the frozen edited-source overlay. Historical prepare scripts are not an ordered rebuild recipe; do not replay them blindly after restoring final source.
 - `LOCAL_PRESERVE_H700_BASELINE_20261028/`, final IMG, final native35 stage, upstream archives, signing material and needed WSL source are protected local inputs, not all backed up by Git. Do not treat them as caches during ordinary cleanup. Follow the retention document and the user's explicit cleanup scope.
 - Do not upload images, private keys, raw device/session logs, local preservation directories, `.dsh-diag/`, or unrelated caches. Publish sanitized evidence summaries; preserve exact frozen source hashes.

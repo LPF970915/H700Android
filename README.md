@@ -1,6 +1,6 @@
 # H700 Android 10 — 开发基线
 
-当前整理基线：**v5i / native35 + USB ConfigFS 与网络检测修复，2026-10-28**。源码冻结标签为 `baseline/h700-v5i-usb-network-20261028`，精简后的工作树标签为 `baseline/h700-clean-20261028`。原交付镜像尚未加入本轮修复重新封装。
+当前整理基线：**v5i / native35 + USB ConfigFS 与网络检测修复，2026-10-28**。源码冻结标签为 `baseline/h700-v5i-usb-network-20261028`，当前空间整理检查点为 `baseline/h700-storage-trim-20261028`。原交付镜像尚未加入本轮修复重新封装。
 
 本工程整合 H700 掌机上的 Android 10、无触屏按键导航和单卡存储。当前实机已由无摇杆 RGSP 切换为用户提供的 34xxsp：H700、2GB RAM、双摇杆。两台设备的产品属性都可能显示 `RGSP H700`，应按序列号区分。
 
@@ -9,6 +9,7 @@
 - [当前状态与验收边界](docs/CURRENT_BASELINE_20261028.md)
 - [源码恢复与构建](docs/REPRODUCE_BASELINE_20261028.md)
 - [本地保留与空间清理清单](docs/STORAGE_RETENTION_20261028.md)
+- [243 GiB 空间构成与第二轮精简](docs/SPACE_REVIEW_20261028.md)
 - [基线凭据和哈希](docs/baselines/h700-v5i-usb-network-20261028/README.md)
 - [工具分类](tools/README.md)
 - [后续开发索引](docs/DEVELOPMENT_NOTES.md)
@@ -47,5 +48,6 @@ py -X utf8 -m unittest discover -s tools -p test_h700_baseline_restore.py -v
 | v5i/native35，2026-10-27 | 原始已交付镜像及软件验收 |
 | `baseline/h700-v5i-usb-network-20261028` | 当前源码及实机修复冻结点；未重封装 IMG |
 | `baseline/h700-clean-20261028` | 保留同一源码快照，移除失效版本/文档/工具/测试及旧大产物后的工作树 |
+| `baseline/h700-storage-trim-20261028` | 同一源码，清理 WSL 编译输出与停用源码副本，记录镜像无损压缩和实际空间 |
 
 旧烧录/清理脚本、Android 11/R36S 实验、旧文档及一次性回归已移出当前分支，通过 [历史标签](docs/HISTORY.md) 追溯。本次清理结果见 [清理记录](docs/CLEANUP_20261028.md)。当前是 eng/root 开发系统。第三方来源见 [THIRD_PARTY_INPUTS](docs/THIRD_PARTY_INPUTS.md)。

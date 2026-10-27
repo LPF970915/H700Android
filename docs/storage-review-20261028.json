@@ -1,0 +1,82 @@
+{
+  "date": "2026-10-28",
+  "baseline_source_files": 364,
+  "source_restore_tests_passed": 5,
+  "before_root_logical_bytes": 261395771688,
+  "before_vhdx_bytes": 187435057152,
+  "after_vhdx_bytes": 78973501440,
+  "vhdx_reclaimed_bytes": 108461555712,
+  "wsl_compact_exit_code": 0,
+  "wsl_restart_source_plan_changes": 0,
+  "wsl_restart_binary_inputs_match": true,
+  "removed_android_output_allocated_bytes": 53507792896,
+  "retired_source": {
+    "files": 761993,
+    "same_files": 761950,
+    "different_files": 43,
+    "different_bytes": 1842966,
+    "symlinks": 9221,
+    "logical_bytes": 48467197367,
+    "removed": true,
+    "delta_bytes": 606141,
+    "delta_sha256": "cefbc230d8bc12218033b74e485800acf6a54794b71b71b04560a1815b5fa4ab",
+    "manifest_sha256": "e2e77f0b89eb0eb1c0ba7e3baf4bad28fe677b7a5ec87e2af6e8cfa28140e88e",
+    "saved_tar_members": 9264
+  },
+  "rocreader_retained": true,
+  "compressed_images": [
+    {
+      "source": "out/H700_Android_SingleCard_v5i_ChineseDpadWifiGfx.img",
+      "source_bytes": 32434554368,
+      "source_sha256": "3fd34fef4d5a2275f14023dba5dc488330ab0669a50889e8b748e30c9f3e68cd",
+      "archive": "out/H700_Android_SingleCard_v5i_ChineseDpadWifiGfx.img.gz",
+      "archive_bytes": 603330423,
+      "archive_sha256": "ac49ce8adde065ae9e5b547d8033d532e91a811314f1b423daa357f8c5d5e1ea",
+      "full_decompression_verified": true,
+      "original_removed": false
+    },
+    {
+      "source": "out/h700-v5i-dpad-20261027-native35-notouch-stage/system.raw.img",
+      "source_bytes": 8589934592,
+      "source_sha256": "5377190d2b8955c168e100a1e444aedbd1716c57ce7ccd7c545e645c8eaf2af1",
+      "archive": "out/h700-v5i-dpad-20261027-native35-notouch-stage/system.raw.img.gz",
+      "archive_bytes": 428251654,
+      "archive_sha256": "690a7105070c55f3f29fd6f12af05ab66c4b4d8e2ddf96cb760a845cf7c1311e",
+      "full_decompression_verified": true,
+      "original_removed": false
+    },
+    {
+      "source": "out/h700-v5i-dpad-20261027-native35-notouch-stage/vendor.raw.img",
+      "source_bytes": 2147483648,
+      "source_sha256": "eefffefb50e9b28b8c1631ea31004ccd82df0249ee617915f02b42075614112b",
+      "archive": "out/h700-v5i-dpad-20261027-native35-notouch-stage/vendor.raw.img.gz",
+      "archive_bytes": 28273362,
+      "archive_sha256": "fb0f1f59ded393af7cc3e4ca920b1e078c421930b5c0c01732bc1b0233c26bbf",
+      "full_decompression_verified": true,
+      "original_removed": false
+    }
+  ],
+  "original_image_deletion": {
+    "status": "blocked_by_automatic_approval",
+    "reason": "blocked by policy; no specific reason returned",
+    "retried_via_alternate_route": false
+  },
+  "full_image_repackaged": false,
+  "device_access": false,
+  "after_root_logical_bytes": 154033447767,
+  "after_root_bytes_by_directory": {
+    ".git": 79306934,
+    ".gitattributes": 644,
+    ".gitignore": 947,
+    ".wsl": 78973501440,
+    "AGENTS.md": 2590,
+    "android": 20618046,
+    "docs": 239048,
+    "H700_Android_Example": 25208877930,
+    "input": 1049063246,
+    "LOCAL_PRESERVE_H700_BASELINE_20261028": 385839073,
+    "out": 48314408332,
+    "README.md": 3369,
+    "tools": 1586168
+  }
+}

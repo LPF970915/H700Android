@@ -55,6 +55,8 @@ python3 tools/restore_h700_baseline.py --source /path/to/android \
 
 保持 CPU 0-1 亲和性、合计一个 CPU、`-j1`、6GiB RAM、512MiB swap、nice 19 和空闲 I/O。本轮冻结未重新编译系统、重封装镜像或刷整卡。
 
+第二轮空间清理已删除原生树 `out/`，保留完整源码和工具链。下次构建需重新生成中间文件，不能依赖旧增量缓存。整 IMG 与最终分区 raw 的无损压缩包和原文件现状见 [空间复核](SPACE_REVIEW_20261028.md)；需要 raw 输入时先解压并核验原始 SHA，不能把 gzip 直接当作 raw 文件传给历史封装器。
+
 ## 当前整镜像复现缺口
 
 `tools/package_rgsp_v5g.py` 仍固定要求 SHA 为 `fed34834...` 的 v5f 整镜像 seed；此次盘点未找到该文件。保留的 v5i 包含当前硬件前缀和原厂空数据/ROMS，但历史脚本不会直接接受它作为替代。
