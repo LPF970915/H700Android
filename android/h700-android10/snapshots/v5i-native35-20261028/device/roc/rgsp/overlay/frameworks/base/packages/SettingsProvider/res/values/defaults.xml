@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- The controller is reported as a hardware keyboard, but cannot type text. -->
+    <bool name="def_show_ime_with_hard_keyboard">true</bool>
+</resources>

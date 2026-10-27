@@ -1,0 +1,22 @@
+{
+  "status": "REVIEWED_FOR_PUBLIC_SOURCE_BASELINE",
+  "date": "2026-10-28 Asia/Shanghai",
+  "history_text_blobs_reviewed": 740,
+  "staged_text_files_reviewed": 1049,
+  "provider_tokens_found": 0,
+  "private_keys_found": 0,
+  "embedded_credential_urls_found": 0,
+  "remaining_literal_matches": [
+    "Historical Linux default root password in the serial helper",
+    "Regex matching a password prompt"
+  ],
+  "forbidden_staged_paths": 0,
+  "staged_files_over_50mib": 0,
+  "private_material_excluded": [
+    "Complete IMG/raw partitions/upstream archives/WSL VHDX",
+    "Signing private keys and local preservation directory",
+    "Raw session/packet/device logs and unrelated .dsh-diag cache"
+  ],
+  "legacy_identifiers_note": "History and device-bound source retain laboratory identity guards. Sanitized new validation summaries omit live serial/MAC/session addresses.",
+  "scope": "Pattern-based history/index review and manual classification; no claim of a complete third-party security audit."
+}

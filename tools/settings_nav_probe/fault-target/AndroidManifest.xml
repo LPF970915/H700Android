@@ -1,0 +1,12 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.roc.rgsp.audit.missingtarget" android:versionCode="1" android:versionName="audit-only">
+    <uses-sdk android:minSdkVersion="29" android:targetSdkVersion="29" />
+    <application android:hasCode="false" android:allowBackup="false" android:label="RGSP audit temporary target">
+        <activity android:name="android.app.Activity" android:exported="true">
+            <intent-filter>
+                <action android:name="com.android.bluetooth.action.TransferHistory" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+    </application>
+</manifest>

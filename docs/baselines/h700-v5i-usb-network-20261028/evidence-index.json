@@ -1,0 +1,50 @@
+[
+  {
+    "local_path": "out/H700_Android_SingleCard_v5i_ChineseDpadWifiGfx_INDEPENDENT_VERIFY.json",
+    "bytes": 650,
+    "sha256": "6f5729f9b32cda592ea92473b86bfbb19700e7df9130d619c1a16fb1ffc1cd10",
+    "raw_content_published": false
+  },
+  {
+    "local_path": "out/H700_Android_SingleCard_v5i_ChineseDpadWifiGfx_DELIVERY_REVIEW.json",
+    "bytes": 881,
+    "sha256": "70ae4f1b462aefb81a87c4d256ad103f44b3f0590011f00c0b64b45cba1d33af",
+    "raw_content_published": false
+  },
+  {
+    "local_path": "out/h700-v5i-dpad-20261027-native35-notouch-stage/STAGING_MANIFEST.json",
+    "bytes": 757,
+    "sha256": "23ec7062414a44b9e92205ea0ae7403a3f4cd52ac1ffd9e6b398eb0fbd76c801",
+    "raw_content_published": false
+  },
+  {
+    "local_path": "out/h700-34xxsp-usb-network-20261028/persistent-install.txt",
+    "bytes": 631,
+    "sha256": "cfb3fb23042cb52086af0e1182a77885c2b7943f238e4b551dea25a6e07c7ae6",
+    "raw_content_published": false
+  },
+  {
+    "local_path": "out/h700-34xxsp-usb-network-20261028/network-after-reboot.txt",
+    "bytes": 12567,
+    "sha256": "f8b004cb5ac20004185c688e264e56e6a7720fbbe775873049dccaedf85846f3",
+    "raw_content_published": false
+  },
+  {
+    "local_path": "out/h700-34xxsp-usb-network-20261028/final-device-state.txt",
+    "bytes": 2654,
+    "sha256": "24352b1f8c28400e256151dd8469f2f04fed72aa522358fb2f2f81a79a299941",
+    "raw_content_published": false
+  },
+  {
+    "local_path": "out/h700-34xxsp-usb-network-20261028/windows-usb-after-reboot.json",
+    "bytes": 490,
+    "sha256": "00947ce849f3dc1e132e6375f0b487191573d368b58bd4ba42fe1092e83f1e67",
+    "raw_content_published": false
+  },
+  {
+    "local_path": "out/h700-34xxsp-usb-network-20261028/endpoint-probe-initial.json",
+    "bytes": 2272,
+    "sha256": "c310c5dfdf1225aacc44a191ba8d6b61d621c7ae05c97bddf12b1f3881a2d161",
+    "raw_content_published": false
+  }
+]

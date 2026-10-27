@@ -2,4 +2,8 @@
 <resources>
     <!-- Force touchscreen to report as absent for focus navigation -->
     <bool name="config_support_bluetooth_handsfree_profile">true</bool>
+    <!-- This product's /data fstab has no encryptable/forceencrypt backend.
+         Keep credential settings, but do not offer the unusable encryption action. -->
+    <bool name="config_show_encryption_and_credentials_encryption_status">false</bool>
+    <bool name="config_enable_settings_video_previews">false</bool>
 </resources>

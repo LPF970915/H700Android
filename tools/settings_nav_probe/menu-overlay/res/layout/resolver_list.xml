@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/*
+* Copyright 2012, The Android Open Source Project
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*/
+-->
+<com.android.internal.widget.ResolverDrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" xmlns:internal="http://schemas.android.com/apk/prv/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:maxWidth="@*android:dimen/resolver_max_width"
+    internal:maxCollapsedHeight="192dp"
+    internal:maxCollapsedHeightSmall="56dp"
+    android:id="@*android:id/contentPanel">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        internal:layout_alwaysShow="true"
+        android:elevation="8dp"
+        android:background="?android:attr/colorBackgroundFloating">
+
+        <TextView
+            android:id="@*android:id/profile_button"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_marginEnd="8dp"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:visibility="gone"
+            style="?android:attr/borderlessButtonStyle"
+            android:textAppearance="?android:attr/textAppearanceButton"
+            android:textColor="?android:attr/colorAccent"
+            android:gravity="center_vertical"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:singleLine="true" />
+
+        <TextView
+            android:id="@*android:id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minHeight="56dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:gravity="start|center_vertical"
+            android:paddingStart="?android:attr/dialogPreferredPadding"
+            android:paddingEnd="?android:attr/dialogPreferredPadding"
+            android:paddingTop="8dp"
+            android:layout_below="@*android:id/profile_button"
+            android:layout_alignParentStart="true"
+            android:paddingBottom="8dp" />
+    </RelativeLayout>
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@*android:id/resolver_list"
+        android:nextFocusDown="@*android:id/button_once"
+        android:nextFocusRight="@*android:id/button_once"
+        android:clipToPadding="false"
+        android:scrollbarStyle="outsideOverlay"
+        android:background="?android:attr/colorBackgroundFloating"
+        android:elevation="8dp"
+        android:nestedScrollingEnabled="true"
+        android:scrollIndicators="top|bottom"
+        android:divider="@null" />
+
+    <TextView android:id="@*android:id/empty"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:background="?android:attr/colorBackgroundFloating"
+              android:elevation="8dp"
+              internal:layout_alwaysShow="true"
+              android:text="@*android:string/noApplications"
+              android:padding="32dp"
+              android:gravity="center"
+              android:visibility="gone" />
+
+    <LinearLayout
+        android:id="@*android:id/button_bar"
+        android:visibility="gone"
+        style="?android:attr/buttonBarStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        internal:layout_ignoreOffset="true"
+        internal:layout_alwaysShow="true"
+        internal:layout_hasNestedScrollIndicator="true"
+        android:gravity="end|center_vertical"
+        android:orientation="horizontal"
+        android:layoutDirection="locale"
+        android:measureWithLargestChild="true"
+        android:background="?android:attr/colorBackgroundFloating"
+        android:paddingTop="@*android:dimen/resolver_button_bar_spacing"
+        android:paddingBottom="@*android:dimen/resolver_button_bar_spacing"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:elevation="8dp">
+
+        <Button
+            android:id="@*android:id/button_once"
+                android:nextFocusUp="@*android:id/resolver_list"
+                android:nextFocusLeft="@*android:id/button_always"
+                android:nextFocusRight="@*android:id/button_always"
+            android:layout_width="wrap_content"
+            android:layout_gravity="start"
+            android:maxLines="2"
+            style="?android:attr/buttonBarNegativeButtonStyle"
+            android:minHeight="@*android:dimen/alert_dialog_button_bar_height"
+            android:layout_height="wrap_content"
+            android:enabled="false"
+            android:text="@*android:string/activity_resolver_use_once"
+            android:onClick="onButtonClick" />
+
+        <Button
+            android:id="@*android:id/button_always"
+                android:nextFocusUp="@*android:id/resolver_list"
+                android:nextFocusLeft="@*android:id/button_once"
+                android:nextFocusRight="@*android:id/button_once"
+            android:layout_width="wrap_content"
+            android:layout_gravity="end"
+            android:maxLines="2"
+            android:minHeight="@*android:dimen/alert_dialog_button_bar_height"
+            style="?android:attr/buttonBarPositiveButtonStyle"
+            android:layout_height="wrap_content"
+            android:enabled="false"
+            android:text="@*android:string/activity_resolver_use_always"
+            android:onClick="onButtonClick" />
+    </LinearLayout>
+
+</com.android.internal.widget.ResolverDrawerLayout>

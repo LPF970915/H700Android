@@ -16,7 +16,13 @@ public final class DirectionTest {
                 {20, 115, 125, 180}};
         check(Direction.next(toolbar, 0, Direction.RIGHT), 1);
         check(Direction.next(toolbar, 0, Direction.DOWN), 2);
-        System.out.println("PASS: 10 directional navigation cases");
+        int[][] bottomSlider = {{96, 430, 620, 458}, {656, 32, 720, 96}};
+        check(Direction.next(bottomSlider, 0, Direction.RIGHT), 1);
+        check(Direction.nextAligned(bottomSlider, 0, Direction.RIGHT), -1);
+        int[][] sliderPeer = {{96, 430, 620, 458}, {656, 416, 720, 480}};
+        check(Direction.nextAligned(sliderPeer, 0, Direction.RIGHT), 1);
+        check(Direction.nextAligned(sliderPeer, 1, Direction.LEFT), 0);
+        System.out.println("PASS: 14 directional navigation cases");
     }
 
     private static void check(int actual, int expected) {

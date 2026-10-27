@@ -4,6 +4,19 @@
 /work/
 /out/
 /.wsl/
+/LOCAL_PRESERVE_H700_BASELINE_*/
+/.dsh-diag/
+node_modules/
+
+# Local signing material, credentials and workstation configuration
+*.pk8
+*.jks
+*.keystore
+*.p12
+*.pfx
+.env
+.env.*
+!.env.example
 
 # Extracted root filesystems and transient mount points
 /.tmp/

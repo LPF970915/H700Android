@@ -1,5 +1,9 @@
 include device/roc/h700-common/BoardConfigCommon.mk
 
+# The donor defines TARGET_SYSTEM_PROP, so Make ignores the implicit board file.
+# Append this product's defaults explicitly while preserving the donor files.
+TARGET_SYSTEM_PROP += device/roc/rgsp/system.prop
+
 # Product-level Wi-Fi service configuration for the RGSP RTL8821CS module.
 # The path is intentionally a complete .ko path: this Android 10 HAL branch
 # passes non-COMMON vendor paths directly to finit_module().

@@ -32,6 +32,10 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_PACKAGES += rgsp_kmsg_logger RGSPLauncher AT4K RGSPNavigation
 
+# Explicit guarded Wi-Fi debugging, started from UART only.
+PRODUCT_COPY_FILES += \
+    device/roc/rgsp/rgsp-wifi-adb-session.sh:$(TARGET_COPY_OUT_SYSTEM)/bin/rgsp-wifi-adb-session.sh
+
 PRODUCT_COPY_FILES += \
     device/roc/rgsp/rgsp-roms-handoff.sh:$(TARGET_COPY_OUT_SYSTEM)/bin/rgsp-roms-handoff.sh \
     device/roc/rgsp/rgsp-roms-handoff.rc:$(TARGET_COPY_OUT_SYSTEM)/etc/init/rgsp-roms-handoff.rc
@@ -69,6 +73,10 @@ PRODUCT_COPY_FILES += \
 
 # Keep a visible local file browser and the ordinary, permission-gated installer.
 PRODUCT_PACKAGES += DocumentsUI PackageInstaller
+
+# H700 exposes EHCI/OHCI host controllers. This also starts the framework USB service.
+PRODUCT_COPY_FILES += \
+    device/roc/rgsp/configs/android.hardware.usb.host.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.usb.host.xml
 
 # IOmxStore requires a catalog even with the separate Codec2 software APEX.
 # Qualify software codecs first; do not advertise the donor's hardware codecs.
@@ -138,3 +146,15 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     persist.sys.ui.hw=true \
     ro.config.media_vol_steps=100 \
     config.disable_consumerir=true
+
+# This handheld has a permanent D-pad and no touchscreen.
+# Remove inherited donor touchscreen features so native toolbars accept D-pad focus.
+PRODUCT_COPY_FILES += \
+    device/roc/rgsp/configs/android.hardware.touchscreen.unavailable.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.touchscreen.unavailable.xml
+
+# Initialize the kernel's ConfigFS gadget and preserve normal adbd/function policy.
+PRODUCT_COPY_FILES += \
+    device/roc/rgsp/h700-usb-configfs.rc:$(TARGET_COPY_OUT_SYSTEM)/etc/init/h700-usb-configfs.rc \
+    device/roc/rgsp/h700-network-validation-defaults.rc:$(TARGET_COPY_OUT_SYSTEM)/etc/init/h700-network-validation-defaults.rc \
+    device/roc/rgsp/h700-network-validation-defaults.sh:$(TARGET_COPY_OUT_SYSTEM)/bin/h700-network-validation-defaults.sh
+

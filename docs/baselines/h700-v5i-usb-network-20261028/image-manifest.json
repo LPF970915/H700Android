@@ -1,0 +1,94 @@
+{
+  "release": "H700_Android_SingleCard_v5i_ChineseDpadWifiGfx",
+  "status": "PACKAGED_COMPONENTS_AND_FILESYSTEMS_VERIFIED_PENDING_PHYSICAL_TEST",
+  "image": "H700_Android_SingleCard_v5i_ChineseDpadWifiGfx.img",
+  "image_bytes": 32434554368,
+  "sha256": "3fd34fef4d5a2275f14023dba5dc488330ab0669a50889e8b748e30c9f3e68cd",
+  "baseline_sha256": "fed34834be77931bc38f1bf925bf66451c242c2b5dc6bde75e7a107e55be21bb",
+  "partitions": [
+    {
+      "number": 1,
+      "name": "special",
+      "start": 37748736,
+      "end_exclusive": 104857600
+    },
+    {
+      "number": 2,
+      "name": "boot-resource",
+      "start": 104857600,
+      "end_exclusive": 138412032
+    },
+    {
+      "number": 3,
+      "name": "env",
+      "start": 138412032,
+      "end_exclusive": 155189248
+    },
+    {
+      "number": 4,
+      "name": "boot",
+      "start": 155189248,
+      "end_exclusive": 222298112
+    },
+    {
+      "number": 5,
+      "name": "system",
+      "start": 222298112,
+      "end_exclusive": 8812232704
+    },
+    {
+      "number": 6,
+      "name": "vendor",
+      "start": 8812232704,
+      "end_exclusive": 10959716352
+    },
+    {
+      "number": 7,
+      "name": "data",
+      "start": 10959716352,
+      "end_exclusive": 28139585536
+    },
+    {
+      "number": 8,
+      "name": "ROMS",
+      "start": 28139585536,
+      "end_exclusive": 32434552832
+    }
+  ],
+  "ranges": [
+    {
+      "name": "prefix",
+      "offset": 0,
+      "bytes": 222298112,
+      "sha256": "b2484137c531bb9b87d15bf4d0b10fafd8de685112504933c9a0c1208981460a"
+    },
+    {
+      "name": "system",
+      "offset": 222298112,
+      "bytes": 8589934592,
+      "sha256": "5377190d2b8955c168e100a1e444aedbd1716c57ce7ccd7c545e645c8eaf2af1"
+    },
+    {
+      "name": "vendor",
+      "offset": 8812232704,
+      "bytes": 2147483648,
+      "sha256": "eefffefb50e9b28b8c1631ea31004ccd82df0249ee617915f02b42075614112b"
+    },
+    {
+      "name": "factory_data_roms_gpt",
+      "offset": 10959716352,
+      "bytes": 21474838016,
+      "sha256": "eab9dbbe980e819e7610b11fc46e795cba1cf2f7dca560bd8ed60777274fbd0f"
+    }
+  ],
+  "known_issues": [
+    "RG34XXSP mild brightness variation needs physical observation on the new image; software logs/screenshots cannot prove visual resolution.",
+    "Hardware VSYNC event delivery remains unavailable; the HWC uses the measured-geometry fractional software period.",
+    "Optional Settings teaching-video previews are disabled to avoid the native hardware decoder crash; general hardware video decoding is not claimed fixed.",
+    "Kernel FTRACE is disabled. Traceur category list is empty and recording capability is not claimed. Wi-Fi ADB does not require FTRACE."
+  ],
+  "validation_report_sha256": "cbd6da2602c8f6da0f7e2008d174bbcabf763e8d300a94cedebd44b5b449f5b2",
+  "image_uploaded": false,
+  "contains_20261028_usb_network_fix": false,
+  "hash_source": "Original full-image packager and independent Windows verification receipts; image not rehashed in full during this source freeze."
+}

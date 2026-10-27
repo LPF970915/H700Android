@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Android 10 UiModeManagerService reads this integer. TV=4, car=3. -->
+    <integer name="config_defaultUiModeType">4</integer>
+    
+    <!-- Hide navigation bar on TV devices -->
+    <bool name="config_showNavigationBar">false</bool>
+    <!-- Prefer visible menu entries throughout the controller-only UI. -->
+    <integer name="config_overrideHasPermanentMenuKey">2</integer>
+    
+    <!-- Enable hardware keyboard presence for focus mode -->
+    <bool name="config_hasPermanentDpad">true</bool>
+    
+    <!-- Touch mode disabled to force focus mode -->
+    <bool name="config_defaultInTouchMode">false</bool>
+    
+    <!-- Leanback launcher as default -->
+    <bool name="config_dreamsActivatedOnDockByDefault">false</bool>
+</resources>

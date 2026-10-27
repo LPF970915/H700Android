@@ -1,0 +1,28 @@
+{
+  "status": "PASS_HOST_RECOVERY_AND_SELECTED_REGRESSIONS",
+  "date": "2026-10-28 Asia/Shanghai",
+  "source_snapshot_files": 364,
+  "snapshot_bytes": 2886649,
+  "staged_git_blobs_match_source_lock": true,
+  "native_source_restore_plan_changed_files": 0,
+  "python_tests": {
+    "baseline_restore": 5,
+    "passive_audit_and_uart": 29,
+    "roms_storage_protection": 8,
+    "factory_navigation_defaults": 6,
+    "total": 48
+  },
+  "java_programs": [
+    "DirectionTest: 14 cases",
+    "PointerPositionTest: dynamic geometry",
+    "FocusIdentityTest: 7 cases"
+  ],
+  "cpp_programs": [
+    "rgsp_frame_period_test.cpp: compiled with -Wall -Wextra -Werror and passed"
+  ],
+  "device_tests_rerun_during_freeze": false,
+  "full_aosp_build_started": false,
+  "whole_image_repackaged": false,
+  "live_device_evidence": "device-validation-summary.json",
+  "scope": "Host tests and exact source preservation; not fresh-flash, full MTP, cold power cycle or dual-stick qualification."
+}

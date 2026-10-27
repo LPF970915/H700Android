@@ -27,8 +27,9 @@ mkdir "$state/lock" || { echo FIRSTBOOT=busy >&2; exit 1; }
 trap 'rmdir "$state/lock"' EXIT
 leanback=com.android.inputmethod.leanback/.service.LeanbackImeService
 latin=com.android.inputmethod.latin/.LatinIME
-ime list -s | grep -Fxq "$leanback"
-ime list -s | grep -Fxq "$latin"
+# -a includes installed but not yet enabled IMEs on a fresh userdata partition.
+ime list -a -s | grep -Fxq "$leanback"
+ime list -a -s | grep -Fxq "$latin"
 pm path com.android.launcher3 | grep -q '^package:'
 apk=$(pm path com.android.inputmethod.leanback | sed -n 's/^package://p' | head -n 1)
 [ -f "$apk" ]

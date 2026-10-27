@@ -1,0 +1,2196 @@
+{
+  "baseline": "h700-v5i-usb-network-20261028",
+  "status": "SOURCE_FREEZE_OF_VALIDATED_NATIVE35_PLUS_USB_NETWORK_FIXES",
+  "source_archive": "H616 Android 10 android.tar.gz",
+  "source_archive_md5": "c5dd785ecd45ca9a2b9c53b1092ee6ec",
+  "leanback_upstream_revision": "1667592ee5924122e43b611fa813c8f894087cd6",
+  "v5i_stage_source_count": 99,
+  "v5i_stage_sources_matched_except_product_copy_rules": true,
+  "capture_method": "Union of the 99 staged source proofs, current edited-source timestamps, and the complete pinned LeanbackIME application; source overlay, not full AOSP.",
+  "files": {
+    "device/roc/h700-common/BoardConfigCommon.mk": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/device/roc/h700-common/BoardConfigCommon.mk",
+      "sha256": "a86ae113d6f7339d46623da6c591bea4f0d8a9fe2320208d3f703a6f9f574161",
+      "bytes": 1513,
+      "mode": 420
+    },
+    "device/roc/h700-common/device.mk": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/device/roc/h700-common/device.mk",
+      "sha256": "3fa4d05dadd003c2b364876fa649806480219d089bbce4b069ee31cf8e14899b",
+      "bytes": 2164,
+      "mode": 420
+    },
+    "device/roc/rgsp/ANBERNIC-keys.kl": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/device/roc/rgsp/ANBERNIC-keys.kl",
+      "sha256": "99b729a799e47db82a389527e4cc232e186d4a1c431f119326fb093a9def9056",
+      "bytes": 703,
+      "mode": 420
+    },
+    "device/roc/rgsp/Android.bp": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/device/roc/rgsp/Android.bp",
+      "sha256": "c2d9855b56893412eb644313b244d46935582f7977cf8e99028c0a5db7f4938f",
+      "bytes": 589,
+      "mode": 420
+    },
+    "device/roc/rgsp/AndroidProducts.mk": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/device/roc/rgsp/AndroidProducts.mk",
+      "sha256": "b3148551d956c37620c0caf580a98e687a63939fdfd4187b36611f56bd333fa8",
+      "bytes": 124,
+      "mode": 420
+    },
+    "device/roc/rgsp/BoardConfig.mk": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/device/roc/rgsp/BoardConfig.mk",
+      "sha256": "fa07dacff460f017afef0771204ffd815f3ad8025abfce7ebc4026aef4b732cd",
+      "bytes": 1424,
+      "mode": 420
+    },
+    "device/roc/rgsp/RGSPLauncher/Android.bp": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/device/roc/rgsp/RGSPLauncher/Android.bp",
+      "sha256": "22a18f5377a1bb7b3a61121816af6301acd699d63e5d4478a136e804d68f4010",
+      "bytes": 243,
+      "mode": 420
+    },
+    "device/roc/rgsp/RGSPLauncher/AndroidManifest.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/device/roc/rgsp/RGSPLauncher/AndroidManifest.xml",
+      "sha256": "b84421beebc825b08dfeef996becfbe88d8cb3be0ceb82d5cb2922c149e1a0be",
+      "bytes": 1061,
+      "mode": 420
+    },
+    "device/roc/rgsp/RGSPLauncher/src/com/roc/rgsp/launcher/HomeView.java": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/device/roc/rgsp/RGSPLauncher/src/com/roc/rgsp/launcher/HomeView.java",
+      "sha256": "915eb70815f96c4de8b4924c8bd85576a097e8bdcc2e089f937e29a2ff26c85a",
+      "bytes": 10139,
+      "mode": 420
+    },
+    "device/roc/rgsp/RGSPLauncher/src/com/roc/rgsp/launcher/MainActivity.java": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/device/roc/rgsp/RGSPLauncher/src/com/roc/rgsp/launcher/MainActivity.java",
+      "sha256": "10e40a43750150ab22899f424138fab98919fedbd0d48edeae71dece102a9439",
+      "bytes": 4448,
+      "mode": 420
+    },
+    "device/roc/rgsp/RGSPNavigation/Android.bp": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/device/roc/rgsp/RGSPNavigation/Android.bp",
+      "sha256": "e2d92ec63c4d37b0d3f80983bdfc499b3807d2e76e37273dc75eb2b5baed0386",
+      "bytes": 241,
+      "mode": 420
+    },
+    "device/roc/rgsp/RGSPNavigation/AndroidManifest.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/device/roc/rgsp/RGSPNavigation/AndroidManifest.xml",
+      "sha256": "1cc9bf843618c1f823fd67dad840dea678c84b9f68f432a9f2845b78dfd45c74",
+      "bytes": 808,
+      "mode": 420
+    },
+    "device/roc/rgsp/RGSPNavigation/res/xml/navigation_service.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/device/roc/rgsp/RGSPNavigation/res/xml/navigation_service.xml",
+      "sha256": "ed7a7a6eb292b261d9e7f23a80b13836b69b5517980429d0645df471cc92d3dd",
+      "bytes": 664,
+      "mode": 420
+    },
+    "device/roc/rgsp/RGSPNavigation/src/com/roc/rgsp/navtrial/Direction.java": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/device/roc/rgsp/RGSPNavigation/src/com/roc/rgsp/navtrial/Direction.java",
+      "sha256": "93fee55862da85fb7d6302f818dddc46693126f52326e57adcb7d8ac6bb49723",
+      "bytes": 1823,
+      "mode": 420
+    },
+    "device/roc/rgsp/RGSPNavigation/src/com/roc/rgsp/navtrial/FocusIdentity.java": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/device/roc/rgsp/RGSPNavigation/src/com/roc/rgsp/navtrial/FocusIdentity.java",
+      "sha256": "d43703710dcc10c03b9b92911ae2889f8282120c086865144b9dd21a6200ba68",
+      "bytes": 1098,
+      "mode": 420
+    },
+    "device/roc/rgsp/RGSPNavigation/src/com/roc/rgsp/navtrial/MouseController.java": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/device/roc/rgsp/RGSPNavigation/src/com/roc/rgsp/navtrial/MouseController.java",
+      "sha256": "7b297d8164c2bf5cddf50975cf8b76302cad106a48e9eeb03d88818ca84848ea",
+      "bytes": 11568,
+      "mode": 420
+    },
+    "device/roc/rgsp/RGSPNavigation/src/com/roc/rgsp/navtrial/NavigationService.java": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/device/roc/rgsp/RGSPNavigation/src/com/roc/rgsp/navtrial/NavigationService.java",
+      "sha256": "39623af2bcc23b0ad3e495a37f7ec3209b0ed85a1ec2c8078c254ca9f6c309f9",
+      "bytes": 58163,
+      "mode": 420
+    },
+    "device/roc/rgsp/RGSPNavigation/src/com/roc/rgsp/navtrial/PointerPosition.java": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/device/roc/rgsp/RGSPNavigation/src/com/roc/rgsp/navtrial/PointerPosition.java",
+      "sha256": "ad4e348c2073fd3c9f56fb2ebf688c12a0814df0d6a71024010e02b78cf31a20",
+      "bytes": 783,
+      "mode": 420
+    },
+    "device/roc/rgsp/configs/android.hardware.touchscreen.unavailable.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/device/roc/rgsp/configs/android.hardware.touchscreen.unavailable.xml",
+      "sha256": "35a31dc53804a48aaf354890edf4fc7792bba8093deb9291e48ba4d939f095c2",
+      "bytes": 375,
+      "mode": 420
+    },
+    "device/roc/rgsp/configs/android.hardware.usb.host.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/device/roc/rgsp/configs/android.hardware.usb.host.xml",
+      "sha256": "201da252a1ed52d5d1019412900d7a1cb530afb4558f9f1ba3d124189a1f9819",
+      "bytes": 117,
+      "mode": 420
+    },
+    "device/roc/rgsp/configs/at4k-home.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/device/roc/rgsp/configs/at4k-home.xml",
+      "sha256": "267d77fa1c53f5aa74489a40d7a2d8caf7f330e97de93596306a7c100c775c1e",
+      "bytes": 528,
+      "mode": 420
+    },
+    "device/roc/rgsp/configs/audio_mixer_paths.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/device/roc/rgsp/configs/audio_mixer_paths.xml",
+      "sha256": "b2d44f61da7a748ae0beae89639de41d70c9b4397d500cd1aeb88a5ea725d870",
+      "bytes": 888,
+      "mode": 420
+    },
+    "device/roc/rgsp/configs/display-config.json": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/device/roc/rgsp/configs/display-config.json",
+      "sha256": "e522770ccb76de4debd7c3345cc46cd0036ba383bd9e8afea69a6fe341542486",
+      "bytes": 43,
+      "mode": 420
+    },
+    "device/roc/rgsp/configs/h700-rgsp-lcd.json": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/device/roc/rgsp/configs/h700-rgsp-lcd.json",
+      "sha256": "cc6a839acc09fdaa878115b9d76ffbc0b0602e682268322f202ddcd2646ab5fe",
+      "bytes": 755,
+      "mode": 420
+    },
+    "device/roc/rgsp/configs/media_codecs.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/device/roc/rgsp/configs/media_codecs.xml",
+      "sha256": "152e5797f0b9a27101faf43614b438f6b75022e9c24423e333582dccbbaed3b4",
+      "bytes": 251,
+      "mode": 420
+    },
+    "device/roc/rgsp/graphics/Android.bp": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/device/roc/rgsp/graphics/Android.bp",
+      "sha256": "230131997e46ba2a9befedef15b7c0ebb11b1e9e5d6b0063d2014949c73e400e",
+      "bytes": 291,
+      "mode": 420
+    },
+    "device/roc/rgsp/graphics/RgspEglImportProbe.cpp": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/device/roc/rgsp/graphics/RgspEglImportProbe.cpp",
+      "sha256": "bddd68e89c1fb6d2e4b6eb86d7c02b42568de0164cb1b9f412fd788fb4e3646f",
+      "bytes": 7530,
+      "mode": 420
+    },
+    "device/roc/rgsp/h700-network-validation-defaults.rc": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/device/roc/rgsp/h700-network-validation-defaults.rc",
+      "sha256": "94c5f6cca1be8f92717d540481d6c0719381ddc01d10fc46519763227f488430",
+      "bytes": 289,
+      "mode": 420
+    },
+    "device/roc/rgsp/h700-network-validation-defaults.sh": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/device/roc/rgsp/h700-network-validation-defaults.sh",
+      "sha256": "47f60c1b18fe16059800124c5d5f84c2c170cf99cd102e03e76738afce0e8395",
+      "bytes": 787,
+      "mode": 493
+    },
+    "device/roc/rgsp/h700-usb-configfs.rc": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/device/roc/rgsp/h700-usb-configfs.rc",
+      "sha256": "16c0d49a69509e0113fdc247f944c9c0eb0c34458dede7e73fb71ea307fce621",
+      "bytes": 1584,
+      "mode": 420
+    },
+    "device/roc/rgsp/h700_rgsp.mk": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/device/roc/rgsp/h700_rgsp.mk",
+      "sha256": "752a16dfe87d522e3ce86a0fe3a69fb8c6a332f1a727020439a6f350749ee716",
+      "bytes": 8802,
+      "mode": 420
+    },
+    "device/roc/rgsp/init.rgsp.rc": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/device/roc/rgsp/init.rgsp.rc",
+      "sha256": "72b4fc47d8e68203fa4f45578d250b91f7578c854963e2808e7217f09edf8506",
+      "bytes": 727,
+      "mode": 420
+    },
+    "device/roc/rgsp/manifest.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/device/roc/rgsp/manifest.xml",
+      "sha256": "221457958fa98a4c01c9a877225802e5166837beecc6bbf295f25649e8f05ff2",
+      "bytes": 2006,
+      "mode": 420
+    },
+    "device/roc/rgsp/overlay/frameworks/base/core/res/res/layout/resolver_list.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/device/roc/rgsp/overlay/frameworks/base/core/res/res/layout/resolver_list.xml",
+      "sha256": "94a17060bc2659572ba288ed20c63ed690eaa8353baad810d80a2e75881871ec",
+      "bytes": 5798,
+      "mode": 420
+    },
+    "device/roc/rgsp/overlay/frameworks/base/core/res/res/layout/resolver_list_with_default.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/device/roc/rgsp/overlay/frameworks/base/core/res/res/layout/resolver_list_with_default.xml",
+      "sha256": "83371108d3a4ea82d95b81ce2ccfa4883c0d2bafcb4fc0cf6006cd1b69179ea8",
+      "bytes": 6868,
+      "mode": 420
+    },
+    "device/roc/rgsp/overlay/frameworks/base/core/res/res/values/config.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/device/roc/rgsp/overlay/frameworks/base/core/res/res/values/config.xml",
+      "sha256": "dbff6434c79b988afa3a6add99f83a7c35c2366358ae0ea7ad05be35fd94e8ed",
+      "bytes": 798,
+      "mode": 420
+    },
+    "device/roc/rgsp/overlay/frameworks/base/packages/SettingsProvider/res/values/defaults.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/device/roc/rgsp/overlay/frameworks/base/packages/SettingsProvider/res/values/defaults.xml",
+      "sha256": "79cd4d327ca9623e5d294b157dcfb0a6fd8d14b6ec5ed2ae8fd5d86ea2f00756",
+      "bytes": 211,
+      "mode": 420
+    },
+    "device/roc/rgsp/overlay/packages/apps/DocumentsUI/res/layout/dialog_file_name.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/device/roc/rgsp/overlay/packages/apps/DocumentsUI/res/layout/dialog_file_name.xml",
+      "sha256": "907c883d81b4e2f54461deb19c5414034b8b4c2b917e68a129c9ba647baaa166",
+      "bytes": 1594,
+      "mode": 420
+    },
+    "device/roc/rgsp/overlay/packages/apps/DocumentsUI/res/layout/directory_app_bar.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/device/roc/rgsp/overlay/packages/apps/DocumentsUI/res/layout/directory_app_bar.xml",
+      "sha256": "1acdafa673b4ded8d3bd656a611c13f4245c0504f40f384b26c3f8a1e110950b",
+      "bytes": 3174,
+      "mode": 420
+    },
+    "device/roc/rgsp/overlay/packages/apps/DocumentsUI/res/layout/fragment_directory.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/device/roc/rgsp/overlay/packages/apps/DocumentsUI/res/layout/fragment_directory.xml",
+      "sha256": "aa3e5346be14846100a1668d1d746d9c74fad167725dd106106d61d318d8f3c6",
+      "bytes": 2281,
+      "mode": 420
+    },
+    "device/roc/rgsp/overlay/packages/apps/DocumentsUI/res/layout/inspector_activity.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/device/roc/rgsp/overlay/packages/apps/DocumentsUI/res/layout/inspector_activity.xml",
+      "sha256": "806ca3b6cae8b7839815a785a363be6e8bc07dc6d4e513f9aef448e606600ddd",
+      "bytes": 5198,
+      "mode": 420
+    },
+    "device/roc/rgsp/overlay/packages/apps/DocumentsUI/res/values-zh-rCN/rgsp_controller.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/device/roc/rgsp/overlay/packages/apps/DocumentsUI/res/values-zh-rCN/rgsp_controller.xml",
+      "sha256": "b1b87b9b17befdf5d6f8105cd5ce4f18b2a5a22641e02188244e94438d61b9e0",
+      "bytes": 112,
+      "mode": 420
+    },
+    "device/roc/rgsp/overlay/packages/apps/DocumentsUI/res/values/rgsp_controller.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/device/roc/rgsp/overlay/packages/apps/DocumentsUI/res/values/rgsp_controller.xml",
+      "sha256": "5c89fa9e84b9044098e84217da1e8720edfbc1a011c41a73988b47d403e7a913",
+      "bytes": 155,
+      "mode": 420
+    },
+    "device/roc/rgsp/overlay/packages/apps/Settings/res/layout/settings_homepage_container.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/device/roc/rgsp/overlay/packages/apps/Settings/res/layout/settings_homepage_container.xml",
+      "sha256": "d512bc71355bc5eb4aa94625f8cf3fb731abd93fb469a50c29ad4d69d36b4cbd",
+      "bytes": 1794,
+      "mode": 420
+    },
+    "device/roc/rgsp/overlay/packages/apps/Settings/res/values/bools.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/device/roc/rgsp/overlay/packages/apps/Settings/res/values/bools.xml",
+      "sha256": "25b2b30800049ec8cd1b24bec26b7696a1c68a9248ebbfb98373ecc517d5f1f8",
+      "bytes": 528,
+      "mode": 420
+    },
+    "device/roc/rgsp/overlay/packages/inputmethods/LeanbackIME/res/values/dimens.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/device/roc/rgsp/overlay/packages/inputmethods/LeanbackIME/res/values/dimens.xml",
+      "sha256": "31bcaa28314811975cedb7159f01b896a57fca13ef7e3e41c42ae0f84af038de",
+      "bytes": 590,
+      "mode": 420
+    },
+    "device/roc/rgsp/prebuilt/AT4K/Android.mk": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/device/roc/rgsp/prebuilt/AT4K/Android.mk",
+      "sha256": "bfd8f81896560bfd962755238924c24c0ae32c6bc77ecbbbdde5b39434935057",
+      "bytes": 542,
+      "mode": 420
+    },
+    "device/roc/rgsp/prebuilts/local/rgsp-graphics-diag.sh": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/device/roc/rgsp/prebuilts/local/rgsp-graphics-diag.sh",
+      "sha256": "4015ef930d874dc6b7f159f2b48ecf196b608c9b595a0400415ecb3bb2e14144",
+      "bytes": 702,
+      "mode": 493
+    },
+    "device/roc/rgsp/prebuilts/local/rgsp_fix63_graphics.rc": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/device/roc/rgsp/prebuilts/local/rgsp_fix63_graphics.rc",
+      "sha256": "5511c62c415c33a80f309a91a01c8c694454a2dbbdde1472bb2d95ca9f60ed03",
+      "bytes": 1066,
+      "mode": 420
+    },
+    "device/roc/rgsp/prebuilts/local/set_rgsp_home.sh": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/device/roc/rgsp/prebuilts/local/set_rgsp_home.sh",
+      "sha256": "a6e369b272eeb52e31d566870ff8c7a8f6ee972d698a2bf534b13093239c023e",
+      "bytes": 3346,
+      "mode": 493
+    },
+    "device/roc/rgsp/rgsp-firstboot.rc": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/device/roc/rgsp/rgsp-firstboot.rc",
+      "sha256": "99caa9ca82756fcfb334bdff22238af63b0f54f06c59cd05b7bc258be8cb2a3a",
+      "bytes": 402,
+      "mode": 420
+    },
+    "device/roc/rgsp/rgsp-firstboot.sh": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/device/roc/rgsp/rgsp-firstboot.sh",
+      "sha256": "e4b613d9f5b0de2332af6a41b19b638b457fdc914dcbfe2caff666edddf421d8",
+      "bytes": 3938,
+      "mode": 493
+    },
+    "device/roc/rgsp/rgsp-input-bringup.rc": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/device/roc/rgsp/rgsp-input-bringup.rc",
+      "sha256": "6a4f64f9dab618db0624deaaf092180b65068fe22cea38cac37ad25ac4d27480",
+      "bytes": 308,
+      "mode": 420
+    },
+    "device/roc/rgsp/rgsp-input-prepare.sh": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/device/roc/rgsp/rgsp-input-prepare.sh",
+      "sha256": "0cc985b7aff4a70401fa39021cc7a645e6300246381dea51f58646cbc3da2cbe",
+      "bytes": 641,
+      "mode": 493
+    },
+    "device/roc/rgsp/rgsp-kmsg-start.sh": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/device/roc/rgsp/rgsp-kmsg-start.sh",
+      "sha256": "595e0a38d4a03dfb94152f6c898b5c297b67f7e21742e570c208be7bd75ab7bf",
+      "bytes": 925,
+      "mode": 493
+    },
+    "device/roc/rgsp/rgsp-navigation-defaults.rc": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/device/roc/rgsp/rgsp-navigation-defaults.rc",
+      "sha256": "c70f6f7a8aff2b1a37e642edc667fa0d8fe6e9d0d8a7e0ba582ee13127b7af5f",
+      "bytes": 265,
+      "mode": 420
+    },
+    "device/roc/rgsp/rgsp-navigation-defaults.sh": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/device/roc/rgsp/rgsp-navigation-defaults.sh",
+      "sha256": "a440bec9e2f03a9c6ccd710a0c873f50335210df2f5e512214c1908553c6541d",
+      "bytes": 1844,
+      "mode": 493
+    },
+    "device/roc/rgsp/rgsp-roms-handoff.rc": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/device/roc/rgsp/rgsp-roms-handoff.rc",
+      "sha256": "a2bfb436916857e6d9b35bff7804a26523e53663f851f1646659aa8300052a60",
+      "bytes": 253,
+      "mode": 420
+    },
+    "device/roc/rgsp/rgsp-roms-handoff.sh": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/device/roc/rgsp/rgsp-roms-handoff.sh",
+      "sha256": "e5dce65ed9eaa0ff9a4828b52219ee9ff42f2c0dc03eeaa79c9ba24f5ddb71e5",
+      "bytes": 2126,
+      "mode": 493
+    },
+    "device/roc/rgsp/rgsp-single-console.rc": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/device/roc/rgsp/rgsp-single-console.rc",
+      "sha256": "f33f63a531ad666214efedfc07ca818ec0956ac08fff769005ce39ae12622ba5",
+      "bytes": 132,
+      "mode": 420
+    },
+    "device/roc/rgsp/rgsp-wallpapers.rc": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/device/roc/rgsp/rgsp-wallpapers.rc",
+      "sha256": "c0264eaf14c9241b6935aa169bb32dd0b33cd803facb32f6c41e754d369327b9",
+      "bytes": 243,
+      "mode": 420
+    },
+    "device/roc/rgsp/rgsp-wallpapers.sh": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/device/roc/rgsp/rgsp-wallpapers.sh",
+      "sha256": "5c3c3619c5725bc1fccd69d3950b13fc769235a4ede47db9cc9b011b625c2fb4",
+      "bytes": 940,
+      "mode": 493
+    },
+    "device/roc/rgsp/rgsp-wifi-adb-session.sh": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/device/roc/rgsp/rgsp-wifi-adb-session.sh",
+      "sha256": "60ea97958d6ada337a8f908496781fe1c956095d16a05fafb3393610b1891d74",
+      "bytes": 672,
+      "mode": 493
+    },
+    "device/roc/rgsp/rgsp_kmsg_logger.c": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/device/roc/rgsp/rgsp_kmsg_logger.c",
+      "sha256": "f847098893e875acbfbcfc1378d42d2e27bd619b7f1589846b588e6b6779710d",
+      "bytes": 4408,
+      "mode": 420
+    },
+    "device/roc/rgsp/rgsp_mali_ioctl_trace.c": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/device/roc/rgsp/rgsp_mali_ioctl_trace.c",
+      "sha256": "7300bb9902a113b183911e23bdba931c18aab6906b27f2360ea6f6b21d432801",
+      "bytes": 2632,
+      "mode": 420
+    },
+    "device/roc/rgsp/rgsp_vsync_probe.c": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/device/roc/rgsp/rgsp_vsync_probe.c",
+      "sha256": "2e4798e3a0b5d0174eb383b1fff7e9c596eae3ffccab195bcb9219ea3d643f60",
+      "bytes": 2862,
+      "mode": 420
+    },
+    "device/roc/rgsp/system.prop": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/device/roc/rgsp/system.prop",
+      "sha256": "ec0252034822ed02b8f1ac6967937ec4614218d84670a2dba389f3eff9caf455",
+      "bytes": 104,
+      "mode": 420
+    },
+    "device/roc/rgsp/ueventd.rgsp.rc": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/device/roc/rgsp/ueventd.rgsp.rc",
+      "sha256": "c59ed9aaf33e260bb61bf003c8f0526df255a87adb16d7300964432d021ab6f9",
+      "bytes": 604,
+      "mode": 420
+    },
+    "frameworks/base/packages/SystemUI/src/com/android/systemui/globalactions/GlobalActionsDialog.java": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/frameworks/base/packages/SystemUI/src/com/android/systemui/globalactions/GlobalActionsDialog.java",
+      "sha256": "eda061f1bfb7c4dbe3f9bed93ded4b3f42f19bb6c957ef94b98edb888280a8b4",
+      "bytes": 74850,
+      "mode": 420
+    },
+    "frameworks/base/packages/SystemUI/src/com/android/systemui/statusbar/phone/StatusBarWindowView.java": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/frameworks/base/packages/SystemUI/src/com/android/systemui/statusbar/phone/StatusBarWindowView.java",
+      "sha256": "55bc570630861eb276467929cac43235ddd7c9664b2cec0bbfbfff26e47f10e2",
+      "bytes": 30612,
+      "mode": 420
+    },
+    "frameworks/base/services/accessibility/java/com/android/server/accessibility/AbstractAccessibilityServiceConnection.java": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/frameworks/base/services/accessibility/java/com/android/server/accessibility/AbstractAccessibilityServiceConnection.java",
+      "sha256": "c93a440390fc22f77cb6f9fa0e0c1b5d77b058c016d24807bbaf7465acac3f7f",
+      "bytes": 57351,
+      "mode": 420
+    },
+    "frameworks/base/services/core/java/com/android/server/StorageManagerService.java": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/frameworks/base/services/core/java/com/android/server/StorageManagerService.java",
+      "sha256": "e60a5e7341a8f5a44c18fb6a6ab9e6fb82dffea2ada84f7ec0379b719925bc81",
+      "bytes": 152464,
+      "mode": 420
+    },
+    "frameworks/base/services/core/java/com/android/server/inputmethod/InputMethodManagerService.java": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/frameworks/base/services/core/java/com/android/server/inputmethod/InputMethodManagerService.java",
+      "sha256": "dc986f8aeb31d2a1061b672b7ce056a18e543f2bfeaf00d82feff8eca5b5f907",
+      "bytes": 232158,
+      "mode": 420
+    },
+    "frameworks/base/services/core/java/com/android/server/oemlock/OemLockService.java": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/frameworks/base/services/core/java/com/android/server/oemlock/OemLockService.java",
+      "sha256": "eeaf78852b1a5584ce48273c63304f2cdd05b6ab355a2b79f545f002f5961b48",
+      "bytes": 10549,
+      "mode": 420
+    },
+    "frameworks/base/services/core/java/com/android/server/oemlock/RgspUnsupportedOemLock.java": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/frameworks/base/services/core/java/com/android/server/oemlock/RgspUnsupportedOemLock.java",
+      "sha256": "f40677191a22efeb88e25aed5e03fcc1cb55f79d83913bd9a98c78e17d26a0eb",
+      "bytes": 1273,
+      "mode": 420
+    },
+    "frameworks/base/services/java/com/android/server/SystemServer.java": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/frameworks/base/services/java/com/android/server/SystemServer.java",
+      "sha256": "c2009fa58e266bc80aed526757daf044f07a52bd4a5088ebe08546a86b27d6eb",
+      "bytes": 110601,
+      "mode": 420
+    },
+    "frameworks/native/services/surfaceflinger/DisplayHardware/FramebufferSurface.cpp": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/frameworks/native/services/surfaceflinger/DisplayHardware/FramebufferSurface.cpp",
+      "sha256": "13a701989a449fd4578d3c2c20dc38a867703502cbc900b789a0cfeb1712d270",
+      "bytes": 8799,
+      "mode": 420
+    },
+    "frameworks/opt/net/wifi/service/java/com/android/server/wifi/ClientModeImpl.java": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/frameworks/opt/net/wifi/service/java/com/android/server/wifi/ClientModeImpl.java",
+      "sha256": "36a4d98896cc0c4370a7171f1e70eb3738c2ac9c31f49f4ab9a1ece1eaebef04",
+      "bytes": 286652,
+      "mode": 420
+    },
+    "hardware/aw/hwc2/de2family/DisplayOpr.cpp": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/hardware/aw/hwc2/de2family/DisplayOpr.cpp",
+      "sha256": "28be5e984c76c2d501f5fe10f658921f9a26b80b350eb86de7bbaac8c0900c20",
+      "bytes": 82078,
+      "mode": 420
+    },
+    "hardware/aw/hwc2/de2family/RgspFramePeriod.h": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/hardware/aw/hwc2/de2family/RgspFramePeriod.h",
+      "sha256": "2a79677255dc09f28006df2ce6dd896140ac24aafbe61ea32e415d1c7e477154",
+      "bytes": 507,
+      "mode": 420
+    },
+    "hardware/aw/hwc2/hwc.cpp": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/hardware/aw/hwc2/hwc.cpp",
+      "sha256": "d309a828df694c5537da08943cb77454ee342cec9888d21ae4440854960ca192",
+      "bytes": 63823,
+      "mode": 420
+    },
+    "hardware/aw/hwc2/threadResouce/hwc_event_thread.cpp": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/hardware/aw/hwc2/threadResouce/hwc_event_thread.cpp",
+      "sha256": "4ee5def8c78cc8690b063e8e13ece3e8a65d978df433c47c6cd62f57c13f77dc",
+      "bytes": 16761,
+      "mode": 420
+    },
+    "packages/apps/Calendar/src/com/android/calendar/widget/CalendarAppWidgetProvider.java": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/apps/Calendar/src/com/android/calendar/widget/CalendarAppWidgetProvider.java",
+      "sha256": "f796f6afffad4431f8558401a0c1169adb54280adaebaf434486dde56e53c4e1",
+      "bytes": 10465,
+      "mode": 420
+    },
+    "packages/apps/Calendar/src/com/android/calendar/widget/CalendarAppWidgetService.java": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/apps/Calendar/src/com/android/calendar/widget/CalendarAppWidgetService.java",
+      "sha256": "2c1945599ff137a52962419d8ec452b9bb2edda96cdbd73ad99f54659b05cdd8",
+      "bytes": 26395,
+      "mode": 420
+    },
+    "packages/apps/DocumentsUI/src/com/android/documentsui/CreateDirectoryFragment.java": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/apps/DocumentsUI/src/com/android/documentsui/CreateDirectoryFragment.java",
+      "sha256": "1580d00e7fd0b11e20e2719149b45d5a3ffec5af4ee531cdf404184426c45418",
+      "bytes": 7337,
+      "mode": 420
+    },
+    "packages/apps/DocumentsUI/src/com/android/documentsui/GridItemThumbnail.java": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/apps/DocumentsUI/src/com/android/documentsui/GridItemThumbnail.java",
+      "sha256": "47724a0211f8aa6da266765b0bec174f3eeb97198386a54458a64f53434e1eb6",
+      "bytes": 3098,
+      "mode": 420
+    },
+    "packages/apps/DocumentsUI/src/com/android/documentsui/NavigationViewManager.java": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/apps/DocumentsUI/src/com/android/documentsui/NavigationViewManager.java",
+      "sha256": "5b21ed34440b3aeee27fecc9f717538a1524c866629801101978dd601cb5b247",
+      "bytes": 8146,
+      "mode": 420
+    },
+    "packages/apps/DocumentsUI/src/com/android/documentsui/base/RgspFileNameDialog.java": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/apps/DocumentsUI/src/com/android/documentsui/base/RgspFileNameDialog.java",
+      "sha256": "1a759cf8ccfc29c667c7f214e6b55044972676a911caf152045b2e97e17a8297",
+      "bytes": 4271,
+      "mode": 420
+    },
+    "packages/apps/DocumentsUI/src/com/android/documentsui/base/Shared.java": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/apps/DocumentsUI/src/com/android/documentsui/base/Shared.java",
+      "sha256": "4944b729d45707cb4f41f3f8fc2adc145577f4de75e022634ba4b77c0ca1b25b",
+      "bytes": 12727,
+      "mode": 420
+    },
+    "packages/apps/DocumentsUI/src/com/android/documentsui/dirlist/AccessibilityEventRouter.java": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/apps/DocumentsUI/src/com/android/documentsui/dirlist/AccessibilityEventRouter.java",
+      "sha256": "1a23ac3ea1e3fe882dc130175358b0c2d6892ecdc4740d40aca2b70f28abf86b",
+      "bytes": 4906,
+      "mode": 420
+    },
+    "packages/apps/DocumentsUI/src/com/android/documentsui/dirlist/RenameDocumentFragment.java": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/apps/DocumentsUI/src/com/android/documentsui/dirlist/RenameDocumentFragment.java",
+      "sha256": "c7fc67d0b962c5177148a541b5aaa019f4b6f172723c3089883772953779628b",
+      "bytes": 9553,
+      "mode": 420
+    },
+    "packages/apps/DocumentsUI/src/com/android/documentsui/files/FilesActivity.java": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/apps/DocumentsUI/src/com/android/documentsui/files/FilesActivity.java",
+      "sha256": "639bb121473b2383dab514f1274c5002af22c61b8bb06c762cd45da77613d90a",
+      "bytes": 16009,
+      "mode": 420
+    },
+    "packages/apps/PermissionController/res/values/themes.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/apps/PermissionController/res/values/themes.xml",
+      "sha256": "03cbffe765288671daaf5efe5f45018ab7c7d761e31cd82f4d3b97d52a5c0687",
+      "bytes": 4310,
+      "mode": 420
+    },
+    "packages/apps/PermissionController/src/com/android/packageinstaller/role/ui/DefaultAppActivity.java": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/apps/PermissionController/src/com/android/packageinstaller/role/ui/DefaultAppActivity.java",
+      "sha256": "d7d8fde35a5cc303b6d95c7c478ae2f0976777c3a49b4ba53aa948b9e4afa682",
+      "bytes": 4270,
+      "mode": 420
+    },
+    "packages/apps/PermissionController/src/com/android/packageinstaller/role/ui/DefaultAppListActivity.java": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/apps/PermissionController/src/com/android/packageinstaller/role/ui/DefaultAppListActivity.java",
+      "sha256": "64db8526c8f0db5b9d323254f6dd4f3d8c6a251a93f8e53eb877a63465cb9c91",
+      "bytes": 2448,
+      "mode": 420
+    },
+    "packages/apps/PermissionController/src/com/android/packageinstaller/role/ui/handheld/SettingsFragment.java": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/apps/PermissionController/src/com/android/packageinstaller/role/ui/handheld/SettingsFragment.java",
+      "sha256": "2551183a211f280c680c9a9929938fba3bb43380a08763552dfb868367345046",
+      "bytes": 4465,
+      "mode": 420
+    },
+    "packages/apps/Settings/AndroidManifest.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/apps/Settings/AndroidManifest.xml",
+      "sha256": "668f9563d17de5a64b10523886273ee6697f5f5d194a50fb7288e646e9c57bd1",
+      "bytes": 175242,
+      "mode": 420
+    },
+    "packages/apps/Settings/res/layout/settings_homepage_container.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/apps/Settings/res/layout/settings_homepage_container.xml",
+      "sha256": "f31f0cedd4262993be33c47738cb52c6fb888b02a6c8e34564320573e4ebace9",
+      "bytes": 2601,
+      "mode": 420
+    },
+    "packages/apps/Settings/res/values/config_video_previews.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/apps/Settings/res/values/config_video_previews.xml",
+      "sha256": "60757ec0e3e33336fd76b7a5d96a27c691195ad334b4e28cecb5910e6a254d86",
+      "bytes": 131,
+      "mode": 420
+    },
+    "packages/apps/Settings/src/com/android/settings/SettingsPreferenceFragment.java": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/apps/Settings/src/com/android/settings/SettingsPreferenceFragment.java",
+      "sha256": "d73368b5fed3d1ad6cacce4905202fe8224bad2bbafb843e0472fef064cdbbc4",
+      "bytes": 24903,
+      "mode": 420
+    },
+    "packages/apps/Settings/src/com/android/settings/applications/ClearDefaultsPreference.java": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/apps/Settings/src/com/android/settings/applications/ClearDefaultsPreference.java",
+      "sha256": "17d81096b6c6b992b9ff650c1bbe9cb08b09d50345ebff86583bdaf5d25d4ca6",
+      "bytes": 7524,
+      "mode": 420
+    },
+    "packages/apps/Settings/src/com/android/settings/bluetooth/BluetoothFilesPreferenceController.java": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/apps/Settings/src/com/android/settings/bluetooth/BluetoothFilesPreferenceController.java",
+      "sha256": "1e95ffead2b7e208f4b4523ebc5a71e48a48cc0e36dca2fc0dc58e69c93b8c86",
+      "bytes": 3239,
+      "mode": 420
+    },
+    "packages/apps/Settings/src/com/android/settings/core/RgspDpadDialogPolicy.java": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/apps/Settings/src/com/android/settings/core/RgspDpadDialogPolicy.java",
+      "sha256": "c1670885c4d91ce8105a40e08e75d331d2262247beacd25c8338366f95a5700e",
+      "bytes": 3364,
+      "mode": 420
+    },
+    "packages/apps/Settings/src/com/android/settings/core/RgspDpadMenuBridge.java": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/apps/Settings/src/com/android/settings/core/RgspDpadMenuBridge.java",
+      "sha256": "0c5c5f431dc9054b6f02d8dddc5b94add10c75538b095c7aa411172fd1cb159d",
+      "bytes": 2903,
+      "mode": 420
+    },
+    "packages/apps/Settings/src/com/android/settings/core/SettingsBaseActivity.java": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/apps/Settings/src/com/android/settings/core/SettingsBaseActivity.java",
+      "sha256": "6bbfcc58aefe74eea15465562e92e411b56891a896d6a2cd545bc96cb40a78fc",
+      "bytes": 8619,
+      "mode": 420
+    },
+    "packages/apps/Settings/src/com/android/settings/homepage/SettingsHomepageActivity.java": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/apps/Settings/src/com/android/settings/homepage/SettingsHomepageActivity.java",
+      "sha256": "b4b736001a1846fb2b458e66f54b688c1fbf7b34b5e68ded7e37714714b0b5d9",
+      "bytes": 4283,
+      "mode": 420
+    },
+    "packages/apps/Settings/src/com/android/settings/localepicker/LocaleDragAndDropAdapter.java": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/apps/Settings/src/com/android/settings/localepicker/LocaleDragAndDropAdapter.java",
+      "sha256": "0bee7a6016f26168224d5e798c9a831ded9ac0af5202bd89beb9b3fcd2e2a2e7",
+      "bytes": 13854,
+      "mode": 420
+    },
+    "packages/apps/Settings/src/com/android/settings/password/ChooseLockGenericController.java": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/apps/Settings/src/com/android/settings/password/ChooseLockGenericController.java",
+      "sha256": "8e6c0040903d1771b27b990b8124d2af71bff9b5c6cd8cad82d5c190031e8aa6",
+      "bytes": 8110,
+      "mode": 420
+    },
+    "packages/apps/Settings/src/com/android/settings/widget/VideoPreference.java": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/apps/Settings/src/com/android/settings/widget/VideoPreference.java",
+      "sha256": "f7095c8230fe6f2c42db952509376980e8c786ccda736b36e6551a353c396382",
+      "bytes": 10188,
+      "mode": 420
+    },
+    "packages/apps/SettingsIntelligence/src/com/android/settings/intelligence/search/SearchActivity.java": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/apps/SettingsIntelligence/src/com/android/settings/intelligence/search/SearchActivity.java",
+      "sha256": "55f270b02ad0d13dd69052556fd7eccd16352feed9c718d30ba3b0ca8da24477",
+      "bytes": 1661,
+      "mode": 420
+    },
+    "packages/apps/SettingsIntelligence/src/com/android/settings/intelligence/search/SearchFragment.java": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/apps/SettingsIntelligence/src/com/android/settings/intelligence/search/SearchFragment.java",
+      "sha256": "85d9afe8913d50b928543b39ad36ea6733b5b89f084f53a4938c20601b2e3d67",
+      "bytes": 14136,
+      "mode": 420
+    },
+    "packages/inputmethods/LatinIME/java/src/com/android/inputmethod/latin/settings/CustomInputStylePreference.java": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LatinIME/java/src/com/android/inputmethod/latin/settings/CustomInputStylePreference.java",
+      "sha256": "9cbee280aaae90f4f01de2f757e63578b9a304c5322e46a70d2da086bfbf8ade",
+      "bytes": 14128,
+      "mode": 420
+    },
+    "packages/inputmethods/LatinIME/java/src/com/android/inputmethodcommon/InputMethodSettingsImpl.java": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LatinIME/java/src/com/android/inputmethodcommon/InputMethodSettingsImpl.java",
+      "sha256": "5f53c2bad76e1c5d8b4a2b0f50de9c7d9725e9961aa895f052b1089dc7b00c12",
+      "bytes": 6535,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/Android.bp": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/Android.bp",
+      "sha256": "c1e67fff72932d21d00e4c00d9b05f330591c3a3136aa002b98a1c500e82099a",
+      "bytes": 427,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/AndroidManifest.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/AndroidManifest.xml",
+      "sha256": "b77a6a9b0c73462b9f877ec50bccd637c87a46b49b6c8a9af811f0b4df98ff2e",
+      "bytes": 1580,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/CONTRIBUTING.md": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/CONTRIBUTING.md",
+      "sha256": "6c67e8c02b4edb144e651708a4f1968e5826cab1793377b9e23a81f916e41e1e",
+      "bytes": 48,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/LICENSE": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/LICENSE",
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "bytes": 11358,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/OWNERS": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/OWNERS",
+      "sha256": "0f1f1e29e2a490edddcf685a83ebf17e0a08e63ecf609b67cc34cb9bc2f90d52",
+      "bytes": 37,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/README.md": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/README.md",
+      "sha256": "fb14a26b10b5e3dd488d462febb7191ef0c75c13f4e428f2deb99af397a25d30",
+      "bytes": 34,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/proguard.cfg": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/proguard.cfg",
+      "sha256": "2eb19068a3d9ddc5c76a165f112ded1223e6bde8e4cb0c404fd94b12060d8e5d",
+      "bytes": 479,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/drawable-hdpi/ic_ime_accent_close.png": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/drawable-hdpi/ic_ime_accent_close.png",
+      "sha256": "b76a4154bf3fb22fd943cddd7056e1e7871133dc7ddacb8ce1102f23b4a964c0",
+      "bytes": 759,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/drawable-hdpi/ic_ime_alphabet.png": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/drawable-hdpi/ic_ime_alphabet.png",
+      "sha256": "4896f89d41ef339466f33f67063c2750945eced7a9357ec0da11150cc307b800",
+      "bytes": 1064,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/drawable-hdpi/ic_ime_delete.png": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/drawable-hdpi/ic_ime_delete.png",
+      "sha256": "ef7fe3c321d8d50597a95eedfe52d634a892b4f49fe087151fae16b7c3191040",
+      "bytes": 1130,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/drawable-hdpi/ic_ime_left_arrow.png": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/drawable-hdpi/ic_ime_left_arrow.png",
+      "sha256": "a42bea0a7401f7188770ee095aa8f6bced08992ffc1c908cfe0ffbc1a73d86c7",
+      "bytes": 626,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/drawable-hdpi/ic_ime_right_arrow.png": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/drawable-hdpi/ic_ime_right_arrow.png",
+      "sha256": "c39939d3d6140671f4a5645ac3ecbb06deb210f7bca0c87fcbf9662b9ee8faae",
+      "bytes": 608,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/drawable-hdpi/ic_ime_shift_lock_on.png": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/drawable-hdpi/ic_ime_shift_lock_on.png",
+      "sha256": "3c73e75bcbe58a6a7b15b829cbefe11b2286c1cb178e613437ffb00a79213010",
+      "bytes": 896,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/drawable-hdpi/ic_ime_shift_off.png": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/drawable-hdpi/ic_ime_shift_off.png",
+      "sha256": "69cbe8fa8da37b747de8b47384d2fbbf7f03dce8eae26aea0664c70a61cfa751",
+      "bytes": 902,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/drawable-hdpi/ic_ime_shift_on.png": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/drawable-hdpi/ic_ime_shift_on.png",
+      "sha256": "f1f3f6d249cfb28fef7a2eec43c4fd736f7c2167b13a73980d0427b24416d7c7",
+      "bytes": 795,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/drawable-hdpi/ic_ime_space.png": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/drawable-hdpi/ic_ime_space.png",
+      "sha256": "76ffcdb17acfcfe4e776ab597b831738a010f706de2f93ef27661a44074115e5",
+      "bytes": 683,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/drawable-hdpi/ic_ime_symbols.png": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/drawable-hdpi/ic_ime_symbols.png",
+      "sha256": "a9bbbf27f6ca599edc2bdddf9d2ece86ba18569df228df823ec555cefa70e752",
+      "bytes": 1062,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/drawable-hdpi/ic_voice_available.png": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/drawable-hdpi/ic_voice_available.png",
+      "sha256": "97a920fdc3b355ea8de03f2f892529d65e42edf2ebad0e810a480a54fbde6e26",
+      "bytes": 7249,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/drawable-hdpi/ic_voice_focus.png": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/drawable-hdpi/ic_voice_focus.png",
+      "sha256": "78f4fbb5195d33739b2d2564fd4580958be71a58f5753d4860151909eb0a416b",
+      "bytes": 7594,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/drawable-hdpi/ic_voice_off.png": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/drawable-hdpi/ic_voice_off.png",
+      "sha256": "a829e72c1f91f0d17a79c7195bfbdfb3b7fb59fa00a396862d4998d4e8a32556",
+      "bytes": 7262,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/drawable-hdpi/ic_voice_recording.png": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/drawable-hdpi/ic_voice_recording.png",
+      "sha256": "853750441374a11f9b1e66774f6e6df2132840724438a48b4a362b906061a4eb",
+      "bytes": 6526,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/drawable-hdpi/key_selector.9.png": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/drawable-hdpi/key_selector.9.png",
+      "sha256": "ff09dd1e60322759a78ec4b43756dcb3b359143e87aee370aaf0879770328619",
+      "bytes": 710,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/drawable-hdpi/touch_selector.9.png": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/drawable-hdpi/touch_selector.9.png",
+      "sha256": "a4e8a8bb0c477f670b3fd0fe5fc31de1aefa33548fd70119b351a91c63185748",
+      "bytes": 769,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/drawable-hdpi/vs_reactive_dark.png": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/drawable-hdpi/vs_reactive_dark.png",
+      "sha256": "6d1a032b006edde79d1d1eaf119b2bb321f9da404d7e9f283497b69aaa490328",
+      "bytes": 7358,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/drawable-hdpi/vs_reactive_light.png": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/drawable-hdpi/vs_reactive_light.png",
+      "sha256": "996b8218b094e4946bd5f0416ad2354373ca30b5aa38148184b5559dfbeae379",
+      "bytes": 7321,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/drawable-mdpi/ic_ime_accent_close.png": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/drawable-mdpi/ic_ime_accent_close.png",
+      "sha256": "1991d14c4eb5a5bf7eb846d32e076a605ac786d56ae53ffe6f927e4896681788",
+      "bytes": 670,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/drawable-mdpi/ic_ime_alphabet.png": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/drawable-mdpi/ic_ime_alphabet.png",
+      "sha256": "c02a76e489ca1845ccf05b1749294ef30108843be3296ae41d0b9de5a0f63eff",
+      "bytes": 756,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/drawable-mdpi/ic_ime_delete.png": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/drawable-mdpi/ic_ime_delete.png",
+      "sha256": "f4a13801c89925ecae49400997cdc2f8b3a7cbc9dfe4ce76563c535490b8bba0",
+      "bytes": 836,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/drawable-mdpi/ic_ime_left_arrow.png": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/drawable-mdpi/ic_ime_left_arrow.png",
+      "sha256": "80559d388377dc71274aea1fe769f84c158ba00051004ef4d4e469bee01ca90e",
+      "bytes": 557,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/drawable-mdpi/ic_ime_right_arrow.png": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/drawable-mdpi/ic_ime_right_arrow.png",
+      "sha256": "4186e09eba56f12cd4265ff98b6a19d3bcf5c6488a625f940395b05141b6645e",
+      "bytes": 548,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/drawable-mdpi/ic_ime_shift_lock_on.png": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/drawable-mdpi/ic_ime_shift_lock_on.png",
+      "sha256": "2b4663cf09052b12dd83edaa4098e5969f995f0045d608bf7e58a1d11ddbf6a1",
+      "bytes": 762,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/drawable-mdpi/ic_ime_shift_off.png": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/drawable-mdpi/ic_ime_shift_off.png",
+      "sha256": "5d043a1b945ac97df40adccacf626d5fd3b81e98b47d8d3f36f72948fce3d7a7",
+      "bytes": 731,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/drawable-mdpi/ic_ime_shift_on.png": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/drawable-mdpi/ic_ime_shift_on.png",
+      "sha256": "770cb663e240d17226430491716de4d6804a68ee1e28ceef1020ca93f305feba",
+      "bytes": 637,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/drawable-mdpi/ic_ime_space.png": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/drawable-mdpi/ic_ime_space.png",
+      "sha256": "54db82096ca93533f8f38213082a8e99b17883d5699ae4363f4c4b8d5947c285",
+      "bytes": 616,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/drawable-mdpi/ic_ime_symbols.png": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/drawable-mdpi/ic_ime_symbols.png",
+      "sha256": "160caa0fb7162fec3652a7b37b27b6a32396c3b2243e98280fe77ed55765ea62",
+      "bytes": 765,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/drawable-mdpi/ic_voice_available.png": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/drawable-mdpi/ic_voice_available.png",
+      "sha256": "f2b4d68c752b213b9e92a03ebda26d0cfa9786636f13c517efd23ddd2c38e9f9",
+      "bytes": 4509,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/drawable-mdpi/ic_voice_focus.png": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/drawable-mdpi/ic_voice_focus.png",
+      "sha256": "d3bbb8d55422d5f8d56f242867d24f2291962bbebaebf7d25b0efa7e1aec2453",
+      "bytes": 4584,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/drawable-mdpi/ic_voice_off.png": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/drawable-mdpi/ic_voice_off.png",
+      "sha256": "8f98eb96873df4ec0dae20e984049d3fc390060f63d6ab4d6c1ae9710596d35a",
+      "bytes": 4504,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/drawable-mdpi/ic_voice_recording.png": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/drawable-mdpi/ic_voice_recording.png",
+      "sha256": "5d88b7022225f5d6ec13c05d718a5004333c03b8ebba5bf6f0438a92ce547f77",
+      "bytes": 4061,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/drawable-mdpi/key_selector.9.png": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/drawable-mdpi/key_selector.9.png",
+      "sha256": "2a8eb06ec09065d7ce665289acb97a3252ab3f3ed34808783541236dcad12bca",
+      "bytes": 471,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/drawable-mdpi/touch_selector.9.png": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/drawable-mdpi/touch_selector.9.png",
+      "sha256": "8414bb5b1f7ce741aa2ba5cb400be7cb225016ace2bb679f4f05dda1fa537b31",
+      "bytes": 527,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/drawable-mdpi/vs_reactive_dark.png": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/drawable-mdpi/vs_reactive_dark.png",
+      "sha256": "9d48aa905db833c8bd0433570e05bd06b960e3698aab9d0bdc14962d6dda4fb7",
+      "bytes": 4439,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/drawable-mdpi/vs_reactive_light.png": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/drawable-mdpi/vs_reactive_light.png",
+      "sha256": "ad78a91f89db2ef4b22597f8ebd55ca99fdd9d9d124cfb8e2874943282921407",
+      "bytes": 4582,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/drawable-xhdpi/ic_ime_accent_close.png": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/drawable-xhdpi/ic_ime_accent_close.png",
+      "sha256": "8e3d44a4d8bf09dd2bed6f8a844558d9a85fe25a0a5d579f7e638357d0b5c70e",
+      "bytes": 1051,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/drawable-xhdpi/ic_ime_alphabet.png": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/drawable-xhdpi/ic_ime_alphabet.png",
+      "sha256": "6d4fddd57666b617056511bc727d27c0f0e21a1bb0ba2e0c2fa132c295eed2e3",
+      "bytes": 1463,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/drawable-xhdpi/ic_ime_delete.png": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/drawable-xhdpi/ic_ime_delete.png",
+      "sha256": "81207e11703384e6da96c518354ec582c19180b2810751c91b396b70ed04e21e",
+      "bytes": 1460,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/drawable-xhdpi/ic_ime_left_arrow.png": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/drawable-xhdpi/ic_ime_left_arrow.png",
+      "sha256": "84a65e14e0ca9b00340df5403e61efa558051fcd979b882d41504451b71dd58f",
+      "bytes": 727,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/drawable-xhdpi/ic_ime_right_arrow.png": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/drawable-xhdpi/ic_ime_right_arrow.png",
+      "sha256": "9b1bc389ab741ef72c4054d2e610b0aa68274a563c0e6fa6b18b080fdcaf0211",
+      "bytes": 703,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/drawable-xhdpi/ic_ime_shift_lock_on.png": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/drawable-xhdpi/ic_ime_shift_lock_on.png",
+      "sha256": "12146781019181b64572b954a732b98f2ae195a4958280c4e9888e192f72c9aa",
+      "bytes": 1036,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/drawable-xhdpi/ic_ime_shift_off.png": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/drawable-xhdpi/ic_ime_shift_off.png",
+      "sha256": "03de9384f470bea5d697ca37dd16f8558d8a50a1be1c62a2f598ea01f279b6be",
+      "bytes": 1121,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/drawable-xhdpi/ic_ime_shift_on.png": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/drawable-xhdpi/ic_ime_shift_on.png",
+      "sha256": "40df4d9dd791d7b0f9ed93ecc9956a4ed4d671a3a69ebfd6a1a15dd1d1454314",
+      "bytes": 886,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/drawable-xhdpi/ic_ime_space.png": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/drawable-xhdpi/ic_ime_space.png",
+      "sha256": "6c578c6a5c9233e9d82d3f9753102ff2e6b346d6aa5f012bdcecbb7d3b2cbb51",
+      "bytes": 849,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/drawable-xhdpi/ic_ime_symbols.png": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/drawable-xhdpi/ic_ime_symbols.png",
+      "sha256": "cce8ad83aae67b879ba81ead8ae3d45272d82c482ca8d699edbc9a29262e1c96",
+      "bytes": 1366,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/drawable-xhdpi/ic_voice_available.png": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/drawable-xhdpi/ic_voice_available.png",
+      "sha256": "c746c41e46ef41e01dd6012aa8e6bc9068aee06569c60743f750863eccfef117",
+      "bytes": 9601,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/drawable-xhdpi/ic_voice_focus.png": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/drawable-xhdpi/ic_voice_focus.png",
+      "sha256": "8f3b1df1533103e66c74848bf652d76ef56e5915801154d384fd2b9dcd378a35",
+      "bytes": 9976,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/drawable-xhdpi/ic_voice_off.png": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/drawable-xhdpi/ic_voice_off.png",
+      "sha256": "c5623dfcf94f4c54767322ef5c4670be1bfea327e0a7bf55a02c59b53f559b09",
+      "bytes": 9601,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/drawable-xhdpi/ic_voice_recording.png": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/drawable-xhdpi/ic_voice_recording.png",
+      "sha256": "547b2b26cea8978d3c1d686ebafa2fa545331d3d2a969e5ad13c39bbd8a55aa6",
+      "bytes": 8655,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/drawable-xhdpi/key_selector.9.png": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/drawable-xhdpi/key_selector.9.png",
+      "sha256": "a91f6151e7f30920d5e3856731be6bd6f2f79bd0a7e2384434b205c9cd55108c",
+      "bytes": 922,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/drawable-xhdpi/touch_selector.9.png": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/drawable-xhdpi/touch_selector.9.png",
+      "sha256": "9180f2c1f44853d69c56eda32326a3f628b689c77b180b794dc8ca9e456b4638",
+      "bytes": 1017,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/drawable-xhdpi/vs_reactive_dark.png": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/drawable-xhdpi/vs_reactive_dark.png",
+      "sha256": "91c38c9ff5c141a044cabdf1c843376b2e4ec37cd437699448d67d21af59259a",
+      "bytes": 10086,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/drawable-xhdpi/vs_reactive_light.png": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/drawable-xhdpi/vs_reactive_light.png",
+      "sha256": "bfd7b213527f094d571828ea0f0bf721f5ed45b990f2690d53c7911d930ee0f0",
+      "bytes": 10123,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/drawable-xxhdpi/ic_ime_accent_close.png": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/drawable-xxhdpi/ic_ime_accent_close.png",
+      "sha256": "4d908aef401e5bc57268029a5aae28465ea044f7919aa29c5466bd20d557282a",
+      "bytes": 1502,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/drawable-xxhdpi/ic_ime_alphabet.png": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/drawable-xxhdpi/ic_ime_alphabet.png",
+      "sha256": "7a00b1022d1b392a912b12244cb18524da679a0a1f977f096e8d8a0555c79dc8",
+      "bytes": 1782,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/drawable-xxhdpi/ic_ime_delete.png": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/drawable-xxhdpi/ic_ime_delete.png",
+      "sha256": "2153a740fa2ed51089e5589c2a5ce68bd4cc7f8a64dc160e549065a95a999ff7",
+      "bytes": 2093,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/drawable-xxhdpi/ic_ime_left_arrow.png": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/drawable-xxhdpi/ic_ime_left_arrow.png",
+      "sha256": "b89a14432c0cfab1559b0ccb4972d770d66af7da86a23cd29eaf5cc2e63869b7",
+      "bytes": 1306,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/drawable-xxhdpi/ic_ime_right_arrow.png": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/drawable-xxhdpi/ic_ime_right_arrow.png",
+      "sha256": "1fc541a80c8aeb8a59311c264727a9f7078dfcdf4525c8d37ba8ee9b3c9cff6f",
+      "bytes": 1330,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/drawable-xxhdpi/ic_ime_shift_lock_on.png": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/drawable-xxhdpi/ic_ime_shift_lock_on.png",
+      "sha256": "2d210470c78c244da5666dfdb0149745132a81f7f2d90f668d8e540b2db22bca",
+      "bytes": 1536,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/drawable-xxhdpi/ic_ime_shift_off.png": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/drawable-xxhdpi/ic_ime_shift_off.png",
+      "sha256": "20594fdcd5d1d1582bb81b63c4445827d7653fba196fbfd35103f916dc5fa4d1",
+      "bytes": 1710,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/drawable-xxhdpi/ic_ime_shift_on.png": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/drawable-xxhdpi/ic_ime_shift_on.png",
+      "sha256": "3d25adef87ae4cb586952f0dfffe94c3b0a733c1c78b7fc3be83f49b608d5d8c",
+      "bytes": 1450,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/drawable-xxhdpi/ic_ime_space.png": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/drawable-xxhdpi/ic_ime_space.png",
+      "sha256": "bbcd4803399d27f3cf743d4765dc5e6fad400a1f3e8179006a342297e9ecd1ad",
+      "bytes": 1630,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/drawable-xxhdpi/ic_ime_symbols.png": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/drawable-xxhdpi/ic_ime_symbols.png",
+      "sha256": "8d526d282d804400b4aa5606b51801b11b28796e7aa3ff9e57acb3a0706407fa",
+      "bytes": 1611,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/drawable-xxhdpi/key_selector.9.png": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/drawable-xxhdpi/key_selector.9.png",
+      "sha256": "1558bcf03a9bc0633a8287213b3be4670923aec2381a6450bf1a995394f4db11",
+      "bytes": 2251,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/drawable-xxhdpi/touch_selector.9.png": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/drawable-xxhdpi/touch_selector.9.png",
+      "sha256": "9b0b21694fee789290f1c6468cac26719e5e2ba0952b3b7efb94d8aa25f157d2",
+      "bytes": 2420,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/drawable/selector_caps_shift.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/drawable/selector_caps_shift.xml",
+      "sha256": "5a9df4dca3c428aad83f824b3335e0b59dc13372abbc6b9baa16257834cc0c29",
+      "bytes": 835,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/drawable/vs_micbtn_off_selector.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/drawable/vs_micbtn_off_selector.xml",
+      "sha256": "e63e9fa4358d7c1058b5bc1b5f5c77e799ec3041139e55a9e3c12180a9b75a4f",
+      "bytes": 347,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/drawable/vs_micbtn_on_selector.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/drawable/vs_micbtn_on_selector.xml",
+      "sha256": "c908dbb04027d8a9bd54721719745a10a7ade45c6bc944a08674340b73393f10",
+      "bytes": 871,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/drawable/vs_micbtn_rec_selector.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/drawable/vs_micbtn_rec_selector.xml",
+      "sha256": "bdc71ecb631d0c7c8053728460271138c408bd7d01460b3663cef8c8805b516c",
+      "bytes": 978,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/layout/candidate.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/layout/candidate.xml",
+      "sha256": "ce98bc94754abb769012c701bc5271a31c467bce2478dd726ebe46c0d57cd202",
+      "bytes": 1702,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/layout/input_leanback.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/layout/input_leanback.xml",
+      "sha256": "23cf6e40836e30031b65042e36ab99536c7278c7144fc0ecf1979843f48115e0",
+      "bytes": 3117,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/layout/recognizer_view.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/layout/recognizer_view.xml",
+      "sha256": "4b46da4dc8df2be132d2d3095d58f406975e6787a5a01166baad0be0f5ee9da8",
+      "bytes": 1407,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/layout/root_leanback.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/layout/root_leanback.xml",
+      "sha256": "145122a891a0d04fab1da1d1900317e508246cdcc6641db60d84671bb101d514",
+      "bytes": 3037,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/layout/selector.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/layout/selector.xml",
+      "sha256": "4c1fae8bb3ca7b3c288810cabb34f96090e7b9c30eb6359399e0b3b8fe8f0664",
+      "bytes": 1159,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/raw/domain_en.dict": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/raw/domain_en.dict",
+      "sha256": "82a95f5d1eb38e12c3646122b23df6e87f44b820cf11a0333be57d513a5fe88b",
+      "bytes": 117,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/values-af/strings.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/values-af/strings.xml",
+      "sha256": "8da345b24187f9d3507b5d8307ced2177c7aee860fc6281c0684ae02e9368622",
+      "bytes": 2694,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/values-am/strings.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/values-am/strings.xml",
+      "sha256": "598bc2e8b3b1094704cb37a31610122090e61c952f6ef5012350ed15e8a87c14",
+      "bytes": 2833,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/values-ar/strings.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/values-ar/strings.xml",
+      "sha256": "5ad0880c8db84c18263e763838718c61d57413b4bcf45e9afe59df659274f074",
+      "bytes": 2837,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/values-bg/strings.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/values-bg/strings.xml",
+      "sha256": "5f632a27748edfe384aba12149bcaa817a37063e63fe4d96a272713da85edd7a",
+      "bytes": 2930,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/values-bn-rBD/strings.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/values-bn-rBD/strings.xml",
+      "sha256": "f92d30827a111cc6e5e7d36d9012789411c4875db1e3c331d02ec1cabb4f4e68",
+      "bytes": 3101,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/values-ca/strings.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/values-ca/strings.xml",
+      "sha256": "a05a10893d99069c235ddf7ce7d594d6231fde1f37d9da064a5c8355eeedffe0",
+      "bytes": 2699,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/values-cs/strings.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/values-cs/strings.xml",
+      "sha256": "50e5791c08ab2d76b4725f5352c8d2a264e8cb558c3db4e4a50049fd0ea9c274",
+      "bytes": 2692,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/values-da/strings.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/values-da/strings.xml",
+      "sha256": "15e77e3c842f422851cbeb4dfc149b759fcc191fd520c9b5f43aaea830fb35c3",
+      "bytes": 2722,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/values-de/strings.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/values-de/strings.xml",
+      "sha256": "370c7ad1ba16681a08093305b6fba17e45c1ab6aafe46e7aecc24194c6f8dc39",
+      "bytes": 2703,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/values-el/strings.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/values-el/strings.xml",
+      "sha256": "92fb5578c9169c5278f3c0ffe6f5242b7939983a1bf1668b2b8b7013c12befb9",
+      "bytes": 3007,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/values-en-rAU/strings.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/values-en-rAU/strings.xml",
+      "sha256": "48925f102698b89709c24ced5bcba637d8cd7e255ca17034c62e30a24a9fd22e",
+      "bytes": 2679,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/values-en-rGB/strings.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/values-en-rGB/strings.xml",
+      "sha256": "0cbea6899ea243d534af221dee53a4b783ccfea98222ec8eadb823103f20cfa8",
+      "bytes": 2646,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/values-en-rIN/strings.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/values-en-rIN/strings.xml",
+      "sha256": "0cbea6899ea243d534af221dee53a4b783ccfea98222ec8eadb823103f20cfa8",
+      "bytes": 2646,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/values-es-rUS/strings.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/values-es-rUS/strings.xml",
+      "sha256": "dc136978f433525dcd5c6b58513ffbaa4c06ecbe8fff8467ad1dba421905356d",
+      "bytes": 2727,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/values-es/strings.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/values-es/strings.xml",
+      "sha256": "94f06e4486cd3840b90539fe80e57f788c9740bd4595da8822b999af9a843fb6",
+      "bytes": 2720,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/values-et-rEE/strings.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/values-et-rEE/strings.xml",
+      "sha256": "65abb2af1aa1a41b95e0a539ca64d357977ff853e21863189b72c383c9c9863d",
+      "bytes": 2701,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/values-eu-rES/strings.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/values-eu-rES/strings.xml",
+      "sha256": "90c4fccf965716e9be37010297004e38e1836cdc98997188798576e0f2eedbe6",
+      "bytes": 2705,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/values-fa/strings.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/values-fa/strings.xml",
+      "sha256": "fb880ae72ed4367a36fc6abd556317b7a80d6fd3139cf66a22b5ecdd2390776e",
+      "bytes": 2821,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/values-fi/strings.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/values-fi/strings.xml",
+      "sha256": "7944ea77dfeb6e4a5feaaffbe5d569bce8a24144cc357ad3378da04089387f52",
+      "bytes": 2758,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/values-fr-rCA/strings.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/values-fr-rCA/strings.xml",
+      "sha256": "18a4beafd2bc593a9f4af931aa29e6c59cda2f8e524c759518c58985f3bffa48",
+      "bytes": 2766,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/values-fr/strings.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/values-fr/strings.xml",
+      "sha256": "150f854a3f1884f4e83c1f245f1b4be8771f5bd925a51db2808e0f15e9051da1",
+      "bytes": 2748,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/values-gl-rES/strings.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/values-gl-rES/strings.xml",
+      "sha256": "81574f4c3260dc927ea3dd58b553ae400f383efcf675d7f848f145c399f0fe9d",
+      "bytes": 2720,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/values-hi/strings.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/values-hi/strings.xml",
+      "sha256": "82952aad93f945a32c3e43e5bee87e3bb4baaedc921d77e47cfb4e739ad79c24",
+      "bytes": 2911,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/values-hr/strings.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/values-hr/strings.xml",
+      "sha256": "12dc23d8194c5f6d7297af484800210cb4a93b2ca2209c755492cb42d3cf3910",
+      "bytes": 2711,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/values-hu/strings.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/values-hu/strings.xml",
+      "sha256": "b9d0741206824e65a43775f13bdd56f78bcd54e721e3e52276b8b9dfcbdbef51",
+      "bytes": 2741,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/values-hy-rAM/strings.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/values-hy-rAM/strings.xml",
+      "sha256": "e9a36b110926af181b559608e18f1cdce28a3bcf74b7abbc0f38d2d09c7d5b60",
+      "bytes": 2878,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/values-in/strings.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/values-in/strings.xml",
+      "sha256": "6c3ed7dc52d8ae390203d91ef3f6e52a082397942a611698d52fd73610f689c1",
+      "bytes": 2683,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/values-is-rIS/strings.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/values-is-rIS/strings.xml",
+      "sha256": "885ebefd255e8af52a03f663f9bdc24891a4eaf0ea96ba52eebb685ac047991a",
+      "bytes": 2696,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/values-it/strings.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/values-it/strings.xml",
+      "sha256": "892a0ee1d79ae9d4810e5907bafa0a2c721bb2abf5767f75b2242f69d4544f2d",
+      "bytes": 2712,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/values-iw/strings.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/values-iw/strings.xml",
+      "sha256": "bfecb5576969174dcbf9f5dc12e6f4105922f32cf42975351b8f6208dedf4a40",
+      "bytes": 2763,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/values-ja/bools.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/values-ja/bools.xml",
+      "sha256": "aa7cb8c0c92bab99002364e0b559241365884a4c3873851be39c785706531adb",
+      "bytes": 864,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/values-ja/strings.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/values-ja/strings.xml",
+      "sha256": "be9dc913f01c733ce370e91ab89d12d54cb24d3c04f476c784707227b7a4a981",
+      "bytes": 2737,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/values-ka-rGE/strings.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/values-ka-rGE/strings.xml",
+      "sha256": "7f945f4ee4a0996a1c7a95358a3283383fd50ac0aef4002e52afe01df36ff154",
+      "bytes": 3192,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/values-kk-rKZ/strings.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/values-kk-rKZ/strings.xml",
+      "sha256": "aa97bdf2dc9df112cde551fca9cfacc4572d0c82a3be7e62208f02b670d5df82",
+      "bytes": 2877,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/values-km-rKH/strings.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/values-km-rKH/strings.xml",
+      "sha256": "3b3ea596e118f3abb77e0fbfa84f69a486a955daf6826ee79c5688a910466425",
+      "bytes": 3004,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/values-kn-rIN/strings.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/values-kn-rIN/strings.xml",
+      "sha256": "d28ab569d77404e5c017d48b78cba31ff2ccc451b0735305874de2c7951f9ac8",
+      "bytes": 3014,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/values-ko/strings.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/values-ko/strings.xml",
+      "sha256": "92a7f36ce148f57237d42a093cbfa34ce9379895a436cbb33c8fc7266edf75d1",
+      "bytes": 2716,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/values-ky-rKG/strings.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/values-ky-rKG/strings.xml",
+      "sha256": "bb60bdf5f84a9c81360d1209268621b553cae713b93191b36d9756e95af778c9",
+      "bytes": 2879,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/values-lo-rLA/strings.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/values-lo-rLA/strings.xml",
+      "sha256": "317cb27ae2300a3772b504385a05a56da6179b6fc379150b540060f358b7514b",
+      "bytes": 2942,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/values-lt/strings.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/values-lt/strings.xml",
+      "sha256": "a2d6ec91dc470d94beaf46e3a666f9fc3b4ba4ed42dae4a7ecee60abc68af3e7",
+      "bytes": 2762,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/values-lv/strings.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/values-lv/strings.xml",
+      "sha256": "8910839a1de76b6ab8780e276715c04b5f3111c7ac1d6cefff4e3a856b45eda5",
+      "bytes": 2806,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/values-mk-rMK/strings.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/values-mk-rMK/strings.xml",
+      "sha256": "bb58a965fbe3a92449b05b947d48b9e5fc44c0651de5d2615ac0a5df7faeb262",
+      "bytes": 2914,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/values-ml-rIN/strings.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/values-ml-rIN/strings.xml",
+      "sha256": "eff67ed9c2e0e6167aa9cd5a891f59a555d0641a6b69ecc1f815858d9494bc37",
+      "bytes": 3213,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/values-mn-rMN/strings.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/values-mn-rMN/strings.xml",
+      "sha256": "05aea7d1bd2968c48502ca92164565fb2ff9be5bf8540fe69d4a86032032df11",
+      "bytes": 2830,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/values-mr-rIN/strings.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/values-mr-rIN/strings.xml",
+      "sha256": "da1c3e9c64f9d29e29baf680e01dadaa151b33c14e16ebf2f68f6e3398fe040c",
+      "bytes": 2917,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/values-ms-rMY/strings.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/values-ms-rMY/strings.xml",
+      "sha256": "ba2c90a1a3f9a58f872dec4b688ec0459b5a0198058fc645b6f36ff738d48c03",
+      "bytes": 2700,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/values-my-rMM/strings.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/values-my-rMM/strings.xml",
+      "sha256": "d328f244fede93e3f208066dd02244c8374a0027868e5abab89b607d4f21e79c",
+      "bytes": 3194,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/values-nb/strings.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/values-nb/strings.xml",
+      "sha256": "1586cdba5f833c1064e6abe44f921c62909477e4829fce252fd6e74057d26572",
+      "bytes": 2698,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/values-ne-rNP/strings.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/values-ne-rNP/strings.xml",
+      "sha256": "29809df6d094792414aeff8d44d18371f4dc6a1c052848697f85a4841618e4b5",
+      "bytes": 3171,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/values-nl/strings.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/values-nl/strings.xml",
+      "sha256": "2335110d2a804eb129c285e736642c2904fe4d731c09743bdfadbde3a221339d",
+      "bytes": 2706,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/values-pl/strings.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/values-pl/strings.xml",
+      "sha256": "f8211cd5432e89b2772ff9b653c755376afa01b66a8ad7bd9b9d28b1ee79e6be",
+      "bytes": 2698,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/values-pt-rPT/strings.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/values-pt-rPT/strings.xml",
+      "sha256": "b834e08516eeff03cf673081cf702898b5dc746779c2aeb5187bf5626266df4e",
+      "bytes": 2735,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/values-pt/strings.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/values-pt/strings.xml",
+      "sha256": "dbee4bc80026d448d188f289e08ef1cc9c4071cc2078b12bf827fb1485b05a7d",
+      "bytes": 2709,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/values-ro/strings.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/values-ro/strings.xml",
+      "sha256": "c309383a210b4b889233e448543f2104e33fba5786be44f5ceb8f9b6d1c2e13f",
+      "bytes": 2774,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/values-ru/strings.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/values-ru/strings.xml",
+      "sha256": "2fc7a30fc98e634c7bfb800cb5287cbd60430d7330d93bf47c68dff80921503a",
+      "bytes": 2860,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/values-si-rLK/strings.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/values-si-rLK/strings.xml",
+      "sha256": "f6eebe0a173c1f6fa3f26abbd2b19dcca1cacc9d78250e078b288d21fb5e897c",
+      "bytes": 3068,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/values-sk/strings.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/values-sk/strings.xml",
+      "sha256": "8190f7f28f9f8794fb4a7b7d87167baf9d64fd7831ea4326979af603011efa41",
+      "bytes": 2729,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/values-sl/strings.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/values-sl/strings.xml",
+      "sha256": "3949825f8059479e32a4dcec0d603660ccb937d95fe7f84920ce5617f4aecbb6",
+      "bytes": 2708,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/values-sr/strings.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/values-sr/strings.xml",
+      "sha256": "207117a5b83577d497fa9ecfa5c7919529fdb30ccbbf2d347fa0b942c7d48b7a",
+      "bytes": 2873,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/values-sv/strings.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/values-sv/strings.xml",
+      "sha256": "4df1cb3c4b600cab13222b24902c3ee4ee1bfefddc5f471f7d160a49b21480f0",
+      "bytes": 2702,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/values-sw/strings.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/values-sw/strings.xml",
+      "sha256": "684b2238cf22b4538ce32b97f9905fc97736c5d6a88fb54db28f671c6862fc9e",
+      "bytes": 2710,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/values-ta-rIN/strings.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/values-ta-rIN/strings.xml",
+      "sha256": "cd3139f2f11c5bb48422f7629ba0ba9b694f5ba21a66a85e8cb04ff937aa0a63",
+      "bytes": 3136,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/values-te-rIN/strings.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/values-te-rIN/strings.xml",
+      "sha256": "7ea192e1dd6e4b84388692b0dd81eb3f79d232c57753e1d38152bab15f1f7f17",
+      "bytes": 3067,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/values-th/strings.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/values-th/strings.xml",
+      "sha256": "4f86b5098ed7ad7c161f698e73c286d6bff35cef016dcbb8f15d289b047d8b30",
+      "bytes": 2961,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/values-tl/strings.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/values-tl/strings.xml",
+      "sha256": "d7b8d6db3d09c466c1ac6f6a965ffba55aac155c7f0bfb97921363f1680a16ac",
+      "bytes": 2719,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/values-tr/strings.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/values-tr/strings.xml",
+      "sha256": "71ede83825209bb59fe83a0f26ee78f74206edbf023fc4de8e27f53c99a9aeb3",
+      "bytes": 2698,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/values-uk/strings.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/values-uk/strings.xml",
+      "sha256": "807753b60d53d3a5a299eaed2f30c9a4dea961782d5680bfa7a36762ddfd1910",
+      "bytes": 2918,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/values-vi/strings.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/values-vi/strings.xml",
+      "sha256": "36ff027813ea1cd4c3fead89fde5f824096d2081071c91c473ab1d13ece46329",
+      "bytes": 2744,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/values-zh-rCN/strings.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/values-zh-rCN/strings.xml",
+      "sha256": "5132a1ea403e6c5fd231335fd32e8f726de191494d96c4ca4c889f0a4edeb8b4",
+      "bytes": 2672,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/values-zh-rHK/strings.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/values-zh-rHK/strings.xml",
+      "sha256": "af2dd73685de830303c15831b613e9e84e6f478e5528033d6c24cb391e89698a",
+      "bytes": 2675,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/values-zh-rTW/strings.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/values-zh-rTW/strings.xml",
+      "sha256": "0007ec1077be225855081e7a28ab0422dc8694826daaff6233106e8c13ca2776",
+      "bytes": 2672,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/values-zu/strings.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/values-zu/strings.xml",
+      "sha256": "8669bd9d2ae3111d1477a6d403f8a86f7befa96b2dc69370491b26163e841763",
+      "bytes": 2723,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/values/attrs.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/values/attrs.xml",
+      "sha256": "11f4f850bda1ddcd4b838b6321afa5a47df3a949ac186b19986fb74c3099ff8d",
+      "bytes": 1870,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/values/bools.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/values/bools.xml",
+      "sha256": "39e9397cdc09d76171edcfcfec10c0166bdb3f125480aa8facf4afe3253d7c7a",
+      "bytes": 863,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/values/color.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/values/color.xml",
+      "sha256": "4fe6591ac94f76a5318feb99fc5637d615a88e0f44008b73cc6d3fc96171075e",
+      "bytes": 1219,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/values/config.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/values/config.xml",
+      "sha256": "a4b778e29316324dca57e36006413894f0e746f548fe3bad17d51145bac9b997",
+      "bytes": 1119,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/values/dimens.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/values/dimens.xml",
+      "sha256": "8cd3051ff1f54fd6c66fcb80eb0ca7ccad68f53b637db5db660d514a8cc95f11",
+      "bytes": 2400,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/values/integers.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/values/integers.xml",
+      "sha256": "d3c88b01b03c1f064fcab8617b0996fb28e1e46c6433709a361e6c5cb412cc44",
+      "bytes": 1116,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/values/strings.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/values/strings.xml",
+      "sha256": "32acb2beff421801303f93208c193b037b24477ffb06065c6ec4af4a1e4273bc",
+      "bytes": 4557,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/xml/accent_a.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/xml/accent_a.xml",
+      "sha256": "0e44ea519cc9bc7ce326798177a4aaccb3386dbed14bc1873ac5b30401d4d8c0",
+      "bytes": 1794,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/xml/accent_c.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/xml/accent_c.xml",
+      "sha256": "b11e353afe1f5c65f8fdd7fb20aa782bb7f17d80f03af7229bff617a6b4fc9a9",
+      "bytes": 1220,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/xml/accent_d.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/xml/accent_d.xml",
+      "sha256": "8417cd216bb515f40944ea7e7be413988a1f4cf82397a505b7722a3a65830f57",
+      "bytes": 1057,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/xml/accent_e.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/xml/accent_e.xml",
+      "sha256": "7ebbafd83e23cd90fde6377d1c16776f2bd062fa026b24aa0bee9c0d736456c7",
+      "bytes": 1549,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/xml/accent_g.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/xml/accent_g.xml",
+      "sha256": "0d573850f3556bc3dbe01dad5955da9737a2082284936ea7bb159ca65fe80bcc",
+      "bytes": 1139,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/xml/accent_i.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/xml/accent_i.xml",
+      "sha256": "60189ace2309821e9320cf28f1585090a6e0166cf7c026278b016cfa91c883dc",
+      "bytes": 1467,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/xml/accent_k.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/xml/accent_k.xml",
+      "sha256": "f7a07ed9914ebe3b5960de3de204517e84ef2cff8a9d23756c8d9970b7bc7e82",
+      "bytes": 1057,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/xml/accent_l.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/xml/accent_l.xml",
+      "sha256": "e5787c4c95d824c11793df67a592fdf97e1fa307eda92f5d4de27c5da36d3847",
+      "bytes": 1139,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/xml/accent_n.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/xml/accent_n.xml",
+      "sha256": "481fc74abb1c40b9d4dbc5fd95674eba4fde5df59d0369a60961260a449d4fce",
+      "bytes": 1221,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/xml/accent_o.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/xml/accent_o.xml",
+      "sha256": "cdbf837d671576f65ae154ea0ac88c01fcbec74421816957c685efbc3cb841b5",
+      "bytes": 1713,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/xml/accent_s.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/xml/accent_s.xml",
+      "sha256": "5879be8c67f7de6574d7411e0551a6c9d236f1647b4203703a1071869549b09c",
+      "bytes": 1303,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/xml/accent_t.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/xml/accent_t.xml",
+      "sha256": "ffbaee9e11f4a03870d88794c07aca0660f614e7f50e5f705cef3350ada45691",
+      "bytes": 1057,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/xml/accent_u.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/xml/accent_u.xml",
+      "sha256": "4e3affcaac83ab91767412727aaa5694971dbdcaf9141c425a5b3e3503c730ba",
+      "bytes": 1549,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/xml/accent_y.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/xml/accent_y.xml",
+      "sha256": "beee3c8a1b6cb2d974478f40986a863fe6f00b30bc3ffd9d5f97127e6fa0d8f9",
+      "bytes": 1057,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/xml/accent_z.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/xml/accent_z.xml",
+      "sha256": "fde69e4c3b8417244430fef89155de5dada4d50f9a72da3b71d9a084ee8d645c",
+      "bytes": 1221,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/xml/azerty.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/xml/azerty.xml",
+      "sha256": "64b787360550808d9ed97cc76398730908a5241009a780ef256c8622bceae7e4",
+      "bytes": 7771,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/xml/method.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/xml/method.xml",
+      "sha256": "c16acc1030d2a631c2038605377c594469f08ef910e9d8c5317d0a91bdec27a7",
+      "bytes": 1026,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/xml/number.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/xml/number.xml",
+      "sha256": "88f335866e9f4ec2961525240bff7329dda05c5c00cd7dd8727343164cd1880c",
+      "bytes": 2683,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/xml/qwerty_az.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/xml/qwerty_az.xml",
+      "sha256": "91bff61dac583c8086b71c8adbd26e2f1c8a8b02b2c2cf0b55896ccf238e4f78",
+      "bytes": 7765,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/xml/qwerty_ca.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/xml/qwerty_ca.xml",
+      "sha256": "1d56032139efcd3635e364bf993172ce0e46711b66f09f701c0de69e45e56078",
+      "bytes": 7817,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/xml/qwerty_da.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/xml/qwerty_da.xml",
+      "sha256": "898b51f6de444a841cc578944b78274a9359c695cec2bb9ce93dec4ad4c6925f",
+      "bytes": 7916,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/xml/qwerty_en_gb.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/xml/qwerty_en_gb.xml",
+      "sha256": "a89ca36b911e3af6a148f8cd6c884e58021bbe2e5af7fc0f3f20349bd19acf51",
+      "bytes": 7768,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/xml/qwerty_en_in.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/xml/qwerty_en_in.xml",
+      "sha256": "0ea97ff9ba6ae08a31e28f9eb5a8df1b27fc6c78867d93c2df5d8c1dc0f9eb9d",
+      "bytes": 7768,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/xml/qwerty_es_eu.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/xml/qwerty_es_eu.xml",
+      "sha256": "59c4bbed689b4f3b08508f8d230a9348580e64fc0e968555c8dead4d6afeb449",
+      "bytes": 7822,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/xml/qwerty_es_us.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/xml/qwerty_es_us.xml",
+      "sha256": "11cf5d7e9267516d3091f8f8783b1b876d19e3968972a0a1658b17ba3923b982",
+      "bytes": 7819,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/xml/qwerty_et.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/xml/qwerty_et.xml",
+      "sha256": "18b8f50aa9f0c594f3b0a598793667f934dd55b3171e78b88b59d8e186e677be",
+      "bytes": 7916,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/xml/qwerty_eu.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/xml/qwerty_eu.xml",
+      "sha256": "91bff61dac583c8086b71c8adbd26e2f1c8a8b02b2c2cf0b55896ccf238e4f78",
+      "bytes": 7765,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/xml/qwerty_fi.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/xml/qwerty_fi.xml",
+      "sha256": "d896565cec7faa15b501ccfa5be4a43883e03c7a7d5a306bb907296c096b2d01",
+      "bytes": 7916,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/xml/qwerty_nb.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/xml/qwerty_nb.xml",
+      "sha256": "476788c7e9580ccc4c7d8f818515d6cb5be3e7112587f8c4c649e0051ae28914",
+      "bytes": 7913,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/xml/qwerty_sv.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/xml/qwerty_sv.xml",
+      "sha256": "d896565cec7faa15b501ccfa5be4a43883e03c7a7d5a306bb907296c096b2d01",
+      "bytes": 7916,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/xml/qwerty_us.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/xml/qwerty_us.xml",
+      "sha256": "6f7cf6b0d08a6519f5c0a18e403d4d0ee47c4bcf2e053fc582b50f46d6d556ea",
+      "bytes": 7763,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/xml/qwertz.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/xml/qwertz.xml",
+      "sha256": "83ea10b5d0eef042d453c0836798d7e776808699f66f0248202b2fc14736eef6",
+      "bytes": 7765,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/xml/qwertz_ch.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/xml/qwertz_ch.xml",
+      "sha256": "37a607e2a767e05358d529d7264ba20acadd08b14650d478f5a2e3d5e94c8654",
+      "bytes": 7916,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/xml/shift_0.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/xml/shift_0.xml",
+      "sha256": "20b88aa96e140b227639c1a7051c1c1dfed57f4a71cb45484a24a2c726b7dd49",
+      "bytes": 974,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/xml/shift_1.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/xml/shift_1.xml",
+      "sha256": "118ea1bf03095ed57bd963f629101891a7ef8e007391f5b0071affc7f436912a",
+      "bytes": 974,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/xml/shift_2.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/xml/shift_2.xml",
+      "sha256": "f71d488cec0c34e1d57f0ace10890fdaac2a219603da768e4a5fa0a27b93d9a7",
+      "bytes": 975,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/xml/shift_3.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/xml/shift_3.xml",
+      "sha256": "c679bf0bbbb12ccba1876378331d285c5b974533f7f51d5a5663d66460ed092b",
+      "bytes": 975,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/xml/shift_4.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/xml/shift_4.xml",
+      "sha256": "660d54c2d3812f957010d77be8040388515d1224a913421d27764a5675801ea1",
+      "bytes": 974,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/xml/shift_4_en_gb.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/xml/shift_4_en_gb.xml",
+      "sha256": "ccf903096624f4b546bfdfb142951854da6a12169c9e17bab9e33b4032e8afcb",
+      "bytes": 976,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/xml/shift_4_en_in.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/xml/shift_4_en_in.xml",
+      "sha256": "753c1dd21ce0b3536b96db8f5b33af567693bd047ff9b519774fc6c1f447d966",
+      "bytes": 978,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/xml/shift_4_eu.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/xml/shift_4_eu.xml",
+      "sha256": "37332c2aa645ae2327ab0e11b41b4dde998166cb7ae9a1c4b0a96c06c22cde03",
+      "bytes": 978,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/xml/shift_5.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/xml/shift_5.xml",
+      "sha256": "dc74df989022d415013f632cbfdd63ef80902b8c1dfe7c2fab11b843e70363e8",
+      "bytes": 974,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/xml/shift_6.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/xml/shift_6.xml",
+      "sha256": "a4e345c78fb89014f16719f695f8439870108bf778bd5e92353ec5b0239be4cd",
+      "bytes": 974,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/xml/shift_7.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/xml/shift_7.xml",
+      "sha256": "2a5815e5cf30407f02872ea1e4215b484476d385c9b4696b6f38a6f96d8ee9ca",
+      "bytes": 978,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/xml/shift_8.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/xml/shift_8.xml",
+      "sha256": "e958b748d7a00354ae724988333792ee8d76da9bff3de1138974d19c70e830ad",
+      "bytes": 974,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/xml/shift_9.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/xml/shift_9.xml",
+      "sha256": "b617fcd5a0b5d35a975df3845a762a781cdd5703dfa9faa8d1addc1ab99a14ba",
+      "bytes": 974,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/xml/shift_aa.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/xml/shift_aa.xml",
+      "sha256": "e6dda3fb2b35679f9c4588ccea4814a07b11c2c289e6f58cb6ab01e147512293",
+      "bytes": 976,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/xml/shift_ae.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/xml/shift_ae.xml",
+      "sha256": "8616fb5ebc6e7330d839c3a140499c2bb9c3e70124952491c74ec0b5f73aa24b",
+      "bytes": 976,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/xml/shift_ao.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/xml/shift_ao.xml",
+      "sha256": "636d8a624adf42afb4988c5b83879eb6e5f7fea16c3ee68438b3624893184bcf",
+      "bytes": 976,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/xml/shift_b.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/xml/shift_b.xml",
+      "sha256": "d7aa642264ee2b3b7271fe640b686bda7b35608deee897094fd5a21083265322",
+      "bytes": 974,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/xml/shift_cc.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/xml/shift_cc.xml",
+      "sha256": "d802c82ef4091da0ac732efa8f61a4a0b646d75a6ba83c952c008cf74d34234e",
+      "bytes": 976,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/xml/shift_f.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/xml/shift_f.xml",
+      "sha256": "47492a036b8d06b3a209f0680f3566c7c23221b5540f32766f2a566d683ad633",
+      "bytes": 975,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/xml/shift_h.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/xml/shift_h.xml",
+      "sha256": "0910010da39efe522c6a429bfd2cbf6adf633b8409be8ecd0cc1095c0457d8b2",
+      "bytes": 975,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/xml/shift_j.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/xml/shift_j.xml",
+      "sha256": "6c414484999dcdeb2e9121ab351292cf1531e41b49b5b2286496e6d3c9e00eb0",
+      "bytes": 975,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/xml/shift_m.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/xml/shift_m.xml",
+      "sha256": "4fb9fe6e66b38be8f2593d7659107a5139f40030e6da338522e35c442a69cca5",
+      "bytes": 975,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/xml/shift_n_es.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/xml/shift_n_es.xml",
+      "sha256": "a81028fa8767783039b4f376e23977d28c5e0be868e4a4f01eff789497fd9188",
+      "bytes": 975,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/xml/shift_nn_es.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/xml/shift_nn_es.xml",
+      "sha256": "bea64cb64a11191954288104c217b7f922da149b3c2683638ec9673bf07a8990",
+      "bytes": 976,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/xml/shift_oo.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/xml/shift_oo.xml",
+      "sha256": "fb0189a87276b1cd19664761b8a4fc9943edeaa1e97091dd873081848c19790c",
+      "bytes": 976,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/xml/shift_ox.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/xml/shift_ox.xml",
+      "sha256": "5c1c978d136c4675ba6f3cf46e745f1c56b831173b646f126fec4cc464e8a7ef",
+      "bytes": 976,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/xml/shift_p.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/xml/shift_p.xml",
+      "sha256": "4010d3c1c7a500652995d323775dd12ec22dac9bc096262920855cd33e4b72b4",
+      "bytes": 975,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/xml/shift_q.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/xml/shift_q.xml",
+      "sha256": "499c92dc10e50a8697b0f34a4752d5d183a3c472954201a276772f5b715521d0",
+      "bytes": 975,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/xml/shift_r.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/xml/shift_r.xml",
+      "sha256": "26bb3aef6064ade415e304fdc774084a57bca5e83b80e24e6aa04ac99bd14e52",
+      "bytes": 975,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/xml/shift_uu.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/xml/shift_uu.xml",
+      "sha256": "9ddf767cd34646a29b79ad2b8c5859a414eee4774f9c84cac60a151e2dd96fe0",
+      "bytes": 976,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/xml/shift_v.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/xml/shift_v.xml",
+      "sha256": "deddc3022959c626b7d611566eba119f3cd59f52f7a69da794239531a5407ca4",
+      "bytes": 975,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/xml/shift_w.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/xml/shift_w.xml",
+      "sha256": "e0c6ff2bb1575c0fe1447517b7437d806eee09a757da387fea9893684f3eedbd",
+      "bytes": 975,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/xml/shift_x.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/xml/shift_x.xml",
+      "sha256": "8e1e5977d5c0c5f9f41d91497851e56ce6d2a4ee44e2df41b8c6e59a7ba92b69",
+      "bytes": 975,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/xml/shift_y.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/xml/shift_y.xml",
+      "sha256": "544bd4ec800d9e369a3e3342cab27baf503da262a1c1328c8615cea23c5a7782",
+      "bytes": 975,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/xml/sym_azerty.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/xml/sym_azerty.xml",
+      "sha256": "abddb42d3c6bac4784730b7c9434c8823e86c35e2db68239882767a985949625",
+      "bytes": 6014,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/xml/sym_en_gb.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/xml/sym_en_gb.xml",
+      "sha256": "7192d08b4242dbf1638dc34b97478d9f31b442d3238fea461f28684c41236236",
+      "bytes": 6014,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/xml/sym_en_in.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/xml/sym_en_in.xml",
+      "sha256": "00cd868c18e5d8ba4c6b6bb8fff36c7bcd27a98bc2cb740b17c19d9a97e579ab",
+      "bytes": 6016,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/xml/sym_eu.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/xml/sym_eu.xml",
+      "sha256": "c5d5e1a51b0ec75377703e7fa9cc4192db6f4b8a1b0b0cf76fa5d5fb2d1dc43d",
+      "bytes": 6014,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/xml/sym_fr.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/xml/sym_fr.xml",
+      "sha256": "abddb42d3c6bac4784730b7c9434c8823e86c35e2db68239882767a985949625",
+      "bytes": 6014,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/res/xml/sym_us.xml": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/res/xml/sym_us.xml",
+      "sha256": "c5fab5f586de7a8f8aa9bf21f476f08c7807ec87f9ad5f3ebecbd445b48c35ac",
+      "bytes": 6014,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/src/com/android/inputmethod/leanback/LeanbackKeyboardContainer.java": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/src/com/android/inputmethod/leanback/LeanbackKeyboardContainer.java",
+      "sha256": "a1ff7fac2018fe2a407894b8c4510a503744281a7ff829bec66560ff8c250965",
+      "bytes": 59906,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/src/com/android/inputmethod/leanback/LeanbackKeyboardController.java": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/src/com/android/inputmethod/leanback/LeanbackKeyboardController.java",
+      "sha256": "ce1dcd2316d3cc9123134fe871822994dd374dd2be68f68231dd34cb1685121c",
+      "bytes": 22362,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/src/com/android/inputmethod/leanback/LeanbackKeyboardView.java": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/src/com/android/inputmethod/leanback/LeanbackKeyboardView.java",
+      "sha256": "b6d8a63c4a817516bc25c14745bd58aa40e5a7e174d71c13601bd1ad393c77fb",
+      "bytes": 19545,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/src/com/android/inputmethod/leanback/LeanbackLocales.java": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/src/com/android/inputmethod/leanback/LeanbackLocales.java",
+      "sha256": "a190f8dde24780a1bcaa309e9c948dae68addf3d73b1d46cf12617cfd1786fe1",
+      "bytes": 5052,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/src/com/android/inputmethod/leanback/LeanbackSuggestionsFactory.java": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/src/com/android/inputmethod/leanback/LeanbackSuggestionsFactory.java",
+      "sha256": "f127725c181e96ebebed60e70a48a55321ede5f6e4d7491d14bd071129889de5",
+      "bytes": 3990,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/src/com/android/inputmethod/leanback/LeanbackUtils.java": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/src/com/android/inputmethod/leanback/LeanbackUtils.java",
+      "sha256": "70fbfcc890b2a3dea961bfdd833466ae9526aa4e4a5025d90c55ab2ef7ca09dd",
+      "bytes": 2546,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/src/com/android/inputmethod/leanback/service/LeanbackImeService.java": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/src/com/android/inputmethod/leanback/service/LeanbackImeService.java",
+      "sha256": "c2e6d2d666bd589b0a3975dd3d79ec1183e396eb4db980beece3b380d0b8de2d",
+      "bytes": 15022,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/src/com/android/inputmethod/leanback/voice/BitmapSoundLevelView.java": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/src/com/android/inputmethod/leanback/voice/BitmapSoundLevelView.java",
+      "sha256": "40364acb12047d103c6b6f41a87f411250af7930b3ecb9ba6906a4ccf510b400",
+      "bytes": 9735,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/src/com/android/inputmethod/leanback/voice/RecognizerView.java": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/src/com/android/inputmethod/leanback/voice/RecognizerView.java",
+      "sha256": "a84eabc4a5423e1fab1bedf52da2276024ba1fe399a07be87bdb80fedf10cd4e",
+      "bytes": 8179,
+      "mode": 420
+    },
+    "packages/inputmethods/LeanbackIME/src/com/android/inputmethod/leanback/voice/SpeechLevelSource.java": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/src/com/android/inputmethod/leanback/voice/SpeechLevelSource.java",
+      "sha256": "72110b0421fa3632f6627a4ed948b3b3b587d10d55a500beaf72d6ae20faef09",
+      "bytes": 1325,
+      "mode": 420
+    },
+    "packages/providers/MediaProvider/src/com/android/providers/media/MediaProvider.java": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/providers/MediaProvider/src/com/android/providers/media/MediaProvider.java",
+      "sha256": "6b211be7b20117052849cb6cce1a4556d879ab286d30612039ec31e48caada5d",
+      "bytes": 294187,
+      "mode": 420
+    },
+    "system/core/adb/daemon/main.cpp": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/system/core/adb/daemon/main.cpp",
+      "sha256": "8c4bfb00bb0ff050b06efc74973af1418f650c97c2e66167775e4d21fd375780",
+      "bytes": 10422,
+      "mode": 420
+    },
+    "system/core/healthd/aw_healthd.cpp": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/system/core/healthd/aw_healthd.cpp",
+      "sha256": "bf0930e0f3ea47be9094b2e58952742967d4ac061bca26587ac034ca4a45e04e",
+      "bytes": 6688,
+      "mode": 420
+    },
+    "system/core/healthd/healthd_mode_charger.cpp": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/system/core/healthd/healthd_mode_charger.cpp",
+      "sha256": "7d222144ee4c2d15d9df715b3db8b40b328cddc8506b5b6fffc2f3f868c0bdfe",
+      "bytes": 26614,
+      "mode": 420
+    },
+    "system/vold/model/Disk.cpp": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/system/vold/model/Disk.cpp",
+      "sha256": "334a59b13051b485a115660e71c4d6196d105a0986cadabf0577fede0727cf16",
+      "bytes": 22603,
+      "mode": 420
+    },
+    "system/vold/model/PublicVolume.cpp": {
+      "repository_path": "android/h700-android10/snapshots/v5i-native35-20261028/system/vold/model/PublicVolume.cpp",
+      "sha256": "3fbbe4e16dd00be3e0f3eac8bb682cd7d565a3dab12adecf5ec8bff8fe86ba88",
+      "bytes": 11328,
+      "mode": 420
+    }
+  }
+}

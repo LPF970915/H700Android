@@ -1,0 +1,9 @@
+cc_test {
+    name: "rgsp_egl_import_probe",
+    srcs: ["RgspEglImportProbe.cpp"],
+    shared_libs: ["libEGL", "libGLESv2", "libui", "libutils", "liblog"],
+    header_libs: ["libhardware_headers"],
+    compile_multilib: "32",
+    gtest: false,
+    cflags: ["-Wall", "-Wextra", "-Werror"],
+}

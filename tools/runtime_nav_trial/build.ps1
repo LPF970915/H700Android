@@ -17,9 +17,17 @@ function Check-Exit {
 }
 $direction = Join-Path $source 'src\com\roc\rgsp\navtrial\Direction.java'
 $test = Join-Path $PSScriptRoot 'tests\com\roc\rgsp\navtrial\DirectionTest.java'
-& "$JavaHome\bin\javac.exe" --release 8 -d "$out\test-classes" $direction $test
+$pointer = Join-Path $source 'src\com\roc\rgsp\navtrial\PointerPosition.java'
+$pointerTest = Join-Path $PSScriptRoot 'tests\com\roc\rgsp\navtrial\PointerPositionTest.java'
+$identity = Join-Path $source 'src\com\roc\rgsp\navtrial\FocusIdentity.java'
+$identityTest = Join-Path $PSScriptRoot 'tests\com\roc\rgsp\navtrial\FocusIdentityTest.java'
+& "$JavaHome\bin\javac.exe" --release 8 -d "$out\test-classes" $direction $test $pointer $pointerTest $identity $identityTest
 Check-Exit
 & "$JavaHome\bin\java.exe" -cp "$out\test-classes" com.roc.rgsp.navtrial.DirectionTest
+Check-Exit
+& "$JavaHome\bin\java.exe" -cp "$out\test-classes" com.roc.rgsp.navtrial.PointerPositionTest
+Check-Exit
+& "$JavaHome\bin\java.exe" -cp "$out\test-classes" com.roc.rgsp.navtrial.FocusIdentityTest
 Check-Exit
 & "$tools\aapt2.exe" compile --dir "$source\res" -o "$out\resources.zip"
 Check-Exit

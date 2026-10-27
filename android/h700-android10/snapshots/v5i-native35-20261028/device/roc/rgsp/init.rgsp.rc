@@ -1,0 +1,21 @@
+on early-init
+    # This BSP checks that the property exists before checking /proc/modules.
+    setprop wlan.driver.status unloaded
+    chown root root /dev/binder
+    chown root root /dev/hwbinder
+    chown root root /dev/vndbinder
+    chmod 0666 /dev/binder
+    chmod 0666 /dev/hwbinder
+    chmod 0666 /dev/vndbinder
+
+on late-fs
+    mount_all /vendor/etc/fstab.sun50iw9p1 --late
+
+on post-fs-data
+    mkdir /data/vendor/h700 0770 system system
+
+# Load the RGSP-specific RTL8821CS module during Android bring-up. The
+# framework HAL will observe the already loaded module through /proc/modules
+# when Wi-Fi is enabled, while the kernel gets its normal SDIO probe path.
+on boot
+    insmod /vendor/modules/8821cs.ko if2name=p2p0

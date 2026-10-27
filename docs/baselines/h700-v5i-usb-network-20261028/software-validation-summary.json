@@ -1,0 +1,33 @@
+{
+  "status": "SOFTWARE_REACHABILITY_COMPLETE_PENDING_PHYSICAL_TEST",
+  "navigation_version": 35,
+  "source_file_proofs": 99,
+  "components": 42,
+  "inventory": {
+    "canonical_paths": 525,
+    "review_rows": 219,
+    "controls_observed": 3234
+  },
+  "unresolved_navigation_failures": [],
+  "remaining_software_tests": [],
+  "known_issues": [
+    "RG34XXSP mild brightness variation needs physical observation on the new image; software logs/screenshots cannot prove visual resolution.",
+    "Hardware VSYNC event delivery remains unavailable; the HWC uses the measured-geometry fractional software period.",
+    "Optional Settings teaching-video previews are disabled to avoid the native hardware decoder crash; general hardware video decoding is not claimed fixed.",
+    "Kernel FTRACE is disabled. Traceur category list is empty and recording capability is not claimed. Wi-Fi ADB does not require FTRACE."
+  ],
+  "scope_exclusions": [
+    "Destructive Settings actions were focused and canceled, never confirmed. No reset, format, eject, uninstall, credential save or real printer add/print was performed.",
+    "External application business workflows, Internet help destinations and absent Bluetooth/cast/other hardware are separate from Settings entry/button reachability.",
+    "License viewers: actual A entry, directions, exposed native controls and B return were checked; their large external HTML document DOM and embedded links are excluded from Settings menu enumeration.",
+    "Current device proof is RGSP. RG34XXSP and a freshly flashed factory-data card still require physical verification."
+  ],
+  "physical_tests_remaining_at_original_delivery": [
+    "Spare-card first boot: Chinese default, first HOME chooser, TV keyboard, Wi-Fi password entry and power menu.",
+    "Power removal/cold start: A unlock and Wi-Fi reconnect on RGSP and RG34XXSP.",
+    "Continuous physical controller input and screen/brightness observation on both models.",
+    "Physical USB debugging cable/gadget link."
+  ],
+  "original_report_sha256": "cbd6da2602c8f6da0f7e2008d174bbcabf763e8d300a94cedebd44b5b449f5b2",
+  "scope_note": "Summary of original RGSP software reachability evidence; not a claim that all 525 paths were rerun under the last binary or on the new device."
+}

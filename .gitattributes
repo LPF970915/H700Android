@@ -1,5 +1,10 @@
 * text=auto
 *.c text eol=lf
+*.cpp text eol=lf
+*.h text eol=lf
+*.java text eol=lf
+*.json text eol=lf
+*.sha256 text eol=lf
 *.patch text eol=lf
 *.py text eol=lf
 *.sh text eol=lf
@@ -15,3 +20,5 @@ archive/android11-r36s/ramdisk/* text eol=lf
 android/h700-android10/device/roc/rgsp/ANBERNIC-keys.kl text eol=lf
 android/h700-android10/device/roc/rgsp/sepolicy/file_contexts text eol=lf
 docs/baselines/*.sha256 text eol=lf
+# Frozen sources retain the exact native bytes, including vendor CRLF files.
+android/h700-android10/snapshots/v5i-native35-20261028/** -text

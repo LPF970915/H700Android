@@ -1,0 +1,12 @@
+# Factory defaults for this full-flash product. The script's completion marker
+# preserves later user choices. Do not deploy this RC to unprovisioned live data.
+on property:sys.boot_completed=1
+    start rgsp-firstboot
+
+service rgsp-firstboot /system/bin/sh /system/bin/rgsp-firstboot.sh apply
+    class late_start
+    user root
+    group root shell log
+    seclabel u:r:su:s0
+    disabled
+    oneshot

@@ -2,7 +2,7 @@
 param(
     [string]$Distro = 'Ubuntu',
     [string]$SourceRoot = '/home/lpf/h700-android10/android',
-[ValidateSet('systemimage', 'vendorimage', 'ramdisk', 'vold', 'Settings', 'LeanbackIME', 'DocumentsUI', 'RGSPLauncher')]
+[ValidateSet('systemimage', 'vendorimage', 'ramdisk', 'adbd', 'vold', 'services', 'Settings', 'SettingsIntelligence', 'SystemUI', 'MediaProvider', 'LatinIME', 'LeanbackIME', 'Calendar', 'DocumentsUI', 'RGSPLauncher', 'RGSPNavigation', 'rgsp_vsync_probe', 'rgsp_egl_import_probe', 'hwcomposer.cupid', 'libsurfaceflinger', 'PermissionController')]
     [string[]]$Targets = @('systemimage', 'vendorimage', 'ramdisk'),
     [switch]$Execute
 )
@@ -41,4 +41,6 @@ $log = Join-Path $logDir "$unit.log"
 & wsl.exe @argsList 2>&1 | Tee-Object -FilePath $log
 $rc = $LASTEXITCODE
 Write-Host "BUILD_LOG=$log"
-if ($rc -ne 0) { throw "Low-pressure build stopped (exit $rc); resource limits were not relaxed" }
+if ($rc -ne 0 -or -not (Select-String -LiteralPath $log -Pattern '^LOW_PRESSURE_COMPLETE=' -Quiet)) {
+    throw "Low-pressure build incomplete (exit $rc); completion marker missing or build failed; resource limits were not relaxed"
+}

@@ -12,7 +12,13 @@ $logDir = "out/logs/uart/download-$id"
 $begin = "__RGSP_FILE_${id}_BEGIN__"
 $end = "__RGSP_FILE_${id}_END__"
 # Split markers in the command so terminal echo cannot masquerade as output.
-$command = "test -f '$RemotePath' && printf '\n__RGSP_FILE_%s_BEGIN__\n' '$id' && base64 '$RemotePath' && printf '\n__RGSP_FILE_%s_END__\n' '$id' && sha256sum '$RemotePath'"
+$encode = if ($ShellPath -eq '/bin/sh') {
+    # The boot ramdisk has uuencode, but no base64 applet.
+    "/bin/busybox uuencode -m '$RemotePath' capture | sed '1d;`$d'"
+} else {
+    "base64 '$RemotePath'"
+}
+$command = "test -f '$RemotePath' && printf '\n__RGSP_FILE_%s_BEGIN__\n' '$id' && { $encode; } && printf '\n__RGSP_FILE_%s_END__\n' '$id' && sha256sum '$RemotePath'"
 $helper = Join-Path $PSScriptRoot 'invoke_rgsp_serial_command.ps1'
 $processPath = if ([string]::IsNullOrWhiteSpace([Environment]::ProcessPath)) {
     (Get-Command pwsh.exe -ErrorAction Stop).Source

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- RGSP 720x480 at 213dpi only; do not share this with other H700 panels. -->
+<resources>
+    <dimen name="key_width">24dp</dimen>
+    <dimen name="key_height">24dp</dimen>
+    <dimen name="keyboard_horizontal_gap">6dp</dimen>
+    <dimen name="keyboard_vertical_gap">4dp</dimen>
+    <dimen name="space_key_width">204dp</dimen>
+    <dimen name="selector_size">20dp</dimen>
+    <dimen name="keyboard_top_spacing">4dp</dimen>
+    <dimen name="keyboard_bottom_spacing">8dp</dimen>
+    <dimen name="enter_key_padding_horizontal">8dp</dimen>
+</resources>

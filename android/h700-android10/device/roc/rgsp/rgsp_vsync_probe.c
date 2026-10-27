@@ -21,6 +21,19 @@ int main(void) {
     setvbuf(stdout, NULL, _IOLBF, 0);
     int fb = open("/dev/graphics/fb0", O_RDWR | O_CLOEXEC);
     if (fb < 0) { perror("open fb0"); return 1; }
+    struct fb_var_screeninfo info = {0};
+    if (ioctl(fb, FBIOGET_VSCREENINFO, &info) < 0) {
+        perror("FBIOGET_VSCREENINFO"); close(fb); return 1;
+    }
+    uint64_t ht = (uint64_t)info.xres + info.left_margin + info.right_margin + info.hsync_len;
+    uint64_t vt = (uint64_t)info.yres + info.upper_margin + info.lower_margin + info.vsync_len;
+    printf("fbvar xres=%u yres=%u pixclock_ps=%u ht=%llu vt=%llu\n",
+            info.xres, info.yres, info.pixclock, (unsigned long long)ht, (unsigned long long)vt);
+    if (ht && vt && info.pixclock && ht <= 65536 && vt <= 65536) {
+        uint64_t ps = ht * vt * info.pixclock;
+        printf("fbvar period_ns=%llu refresh_hz=%.9f\n",
+                (unsigned long long)((ps + 500) / 1000), 1e12 / (double)ps);
+    }
     uint32_t crtc = 0;
     int64_t start = monotonic_ns(), previous = start;
     for (int i = 0; i < 120; ++i) {

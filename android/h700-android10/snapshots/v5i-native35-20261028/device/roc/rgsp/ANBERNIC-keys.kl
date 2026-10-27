@@ -1,0 +1,22 @@
+# RGSP only: physical observations in RGSP_INPUT_CALIBRATION_20260906.md.
+# Generic.kcm supplies unhandled BUTTON_A/B -> confirm/back fallbacks.
+# Lock-screen bring-up policy: physical A must be a direct confirm/unlock.
+key 304 ENTER
+key 305 BUTTON_B
+key 307 BUTTON_X
+key 306 BUTTON_Y
+key 308 BUTTON_L1
+key 309 BUTTON_R1
+key 314 BUTTON_L2
+key 315 BUTTON_R2
+key 310 BUTTON_SELECT
+key 311 BUTTON_START
+key 312 BUTTON_MODE
+key 114 VOLUME_DOWN
+key 115 VOLUME_UP
+
+# Menu's extra release-time 0x162 pulse is deliberately unmapped.
+# BUTTON_MODE falls back to HOME; do not also dispatch the extra pulse.
+# This no-stick model exposes only the physically verified HAT axes here.
+axis 0x10 HAT_X
+axis 0x11 HAT_Y

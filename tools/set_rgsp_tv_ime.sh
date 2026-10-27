@@ -16,7 +16,10 @@ if [ "$mode" = leanback ]; then
     target=com.android.inputmethod.leanback/.service.LeanbackImeService
     apk=$(pm path com.android.inputmethod.leanback | sed -n 's/^package://p' | head -n 1)
     [ -n "$apk" ] && [ -f "$apk" ]
-    [ "$(sha256sum "$apk" | cut -d ' ' -f 1)" = 2a57b52cbac36d09138f7d94ba43f5d7fa9c4175966f7f1b43bb004b1a83ff18 ]
+    case "$(sha256sum "$apk" | cut -d ' ' -f 1)" in
+        2a57b52cbac36d09138f7d94ba43f5d7fa9c4175966f7f1b43bb004b1a83ff18|6f29e76aeb91d5caba1690325f9e4dd22d29f2f1acd713dd14f95f3c867e2efd) ;;
+        *) echo 'Unreviewed LeanbackIME APK' >&2; exit 1 ;;
+    esac
 fi
 record=$(mktemp -d /data/local/tmp/rgsp-ime.XXXXXX)
 printf '%s\n' "$previous" > "$record/previous.txt"

@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.roc.rgsp.navtrial" android:versionCode="3" android:versionName="1.0">
+    package="com.roc.rgsp.navtrial" android:versionCode="4" android:versionName="1.1-mouse-test">
     <uses-sdk android:minSdkVersion="29" android:targetSdkVersion="29" />
     <application android:label="RGSP D-pad Navigation" android:allowBackup="false">
         <service android:name=".NavigationService" android:exported="true"

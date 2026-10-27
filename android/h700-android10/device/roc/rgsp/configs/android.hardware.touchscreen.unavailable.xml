@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<permissions>
+    <unavailable-feature name="android.hardware.touchscreen" />
+    <unavailable-feature name="android.hardware.touchscreen.multitouch" />
+    <unavailable-feature name="android.hardware.touchscreen.multitouch.distinct" />
+    <unavailable-feature name="android.hardware.touchscreen.multitouch.jazzhand" />
+</permissions>

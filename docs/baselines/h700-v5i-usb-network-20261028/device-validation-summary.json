@@ -1,0 +1,246 @@
+{
+  "status": "PASS_NEW_DEVICE_USB_WIFI_ADB_INTERNET_VALIDATION_AND_KERNEL_REBOOT",
+  "usb_config": "mtp,adb",
+  "usb_udc_state": "configured",
+  "network_validated": true,
+  "partial_connectivity": false,
+  "baseline_components_all_match": true,
+  "baseline_component_count": 42,
+  "baseline_components": {
+    "system:/system/build.prop": {
+      "expected": "3e4ceaf90217147383a2eb36634ec2a137d3a029cf1a85db9045717c0ced72c4",
+      "actual": "3e4ceaf90217147383a2eb36634ec2a137d3a029cf1a85db9045717c0ced72c4",
+      "match": true
+    },
+    "system:/system/framework/framework-res.apk": {
+      "expected": "a8e4d04bdc7a37120c143a781204d9166cd76c96f108f52cc2d789884f5d3d86",
+      "actual": "a8e4d04bdc7a37120c143a781204d9166cd76c96f108f52cc2d789884f5d3d86",
+      "match": true
+    },
+    "system:/system/framework/services.jar": {
+      "expected": "7015b60d93e1b516378cf91b691cc628305ba37ec7cc872013babf5e8159bff5",
+      "actual": "7015b60d93e1b516378cf91b691cc628305ba37ec7cc872013babf5e8159bff5",
+      "match": true
+    },
+    "system:/system/lib/libsurfaceflinger.so": {
+      "expected": "7f26f9a5e021001028e94315aa4996671b657cabc4e2a30829c1fc2030ec39ea",
+      "actual": "7f26f9a5e021001028e94315aa4996671b657cabc4e2a30829c1fc2030ec39ea",
+      "match": true
+    },
+    "system:/system/framework/wifi-service.jar": {
+      "expected": "c39709de10444ccf506b727cf23765e50a0668068aba7dab51bbd564fac192e2",
+      "actual": "c39709de10444ccf506b727cf23765e50a0668068aba7dab51bbd564fac192e2",
+      "match": true
+    },
+    "system:/system/product/priv-app/SystemUI/SystemUI.apk": {
+      "expected": "0232e8f434267406881c44746be5b0d0ac3c713ee101ba69e3b542a33dbd6e78",
+      "actual": "0232e8f434267406881c44746be5b0d0ac3c713ee101ba69e3b542a33dbd6e78",
+      "match": true
+    },
+    "system:/system/product/priv-app/Settings/Settings.apk": {
+      "expected": "1b6e0430b1432e5ced199af74a7472f666d766d71a867f1faeb65b7e4a97d25f",
+      "actual": "1b6e0430b1432e5ced199af74a7472f666d766d71a867f1faeb65b7e4a97d25f",
+      "match": true
+    },
+    "system:/system/product/priv-app/SettingsIntelligence/SettingsIntelligence.apk": {
+      "expected": "70541876e27c2211dd981735fb4126823c8d297bfb5d40cdc639f276c5b1a233",
+      "actual": "70541876e27c2211dd981735fb4126823c8d297bfb5d40cdc639f276c5b1a233",
+      "match": true
+    },
+    "system:/system/priv-app/SettingsProvider/SettingsProvider.apk": {
+      "expected": "1a39ff436dafdaa0bd4dcaf1148959eb7cd47532dc39a3fe82d0f2984ffa67bf",
+      "actual": "1a39ff436dafdaa0bd4dcaf1148959eb7cd47532dc39a3fe82d0f2984ffa67bf",
+      "match": true
+    },
+    "system:/system/priv-app/MediaProvider/MediaProvider.apk": {
+      "expected": "409f45f78aba09503b8a3675aa70061355167338e278856ce60c2746c3c60839",
+      "actual": "409f45f78aba09503b8a3675aa70061355167338e278856ce60c2746c3c60839",
+      "match": true
+    },
+    "system:/system/app/RGSPNavigation/RGSPNavigation.apk": {
+      "expected": "e5bbf9b82710a8c207ba05dfe9da6ca1eb21ebd4ba8309ffe3f6318abc2f4f2a",
+      "actual": "e5bbf9b82710a8c207ba05dfe9da6ca1eb21ebd4ba8309ffe3f6318abc2f4f2a",
+      "match": true
+    },
+    "system:/system/priv-app/AT4K/AT4K.apk": {
+      "expected": "b2fa0343e903ad01c3854999dba70335ba4df5f5522dd931ed9d7189cf841a7d",
+      "actual": "b2fa0343e903ad01c3854999dba70335ba4df5f5522dd931ed9d7189cf841a7d",
+      "match": true
+    },
+    "system:/system/app/LeanbackIME/LeanbackIME.apk": {
+      "expected": "6f29e76aeb91d5caba1690325f9e4dd22d29f2f1acd713dd14f95f3c867e2efd",
+      "actual": "6f29e76aeb91d5caba1690325f9e4dd22d29f2f1acd713dd14f95f3c867e2efd",
+      "match": true
+    },
+    "system:/system/etc/rgsp/leanback.sha256": {
+      "expected": "e6feda5c5b25b3028984927a46949c4137f435a8d91d51b47bd6465998aeb17f",
+      "actual": "e6feda5c5b25b3028984927a46949c4137f435a8d91d51b47bd6465998aeb17f",
+      "match": true
+    },
+    "system:/system/product/app/LatinIME/LatinIME.apk": {
+      "expected": "0109375e241ed53ff69d71d5f6abc2797d4618967753d925052a54118eae14be",
+      "actual": "0109375e241ed53ff69d71d5f6abc2797d4618967753d925052a54118eae14be",
+      "match": true
+    },
+    "system:/system/product/app/Calendar/Calendar.apk": {
+      "expected": "ca1f0c9f5c3837674c31acd996b24432d81d1f03e3bddfc3717006df67a7a713",
+      "actual": "ca1f0c9f5c3837674c31acd996b24432d81d1f03e3bddfc3717006df67a7a713",
+      "match": true
+    },
+    "system:/system/priv-app/DocumentsUI/DocumentsUI.apk": {
+      "expected": "57ca44f8dc20b1c2e8026d41866a61e0dc9f6e08e464913d455f90d1070d084b",
+      "actual": "57ca44f8dc20b1c2e8026d41866a61e0dc9f6e08e464913d455f90d1070d084b",
+      "match": true
+    },
+    "system:/system/bin/adbd": {
+      "expected": "958fc1252bdc75c01d4915f87d08a57dbe2a894dc175b8e825e1a0067a8028a0",
+      "actual": "958fc1252bdc75c01d4915f87d08a57dbe2a894dc175b8e825e1a0067a8028a0",
+      "match": true
+    },
+    "system:/system/bin/vold": {
+      "expected": "9869fa1e7c4f9584504ef8ffa407381fd9236d711b7b917bd3bab6cb02d012ce",
+      "actual": "9869fa1e7c4f9584504ef8ffa407381fd9236d711b7b917bd3bab6cb02d012ce",
+      "match": true
+    },
+    "system:/system/priv-app/PermissionController/PermissionController.apk": {
+      "expected": "6335844edbf0be9d9e6feeacfcabfd38608c24b8016625bb73943389d344270c",
+      "actual": "6335844edbf0be9d9e6feeacfcabfd38608c24b8016625bb73943389d344270c",
+      "match": true
+    },
+    "system:/system/app/Traceur/Traceur.apk": {
+      "expected": "a8d8bb7733485ddaff4c9a3eb0afefe173fdcd6e89152dfcd70edcf68584cd43",
+      "actual": "a8d8bb7733485ddaff4c9a3eb0afefe173fdcd6e89152dfcd70edcf68584cd43",
+      "match": true
+    },
+    "system:/system/priv-app/PackageInstaller/PackageInstaller.apk": {
+      "expected": "d4940f0c41ed90d75a00af89bf7246587ecfec4b7effcef95321f62b399bbee1",
+      "actual": "d4940f0c41ed90d75a00af89bf7246587ecfec4b7effcef95321f62b399bbee1",
+      "match": true
+    },
+    "system:/system/product/priv-app/Contacts/Contacts.apk": {
+      "expected": "9f08a20353be12760721f34ac18fba16c740109eed901e5f1968835ddb0792fb",
+      "actual": "9f08a20353be12760721f34ac18fba16c740109eed901e5f1968835ddb0792fb",
+      "match": true
+    },
+    "system:/system/bin/rgsp-wifi-adb-session.sh": {
+      "expected": "60ea97958d6ada337a8f908496781fe1c956095d16a05fafb3393610b1891d74",
+      "actual": "60ea97958d6ada337a8f908496781fe1c956095d16a05fafb3393610b1891d74",
+      "match": true
+    },
+    "system:/system/bin/rgsp-roms-handoff.sh": {
+      "expected": "e5dce65ed9eaa0ff9a4828b52219ee9ff42f2c0dc03eeaa79c9ba24f5ddb71e5",
+      "actual": "e5dce65ed9eaa0ff9a4828b52219ee9ff42f2c0dc03eeaa79c9ba24f5ddb71e5",
+      "match": true
+    },
+    "system:/system/bin/rgsp-firstboot.sh": {
+      "expected": "e4b613d9f5b0de2332af6a41b19b638b457fdc914dcbfe2caff666edddf421d8",
+      "actual": "e4b613d9f5b0de2332af6a41b19b638b457fdc914dcbfe2caff666edddf421d8",
+      "match": true
+    },
+    "system:/system/bin/set_rgsp_home.sh": {
+      "expected": "a6e369b272eeb52e31d566870ff8c7a8f6ee972d698a2bf534b13093239c023e",
+      "actual": "a6e369b272eeb52e31d566870ff8c7a8f6ee972d698a2bf534b13093239c023e",
+      "match": true
+    },
+    "system:/system/etc/init/rgsp-firstboot.rc": {
+      "expected": "99caa9ca82756fcfb334bdff22238af63b0f54f06c59cd05b7bc258be8cb2a3a",
+      "actual": "99caa9ca82756fcfb334bdff22238af63b0f54f06c59cd05b7bc258be8cb2a3a",
+      "match": true
+    },
+    "system:/system/bin/rgsp-navigation-defaults.sh": {
+      "expected": "a440bec9e2f03a9c6ccd710a0c873f50335210df2f5e512214c1908553c6541d",
+      "actual": "a440bec9e2f03a9c6ccd710a0c873f50335210df2f5e512214c1908553c6541d",
+      "match": true
+    },
+    "system:/system/etc/init/rgsp-navigation-defaults.rc": {
+      "expected": "c70f6f7a8aff2b1a37e642edc667fa0d8fe6e9d0d8a7e0ba582ee13127b7af5f",
+      "actual": "c70f6f7a8aff2b1a37e642edc667fa0d8fe6e9d0d8a7e0ba582ee13127b7af5f",
+      "match": true
+    },
+    "system:/system/etc/init/rgsp-roms-handoff.rc": {
+      "expected": "a2bfb436916857e6d9b35bff7804a26523e53663f851f1646659aa8300052a60",
+      "actual": "a2bfb436916857e6d9b35bff7804a26523e53663f851f1646659aa8300052a60",
+      "match": true
+    },
+    "system:/system/lib/modules/mali_kbase.ko": {
+      "expected": "987e2feb5621f455c139c9e93c0c2a972f6eee0478b755b2cdfecfeb249970a9",
+      "actual": "987e2feb5621f455c139c9e93c0c2a972f6eee0478b755b2cdfecfeb249970a9",
+      "match": true
+    },
+    "system:/system/usr/keylayout/ANBERNIC-keys.kl": {
+      "expected": "99b729a799e47db82a389527e4cc232e186d4a1c431f119326fb093a9def9056",
+      "actual": "99b729a799e47db82a389527e4cc232e186d4a1c431f119326fb093a9def9056",
+      "match": true
+    },
+    "system:/system/usr/keylayout/Vendor_0001_Product_0001.kl": {
+      "expected": "99b729a799e47db82a389527e4cc232e186d4a1c431f119326fb093a9def9056",
+      "actual": "99b729a799e47db82a389527e4cc232e186d4a1c431f119326fb093a9def9056",
+      "match": true
+    },
+    "system:/system/usr/keylayout/Vendor_0001_Product_0001_Version_0100.kl": {
+      "expected": "99b729a799e47db82a389527e4cc232e186d4a1c431f119326fb093a9def9056",
+      "actual": "99b729a799e47db82a389527e4cc232e186d4a1c431f119326fb093a9def9056",
+      "match": true
+    },
+    "vendor:/etc/permissions/android.hardware.usb.host.xml": {
+      "expected": "201da252a1ed52d5d1019412900d7a1cb530afb4558f9f1ba3d124189a1f9819",
+      "actual": "201da252a1ed52d5d1019412900d7a1cb530afb4558f9f1ba3d124189a1f9819",
+      "match": true
+    },
+    "vendor:/etc/permissions/android.hardware.touchscreen.unavailable.xml": {
+      "expected": "35a31dc53804a48aaf354890edf4fc7792bba8093deb9291e48ba4d939f095c2",
+      "actual": "35a31dc53804a48aaf354890edf4fc7792bba8093deb9291e48ba4d939f095c2",
+      "match": true
+    },
+    "vendor:/etc/fstab.sun50iw9p1": {
+      "expected": "8ad1f89571d4515163c00b570832d1ac6943c153d6a4bc1072ffb11d78086cbf",
+      "actual": "8ad1f89571d4515163c00b570832d1ac6943c153d6a4bc1072ffb11d78086cbf",
+      "match": true
+    },
+    "vendor:/modules/8821cs.ko": {
+      "expected": "59933ce6ca29c88d5c8382e0aa7bf794b1fb42c2595b03f2694901bbfa206a72",
+      "actual": "59933ce6ca29c88d5c8382e0aa7bf794b1fb42c2595b03f2694901bbfa206a72",
+      "match": true
+    },
+    "vendor:/lib/egl/libGLES_mali.so": {
+      "expected": "05dc81f866b7ab947d20f283f25dcd96ca2f56ffd48e637b68778c1a994a6925",
+      "actual": "05dc81f866b7ab947d20f283f25dcd96ca2f56ffd48e637b68778c1a994a6925",
+      "match": true
+    },
+    "vendor:/lib/hw/hwcomposer.cupid.so": {
+      "expected": "eac4cb95cdcdc76705e1e76b2b8d6f3ca4fe3bbf1047161f45a7361b59802698",
+      "actual": "eac4cb95cdcdc76705e1e76b2b8d6f3ca4fe3bbf1047161f45a7361b59802698",
+      "match": true
+    },
+    "vendor:/etc/dispconfigs/h700-rgsp-lcd.json": {
+      "expected": "cc6a839acc09fdaa878115b9d76ffbc0b0602e682268322f202ddcd2646ab5fe",
+      "actual": "cc6a839acc09fdaa878115b9d76ffbc0b0602e682268322f202ddcd2646ab5fe",
+      "match": true
+    }
+  },
+  "added_system_files": {
+    "/system/etc/init/h700-usb-configfs.rc": "16c0d49a69509e0113fdc247f944c9c0eb0c34458dede7e73fb71ea307fce621",
+    "/system/etc/init/h700-network-validation-defaults.rc": "94c5f6cca1be8f92717d540481d6c0719381ddc01d10fc46519763227f488430",
+    "/system/bin/h700-network-validation-defaults.sh": "47f60c1b18fe16059800124c5d5f84c2c170cf99cd102e03e76738afce0e8395"
+  },
+  "system_vendor_read_only": true,
+  "sources_synced_to_native_aosp": true,
+  "delivered_v5i_img_modified": false,
+  "device_system_modified": true,
+  "whole_card_flash_performed": false,
+  "runtime_trial": "ConfigFS + FunctionFS ADB endpoints; ADB-only and MTP+ADB enumerated on Windows",
+  "reboot_verified": true,
+  "physical_cold_power_cycle_verified": false,
+  "mtp_file_transfer_verified": false,
+  "dual_stick_physical_sampling_done": false,
+  "rollback_note": "Current card has additional live files; original 36KiB delta rollback must refuse its changed full-system hash. Undo added configuration files and restore prior global settings instead; do not replay raw before.bin after filesystem changes.",
+  "test_date": "2026-10-28 Asia/Shanghai",
+  "device": "Owner-reported 34xxsp / H700 / 2 GB / dual sticks",
+  "observed_memtotal_kb": 2027136,
+  "device_identity": "Serial, MAC and local session addresses retained only in the local validation bundle; historical device-bound scripts elsewhere are unchanged.",
+  "http_probe": "http://connect.rom.miui.com/generate_204",
+  "https_probe": "https://connectivitycheck.platform.hicloud.com/generate_204",
+  "probes_http_https_status": 204,
+  "captive_portal_detection_disabled": false,
+  "raw_report_sha256": "176332d6a500b83afbb2f6fcb4add6bf38a2ef494a6972d6844478061c3c0784"
+}

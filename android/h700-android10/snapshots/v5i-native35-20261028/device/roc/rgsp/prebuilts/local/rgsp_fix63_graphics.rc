@@ -1,0 +1,40 @@
+on post-fs
+    mkdir /dev/graphics 0770 system graphics
+    symlink /dev/fb0 /dev/graphics/fb0
+    chown system graphics /dev/fb0
+    chmod 0660 /dev/fb0
+    chown system graphics /dev/disp
+    chmod 0660 /dev/disp
+
+on post-fs-data
+    chmod 0666 /dev/ashmem
+    exec u:r:init:s0 root root -- /system/bin/mknod /dev/mali0 c 10 49
+    insmod /system/lib/modules/mali_kbase.ko
+    chmod 0666 /dev/ion
+    chmod 0666 /dev/mali0
+    chown system graphics /dev/g2d
+    chmod 0660 /dev/g2d
+    write /sys/power/wake_lock rgsp_android_bringup
+    setprop vold.decrypt trigger_restart_framework
+
+on boot
+    chmod 0666 /dev/ion
+    chmod 0666 /dev/mali0
+    start rgsp-console
+
+service rgsp-console /system/bin/sh
+    class core
+    console ttyS0
+    user root
+    group root shell log readproc graphics
+    seclabel u:r:shell:s0
+    setenv HOSTNAME rgsp
+    disabled
+
+service rgsp-graphics-diag /system/bin/sh /system/etc/rgsp-graphics-diag.sh
+    class late_start
+    user root
+    group root shell log readproc graphics
+    seclabel u:r:shell:s0
+    disabled
+    oneshot

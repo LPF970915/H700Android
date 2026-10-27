@@ -1,0 +1,59 @@
+{
+  "private_directory": "LOCAL_PRESERVE_H700_BASELINE_20261028",
+  "inputs": [
+    {
+      "native_path": "build/make/target/product/security/platform.x509.pem",
+      "bytes": 1675,
+      "sha256": "9837de028f460c35cc8d3fa45f14eecce30f6fbfe4b93d399aef1acb80c20d14",
+      "publish": false,
+      "restore_to_source": "build/make/target/product/security/platform.x509.pem"
+    },
+    {
+      "native_path": "out/target/product/rgsp/system/lib/modules/mali_kbase.ko",
+      "bytes": 17590792,
+      "sha256": "987e2feb5621f455c139c9e93c0c2a972f6eee0478b755b2cdfecfeb249970a9",
+      "publish": false,
+      "restore_to_source": "device/roc/rgsp/prebuilts/local/mali_kbase.ko"
+    },
+    {
+      "native_path": "out/target/product/rgsp/vendor/lib/egl/libGLES_mali.so",
+      "bytes": 13279144,
+      "sha256": "05dc81f866b7ab947d20f283f25dcd96ca2f56ffd48e637b68778c1a994a6925",
+      "publish": false,
+      "restore_to_source": "hardware/aw/gpu/mali-bifrost/mali-g31/arm/lib/libGLES_mali.so"
+    },
+    {
+      "native_path": "out/target/product/rgsp/system/bin/adbd",
+      "bytes": 30400,
+      "sha256": "958fc1252bdc75c01d4915f87d08a57dbe2a894dc175b8e825e1a0067a8028a0",
+      "publish": false,
+      "purpose": "Known-good binary output fallback; not a replacement for the frozen build source"
+    },
+    {
+      "native_path": "out/target/product/rgsp/system/bin/vold",
+      "bytes": 669892,
+      "sha256": "9869fa1e7c4f9584504ef8ffa407381fd9236d711b7b917bd3bab6cb02d012ce",
+      "publish": false,
+      "purpose": "Known-good binary output fallback; not a replacement for the frozen build source"
+    },
+    {
+      "private_backup": "grow-runtime.private.tar.gz",
+      "bytes": 6522468,
+      "sha256": "9fbf5eddacfab2faa9ca99c69bdcd42419caa555095b046491b6b17dd645b7e2",
+      "publish": false,
+      "purpose": "ARM filesystem/grow userspace runtime; POSIX modes preserved in archive",
+      "restore_example": "/home/lpf/rgsp-grow-runtime/runtime"
+    },
+    {
+      "private_backup": "hardware-prefix-v5i.bin",
+      "bytes": 222298112,
+      "sha256": "b2484137c531bb9b87d15bf4d0b10fafd8de685112504933c9a0c1208981460a",
+      "publish": false,
+      "purpose": "Hardware prefix only; not sufficient to rebuild a complete image by itself"
+    }
+  ],
+  "signing_private_key": "Saved locally; intentionally omitted from Git and this public manifest",
+  "full_image_required_until_external_backup": "out/H700_Android_SingleCard_v5i_ChineseDpadWifiGfx.img",
+  "v5f_packaging_seed_present": false,
+  "historical_packager_dependency": "tools/package_rgsp_v5g.py still requires the pinned v5f seed, which is absent. Do not claim full-image repackaging was reproduced from this Git baseline."
+}

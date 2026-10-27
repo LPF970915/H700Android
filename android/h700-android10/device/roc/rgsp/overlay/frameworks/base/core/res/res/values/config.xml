@@ -5,6 +5,8 @@
     
     <!-- Hide navigation bar on TV devices -->
     <bool name="config_showNavigationBar">false</bool>
+    <!-- Prefer visible menu entries throughout the controller-only UI. -->
+    <integer name="config_overrideHasPermanentMenuKey">2</integer>
     
     <!-- Enable hardware keyboard presence for focus mode -->
     <bool name="config_hasPermanentDpad">true</bool>

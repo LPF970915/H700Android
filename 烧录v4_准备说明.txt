@@ -1,0 +1,36 @@
+===========================================
+H700 Android v4 焦点修复版 - 烧录准备完成
+===========================================
+
+镜像文件：D:\Works\H700Android\out\H700_Android_SingleCard_v4_FocusFix.img
+镜像大小：57.96 GB (62,239,277,056 字节)
+SHA256: CC67935F8819C2FAAFD957539758E68FAF3AD1991187E0309B1EC8CFD51E168E
+
+目标SD卡：磁盘 3 (Generic MassStorageClass)
+容量：57.96 GB
+总线类型：USB
+
+【烧录步骤】
+1. 打开 Rufus
+2. 选择设备：磁盘 3 (64GB USB卡)
+3. 选择镜像：D:\Works\H700Android\out\H700_Android_SingleCard_v4_FocusFix.img
+4. 分区类型：保持默认（镜像中已包含GPT分区表）
+5. 点击"开始"烧录
+
+【v4版本改进】
+✅ 系统级启用TV模式 (uiMode=0x13)
+✅ 永久启用D-pad支持
+✅ Settings应用显示焦点指示器
+✅ DocumentsUI文件管理器焦点导航
+✅ 基于成功启动的v3b bootloader
+
+【烧录后测试】
+1. 插入RGSP TF1卡槽
+2. 开机进入Android系统
+3. 测试十字键焦点导航：
+   - 设置菜单：应有可见焦点框
+   - 文件管理器：D-pad可正常导航
+   - AT4K菜单：D-pad可向下滚动
+4. 串口验证：dumpsys uimode (应显示mCurUiMode=0x13)
+
+准备就绪，可以开始烧录！

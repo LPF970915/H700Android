@@ -1,0 +1,10 @@
+on property:sys.boot_completed=1
+    start h700-network-validation-defaults
+
+service h700-network-validation-defaults /system/bin/sh /system/bin/h700-network-validation-defaults.sh
+    class late_start
+    user root
+    group root shell log
+    seclabel u:r:su:s0
+    disabled
+    oneshot

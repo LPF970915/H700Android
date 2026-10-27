@@ -1,116 +1,48 @@
-# H700 Android 10 Development Kit
+# H700 Android 10 — 开发基线
 
-RGSP/H700 Android 10 porting workspace. The active branch targets the current
-no-stick RGSP test unit first; other H700 devices require their own display and
-input profiles.
+当前冻结点：**v5i / native35 + USB ConfigFS 与网络检测修复，2026-10-28**。Git 标签：`baseline/h700-v5i-usb-network-20261028`。原交付镜像尚未加入本轮修复重新封装。
 
-## Current Baseline
+本工程整合 H700 掌机上的 Android 10、无触屏按键导航和单卡存储。当前实机已由无摇杆 RGSP 切换为用户提供的 34xxsp：H700、2GB RAM、双摇杆。两台设备的产品属性都可能显示 `RGSP H700`，应按序列号区分。
 
-- Current integration baseline: v5f ROMSPublic. AT4K is the factory HOME,
-  with the corrected bottom shortcut row, menu scrolling and IMG_3111 as its
-  initial custom-image wallpaper. Other bundled images can be added later.
-- Accepted keyboard/Settings behavior, built-in gray focus navigation and
-  the single-console fix are retained. AT4K layout/wallpaper and injected
-  menu-navigation checks passed on the live device; complete fresh-flash
-  and physical-key acceptance still require testing.
-- The new ramdisk includes checked dirty-FAT/stale-FSInfo recovery.
-  Earlier v5d physically failed a reboot and must not be treated as reboot
-  qualified. v5f still needs two normal physical reboot checks after flashing.
-- ROMS is now a visible portable volume managed by protected vold. The live
-  device passed ordinary-app SAF read/write/rename/delete and remount
-  persistence checks, showing about 96.91 GB for ROMS on the tested card.
-  Internal app storage remains separate; its nominal 32 GB summary is not
-  whole-card capacity. New ramdisk logs use private data instead of ROMS.
-- This is a development integration checkpoint, not a production release.
-  The v5f baseline manifest is authoritative for offline verification status;
-  it does not establish physical boot qualification.
-- Archived Fix72 and failed September 11 card records remain historical
-  evidence. The old 8 MiB writer/finalizer remain quarantined.
-- The Android 11 bring-up work is historical evidence only. Do not restart its
-  framework-bypass patch chain.
+先阅读：
 
-Read these documents before changing images or device state:
+- [当前状态与验收边界](docs/CURRENT_BASELINE_20261028.md)
+- [源码恢复与构建](docs/REPRODUCE_BASELINE_20261028.md)
+- [本地保留与空间清理清单](docs/STORAGE_RETENTION_20261028.md)
+- [基线凭据和哈希](docs/baselines/h700-v5i-usb-network-20261028/README.md)
+- [工具分类](tools/README.md)
 
-- `docs/H700_V5F_ROMS_BASELINE.md`
-- `docs/baselines/h700-v5f-roms/README.md`
-- `docs/H700_ROMS_PUBLIC_STORAGE_20260914.md`
-- `docs/H700_STORAGE_RUNTIME_DIAGNOSIS_20260914.md`
-- `docs/H700_V5E_AT4K_BASELINE.md`
-- `docs/baselines/h700-v5e-at4k/README.md`
-- `docs/H700_AT4K_DEFAULT_HOME_20260914.md`
-- `docs/H700_AT4K_DOCK_PATCH_20260913.md`
-- `docs/H700_V5D_REBOOT_AND_VIDEO_20260913.md`
-- `docs/H700_V5C_USER_ACCEPTANCE_20260913.md`
-- `docs/H700_V5C_RUFUS_BOOT_HANDOFF_20260913.md`
-- `docs/baselines/h700-v5c-20260913/README.md`
-- `docs/H700_SINGLE_CARD_V5_BUILD_AND_ACCEPTANCE_20260912.md`
-- `docs/H700_ANDROID10_FIX72_OFFLINE_CANDIDATE_20260907.md`
-- `docs/H700_ANDROID10_FIX70_WIFI_HOME_20260907.md`
-- `docs/H700_ANDROID10_FIX71_INPUT_DISPLAY_20260907.md`
-- `docs/RGSP_INPUT_CALIBRATION_20260906.md`
-- `docs/H700_ANDROID10_TV_NETWORK_PLAN_20260906.md`
-- `docs/H700_FIX72_BASELINE_CLEANUP_20260907.md`
-- `docs/H700_ANDROID10_RELEASE_READINESS_20260911.md`
+## 当前状态
 
-## Working Boundaries
+- v5i 软件按键可达性验收、完整 IMG 封装及独立 SHA-256 校验已完成。
+- 新机 USB ADB、受来源限制的 Wi-Fi ADB、互联网检测通过一次完整内核重启验证。
+- 原 v5i 的 42 项组件哈希全部一致；新增 USB/网络配置后，system/vendor 保持只读。
+- 双摇杆实体采样和适配尚未进行。冷断电、所有硬件、完整 MTP 传输并未在本轮全部验收。
+- 硬件 VSYNC、通用硬件视频解码、FTRACE 等限制见当前状态文档。
 
-- Build only through `tools/build_h700_low_pressure.ps1 -Execute`. It constrains
-  compilation to CPU 0-1, aggregate one CPU, `-j1`, 6 GiB RAM and 512 MiB swap.
-- The old TF2 guarded deployment tool is for the historical dual-card layout,
-  not the current eight-partition single-card product. Diagnose and validate
-  reversible runtime changes first; rebuild and flash only after acceptance.
-  Do not write boot0, U-Boot, GPT or device data through ad hoc commands.
-- Retain `out/rgsp-fix72-wifi-profile/`, `out/rgsp-fix70-wifi-deployment/`,
-  `out/tf2-deploy-20260907/`, `out/h700-android10-preflight/`, and the Fix67
-  payloads where retained. Preserve the v5d packaging input, v5e/v5f outputs,
-  manifests, WSL source/build outputs and all available rollback inputs.
-  The old v5c image is no longer present locally.
-- Full upstream sources, complete images, private logs, signing keys and the
-  WSL VHDX remain local. The selected product APK, bundled wallpapers and
-  sanitized image manifests are versioned with the integration source.
+## Git 与本地输入
 
-## Active Tooling
+Git 保存产品配置、补丁工具、测试、技术记录，以及 **364 个文件、约 2.89MB 的实测源码覆盖快照**。它包含 native35、本轮 USB/网络修复和额外的 vold、StorageManagerService、healthd、完整固定版 LeanbackIME 输入。
+
+Git 不包含完整 IMG、完整 AOSP/Longan、WSL VHDX、签名私钥、原始设备日志和私有会话配置。上传成功不代表这些文件可以删除，详见保留清单。既有小型 APK、Wi-Fi 驱动和工具保留原有来源，本仓库不是完整 AOSP 发行版。
+
+## 不访问设备的核验
+
+Python 3.11+：
 
 ```powershell
-# Inspect a boot image without modifying it.
-py -3 .\tools\android_bootimg.py inspect .\input\boot.img
-
-# Dry-run the low-pressure Android build wrapper.
-.\tools\build_h700_low_pressure.ps1
-
-# Inspect an APK for API29/ARM32/split-package candidacy.
-py -3 .\tools\inspect_rgsp_apk.py "C:\path\to\app.apk"
-
-# Capture or apply only the explicit per-device input calibration flow.
-.\tools\capture_rgsp_input_calibration.ps1
+py -X utf8 tools/restore_h700_baseline.py
+py -X utf8 -m unittest discover -s tools -p test_h700_baseline_restore.py -v
 ```
 
-The current RGSP profile supports basic UI navigation only. Long-press behavior,
-analog axes, model-specific mapping selection, and virtual-mouse fallback remain
-separate follow-up work.
+上述命令核验源码快照并在临时目录测试恢复，不启动构建、不连接设备、不写卡。
 
-## Release Boundary
+## 版本关系
 
-The current priority is to qualify the Scheme-A single-card Android image on
-the original RGSP. The compact image requires at least 32,434,554,368 actual
-bytes and targets 64 GB or larger supported cards. It contains the H700 boot
-payload, Android boot/system/vendor/data, and a FAT32 `ROMS` partition.
-Actual boot-area contents must be read back before another write. The second TF
-slot is expected to remain optional expansion storage, but that behavior must
-be verified on hardware.
+| 阶段 | 状态 |
+| --- | --- |
+| `baseline/h700-v5f-roms` 及更早标签 | 历史参考 |
+| v5i/native35，2026-10-27 | 原始已交付镜像及软件验收 |
+| `baseline/h700-v5i-usb-network-20261028` | 当前源码及实机修复冻结点；未重封装 IMG |
 
-Do not publish until the release-readiness checklist is closed. In particular,
-single-card boot success alone does not prove cold-boot reliability, suspend
-resume, physical-button APK workflows, audio/power acceptance, or reproducible
-image production.
-
-## Storage And Recovery
-
-The project keeps large files under `D:\Works\H700Android`; WSL lives in
-`.wsl\Ubuntu\`. The 2026-09-07 cleanup removed only checked historical outputs
-and superseded scripts. The cleanup record explains what was removed and how to
-regenerate raw preflight images when required.
-
-`reference/` contains selected external references rather than full AOSP
-checkouts. The authoritative Android 10 planning/history set is under `docs/`;
-Fix64 through Fix72 are the current implementation evidence.
+根目录旧烧录/清理脚本与 `archive/` 保留用于追溯，不是当前入口。原首页保存于 [历史 README](docs/history/README_v5f_before_20261028.md)。当前是 eng/root 开发系统。第三方文件的来源说明见 [THIRD_PARTY_INPUTS](docs/THIRD_PARTY_INPUTS.md)。
