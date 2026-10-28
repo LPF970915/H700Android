@@ -1,0 +1,95 @@
+{
+  "original_self_created_content": true,
+  "files": [
+    {
+      "file": "comic-01.png",
+      "bytes": 76969,
+      "sha256": "3a2b850716b85455f1be121c44070401cc60204ae32a73d1312cd16956e26a31"
+    },
+    {
+      "file": "comic-02.png",
+      "bytes": 82893,
+      "sha256": "38477d87334577f55b73c774a613b5c940ca4207ba75bbdc1cb5bb86849bc511"
+    },
+    {
+      "file": "comic-03.png",
+      "bytes": 83976,
+      "sha256": "244d4883dc873873dcea32dbf64c5068d7cdae50e51a72213e5e375dddf9365d"
+    },
+    {
+      "file": "comic-04.png",
+      "bytes": 79571,
+      "sha256": "b2679b8fef504ca9c69652dd66f9dc3cca62a9142712757253c3b92a33c08273"
+    },
+    {
+      "file": "comic-05.png",
+      "bytes": 83970,
+      "sha256": "e2aeea10355ed687e575e489b7d2056f94940bb6bf66d19aee5c9d695be815de"
+    },
+    {
+      "file": "comic-06.png",
+      "bytes": 89272,
+      "sha256": "c5906fe8fd36b32cbb94214255d74af1e346e7724f8753964bc1454f6b2f703f"
+    },
+    {
+      "file": "comic-07.png",
+      "bytes": 80516,
+      "sha256": "09d4d60e81aefe3019ebfbcbe822bf1e984bb4f1ee9e68b2185ba4a8d0599243"
+    },
+    {
+      "file": "comic-08.png",
+      "bytes": 88312,
+      "sha256": "677b51a4c75eb51b4362d3e2e932c05ad39f6af0bff3d698c4e65406961d57a1"
+    },
+    {
+      "file": "H700_BOOK.epub",
+      "bytes": 3994,
+      "sha256": "2f07ccbf735694e9515b5e426763f86af1d36320619b42673bc35cc2e3b1935e"
+    },
+    {
+      "file": "H700_COMIC.cbz",
+      "bytes": 584644,
+      "sha256": "3e2789440632a3380c23e0c2ae55e48480bc0597fec856668a1449b237b41525"
+    },
+    {
+      "file": "H700_PAGES.pdf",
+      "bytes": 1147122,
+      "sha256": "ac13d36da017e4c2daee792adc45edaf76c38d462358616c743ccd43fcd22f5e"
+    },
+    {
+      "file": "H700_TEXT_GB18030.txt",
+      "bytes": 25073,
+      "sha256": "35f64aca092e890df0448994a4ca138ea92e1b57fa14f03c00178b2eac97afeb"
+    },
+    {
+      "file": "H700_TEXT_UTF8.txt",
+      "bytes": 30353,
+      "sha256": "ab4e48dd0ff11abce911f2ee238bb2cc63c97b5b13616c6eee913b912c64ef3c"
+    },
+    {
+      "file": "H700_TRACK_A.mp3",
+      "bytes": 1920854,
+      "sha256": "a95a9b9fc2e7969e0097a8e1c8ced668fdf84c5aed28be67c626ea272ad85ce1"
+    },
+    {
+      "file": "H700_TRACK_B.flac",
+      "bytes": 3527954,
+      "sha256": "46168a1ed1e718f8657e4d63b54e14169816d87d272dc5c567abf43ab6aeecd8"
+    },
+    {
+      "file": "H700_VIDEO_H264_AAC.mkv",
+      "bytes": 24398020,
+      "sha256": "ce6546a4a990c174091a8b2e2cb1411900acc6d542eca7182df123531034fedf"
+    },
+    {
+      "file": "H700_VIDEO_H264_AAC.mp4",
+      "bytes": 24398440,
+      "sha256": "b8b7a0b528d048806a90d1e9a4b66b8715f65a7775dbdf9f66a733869110c9ac"
+    },
+    {
+      "file": "H700_VIDEO_H264_AAC.srt",
+      "bytes": 133,
+      "sha256": "08124855f1c2c0b6fe81418870e5ad456acacdb56b2becb60607f699f715823b"
+    }
+  ]
+}

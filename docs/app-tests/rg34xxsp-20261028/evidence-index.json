@@ -1,0 +1,121 @@
+{
+  "raw_evidence_uploaded": false,
+  "local_directory": "out/tv-apps-20261028",
+  "screenshots": [
+    {
+      "label": "koreader-final-profile-next-page",
+      "local_file": "koreader-final-profile-next-page-170432.png",
+      "sha256": "72d778fffd914620fc0a4bc094c630e3a16f2d888e7184d0644cfa1dff1ad515"
+    },
+    {
+      "label": "koreader-final-profile-prev-page",
+      "local_file": "koreader-final-profile-prev-page-170450.png",
+      "sha256": "b8dea2779aa7f8e1875ef1739519c0fe85d4b4128cdcdbb4b462d265f33a0dad"
+    },
+    {
+      "label": "koreader-final-profile-back",
+      "local_file": "koreader-final-profile-back-170504.png",
+      "sha256": "52a487f9a0511f41c0d9fb514c19f8ff7f8b8fa81c7a7ea72d14c70e4322e759"
+    },
+    {
+      "label": "koreader-final-cbz-open",
+      "local_file": "koreader-final-cbz-open-170542.png",
+      "sha256": "dc1653da29013f1908b2ea36cf77d1c0a87c545dc2f45fc000173d53be813cba"
+    },
+    {
+      "label": "koreader-final-cbz-lower",
+      "local_file": "koreader-final-cbz-lower-170614.png",
+      "sha256": "842e120bda4ac84ba04753a22ce213916fcd519bc05d5a215c71a4ea1b6b6d37"
+    },
+    {
+      "label": "koreader-final-cbz-page2",
+      "local_file": "koreader-final-cbz-page2-170727.png",
+      "sha256": "a7c2d63eff05e9909b3c08d4f8363549ac1c27b7f4b4b72c21e4836a0822ebb5"
+    },
+    {
+      "label": "koreader-final-cbz-back-view",
+      "local_file": "koreader-final-cbz-back-view-170739.png",
+      "sha256": "842e120bda4ac84ba04753a22ce213916fcd519bc05d5a215c71a4ea1b6b6d37"
+    },
+    {
+      "label": "koreader-final-cbz-return",
+      "local_file": "koreader-final-cbz-return-170758.png",
+      "sha256": "ff83920b7f4453b1ca71ccb16c8749fcc407aa471963efe77dcdb653a213bb26"
+    },
+    {
+      "label": "koreader-font-before",
+      "local_file": "koreader-font-before-170259.png",
+      "sha256": "b8dea2779aa7f8e1875ef1739519c0fe85d4b4128cdcdbb4b462d265f33a0dad"
+    },
+    {
+      "label": "koreader-font-larger-pass",
+      "local_file": "koreader-font-larger-pass-170312.png",
+      "sha256": "5d249458c9ed97084f423e56c6bf4218aa40e5364fb2619cba2c9e7d936e2766"
+    },
+    {
+      "label": "koreader-font-smaller-pass",
+      "local_file": "koreader-font-smaller-pass-170346.png",
+      "sha256": "b8dea2779aa7f8e1875ef1739519c0fe85d4b4128cdcdbb4b462d265f33a0dad"
+    },
+    {
+      "label": "nova-tv-ready",
+      "local_file": "nova-tv-ready-162527.png",
+      "sha256": "9b901c2d2115496640f1d00ddbcbb79b12cafc2ee7f2bd83dced246235760985"
+    },
+    {
+      "label": "nova-mkv-play",
+      "local_file": "nova-mkv-play-162739.png",
+      "sha256": "0dd86b864b06e24ec6105b54deec169c174ec6b57942f5643cd9b895caddeb96"
+    },
+    {
+      "label": "nova-player-menu",
+      "local_file": "nova-player-menu-162756.png",
+      "sha256": "4b5c93b2a2f115a1835b22a67122bc26e6ad0cc3ed0610c44707349433bbd543"
+    },
+    {
+      "label": "nova-pause-observe",
+      "local_file": "nova-pause-observe-162837.png",
+      "sha256": "6eb4c3fa78c4b87b6078cc9b7013f618fe6a50958d65350b6998d8e60f75523a"
+    },
+    {
+      "label": "nova-seek",
+      "local_file": "nova-seek-162847.png",
+      "sha256": "9ca9eced9105803214a05043d4c309ef8730fe7d9e83d4205ea69a50a4ebb70f"
+    },
+    {
+      "label": "nova-return-details",
+      "local_file": "nova-return-details-162859.png",
+      "sha256": "f3fa61c6ac45321f28e5339847941bf769a096ff81187b3bee9bc375819f856a"
+    },
+    {
+      "label": "vlc-video-controls",
+      "local_file": "vlc-video-controls-151324.png",
+      "sha256": "5cd5294f8c638fd532fb9f245df11a0fc863764c09e7db791a1d3e570079c628"
+    },
+    {
+      "label": "vlc-seek",
+      "local_file": "vlc-seek-151549.png",
+      "sha256": "ca34d6fa5fd94327e5933d444effbd7997bb3634fe5bce84cffffa7631dc16f3"
+    },
+    {
+      "label": "vlc-flac-next",
+      "local_file": "vlc-flac-next-153053.png",
+      "sha256": "d96baf163d080f2779302a7585d3af7fc1465526817ef4c4ecc0707734f7b02b"
+    },
+    {
+      "label": "mpvnova-mkv-play",
+      "local_file": "mpvnova-mkv-play-161213.png",
+      "sha256": "8121e68a7667dc2a642001c33b735fcc2234ccd70e3212af1b47315af504066c"
+    },
+    {
+      "label": "mpvnova-pause-observe",
+      "local_file": "mpvnova-pause-observe-161343.png",
+      "sha256": "5e3586b2ae1bc121d3cda7d298b476ed2bb07deaa3f00c1b483f1ff3ab60debc"
+    },
+    {
+      "label": "test-end-at4k",
+      "local_file": "test-end-at4k-170944.png",
+      "sha256": "4f7da5936da12b4192e81e45ecf94a1e5f9179a6effd790db4ae91edbdac58e4"
+    }
+  ]
+}

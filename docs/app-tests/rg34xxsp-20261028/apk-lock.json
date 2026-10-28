@@ -1,0 +1,205 @@
+{
+  "schema": 1,
+  "date": "2026-10-28",
+  "base_git": "7b0da03928cd61476bf629a36d586b1de9fba1ad",
+  "checkpoint": "baseline/rg34xxsp-small-screen-apps-20261028",
+  "device": {
+    "description": "User-provided RG34XXSP H700, 2GB, dual sticks",
+    "android_api": 29,
+    "native_abis": [
+      "armeabi-v7a",
+      "armeabi"
+    ],
+    "physical_pixels": [
+      720,
+      480
+    ],
+    "physical_density": 213
+  },
+  "method": {
+    "physical_user_acceptance": false,
+    "touch_or_virtual_mouse_used": false,
+    "direction_backends": [
+      "Android SOURCE_DPAD key injection for standard TV views",
+      "Original ANBERNIC evdev HAT for KOReader profile"
+    ],
+    "a_b_backend": "Original controller evdev key injection",
+    "hearing_verified": false
+  },
+  "profile": {
+    "repository_path": "config/koreader/2-h700-dpad.lua",
+    "bytes": 4898,
+    "sha256": "1246e5b3b9dcc2a82637c32664ea64b3538cd2174afbaff319cf064270b6d848",
+    "installed_as": "/sdcard/koreader/patches/2-h700-dpad.lua"
+  },
+  "frozen_364_file_source_tree": "c243044ffb43fd45dd33e4145c3c9b79d3d2a3d1",
+  "apks": [
+    {
+      "id": "tvbookreader",
+      "file": "TVBookReader-v0.23.0-armeabi-v7a.apk",
+      "package": "com.example.tvbookreader",
+      "version_name": "0.23.0",
+      "version_code": 54,
+      "min_sdk": 21,
+      "native_abis": [
+        "armeabi-v7a"
+      ],
+      "arm32_compatible": true,
+      "signature_verified_for_android_api": 29,
+      "certificate_sha256": "4be810fb751d673eddb2cc5002e76f17f5dad4f481a2f10566f8a314137d41b4",
+      "bytes": 27677112,
+      "sha256": "e36978749ab1850cd6d45489aa9839d1acd9c453ad1a7896546ada209b4fb80a",
+      "download_url": "https://github.com/w1lli4m666-droid/TVBookReader/releases/download/v0.23.0/TVBookReader-v0.23.0-armeabi-v7a.apk",
+      "status": "needs_adaptation",
+      "tested_scope": "EPUB reading works; settings require unmapped Menu; B exit incomplete"
+    },
+    {
+      "id": "vlc",
+      "file": "VLC-Android-3.5.6-armeabi-v7a.apk",
+      "package": "org.videolan.vlc",
+      "version_name": "3.5.6",
+      "version_code": 13050605,
+      "min_sdk": 17,
+      "native_abis": [
+        "armeabi-v7a"
+      ],
+      "arm32_compatible": true,
+      "signature_verified_for_android_api": 29,
+      "certificate_sha256": "c8768d2cea0c4b622e419b4b4715981946821e4ebc035fb41776cad395a7f68e",
+      "bytes": 35937948,
+      "sha256": "d289e91e3ee0cf90791011b8c3c88f4181cbe41fc3d6d91fdafae34702a91a48",
+      "download_url": "https://get.videolan.org/vlc-android/3.5.6/VLC-Android-3.5.6-armeabi-v7a.apk",
+      "status": "functional_fallback",
+      "tested_scope": "MP4/subtitle and MP3/FLAC paths pass; TV audio layout poor at 720x480"
+    },
+    {
+      "id": "mpvnova",
+      "file": "app-default-armeabi-v7a-release.apk",
+      "package": "app.mpvnova.player",
+      "version_name": "2026-10-19",
+      "version_code": 9038,
+      "min_sdk": 23,
+      "native_abis": [
+        "armeabi-v7a"
+      ],
+      "arm32_compatible": true,
+      "signature_verified_for_android_api": 29,
+      "certificate_sha256": "cbea6185b33252ae753634d5a0635d5d90e4fc0589d3d197efa7d13366f77b4b",
+      "bytes": 45909372,
+      "sha256": "4acd4fa47d2e59ed04d2e0ed9fd187bc766d34b08b61169d2836f19680b580a8",
+      "download_url": "https://github.com/Laskco/mpvNova/releases/download/2026-10-19/app-default-armeabi-v7a-release.apk",
+      "status": "functional_fallback",
+      "tested_scope": "MP3/MKV open; MKV pause/seek/subtitle pass; controls and file text too small"
+    },
+    {
+      "id": "coolreader",
+      "file": "cr3.2.58-armeabi-v7a-release.apk",
+      "package": "org.coolreader",
+      "version_name": "3.2.58-1",
+      "version_code": 32582,
+      "min_sdk": 4,
+      "native_abis": [
+        "armeabi-v7a"
+      ],
+      "arm32_compatible": true,
+      "signature_verified_for_android_api": 29,
+      "certificate_sha256": "8f8cc0fef2e46b4e80656ae89234e6d4da55c10b09249633408f82118b5b09dc",
+      "bytes": 15374177,
+      "sha256": "2ad12ae295ffd5d6fe2d34e46fce226f671fed3dc10bc65fa5a0df337ac9305f",
+      "download_url": "https://github.com/buggins/coolreader/releases/download/cr3.2.58/cr3.2.58-armeabi-v7a-release.apk",
+      "status": "incomplete",
+      "tested_scope": "Startup and settings reachable; file open/font/landscape/reading not validated"
+    },
+    {
+      "id": "kodi",
+      "file": "kodi-21.3-Omega-armeabi-v7a.apk",
+      "package": "org.xbmc.kodi",
+      "version_name": "21.3",
+      "version_code": 2103000,
+      "min_sdk": 21,
+      "native_abis": [
+        "armeabi-v7a"
+      ],
+      "arm32_compatible": true,
+      "signature_verified_for_android_api": 29,
+      "certificate_sha256": "f517b44b5db5e62a6c1ec55ba47526db7de0d61f6ba26a7987520e293499b8d5",
+      "bytes": 67832726,
+      "sha256": "12d75e895649f68f217e42c2d881a94fd3177d7b9a7937825852aed545520cc8",
+      "download_url": "https://ftp.fau.de/xbmc/releases/android/arm/kodi-21.3-Omega-armeabi-v7a.apk",
+      "status": "startup_failed",
+      "tested_scope": "SIGABRT after data path resolves to //.kodi/; no main UI validation"
+    },
+    {
+      "id": "koreader",
+      "file": "koreader-android-arm-v2026.07.1.apk",
+      "package": "org.koreader.launcher",
+      "version_name": "v2026.07.1",
+      "version_code": 119461,
+      "min_sdk": 18,
+      "native_abis": [
+        "armeabi-v7a"
+      ],
+      "arm32_compatible": true,
+      "signature_verified_for_android_api": 29,
+      "certificate_sha256": "fd492a4fe001f17058b826da4358a1dceac38d26686f342522c5a497bcd4dccc",
+      "bytes": 29085335,
+      "sha256": "37c5b72202241ee8e85d186b9147534ffde28d39a98981e3e8f794274ee7df93",
+      "download_url": "https://github.com/koreader/koreader/releases/download/v2026.07.1/koreader-android-arm-v2026.07.1.apk",
+      "status": "conditional_primary",
+      "tested_scope": "EPUB/CBZ core workflows pass with H700 user patch; graphical settings remain partly inaccessible"
+    },
+    {
+      "id": "nova",
+      "file": "org.courville.nova-2673649-6.6.2-20261027.1847-armeabi-v7a-release.apk",
+      "package": "org.courville.nova",
+      "version_name": "6.6.2-20261027.1847",
+      "version_code": 2673649,
+      "min_sdk": 23,
+      "native_abis": [
+        "armeabi-v7a"
+      ],
+      "arm32_compatible": true,
+      "signature_verified_for_android_api": 29,
+      "certificate_sha256": "05af6804bcad9e7e6d22d2ffc39fca1857a4aeb4385097cad91b11e5bac1f615",
+      "bytes": 32031731,
+      "sha256": "8b79a340b7e015ecd80c9b82f4d3b992ac34785cdfd0fbb82d98f7da693f84b6",
+      "download_url": "https://github.com/nova-video-player/aos-AVP/releases/download/v6.6.2/org.courville.nova-2673649-6.6.2-20261027.1847-armeabi-v7a-release.apk",
+      "status": "conditional_primary",
+      "tested_scope": "TV + app-local mdpi after debug-assisted settings entry; MKV playback/pause/seek/subtitle/return pass"
+    },
+    {
+      "id": "tvreader",
+      "file": "tvreader_v1.0.1.apk",
+      "package": "com.tvreader.app",
+      "version_name": "1.0.1",
+      "version_code": 1000001,
+      "min_sdk": 24,
+      "native_abis": [],
+      "arm32_compatible": true,
+      "signature_verified_for_android_api": 29,
+      "certificate_sha256": "1108bda8d133fb3260613d4707293d63caaf256d0c40914b4287344bea956c6b",
+      "bytes": 15204721,
+      "sha256": "c2715a47329bbc91cbfe06030fae3b60870d00f88f89052b6dcff261a0a0caca",
+      "download_url": "https://github.com/Sozdan2016/TVReader-releases/releases/download/v1.0.1/tvreader_v1.0.1.apk",
+      "status": "blocked_workflow",
+      "tested_scope": "Local file browser focus/layout/storage-permission workflow did not pass"
+    },
+    {
+      "id": "vanillamusic",
+      "file": "VanillaMusic-1.3.2-fdroid.apk",
+      "package": "ch.blinkenlights.android.vanilla",
+      "version_name": "1.3.2",
+      "version_code": 13200,
+      "min_sdk": 26,
+      "native_abis": [],
+      "arm32_compatible": true,
+      "signature_verified_for_android_api": 29,
+      "certificate_sha256": "f74b1254bcd5f9744e24c8ae9717dd7ae2917a557a8f77cb1f7ad12912940587",
+      "bytes": 3712830,
+      "sha256": "0150f08387032ed3d5a5952dbe13646bff2878f01c2c9267e6dc32ecb8747003",
+      "download_url": "https://f-droid.org/repo/ch.blinkenlights.android.vanilla_13200.apk",
+      "status": "startup_failed",
+      "tested_scope": "PlaybackService crashes on null AppWidgetManager; no audio UI validation"
+    }
+  ]
+}

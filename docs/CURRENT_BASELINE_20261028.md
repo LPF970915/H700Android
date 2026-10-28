@@ -4,6 +4,8 @@
 
 最新日常开发检查点：`baseline/rg34xxsp-controller-mouse-20261028`，见 [鼠标、电源与模拟器记录](RG34XXSP_INPUT_POWER_EMULATORS_20261028.md)。鼠标现用 L1＋R1 后按 Start，Select 已释放；Navigation v6 是保留数据安装的更新包。下文原冻结点和上一轮重启记录继续按各自版本理解。
 
+最新应用级检查点：`baseline/rg34xxsp-small-screen-apps-20261028`，见 [小屏应用筛选](RG34XXSP_SMALL_SCREEN_APPS_20261028.md)。新增 KOReader 可选用户补丁及 9 个 APK 的初测/版本锁；系统二进制、屏幕密度和原 IMG 未更新。KOReader 的 EPUB/CBZ 常用路径、Nova 预配置后的 MKV 路径有远程事件与画面证据，不表示所有功能或实体使用通过。
+
 ## 结论与版本边界
 
 当前实机可以继续开发。源码冻结后，按用户指令清理了旧阶段、旧文档和失效工具，又整理了 WSL 空间与镜像无损压缩；当前检查点为 `baseline/h700-storage-trim-20261028`，原源码冻结标签不变。基线仍是 **v5i/native35 + 新机 USB ConfigFS 和网络检测配置**，没有引入新产品功能。首轮清理明细见 [清理记录](CLEANUP_20261028.md)，第二轮见 [空间复核](SPACE_REVIEW_20261028.md)。
