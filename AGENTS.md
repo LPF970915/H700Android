@@ -2,7 +2,7 @@
 
 Read `docs/CURRENT_BASELINE_20261028.md`, `docs/REPRODUCE_BASELINE_20261028.md`, and `docs/STORAGE_RETENTION_20261028.md` before changing build inputs, device state, or storage.
 
-Latest daily development checkpoint: `baseline/rg34xxsp-controller-mouse-20261028`; read `docs/RG34XXSP_INPUT_POWER_EMULATORS_20261028.md` for the current mouse chord, data-app update/rollback, emulator profile and physical acceptance boundaries. The earlier AT4K/input/lockscreen checkpoint remains immutable. Do not confuse daily increments with the frozen overlay or delivered IMG.
+Latest daily development checkpoint: `baseline/rg34xxsp-select-hold-20261028`; read `docs/RG34XXSP_SELECT_HOLD_20261028.md` for Navigation v7: hold Select alone for at least 2s, then release. The old shoulder chord is removed. Read `docs/RG34XXSP_INPUT_POWER_EMULATORS_20261028.md` for the earlier v6, emulator/power records and physical acceptance boundaries. Earlier checkpoints remain immutable; do not confuse daily increments with the frozen overlay or delivered IMG.
 
 Latest app-only checkpoint: `baseline/rg34xxsp-small-screen-apps-20261028`; read `docs/RG34XXSP_SMALL_SCREEN_APPS_20261028.md` before continuing app selection or KOReader configuration. Candidate APKs and raw evidence stay local; only the pinned metadata, optional user patch and sanitized results are published. Core workflows passing do not imply all settings or physical acceptance passed.
 

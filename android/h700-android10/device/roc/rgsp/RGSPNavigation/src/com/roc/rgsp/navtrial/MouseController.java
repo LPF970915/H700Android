@@ -12,6 +12,7 @@ import android.view.InputDevice;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.WindowManager;
+import android.widget.Toast;
 import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map;
@@ -43,6 +44,8 @@ final class MouseController {
     private long movementStart, frameAt, geometryAt;
     private int generation, taps, longPresses, completed, cancelled, rejected, hatEvents, stickEvents;
     private String lastResult = "none";
+    private Runnable selectToggle;
+    private int selectToggleDevice = Integer.MIN_VALUE;
     private final Runnable dragWatchdog = () -> stopDrag();
     private final Runnable aTimer = () -> {
         if (aKey != null && active && !busy) {
@@ -120,6 +123,8 @@ final class MouseController {
     private void enter() {
         if (!allowed() || busy) return;
         updateGeometry();
+        point.x = (point.width - 1) / 2f;
+        point.y = (point.height - 1) / 2f;
         active = true;
         clearMovement();
         surface.capture(true);
@@ -130,6 +135,8 @@ final class MouseController {
     }
 
     void exit() {
+        cancelSelectToggle();
+        hotkey.cancel();
         boolean wasActive = active;
         active = false;
         generation++;
@@ -172,6 +179,31 @@ final class MouseController {
                     && (event.getScanCode() == 304 || event.getDeviceId() == -1));
     }
 
+    private void cancelSelectToggle() {
+        if (selectToggle != null) handler.removeCallbacks(selectToggle);
+        selectToggle = null;
+        selectToggleDevice = Integer.MIN_VALUE;
+    }
+
+    private void queueSelectToggle(int device) {
+        cancelSelectToggle();
+        final boolean wasActive = active;
+        final int token = generation;
+        selectToggleDevice = device;
+        selectToggle = () -> {
+            selectToggle = null;
+            selectToggleDevice = Integer.MIN_VALUE;
+            if (destroyed || token != generation || active != wasActive || !allowed()) return;
+            if (active) exit(); else enter();
+            if (active != wasActive) {
+                Toast.makeText(service, active ? "鼠标已开启" : "鼠标已关闭", Toast.LENGTH_SHORT).show();
+            }
+        };
+        // Let the original Select UP reach the foreground app before moving
+        // focus to our overlay. Never swallow an UP whose DOWN was forwarded.
+        handler.postDelayed(selectToggle, 100);
+    }
+
     boolean onKey(KeyEvent event) {
         int key = event.getKeyCode();
         long identity = ((long) event.getDeviceId() << 32) | key;
@@ -185,15 +217,25 @@ final class MouseController {
             if (up && owned) consumed.remove(identity);
             return owned;
         }
-        boolean toggle = hotkey.update(event.getDeviceId(), key,
-                event.getAction() == KeyEvent.ACTION_DOWN, event.isCanceled());
-        if (toggle) {
-            consumed.put(identity, key);
-            if (active) exit(); else enter();
-            return true;
+        boolean down = event.getAction() == KeyEvent.ACTION_DOWN;
+        if (!down && !up) return owned;
+        int triggerKey = MouseHotkey.canonicalKey(key, event.getScanCode(),
+                (event.getFlags() & KeyEvent.FLAG_FALLBACK) != 0);
+        if (down && triggerKey != MouseHotkey.SELECT && selectToggleDevice == event.getDeviceId()) {
+            cancelSelectToggle();
         }
-        // Unmodified Select, Start and shoulder pairs retain their original
-        // timing and events. Only the recognized chord owns its Start pair.
+        boolean toggle = hotkey.update(event.getDeviceId(), triggerKey, down,
+                event.isCanceled(), event.getEventTime());
+        if (triggerKey == MouseHotkey.SELECT) {
+            // In mouse mode the overlay owns both Select edges. Outside it,
+            // pass both edges and their original timing to the real app.
+            if (down && active) { consumed.put(identity, key); owned = true; }
+            if (up && owned) consumed.remove(identity);
+            if (toggle) queueSelectToggle(event.getDeviceId());
+            return owned;
+        }
+        // Other keys retain their normal behavior outside mouse mode.
+        // Consumed mouse keys retain UP ownership even after mode changes.
         if (up && owned) {
             consumed.remove(identity);
             if (direction(key)) scrollAxisArmed = true;
@@ -448,7 +490,10 @@ final class MouseController {
                 + " completed=" + completed + " cancelled=" + cancelled
                 + " rejected=" + rejected + " hatEvents=" + hatEvents
                 + " stickEvents=" + stickEvents + " stick=" + stickX + "," + stickY);
-        writer.println("mouseHotkey=L1+R1+Start drag=" + dragRunning + " drags=" + drags
+        writer.println("mouseHotkey=Select-hold-release holdMs=" + MouseHotkey.HOLD_MS
+                + " selectLastHoldMs=" + hotkey.lastHoldMs + " selectLast=" + hotkey.lastResult
+                + " togglePending=" + (selectToggle != null)
+                + " drag=" + dragRunning + " drags=" + drags
                 + " swipes=" + swipes + " scrollHeld=" + (scrollKey != null));
     }
 }

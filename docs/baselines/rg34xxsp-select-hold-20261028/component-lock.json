@@ -1,0 +1,108 @@
+{
+  "base_git": "81772f7f39f3b19cb7976762e8a47bdf8346d522",
+  "checkpoint": "baseline/rg34xxsp-select-hold-20261028",
+  "navigation": {
+    "version_code": 7,
+    "version_name": "1.4-select-hold",
+    "installation": "data-app update; system v5 remains unchanged",
+    "file": "Navigation-v7-select-hold.apk",
+    "bytes": 66015,
+    "sha256": "e59a2488a440637903f466869e7066927a700435236005fa8aa09944e84133c1",
+    "certificate_sha256": "c8a2e9bccf597c2fb6dc66bee293fc13f2fc47ec77bc6b2b0d52c11f51192ab8"
+  },
+  "rollback_original": {
+    "file": "Navigation-v6-before.apk",
+    "bytes": 66015,
+    "sha256": "04624c26925080ff744009975ff0dcb9c44ced1a426d57a462b66e57e14cb81b"
+  },
+  "hotkey": {
+    "key": "Select",
+    "hold_ms": 2000,
+    "toggle_on_release": true,
+    "focus_delay_ms": 100,
+    "cancel_on_other_button": true,
+    "old_shoulder_chord_removed": true,
+    "recenter_on_enter": true,
+    "on_off_toast": true
+  },
+  "integration": {
+    "select_short_passthrough": true,
+    "select_hold_ms": 2000,
+    "select_release_toggle": true,
+    "select_start_chords_passthrough": true,
+    "old_shoulder_chord_disabled": true,
+    "select_toggle_cycles": 2,
+    "click": true,
+    "long_press": true,
+    "continuous_drag": true,
+    "scroll": true,
+    "exit_ends_touch": true,
+    "touch_downs": 6,
+    "touch_terminals": 6
+  },
+  "at4k_fallback_path": {
+    "passed": true,
+    "enter_cursor": [
+      359.5,
+      239.5
+    ],
+    "display": [
+      720,
+      480
+    ]
+  },
+  "physical_acceptance": {
+    "status": "user_confirmed",
+    "confirmed_date": "2026-10-29",
+    "select_mouse_visible": true,
+    "dpad_movement": true,
+    "b_exit": true,
+    "observed_select_hold_ms": 3010,
+    "shoulder_press_order": [
+      "L1",
+      "L2",
+      "R2",
+      "R1"
+    ],
+    "shoulders": [
+      {
+        "physical": "L1",
+        "linux_scan": 308,
+        "android_key_code": 102,
+        "android_key_name": "BUTTON_L1"
+      },
+      {
+        "physical": "L2",
+        "linux_scan": 314,
+        "android_key_code": 104,
+        "android_key_name": "BUTTON_L2"
+      },
+      {
+        "physical": "R2",
+        "linux_scan": 315,
+        "android_key_code": 105,
+        "android_key_name": "BUTTON_R2"
+      },
+      {
+        "physical": "R1",
+        "linux_scan": 309,
+        "android_key_code": 103,
+        "android_key_name": "BUTTON_R1"
+      }
+    ],
+    "shoulder_mapping_swapped": false,
+    "extra_adjacent_r2_press_observed": true,
+    "old_three_key_failure_root_cause": "not established"
+  },
+  "system_keymap_changed": false,
+  "whole_image_rebuilt_or_flashed": false,
+  "build_limits": {
+    "aggregate_cpu": 1,
+    "affinity": "0-1",
+    "ram_gib": 6,
+    "swap_mib": 512,
+    "nice": 19,
+    "io": "idle"
+  },
+  "snapshot_tree": "c243044ffb43fd45dd33e4145c3c9b79d3d2a3d1"
+}

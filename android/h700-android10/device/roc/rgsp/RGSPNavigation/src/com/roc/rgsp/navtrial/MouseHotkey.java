@@ -1,21 +1,68 @@
 package com.roc.rgsp.navtrial;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
-/** Same-controller L1 + R1, then a fresh Start down. No Select reservation. */
+/** A standalone Select hold, accepted on release. Other buttons cancel it. */
 final class MouseHotkey {
-    static final int L1 = 102, R1 = 103, START = 108;
-    private final Map<Integer, Integer> held = new HashMap<>();
+    static final int SELECT = 109;
+    static final long HOLD_MS = 2000;
+    private static final class Press {
+        final long started;
+        boolean cancelled;
+        Press(long started, boolean cancelled) {
+            this.started = started;
+            this.cancelled = cancelled;
+        }
+    }
+    private final Map<Integer, Press> presses = new HashMap<>();
+    private final Map<Integer, Set<Integer>> held = new HashMap<>();
+    long lastHoldMs;
+    String lastResult = "none";
 
-    boolean update(int device, int key, boolean down, boolean cancelled) {
-        int bit = key == L1 ? 1 : key == R1 ? 2 : key == START ? 4 : 0;
-        if (bit == 0) return false;
-        int before = held.getOrDefault(device, 0);
-        int after = down && !cancelled ? before | bit : before & ~bit;
-        if (after == 0) held.remove(device); else held.put(device, after);
-        return down && !cancelled && bit == 4 && (before & 3) == 3 && (before & 4) == 0;
+    static int canonicalKey(int key, int scan, boolean fallback) {
+        // Generic.kcm turns an unhandled physical Select into MENU. It is
+        // another delivery of the same button, not a second chord member.
+        return fallback && scan == 310 && key == 82 ? SELECT : key;
     }
 
-    void clear() { held.clear(); }
+    boolean update(int device, int key, boolean down, boolean cancelled, long when) {
+        if (key != SELECT) {
+            if (down && !cancelled) {
+                held.computeIfAbsent(device, ignored -> new HashSet<>()).add(key);
+                Press press = presses.get(device);
+                if (press != null) press.cancelled = true;
+            } else {
+                Set<Integer> keys = held.get(device);
+                if (keys != null) {
+                    keys.remove(key);
+                    if (keys.isEmpty()) held.remove(device);
+                }
+            }
+            return false;
+        }
+        if (down) {
+            Press press = presses.get(device);
+            if (press == null) {
+                presses.put(device, new Press(when, cancelled || held.containsKey(device)));
+            } else if (cancelled) {
+                press.cancelled = true;
+            }
+            return false;
+        }
+        Press press = presses.remove(device);
+        if (press == null) return false;
+        lastHoldMs = Math.max(0, when - press.started);
+        boolean accepted = !cancelled && !press.cancelled && lastHoldMs >= HOLD_MS;
+        lastResult = accepted ? "accepted" : cancelled || press.cancelled ? "cancelled" : "short";
+        return accepted;
+    }
+
+    void cancel() {
+        for (Press press : presses.values()) press.cancelled = true;
+    }
+
+    void clear() { presses.clear(); held.clear(); }
 }

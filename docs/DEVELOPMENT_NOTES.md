@@ -2,7 +2,7 @@
 
 当前事实与未验收项以 [CURRENT_BASELINE](CURRENT_BASELINE_20261028.md) 为准。这里只保留后续直接需要的索引；长篇旧诊断与操作历史从 [历史标签](HISTORY.md) 查询。
 
-最新进展与按原计划排序的下一步见 [输入、电源与模拟器记录](RG34XXSP_INPUT_POWER_EMULATORS_20261028.md)。新鼠标组合无需摇杆；电源/音频只读盘点、模拟器初测和小型回退有独立验收边界。
+当前鼠标入口已按用户反馈改为 [Select 单独长按 2 秒后松开](RG34XXSP_SELECT_HOLD_20261028.md)，不依赖肩键或摇杆。按原计划排序的下一步与先前的电源/音频盘点、模拟器初测、小型回退记录见 [输入、电源与模拟器记录](RG34XXSP_INPUT_POWER_EMULATORS_20261028.md)，其 v6 三键组合已由 v7 替代。
 
 应用侧后续见 [720×480 小屏筛选](RG34XXSP_SMALL_SCREEN_APPS_20261028.md)：KOReader 的 HAT/字号用户补丁、Nova 的 TV/mdpi 预配置，以及尚未解决的音乐布局、图形设置焦点、Kodi/Vanilla 启动问题。不得把安装成功或片段播放成功当作完整应用验收。
 

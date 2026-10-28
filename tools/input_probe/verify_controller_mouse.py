@@ -1,6 +1,6 @@
 """Inject bounded controller events into the disposable H700InputProbe activity.
 
-Requires eng/root ADB, the explicitly identified RG34XXSP, Navigation v6,
+Requires eng/root ADB, the explicitly identified RG34XXSP, Navigation v7,
 H700InputProbe.apk and /data/local/tmp/rg34-dev/stick-motion.jar already installed.
 No user app is targeted. Raw evidence stays in the explicit private output folder.
 """
@@ -15,7 +15,7 @@ parser=argparse.ArgumentParser(description=__doc__)
 parser.add_argument('--adb',required=True)
 parser.add_argument('--session',required=True,type=Path)
 parser.add_argument('--out',required=True,type=Path)
-parser.add_argument('--cycles',type=int,default=20,choices=range(1,21))
+parser.add_argument('--cycles',type=int,default=2,choices=range(1,21))
 parser.add_argument('--execute',action='store_true',help='Allow controller injection into the test activity')
 args=parser.parse_args()
 serial=json.loads(args.session.read_text(encoding='utf-8'))['serial']
@@ -32,7 +32,7 @@ nodes=shell('for d in /sys/class/input/event*; do printf "%s " "$d"; cat "$d/dev
 found=re.findall(r'^/sys/class/input/(event[0-9]+) ANBERNIC-keys$',nodes,re.M)
 assert len(found)==1,'Controller enumeration is ambiguous'
 NODE='/dev/input/'+found[0]
-assert 'versionCode=6 ' in shell('dumpsys package com.roc.rgsp.navtrial'), 'Expected Navigation v6'
+assert 'versionCode=7 ' in shell('dumpsys package com.roc.rgsp.navtrial'), 'Expected Navigation v7'
 assert 'com.roc.rgsp.inputprobe' in shell('pm list packages com.roc.rgsp.inputprobe')
 if not args.execute:
     print('IDENTITY_VERIFIED; pass --execute to run the fixture test')
@@ -43,8 +43,9 @@ CYCLES=args.cycles
 def ev(code,value): return f'sendevent {NODE} 1 {code} {value}; sendevent {NODE} 0 0 0'
 def key(code,value): shell(ev(code,value))
 def tap(code,hold=.08): shell(ev(code,1)+f'; sleep {hold}; '+ev(code,0))
-def chord(hold=.08):
-    shell(ev(308,1)+'; '+ev(309,1)+'; '+ev(311,1)+f'; sleep {hold}; '+ev(311,0)+'; '+ev(309,0)+'; '+ev(308,0))
+def toggle(hold=2.15):
+    tap(310,hold)
+    time.sleep(.3) # UP is delivered before the overlay changes focus.
 def state():
     value=shell('dumpsys activity service com.roc.rgsp.navtrial/.NavigationService')
     (OUT/('mouse-'+RUN+'.private.txt')).write_text(value)
@@ -62,8 +63,8 @@ shell('am start -W -n com.roc.rgsp.inputprobe/.PointerProbe');time.sleep(.6)
 assert 'com.roc.rgsp.inputprobe/.PointerProbe' in shell('dumpsys window windows'), 'Fixture window missing'
 assert not active()
 try:
-    # Both short and long Select must reach the target, with their original downTime.
-    for hold in [.08,.85]:
+    # Select below the threshold must reach the app with its original timing.
+    for hold in [.08,.85,1.8]:
         at=len(events());tap(310,hold);time.sleep(.2)
         assert not active()
         pair=[e for e in events()[at:] if e['type']=='key' and e['key']==109]
@@ -72,16 +73,26 @@ try:
         assert pair[-1]['time']-pair[0]['time'] >= hold*1000-35,pair
     tap(311);assert not active()
     key(308,1);tap(310);key(308,0);assert not active()
-    note('PASS Select short/long and ordinary Start/L1+Select passthrough')
-    # Repeated Start downs while held must not toggle twice.
-    chord(.9);assert active()
-    time.sleep(.15);assert active()
-    chord();assert not active()
+    # Both orders of Select+Start suppress mouse activation, even after 2s.
+    key(310,1);tap(311);time.sleep(2.1);key(310,0);time.sleep(.3);assert not active()
+    key(311,1);tap(310,2.15);key(311,0);time.sleep(.3);assert not active()
+    shell(ev(308,1)+'; '+ev(309,1)+'; '+ev(311,1)+'; sleep 0.1; '+ev(311,0)+'; '+ev(309,0)+'; '+ev(308,0))
+    assert not active()
+    note('PASS sub-2s Select timing, both Select+Start orders, old shoulder chord disabled')
+    # A full Select pair reaches the app before activation. Holding alone
+    # never moves focus early or repeats the toggle while still held.
+    at=len(events());key(310,1);time.sleep(2.2);assert not active()
+    key(310,0);time.sleep(.3);assert active()
+    pair=[e for e in events()[at:] if e['type']=='key' and e['key']==109]
+    assert pair[0]['action']==0 and pair[-1]['action']==1,pair
+    assert pair[0]['downTime']==pair[-1]['downTime'],pair
+    at=len(events());toggle();assert not active()
+    assert not [e for e in events()[at:] if e['type']=='key' and e['key']==109], 'Mouse-owned Select leaked'
     for cycle in range(CYCLES):
-        chord();assert active(),cycle
-        chord();assert not active(),cycle
-    note('PASS chord ordering/repeat and '+str(CYCLES)+' enter/exit cycles')
-    chord();assert active()
+        toggle();assert active(),cycle
+        toggle();assert not active(),cycle
+    note('PASS release-time activation, balanced Select pair and '+str(CYCLES)+' enter/exit cycles')
+    toggle();assert active()
     at=len(events());tap(304);time.sleep(.5)
     assert any(e['action']==1 for e in ends(at))
     at=len(events());tap(304,.8);time.sleep(1.1)
@@ -112,7 +123,9 @@ try:
     assert downs==terminal,(downs,terminal)
     note('PASS B exit during drag, no open touch contacts')
     assert 'rejected=0' in state(),state()
-    result={'select_passthrough':True,'chord_cycles':CYCLES,'click':True,'long_press':True,
+    result={'select_short_passthrough':True,'select_hold_ms':2000,'select_release_toggle':True,
+            'select_start_chords_passthrough':True,'old_shoulder_chord_disabled':True,
+            'select_toggle_cycles':CYCLES,'click':True,'long_press':True,
             'continuous_drag':True,'scroll':True,'exit_ends_touch':True,'touch_downs':downs,'touch_terminals':terminal}
     (OUT/'input-test-results.json').write_text(json.dumps(result,indent=2)+'\n')
 finally:

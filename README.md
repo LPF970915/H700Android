@@ -2,7 +2,7 @@
 
 整理基线：**v5i / native35 + USB ConfigFS 与网络检测修复，2026-10-28**。源码冻结标签为 `baseline/h700-v5i-usb-network-20261028`，空间整理检查点为 `baseline/h700-storage-trim-20261028`。其上已加入 RG34XXSP 菜单、双摇杆和锁屏增量，见 [本轮记录](docs/RG34XXSP_DEVELOPMENT_20261028.md)。原交付镜像尚未加入这些修复重新封装。
 
-最新增量为 [控制器鼠标、电源盘点与模拟器初测](docs/RG34XXSP_INPUT_POWER_EMULATORS_20261028.md)：鼠标改用 **L1＋R1 后按 Start**，释放 Select，补连续拖动/滑动及已实测的小型回退。当前开发在 `codex/rg34xxsp-at4k-input-lockscreen` 分支，`main` 仍为整理基线。
+最新增量为 [Select 长按鼠标呼出](docs/RG34XXSP_SELECT_HOLD_20261028.md)：Navigation v7 改用 **Select 单独按住至少 2 秒后松开**，旧肩键组合已移除，Select＋Start 不触发鼠标，开启时光标居中并提示。用户已在 2026-10-29 确认实体呼出、移动和 B 关闭；四肩键单键采样与当前 Android 映射一致。此前 [控制器鼠标、电源盘点与模拟器初测](docs/RG34XXSP_INPUT_POWER_EMULATORS_20261028.md)保留 v6 历史记录。当前开发在 `codex/rg34xxsp-at4k-input-lockscreen` 分支，`main` 仍为整理基线。
 
 其后的 [720×480 小屏应用首轮筛选](docs/RG34XXSP_SMALL_SCREEN_APPS_20261028.md)固定了 9 个通过 ARM32 静态兼容检查的 APK 来源/校验值，并加入 KOReader 的可选 H700 按键补丁。电子书/漫画优先继续适配 KOReader，视频优先 Nova 的 TV + 应用内尺寸配置；音乐暂留 VLC 备选。仅列明路径通过，尚无全功能纯十字键验收结论，应用和原始证据只保留本地。
 
@@ -57,5 +57,6 @@ py -X utf8 -m unittest discover -s tools -p test_h700_baseline_restore.py -v
 | `baseline/rg34xxsp-at4k-input-lockscreen-20261028` | AT4K 菜单与同图锁屏、原控制器双摇杆增量；实机重启通过，未重封装 IMG |
 | `baseline/rg34xxsp-controller-mouse-20261028` | 释放 Select，三键鼠标组合与拖动/滑动、RetroArch 配置和小更新回退；物理电源/音频仍待验收 |
 | `baseline/rg34xxsp-small-screen-apps-20261028` | 9 个应用初测、APK/夹具锁、KOReader 用户补丁；未构建系统或更新 IMG，实体使用和完整设置仍待验收 |
+| `baseline/rg34xxsp-select-hold-20261028` | Navigation v7：Select 单独长按 2 秒后松开开关鼠标、排除组合键、光标居中与提示；未更新原 IMG |
 
 旧烧录/清理脚本、Android 11/R36S 实验、旧文档及一次性回归已移出当前分支，通过 [历史标签](docs/HISTORY.md) 追溯。本次清理结果见 [清理记录](docs/CLEANUP_20261028.md)。当前是 eng/root 开发系统。第三方来源见 [THIRD_PARTY_INPUTS](docs/THIRD_PARTY_INPUTS.md)。

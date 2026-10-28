@@ -2,6 +2,8 @@
 
 日期：2026-10-28。基于 `03c3cbef9c9ab24ad21dff1dbf0829541f2ad0ba` / `baseline/rg34xxsp-at4k-input-lockscreen-20261028`，新检查点为 `baseline/rg34xxsp-controller-mouse-20261028`。本记录覆盖随后的鼠标、电源只读盘点及模拟器初测。原 364 文件冻结层和原交付 IMG 均未更新。
 
+后续 v7 已按用户反馈改为 **Select 单独按住至少 2 秒后松开**，旧三键组合已移除，见 [当前呼出方式与验证](RG34XXSP_SELECT_HOLD_20261028.md)。下文鼠标表和 v6 测试结果保留本检查点的历史含义。
+
 ## 当前鼠标操作
 
 | 操作 | 按键 |
