@@ -1,0 +1,13 @@
+{
+  "file": "H700Lid.apk",
+  "bytes": 24919,
+  "sha256": "44b12e15027132eb65171adb3058fa99b0f23056f39a4367a2ec6e5d98948c8d",
+  "min_api": 29,
+  "package": "com.roc.rgsp.lid",
+  "version_code": 1,
+  "version_name": "1.0",
+  "certificate_sha256": "c8a2e9bccf597c2fb6dc66bee293fc13f2fc47ec77bc6b2b0d52c11f51192ab8",
+  "installed_sha256_verified": "44b12e15027132eb65171adb3058fa99b0f23056f39a4367a2ec6e5d98948c8d",
+  "delivery": "data app; platform signed",
+  "original_img_updated": false
+}

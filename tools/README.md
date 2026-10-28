@@ -20,6 +20,7 @@
 | 网络端点排查 | `NetworkEndpointProbe.java` | 正常证书校验的 HTTP/HTTPS 只读探测，不改变检测设置 |
 | AT4K 补丁源 | `at4k/` | 当前产品 APK 的来源/重建记录；apktool 为外部依赖 |
 | RG34XXSP 增量 | `build_h700_apps.py`、`build_h700_kernel_input.py` | 仅从低压力入口调用；构建 APK、输入模块和观察夹具，不自动安装 |
+| 合盖控制 | 低压力 `-Targets H700Lid` / `lid_tests/LidStateTest.java` | 只构建独立 H700Lid 并运行 26 项状态断言；不自动安装或触发设备睡眠，见合盖记录 |
 | 内核 ABI 核验 | `h700_kernel_abi.py` | 固定 kernel SHA；比较真实导出、参考模块、本地 genksyms 和全部模块导入，拒绝不匹配 |
 | 控制器鼠标验收 | `input_probe/verify_controller_mouse.py` / `PointerProbe.java` | 显式 USB 身份；默认只核对，加 `--execute` 后只对自有夹具注入并核对触点结束 |
 | 电源/音频盘点 | `audit_h700_runtime.py` | 只读；原始输出私有，保留退出码，软件清单不能代替实体验收 |

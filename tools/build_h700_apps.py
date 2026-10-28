@@ -35,6 +35,7 @@ def main():
     parser.add_argument('--source', type=Path, required=True)
     parser.add_argument('--input-only', action='store_true')
     parser.add_argument('--navigation-only', action='store_true')
+    parser.add_argument('--lid-only', action='store_true')
     args = parser.parse_args()
     cg = Path('/sys/fs/cgroup') / Path('/proc/self/cgroup').read_text().strip().split('::')[-1].lstrip('/')
     assert int((cg / 'memory.max').read_text()) <= 6442450944
@@ -45,9 +46,10 @@ def main():
     sdk = native / 'prebuilts/sdk/tools/linux'
     jdk = native / 'prebuilts/jdk/jdk9/linux-x86'
     android = native / 'prebuilts/sdk/29/public/android.jar'
-    work = Path('/home/lpf/h700-at4k-20261028')
+    work = Path('/home/lpf/h700-lid-20261029' if args.lid_only else '/home/lpf/h700-at4k-20261028')
     work.mkdir(exist_ok=True)
-    delivery = REPO / 'out/rg34xxsp-dev-20261028'
+    delivery = REPO / ('out/rg34xxsp-lid-20261029' if args.lid_only else 'out/rg34xxsp-dev-20261028')
+    delivery.mkdir(exist_ok=True)
     os.environ['LD_LIBRARY_PATH'] = str(sdk / 'lib64')
     java, javac = jdk / 'bin/java', jdk / 'bin/javac'
     key = native / 'build/make/target/product/security/platform.pk8'
@@ -74,6 +76,24 @@ def main():
         run(java, '-Xmx1g', '-jar', sdk / 'lib/apksigner.jar', 'verify', '--verbose',
             '--print-certs', '--max-sdk-version', '29', target)
         return target
+    if args.lid_only:
+        lid = REPO / 'android/h700-android10/device/roc/rgsp/H700Lid'
+        test_classes = work / 'state-tests'; test_classes.mkdir(exist_ok=True)
+        run(javac, '-J-Xmx512m', '-source', '8', '-target', '8', '-d', test_classes,
+            lid / 'src/com/roc/rgsp/lid/LidState.java', REPO / 'tools/lid_tests/LidStateTest.java')
+        run(java, '-Xmx128m', '-cp', test_classes, 'com.roc.rgsp.lid.LidStateTest')
+        resources = work / 'lid-resources.apk'
+        run(sdk / 'bin/aapt', 'package', '-f', '-M', lid / 'AndroidManifest.xml',
+            '-I', android, '-F', resources)
+        dex = compile_java(sorted((lid / 'src').rglob('*.java')), 'lid')
+        prepared = work / 'lid-prepared.apk'
+        prepared_zip(resources, prepared, {'classes.dex': dex})
+        target = sign(prepared, 'H700Lid')
+        receipt = {'file': target.name, 'bytes': target.stat().st_size,
+            'sha256': hashlib.sha256(target.read_bytes()).hexdigest(), 'min_api': 29}
+        (delivery / 'build.json').write_text(json.dumps(receipt, indent=2) + '\n')
+        print(json.dumps(receipt), flush=True)
+        return
     if args.input_only:
         run('arm-linux-gnueabihf-gcc', '-std=c11', '-D_DEFAULT_SOURCE', '-O2', '-static',
             '-Wall', '-Wextra', '-Werror', REPO / 'android/h700-android10/device/roc/rgsp/input/h700_sticks.c',

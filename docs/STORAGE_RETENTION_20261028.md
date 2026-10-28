@@ -14,6 +14,8 @@
 | `out/settings-deep-audit-20261023/` | 原始软件验收/失败/恢复证据，Git 只含摘要与索引 |
 | `out/h700-34xxsp-usb-network-20261028/` | 当前新机 USB、网络和重启验证的原始记录 |
 | `out/tv-apps-20261028/` | 小屏应用初测的 9 个 APK（合计约 260 MiB）、自制夹具和原始截图/记录；Git 仅保存版本/哈希/结果。没有另复制一套 APK |
+| `out/qqmusic-tv-20261029/` | 官方 QQ 音乐 TV ARM32 APK、静态签名/兼容校验与安装凭据；Git 只保存锁和听音结果 |
+| `out/rg34xxsp-lid-20261029/`、`LOCAL_PRESERVE_H700_BASELINE_20261028/lid-20261029/` | 合盖独立 APK、首次原型与受控回归、原始状态、AOSP 写入前备份；不是整卡或内核深度挂起通过证明 |
 | `LOCAL_PRESERVE_H700_BASELINE_20261028/app-selection-20261028/` | 本轮私有操作记录、生成脚本、失败/最终补丁、安装前及最终设置证明的新增保全；以该子目录清单为准，未复制全部 APK/媒体/画面，也未完成外部备份 |
 | 其他 `out/native-*`、`out/flicker-*` 证据目录 | 组件恢复及未解决显示问题的原始证据；未按缓存一概删除 |
 | `out/video-analysis-tools/` | 保留的视频分析工具仍实际引用的依赖 |

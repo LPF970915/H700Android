@@ -2,13 +2,15 @@
 
 整理基线：**v5i / native35 + USB ConfigFS 与网络检测修复，2026-10-28**。源码冻结标签为 `baseline/h700-v5i-usb-network-20261028`，空间整理检查点为 `baseline/h700-storage-trim-20261028`。其上已加入 RG34XXSP 菜单、双摇杆和锁屏增量，见 [本轮记录](docs/RG34XXSP_DEVELOPMENT_20261028.md)。原交付镜像尚未加入这些修复重新封装。
 
-最新增量为 [Select 长按鼠标呼出](docs/RG34XXSP_SELECT_HOLD_20261028.md)：Navigation v7 改用 **Select 单独按住至少 2 秒后松开**，旧肩键组合已移除，Select＋Start 不触发鼠标，开启时光标居中并提示。用户已在 2026-10-29 确认实体呼出、移动和 B 关闭；四肩键单键采样与当前 Android 映射一致。此前 [控制器鼠标、电源盘点与模拟器初测](docs/RG34XXSP_INPUT_POWER_EMULATORS_20261028.md)保留 v6 历史记录。当前开发在 `codex/rg34xxsp-at4k-input-lockscreen` 分支，`main` 仍为整理基线。
+导航最新增量为 [Select 长按鼠标呼出](docs/RG34XXSP_SELECT_HOLD_20261028.md)：Navigation v7 改用 **Select 单独按住至少 2 秒后松开**，旧肩键组合已移除，Select＋Start 不触发鼠标，开启时光标居中并提示。用户已在 2026-10-29 确认实体呼出、移动和 B 关闭；四肩键单键采样与当前 Android 映射一致。此前 [控制器鼠标、电源盘点与模拟器初测](docs/RG34XXSP_INPUT_POWER_EMULATORS_20261028.md)保留 v6 历史记录。当前开发在 `codex/rg34xxsp-at4k-input-lockscreen` 分支，`main` 仍为整理基线。
 
 其后的 [720×480 小屏应用首轮筛选](docs/RG34XXSP_SMALL_SCREEN_APPS_20261028.md)固定了 9 个通过 ARM32 静态兼容检查的 APK 来源/校验值，并加入 KOReader 的可选 H700 按键补丁。电子书/漫画优先继续适配 KOReader，视频优先 Nova 的 TV + 应用内尺寸配置；音乐暂留 VLC 备选。仅列明路径通过，尚无全功能纯十字键验收结论，应用和原始证据只保留本地。
 
 本工程整合 H700 掌机上的 Android 10、无触屏按键导航和单卡存储。当前实机已由无摇杆 RGSP 切换为用户提供的 34xxsp：H700、2GB RAM、双摇杆。两台设备的产品属性都可能显示 `RGSP H700`，应按序列号区分。
 
 2026-10-29 的 [硬件接口对照与实测](docs/RG34XXSP_HARDWARE_CHAIN_20261029.md)确认电源键熄屏/唤醒、QQ 音乐 TV 外放及音量键正常；合盖传感器有信号但未接入 Android 熄屏，亮度与蓝牙仍有集成缺口。该记录是后续硬件适配的起点。
+
+其后单独加入 [合盖息屏、开盖唤醒](docs/RG34XXSP_LID_20261029.md)，当前已启用真实 Hall 读取，受控循环通过 Android 电源状态验证。新版本实体开合尚待确认，显示关断和内核深度待机仍有待排查；原 IMG 未更新。
 
 先阅读：
 
@@ -60,5 +62,7 @@ py -X utf8 -m unittest discover -s tools -p test_h700_baseline_restore.py -v
 | `baseline/rg34xxsp-controller-mouse-20261028` | 释放 Select，三键鼠标组合与拖动/滑动、RetroArch 配置和小更新回退；物理电源/音频仍待验收 |
 | `baseline/rg34xxsp-small-screen-apps-20261028` | 9 个应用初测、APK/夹具锁、KOReader 用户补丁；未构建系统或更新 IMG，实体使用和完整设置仍待验收 |
 | `baseline/rg34xxsp-select-hold-20261028` | Navigation v7：Select 单独长按 2 秒后松开开关鼠标、排除组合键、光标居中与提示；未更新原 IMG |
+| `baseline/rg34xxsp-hardware-audit-20261029` | 合盖改动前的硬件链路盘点；QQ 音乐 TV 外放与实体音量键通过，记录亮度/蓝牙/待机缺口 |
+| `baseline/rg34xxsp-lid-20261029` | 独立 H700Lid 服务接入电源键睡眠/唤醒流程，受控验证通过；实体开合、背光关断和深度挂起待测，未更新原 IMG |
 
 旧烧录/清理脚本、Android 11/R36S 实验、旧文档及一次性回归已移出当前分支，通过 [历史标签](docs/HISTORY.md) 追溯。本次清理结果见 [清理记录](docs/CLEANUP_20261028.md)。当前是 eng/root 开发系统。第三方来源见 [THIRD_PARTY_INPUTS](docs/THIRD_PARTY_INPUTS.md)。

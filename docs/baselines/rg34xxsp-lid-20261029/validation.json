@@ -1,0 +1,33 @@
+{
+  "date": "2026-10-29",
+  "pre_change_git_checkpoint": "453aa443173ceba568f42c68433938cb456b8dd5",
+  "state_assertions_passed": 26,
+  "controlled_cycles_passed": 3,
+  "already_asleep_close_no_wake": true,
+  "startup_open_no_wake": true,
+  "invalid_sample_no_power_action": true,
+  "wake_retains_keyguard": true,
+  "unlock_to_at4k": "one evdev A pair; not new user physical acceptance",
+  "core_pids_unchanged": true,
+  "boot_unchanged": true,
+  "disable_and_targeted_boot_broadcast": true,
+  "enable_and_targeted_boot_broadcast": true,
+  "physical_cold_boot": "not tested",
+  "current_mode": "sensor",
+  "current_hall": 1,
+  "current_read_errors": 0,
+  "current_power_errors": 0,
+  "kernel_bringup_wake_lock": "preserved",
+  "deep_suspend": "not qualified",
+  "kernel_display_observation": "unblank/backlight50 retained; BUF layers absent when OFF; IRQ keeps increasing",
+  "new_service_physical_lid_acceptance": "pending",
+  "source_freeze": "unchanged",
+  "build_limits": {
+    "aggregate_cpus": 1,
+    "affinity": "0-1",
+    "ram_bytes": 6442450944,
+    "swap_bytes": 536870912,
+    "nice": 19,
+    "io": "idle"
+  }
+}

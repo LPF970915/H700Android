@@ -1,0 +1,55 @@
+{
+  "files": [
+    {
+      "path": "android/h700-android10/device/roc/rgsp/h700_rgsp.mk",
+      "bytes": 9476,
+      "sha256": "6340fac4c9b0457762e2143b439f9481101c628efa6f94fe314c6dd1fa991c3b"
+    },
+    {
+      "path": "tools/build_h700_apps.py",
+      "bytes": 8925,
+      "sha256": "eece004baa59dcff5c10b5402029d96656333a3b8e43e73ac6b0e42f66fa7b21"
+    },
+    {
+      "path": "tools/build_h700_low_pressure.ps1",
+      "bytes": 2706,
+      "sha256": "df83941e6a0f664b48599f3a0d674d13dd8f7b1fa3814f096545b0aeecd5d4c1"
+    },
+    {
+      "path": "tools/build_h700_low_pressure.sh",
+      "bytes": 2708,
+      "sha256": "cc8717033fc66a52b9c83a96522324e64d87c08e2d2eb857771b496ca0bc0142"
+    },
+    {
+      "path": "tools/lid_tests/LidStateTest.java",
+      "bytes": 2428,
+      "sha256": "ba4f008605114082beba06bb0cbe2067321b8faafcdf0303711d6f2ff53d138e"
+    },
+    {
+      "path": "android/h700-android10/device/roc/rgsp/H700Lid/Android.bp",
+      "bytes": 179,
+      "sha256": "d0416ad2c78f80f684f5818999de4bc789de1c99083a896ff3f7f7bed8e8ed3c"
+    },
+    {
+      "path": "android/h700-android10/device/roc/rgsp/H700Lid/AndroidManifest.xml",
+      "bytes": 870,
+      "sha256": "bc52969fc329b596396a54ae9007385784ab7f642b6deb84e8cea73ee8fe5992"
+    },
+    {
+      "path": "android/h700-android10/device/roc/rgsp/H700Lid/src/com/roc/rgsp/lid/BootReceiver.java",
+      "bytes": 508,
+      "sha256": "78d217f42ae560816a6498f1dc05b23d743719b39d9fe496185c40c0fd8fc9de"
+    },
+    {
+      "path": "android/h700-android10/device/roc/rgsp/H700Lid/src/com/roc/rgsp/lid/LidService.java",
+      "bytes": 8379,
+      "sha256": "dc5066a366bb676d45acd64fbcfd76b7eb48e20680fac8c78d62d85fce99fe2e"
+    },
+    {
+      "path": "android/h700-android10/device/roc/rgsp/H700Lid/src/com/roc/rgsp/lid/LidState.java",
+      "bytes": 1326,
+      "sha256": "9c124f9bfcba2427743cc4dd6ac81d428034bba9c49a16c62ff08092d66a6049"
+    }
+  ],
+  "hash_convention": "Text contents normalized from CRLF to LF before byte count and SHA-256; frozen snapshot is outside this lock"
+}
