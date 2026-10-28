@@ -36,6 +36,7 @@ import java.util.List;
 public final class NavigationService extends AccessibilityService {
     private static final String SETTINGS = "com.android.settings";
     private static final String FILES = "com.android.documentsui";
+    private static final String AT4K = "com.overdevs.at4k";
     private final Handler handler = new Handler(Looper.getMainLooper());
     private final SparseBooleanArray held = new SparseBooleanArray();
     private final Runnable refreshTask = () -> refresh();
@@ -86,7 +87,7 @@ public final class NavigationService extends AccessibilityService {
                         | WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN,
                 PixelFormat.TRANSLUCENT);
         windows.addView(ring, overlayParams);
-        if (android.provider.Settings.Global.getInt(getContentResolver(), "rgsp_mouse_enabled", 0)==1) {
+        if (android.provider.Settings.Global.getInt(getContentResolver(), "rgsp_mouse_enabled", 1)==1) {
         mouse = new MouseController(this, handler, windows, new MouseController.Surface() {
             @Override public void show(float x, float y, boolean pressed) {
                 ring.showCursor(x, y, pressed);
@@ -151,6 +152,12 @@ public final class NavigationService extends AccessibilityService {
     private String scope(AccessibilityNodeInfo root) {
         if (root == null) return "inactive";
         String pkg = String.valueOf(root.getPackageName());
+        if (AT4K.equals(pkg)) {
+            if (editorActive(root)) return "editor";
+            // Keep native HOME navigation. Only the launcher's narrow settings
+            // panel needs our action/scroll traversal on this small display.
+            return at4kPanel(root) && !at4kNativeModal(root) ? "settings" : "inactive";
+        }
         if (!SETTINGS.equals(pkg) && !FILES.equals(pkg)
                 && !"com.android.settings.intelligence".equals(pkg)
                 && !"com.android.permissioncontroller".equals(pkg)
@@ -166,6 +173,65 @@ public final class NavigationService extends AccessibilityService {
             list.recycle();
         }
         return found ? "locales" : "settings";
+    }
+
+    private boolean at4kPanel(AccessibilityNodeInfo node) {
+        if (node.isVisibleToUser() && node.isScrollable()) {
+            Rect bounds = new Rect(); node.getBoundsInScreen(bounds);
+            android.util.DisplayMetrics metrics = new android.util.DisplayMetrics();
+            windows.getDefaultDisplay().getRealMetrics(metrics);
+            if (bounds.width() > metrics.widthPixels / 4
+                    && bounds.width() < metrics.widthPixels * 9 / 10
+                    && bounds.height() > metrics.heightPixels / 2) return true;
+        }
+        for (int i = 0; i < node.getChildCount(); i++) {
+            AccessibilityNodeInfo child = node.getChild(i);
+            if (child == null) continue;
+            boolean found = at4kPanel(child);
+            child.recycle();
+            if (found) return true;
+        }
+        return false;
+    }
+
+    private boolean at4kOutsidePanel(AccessibilityNodeInfo node) {
+        Rect bounds = new Rect(); node.getBoundsInScreen(bounds);
+        android.util.DisplayMetrics metrics = new android.util.DisplayMetrics();
+        windows.getDefaultDisplay().getRealMetrics(metrics);
+        if (node.isVisibleToUser() && !bounds.isEmpty()
+                && bounds.left > 0 && bounds.left < metrics.widthPixels / 4
+                && (node.isClickable() || node.getText() != null)) return true;
+        for (int i = 0; i < node.getChildCount(); i++) {
+            AccessibilityNodeInfo child = node.getChild(i);
+            if (child == null) continue;
+            boolean found = at4kOutsidePanel(child); child.recycle();
+            if (found) return true;
+        }
+        return false;
+    }
+
+    private boolean at4kNativeModal(AccessibilityNodeInfo node) {
+        // AT4K's custom full-width dialogs flatten their semantics beside the
+        // still-exposed narrow menu. Their original grid key handlers must own
+        // focus; otherwise a helper can activate the covered menu underneath.
+        Rect bounds = new Rect(); node.getBoundsInScreen(bounds);
+        android.util.DisplayMetrics metrics = new android.util.DisplayMetrics();
+        windows.getDefaultDisplay().getRealMetrics(metrics);
+        // Color palettes use a full-width clickable dismissal backdrop rather
+        // than the sibling layout used by App Manager. Keep their native grid.
+        if (node.isVisibleToUser() && node.isClickable()
+                && bounds.width() > metrics.widthPixels * 95 / 100
+                && bounds.height() > metrics.heightPixels / 2) return true;
+        boolean panelBefore = false;
+        for (int i = 0; i < node.getChildCount(); i++) {
+            AccessibilityNodeInfo child = node.getChild(i);
+            if (child == null) continue;
+            boolean modal = (panelBefore && at4kOutsidePanel(child)) || at4kNativeModal(child);
+            panelBefore |= at4kPanel(child);
+            child.recycle();
+            if (modal) return true;
+        }
+        return false;
     }
 
     private boolean managed() {
@@ -719,7 +785,8 @@ public final class NavigationService extends AccessibilityService {
             }
         }
         Rect bounds = focusBounds(node);
-        if (ring != null) ring.show(bounds);
+        // AT4K buttons already draw their native selected state.
+        if (ring != null) ring.show(AT4K.equals(String.valueOf(node.getPackageName())) ? null : bounds);
     }
 
     private int current(List<AccessibilityNodeInfo> items) {
@@ -1191,6 +1258,10 @@ public final class NavigationService extends AccessibilityService {
                     && event.getActionMasked() == MotionEvent.ACTION_MOVE) {
                 float x = event.getAxisValue(MotionEvent.AXIS_HAT_X);
                 float y = event.getAxisValue(MotionEvent.AXIS_HAT_Y);
+                if (Math.abs(x) < 0.5f && Math.abs(y) < 0.5f) {
+                    float[] stick = MouseController.sticks(event);
+                    x = stick[0]; y = stick[1];
+                }
                 int key = x < -0.5f ? Direction.LEFT : x > 0.5f ? Direction.RIGHT
                         : y < -0.5f ? Direction.UP : y > 0.5f ? Direction.DOWN : 0;
                 if (key != axisKey) {

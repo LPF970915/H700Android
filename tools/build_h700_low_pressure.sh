@@ -5,7 +5,7 @@ shift
 test -f "$root/build/envsetup.sh"
 test "$#" -gt 0
 for target in "$@"; do
-    case "$target" in systemimage|vendorimage|ramdisk|adbd|vold|services|Settings|SettingsIntelligence|SystemUI|MediaProvider|LatinIME|LeanbackIME|Calendar|DocumentsUI|RGSPLauncher|RGSPNavigation|rgsp_vsync_probe|rgsp_egl_import_probe|hwcomposer.cupid|libsurfaceflinger|PermissionController) ;;
+    case "$target" in systemimage|vendorimage|ramdisk|adbd|vold|services|Settings|SettingsIntelligence|SystemUI|MediaProvider|LatinIME|LeanbackIME|Calendar|DocumentsUI|RGSPLauncher|RGSPNavigation|H700Apps|H700Navigation|H700Input|H700KernelInput|rgsp_vsync_probe|rgsp_egl_import_probe|hwcomposer.cupid|libsurfaceflinger|PermissionController) ;;
         *) echo "Unsupported target: $target" >&2; exit 2 ;;
     esac
 done
@@ -29,6 +29,24 @@ export GOGC=50
 export JAVA_TOOL_OPTIONS='-Xmx2048m'
 export NINJA_ARGS='-j1'
 export MAKEFLAGS='-j1'
+if [ "$#" = 1 ] && [ "$1" = H700KernelInput ]; then
+    echo "LOW_PRESSURE_START=$(date -Is)"
+    python3 "$(dirname "$(realpath "$0")")/build_h700_kernel_input.py"
+    echo "LOW_PRESSURE_COMPLETE=$(date -Is)"
+    exit 0
+fi
+if [ "$#" = 1 ] && { [ "$1" = H700Apps ] || [ "$1" = H700Input ] || [ "$1" = H700Navigation ]; }; then
+    echo "LOW_PRESSURE_START=$(date -Is)"
+    if [ "$1" = H700Input ]; then
+        python3 "$(dirname "$(realpath "$0")")/build_h700_apps.py" --source "$root" --input-only
+    elif [ "$1" = H700Navigation ]; then
+        python3 "$(dirname "$(realpath "$0")")/build_h700_apps.py" --source "$root" --navigation-only
+    else
+        python3 "$(dirname "$(realpath "$0")")/build_h700_apps.py" --source "$root"
+    fi
+    echo "LOW_PRESSURE_COMPLETE=$(date -Is)"
+    exit 0
+fi
 cd "$root"
 source build/envsetup.sh >/dev/null
 lunch h700_rgsp-eng

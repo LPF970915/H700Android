@@ -33,9 +33,9 @@ final class MouseController {
     private final Map<Long, Integer> consumed = new HashMap<>();
     private boolean active, busy, destroyed, aLong;
     private Long selectKey, aKey;
-    private float hatX, hatY, density = 1;
+    private float hatX, hatY, stickX, stickY, density = 1;
     private long movementStart, frameAt, geometryAt;
-    private int generation, taps, longPresses, completed, cancelled, rejected, hatEvents;
+    private int generation, taps, longPresses, completed, cancelled, rejected, hatEvents, stickEvents;
     private String lastResult = "none";
     private final Runnable selectTimer = () -> {
         if (selectKey != null && allowed()) {
@@ -57,20 +57,23 @@ final class MouseController {
                 if (!allowed()) { exit(); return; }
                 updateGeometry();
             }
-            float dx = hatX, dy = hatY;
+            float dx = 0, dy = 0;
             for (int key : consumed.values()) {
                 if (key == KeyEvent.KEYCODE_DPAD_LEFT) dx -= 1;
                 if (key == KeyEvent.KEYCODE_DPAD_RIGHT) dx += 1;
                 if (key == KeyEvent.KEYCODE_DPAD_UP) dy -= 1;
                 if (key == KeyEvent.KEYCODE_DPAD_DOWN) dy += 1;
             }
+            if (dx == 0 && dy == 0) { dx = hatX; dy = hatY; }
+            if (dx == 0 && dy == 0) { dx = stickX; dy = stickY; }
             double length = Math.hypot(dx, dy);
             if (!busy && aKey == null && length > 0) {
                 if (movementStart == 0) movementStart = now;
                 // Bound each step after a slow frame; normalize diagonals.
                 float speed = (now - movementStart < 500 ? 110 : 300) * density;
                 float step = speed * Math.min(32, now - frameAt) / 1000f;
-                point.move((float) (dx / length) * step, (float) (dy / length) * step);
+                point.move(StickVector.bounded(dx, dx, dy) * step,
+                        StickVector.bounded(dy, dx, dy) * step);
                 // A lost HAT release must not move indefinitely.
                 if (now - movementStart > 10000) clearMovement();
             } else {
@@ -146,6 +149,7 @@ final class MouseController {
 
     private void clearMovement() {
         hatX = hatY = 0;
+        stickX = stickY = 0;
         movementStart = 0;
         consumed.entrySet().removeIf(entry -> direction(entry.getValue()));
     }
@@ -223,6 +227,9 @@ final class MouseController {
 
     boolean onMotion(MotionEvent event) {
         if (!active || !event.isFromSource(InputDevice.SOURCE_JOYSTICK)) return false;
+        if (event.getActionMasked() == MotionEvent.ACTION_CANCEL) {
+            clearMovement(); return true;
+        }
         if (event.getActionMasked() != MotionEvent.ACTION_MOVE) return false;
         hatEvents++;
         if (!busy && aKey == null) {
@@ -230,8 +237,27 @@ final class MouseController {
             float y = event.getAxisValue(MotionEvent.AXIS_HAT_Y);
             hatX = Math.abs(x) > 0.5f ? Math.signum(x) : 0;
             hatY = Math.abs(y) > 0.5f ? Math.signum(y) : 0;
+            float[] stick = sticks(event);
+            stickX = stick[0]; stickY = stick[1];
+            if (stickX != 0 || stickY != 0) stickEvents++;
         }
         return true;
+    }
+
+    static float axis(MotionEvent event, int axis) {
+        InputDevice device = event.getDevice();
+        InputDevice.MotionRange range = device == null ? null : device.getMotionRange(axis, event.getSource());
+        return range == null ? 0 : StickVector.centered(event.getAxisValue(axis), range.getFlat());
+    }
+
+    static float[] sticks(MotionEvent event) {
+        float x = axis(event, MotionEvent.AXIS_X), y = axis(event, MotionEvent.AXIS_Y);
+        InputDevice device = event.getDevice();
+        boolean zr = device != null && device.getMotionRange(MotionEvent.AXIS_Z, event.getSource()) != null
+                && device.getMotionRange(MotionEvent.AXIS_RZ, event.getSource()) != null;
+        float rx = axis(event, zr ? MotionEvent.AXIS_Z : MotionEvent.AXIS_RX);
+        float ry = axis(event, zr ? MotionEvent.AXIS_RZ : MotionEvent.AXIS_RY);
+        return rx * rx + ry * ry > x * x + y * y ? new float[]{rx, ry} : new float[]{x, y};
     }
 
     private void touch(boolean longPress) {
@@ -297,6 +323,7 @@ final class MouseController {
                 + " gestureBusy=" + busy + " lastGesture=" + lastResult
                 + " taps=" + taps + " longPresses=" + longPresses
                 + " completed=" + completed + " cancelled=" + cancelled
-                + " rejected=" + rejected + " hatEvents=" + hatEvents);
+                + " rejected=" + rejected + " hatEvents=" + hatEvents
+                + " stickEvents=" + stickEvents + " stick=" + stickX + "," + stickY);
     }
 }

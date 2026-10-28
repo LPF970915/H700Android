@@ -1,6 +1,6 @@
 # H700 Android 10 — 开发基线
 
-当前整理基线：**v5i / native35 + USB ConfigFS 与网络检测修复，2026-10-28**。源码冻结标签为 `baseline/h700-v5i-usb-network-20261028`，当前空间整理检查点为 `baseline/h700-storage-trim-20261028`。原交付镜像尚未加入本轮修复重新封装。
+整理基线：**v5i / native35 + USB ConfigFS 与网络检测修复，2026-10-28**。源码冻结标签为 `baseline/h700-v5i-usb-network-20261028`，空间整理检查点为 `baseline/h700-storage-trim-20261028`。其上已加入 RG34XXSP 菜单、双摇杆和锁屏增量，见 [本轮记录](docs/RG34XXSP_DEVELOPMENT_20261028.md)。原交付镜像尚未加入这些修复重新封装。
 
 本工程整合 H700 掌机上的 Android 10、无触屏按键导航和单卡存储。当前实机已由无摇杆 RGSP 切换为用户提供的 34xxsp：H700、2GB RAM、双摇杆。两台设备的产品属性都可能显示 `RGSP H700`，应按序列号区分。
 
@@ -20,7 +20,8 @@
 - v5i 软件按键可达性验收、完整 IMG 封装及独立 SHA-256 校验已完成。
 - 新机 USB ADB、受来源限制的 Wi-Fi ADB、互联网检测通过一次完整内核重启验证。
 - 原 v5i 的 42 项组件哈希全部一致；新增 USB/网络配置后，system/vendor 保持只读。
-- 双摇杆实体采样和适配尚未进行。冷断电、所有硬件、完整 MTP 传输并未在本轮全部验收。
+- 已接入 RG34XXSP 四轴和 L3/R3，重启后 Android 在原控制器上识别四轴；用户已确认实体双摇杆、十字键及虚拟鼠标正常。量化端点和 L3/R3 按压仍未单独验收。AT4K 菜单和同图锁屏的增量验收见本轮记录。
+- 冷断电、所有硬件、完整 MTP 传输并未在本轮全部验收。
 - 硬件 VSYNC、通用硬件视频解码、FTRACE 等限制见当前状态文档。
 
 ## Git 与本地输入
@@ -49,5 +50,6 @@ py -X utf8 -m unittest discover -s tools -p test_h700_baseline_restore.py -v
 | `baseline/h700-v5i-usb-network-20261028` | 当前源码及实机修复冻结点；未重封装 IMG |
 | `baseline/h700-clean-20261028` | 保留同一源码快照，移除失效版本/文档/工具/测试及旧大产物后的工作树 |
 | `baseline/h700-storage-trim-20261028` | 同一源码，清理 WSL 编译输出与停用源码副本，记录镜像无损压缩和实际空间 |
+| `baseline/rg34xxsp-at4k-input-lockscreen-20261028` | AT4K 菜单与同图锁屏、原控制器双摇杆增量；实机重启通过，未重封装 IMG |
 
 旧烧录/清理脚本、Android 11/R36S 实验、旧文档及一次性回归已移出当前分支，通过 [历史标签](docs/HISTORY.md) 追溯。本次清理结果见 [清理记录](docs/CLEANUP_20261028.md)。当前是 eng/root 开发系统。第三方来源见 [THIRD_PARTY_INPUTS](docs/THIRD_PARTY_INPUTS.md)。

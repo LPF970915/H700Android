@@ -1,0 +1,26 @@
+{
+  "apps": {
+    "RGSPNavigation-rg34xxsp.apk": {
+      "bytes": 57823,
+      "sha256": "426b6962a8abd1590f48de4e017a883d1854f3e56c698c0000356eaedcb9ff5f"
+    },
+    "AT4K-rg34xxsp.apk": {
+      "bytes": 12276307,
+      "sha256": "93041269d215dd450f4b559cb4fe57337267753d6ff7444ca142e17d07d997cf"
+    }
+  },
+  "kernel_abi": {
+    "kernel_sha256": "3328c2fab9f19f7ea6a80e34b0a76238cf594bc631f77e05fec32f8adabad042",
+    "kernel_exports": 8715,
+    "reference_crcs_matched": 410,
+    "local_crcs_matched": 414,
+    "module_imports_matched": 39,
+    "module_sha256": "9c8eacf887cd9d00f5416c05b24118ce625e4deef73003f79ea1805c6a31faf5"
+  },
+  "full_image_repacked": false,
+  "original_snapshot_files": 364,
+  "host_project_tests": 37,
+  "observer_tests": 29,
+  "physical_sticks_mouse_user_confirmed": true,
+  "physical_stick_clicks_separately_verified": false
+}

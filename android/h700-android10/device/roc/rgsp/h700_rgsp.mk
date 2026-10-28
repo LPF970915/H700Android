@@ -30,6 +30,12 @@ PRODUCT_COPY_FILES += \
     device/roc/rgsp/rgsp-input-prepare.sh:$(TARGET_COPY_OUT_VENDOR)/bin/rgsp-input-prepare.sh \
     device/roc/rgsp/rgsp-kmsg-start.sh:$(TARGET_COPY_OUT_VENDOR)/bin/rgsp-kmsg-start.sh
 
+# Optional, per-device RG34XXSP axes; built against the pinned running BSP ABI.
+PRODUCT_COPY_FILES += \
+    device/roc/rgsp/input/prebuilt/h700_stick_axes.ko:$(TARGET_COPY_OUT_VENDOR)/modules/h700_stick_axes.ko \
+    device/roc/rgsp/input/rgsp-stick-axes.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/rgsp-stick-axes.rc \
+    device/roc/rgsp/input/rgsp-stick-axes.sh:$(TARGET_COPY_OUT_VENDOR)/bin/rgsp-stick-axes.sh
+
 PRODUCT_PACKAGES += rgsp_kmsg_logger RGSPLauncher AT4K RGSPNavigation
 
 # Explicit guarded Wi-Fi debugging, started from UART only.
@@ -146,6 +152,10 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     persist.sys.ui.hw=true \
     ro.config.media_vol_steps=100 \
     config.disable_consumerir=true
+
+# Framework default covers HOME and the inherited native lock wallpaper before
+# the launcher's first resume; AT4K also synchronizes later custom-image changes.
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES += ro.config.wallpaper=/system/media/wallpapers/IMG_3111.jpg
 
 # This handheld has a permanent D-pad and no touchscreen.
 # Remove inherited donor touchscreen features so native toolbars accept D-pad focus.

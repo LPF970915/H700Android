@@ -19,12 +19,14 @@
 | 显示排查 | `flicker/`、`analyze_rgsp_flicker_video.py` | 后者使用保留的 `out/video-analysis-tools/` 依赖 |
 | 网络端点排查 | `NetworkEndpointProbe.java` | 正常证书校验的 HTTP/HTTPS 只读探测，不改变检测设置 |
 | AT4K 补丁源 | `at4k/` | 当前产品 APK 的来源/重建记录；apktool 为外部依赖 |
+| RG34XXSP 增量 | `build_h700_apps.py`、`build_h700_kernel_input.py` | 仅从低压力入口调用；构建 APK、输入模块和观察夹具，不自动安装 |
+| 内核 ABI 核验 | `h700_kernel_abi.py` | 固定 kernel SHA；比较真实导出、参考模块、本地 genksyms 和全部模块导入，拒绝不匹配 |
 
 `build_rgsp_compact_image.py`、`audit_rgsp_single_card_boot.py`、`patch_ramdisk.py` 和 `rgsp_single_card_init.sh` 因存储策略测试和只读格式解析的依赖而保留；它们的历史整镜像 CLI 不代表当前 seed 已齐备。
 
 旧烧录、整卡写入、UART 上传、热更新、失败恢复和一次性回归脚本已移出当前工作树。不要为取一个参考而把整套历史脚本还原回 main。
 
-设备操作始终显式指定并核对序列号，保持单控制者和单被动观察器。当前清理没有连接或控制设备。
+设备操作始终显式指定并核对序列号，保持单控制者和单被动观察器。清理之后的设备增量及专用构建输入见 [开发记录](../docs/RG34XXSP_DEVELOPMENT_20261028.md)。
 
 ## 保留测试的运行方式
 

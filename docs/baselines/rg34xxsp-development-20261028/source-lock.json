@@ -1,0 +1,90 @@
+{
+  "base_commit": "c63529cc935247ad88c4c427824e973941d5d3c6",
+  "files": [
+    {
+      "path": "device/roc/rgsp/ANBERNIC-keys.kl",
+      "bytes": 878,
+      "sha256": "a1de983c27e5991f29479fe3f34fada59e4f2fd871dd72c5fe2a9489490158c9"
+    },
+    {
+      "path": "device/roc/rgsp/RGSPNavigation/AndroidManifest.xml",
+      "bytes": 806,
+      "sha256": "47333a37a12191b6105d4ebeebe57dd761f1d464b9a63777dca5d06ddebc0faa"
+    },
+    {
+      "path": "device/roc/rgsp/RGSPNavigation/src/com/roc/rgsp/navtrial/MouseController.java",
+      "bytes": 13107,
+      "sha256": "51f04107e31b47b87ff647e7a354bc0a30a7a955f7349c4baef640b4efc61c5e"
+    },
+    {
+      "path": "device/roc/rgsp/RGSPNavigation/src/com/roc/rgsp/navtrial/NavigationService.java",
+      "bytes": 61853,
+      "sha256": "3fc807fedfdd4d3428565d9f076776711fc4526c0f45fc021606e268fe2767fa"
+    },
+    {
+      "path": "device/roc/rgsp/RGSPNavigation/src/com/roc/rgsp/navtrial/StickVector.java",
+      "bytes": 620,
+      "sha256": "7efa029eadea5a48481586631660e93ccf76c4ce76b675d55038059f2f9900c6"
+    },
+    {
+      "path": "device/roc/rgsp/h700_rgsp.mk",
+      "bytes": 9468,
+      "sha256": "e110c5dd55b214319c2c427067b53ae8b37a6f423bcfedea19800d4f9d82b24c"
+    },
+    {
+      "path": "device/roc/rgsp/input/axis_math.h",
+      "bytes": 986,
+      "sha256": "41f0dabaa85341815c907847f656222d3c56fa058bc3e6752a07bb2efa1df04b"
+    },
+    {
+      "path": "device/roc/rgsp/input/h700_sticks.c",
+      "bytes": 5745,
+      "sha256": "6a4fa805ca958e916344be84eaa5888d4f3e12c4c87c534bbd57f453626dbf18"
+    },
+    {
+      "path": "device/roc/rgsp/input/kernel/Makefile",
+      "bytes": 27,
+      "sha256": "fe66fea7768d572acda4912225e2c49ef3059a73f5b6981fd9a4cbd5489875f1"
+    },
+    {
+      "path": "device/roc/rgsp/input/kernel/h700-4.9.170.config",
+      "bytes": 110181,
+      "sha256": "565948300ae2d0f68a8ec85a18be033cde06ad4c46a988bebf708b9ce35cb119"
+    },
+    {
+      "path": "device/roc/rgsp/input/kernel/h700_stick_axes.c",
+      "bytes": 9514,
+      "sha256": "a421c65fb644c6e0258e270d28daeba4da282055857e151b26364bea55764c1d"
+    },
+    {
+      "path": "device/roc/rgsp/input/prebuilt/h700_stick_axes.ko",
+      "bytes": 20160,
+      "sha256": "9c8eacf887cd9d00f5416c05b24118ce625e4deef73003f79ea1805c6a31faf5"
+    },
+    {
+      "path": "device/roc/rgsp/input/prebuilt/kernel-abi.json",
+      "bytes": 297,
+      "sha256": "a46fa1d3eae4a95689a7f5698caf9e18f6a75b63f5e2e76631e8e2f5b1588184"
+    },
+    {
+      "path": "device/roc/rgsp/input/rgsp-stick-axes.rc",
+      "bytes": 237,
+      "sha256": "03609159bbccc29f33d299b5a6c89291493a4582463ed3fd6662f5acb72bbbfe"
+    },
+    {
+      "path": "device/roc/rgsp/input/rgsp-stick-axes.sh",
+      "bytes": 676,
+      "sha256": "d389ce3822969dde3f418bf1be912af6b83d4d4dc03009c2744c89d26c6f2c60"
+    },
+    {
+      "path": "device/roc/rgsp/prebuilt/AT4K/AT4K.apk",
+      "bytes": 12276307,
+      "sha256": "93041269d215dd450f4b559cb4fe57337267753d6ff7444ca142e17d07d997cf"
+    },
+    {
+      "path": "device/roc/rgsp/rgsp-firstboot.sh",
+      "bytes": 3938,
+      "sha256": "dc92c25b683255fa72b3a308568a10a2c59bf5ac1c09c3d791a8630109075464"
+    }
+  ]
+}

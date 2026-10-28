@@ -12,11 +12,18 @@ key 315 BUTTON_R2
 key 310 BUTTON_SELECT
 key 311 BUTTON_START
 key 312 BUTTON_MODE
+key 317 BUTTON_THUMBL
+key 318 BUTTON_THUMBR
 key 114 VOLUME_DOWN
 key 115 VOLUME_UP
 
 # Menu's extra release-time 0x162 pulse is deliberately unmapped.
 # BUTTON_MODE falls back to HOME; do not also dispatch the extra pulse.
-# This no-stick model exposes only the physically verified HAT axes here.
+# Optional RG34XXSP add-on exposes these four unused Linux axes. The original
+# RX/RY/RZ ternary BSP signals remain unassigned, preserving old-model input.
+axis 0x00 X
+axis 0x01 Y
+axis 0x02 Z
+axis 0x07 RZ
 axis 0x10 HAT_X
 axis 0x11 HAT_Y
