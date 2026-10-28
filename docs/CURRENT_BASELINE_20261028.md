@@ -6,6 +6,8 @@
 
 2026-10-29 用户已确认实体 Select 长按呼出、移动和 B 关闭；四肩键按用户明确顺序采样，与当前 Android 映射一致，本轮未交换肩键。旧三键组合不稳定的根因仍未查明。
 
+2026-10-29 [硬件链路对照与实体验收](RG34XXSP_HARDWARE_CHAIN_20261029.md)：电源键熄屏/唤醒和 A 解锁、QQ 音乐 TV 外放与实体音量键通过；亮度设置、合盖熄屏失败。厂商 hallkey 已实测开合 1→0→1，传感器能报告；Light HAL 与 Bluetooth 主包存在集成缺口，常驻 bringup 锁仍需审查。耳机、拔线/充电、深度挂起和断电冷启待测，原 IMG 未更新。
+
 最新应用级检查点：`baseline/rg34xxsp-small-screen-apps-20261028`，见 [小屏应用筛选](RG34XXSP_SMALL_SCREEN_APPS_20261028.md)。新增 KOReader 可选用户补丁及 9 个 APK 的初测/版本锁；系统二进制、屏幕密度和原 IMG 未更新。KOReader 的 EPUB/CBZ 常用路径、Nova 预配置后的 MKV 路径有远程事件与画面证据，不表示所有功能或实体使用通过。
 
 ## 结论与版本边界

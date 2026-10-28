@@ -1,0 +1,25 @@
+{
+  "package": "com.tencent.qqmusictv",
+  "version_code": 9000039,
+  "version_name": "9.0.0.39",
+  "min_sdk": 21,
+  "abis": [
+    "armeabi-v7a"
+  ],
+  "signature_verified_api29": true,
+  "sha256": "c37369d85ea817a68e91bb100f1e0994e53b37592c0e80237932f762428128a2",
+  "date": "2026-10-29",
+  "official_page": "https://y.qq.com/download/download.html",
+  "download_url": "https://dldir1.qq.com/music/qqmusictv/10007068_self_32_kg_9.0.0.39_c2a96f72_release_signed.apk",
+  "bytes": 72156717,
+  "certificate_sha256": "bf3db8c6cbbf11104eb62fc20e9dfb27b37445d84bdb529241ed498b0044fa1e",
+  "source_page_platform": "Android TV",
+  "device_android_api": 29,
+  "install": "passed",
+  "launch": "passed",
+  "user_audible_song": "passed",
+  "physical_volume_keys": "passed",
+  "full_dpad_workflow": "not yet verified",
+  "apk_in_git": false,
+  "system_image_updated": false
+}
