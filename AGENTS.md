@@ -2,6 +2,8 @@
 
 Read `docs/CURRENT_BASELINE_20261028.md`, `docs/REPRODUCE_BASELINE_20261028.md`, and `docs/STORAGE_RETENTION_20261028.md` before changing build inputs, device state, or storage.
 
+Latest daily development checkpoint: `baseline/rg34xxsp-controller-mouse-20261028`; read `docs/RG34XXSP_INPUT_POWER_EMULATORS_20261028.md` for the current mouse chord, data-app update/rollback, emulator profile and physical acceptance boundaries. The earlier AT4K/input/lockscreen checkpoint remains immutable. Do not confuse daily increments with the frozen overlay or delivered IMG.
+
 - Current working-tree checkpoint: `baseline/h700-storage-trim-20261028`; immutable source freeze: `baseline/h700-v5i-usb-network-20261028`. Read `docs/CLEANUP_20261028.md` for removed historical content and `docs/SPACE_REVIEW_20261028.md` for the subsequent WSL/source/image storage pass. The delivered v5i IMG predates the USB/network fixes; do not describe it as already containing them.
 - `docs/baselines/h700-v5i-usb-network-20261028/source-lock.json` locks the frozen edited-source overlay. Historical prepare scripts are not an ordered rebuild recipe; do not replay them blindly after restoring final source.
 - `LOCAL_PRESERVE_H700_BASELINE_20261028/`, final IMG, final native35 stage, upstream archives, signing material and needed WSL source are protected local inputs, not all backed up by Git. Do not treat them as caches during ordinary cleanup. Follow the retention document and the user's explicit cleanup scope.

@@ -1,0 +1,62 @@
+{
+  "read_only": true,
+  "physical_acceptance_performed": false,
+  "read_exit_codes": {
+    "power": 0,
+    "battery": 0,
+    "audio": 0,
+    "audio_flinger": 0,
+    "input": 0,
+    "input_caps": 0,
+    "hal": 72,
+    "thermal": 0,
+    "meminfo": 0,
+    "swaps": 0,
+    "settings": 0,
+    "backlight": 0,
+    "power_supplies": 0,
+    "wake_sources": 1,
+    "lights": 0,
+    "backend_files": 1,
+    "kernel_thermal": 0,
+    "properties": 0
+  },
+  "hal_inventory_complete": false,
+  "sdk": "29",
+  "abi": "armeabi-v7a,armeabi",
+  "low_ram": "true",
+  "input_profile": "rg34xxsp",
+  "memory_kib": "2027136",
+  "screen_off_timeout_ms": "60000",
+  "brightness_setting": "102",
+  "brightness_mode": "0",
+  "stay_on_while_plugged_in": "7",
+  "wakefulness": "Awake",
+  "battery_level": "100",
+  "battery_temperature_tenths_c": "300",
+  "backlight_class_nodes": [],
+  "lid_switch_capability_listed": false,
+  "input_names": [
+    "dierct-keys-polled",
+    "ANBERNIC-keys",
+    "axp2202-pek"
+  ],
+  "registered_audio_hal": true,
+  "registered_power_hal": false,
+  "registered_light_hal": false,
+  "registered_health_hal": true,
+  "thermal_hal_ready": "false",
+  "swap_devices_listed": 0,
+  "open_physical_checks": [
+    "five actual brightness levels",
+    "speaker/headphone listening",
+    "charging transitions",
+    "lid/power key sleep and wake",
+    "normal shutdown and cold start"
+  ],
+  "notes": [
+    "Missing HIDL registration is a backend lead; legacy HAL paths may still exist.",
+    "A nonzero lshal exit means partial inventory; absence is not definitive.",
+    "No SW_LID declaration alone does not prove that lid hardware is absent."
+  ]
+}

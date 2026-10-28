@@ -21,6 +21,9 @@
 | AT4K 补丁源 | `at4k/` | 当前产品 APK 的来源/重建记录；apktool 为外部依赖 |
 | RG34XXSP 增量 | `build_h700_apps.py`、`build_h700_kernel_input.py` | 仅从低压力入口调用；构建 APK、输入模块和观察夹具，不自动安装 |
 | 内核 ABI 核验 | `h700_kernel_abi.py` | 固定 kernel SHA；比较真实导出、参考模块、本地 genksyms 和全部模块导入，拒绝不匹配 |
+| 控制器鼠标验收 | `input_probe/verify_controller_mouse.py` / `PointerProbe.java` | 显式 USB 身份；默认只核对，加 `--execute` 后只对自有夹具注入并核对触点结束 |
+| 电源/音频盘点 | `audit_h700_runtime.py` | 只读；原始输出私有，保留退出码，软件清单不能代替实体验收 |
+| 导航小更新/回退 | `update_h700_navigation.py` | 默认只计划；显式执行时核对本机及前/后 APK SHA，再保留数据安装，拒绝未知版本 |
 
 `build_rgsp_compact_image.py`、`audit_rgsp_single_card_boot.py`、`patch_ramdisk.py` 和 `rgsp_single_card_init.sh` 因存储策略测试和只读格式解析的依赖而保留；它们的历史整镜像 CLI 不代表当前 seed 已齐备。
 

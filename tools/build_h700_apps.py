@@ -83,6 +83,13 @@ def main():
             dex = compile_java([REPO / source], stem)
             with zipfile.ZipFile(delivery / (stem + '.jar'), 'w') as target:
                 target.write(dex, 'classes.dex')
+        probe_resources = work / 'input-probe-resources.apk'
+        run(sdk / 'bin/aapt', 'package', '-f', '-M', REPO / 'tools/input_probe/AndroidManifest.xml',
+            '-I', android, '-F', probe_resources)
+        dex = compile_java([REPO / 'tools/input_probe/PointerProbe.java'], 'input-probe')
+        prepared = work / 'input-probe-prepared.apk'
+        prepared_zip(probe_resources, prepared, {'classes.dex': dex})
+        sign(prepared, 'H700InputProbe')
         return
     nav = REPO / 'android/h700-android10/device/roc/rgsp/RGSPNavigation'
     gen = work / 'nav-gen'; gen.mkdir(exist_ok=True)

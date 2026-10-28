@@ -1,5 +1,7 @@
 # RG34XXSP 开发增量（2026-10-28）
 
+本页记录 `03c3cbe` / `baseline/rg34xxsp-at4k-input-lockscreen-20261028`。之后的 [鼠标、电源与模拟器检查点](RG34XXSP_INPUT_POWER_EMULATORS_20261028.md) 已将 Select 改为透传，鼠标切换改用 L1＋R1 后按 Start；本页旧操作说明仅适用于该历史检查点。
+
 本轮在 `baseline/h700-storage-trim-20261028` 上开发。不可变的 364 文件冻结层保持原样；下列增量位于日常产品目录和 `tools/`。旧 v5i 完整 IMG 没有重封装，不含这些修改。
 
 ## AT4K 菜单

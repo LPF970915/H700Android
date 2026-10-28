@@ -1,0 +1,126 @@
+{
+  "base_git": "03c3cbef9c9ab24ad21dff1dbf0829541f2ad0ba",
+  "hash_basis": "Git blob bytes after .gitattributes text normalization; frozen snapshot excluded",
+  "files": [
+    {
+      "path": "android/h700-android10/device/roc/rgsp/RGSPNavigation/Android.bp",
+      "bytes": 241,
+      "sha256": "e2d92ec63c4d37b0d3f80983bdfc499b3807d2e76e37273dc75eb2b5baed0386"
+    },
+    {
+      "path": "android/h700-android10/device/roc/rgsp/RGSPNavigation/AndroidManifest.xml",
+      "bytes": 814,
+      "sha256": "485688937c84a452ee3b010d21c51ff67df55852c4bfd878ece50fdc85bc9fb1"
+    },
+    {
+      "path": "android/h700-android10/device/roc/rgsp/RGSPNavigation/res/xml/navigation_service.xml",
+      "bytes": 664,
+      "sha256": "ed7a7a6eb292b261d9e7f23a80b13836b69b5517980429d0645df471cc92d3dd"
+    },
+    {
+      "path": "android/h700-android10/device/roc/rgsp/RGSPNavigation/src/com/roc/rgsp/navtrial/Direction.java",
+      "bytes": 1823,
+      "sha256": "93fee55862da85fb7d6302f818dddc46693126f52326e57adcb7d8ac6bb49723"
+    },
+    {
+      "path": "android/h700-android10/device/roc/rgsp/RGSPNavigation/src/com/roc/rgsp/navtrial/FocusIdentity.java",
+      "bytes": 1098,
+      "sha256": "d43703710dcc10c03b9b92911ae2889f8282120c086865144b9dd21a6200ba68"
+    },
+    {
+      "path": "android/h700-android10/device/roc/rgsp/RGSPNavigation/src/com/roc/rgsp/navtrial/MouseController.java",
+      "bytes": 20021,
+      "sha256": "539a9e5e76b86bfec2c358d62f6ae178282f787b0a1993bf7ed24ae116cd6bf0"
+    },
+    {
+      "path": "android/h700-android10/device/roc/rgsp/RGSPNavigation/src/com/roc/rgsp/navtrial/MouseHotkey.java",
+      "bytes": 819,
+      "sha256": "984c31b9db9a58f02295ca46cc0e0d589d17c19788df155e6da8d3b783c7d498"
+    },
+    {
+      "path": "android/h700-android10/device/roc/rgsp/RGSPNavigation/src/com/roc/rgsp/navtrial/NavigationService.java",
+      "bytes": 61853,
+      "sha256": "3fc807fedfdd4d3428565d9f076776711fc4526c0f45fc021606e268fe2767fa"
+    },
+    {
+      "path": "android/h700-android10/device/roc/rgsp/RGSPNavigation/src/com/roc/rgsp/navtrial/PointerPosition.java",
+      "bytes": 783,
+      "sha256": "ad4e348c2073fd3c9f56fb2ebf688c12a0814df0d6a71024010e02b78cf31a20"
+    },
+    {
+      "path": "android/h700-android10/device/roc/rgsp/RGSPNavigation/src/com/roc/rgsp/navtrial/StickVector.java",
+      "bytes": 620,
+      "sha256": "7efa029eadea5a48481586631660e93ccf76c4ce76b675d55038059f2f9900c6"
+    },
+    {
+      "path": "config/retroarch/android/H700_ANBERNIC_keys.cfg",
+      "bytes": 960,
+      "sha256": "5b1dca2df4f29acc11ce9ba4333f83e0ed28daa534689355e2d34d26766853fb"
+    },
+    {
+      "path": "config/retroarch/h700-menu-overrides.cfg",
+      "bytes": 300,
+      "sha256": "6f8bb6cc2e8e95e7a6f0c128f8ef6a33eac2053bc6437f6089ce75c84a29ead6"
+    },
+    {
+      "path": "tools/audit_h700_runtime.py",
+      "bytes": 6630,
+      "sha256": "fecbcb433176276643531b764f27d7d13b7b75c7b7b450d43cff211d0d16dfac"
+    },
+    {
+      "path": "tools/build_h700_apps.py",
+      "bytes": 7587,
+      "sha256": "7c232be294088496816494e8e5ffc140be2af478acc95a85ad84255d4c3f521a"
+    },
+    {
+      "path": "tools/input_probe/AndroidManifest.xml",
+      "bytes": 507,
+      "sha256": "4ecd8bb1f47b579f8b6c521fb596c712ad82a245422b584a4334f7813477a56f"
+    },
+    {
+      "path": "tools/input_probe/PointerProbe.java",
+      "bytes": 4486,
+      "sha256": "746f517071edfeee495a8f8a9eb8f589ba8b89f4f42475b9bf39249b1c07c52a"
+    },
+    {
+      "path": "tools/input_probe/verify_controller_mouse.py",
+      "bytes": 6486,
+      "sha256": "d66008a9a3f3d7b933121a8967ef813fa649b3d8ff9bc9f0e4f075a1da910454"
+    },
+    {
+      "path": "tools/navigation_tests/com/roc/rgsp/navtrial/DirectionTest.java",
+      "bytes": 1614,
+      "sha256": "41ce0dd6386ec9a3dece7f649dd66608b1eabca6ee19d7c714e298de518a715a"
+    },
+    {
+      "path": "tools/navigation_tests/com/roc/rgsp/navtrial/FocusIdentityTest.java",
+      "bytes": 1260,
+      "sha256": "d325901b5dd69114a7af4b68228a9050ff91bacf83c5327e949f59ee263b427d"
+    },
+    {
+      "path": "tools/navigation_tests/com/roc/rgsp/navtrial/MouseHotkeyTest.java",
+      "bytes": 1552,
+      "sha256": "71e7db3a11a730dad24e5aaa9b47a9daec31423aa94d266545b510aa537ab88c"
+    },
+    {
+      "path": "tools/navigation_tests/com/roc/rgsp/navtrial/PointerPositionTest.java",
+      "bytes": 737,
+      "sha256": "3c51d88e4c951dec10aa86cdc838f37da8948a29971f1325709617f716b9ff1f"
+    },
+    {
+      "path": "tools/navigation_tests/com/roc/rgsp/navtrial/StickVectorTest.java",
+      "bytes": 966,
+      "sha256": "fa5aa55acd21205e12b1dab4447c710e2efee13c81f59a4b927bc53b17fea488"
+    },
+    {
+      "path": "tools/test_navigation_geometry.ps1",
+      "bytes": 1408,
+      "sha256": "053ecf0dbf2835c998f1d22ec002b383190776c74f196bca6b6aab7cf820fed0"
+    },
+    {
+      "path": "tools/update_h700_navigation.py",
+      "bytes": 3527,
+      "sha256": "9cceb0a61a192eac03b553d485482df167269bf77509bd412317ea5175e8fbc8"
+    }
+  ]
+}

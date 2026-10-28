@@ -1,0 +1,129 @@
+{
+  "base_git": "03c3cbef9c9ab24ad21dff1dbf0829541f2ad0ba",
+  "navigation": {
+    "version_code": 6,
+    "installation": "data-app update; system base v5 unchanged",
+    "bytes": 66015,
+    "sha256": "04624c26925080ff744009975ff0dcb9c44ced1a426d57a462b66e57e14cb81b"
+  },
+  "pointer_probe": {
+    "bytes": 20823,
+    "sha256": "914820a28788a9322593e91370303f1a3b32351cf4cc56c5f63c0ea0b1438cae"
+  },
+  "update_rollback_zip": {
+    "bytes": 59636,
+    "sha256": "10f8e8ca1424ae68264a4ca8dead6bafb7b7071a2362c0298c9609d7a27e9658"
+  },
+  "mouse_integration": {
+    "select_passthrough": true,
+    "chord_cycles": 20,
+    "click": true,
+    "long_press": true,
+    "continuous_drag": true,
+    "scroll": true,
+    "exit_ends_touch": true,
+    "touch_downs": 6,
+    "touch_terminals": 6
+  },
+  "after_rollback_reupgrade_mouse_integration": {
+    "select_passthrough": true,
+    "chord_cycles": 1,
+    "click": true,
+    "long_press": true,
+    "continuous_drag": true,
+    "scroll": true,
+    "exit_ends_touch": true,
+    "touch_downs": 6,
+    "touch_terminals": 6
+  },
+  "host_java_test_groups": 5,
+  "rollback_v6_to_v5_to_v6_installed_sha_readback": true,
+  "snapshot_files": 364,
+  "frozen_tree": "c243044ffb43fd45dd33e4145c3c9b79d3d2a3d1",
+  "native_source_files_synced": 3,
+  "normal_reboot_this_checkpoint": false,
+  "new_physical_input_acceptance_performed": false,
+  "power_audio_physical_acceptance_performed": false,
+  "system_vendor_read_only": true,
+  "at4k_home": true,
+  "network_validated": true,
+  "full_image_repacked": false,
+  "emulator_inputs": [
+    {
+      "file": "RetroArch_ra32.apk",
+      "url": "https://buildbot.libretro.com/stable/1.22.2/android/RetroArch_ra32.apk",
+      "bytes": 183797621,
+      "sha256": "9e964f53089a302401a6d5b1451d7ce5539f39b85eb0a305d8d77e6edcbf803f"
+    },
+    {
+      "file": "ppsspp.apk",
+      "url": "https://www.ppsspp.org/files/1_20_4/ppsspp.apk",
+      "bytes": 45448397,
+      "sha256": "dd702a31270ecd68db37afee311d6efe08b1d4da9601d2750ce1a73bbd316c3f"
+    },
+    {
+      "file": "cube.elf",
+      "url": "https://www.ppsspp.org/files/cube.elf",
+      "bytes": 205862,
+      "sha256": "15fa6f30d2fdc70a67b1cae646f82e6a4187d473ca4882c4631dc5b3fb43fc1d"
+    },
+    {
+      "file": "2048_libretro_android.so.zip",
+      "url": "https://buildbot.libretro.com/nightly/android/latest/armeabi-v7a/2048_libretro_android.so.zip",
+      "bytes": 24138,
+      "sha256": "7531aedf270b3c922732eafc6423f4435e8d4459e19a5c148effc4ec01f1fbb4"
+    }
+  ],
+  "emulator_signatures": [
+    {
+      "file": "RetroArch_ra32.apk",
+      "badging": [
+        "package: name='com.retroarch.ra32' versionCode='1763607285' versionName='1.22.2_GIT' compileSdkVersion='30' compileSdkVersionCodename='11'",
+        "sdkVersion:'16'",
+        "targetSdkVersion:'28'",
+        "launchable-activity: name='com.retroarch.browser.mainmenu.MainMenuActivity'  label='' icon=''",
+        "native-code: 'armeabi-v7a' 'x86'"
+      ],
+      "abis": [
+        "armeabi-v7a",
+        "x86"
+      ],
+      "signature": "Signer #1 certificate DN: O=Libretro\nSigner #1 certificate SHA-256 digest: d7a5eab30902c9b2775af6fb4eac2d294a64634fb47dd1382bc3ac5bf669982e\nSigner #1 certificate SHA-1 digest: 6d6f7104273140dfc8e68ff480bd9a1eb54d2a52\nSigner #1 certificate MD5 digest: cede827c63ac352f2a20611e94ce5c69\n"
+    },
+    {
+      "file": "ppsspp.apk",
+      "badging": [
+        "package: name='org.ppsspp.ppsspp' versionCode='120040000' versionName='v1.20.4' compileSdkVersion='36' compileSdkVersionCodename='16'",
+        "sdkVersion:'21'",
+        "targetSdkVersion:'36'",
+        "launchable-activity: name='org.ppsspp.ppsspp.PpssppActivity'  label='' icon=''",
+        "native-code: 'arm64-v8a' 'armeabi-v7a' 'x86_64'"
+      ],
+      "abis": [
+        "arm64-v8a",
+        "armeabi-v7a",
+        "x86_64"
+      ],
+      "signature": "Signer #1 certificate DN: CN=Henrik Rydg\u00e5rd, O=Millionth Line AB, C=SE\nSigner #1 certificate SHA-256 digest: c5342629df16762391907b3297aad122b4c1a8a9e608dfb94217a08e3bbf13a2\nSigner #1 certificate SHA-1 digest: f488da32624c7c52709cae90ca143f1db0c421b2\nSigner #1 certificate MD5 digest: e87f68f8eb9fea9c0a250212f2621a7f\n"
+    }
+  ],
+  "emulator_tests": {
+    "ppsspp_official_cube_render": true,
+    "ppsspp_state_save_process_restart_load": true,
+    "retroarch_2048_core_build": "39333f7",
+    "retroarch_start_and_hat_move": true,
+    "retroarch_A_confirm_B_back": true,
+    "retroarch_select_start_menu": true,
+    "retroarch_state_save_load_same_process": true,
+    "retroarch_sram_retained_after_process_restart": true,
+    "retroarch_state_reload_after_process_restart_separately_tested": false,
+    "commercial_game_compatibility_tested": false,
+    "audio_listening_tested": false
+  },
+  "performance": {
+    "sample_only": true,
+    "retroarch_2048_total_pss_kib": 68817,
+    "cpu_temperature_millicelsius_sample": 54575,
+    "sixty_minute_load_tested": false
+  }
+}
