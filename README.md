@@ -4,7 +4,7 @@
 
 导航 v8 新增 [Menu 下拉入口与默认强制横屏](docs/RG34XXSP_MENU_LANDSCAPE_20261029.md)：短按 Menu 回桌面、单独长按约 0.7 秒展开快捷设置，十字键导航/分页、A 切换、B 收起；横屏默认开启并记住偏好，微信读书正文已验证 720×480 重排。此前的 [Select 长按鼠标呼出](docs/RG34XXSP_SELECT_HOLD_20261028.md)：Navigation v7 改用 **Select 单独按住至少 2 秒后松开**，旧肩键组合已移除，Select＋Start 不触发鼠标，开启时光标居中并提示。用户已在 2026-10-29 确认实体呼出、移动和 B 关闭；四肩键单键采样与当前 Android 映射一致。此前 [控制器鼠标、电源盘点与模拟器初测](docs/RG34XXSP_INPUT_POWER_EMULATORS_20261028.md)保留 v6 历史记录。当前开发在 `codex/rg34xxsp-at4k-input-lockscreen` 分支，`main` 仍为整理基线。
 
-其后的 [720×480 小屏应用首轮筛选](docs/RG34XXSP_SMALL_SCREEN_APPS_20261028.md)固定了 9 个通过 ARM32 静态兼容检查的 APK 来源/校验值，并加入 KOReader 的可选 H700 按键补丁。电子书/漫画优先继续适配 KOReader，视频优先 Nova 的 TV + 应用内尺寸配置；音乐暂留 VLC 备选。仅列明路径通过，尚无全功能纯十字键验收结论，应用和原始证据只保留本地。
+2026-10-30 用户实测确认的[首批预装软件](docs/FIRST_PREINSTALL_BATCH_20261030.md)为：**QQ 音乐 TV、Animeko TV、PPSSPP、RetroArch（RA）、NOVA、KOReader**。NOVA 必须使用**手机/平板模式**，TV 模式显示不全。该名单用于后续预装集成，尚未重新封装 IMG。此前 [720×480 小屏首轮筛选](docs/RG34XXSP_SMALL_SCREEN_APPS_20261028.md)保留当时的测试条件及版本锁；当前选择以新名单为准。
 
 新增[微信读书墨水屏版实测](docs/RG34XXSP_WEREAD_20261029.md)：官方 2.1.2 支持 ARM32；用户扫码后已验证正文缩小、控制器 HAT 左右翻页、B 返回和进程重启续读。其后通过上述系统横屏增量验证正文重排与翻页；工具栏/目录仍需要虚拟鼠标辅助，尚未通过全程十字键验收。
 

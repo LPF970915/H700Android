@@ -8,7 +8,7 @@
 
 当前鼠标入口已按用户反馈改为 [Select 单独长按 2 秒后松开](RG34XXSP_SELECT_HOLD_20261028.md)，不依赖肩键或摇杆。按原计划排序的下一步与先前的电源/音频盘点、模拟器初测、小型回退记录见 [输入、电源与模拟器记录](RG34XXSP_INPUT_POWER_EMULATORS_20261028.md)，其 v6 三键组合已由 v7 替代。
 
-应用侧后续见 [720×480 小屏筛选](RG34XXSP_SMALL_SCREEN_APPS_20261028.md)：KOReader 的 HAT/字号用户补丁、Nova 的 TV/mdpi 预配置，以及尚未解决的音乐布局、图形设置焦点、Kodi/Vanilla 启动问题。不得把安装成功或片段播放成功当作完整应用验收。
+应用侧以用户 2026-10-30 确认的[首批预装名单](FIRST_PREINSTALL_BATCH_20261030.md)为准：QQ 音乐 TV、Animeko TV、PPSSPP、RA、NOVA、KOReader。NOVA 使用手机/平板模式，TV 模式显示不全；KOReader 和 RA 配套现有 H700 按键配置。后续先落实这六款的预装与首次启动配置。此前 [720×480 小屏筛选](RG34XXSP_SMALL_SCREEN_APPS_20261028.md)保留历史测试及未覆盖项，其他候选不自动加入首批。
 
 ## 设备与输入
 

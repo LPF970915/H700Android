@@ -2,6 +2,8 @@
 
 日期：2026-10-28，Asia/Shanghai。标签：`baseline/h700-v5i-usb-network-20261028`。
 
+2026-10-30 用户实测确认[首批预装名单](FIRST_PREINSTALL_BATCH_20261030.md)：QQ 音乐 TV、Animeko TV、PPSSPP、RetroArch（RA）、NOVA、KOReader。**NOVA 改以手机/平板模式为预装要求，TV 模式显示不全**；旧 TV/mdpi 记录仅描述历史测试。本次只登记名单，没有改设备设置或重封装 IMG，其他应用不纳入首批。
+
 最新检查点：`baseline/rg34xxsp-menu-landscape-20261029`，见 [Menu 与强制横屏](RG34XXSP_MENU_LANDSCAPE_20261029.md)。Navigation v8：Menu 短按 HOME、长按约 0.7 秒快捷设置，十字键分页、A 确认、B 收起；系统横屏默认开启并记住偏好。微信读书已验证完整 720×480 重排、左右翻页及开关恢复竖屏；两次内核重启覆盖默认开启和关闭偏好保留。原 IMG 未更新，实体按键手感待用户复核。
 
 此前检查点：`baseline/rg34xxsp-select-hold-20261028`，见 [Select 长按鼠标记录](RG34XXSP_SELECT_HOLD_20261028.md)。鼠标现用 **Select 单独按住至少 2 秒后松开**，旧肩键组合已移除；Navigation v7 是保留数据安装的更新包。之前的 v6、模拟器与电源盘点见 [上一轮记录](RG34XXSP_INPUT_POWER_EMULATORS_20261028.md)，各冻结点和测试按各自版本理解。
