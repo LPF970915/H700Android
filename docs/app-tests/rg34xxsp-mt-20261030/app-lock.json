@@ -1,0 +1,177 @@
+{
+  "schema": 1,
+  "date": "2026-10-30",
+  "checkpoint": "baseline/rg34xxsp-mt-app-cleanup-20261030",
+  "device": {
+    "profile": "rg34xxsp",
+    "android_api": 29,
+    "memory_gib": 2,
+    "pixels": [
+      720,
+      480
+    ],
+    "density": 213
+  },
+  "apk": {
+    "source_page": "https://mt.cc/download/",
+    "download_url": "https://pan.mt2.cn/apk/26101061",
+    "resolved_url": "https://file.market.xiaomi.com/download/AppStore/0bfd107ff077c41ae87d5cb69caf929a5473ac48a/MT2.26.10.apk",
+    "file": "MT2.26.10.apk",
+    "bytes": 37521106,
+    "sha256": "8f83cef8ac63f76a81e1fee3ededb213f6ba43cc19761e38bc4e567c87edd47d",
+    "package": "bin.mt.plus",
+    "version_name": "2.26.10",
+    "version_code": 26101061,
+    "min_sdk": 21,
+    "target_sdk": 30,
+    "native_abis": [
+      "arm64-v8a",
+      "armeabi-v7a",
+      "x86",
+      "x86_64"
+    ],
+    "signature_verified_api29": true,
+    "certificate_sha256": "8501dd29dc8b452391ff427936591e19c4bdc1bdd9f15ee8e5ace4e8b74cc96b"
+  },
+  "installation": {
+    "installed_apk_readback_sha256_matches": true,
+    "apk_modified": false,
+    "apk_in_git": false
+  },
+  "method": {
+    "direction": "Original controller evdev HAT",
+    "confirm_back": "Original controller evdev A/B",
+    "mouse_used_to_pass_test": false,
+    "physical_user_acceptance_this_round": false
+  },
+  "passed": [
+    "first_run_agreement_and_storage_permission",
+    "directory_navigation_and_scroll",
+    "dual_pane_switch",
+    "text_view_and_back",
+    "long_a_file_context_menu",
+    "short_select_overflow",
+    "copy_and_hash_readback",
+    "rename_via_dpad_keyboard_and_hash_readback",
+    "create_zip_and_archive_content_readback",
+    "zip_browse_and_extract_with_hash_readback",
+    "fixture_delete_to_recycle_bin",
+    "select_all_and_b_exit_selection",
+    "sidebar_list_scroll_and_b_close"
+  ],
+  "failed": [
+    "individual_bottom_bar_button_navigation",
+    "sidebar_header_child_button_navigation"
+  ],
+  "not_fully_verified": [
+    "new_file_or_directory_without_mouse",
+    "individual_multiselect_and_batch_operations",
+    "text_edit_save_and_editor_toolbar",
+    "settings_entry_and_all_settings",
+    "advanced_apk_terminal_plugin_remote_features"
+  ],
+  "preinstall_selection": "supplementary_candidate_requires_mouse_for_some_controls; original six selected apps unchanged",
+  "uninstalled": [
+    {
+      "id": "tvbookreader",
+      "package": "com.example.tvbookreader",
+      "version_name": "0.23.0",
+      "version": null,
+      "sha256": "e36978749ab1850cd6d45489aa9839d1acd9c453ad1a7896546ada209b4fb80a",
+      "status": "uninstalled_after_verified_private_backup"
+    },
+    {
+      "id": "vlc",
+      "package": "org.videolan.vlc",
+      "version_name": "3.5.6",
+      "version": null,
+      "sha256": "d289e91e3ee0cf90791011b8c3c88f4181cbe41fc3d6d91fdafae34702a91a48",
+      "status": "uninstalled_after_verified_private_backup"
+    },
+    {
+      "id": "mpvnova",
+      "package": "app.mpvnova.player",
+      "version_name": "2026-10-19",
+      "version": null,
+      "sha256": "4acd4fa47d2e59ed04d2e0ed9fd187bc766d34b08b61169d2836f19680b580a8",
+      "status": "uninstalled_after_verified_private_backup"
+    },
+    {
+      "id": "coolreader",
+      "package": "org.coolreader",
+      "version_name": "3.2.58-1",
+      "version": null,
+      "sha256": "2ad12ae295ffd5d6fe2d34e46fce226f671fed3dc10bc65fa5a0df337ac9305f",
+      "status": "uninstalled_after_verified_private_backup"
+    },
+    {
+      "id": "kodi",
+      "package": "org.xbmc.kodi",
+      "version_name": "21.3",
+      "version": null,
+      "sha256": "12d75e895649f68f217e42c2d881a94fd3177d7b9a7937825852aed545520cc8",
+      "status": "uninstalled_after_verified_private_backup"
+    },
+    {
+      "id": "tvreader",
+      "package": "com.tvreader.app",
+      "version_name": "1.0.1",
+      "version": null,
+      "sha256": "c2715a47329bbc91cbfe06030fae3b60870d00f88f89052b6dcff261a0a0caca",
+      "status": "uninstalled_after_verified_private_backup"
+    },
+    {
+      "id": "vanillamusic",
+      "package": "ch.blinkenlights.android.vanilla",
+      "version_name": "1.3.2",
+      "version": null,
+      "sha256": "0150f08387032ed3d5a5952dbe13646bff2878f01c2c9267e6dc32ecb8747003",
+      "status": "uninstalled_after_verified_private_backup"
+    },
+    {
+      "id": null,
+      "package": "com.tencent.weread.eink",
+      "version_name": "2.1.2",
+      "version": null,
+      "sha256": "04d86bcdc1bbd77cab4ecc4d1c04e869d76dbabc79c60c52a707c64fc3e4b75f",
+      "status": "uninstalled_after_verified_private_backup"
+    },
+    {
+      "id": "hongguo-tv",
+      "package": "rocks.aston.hongguotv",
+      "version_name": null,
+      "version": "0.2.131",
+      "sha256": "0792d83e222deeeb4b34e4e156ce65ad4ae485f5507ae84d5d1872cedaa3861e",
+      "status": "uninstalled_after_verified_private_backup"
+    },
+    {
+      "id": "hongguo-tv-mpv",
+      "package": "rocks.aston.hongguotv.mpv",
+      "version_name": null,
+      "version": "0.2.131",
+      "sha256": "1e2226c887f681b5fbdd44f489afc43024e02f52dd6732cde98fec83e0376b96",
+      "status": "uninstalled_after_verified_private_backup"
+    },
+    {
+      "package": "com.roc.rgsp.inputprobe",
+      "sha256": "914820a28788a9322593e91370303f1a3b32351cf4cc56c5f63c0ea0b1438cae",
+      "status": "uninstalled_after_verified_private_backup"
+    }
+  ],
+  "protected_selected_packages": [
+    "com.tencent.qqmusictv",
+    "me.him188.ani.tv",
+    "org.ppsspp.ppsspp",
+    "com.retroarch.ra32",
+    "org.courville.nova",
+    "org.koreader.launcher"
+  ],
+  "protected_runtime_packages": [
+    "com.roc.rgsp.navtrial",
+    "com.roc.rgsp.rotation",
+    "com.roc.rgsp.lid"
+  ],
+  "protected_apks_unchanged": true,
+  "data_space_reclaimed_gib_approx": 1.14,
+  "system_image_updated": false
+}

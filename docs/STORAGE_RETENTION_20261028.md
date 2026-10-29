@@ -16,6 +16,7 @@
 | `out/tv-apps-20261028/` | 小屏应用初测的 9 个 APK（合计约 260 MiB）、自制夹具和原始截图/记录；Git 仅保存版本/哈希/结果。没有另复制一套 APK |
 | `out/qqmusic-tv-20261029/` | 官方 QQ 音乐 TV ARM32 APK、静态签名/兼容校验与安装凭据；Git 只保存锁和听音结果 |
 | `out/video-gapps-20261029/`、`LOCAL_PRESERVE_H700_BASELINE_20261028/video-gapps-20261029/` | 首批预装选定的 Animeko TV APK、视频应用筛选及谷歌组件离线准备材料、失败实验和回退证据；含私有会话数据，不上传、不作为普通缓存清理。选定名单见 `FIRST_PREINSTALL_BATCH_20261030.md` |
+| `out/mt-manager-20261030/`、`LOCAL_PRESERVE_H700_BASELINE_20261028/mt-cleanup-20261030/`、`.tmp/mtw30/` | MT 官方 APK 与按键测试、11 款试验/采样 App 的卸载前数据及恢复索引；微信读书归档和短路径暂存含账号/阅读数据，禁止上传，不能当作普通临时缓存删除。设备应用卸载不代表本地资料已授权清理 |
 | `out/weread-eink-20261029/` | 官方微信读书墨水屏版 APK、来源/签名/ABI 校验及初测记录；二维码和后续账号画面只留本地，Git 仅保留脱敏结论 |
 | `out/rg34xxsp-lid-20261029/`、`LOCAL_PRESERVE_H700_BASELINE_20261028/lid-20261029/` | 合盖独立 APK、首次原型与受控回归、原始状态、AOSP 写入前备份；不是整卡或内核深度挂起通过证明 |
 | `LOCAL_PRESERVE_H700_BASELINE_20261028/app-selection-20261028/` | 本轮私有操作记录、生成脚本、失败/最终补丁、安装前及最终设置证明的新增保全；以该子目录清单为准，未复制全部 APK/媒体/画面，也未完成外部备份 |

@@ -1,0 +1,68 @@
+{
+  "schema": 1,
+  "screenshots_uploaded": false,
+  "local_directory": "out/mt-manager-20261030/",
+  "self_owned_fixture_sha256": "3a6e2c5669fa8f155d04aeab2978fba1dfbcf2f23f9bc5cfef4f8628b9fca9b1",
+  "screenshots": [
+    {
+      "label": "mt-list-down",
+      "sha256": "6a8313dac3941944fbcd2779f5c177999a8eb0aa2426b6c6ad563f9fa61b1433"
+    },
+    {
+      "label": "mt-pane-right",
+      "sha256": "adc9d0f08a62537b024363bb8e12323b90b4aeffd6ebf137cba60a5d8367d220"
+    },
+    {
+      "label": "mt-open-text",
+      "sha256": "7bc85d7c5584e793d190f7a60d56a0a090d0e99903f10b6c1e10168127502613"
+    },
+    {
+      "label": "mt-copy-done",
+      "sha256": "b67dc896275fe5adac74f4e63e280d90efec37b6b659c44d7cf411ccc0d45d64"
+    },
+    {
+      "label": "mt-rename-done",
+      "sha256": "fbef89d6b1eae4f97356d872a1456f8206e20a3dcb1e44e83266ffe5dd2db788"
+    },
+    {
+      "label": "mt-archive-visible",
+      "sha256": "fc4eec27d9a4adca4f31ab97a44e7be3757db25fff77f2c22cc0d826aab5546c"
+    },
+    {
+      "label": "mt-extract-dialog",
+      "sha256": "82726b8cc79e0b0d4731fb8321ee14c8232565cb57930c24e736b613eee1e875"
+    },
+    {
+      "label": "mt-delete-confirm-visible",
+      "sha256": "3c205c8c9c78ec49ace217bcb122f3fc105641eacb88a52c769e9f96b7cb5be3"
+    },
+    {
+      "label": "mt-multiselect-visible",
+      "sha256": "070d873a6069f2f2040ecd844d296cd18afcc294704b3cc84fa014d95a6bb08b"
+    },
+    {
+      "label": "mt-multiselect-ended",
+      "sha256": "00cf20cf4c1e2e633fe0f1da3e571d95b8fbd5ecb58ccef97f166cc2c5e2bb6a"
+    },
+    {
+      "label": "mt-bottom-focus",
+      "sha256": "2f60e3f39199cc1faa4835c6f7d463508c95eae0ecc3a6e9e4883306ca6fc454"
+    },
+    {
+      "label": "mt-bottom-right",
+      "sha256": "2f60e3f39199cc1faa4835c6f7d463508c95eae0ecc3a6e9e4883306ca6fc454"
+    },
+    {
+      "label": "mt-sidebar-up",
+      "sha256": "793d9bf1b2662b33807072c69089e40fc4488b34ffb2c66b4b318575879a13dc"
+    },
+    {
+      "label": "mt-sidebar-more-focus",
+      "sha256": "793d9bf1b2662b33807072c69089e40fc4488b34ffb2c66b4b318575879a13dc"
+    },
+    {
+      "label": "mt-sidebar-close",
+      "sha256": "c79c8437deb884619433d48bf5b4f7c9abb282209cc54de4cf92604fbc369340"
+    }
+  ]
+}
