@@ -63,6 +63,31 @@ public final class NavigationService extends AccessibilityService {
     private int actionCount;
     private boolean lastAction;
     private MouseController mouse;
+    private final MenuHotkey menu = new MenuHotkey();
+    private int menuHomeCount, menuShadeCount;
+    private boolean shadeBack;
+    private int lastInputKey, lastInputScan, lastInputAction, shadeCloseCount;
+    private final Runnable menuHold = () -> {
+        if (menu.fireLong(SystemClock.uptimeMillis())) menuAction(MenuHotkey.QUICK_SETTINGS);
+        scheduleMenu();
+    };
+
+    private void scheduleMenu() {
+        handler.removeCallbacks(menuHold);
+        long delay = menu.nextDelay(SystemClock.uptimeMillis());
+        if (delay >= 0) handler.postDelayed(menuHold, delay);
+    }
+
+    private void menuAction(int action) {
+        if (mouse != null) mouse.exit();
+        releaseForAction(); clearSelection(); held.clear();
+        if (action == MenuHotkey.HOME) {
+            menuHomeCount++; performGlobalAction(GLOBAL_ACTION_HOME);
+        } else {
+            menuShadeCount++; performGlobalAction(GLOBAL_ACTION_QUICK_SETTINGS);
+        }
+        handler.postDelayed(refreshTask, 550);
+    }
 
     @Override public void onServiceConnected() {
         if (!"rgsp".equals(Build.DEVICE)) {
@@ -126,6 +151,7 @@ public final class NavigationService extends AccessibilityService {
     }
 
     @Override public void onInterrupt() {
+        menu.clear(); handler.removeCallbacks(menuHold);
         if (mouse != null) mouse.exit();
         clearSelection();
     }
@@ -152,6 +178,7 @@ public final class NavigationService extends AccessibilityService {
     private String scope(AccessibilityNodeInfo root) {
         if (root == null) return "inactive";
         String pkg = String.valueOf(root.getPackageName());
+        if ("com.android.systemui".equals(pkg)) return shadeRoot(root) ? "shade" : "inactive";
         if (AT4K.equals(pkg)) {
             if (editorActive(root)) return "editor";
             // Keep native HOME navigation. Only the launcher's narrow settings
@@ -235,7 +262,21 @@ public final class NavigationService extends AccessibilityService {
     }
 
     private boolean managed() {
-        return "locales".equals(mode) || "files".equals(mode) || "settings".equals(mode);
+        return "locales".equals(mode) || "files".equals(mode) || "settings".equals(mode)
+                || "shade".equals(mode);
+    }
+
+    private boolean shadeRoot(AccessibilityNodeInfo root) {
+        if (!"com.android.systemui".equals(String.valueOf(root.getPackageName()))) return false;
+        List<AccessibilityNodeInfo> panels = root.findAccessibilityNodeInfosByViewId(
+                "com.android.systemui:id/quick_settings_panel");
+        boolean visible = false;
+        for (AccessibilityNodeInfo panel : panels) {
+            Rect bounds = new Rect(); panel.getBoundsInScreen(bounds);
+            visible |= panel.isVisibleToUser() && bounds.height() > 100;
+            panel.recycle();
+        }
+        return visible;
     }
 
     private AccessibilityNodeInfo applicationRoot() {
@@ -244,10 +285,21 @@ public final class NavigationService extends AccessibilityService {
             return null;
         }
         AccessibilityNodeInfo result = null;
+        AccessibilityNodeInfo shade = null;
         boolean systemFocused = false;
         for (AccessibilityWindowInfo window : getWindows()) {
             if (window.isFocused() && window.getType() == AccessibilityWindowInfo.TYPE_SYSTEM) {
                 systemFocused = true;
+            }
+            if (window.getType() == AccessibilityWindowInfo.TYPE_SYSTEM) {
+                AccessibilityNodeInfo root = window.getRoot();
+                if (root != null) {
+                    if (shadeRoot(root)) {
+                        if (shade != null) shade.recycle();
+                        shade = AccessibilityNodeInfo.obtain(root);
+                    }
+                    root.recycle();
+                }
             }
             if (window.getType() == AccessibilityWindowInfo.TYPE_APPLICATION
                     && (result == null || window.isFocused())) {
@@ -256,6 +308,7 @@ public final class NavigationService extends AccessibilityService {
             }
             window.recycle();
         }
+        if (shade != null) { if (result != null) result.recycle(); return shade; }
         if (systemFocused && result != null) {
             result.recycle();
             return null;
@@ -283,6 +336,9 @@ public final class NavigationService extends AccessibilityService {
 
     private void back() {
         AccessibilityNodeInfo root = applicationRoot();
+        if (root != null && "shade".equals(scope(root))) {
+            root.recycle(); collapseShade(); return;
+        }
         // Inspect the IME before changing focus: an editor may request it again
         // when our overlay gives the dialog its window focus back.
         boolean canCancel = root != null && "settings".equals(scope(root));
@@ -320,6 +376,19 @@ public final class NavigationService extends AccessibilityService {
             return;
         }
         handler.postDelayed(() -> performGlobalAction(GLOBAL_ACTION_BACK), 80);
+        handler.postDelayed(refreshTask, 550);
+    }
+
+    private void collapseShade() {
+        shadeCloseCount++;
+        releaseForAction(); clearSelection(); held.clear();
+        try {
+            Object bar = getSystemService("statusbar");
+            Class.forName("android.app.StatusBarManager").getMethod("collapsePanels").invoke(bar);
+        } catch (Exception error) {
+            android.util.Log.w("RGSPNavigation", "Shade collapse failed", error);
+            performGlobalAction(GLOBAL_ACTION_BACK);
+        }
         handler.postDelayed(refreshTask, 550);
     }
 
@@ -436,6 +505,11 @@ public final class NavigationService extends AccessibilityService {
         // Bottom-sheet pointer dismiss scrims cover all real choices. They are
         // not keyboard controls; B already supplies the explicit cancel path.
         String resource = node.getViewIdResourceName();
+        if ("shade".equals(mode) && node.getRangeInfo() != null) {
+            Rect bounds = focusBounds(node);
+            if (!bounds.isEmpty()) items.add(AccessibilityNodeInfo.obtain(node));
+            return;
+        }
         if ("files".equals(mode) && resource != null && resource.endsWith("/touch_outside")) return;
         if (node.isEditable()) {
             Rect bounds = focusBounds(node);
@@ -818,6 +892,17 @@ public final class NavigationService extends AccessibilityService {
     }
 
     private int initial(List<AccessibilityNodeInfo> items) {
+        if ("shade".equals(mode)) {
+            for (int i = 0; i < items.size(); i++) {
+                AccessibilityNodeInfo parent = items.get(i).getParent();
+                while (parent != null) {
+                    boolean tile = "com.android.systemui:id/tile_page".equals(parent.getViewIdResourceName());
+                    AccessibilityNodeInfo next = tile ? null : parent.getParent();
+                    parent.recycle(); parent = next;
+                    if (tile) return i;
+                }
+            }
+        }
         if ("locales".equals(mode)) {
             for (int i = 0; i < items.size(); i++) {
                 if (localeRow(items.get(i))) return i;
@@ -924,8 +1009,34 @@ public final class NavigationService extends AccessibilityService {
     }
 
     @Override protected boolean onKeyEvent(KeyEvent event) {
+        lastInputKey = event.getKeyCode(); lastInputScan = event.getScanCode();
+        lastInputAction = event.getAction();
+        int menuResult = menu.update(event.getDeviceId(), event.getKeyCode(), event.getScanCode(),
+                (event.getFlags() & KeyEvent.FLAG_FALLBACK) != 0,
+                event.getAction() == KeyEvent.ACTION_DOWN, event.isCanceled(), event.getEventTime());
+        scheduleMenu();
         if (mouse != null && mouse.onKey(event)) return true;
+        if (menuResult != MenuHotkey.PASS) {
+            if (menuResult == MenuHotkey.HOME || menuResult == MenuHotkey.QUICK_SETTINGS)
+                menuAction(menuResult);
+            return true;
+        }
         int key = event.getKeyCode();
+        if (key == KeyEvent.KEYCODE_BUTTON_B || key == KeyEvent.KEYCODE_BACK
+                || key == KeyEvent.KEYCODE_ESCAPE) {
+            if (event.getAction() == KeyEvent.ACTION_DOWN && !shadeBack) {
+                AccessibilityNodeInfo root = applicationRoot();
+                shadeBack = root != null && "shade".equals(scope(root));
+                if (root != null) root.recycle();
+            }
+            if (shadeBack) {
+                if (event.getAction() == KeyEvent.ACTION_UP) {
+                    shadeBack = false;
+                    if (!event.isCanceled()) collapseShade();
+                }
+                return true;
+            }
+        }
         if((key==KeyEvent.KEYCODE_MENU || key==KeyEvent.KEYCODE_BUTTON_SELECT)
                 && event.getAction()==KeyEvent.ACTION_DOWN) {
             releaseForAction();return false;
@@ -981,7 +1092,18 @@ public final class NavigationService extends AccessibilityService {
                 Rect b = focusBounds(items.get(i));
                 boxes[i] = new int[] {b.left, b.top, b.right, b.bottom};
             }
-            int next = Direction.next(boxes, index, key);
+            // A full-width brightness slider is directly above every tile.
+            // Its distant horizontal centre must not make Up skip to the clock.
+            if ("shade".equals(mode) && (key == Direction.UP || key == Direction.DOWN)) {
+                int x = (boxes[index][0] + boxes[index][2]) / 2;
+                for (int i = 0; i < items.size(); i++) if (i != index
+                        && items.get(i).getRangeInfo() != null
+                        && boxes[i][0] < x && x < boxes[i][2]) {
+                    boxes[i][0] = x - 1; boxes[i][2] = x + 1;
+                }
+            }
+            int next = "shade".equals(mode) && (key == Direction.LEFT || key == Direction.RIGHT)
+                    ? Direction.nextAligned(boxes, index, key) : Direction.next(boxes, index, key);
             boolean vertical = key == Direction.UP || key == Direction.DOWN;
             // Read-only rows cannot request native focus to reveal earlier
             // content. Scroll their container before escaping into a toolbar.
@@ -1160,7 +1282,10 @@ public final class NavigationService extends AccessibilityService {
 
     @Override protected void dump(FileDescriptor fd, PrintWriter writer, String[] args) {
         AccessibilityServiceInfo serviceInfo = getServiceInfo();
-        writer.println("navigationVersion=35 mode=" + mode + " moveTopId=" + moveTop
+        writer.println("menuHome=" + menuHomeCount + " menuShade=" + menuShadeCount);
+        writer.println("lastInput=" + lastInputKey + "/" + lastInputScan + "/" + lastInputAction
+                + " shadeClose=" + shadeCloseCount);
+        writer.println("navigationVersion=36 mode=" + mode + " moveTopId=" + moveTop
                 + " keyDownCount=" + keyDownCount + " actionCount=" + actionCount
                 + " lastAction=" + lastAction + " navigationCallbacks=" + navigationCallbacks
                 + " lastKeyScope=" + lastKeyScope + " flags=" + (serviceInfo == null ? 0 : serviceInfo.flags));

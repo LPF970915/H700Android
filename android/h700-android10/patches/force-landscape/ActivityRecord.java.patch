@@ -1,0 +1,21 @@
+--- a/frameworks/base/services/core/java/com/android/server/wm/ActivityRecord.java
++++ b/frameworks/base/services/core/java/com/android/server/wm/ActivityRecord.java
+@@ -2790,0 +2791,10 @@
++    // H700: keep the primary display fully resizable while the system tile is on.
++    // Existing app orientation and aspect-ratio behavior resumes when fixed rotation is off.
++    private boolean h700ForceLandscape() {
++        if (!"rgsp".equals(SystemProperties.get("ro.product.device"))) return false;
++        final ActivityDisplay display = getDisplay();
++        return display != null && display.mDisplayId == DEFAULT_DISPLAY
++                && display.mDisplayContent != null
++                && display.mDisplayContent.getDisplayRotation().isFixedToUserRotation();
++    }
++
+@@ -2791,0 +2802 @@
++        if (h700ForceLandscape()) return ORIENTATION_LANDSCAPE;
+@@ -2881,0 +2893 @@
++        if (h700ForceLandscape()) return false;
+@@ -2944,0 +2957 @@
++        if (h700ForceLandscape()) mCompatDisplayInsets = null;
+@@ -3123,0 +3137 @@
++        if (h700ForceLandscape()) return;

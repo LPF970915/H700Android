@@ -2,7 +2,9 @@
 
 日期：2026-10-28，Asia/Shanghai。标签：`baseline/h700-v5i-usb-network-20261028`。
 
-最新日常开发检查点：`baseline/rg34xxsp-select-hold-20261028`，见 [Select 长按鼠标记录](RG34XXSP_SELECT_HOLD_20261028.md)。鼠标现用 **Select 单独按住至少 2 秒后松开**，旧肩键组合已移除；Navigation v7 是保留数据安装的更新包。之前的 v6、模拟器与电源盘点见 [上一轮记录](RG34XXSP_INPUT_POWER_EMULATORS_20261028.md)，各冻结点和测试按各自版本理解。
+最新检查点：`baseline/rg34xxsp-menu-landscape-20261029`，见 [Menu 与强制横屏](RG34XXSP_MENU_LANDSCAPE_20261029.md)。Navigation v8：Menu 短按 HOME、长按约 0.7 秒快捷设置，十字键分页、A 确认、B 收起；系统横屏默认开启并记住偏好。微信读书已验证完整 720×480 重排、左右翻页及开关恢复竖屏；两次内核重启覆盖默认开启和关闭偏好保留。原 IMG 未更新，实体按键手感待用户复核。
+
+此前检查点：`baseline/rg34xxsp-select-hold-20261028`，见 [Select 长按鼠标记录](RG34XXSP_SELECT_HOLD_20261028.md)。鼠标现用 **Select 单独按住至少 2 秒后松开**，旧肩键组合已移除；Navigation v7 是保留数据安装的更新包。之前的 v6、模拟器与电源盘点见 [上一轮记录](RG34XXSP_INPUT_POWER_EMULATORS_20261028.md)，各冻结点和测试按各自版本理解。
 
 2026-10-29 用户已确认实体 Select 长按呼出、移动和 B 关闭；四肩键按用户明确顺序采样，与当前 Android 映射一致，本轮未交换肩键。旧三键组合不稳定的根因仍未查明。
 
@@ -12,7 +14,7 @@
 
 最新应用级检查点：`baseline/rg34xxsp-small-screen-apps-20261028`，见 [小屏应用筛选](RG34XXSP_SMALL_SCREEN_APPS_20261028.md)。新增 KOReader 可选用户补丁及 9 个 APK 的初测/版本锁；系统二进制、屏幕密度和原 IMG 未更新。KOReader 的 EPUB/CBZ 常用路径、Nova 预配置后的 MKV 路径有远程事件与画面证据，不表示所有功能或实体使用通过。
 
-2026-10-29 增补[微信读书墨水屏版](RG34XXSP_WEREAD_20261029.md)：官方 2.1.2 / armeabi-v7a 已登录补测，正文字号调到 19、UI 调到“小”；控制器 HAT 左右翻页、B 返回、虚拟鼠标工具栏/目录及进程重启同页续读通过。本轮横屏未跑通，目录焦点仍有缺口，未认定为全程十字键横屏阅读方案；旋转已恢复测试前值。
+2026-10-29 增补[微信读书墨水屏版](RG34XXSP_WEREAD_20261029.md)：官方 2.1.2 / armeabi-v7a 已登录补测，正文字号调到 19、UI 调到“小”；控制器 HAT 左右翻页、B 返回、虚拟鼠标工具栏/目录及进程重启同页续读通过。该应用初测时横屏未跑通，随后已由上述系统横屏补丁解决正文重排；目录焦点仍有缺口，未认定为全程十字键阅读方案。
 
 ## 结论与版本边界
 

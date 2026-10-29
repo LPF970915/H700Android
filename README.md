@@ -2,11 +2,11 @@
 
 整理基线：**v5i / native35 + USB ConfigFS 与网络检测修复，2026-10-28**。源码冻结标签为 `baseline/h700-v5i-usb-network-20261028`，空间整理检查点为 `baseline/h700-storage-trim-20261028`。其上已加入 RG34XXSP 菜单、双摇杆和锁屏增量，见 [本轮记录](docs/RG34XXSP_DEVELOPMENT_20261028.md)。原交付镜像尚未加入这些修复重新封装。
 
-导航最新增量为 [Select 长按鼠标呼出](docs/RG34XXSP_SELECT_HOLD_20261028.md)：Navigation v7 改用 **Select 单独按住至少 2 秒后松开**，旧肩键组合已移除，Select＋Start 不触发鼠标，开启时光标居中并提示。用户已在 2026-10-29 确认实体呼出、移动和 B 关闭；四肩键单键采样与当前 Android 映射一致。此前 [控制器鼠标、电源盘点与模拟器初测](docs/RG34XXSP_INPUT_POWER_EMULATORS_20261028.md)保留 v6 历史记录。当前开发在 `codex/rg34xxsp-at4k-input-lockscreen` 分支，`main` 仍为整理基线。
+导航 v8 新增 [Menu 下拉入口与默认强制横屏](docs/RG34XXSP_MENU_LANDSCAPE_20261029.md)：短按 Menu 回桌面、单独长按约 0.7 秒展开快捷设置，十字键导航/分页、A 切换、B 收起；横屏默认开启并记住偏好，微信读书正文已验证 720×480 重排。此前的 [Select 长按鼠标呼出](docs/RG34XXSP_SELECT_HOLD_20261028.md)：Navigation v7 改用 **Select 单独按住至少 2 秒后松开**，旧肩键组合已移除，Select＋Start 不触发鼠标，开启时光标居中并提示。用户已在 2026-10-29 确认实体呼出、移动和 B 关闭；四肩键单键采样与当前 Android 映射一致。此前 [控制器鼠标、电源盘点与模拟器初测](docs/RG34XXSP_INPUT_POWER_EMULATORS_20261028.md)保留 v6 历史记录。当前开发在 `codex/rg34xxsp-at4k-input-lockscreen` 分支，`main` 仍为整理基线。
 
 其后的 [720×480 小屏应用首轮筛选](docs/RG34XXSP_SMALL_SCREEN_APPS_20261028.md)固定了 9 个通过 ARM32 静态兼容检查的 APK 来源/校验值，并加入 KOReader 的可选 H700 按键补丁。电子书/漫画优先继续适配 KOReader，视频优先 Nova 的 TV + 应用内尺寸配置；音乐暂留 VLC 备选。仅列明路径通过，尚无全功能纯十字键验收结论，应用和原始证据只保留本地。
 
-新增[微信读书墨水屏版实测](docs/RG34XXSP_WEREAD_20261029.md)：官方 2.1.2 支持 ARM32；用户扫码后已验证正文缩小、控制器 HAT 左右翻页、B 返回和进程重启续读。当前横屏未跑通，工具栏/目录需要虚拟鼠标辅助，不推荐作为全程十字键横屏主力阅读器。
+新增[微信读书墨水屏版实测](docs/RG34XXSP_WEREAD_20261029.md)：官方 2.1.2 支持 ARM32；用户扫码后已验证正文缩小、控制器 HAT 左右翻页、B 返回和进程重启续读。其后通过上述系统横屏增量验证正文重排与翻页；工具栏/目录仍需要虚拟鼠标辅助，尚未通过全程十字键验收。
 
 本工程整合 H700 掌机上的 Android 10、无触屏按键导航和单卡存储。当前实机已由无摇杆 RGSP 切换为用户提供的 34xxsp：H700、2GB RAM、双摇杆。两台设备的产品属性都可能显示 `RGSP H700`，应按序列号区分。
 

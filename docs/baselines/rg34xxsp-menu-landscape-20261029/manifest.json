@@ -1,0 +1,218 @@
+{
+  "checkpoint": "baseline/rg34xxsp-menu-landscape-20261029",
+  "date": "2026-10-29",
+  "parent_commit": "f0cda7a",
+  "target": {
+    "product": "rgsp",
+    "profile": "rg34xxsp",
+    "android_api": 29,
+    "abi": "armeabi-v7a",
+    "screen": "720x480",
+    "identity_published": false
+  },
+  "artifacts": {
+    "Navigation_v7_rollback": {
+      "local_file": "nav.before.apk",
+      "bytes": 66015,
+      "sha256": "e59a2488a440637903f466869e7066927a700435236005fa8aa09944e84133c1",
+      "published": false
+    },
+    "Navigation_v8": {
+      "local_file": "nav.after.apk",
+      "bytes": 74207,
+      "sha256": "c83a009d65e6786814a0763a6233d8557c3e5813b9dd6eda8e4aca6bca7b8014",
+      "published": false
+    },
+    "H700Rotation_1_0": {
+      "local_file": "H700Rotation.apk",
+      "bytes": 29150,
+      "sha256": "fd932f8ec9563d2fb4bca2d037e0c475c9698e48f18b612d4b13e606c643aabc",
+      "published": false
+    },
+    "services_original": {
+      "local_file": "services.before.jar",
+      "bytes": 12265628,
+      "sha256": "7015b60d93e1b516378cf91b691cc628305ba37ec7cc872013babf5e8159bff5",
+      "published": false
+    },
+    "services_rotation": {
+      "local_file": "services.force-landscape.jar",
+      "bytes": 12268605,
+      "sha256": "d291bfeadf578ae923c4dc11577a78724df78e7b54503ebf2e3f80da0d916c11",
+      "published": false
+    }
+  },
+  "framework_delta": {
+    "base_sha256": "7015b60d93e1b516378cf91b691cc628305ba37ec7cc872013babf5e8159bff5",
+    "sha256": "d291bfeadf578ae923c4dc11577a78724df78e7b54503ebf2e3f80da0d916c11",
+    "bytes": 12268605,
+    "classes_compared": 728,
+    "dex_entry": "classes2.dex",
+    "changed_class": "com/android/server/wm/ActivityRecord.smali",
+    "changed_existing_methods": [
+      "getRequestedConfigurationOrientation()I",
+      "shouldUseSizeCompatMode()Z",
+      "computeBounds(Landroid/graphics/Rect;Landroid/graphics/Rect;)V",
+      "resolveOverrideConfiguration(Landroid/content/res/Configuration;)V"
+    ],
+    "added_method": "h700ForceLandscape()Z",
+    "other_dex_and_zip_entries_unchanged": true
+  },
+  "native_activity_record": {
+    "base_sha256": "c3a246f9d23cbc7bfa35e2fdf89aa724f3667ac09f17a61bf09ed87a6cdfea1d",
+    "patched_sha256": "48868fadbf9f0e52706f21e82b630e91666eaf08b8623dbccf6b84a3fa34cb5d",
+    "full_source_framework_build_tested": false
+  },
+  "platform_certificate_sha256": "c8a2e9bccf597c2fb6dc66bee293fc13f2fc47ec77bc6b2b0d52c11f51192ab8",
+  "validation": {
+    "host_menu_and_existing_navigation_tests": true,
+    "rotation_state_host_assertions": 16,
+    "art_link_methods": 183,
+    "default_on_kernel_reboot": true,
+    "off_preference_kernel_reboot": true,
+    "final_geometry_build_installed_after_reboot": true,
+    "controller_event_menu_short_long_release": true,
+    "qs_three_pages": true,
+    "qs_b_collapse": true,
+    "qs_brightness_and_footer_focus": true,
+    "weread_full_landscape": true,
+    "weread_next_then_previous_exact_png_match": true,
+    "mouse_select_hat_b_regression": true,
+    "user_physical_menu_acceptance": false,
+    "all_apps_compatible": false,
+    "original_img_updated": false,
+    "frozen_overlay_changed": false
+  },
+  "final_state": {
+    "force_landscape": true,
+    "foreground": "AT4K",
+    "root_read_only": true,
+    "installed_hash_readback": true
+  },
+  "sources": [
+    {
+      "path": "android/h700-android10/device/roc/rgsp/h700_rgsp.mk",
+      "sha256_lf": "97a3cf4d305cca84e6e3a62cb6a243b6c6b6987187db00f2e15dc12c5f72bb8d"
+    },
+    {
+      "path": "android/h700-android10/device/roc/rgsp/H700Rotation/Android.bp",
+      "sha256_lf": "ecd3449a826959dffde8f0914fd93dfd5ac994ce4a0f5a14e031f36d5863425f"
+    },
+    {
+      "path": "android/h700-android10/device/roc/rgsp/H700Rotation/AndroidManifest.xml",
+      "sha256_lf": "31658d67f054be083974b545a225258c79bb62cfebc507cf4fd782145b4a9a77"
+    },
+    {
+      "path": "android/h700-android10/device/roc/rgsp/H700Rotation/res/drawable/ic_landscape.xml",
+      "sha256_lf": "59ebf37e53b1f194a5f72a071a804bbe41126a62e92966e239861b6f432c00ae"
+    },
+    {
+      "path": "android/h700-android10/device/roc/rgsp/H700Rotation/src/com/roc/rgsp/rotation/LandscapeTile.java",
+      "sha256_lf": "e15cc0381584aefdb6fe6c9970e78f39b9c2dc829e8acadea25dc1d7b46f51ee"
+    },
+    {
+      "path": "android/h700-android10/device/roc/rgsp/H700Rotation/src/com/roc/rgsp/rotation/RotationReceiver.java",
+      "sha256_lf": "25506afd050732563e4fd54e6f3fdfbf6db788ea4956bc1224aae54965dcce59"
+    },
+    {
+      "path": "android/h700-android10/device/roc/rgsp/H700Rotation/src/com/roc/rgsp/rotation/RotationState.java",
+      "sha256_lf": "5a2d70689d91949d46f14ee8fe99344436fdbfb3315ff5739a4a23711c0f48a9"
+    },
+    {
+      "path": "android/h700-android10/device/roc/rgsp/H700Rotation/src/com/roc/rgsp/rotation/WindowBridge.java",
+      "sha256_lf": "53c33820282941d78e5495262e3e9b5e40f9afcb951353092bb9c776ed425dd9"
+    },
+    {
+      "path": "android/h700-android10/device/roc/rgsp/RGSPNavigation/Android.bp",
+      "sha256_lf": "e2d92ec63c4d37b0d3f80983bdfc499b3807d2e76e37273dc75eb2b5baed0386"
+    },
+    {
+      "path": "android/h700-android10/device/roc/rgsp/RGSPNavigation/AndroidManifest.xml",
+      "sha256_lf": "0179f00637e736ef6cf7e000188d8f82c6ba98cadcd02086d1bb19f5ba6764fa"
+    },
+    {
+      "path": "android/h700-android10/device/roc/rgsp/RGSPNavigation/res/xml/navigation_service.xml",
+      "sha256_lf": "ed7a7a6eb292b261d9e7f23a80b13836b69b5517980429d0645df471cc92d3dd"
+    },
+    {
+      "path": "android/h700-android10/device/roc/rgsp/RGSPNavigation/src/com/roc/rgsp/navtrial/Direction.java",
+      "sha256_lf": "93fee55862da85fb7d6302f818dddc46693126f52326e57adcb7d8ac6bb49723"
+    },
+    {
+      "path": "android/h700-android10/device/roc/rgsp/RGSPNavigation/src/com/roc/rgsp/navtrial/FocusIdentity.java",
+      "sha256_lf": "d43703710dcc10c03b9b92911ae2889f8282120c086865144b9dd21a6200ba68"
+    },
+    {
+      "path": "android/h700-android10/device/roc/rgsp/RGSPNavigation/src/com/roc/rgsp/navtrial/MenuHotkey.java",
+      "sha256_lf": "8011bd8f6e552bd3753d3143e49f002dc9af2175371684fea07fb235ee4338ef"
+    },
+    {
+      "path": "android/h700-android10/device/roc/rgsp/RGSPNavigation/src/com/roc/rgsp/navtrial/MouseController.java",
+      "sha256_lf": "58b6e89046eaa344f1edc765c2dd38e29999c801eef8b138320ac367a2704852"
+    },
+    {
+      "path": "android/h700-android10/device/roc/rgsp/RGSPNavigation/src/com/roc/rgsp/navtrial/MouseHotkey.java",
+      "sha256_lf": "3851fcb5e2a256f4e9fe1c007a7a3751ec68f338e94157a15ec49a0f72c6b073"
+    },
+    {
+      "path": "android/h700-android10/device/roc/rgsp/RGSPNavigation/src/com/roc/rgsp/navtrial/NavigationService.java",
+      "sha256_lf": "db7ada4ba9acf131a7445e5ee2f44870a9f13512e89299b1534bdf7b037f76d9"
+    },
+    {
+      "path": "android/h700-android10/device/roc/rgsp/RGSPNavigation/src/com/roc/rgsp/navtrial/PointerPosition.java",
+      "sha256_lf": "ad4e348c2073fd3c9f56fb2ebf688c12a0814df0d6a71024010e02b78cf31a20"
+    },
+    {
+      "path": "android/h700-android10/device/roc/rgsp/RGSPNavigation/src/com/roc/rgsp/navtrial/StickVector.java",
+      "sha256_lf": "7efa029eadea5a48481586631660e93ccf76c4ce76b675d55038059f2f9900c6"
+    },
+    {
+      "path": "android/h700-android10/patches/force-landscape/ActivityRecord.java.patch",
+      "sha256_lf": "e072cd4537ee9f48f54abe572203bfadd5d710bb128ea8359fe32646c116e7ea"
+    },
+    {
+      "path": "tools/apply_h700_force_landscape_source.py",
+      "sha256_lf": "4071df70708869e6b8dbefb6015e67eae3acf835059483f800fd62de856eefb5"
+    },
+    {
+      "path": "tools/build_h700_apps.py",
+      "sha256_lf": "ed73e1d0182b4485041602a41428ed6a1f320fced3b03b4084bdb5cd5bf4d8b3"
+    },
+    {
+      "path": "tools/build_h700_low_pressure.ps1",
+      "sha256_lf": "02e6dd0d9aeafe1bf7cfb4011045ef8812397b2760d49c612e24435eb01d4132"
+    },
+    {
+      "path": "tools/build_h700_low_pressure.sh",
+      "sha256_lf": "825f556386e7e2dba3c541bb516717679b90c5e56a757729f4eb8ac5e143f33f"
+    },
+    {
+      "path": "tools/build_h700_rotation_framework.py",
+      "sha256_lf": "81a236be3e997b31ebdc7d9b9a935ea9504379e3acadede5ee492dd6173f2b11"
+    },
+    {
+      "path": "tools/navigation_tests/com/roc/rgsp/navtrial/MenuHotkeyTest.java",
+      "sha256_lf": "aea0147c57cf5d53cf0af71da5d4d2c8a977c10cd40a5c8fa538af188c4fafdb"
+    },
+    {
+      "path": "tools/rotation/FrameworkDexTool.java",
+      "sha256_lf": "d722af19d1e2ece8b4aaeb436df034f9707cf628166a4a0f30b75409eb25ac71"
+    },
+    {
+      "path": "tools/rotation/patch_framework.py",
+      "sha256_lf": "ad711d4396e605fee63135e2d46fa0941315404fda294fa878802a788088f2a7"
+    },
+    {
+      "path": "tools/rotation/RotationStateTest.java",
+      "sha256_lf": "c5cc188e746cdf74724f381ed5b36c4930f0d152bf8d54e8c340b17543bd398b"
+    },
+    {
+      "path": "tools/rotation/VerifyFramework.java",
+      "sha256_lf": "5093f0c37672a672488d08a6800d9f265765bc084f2d305d3942076f6ec86551"
+    },
+    {
+      "path": "tools/test_navigation_geometry.ps1",
+      "sha256_lf": "9f4ff34ce76a18dfa6a4f35970289bcbad3a5d9a94e869597503d7135e09b932"
+    }
+  ]
+}

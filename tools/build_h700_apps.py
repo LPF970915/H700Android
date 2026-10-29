@@ -36,6 +36,7 @@ def main():
     parser.add_argument('--input-only', action='store_true')
     parser.add_argument('--navigation-only', action='store_true')
     parser.add_argument('--lid-only', action='store_true')
+    parser.add_argument('--rotation-only', action='store_true')
     args = parser.parse_args()
     cg = Path('/sys/fs/cgroup') / Path('/proc/self/cgroup').read_text().strip().split('::')[-1].lstrip('/')
     assert int((cg / 'memory.max').read_text()) <= 6442450944
@@ -46,9 +47,11 @@ def main():
     sdk = native / 'prebuilts/sdk/tools/linux'
     jdk = native / 'prebuilts/jdk/jdk9/linux-x86'
     android = native / 'prebuilts/sdk/29/public/android.jar'
-    work = Path('/home/lpf/h700-lid-20261029' if args.lid_only else '/home/lpf/h700-at4k-20261028')
-    work.mkdir(exist_ok=True)
-    delivery = REPO / ('out/rg34xxsp-lid-20261029' if args.lid_only else 'out/rg34xxsp-dev-20261028')
+    work = Path('/home/lpf/h700-rotation-20261029/app' if args.rotation_only else
+                '/home/lpf/h700-lid-20261029' if args.lid_only else '/home/lpf/h700-at4k-20261028')
+    work.mkdir(parents=True, exist_ok=True)
+    delivery = REPO / ('out/force-landscape-20261029' if args.rotation_only else
+                      'out/rg34xxsp-lid-20261029' if args.lid_only else 'out/rg34xxsp-dev-20261028')
     delivery.mkdir(exist_ok=True)
     os.environ['LD_LIBRARY_PATH'] = str(sdk / 'lib64')
     java, javac = jdk / 'bin/java', jdk / 'bin/javac'
@@ -76,6 +79,28 @@ def main():
         run(java, '-Xmx1g', '-jar', sdk / 'lib/apksigner.jar', 'verify', '--verbose',
             '--print-certs', '--max-sdk-version', '29', target)
         return target
+    if args.rotation_only:
+        rotation = REPO / 'android/h700-android10/device/roc/rgsp/H700Rotation'
+        verifier = compile_java([REPO / 'tools/rotation/VerifyFramework.java'], 'rotation-framework-verify')
+        with zipfile.ZipFile(delivery / 'rotation-framework-verify.jar', 'w') as target:
+            target.write(verifier, 'classes.dex')
+        tests = work / 'tests'; tests.mkdir(exist_ok=True)
+        run(javac, '-J-Xmx512m', '-source', '8', '-target', '8', '-d', tests,
+            rotation / 'src/com/roc/rgsp/rotation/RotationState.java', REPO / 'tools/rotation/RotationStateTest.java')
+        run(java, '-Xmx128m', '-cp', tests, 'com.roc.rgsp.rotation.RotationStateTest')
+        gen = work / 'gen'; gen.mkdir(exist_ok=True)
+        resources = work / 'rotation-resources.apk'
+        run(sdk / 'bin/aapt', 'package', '-f', '-M', rotation / 'AndroidManifest.xml',
+            '-S', rotation / 'res', '-I', android, '-J', gen, '-F', resources)
+        dex = compile_java([*sorted((rotation / 'src').rglob('*.java')), *sorted(gen.rglob('*.java'))], 'rotation')
+        prepared = work / 'rotation-prepared.apk'
+        prepared_zip(resources, prepared, {'classes.dex': dex})
+        target = sign(prepared, 'H700Rotation')
+        receipt = {'file': target.name, 'bytes': target.stat().st_size,
+            'sha256': hashlib.sha256(target.read_bytes()).hexdigest(), 'min_api': 29}
+        (delivery / 'app-build.json').write_text(json.dumps(receipt, indent=2) + '\n')
+        print(json.dumps(receipt), flush=True)
+        return
     if args.lid_only:
         lid = REPO / 'android/h700-android10/device/roc/rgsp/H700Lid'
         test_classes = work / 'state-tests'; test_classes.mkdir(exist_ok=True)

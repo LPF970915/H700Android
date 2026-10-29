@@ -41,3 +41,5 @@
 本轮没有留下通用自动删除入口。进一步处理 WSL、原始输入、当前镜像或原始证据，先明确具体范围、可恢复来源并完成必要的外部私有备份。不要按日期、名称或“Git 已上传”推断它们可删。
 
 补充的旧截图、Python 缓存和空目录批量清理被自动审批拒绝（`blocked by policy`，未给出具体原因），没有执行；这些小型忽略内容可能仍留在本地，不进入 Git。
+
+2026-10-29 Menu/横屏增量另保留 `LOCAL_PRESERVE_H700_BASELINE_20261028/force-landscape-20261029/` 的旧系统 JAR、Navigation v7、显示策略、源码和私有回退脚本，以及 `out/force-landscape-20261029/` 的新 APK/JAR/验收证据。Git 只收脱敏锁和源码；这些文件不是本轮可清缓存。见 [增量记录](RG34XXSP_MENU_LANDSCAPE_20261029.md)。

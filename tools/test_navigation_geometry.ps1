@@ -12,10 +12,10 @@ New-Item -ItemType Directory -Force -Path $out | Out-Null
 $source = Join-Path $root 'android/h700-android10/device/roc/rgsp/RGSPNavigation/src/com/roc/rgsp/navtrial'
 $tests = Join-Path $PSScriptRoot 'navigation_tests/com/roc/rgsp/navtrial'
 & "$JavaHome/bin/javac.exe" --release 8 -d $out `
-    "$source/Direction.java" "$source/PointerPosition.java" "$source/FocusIdentity.java" "$source/StickVector.java" "$source/MouseHotkey.java" `
-    "$tests/DirectionTest.java" "$tests/PointerPositionTest.java" "$tests/FocusIdentityTest.java" "$tests/StickVectorTest.java" "$tests/MouseHotkeyTest.java"
+    "$source/Direction.java" "$source/PointerPosition.java" "$source/FocusIdentity.java" "$source/StickVector.java" "$source/MouseHotkey.java" "$source/MenuHotkey.java" `
+    "$tests/DirectionTest.java" "$tests/PointerPositionTest.java" "$tests/FocusIdentityTest.java" "$tests/StickVectorTest.java" "$tests/MouseHotkeyTest.java" "$tests/MenuHotkeyTest.java"
 if ($LASTEXITCODE) { throw 'Navigation host compilation failed.' }
-foreach ($test in @('DirectionTest','PointerPositionTest','FocusIdentityTest','StickVectorTest','MouseHotkeyTest')) {
+foreach ($test in @('DirectionTest','PointerPositionTest','FocusIdentityTest','StickVectorTest','MouseHotkeyTest','MenuHotkeyTest')) {
     & "$JavaHome/bin/java.exe" -cp $out "com.roc.rgsp.navtrial.$test"
     if ($LASTEXITCODE) { throw "Navigation host test failed: $test" }
 }

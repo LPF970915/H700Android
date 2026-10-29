@@ -36,7 +36,7 @@ PRODUCT_COPY_FILES += \
     device/roc/rgsp/input/rgsp-stick-axes.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/rgsp-stick-axes.rc \
     device/roc/rgsp/input/rgsp-stick-axes.sh:$(TARGET_COPY_OUT_VENDOR)/bin/rgsp-stick-axes.sh
 
-PRODUCT_PACKAGES += rgsp_kmsg_logger RGSPLauncher AT4K RGSPNavigation H700Lid
+PRODUCT_PACKAGES += rgsp_kmsg_logger RGSPLauncher AT4K RGSPNavigation H700Lid H700Rotation
 
 # Explicit guarded Wi-Fi debugging, started from UART only.
 PRODUCT_COPY_FILES += \
