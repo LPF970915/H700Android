@@ -1,0 +1,30 @@
+{
+  "package": "com.tencent.weread.eink",
+  "version_code": 10245900,
+  "version_name": "2.1.2",
+  "min_sdk": 24,
+  "abis": [
+    "arm64-v8a",
+    "armeabi-v7a"
+  ],
+  "signature_verified_api29": true,
+  "sha256": "04d86bcdc1bbd77cab4ecc4d1c04e869d76dbabc79c60c52a707c64fc3e4b75f",
+  "date": "2026-10-29",
+  "official_page": "https://weread.qq.com/ink?from=Website",
+  "official_download": "https://download.weread.qq.com/pkg/105/releases/2.1.2.10245900_900.apk",
+  "target_sdk": 31,
+  "bytes": 127467642,
+  "certificate_sha256": "e4dd2f049941989ffafa45aef52eda9701372c27bc1708e89c217935140bfa1c",
+  "runtime_primary_cpu_abi": "armeabi-v7a",
+  "install": "passed",
+  "launch": "passed",
+  "login_page_key_path": "remote DPAD_CENTER -> DPAD_UP -> ENTER obtains QR",
+  "login": "requires user WeChat scan",
+  "reader_reflow": "not yet verified",
+  "reader_landscape": "setting text found; not yet verified in UI",
+  "font_size": "setting text found; not yet verified in UI",
+  "full_dpad_workflow": "not yet verified",
+  "native_tv_release": "not confirmed from official sources",
+  "apk_in_git": false,
+  "system_image_updated": false
+}
