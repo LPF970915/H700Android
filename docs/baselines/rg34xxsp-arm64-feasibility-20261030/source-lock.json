@@ -1,0 +1,6 @@
+{
+  "tools/arm64_probe/kernel64.S": "a7ed2a47da2a149717b58d2554254b883622751a142e89736c3cdee8ee13e44f",
+  "tools/build_h700_arm64_feasibility.py": "51046e080ae35ef10a36c5787c7132c6010ce07ceade2a47276703022ed33367",
+  "tools/build_h700_low_pressure.ps1": "92c51fb2062fd11096fee5dca553dcb6771b1ef2917caf33b0ee2358116197ba",
+  "tools/build_h700_low_pressure.sh": "93b76f142388319143fe22b6a5d9dc07e90ef346dba1bc9e154fd80ccb825094"
+}

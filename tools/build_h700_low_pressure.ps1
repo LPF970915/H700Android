@@ -2,7 +2,7 @@
 param(
     [string]$Distro = 'Ubuntu',
     [string]$SourceRoot = '/home/lpf/h700-android10/android',
-[ValidateSet('systemimage', 'vendorimage', 'ramdisk', 'adbd', 'vold', 'services', 'Settings', 'SettingsIntelligence', 'SystemUI', 'MediaProvider', 'LatinIME', 'LeanbackIME', 'Calendar', 'DocumentsUI', 'RGSPLauncher', 'RGSPNavigation', 'H700Apps', 'H700Navigation', 'H700Input', 'H700KernelInput', 'H700Lid', 'H700Rotation', 'H700RotationFramework', 'H700ReleaseImage', 'H700ReleaseImageMT', 'rgsp_vsync_probe', 'rgsp_egl_import_probe', 'hwcomposer.cupid', 'libsurfaceflinger', 'PermissionController')]
+[ValidateSet('systemimage', 'vendorimage', 'ramdisk', 'adbd', 'vold', 'services', 'Settings', 'SettingsIntelligence', 'SystemUI', 'MediaProvider', 'LatinIME', 'LeanbackIME', 'Calendar', 'DocumentsUI', 'RGSPLauncher', 'RGSPNavigation', 'H700Apps', 'H700Navigation', 'H700Input', 'H700KernelInput', 'H700Lid', 'H700Rotation', 'H700RotationFramework', 'H700ReleaseImage', 'H700ReleaseImageMT', 'H700Arm64Feasibility', 'rgsp_vsync_probe', 'rgsp_egl_import_probe', 'hwcomposer.cupid', 'libsurfaceflinger', 'PermissionController')]
     [string[]]$Targets = @('systemimage', 'vendorimage', 'ramdisk'),
     [switch]$Execute
 )

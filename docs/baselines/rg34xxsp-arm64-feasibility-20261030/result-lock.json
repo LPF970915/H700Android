@@ -1,0 +1,220 @@
+{
+  "checkpoint": "baseline/rg34xxsp-arm64-feasibility-20261030",
+  "scope": "static ELF64 userspace execution and offline ABI audit; no ARM64 Android or graphics claim",
+  "device_profile": "rg34xxsp",
+  "libraries": [
+    {
+      "file": "arm/lib/libGLES_mali.so",
+      "sha256": "05dc81f866b7ab947d20f283f25dcd96ca2f56ffd48e637b68778c1a994a6925",
+      "bytes": 13279144,
+      "elf_class": 32,
+      "needed": [
+        "libcutils.so",
+        "android.hardware.graphics.common@1.0.so",
+        "libnativewindow.so",
+        "liblog.so",
+        "libm.so",
+        "libc.so",
+        "libdl.so",
+        "libz.so",
+        "libc++.so"
+      ],
+      "egl_exports": [
+        "eglGetDisplay",
+        "eglInitialize",
+        "eglCreateContext",
+        "eglCreatePbufferSurface",
+        "eglMakeCurrent"
+      ],
+      "driver_version_strings": [
+        "1.4 Bifrost-\"r20p0-01rel0\"",
+        "OpenGL ES 3.2 v1.r20p0-01rel0.68e000e17df47656c46af2c0af7a3022",
+        "OpenGL ES-CM 1.1 v1.r20p0-01rel0.68e000e17df47656c46af2c0af7a3022",
+        "U:r20p0-01rel0 "
+      ]
+    },
+    {
+      "file": "arm64/lib/libGLES_mali.so",
+      "sha256": "21f8ad390fd514def2f6b9c98f80ff0df049b847d0097ecc6f8d854ad3ad18ca",
+      "bytes": 13259996,
+      "elf_class": 32,
+      "needed": [
+        "libcutils.so",
+        "android.hardware.graphics.common@1.0.so",
+        "libnativewindow.so",
+        "liblog.so",
+        "libm.so",
+        "libc.so",
+        "libdl.so",
+        "libz.so",
+        "libc++.so"
+      ],
+      "egl_exports": [
+        "eglGetDisplay",
+        "eglInitialize",
+        "eglCreateContext",
+        "eglCreatePbufferSurface",
+        "eglMakeCurrent"
+      ],
+      "driver_version_strings": [
+        "1.4 Bifrost-\"r20p0-01rel0\"",
+        "OpenGL ES 3.2 v1.r20p0-01rel0.f8adc226c43d2b235f75c28496bc8e0f",
+        "OpenGL ES-CM 1.1 v1.r20p0-01rel0.f8adc226c43d2b235f75c28496bc8e0f",
+        "U:r20p0-01rel0 "
+      ]
+    },
+    {
+      "file": "arm64/lib64/libGLES_mali.so",
+      "sha256": "03333d495e3566c7d85ca2e000da569a16ce8f022ea25c0ea61950c891d5c7f8",
+      "bytes": 18145112,
+      "elf_class": 64,
+      "needed": [
+        "libcutils.so",
+        "android.hardware.graphics.common@1.0.so",
+        "libnativewindow.so",
+        "liblog.so",
+        "libm.so",
+        "libc.so",
+        "libdl.so",
+        "libz.so",
+        "libc++.so"
+      ],
+      "egl_exports": [
+        "eglGetDisplay",
+        "eglInitialize",
+        "eglCreateContext",
+        "eglCreatePbufferSurface",
+        "eglMakeCurrent"
+      ],
+      "driver_version_strings": [
+        "1.4 Bifrost-\"r20p0-01rel0\"",
+        "OpenGL ES 3.2 v1.r20p0-01rel0.f8adc226c43d2b235f75c28496bc8e0f",
+        "OpenGL ES-CM 1.1 v1.r20p0-01rel0.f8adc226c43d2b235f75c28496bc8e0f",
+        "U:r20p0-01rel0 "
+      ]
+    }
+  ],
+  "source_configuration": {
+    "hardware/aw/gpu/mali-bifrost/gralloc/Android.mk": {
+      "sha256": "12759d38f0a753d42fc59fee4c2d8fb1d386b82eea05e87fdb4f0338e448cc29",
+      "selected_lines": []
+    },
+    "hardware/aw/gpu/mali-bifrost/gralloc/src/Android.mk": {
+      "sha256": "360f34a503bca051a95f9f1d80034a2028f4fd6bd8d4381ad75fe9ed9ffde9cf",
+      "selected_lines": [
+        "MALI_GRALLOC_GPU_LIBRARY_64_PATH1 := \"\\\"/vendor/lib64/egl/\\\"\"",
+        "MALI_GRALLOC_GPU_LIBRARY_64_PATH2 := \"\\\"/system/lib64/egl/\\\"\"",
+        "MALI_GRALLOC_DPU_LIBRARY_64_PATH := \"\\\"/vendor/lib64/hw/\\\"\"",
+        "MALI_GRALLOC_DPU_AEU_LIBRARY_64_PATH := \"\\\"/vendor/lib64/hw/\\\"\"",
+        "MALI_GRALLOC_GPU_LIBRARY_32_PATH1 := \"\\\"/vendor/lib/egl/\\\"\"",
+        "MALI_GRALLOC_GPU_LIBRARY_32_PATH2 := \"\\\"/system/lib/egl/\\\"\"",
+        "MALI_GRALLOC_DPU_LIBRARY_32_PATH := \"\\\"/vendor/lib/hw/\\\"\"",
+        "MALI_GRALLOC_DPU_AEU_LIBRARY_32_PATH := \"\\\"/vendor/lib/hw/\\\"\"",
+        "GRALLOC_FB_BPP?=32",
+        "LOCAL_CFLAGS_arm64 += -DMALI_GRALLOC_GPU_LIBRARY_PATH1=$(MALI_GRALLOC_GPU_LIBRARY_64_PATH1)",
+        "LOCAL_CFLAGS_arm64 += -DMALI_GRALLOC_GPU_LIBRARY_PATH2=$(MALI_GRALLOC_GPU_LIBRARY_64_PATH2)",
+        "LOCAL_CFLAGS_arm64 += -DMALI_GRALLOC_DPU_LIBRARY_PATH=$(MALI_GRALLOC_DPU_LIBRARY_64_PATH)",
+        "LOCAL_CFLAGS_arm64 += -DMALI_GRALLOC_DPU_AEU_LIBRARY_PATH=$(MALI_GRALLOC_DPU_AEU_LIBRARY_64_PATH)",
+        "LOCAL_CFLAGS_arm += -DMALI_GRALLOC_GPU_LIBRARY_PATH1=$(MALI_GRALLOC_GPU_LIBRARY_32_PATH1)",
+        "LOCAL_CFLAGS_arm += -DMALI_GRALLOC_GPU_LIBRARY_PATH2=$(MALI_GRALLOC_GPU_LIBRARY_32_PATH2)",
+        "LOCAL_CFLAGS_arm += -DMALI_GRALLOC_DPU_LIBRARY_PATH=$(MALI_GRALLOC_DPU_LIBRARY_32_PATH)",
+        "LOCAL_CFLAGS_arm += -DMALI_GRALLOC_DPU_AEU_LIBRARY_PATH=$(MALI_GRALLOC_DPU_AEU_LIBRARY_32_PATH)",
+        "LOCAL_SHARED_LIBRARIES := libhardware liblog libcutils libion libsync libutils",
+        "    LOCAL_SHARED_LIBRARIES += libGLESv1_CM",
+        "    LOCAL_SHARED_LIBRARIES += libhidlbase libhidltransport",
+        "        LOCAL_SHARED_LIBRARIES += android.hardware.graphics.mapper@2.0",
+        "            LOCAL_SHARED_LIBRARIES += android.hardware.graphics.mapper@2.1",
+        "        LOCAL_SHARED_LIBRARIES += android.hardware.graphics.allocator@2.0",
+        "            LOCAL_SHARED_LIBRARIES += android.hardware.graphics.mapper@2.1",
+        "LOCAL_SHARED_LIBRARIES += libnativewindow",
+        "LOCAL_MODULE_PATH_32 := $(TARGET_OUT_VENDOR)/lib",
+        "LOCAL_MODULE_PATH_64 := $(TARGET_OUT_VENDOR)/lib64",
+        "LOCAL_MULTILIB := both",
+        "LOCAL_SRC_FILES := \\",
+        "LOCAL_SRC_FILES += \\",
+        "    LOCAL_SRC_FILES += mali_gralloc_module.cpp \\",
+        "    LOCAL_SRC_FILES += mali_gralloc_module.cpp \\",
+        "        LOCAL_SRC_FILES += 2.x/GrallocMapper.cpp",
+        "        LOCAL_SRC_FILES += framebuffer_device.cpp \\"
+      ]
+    },
+    "hardware/aw/audio/hal/Android.mk": {
+      "sha256": "37b799cb64d1874c019f1a04e29b841f0d0d7a06495b41265f9c52affd1555c2",
+      "selected_lines": [
+        "#LOCAL_SRC_FILES := audio_plugins/audio_3d_surround/libAwSurround.so",
+        "#LOCAL_MULTILIB := 32",
+        "LOCAL_SRC_FILES := \\",
+        "LOCAL_SHARED_LIBRARIES += \\",
+        "#LOCAL_SHARED_LIBRARIES_32 += libAwSurround"
+      ]
+    },
+    "hardware/aw/hwc2/Android.mk": {
+      "sha256": "fe3fcbebb244338c27c0a191fa27566e236fb96fd484335359f0b2e6e7165275",
+      "selected_lines": [
+        "LOCAL_SHARED_LIBRARIES := liblog libEGL",
+        "LOCAL_SRC_FILES :=\\",
+        "\tLOCAL_SRC_FILES += other/write_back.cpp",
+        "\tLOCAL_SRC_FILES += other/write_back.cpp",
+        "\tLOCAL_SRC_FILES += other/composer_readback.cpp",
+        "LOCAL_SHARED_LIBRARIES := \\",
+        "    LOCAL_SRC_FILES += other/vendorservice.cpp",
+        "    LOCAL_SHARED_LIBRARIES += \\",
+        "\tLOCAL_SRC_FILES += other/homlet.cpp"
+      ]
+    },
+    "hardware/aw/audio/Android.mk": {
+      "sha256": "9e38d2a779c89fb6c81a6a16b5ff712b5e859f61bc767ddb0af44532957335c4",
+      "selected_lines": []
+    },
+    "build/target/product/core_64_bit.mk": {
+      "sha256": "36d2f6dd01a1639b2fffcf6c53079f44531d3f3da0a8346fe0b2631729c17ef6",
+      "selected_lines": [
+        "# Inherit from this product for devices that support 64-bit apps using:",
+        "# $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)",
+        "# For now this will allow 64-bit apps, but still compile all apps with JNI",
+        "# for 32-bit only.",
+        "# Copy the 64-bit primary, 32-bit secondary zygote startup script",
+        "PRODUCT_COPY_FILES += system/core/rootdir/init.zygote64_32.rc:root/init.zygote64_32.rc",
+        "# Set the zygote property to select the 64-bit primary, 32-bit secondary script",
+        "PRODUCT_DEFAULT_PROPERTY_OVERRIDES += ro.zygote=zygote64_32",
+        "TARGET_SUPPORTS_32_BIT_APPS := true",
+        "TARGET_SUPPORTS_64_BIT_APPS := true"
+      ]
+    },
+    "system/core/rootdir/init.zygote64_32.rc": {
+      "sha256": "dffaf27b5859fc37d2623bbd65cc7d5b7a7fc81eefc9ffeade1e784bd92cfcc0",
+      "selected_lines": [
+        "service zygote /system/bin/app_process64 -Xzygote /system/bin --zygote --start-system-server --socket-name=zygote",
+        "service zygote_secondary /system/bin/app_process32 -Xzygote /system/bin --zygote --socket-name=zygote_secondary --enable-lazy-preload"
+      ]
+    }
+  },
+  "compiler": "Android (5484270 based on r353983c) clang version 9.0.3 (https://android.googlesource.com/toolchain/clang 745b335211bb9eadfa6aa6301f84715cee4b37c5) (https://android.googlesource.com/toolchain/llvm 60cf23e54e46c807513f7a36d0a7b777920b5881) (based on LLVM 9.0.3svn)",
+  "probe": {
+    "sha256": "64b5a4ae53631c1073f7cd9222867508430ea2884f4bc6cd97b4d8bbd93b63ad",
+    "bytes": 9104,
+    "elf_class": 64,
+    "machine": "AArch64",
+    "dynamic_interpreter": false,
+    "scope": "mmap one page, 64-bit load/store, munmap, stdout, exit only"
+  },
+  "execution": {
+    "rc": 0,
+    "stdout": "ARM64_STATIC_OK pointer_bits=64 mmap_rw64=pass munmap=pass\n",
+    "stderr": ""
+  },
+  "standard_64_runtime_paths": [
+    "ABSENT /system/bin/linker64",
+    "ABSENT /apex/com.android.runtime/bin/linker64",
+    "ABSENT /system/lib64/libc.so",
+    "ABSENT /apex/com.android.runtime/lib64/bionic/libc.so",
+    "ABSENT /vendor/lib64/egl/libGLES_mali.so"
+  ],
+  "critical_hashes_and_boot_id_unchanged": true,
+  "system_vendor_read_only": true,
+  "kernel64_execution_pass": true,
+  "graphics64_runtime_pass": false,
+  "arm64_android_app_pass": false,
+  "driver_replacement_performed": false,
+  "system_image_or_card_written": false
+}

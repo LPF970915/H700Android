@@ -28,3 +28,5 @@ android/h700-android10/device/roc/rgsp/sepolicy/file_contexts text eol=lf
 docs/baselines/*.sha256 text eol=lf
 # Frozen sources retain the exact native bytes, including vendor CRLF files.
 android/h700-android10/snapshots/v5i-native35-20261028/** -text
+
+tools/arm64_probe/*.S text eol=lf
