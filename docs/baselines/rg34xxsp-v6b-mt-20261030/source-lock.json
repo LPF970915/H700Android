@@ -1,0 +1,13 @@
+{
+  "input_commit": "2aae928a68f482e7ef72d192e8bf4f750a8fd20a",
+  "sha256_lf": {
+    "tools/package_h700_v6a.py": "60dc0136f0c04c16d1ffda2257f063a018f48232e1374bfee0505483425def71",
+    "tools/package_h700_v6b.py": "bf81d78d0b0f0c3cecc2ae5bce9cc5dac04d61287c779aa7667de145c3e02a0f",
+    "tools/build_h700_low_pressure.ps1": "0983d89950dbd69c3b83ebce2bb01bb3c193321fe241b59beeffa89a5bae1448",
+    "tools/build_h700_low_pressure.sh": "1f76cfeb2ce55483cb4226bad05c4c4edc8abafac30110ce4e572038beabe97a",
+    "tools/test_h700_release_guards.py": "8fdacf9946679e4ee6e3cf3d21f83ebf5344e76efb1fcbf4aef81d7d52b8d35c",
+    "config/pegasus/preinstall-apks-v6b.json": "d06439b4ddc0eed0fdc7f86c47312c3a6b663642f4f271d131f638369ff18dbb",
+    "android/h700-android10/device/roc/rgsp/h700-preinstall-v6b.sh": "94617fd09daa8bebe009d85c3361bd95060cf0455277fa363b5524cc1dfb0a6a",
+    "android/h700-android10/device/roc/rgsp/h700_rgsp.mk": "24b9b02dead1ee55681e3aa672cbef0e5ce53e6ba516ea5bd6c54a336d7a3979"
+  }
+}

@@ -68,3 +68,5 @@ python3 tools/restore_h700_baseline.py --source /path/to/android \
 ## 2026-10-30 v5i 输入的新入口
 
 [RG34XXSP v6a](RG34XXSP_V6A_IMAGE_20261030.md) 已由新增的 `tools/package_h700_v6a.py` 对保留 v5i gzip 实际封装并通过离线校验，解决了本轮候选封装所需的 seed 入口问题；旧 v5g 工具不改写、不冒充接受 v5i。使用 `tools/build_h700_low_pressure.ps1 -Targets H700ReleaseImage -Execute`，仍需所有受保护本地二进制/主题/媒体，不能仅凭 Git 一键得到相同 IMG。新候选的首刷/首次应用初始化尚待验收，不代表全源码重编完成。
+
+同日新增 [v6b 八款预装](RG34XXSP_V6B_MT_20261030.md)，入口 `tools/build_h700_low_pressure.ps1 -Targets H700ReleaseImageMT -Execute`。依赖已校验 v6a 分区/资源锁与本地阶段，加入原签名 MT；支持在严格全分区哈希和五文件差异复核后继续压缩。新旧候选分开保存，不代表脱离本地输入的一键源码重建。

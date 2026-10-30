@@ -53,3 +53,5 @@
 三个旧 raw（v5i 整 IMG、native35 system/vendor raw）目前已不在原路径，其经过校验的 `.gz` 均仍在；此前“原文件与 gzip 并存”仅描述 10-28 自动清理未执行时的状态。
 
 `out/h700-v6a-preinstall-20261030/` 的新无 ROM 镜像 gzip、整镜像/分区/资源锁、首次启动平台测试与构建日志，以及 WSL `/home/lpf/h700-release-v6a-20261030/` 的新候选分区、payload、保留的中断材料和回读证明，均需保护，不能因代码已推 Git 而视为缓存。新 raw 在 gzip 完整解压 SHA 和再次 gzip 哈希确认后移除，保留可无损恢复的压缩包，释放约 30.2GiB；未删除旧压缩基底、源码、ROCreader 或原始材料。镜像未上传 Git。
+
+2026-10-30 v6b：保护 `out/h700-v6b-preinstall-20261030/` 成品 gzip、锁/日志/设备临时夹具记录及重命名保留的中断压缩输出，WSL `/home/lpf/h700-release-v6b-20261030/` 与 `...-fd8-prototype/`，以及保全目录 `v6b-20261030/` 的原生输入写前备份。直接分区流压缩，没有生成新的 32GB raw；旧 v6a 与 v5i gzip 均保留。Git 仅收配置、工具与脱敏报告，不含镜像/APK/私有记录。

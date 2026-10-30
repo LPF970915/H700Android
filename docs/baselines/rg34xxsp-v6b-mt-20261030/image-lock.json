@@ -1,0 +1,123 @@
+{
+  "release": "H700_RG34XXSP_2GB_v6b_20261030_NoROM_MT",
+  "status": "FILESYSTEM_COMPONENTS_RANGES_AND_GZIP_VERIFIED_PENDING_COLD_FLASH_ACCEPTANCE",
+  "parent_image_sha256": "2c4b6178a0202353d9dd31787f7a1b720141c62c2fbdff7120ae5684d45cabea",
+  "base_sha256": "3fd34fef4d5a2275f14023dba5dc488330ab0669a50889e8b748e30c9f3e68cd",
+  "bytes": 32434554368,
+  "sha256": "7e1372ae58eb33a1345374ee78943e03264706205293a502c925859694cdbb18",
+  "ranges": [
+    {
+      "name": "prefix",
+      "offset": 0,
+      "bytes": 222298112,
+      "sha256": "b2484137c531bb9b87d15bf4d0b10fafd8de685112504933c9a0c1208981460a"
+    },
+    {
+      "name": "system",
+      "offset": 222298112,
+      "bytes": 8589934592,
+      "sha256": "91e63582bf74d22998c54ca65824d98d21d0eac424ef57c92e780f4929382ad9"
+    },
+    {
+      "name": "vendor",
+      "offset": 8812232704,
+      "bytes": 2147483648,
+      "sha256": "4b1978fc86e223870ec8a4c4215e01d4b1efb0502ebf91eff586776ce396ce75"
+    },
+    {
+      "name": "factory_tail",
+      "offset": 10959716352,
+      "bytes": 21474838016,
+      "sha256": "eab9dbbe980e819e7610b11fc46e795cba1cf2f7dca560bd8ed60777274fbd0f"
+    }
+  ],
+  "gzip": {
+    "file": "H700_RG34XXSP_2GB_v6b_20261030_NoROM_MT.img.gz",
+    "bytes": 3458510881,
+    "sha256": "fca43bbc2e685ca0bdbe4f30a360463915488722d92782b3cedb8ddb17aced15",
+    "full_decompressed_sha256_verified": true
+  },
+  "raw_materialized": false,
+  "game_rom_files": 0,
+  "collection_entries": 604,
+  "media_files": 3035,
+  "factory_userdata_and_roms_preserved": true,
+  "full_aosp_rebuild": false,
+  "physical_flash_performed": false,
+  "fresh_first_boot_verified": false,
+  "cpu_quota": "one aggregate CPU, affinity 0-1, nice 19",
+  "memory_max_gib": 6,
+  "swap_max_mib": 512,
+  "hardware_voltage_telemetry_available": false,
+  "partition_component_manifest_sha256": "dadb228615f59a7119d8f8e8c034f6c6b0a7114d6a5200d86508b4f7da3fd80d",
+  "payload_manifest_sha256": "7b7668c8318d12ac57400cec853500d66a2e0155ecf253907a749f7858d20a01",
+  "packaging_inputs_commit": "2aae928a68f482e7ef72d192e8bf4f750a8fd20a",
+  "successful_resume_run": {
+    "wall_seconds": 548.967,
+    "cpu_seconds": 470.556,
+    "memory_peak_gib": 5.0,
+    "swap_peak_bytes": 0,
+    "exit_code": 0
+  },
+  "checkpoint": "baseline/rg34xxsp-v6b-mt-norom-20261030",
+  "preinstall_apps": [
+    {
+      "id": "QQMusicTV",
+      "package": "com.tencent.qqmusictv",
+      "sha256": "c37369d85ea817a68e91bb100f1e0994e53b37592c0e80237932f762428128a2",
+      "bytes": 72156717
+    },
+    {
+      "id": "AnimekoTV",
+      "package": "me.him188.ani.tv",
+      "sha256": "ee3126653e5554906f99eb7eda7bb254f69e7246258e55f19e1aaf997bde23da",
+      "bytes": 32209143
+    },
+    {
+      "id": "PPSSPP",
+      "package": "org.ppsspp.ppsspp",
+      "sha256": "dd702a31270ecd68db37afee311d6efe08b1d4da9601d2750ce1a73bbd316c3f",
+      "bytes": 45448397
+    },
+    {
+      "id": "RetroArch",
+      "package": "com.retroarch.ra32",
+      "sha256": "9e964f53089a302401a6d5b1451d7ce5539f39b85eb0a305d8d77e6edcbf803f",
+      "bytes": 183797621
+    },
+    {
+      "id": "NOVA",
+      "package": "org.courville.nova",
+      "sha256": "8b79a340b7e015ecd80c9b82f4d3b992ac34785cdfd0fbb82d98f7da693f84b6",
+      "bytes": 32031731
+    },
+    {
+      "id": "KOReader",
+      "package": "org.koreader.launcher",
+      "sha256": "37c5b72202241ee8e85d186b9147534ffde28d39a98981e3e8f794274ee7df93",
+      "bytes": 29085335
+    },
+    {
+      "id": "Pegasus",
+      "package": "org.pegasus_frontend.android",
+      "sha256": "c3971ad63a6ea4a410bf5e3fc80bb8803a31612765cb62d0a2156f3eed8f8b51",
+      "bytes": 15888624
+    },
+    {
+      "id": "MTManager",
+      "package": "bin.mt.plus",
+      "sha256": "8f83cef8ac63f76a81e1fee3ededb213f6ba43cc19761e38bc4e567c87edd47d",
+      "bytes": 37521106
+    }
+  ],
+  "verification": {
+    "system_modified_files": 3629,
+    "vendor_modified_files": 15,
+    "component_and_selinux_readback": true,
+    "full_partition_hashes_rechecked_before_resume": true,
+    "e2fsck_exit": 0,
+    "host_boundary_tests": 8,
+    "android_flock_exclusion_and_exit_release": true,
+    "hard_power_loss_recovery_accepted": false
+  }
+}
