@@ -1,9 +1,12 @@
 """Boundary tests for ROM-free release metadata; no image or device mutations."""
 import tempfile
+import io
+import copy
 import unittest
 from pathlib import Path
 
 import package_h700_v6a as release
+import package_h700_v6b as mt_release
 
 
 class ReleaseGuards(unittest.TestCase):
@@ -47,6 +50,30 @@ class ReleaseGuards(unittest.TestCase):
         self.assertFalse(release.MEDIA & release.ROM)
         self.assertFalse(release.THEME & release.ROM)
         self.assertTrue({'.gba', '.zip', '.7z', '.iso', '.sav'} <= release.ROM)
+
+    def test_mt_is_the_only_authorized_addition(self):
+        parent = [{'id': str(i)} for i in range(7)]
+        mt = {'id': 'MTManager', 'package': 'bin.mt.plus', 'sha256': mt_release.MT_SHA,
+              'bytes': 37521106, 'file': 'out/mt-manager-20261030/MT2.26.10.apk'}
+        selected = copy.deepcopy(parent) + [mt]
+        mt_release.check_apps(parent, selected)
+        for wrong in [selected + [mt], selected[:-1], [{'id': 'changed'}] + selected[1:]]:
+            with self.assertRaises(ValueError):
+                mt_release.check_apps(parent, wrong)
+
+    def test_range_stream_does_not_silently_truncate(self):
+        target = io.BytesIO()
+        with self.assertRaises(ValueError):
+            mt_release.transfer_exact(io.BytesIO(b'abc'), 4, target.write)
+        self.assertEqual(target.getvalue(), b'abc')
+
+    def test_contiguous_image_ranges(self):
+        good = [{'offset': 0, 'bytes': 3}, {'offset': 3, 'bytes': 2}]
+        self.assertEqual(mt_release.validate_ranges(good), 5)
+        for bad in [[{'offset': 0, 'bytes': 0}], [{'offset': 1, 'bytes': 3}],
+                    [good[0], {'offset': 2, 'bytes': 2}]]:
+            with self.assertRaises(ValueError):
+                mt_release.validate_ranges(bad)
 
 
 if __name__ == '__main__':

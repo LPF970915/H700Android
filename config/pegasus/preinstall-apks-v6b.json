@@ -1,0 +1,58 @@
+[
+  {
+    "id": "QQMusicTV",
+    "package": "com.tencent.qqmusictv",
+    "file": "out/qqmusic-tv-20261029/QQMusicTV-official-arm32.apk",
+    "sha256": "c37369d85ea817a68e91bb100f1e0994e53b37592c0e80237932f762428128a2",
+    "bytes": 72156717
+  },
+  {
+    "id": "AnimekoTV",
+    "package": "me.him188.ani.tv",
+    "file": "out/video-gapps-20261029/apks/Animeko-TV-6.4.0-armeabi-v7a.apk",
+    "sha256": "ee3126653e5554906f99eb7eda7bb254f69e7246258e55f19e1aaf997bde23da",
+    "bytes": 32209143
+  },
+  {
+    "id": "PPSSPP",
+    "package": "org.ppsspp.ppsspp",
+    "file": "out/rg34xxsp-input-power-20261028/emulators/ppsspp.apk",
+    "sha256": "dd702a31270ecd68db37afee311d6efe08b1d4da9601d2750ce1a73bbd316c3f",
+    "bytes": 45448397
+  },
+  {
+    "id": "RetroArch",
+    "package": "com.retroarch.ra32",
+    "file": "out/rg34xxsp-input-power-20261028/emulators/RetroArch_ra32.apk",
+    "sha256": "9e964f53089a302401a6d5b1451d7ce5539f39b85eb0a305d8d77e6edcbf803f",
+    "bytes": 183797621
+  },
+  {
+    "id": "NOVA",
+    "package": "org.courville.nova",
+    "file": "out/tv-apps-20261028/apks/org.courville.nova-2673649-6.6.2-20261027.1847-armeabi-v7a-release.apk",
+    "sha256": "8b79a340b7e015ecd80c9b82f4d3b992ac34785cdfd0fbb82d98f7da693f84b6",
+    "bytes": 32031731
+  },
+  {
+    "id": "KOReader",
+    "package": "org.koreader.launcher",
+    "file": "out/tv-apps-20261028/apks/koreader-android-arm-v2026.07.1.apk",
+    "sha256": "37c5b72202241ee8e85d186b9147534ffde28d39a98981e3e8f794274ee7df93",
+    "bytes": 29085335
+  },
+  {
+    "id": "Pegasus",
+    "package": "org.pegasus_frontend.android",
+    "file": "out/pegasus-gba-20261030/Pegasus-official-arm32.apk",
+    "sha256": "c3971ad63a6ea4a410bf5e3fc80bb8803a31612765cb62d0a2156f3eed8f8b51",
+    "bytes": 15888624
+  },
+  {
+    "id": "MTManager",
+    "package": "bin.mt.plus",
+    "file": "out/mt-manager-20261030/MT2.26.10.apk",
+    "sha256": "8f83cef8ac63f76a81e1fee3ededb213f6ba43cc19761e38bc4e567c87edd47d",
+    "bytes": 37521106
+  }
+]
