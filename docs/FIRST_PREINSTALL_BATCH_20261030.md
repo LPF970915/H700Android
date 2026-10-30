@@ -25,3 +25,7 @@
 - Animeko：发布页 `https://github.com/open-ani/animeko/releases/tag/v6.4.0`；文件 `ani-tv-6.4.0-armeabi-v7a.apk`，32,209,143 字节，SHA-256 `ee3126653e5554906f99eb7eda7bb254f69e7246258e55f19e1aaf997bde23da`。本地 APK 已验证 API 29 签名、最低 API 26 和 ARM32 ABI；原始证据与 APK 位于 `out/video-gapps-20261029/`，不上传。
 
 既有 [小屏首轮记录](RG34XXSP_SMALL_SCREEN_APPS_20261028.md)保留原始测试结果；当前预装选择和 NOVA 模式要求以本文为准。应用 APK、账号、书架/播放截图及原始日志继续仅保留本地。
+
+## 同日明确增补：天马 G
+
+用户要求将天马 G 与相关配置加入下一镜像，**不含游戏 ROM**。采用官方 ARM32 Pegasus、用户整合包主题及本机 RA ra32，详见 [GBA 记录](RG34XXSP_PEGASUS_GBA_20261030.md)。上文“只有六款”描述最初确认时点，当前选择为这六款加天马 G；MT 仍候选。封装另有报告前，不代表已生成新 IMG。

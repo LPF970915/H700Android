@@ -45,3 +45,5 @@
 补充的旧截图、Python 缓存和空目录批量清理被自动审批拒绝（`blocked by policy`，未给出具体原因），没有执行；这些小型忽略内容可能仍留在本地，不进入 Git。
 
 2026-10-29 Menu/横屏增量另保留 `LOCAL_PRESERVE_H700_BASELINE_20261028/force-landscape-20261029/` 的旧系统 JAR、Navigation v7、显示策略、源码和私有回退脚本，以及 `out/force-landscape-20261029/` 的新 APK/JAR/验收证据。Git 只收脱敏锁和源码；这些文件不是本轮可清缓存。见 [增量记录](RG34XXSP_MENU_LANDSCAPE_20261029.md)。
+
+2026-10-30 增补 [天马 G / GBA 实测与预装](RG34XXSP_PEGASUS_GBA_20261030.md)。官方 ARM32 前端、主题/元数据适配、独立 LCD3x 配置及 NuPlayer 预览修复已在现机验证；新镜像封装另计。`out/pegasus-gba-20261030/` 与本地保全同名子目录保存 APK、原始材料、测试/回退输入，不能按缓存删除；ROM 不上传 Git、不加入新镜像。

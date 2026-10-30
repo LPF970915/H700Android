@@ -168,3 +168,7 @@ PRODUCT_COPY_FILES += \
     device/roc/rgsp/h700-network-validation-defaults.rc:$(TARGET_COPY_OUT_SYSTEM)/etc/init/h700-network-validation-defaults.rc \
     device/roc/rgsp/h700-network-validation-defaults.sh:$(TARGET_COPY_OUT_SYSTEM)/bin/h700-network-validation-defaults.sh
 
+# Avoid the legacy Allwinner player/retriever on the explicit RG34XXSP profile.
+PRODUCT_COPY_FILES += \
+    device/roc/rgsp/h700-media-compat.rc:$(TARGET_COPY_OUT_SYSTEM)/etc/init/h700-media-compat.rc
+

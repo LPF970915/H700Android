@@ -1,0 +1,61 @@
+{
+  "checkpoint": "baseline/rg34xxsp-pegasus-gba-20261030",
+  "frontend": {
+    "name": "pegasus-fe_alpha16-112-g2a13b4f4_android.apk",
+    "browser_download_url": "https://github.com/mmatyas/pegasus-frontend/releases/download/continuous/pegasus-fe_alpha16-112-g2a13b4f4_android.apk",
+    "size": 15888624,
+    "digest": "sha256:c3971ad63a6ea4a410bf5e3fc80bb8803a31612765cb62d0a2156f3eed8f8b51",
+    "sha256": "c3971ad63a6ea4a410bf5e3fc80bb8803a31612765cb62d0a2156f3eed8f8b51"
+  },
+  "cores": [
+    {
+      "id": "mgba",
+      "url": "https://buildbot.libretro.com/nightly/android/latest/armeabi-v7a/mgba_libretro_android.so.zip",
+      "zip_sha256": "707378b0bf49f90e993d96f4221212f2c1ab301cfec1e4317d75a19694013ee4",
+      "so_sha256": "a976a807a7bd79a7dabbc42cfc02620fca17ec7011e887730e9d768689a4d651",
+      "bytes": 1585500,
+      "elf_class": 32,
+      "machine": "ARM"
+    },
+    {
+      "id": "gpsp",
+      "url": "https://buildbot.libretro.com/nightly/android/latest/armeabi-v7a/gpsp_libretro_android.so.zip",
+      "zip_sha256": "9ab8aafc36d52bb604b5863374a77bf024565df00df5c95f31facc53e92c960c",
+      "so_sha256": "1909ad5f2b053dba120d77fae58352f1ecdb066dfdcdd20d4f565bb1fd52d376",
+      "bytes": 591020,
+      "elf_class": 32,
+      "machine": "ARM"
+    },
+    {
+      "id": "vbam",
+      "url": "https://buildbot.libretro.com/nightly/android/latest/armeabi-v7a/vbam_libretro_android.so.zip",
+      "zip_sha256": "abd858ed53040d63c087fe731523af0f5ed2ce487436548010b8e29387253714",
+      "so_sha256": "6daaf8f356896a96619a2be50a3d7455ae198ce8b6a1649e850d1a227e223d01",
+      "bytes": 845088,
+      "elf_class": 32,
+      "machine": "ARM"
+    }
+  ],
+  "source_archives": [
+    {
+      "file": "PG_天马G_2026新GBA整合包_20261014_Roms.zip",
+      "sha256": "dec9d8385247102755ccb00d7280b2efe9bf97bf8282f019d6a0fd52f489f924",
+      "entries": 4311,
+      "unpacked_bytes": 6194610393
+    },
+    {
+      "file": "PG_天马G_2026新GBA整合包_主题包_20260916.zip",
+      "sha256": "5994d5301c59ae184f4b0056b7f9a5c37237471691ffb587903f56e49f432b3d",
+      "entries": 586,
+      "unpacked_bytes": 499521131
+    },
+    {
+      "file": "PG_天马G_2026新GBA整合包_配置文件_20260827.zip",
+      "sha256": "4e7fd15fc7433b773d6d569c9baa3f635ebe78d581ba05ea29f582c7202354ab",
+      "entries": 1481,
+      "unpacked_bytes": 24663018
+    }
+  ],
+  "roms_published": false,
+  "full_image_repacked": false
+}
