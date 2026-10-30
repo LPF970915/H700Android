@@ -85,3 +85,5 @@
 2026-10-30 增补 [天马 G / GBA 实测与预装](RG34XXSP_PEGASUS_GBA_20261030.md)。官方 ARM32 前端、主题/元数据适配、独立 LCD3x 配置及 NuPlayer 预览修复已在现机验证；新镜像封装另计。`out/pegasus-gba-20261030/` 与本地保全同名子目录保存 APK、原始材料、测试/回退输入，不能按缓存删除；ROM 不上传 Git、不加入新镜像。
 
 2026-10-30 [ARM64 小范围验证](RG34XXSP_ARM64_FEASIBILITY_20261030.md)：静态 AArch64 程序在当前内核真实执行通过，候选 64 位 Mali 与双位数 Gralloc 源码存在；现机标准 64 位运行库路径缺失，尚未通过 ARM64 Android 应用/图形或双 ABI 共存测试。没有改写当前图形栈或 v6b 镜像，风险仍需下一阶段隔离动态加载与 EGL 验证关闭。
+
+2026-10-30 [ARM64 隔离 EGL 验证](RG34XXSP_ARM64_ISOLATED_EGL_20261030.md)：真正共享运行库、Mali dlopen、EGL1.4、Mali-G31 16×16 离屏清屏/读回通过；未替换系统库或改写 v6b。窗口显示、Gralloc/HWC/ART64 和双 ABI 应用共存仍未验收。
