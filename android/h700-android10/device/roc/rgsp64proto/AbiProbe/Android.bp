@@ -1,0 +1,19 @@
+cc_library_shared {
+    name: "libh700_abi_probe",
+    srcs: ["abi_probe.c"],
+    // BSP NDK r18 provides CRT through API28. This JNI uses no newer native API.
+    sdk_version: "28",
+    stl: "none",
+    compile_multilib: "64",
+}
+android_app {
+    name: "H700AbiProbe64",
+    srcs: ["ProbeActivity.java"],
+    manifest: "AndroidManifest.xml",
+    sdk_version: "29",
+    min_sdk_version: "29",
+    jni_libs: ["libh700_abi_probe"],
+    // Keep this APK independently installable, without a companion /system lib.
+    use_embedded_native_libs: true,
+    compile_multilib: "64",
+}

@@ -1,0 +1,25 @@
+{
+  "encoding": "Git-normalized LF bytes, not frozen source overlay",
+  "files": {
+    ".gitattributes": "d6724eedf5db39178a47362bb20836633caba5c60d7a6a3b248acacd4aa51471",
+    "AGENTS.md": "bcacaf990743727a5b2f5bb4df170fbdfce2922dd4295d82f5e2ff28f39d7cb2",
+    "android/h700-android10/device/roc/rgsp64proto/AbiProbe/abi_probe.c": "58ce155f3a0c7735c2f2fba2145af2e490e5e2f3bf3a18438e3b55fdcdbe1416",
+    "android/h700-android10/device/roc/rgsp64proto/AbiProbe/Android.bp": "12ef0021e0b2957f511acc098f5e24a260ce678d9372f72f21a9371b91183464",
+    "android/h700-android10/device/roc/rgsp64proto/AbiProbe/AndroidManifest.xml": "ea9254e7729d9e2e0200c7865a62fa4766488e13a76e78c04347fd3b7d0f02c2",
+    "android/h700-android10/device/roc/rgsp64proto/AbiProbe/ProbeActivity.java": "2c6e6ea3c3721bd56d10062216b85420c7f4dbc4222085edc90e428f2ed4680e",
+    "android/h700-android10/device/roc/rgsp64proto/Android.bp": "d0dc0905ced77f2860c5d908bad05d381e1c2c4a95451ba3bb77eff37ce04b78",
+    "android/h700-android10/device/roc/rgsp64proto/Android.mk": "f93ef0da1905d7b79852f0f8a11e6fa4433b25f0b837f7f4f936e65f7a72293c",
+    "android/h700-android10/device/roc/rgsp64proto/AndroidProducts.mk": "aaf5ab9c6c14423bc59cb79d144881cc6196caee813a2691e2df03651a5764e0",
+    "android/h700-android10/device/roc/rgsp64proto/BoardConfig.mk": "6b0694605695184beedf8c350bc58f3cf177745bb7b8a334626dd0ab409e7a8c",
+    "android/h700-android10/device/roc/rgsp64proto/h700_rgsp64proto.mk": "01209272a513ad0121bc1bef667845bbf0c4a96790f87490a492f3750327d203",
+    "android/h700-android10/device/roc/rgsp64proto/window_probe.cpp": "3db371ab1442b920c6307af6b315ae237b812fed9ba6436605d8fe5b80ebedcf",
+    "docs/RG34XXSP_DUALABI_PROTOTYPE_20261031.md": "8e3ea39254bb6f5145a9d23ca42134e7a5919e48c5d93c37a15ef133eccfac60",
+    "tools/arm64_probe/dualabi_namespace_run.sh": "fd7820f228b3590e13a48581bb7508bb2ea749618856bd6dbded954dd74b4c5b",
+    "tools/arm64_probe/mount_guard.c": "f9bab595bc8856b80e478f19b70e7f95652544ab18406482e2f7a67cbcdc641e",
+    "tools/build_h700_dualabi_bundle.py": "98dafd1da864b8861dc39f3fcc55c38abb5dcc19916d7280cbb58f88d2100272",
+    "tools/build_h700_low_pressure.ps1": "18f7e5f36c97173422f45b42f6dd7aecaae2ae37a66ae41ae8ac70b5b17c8c46",
+    "tools/build_h700_low_pressure.sh": "31190ecdf918af42c923e3f10ec1d916edacb9234079018454c8eb7480194289",
+    "tools/prepare_h700_dualabi_product.py": "b2e71206c5544d96f74e53b7d932421e158465063789a1f4396ebe92eb70dfbf",
+    "tools/test_h700_dualabi_window.py": "848f8df77b9774149a929bb5e766dc75891ef9a2e7bdc839283becd7a7de4d77"
+  }
+}

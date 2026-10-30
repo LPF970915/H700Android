@@ -6,6 +6,7 @@ test -f "$root/build/envsetup.sh"
 test "$#" -gt 0
 for target in "$@"; do
     case "$target" in systemimage|vendorimage|ramdisk|adbd|vold|services|Settings|SettingsIntelligence|SystemUI|MediaProvider|LatinIME|LeanbackIME|Calendar|DocumentsUI|RGSPLauncher|RGSPNavigation|H700Apps|H700Navigation|H700Input|H700KernelInput|H700Lid|H700Rotation|H700RotationFramework|H700ReleaseImage|H700ReleaseImageMT|H700Arm64Feasibility|H700Arm64Isolated|rgsp_vsync_probe|rgsp_egl_import_probe|hwcomposer.cupid|libsurfaceflinger|PermissionController) ;;
+        H700DualAbiWindow|H700DualAbiBoot) ;;
         *) echo "Unsupported target: $target" >&2; exit 2 ;;
     esac
 done
@@ -29,6 +30,25 @@ export GOGC=50
 export JAVA_TOOL_OPTIONS='-Xmx2048m'
 export NINJA_ARGS='-j1'
 export MAKEFLAGS='-j1'
+if [ "$#" = 1 ] && { [ "$1" = H700DualAbiWindow ] || [ "$1" = H700DualAbiBoot ]; }; then
+    # The dual-arch graph has more live Go data. Collect sooner instead of
+    # raising MemoryHigh/MemoryMax or allowing extra CPUs.
+    export GOGC=10
+    echo "LOW_PRESSURE_START=$(date -Is)"
+    python3 "$(dirname "$(realpath "$0")")/prepare_h700_dualabi_product.py"
+    export OUT_DIR=/home/lpf/h700-dualabi-prototype-20261030/out
+    cd "$root"
+    source build/envsetup.sh >/dev/null
+    lunch h700_rgsp64proto-eng
+    if [ "$1" = H700DualAbiWindow ]; then
+        m -j1 h700_window_probe gralloc.h700proto android.hardware.graphics.mapper@2.0-impl-2.1 linker libc.bootstrap libdl.bootstrap libm.bootstrap libGLESv1_CM libz H700AbiProbe64
+        python3 "$(dirname "$(realpath "$0")")/build_h700_dualabi_bundle.py"
+    else
+        m -j1 init_second_stage adbd H700AbiProbe64
+    fi
+    echo "LOW_PRESSURE_COMPLETE=$(date -Is)"
+    exit 0
+fi
 if [ "$#" = 1 ] && [ "$1" = H700Arm64Isolated ]; then
     echo "LOW_PRESSURE_START=$(date -Is)"
     python3 "$(dirname "$(realpath "$0")")/prepare_h700_arm64_runtime.py"

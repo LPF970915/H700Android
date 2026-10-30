@@ -59,3 +59,5 @@
 ARM64 可行性验证的 `out/arm64-feasibility-20261030/` 与对应低负载构建日志保留探针、失败/成功取证及原始设备证明，包含私有设备身份，仅脱敏结果与自有源码入 Git；没有复制或替换设备系统/厂商库，未生成新镜像。
 
 ARM64 隔离实验：保护 `out/arm64-isolated-20261030/` 与 WSL `/home/lpf/h700-arm64-isolated-20261030/` 的官方 GSI/供体解包、运行库、探针、rootfs、失败原型和私有证据。只提交脱敏锁和自有源码，二进制/原始日志不上传，当前 v6b 不改写。
+
+双ABI原型：保护 `out/dualabi-prototype-20261030/`、WSL `/home/lpf/h700-dualabi-prototype-20261030/` 和原生源码树内独立 `device/roc/rgsp64proto/gralloc-variant` 的派生源/输入锁；包括 bootstrap/GLES1 补齐前的失败包、旧截图通道失败、成功窗口证据及128G备用卡私有身份记录。Git只保留自有准备工具/产品/脱敏元数据，不包含二进制、卡身份、截图或镜像。备用卡格式化授权不扩大到当前工作卡或既有本地保留输入。

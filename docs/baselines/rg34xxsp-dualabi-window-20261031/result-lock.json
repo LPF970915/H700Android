@@ -1,0 +1,1057 @@
+{
+  "checkpoint": "baseline/rg34xxsp-dualabi-window-20261031",
+  "product": "h700_rgsp64proto-eng",
+  "primary_abi": "arm64-v8a",
+  "secondary_abis": [
+    "armeabi-v7a",
+    "armeabi"
+  ],
+  "binder_bits": 64,
+  "device_scope": "RG34XXSP H700 2GB",
+  "native_window_runs": 2,
+  "renderer": "Mali-G31",
+  "egl": "1.4",
+  "green_rgba": [
+    0,
+    255,
+    0,
+    255
+  ],
+  "window_pixels": [
+    256,
+    192
+  ],
+  "screenshot_pixels": [
+    720,
+    480
+  ],
+  "window_gate": {
+    "elf_bits": 64,
+    "swap": true,
+    "composed_green_window": true,
+    "layer_removed": true,
+    "baseline_unchanged": true,
+    "physical_observation": "pending",
+    "bundle_lock_sha256": "1b00a047f537c068800b7db8d3d435309b942ddb920243b87780850e85ede38d",
+    "evidence_subdir": "window-file-capture"
+  },
+  "arm64_apk_runtime": "not_tested",
+  "art64": "not_tested",
+  "ra_ppsspp_coexistence": "not_tested",
+  "card_writes": false,
+  "v6b_unchanged": true,
+  "original_bsp_gralloc_unchanged": true,
+  "runtime_files": {
+    "system/bin/linker64": {
+      "source": "system/bin/bootstrap/linker64",
+      "sha256": "9ac5d2e7f415d85c159c0a456819ea3d03f9283f3b8da993c5597e5dff4de1bd",
+      "needed": []
+    },
+    "apex/com.android.runtime/bin/linker64": {
+      "source": "system/bin/bootstrap/linker64",
+      "sha256": "9ac5d2e7f415d85c159c0a456819ea3d03f9283f3b8da993c5597e5dff4de1bd",
+      "needed": []
+    },
+    "system/bin/h700_window_probe64": {
+      "source": "system/bin/h700_window_probe64",
+      "sha256": "cb5a007677a0ae56fe3e999f3eb8cf4054cc8821b02be76e11cce0be95554ddd",
+      "needed": [
+        "libgui.so",
+        "libui.so",
+        "libutils.so",
+        "libbinder.so",
+        "libEGL.so",
+        "libGLESv2.so",
+        "libc++.so",
+        "libc.so",
+        "libm.so",
+        "libdl.so"
+      ]
+    },
+    "vendor/lib64/hw/gralloc.cupid.so": {
+      "source": "vendor/lib64/hw/gralloc.h700proto.so",
+      "sha256": "d2ed53c23c384349b9e893b2478c0b32654225055c1a57dfb2633d02b631cf71",
+      "needed": [
+        "libhardware.so",
+        "liblog.so",
+        "libcutils.so",
+        "libion.so",
+        "libsync.so",
+        "libutils.so",
+        "libGLESv1_CM.so",
+        "libnativewindow.so",
+        "libc++.so",
+        "libc.so",
+        "libm.so",
+        "libdl.so"
+      ]
+    },
+    "vendor/lib64/hw/gralloc.h700proto.so": {
+      "source": "vendor/lib64/hw/gralloc.h700proto.so",
+      "sha256": "d2ed53c23c384349b9e893b2478c0b32654225055c1a57dfb2633d02b631cf71",
+      "needed": [
+        "libhardware.so",
+        "liblog.so",
+        "libcutils.so",
+        "libion.so",
+        "libsync.so",
+        "libutils.so",
+        "libGLESv1_CM.so",
+        "libnativewindow.so",
+        "libc++.so",
+        "libc.so",
+        "libm.so",
+        "libdl.so"
+      ]
+    },
+    "vendor/lib64/hw/android.hardware.graphics.mapper@2.0-impl-2.1.so": {
+      "source": "vendor/lib64/hw/android.hardware.graphics.mapper@2.0-impl-2.1.so",
+      "sha256": "e6696bcffc897f32e82558e50f00389cf8ad953a59ea8491469b01db32b8ab6c",
+      "needed": [
+        "android.hardware.graphics.mapper@2.0.so",
+        "android.hardware.graphics.mapper@2.1.so",
+        "libbase.so",
+        "libcutils.so",
+        "libhardware.so",
+        "libhidlbase.so",
+        "libhidltransport.so",
+        "liblog.so",
+        "libsync.so",
+        "libutils.so",
+        "libc++.so",
+        "libc.so",
+        "libm.so",
+        "libdl.so"
+      ]
+    },
+    "vendor/lib64/egl/libGLES_mali.so": {
+      "source": "BSP arm64 Mali",
+      "sha256": "03333d495e3566c7d85ca2e000da569a16ce8f022ea25c0ea61950c891d5c7f8",
+      "needed": [
+        "libcutils.so",
+        "android.hardware.graphics.common@1.0.so",
+        "libnativewindow.so",
+        "liblog.so",
+        "libm.so",
+        "libc.so",
+        "libdl.so",
+        "libz.so",
+        "libc++.so"
+      ]
+    },
+    "system/lib64/libgui.so": {
+      "source": "system/lib64/libgui.so",
+      "sha256": "08059e3f7416305a0ca3fd2f3f27887de9f4bb68c4c61e7cedbe85e264939e55",
+      "needed": [
+        "android.hardware.graphics.bufferqueue@1.0.so",
+        "android.hardware.graphics.bufferqueue@2.0.so",
+        "android.hardware.graphics.common@1.1.so",
+        "android.hardware.graphics.common@1.2.so",
+        "android.hidl.token@1.0-utils.so",
+        "libbase.so",
+        "libbinder.so",
+        "libcutils.so",
+        "libEGL.so",
+        "libGLESv2.so",
+        "libhidlbase.so",
+        "libhidltransport.so",
+        "libhwbinder.so",
+        "liblog.so",
+        "libnativewindow.so",
+        "libsync.so",
+        "libui.so",
+        "libutils.so",
+        "libvndksupport.so",
+        "android.frameworks.bufferhub@1.0.so",
+        "libbufferhub.so",
+        "libbufferhubqueue.so",
+        "libinput.so",
+        "libpdx_default_transport.so",
+        "libc++.so",
+        "libc.so",
+        "libm.so",
+        "libdl.so"
+      ]
+    },
+    "system/lib64/libui.so": {
+      "source": "system/lib64/libui.so",
+      "sha256": "e7dda3e87c22f616740db25ff47c9d5f7b4fd5ad046f6f5753b52c7d0be4ea4b",
+      "needed": [
+        "android.frameworks.bufferhub@1.0.so",
+        "android.hardware.graphics.allocator@2.0.so",
+        "android.hardware.graphics.allocator@3.0.so",
+        "android.hardware.graphics.common@1.2.so",
+        "android.hardware.graphics.mapper@2.0.so",
+        "android.hardware.graphics.mapper@2.1.so",
+        "android.hardware.graphics.mapper@3.0.so",
+        "libbase.so",
+        "libcutils.so",
+        "libhardware.so",
+        "libhidlbase.so",
+        "libhidltransport.so",
+        "libhwbinder.so",
+        "libsync.so",
+        "libutils.so",
+        "liblog.so",
+        "libc++.so",
+        "libc.so",
+        "libm.so",
+        "libdl.so"
+      ]
+    },
+    "system/lib64/libutils.so": {
+      "source": "system/lib64/libutils.so",
+      "sha256": "4844c80e7e67a4c98d66b506d500c2ba19d65c7b507af1d246d0d1aa15d371bd",
+      "needed": [
+        "libcutils.so",
+        "liblog.so",
+        "libprocessgroup.so",
+        "libvndksupport.so",
+        "libc++.so",
+        "libc.so",
+        "libm.so",
+        "libdl.so"
+      ]
+    },
+    "system/lib64/libbinder.so": {
+      "source": "system/lib64/libbinder.so",
+      "sha256": "f280217e89ed90d099d6000cb7acdf711a3b5914b9188a487b3dde98dd100ba5",
+      "needed": [
+        "libbase.so",
+        "liblog.so",
+        "libcutils.so",
+        "libutils.so",
+        "libbinderthreadstate.so",
+        "libc++.so",
+        "libc.so",
+        "libm.so",
+        "libdl.so"
+      ]
+    },
+    "system/lib64/libEGL.so": {
+      "source": "system/lib64/libEGL.so",
+      "sha256": "a67beb8103472ec18a5d86abfcb4c0a242ed7471682e89232f44c4e72d16efd0",
+      "needed": [
+        "libcutils.so",
+        "liblog.so",
+        "libgraphicsenv.so",
+        "libnativewindow.so",
+        "libbacktrace.so",
+        "libvndksupport.so",
+        "android.hardware.configstore@1.0.so",
+        "android.hardware.configstore-utils.so",
+        "libbase.so",
+        "libhidlbase.so",
+        "libhidltransport.so",
+        "libnativebridge_lazy.so",
+        "libnativeloader_lazy.so",
+        "libutils.so",
+        "libc++.so",
+        "libc.so",
+        "libm.so",
+        "libdl.so"
+      ]
+    },
+    "system/lib64/libGLESv2.so": {
+      "source": "system/lib64/libGLESv2.so",
+      "sha256": "441ff99d1fb3c1385815f4efb930fed8d50ffa6619ecf6c51a28605399762dd7",
+      "needed": [
+        "libcutils.so",
+        "liblog.so",
+        "libEGL.so",
+        "libc++.so",
+        "libc.so",
+        "libm.so",
+        "libdl.so"
+      ]
+    },
+    "system/lib64/libc++.so": {
+      "source": "system/lib64/libc++.so",
+      "sha256": "c5d8d7fb0fcfd334d7ea9c8ab6c56af3c3a944d761921ac417a1a1cbcc88a35e",
+      "needed": [
+        "libc.so",
+        "libm.so",
+        "libdl.so"
+      ]
+    },
+    "system/lib64/libc.so": {
+      "source": "system/lib64/bootstrap/libc.so",
+      "sha256": "02183fb35d56f2c6aad448dbf5528cc3bab9eebd47acfecf12cf339fa181e7b0",
+      "needed": [
+        "ld-android.so",
+        "libdl.so"
+      ]
+    },
+    "system/lib64/libm.so": {
+      "source": "system/lib64/bootstrap/libm.so",
+      "sha256": "d5e7dc5c9d74de3ab232e7a53300a8884d3fe7661b649400bab43edcc04050f3",
+      "needed": [
+        "libc.so"
+      ]
+    },
+    "system/lib64/libdl.so": {
+      "source": "system/lib64/bootstrap/libdl.so",
+      "sha256": "d49dba9e449f25ebfed4edfa2af6b811ba36bd1fe6683475cd8e5821fefe5acd",
+      "needed": [
+        "ld-android.so"
+      ]
+    },
+    "system/lib64/libhardware.so": {
+      "source": "system/lib64/libhardware.so",
+      "sha256": "70a2b43cec6f049f6846b629a5e3924cbc886789bb27528f00e2f7b8d858ab51",
+      "needed": [
+        "libcutils.so",
+        "liblog.so",
+        "libvndksupport.so",
+        "libc++.so",
+        "libc.so",
+        "libm.so",
+        "libdl.so"
+      ]
+    },
+    "system/lib64/liblog.so": {
+      "source": "system/lib64/liblog.so",
+      "sha256": "49750318f078ce9ff51f52628a20f966bcc394055b25800b521d21b3660e0a6a",
+      "needed": [
+        "libc++.so",
+        "libc.so",
+        "libm.so",
+        "libdl.so"
+      ]
+    },
+    "system/lib64/libcutils.so": {
+      "source": "system/lib64/libcutils.so",
+      "sha256": "6ec75941668d63e3c9d59fd5c88d9f599a3816f4d5c0b349b6bab750d206cd36",
+      "needed": [
+        "liblog.so",
+        "libbase.so",
+        "libc++.so",
+        "libc.so",
+        "libm.so",
+        "libdl.so"
+      ]
+    },
+    "system/lib64/libion.so": {
+      "source": "system/lib64/vndk-sp-29/libion.so",
+      "sha256": "ce7a38b4602443ccfdeb3e380e167bb1035166ddf5ffd917c53c1929121deebc",
+      "needed": [
+        "liblog.so",
+        "libc++.so",
+        "libc.so",
+        "libm.so",
+        "libdl.so"
+      ]
+    },
+    "system/lib64/libsync.so": {
+      "source": "system/lib64/libsync.so",
+      "sha256": "45014d0a51754352f04fdd9ba92f5c87a98b8cb1a7e458671554573d0eaa7ab9",
+      "needed": [
+        "libc++.so",
+        "libc.so",
+        "libm.so",
+        "libdl.so"
+      ]
+    },
+    "system/lib64/libGLESv1_CM.so": {
+      "source": "system/lib64/libGLESv1_CM.so",
+      "sha256": "724831492a5f3969bd88fb9248f6aee202f8bb53331b84e6541bc69ea8ffc8a1",
+      "needed": [
+        "libcutils.so",
+        "liblog.so",
+        "libEGL.so",
+        "libc++.so",
+        "libc.so",
+        "libm.so",
+        "libdl.so"
+      ]
+    },
+    "system/lib64/libnativewindow.so": {
+      "source": "system/lib64/libnativewindow.so",
+      "sha256": "0362fd1222ff44cebaff7231cd3ae39a3891c212c4457b346d494cf9c309643a",
+      "needed": [
+        "libhardware.so",
+        "libcutils.so",
+        "liblog.so",
+        "libutils.so",
+        "libui.so",
+        "android.hardware.graphics.common@1.1.so",
+        "libc++.so",
+        "libc.so",
+        "libm.so",
+        "libdl.so"
+      ]
+    },
+    "system/lib64/android.hardware.graphics.mapper@2.0.so": {
+      "source": "system/lib64/android.hardware.graphics.mapper@2.0.so",
+      "sha256": "9fb7825eeb4002117ef2da3dd5c5e82a55243609f7302ad67bfe376635b34817",
+      "needed": [
+        "android.hardware.graphics.common@1.0.so",
+        "libhidlbase.so",
+        "libhidltransport.so",
+        "libhwbinder.so",
+        "liblog.so",
+        "libutils.so",
+        "libcutils.so",
+        "libc++.so",
+        "libc.so",
+        "libm.so",
+        "libdl.so"
+      ]
+    },
+    "system/lib64/android.hardware.graphics.mapper@2.1.so": {
+      "source": "system/lib64/android.hardware.graphics.mapper@2.1.so",
+      "sha256": "8965db46930f420d19018637d6dfc1385d8069d977c48d291646ebdcf5581e8d",
+      "needed": [
+        "android.hardware.graphics.common@1.0.so",
+        "android.hardware.graphics.common@1.1.so",
+        "android.hardware.graphics.mapper@2.0.so",
+        "libhidlbase.so",
+        "libhidltransport.so",
+        "libhwbinder.so",
+        "liblog.so",
+        "libutils.so",
+        "libcutils.so",
+        "libc++.so",
+        "libc.so",
+        "libm.so",
+        "libdl.so"
+      ]
+    },
+    "system/lib64/libbase.so": {
+      "source": "system/lib64/libbase.so",
+      "sha256": "ffd6c09efef7527a31320b4717e55fa062d6201dea7d2fb4e168c75fcefff1cd",
+      "needed": [
+        "liblog.so",
+        "libc++.so",
+        "libc.so",
+        "libm.so",
+        "libdl.so"
+      ]
+    },
+    "system/lib64/libhidlbase.so": {
+      "source": "system/lib64/libhidlbase.so",
+      "sha256": "4a3080699e20dd1d053a2ac605c7ac0645f9e7e721cf862b0da1247d818bcd2e",
+      "needed": [
+        "libhwbinder.so",
+        "libvndksupport.so",
+        "libbase.so",
+        "liblog.so",
+        "libcutils.so",
+        "libutils.so",
+        "libbinderthreadstate.so",
+        "libc++.so",
+        "libc.so",
+        "libm.so",
+        "libdl.so"
+      ]
+    },
+    "system/lib64/libhidltransport.so": {
+      "source": "system/lib64/libhidltransport.so",
+      "sha256": "e3efd673f411517e328470f765557782bd70bc90b6c30968d8d57abdf1472382",
+      "needed": [
+        "libc++.so",
+        "libc.so",
+        "libm.so",
+        "libdl.so"
+      ]
+    },
+    "system/lib64/android.hardware.graphics.common@1.0.so": {
+      "source": "system/lib64/android.hardware.graphics.common@1.0.so",
+      "sha256": "97a216b90438e7c011ab7cdf6c62b6ccfd471c67011a98ec9de7a166447984b8",
+      "needed": [
+        "libhidlbase.so",
+        "libhidltransport.so",
+        "libhwbinder.so",
+        "liblog.so",
+        "libutils.so",
+        "libcutils.so",
+        "libc++.so",
+        "libc.so",
+        "libm.so",
+        "libdl.so"
+      ]
+    },
+    "system/lib64/libz.so": {
+      "source": "system/lib64/libz.so",
+      "sha256": "66d2849d765cf14fe0effcf8fd055b6a670b08a0ee8431103076040f5e725916",
+      "needed": [
+        "libc.so",
+        "libm.so",
+        "libdl.so"
+      ]
+    },
+    "system/lib64/android.hardware.graphics.bufferqueue@1.0.so": {
+      "source": "system/lib64/android.hardware.graphics.bufferqueue@1.0.so",
+      "sha256": "99f2de3f162bcc811dfd02bbf07da1df1d531bb694ed2dac6e6cd0170de58c33",
+      "needed": [
+        "android.hardware.graphics.common@1.0.so",
+        "android.hardware.media@1.0.so",
+        "libhidlbase.so",
+        "libhidltransport.so",
+        "libhwbinder.so",
+        "liblog.so",
+        "libutils.so",
+        "libcutils.so",
+        "libc++.so",
+        "libc.so",
+        "libm.so",
+        "libdl.so"
+      ]
+    },
+    "system/lib64/android.hardware.graphics.bufferqueue@2.0.so": {
+      "source": "system/lib64/android.hardware.graphics.bufferqueue@2.0.so",
+      "sha256": "22a421be7ea2171c2ce9872fefd8b8b63e92e0fa486a9e90a7077deeed1b9d01",
+      "needed": [
+        "android.hardware.graphics.common@1.0.so",
+        "android.hardware.graphics.common@1.1.so",
+        "android.hardware.graphics.common@1.2.so",
+        "libhidlbase.so",
+        "libhidltransport.so",
+        "libhwbinder.so",
+        "liblog.so",
+        "libutils.so",
+        "libcutils.so",
+        "libc++.so",
+        "libc.so",
+        "libm.so",
+        "libdl.so"
+      ]
+    },
+    "system/lib64/android.hardware.graphics.common@1.1.so": {
+      "source": "system/lib64/android.hardware.graphics.common@1.1.so",
+      "sha256": "30e4333e7f1da80851d72e4e570ac4bef1815777babc4b07a051b365f40dba84",
+      "needed": [
+        "android.hardware.graphics.common@1.0.so",
+        "libhidlbase.so",
+        "libhidltransport.so",
+        "libhwbinder.so",
+        "liblog.so",
+        "libutils.so",
+        "libcutils.so",
+        "libc++.so",
+        "libc.so",
+        "libm.so",
+        "libdl.so"
+      ]
+    },
+    "system/lib64/android.hardware.graphics.common@1.2.so": {
+      "source": "system/lib64/android.hardware.graphics.common@1.2.so",
+      "sha256": "ad82311f3fa623219f532b8b6088a720615c45f7b5425d1e15c53d13e4fcc85b",
+      "needed": [
+        "android.hardware.graphics.common@1.0.so",
+        "android.hardware.graphics.common@1.1.so",
+        "libhidlbase.so",
+        "libhidltransport.so",
+        "libhwbinder.so",
+        "liblog.so",
+        "libutils.so",
+        "libcutils.so",
+        "libc++.so",
+        "libc.so",
+        "libm.so",
+        "libdl.so"
+      ]
+    },
+    "system/lib64/android.hidl.token@1.0-utils.so": {
+      "source": "system/lib64/android.hidl.token@1.0-utils.so",
+      "sha256": "33bdc59973291acbb50f8610d600f2ea19e25a3bcb08d27fde90dd2f6b4be37f",
+      "needed": [
+        "android.hidl.token@1.0.so",
+        "libbinder.so",
+        "libhidlbase.so",
+        "liblog.so",
+        "libutils.so",
+        "libc++.so",
+        "libc.so",
+        "libm.so",
+        "libdl.so"
+      ]
+    },
+    "system/lib64/libhwbinder.so": {
+      "source": "system/lib64/libhwbinder.so",
+      "sha256": "6cfcf707a9f0ab60a2ff38b38a15fd8b64a3be0211ab013ffb57dcc24c666a4f",
+      "needed": [
+        "libc++.so",
+        "libc.so",
+        "libm.so",
+        "libdl.so"
+      ]
+    },
+    "system/lib64/libvndksupport.so": {
+      "source": "system/lib64/libvndksupport.so",
+      "sha256": "10b9da29cd59c0a54890a11c6a10f03cfcda808feaa02021863271ddcfe4ce91",
+      "needed": [
+        "libdl_android.so",
+        "liblog.so",
+        "libc++.so",
+        "libc.so",
+        "libm.so",
+        "libdl.so"
+      ]
+    },
+    "system/lib64/android.frameworks.bufferhub@1.0.so": {
+      "source": "system/lib64/android.frameworks.bufferhub@1.0.so",
+      "sha256": "5f53565b09fa1361dd04b889d5e1366dda100b2ff94d06688e87d3ed7126f073",
+      "needed": [
+        "android.hardware.graphics.common@1.0.so",
+        "android.hardware.graphics.common@1.1.so",
+        "android.hardware.graphics.common@1.2.so",
+        "libhidlbase.so",
+        "libhidltransport.so",
+        "libhwbinder.so",
+        "liblog.so",
+        "libutils.so",
+        "libcutils.so",
+        "libc++.so",
+        "libc.so",
+        "libm.so",
+        "libdl.so"
+      ]
+    },
+    "system/lib64/libbufferhub.so": {
+      "source": "system/lib64/libbufferhub.so",
+      "sha256": "81b28e9eeaee46530498b155e6dc921a9dbc2d8e216e3c26814210f332fcaa73",
+      "needed": [
+        "libbase.so",
+        "libcutils.so",
+        "libhardware.so",
+        "liblog.so",
+        "libui.so",
+        "libutils.so",
+        "libnativewindow.so",
+        "libpdx_default_transport.so",
+        "libc++.so",
+        "libc.so",
+        "libm.so",
+        "libdl.so"
+      ]
+    },
+    "system/lib64/libbufferhubqueue.so": {
+      "source": "system/lib64/libbufferhubqueue.so",
+      "sha256": "f8f70a76e8312e2d5215db8be890381ef6e5266af8c02d2b91e46c085380ab82",
+      "needed": [
+        "libbase.so",
+        "libbinder.so",
+        "libcutils.so",
+        "libhardware.so",
+        "liblog.so",
+        "libui.so",
+        "libutils.so",
+        "libpdx_default_transport.so",
+        "libc++.so",
+        "libc.so",
+        "libm.so",
+        "libdl.so"
+      ]
+    },
+    "system/lib64/libinput.so": {
+      "source": "system/lib64/libinput.so",
+      "sha256": "b2f24aaf69aa555df12836a8cecf30883d0ecd3077db5795999785202c5ee674",
+      "needed": [
+        "libbase.so",
+        "liblog.so",
+        "libcutils.so",
+        "libutils.so",
+        "libbinder.so",
+        "libui.so",
+        "libc++.so",
+        "libc.so",
+        "libm.so",
+        "libdl.so"
+      ]
+    },
+    "system/lib64/libpdx_default_transport.so": {
+      "source": "system/lib64/libpdx_default_transport.so",
+      "sha256": "3a04ad78ca1d97b82e7b572861a535c0a8f892ab1253998c4b854751155a04a5",
+      "needed": [
+        "libbase.so",
+        "libbinder.so",
+        "libcutils.so",
+        "liblog.so",
+        "libutils.so",
+        "libcrypto.so",
+        "libselinux.so",
+        "libc++.so",
+        "libc.so",
+        "libm.so",
+        "libdl.so"
+      ]
+    },
+    "system/lib64/android.hardware.graphics.allocator@2.0.so": {
+      "source": "system/lib64/android.hardware.graphics.allocator@2.0.so",
+      "sha256": "fb0dfd7c6aecb3ad6c8d29176752cc895a6e3b28d3d1903c17d3aa179a86d5f0",
+      "needed": [
+        "android.hardware.graphics.common@1.0.so",
+        "android.hardware.graphics.mapper@2.0.so",
+        "libhidlbase.so",
+        "libhidltransport.so",
+        "libhwbinder.so",
+        "liblog.so",
+        "libutils.so",
+        "libcutils.so",
+        "libc++.so",
+        "libc.so",
+        "libm.so",
+        "libdl.so"
+      ]
+    },
+    "system/lib64/android.hardware.graphics.allocator@3.0.so": {
+      "source": "system/lib64/android.hardware.graphics.allocator@3.0.so",
+      "sha256": "e1193d08758c81dec13f8707c7f4de5f8df9b7c0f3958ac16cf9545af6dbff15",
+      "needed": [
+        "android.hardware.graphics.common@1.0.so",
+        "android.hardware.graphics.common@1.1.so",
+        "android.hardware.graphics.common@1.2.so",
+        "android.hardware.graphics.mapper@3.0.so",
+        "libhidlbase.so",
+        "libhidltransport.so",
+        "libhwbinder.so",
+        "liblog.so",
+        "libutils.so",
+        "libcutils.so",
+        "libc++.so",
+        "libc.so",
+        "libm.so",
+        "libdl.so"
+      ]
+    },
+    "system/lib64/android.hardware.graphics.mapper@3.0.so": {
+      "source": "system/lib64/android.hardware.graphics.mapper@3.0.so",
+      "sha256": "2711a51674ea8d34601f7dc5775c6e2e5d13934e7312571bb489e635a5b0c8a3",
+      "needed": [
+        "android.hardware.graphics.common@1.0.so",
+        "android.hardware.graphics.common@1.1.so",
+        "android.hardware.graphics.common@1.2.so",
+        "libhidlbase.so",
+        "libhidltransport.so",
+        "libhwbinder.so",
+        "liblog.so",
+        "libutils.so",
+        "libcutils.so",
+        "libc++.so",
+        "libc.so",
+        "libm.so",
+        "libdl.so"
+      ]
+    },
+    "system/lib64/libprocessgroup.so": {
+      "source": "system/lib64/libprocessgroup.so",
+      "sha256": "2ad93bdeb32a4f62f1d099ba3fa751466599d666e7562143e64389dd5b1d8b3b",
+      "needed": [
+        "libbase.so",
+        "libcgrouprc.so",
+        "libc++.so",
+        "libc.so",
+        "libm.so",
+        "libdl.so"
+      ]
+    },
+    "system/lib64/libbinderthreadstate.so": {
+      "source": "system/lib64/libbinderthreadstate.so",
+      "sha256": "f3757e3cf607a82935251babe8c7c795a7c1b19f2de25afd00889ce210b88bb8",
+      "needed": [
+        "liblog.so",
+        "libc++.so",
+        "libc.so",
+        "libm.so",
+        "libdl.so"
+      ]
+    },
+    "system/lib64/libgraphicsenv.so": {
+      "source": "system/lib64/libgraphicsenv.so",
+      "sha256": "7ae89032a39a0c8e37281876a341a14d9b0542ff2ee59a9edb3ae29af5f0c241",
+      "needed": [
+        "libbase.so",
+        "libbinder.so",
+        "libcutils.so",
+        "libdl_android.so",
+        "liblog.so",
+        "libutils.so",
+        "libc++.so",
+        "libc.so",
+        "libm.so",
+        "libdl.so"
+      ]
+    },
+    "system/lib64/libbacktrace.so": {
+      "source": "system/lib64/libbacktrace.so",
+      "sha256": "55f0056bac78c3792f61734c4642980c8fb582f606f6068aeba456b7f48c9224",
+      "needed": [
+        "libbase.so",
+        "liblog.so",
+        "libunwindstack.so",
+        "libc++.so",
+        "libc.so",
+        "libm.so",
+        "libdl.so"
+      ]
+    },
+    "system/lib64/android.hardware.configstore@1.0.so": {
+      "source": "system/lib64/android.hardware.configstore@1.0.so",
+      "sha256": "d57a63b075b251c25a722e8413545403469294e3e976c4ab8d5927e9c4c906dd",
+      "needed": [
+        "libhidlbase.so",
+        "libhidltransport.so",
+        "libhwbinder.so",
+        "liblog.so",
+        "libutils.so",
+        "libcutils.so",
+        "libc++.so",
+        "libc.so",
+        "libm.so",
+        "libdl.so"
+      ]
+    },
+    "system/lib64/android.hardware.configstore-utils.so": {
+      "source": "system/lib64/android.hardware.configstore-utils.so",
+      "sha256": "a0e8d540191a70a87515e99ed84bad7964160bc86f461cce7bac9ca0137f14ba",
+      "needed": [
+        "android.hardware.configstore@1.0.so",
+        "android.hardware.configstore@1.1.so",
+        "libbase.so",
+        "libhidlbase.so",
+        "libc++.so",
+        "libc.so",
+        "libm.so",
+        "libdl.so"
+      ]
+    },
+    "system/lib64/libnativebridge_lazy.so": {
+      "source": "system/lib64/libnativebridge_lazy.so",
+      "sha256": "be7928106afd5f527e762d3653f0606fc40774577104e99443762ae720c23d95",
+      "needed": [
+        "libc++.so",
+        "libc.so",
+        "libm.so",
+        "libdl.so"
+      ]
+    },
+    "system/lib64/libnativeloader_lazy.so": {
+      "source": "system/lib64/libnativeloader_lazy.so",
+      "sha256": "3dd8f00f297bee1c677b9d31d25db84d6eb23253901929c426a6aa2166332330",
+      "needed": [
+        "libc++.so",
+        "libc.so",
+        "libm.so",
+        "libdl.so"
+      ]
+    },
+    "system/lib64/android.hardware.media@1.0.so": {
+      "source": "system/lib64/android.hardware.media@1.0.so",
+      "sha256": "00b1fbc9888c9a52013a128a169fe2a08e32f86f634493b215f3c0d36a57cb08",
+      "needed": [
+        "android.hardware.graphics.common@1.0.so",
+        "libhidlbase.so",
+        "libhidltransport.so",
+        "libhwbinder.so",
+        "liblog.so",
+        "libutils.so",
+        "libcutils.so",
+        "libc++.so",
+        "libc.so",
+        "libm.so",
+        "libdl.so"
+      ]
+    },
+    "system/lib64/android.hidl.token@1.0.so": {
+      "source": "system/lib64/android.hidl.token@1.0.so",
+      "sha256": "c91431a91b46e45b7fbf53c060172c7d8a8f06cfee3cc931874e7682deebbcc8",
+      "needed": [
+        "libhidlbase.so",
+        "libhidltransport.so",
+        "libhwbinder.so",
+        "liblog.so",
+        "libutils.so",
+        "libcutils.so",
+        "libc++.so",
+        "libc.so",
+        "libm.so",
+        "libdl.so"
+      ]
+    },
+    "system/lib64/libdl_android.so": {
+      "source": "system/lib64/libdl_android.so",
+      "sha256": "3deec16a88d1df86c476e541799f32c98e3f20f48c7c24e63f829413803d4d95",
+      "needed": [
+        "ld-android.so"
+      ]
+    },
+    "system/lib64/libcrypto.so": {
+      "source": "system/lib64/libcrypto.so",
+      "sha256": "5fa12f01f31229bb5198804a19639fe8fca1e1e9391a9e9b0c282c270d9b6c87",
+      "needed": [
+        "libc.so",
+        "libm.so",
+        "libdl.so"
+      ]
+    },
+    "system/lib64/libselinux.so": {
+      "source": "system/lib64/libselinux.so",
+      "sha256": "8ab6ce57df46b3a242e750aa0b0b2d3887d7ad0f821674298cdfd9fd61459092",
+      "needed": [
+        "libcrypto.so",
+        "liblog.so",
+        "libpcre2.so",
+        "libpackagelistparser.so",
+        "libc++.so",
+        "libc.so",
+        "libm.so",
+        "libdl.so"
+      ]
+    },
+    "system/lib64/libcgrouprc.so": {
+      "source": "system/lib64/libcgrouprc.so",
+      "sha256": "3ba34737c2865cbc94b300ad2edf84865c698895d733fd01922d6020cdad4e81",
+      "needed": [
+        "libbase.so",
+        "libc++.so",
+        "libc.so",
+        "libm.so",
+        "libdl.so"
+      ]
+    },
+    "system/lib64/libunwindstack.so": {
+      "source": "system/lib64/libunwindstack.so",
+      "sha256": "b134b915db1408c8c4b2591a662fde7f2a1d08eeddfd5920e39bffc4a6af71c6",
+      "needed": [
+        "libbase.so",
+        "libdexfile_support.so",
+        "liblog.so",
+        "liblzma.so",
+        "libc++.so",
+        "libc.so",
+        "libm.so",
+        "libdl.so"
+      ]
+    },
+    "system/lib64/android.hardware.configstore@1.1.so": {
+      "source": "system/lib64/android.hardware.configstore@1.1.so",
+      "sha256": "725fca03efc12810b8204b505b71804fe118356ddd66d7f837b7ae0e963c8652",
+      "needed": [
+        "android.hardware.configstore@1.0.so",
+        "libhidlbase.so",
+        "libhidltransport.so",
+        "libhwbinder.so",
+        "liblog.so",
+        "libutils.so",
+        "libcutils.so",
+        "libc++.so",
+        "libc.so",
+        "libm.so",
+        "libdl.so"
+      ]
+    },
+    "system/lib64/libpcre2.so": {
+      "source": "system/lib64/libpcre2.so",
+      "sha256": "074c0f42e4bf79e1e3e38a8146e783ed7a2145f2e5647e2534fe07a5decb009a",
+      "needed": [
+        "libc++.so",
+        "libc.so",
+        "libm.so",
+        "libdl.so"
+      ]
+    },
+    "system/lib64/libpackagelistparser.so": {
+      "source": "system/lib64/libpackagelistparser.so",
+      "sha256": "8a051460854c9d4d58a954008c903750698565c03541175b0f20437704bc42de",
+      "needed": [
+        "liblog.so",
+        "libc++.so",
+        "libc.so",
+        "libm.so",
+        "libdl.so"
+      ]
+    },
+    "system/lib64/libdexfile_support.so": {
+      "source": "system/lib64/libdexfile_support.so",
+      "sha256": "5a2498b27160e40789803b73c39d9985baa49dead9d1946f76e1e2cedcc419fc",
+      "needed": [
+        "liblog.so",
+        "libc++.so",
+        "libc.so",
+        "libm.so",
+        "libdl.so"
+      ]
+    },
+    "system/lib64/liblzma.so": {
+      "source": "system/lib64/liblzma.so",
+      "sha256": "156ec1c22c3de1c5e19fd5a9ef954efa0f1bb65913f1804867d5f2594073d031",
+      "needed": [
+        "libc.so",
+        "libm.so",
+        "libdl.so"
+      ]
+    },
+    "apex/com.android.runtime/lib64/bionic/libc.so": {
+      "source": "system/lib64/bootstrap/libc.so",
+      "sha256": "02183fb35d56f2c6aad448dbf5528cc3bab9eebd47acfecf12cf339fa181e7b0",
+      "needed": [
+        "ld-android.so",
+        "libdl.so"
+      ]
+    },
+    "apex/com.android.runtime/lib64/bionic/libdl.so": {
+      "source": "system/lib64/bootstrap/libdl.so",
+      "sha256": "d49dba9e449f25ebfed4edfa2af6b811ba36bd1fe6683475cd8e5821fefe5acd",
+      "needed": [
+        "ld-android.so"
+      ]
+    },
+    "apex/com.android.runtime/lib64/bionic/libm.so": {
+      "source": "system/lib64/bootstrap/libm.so",
+      "sha256": "d5e7dc5c9d74de3ab232e7a53300a8884d3fe7661b649400bab43edcc04050f3",
+      "needed": [
+        "libc.so"
+      ]
+    }
+  },
+  "native_artifacts": {
+    "system/bin/init": {
+      "sha256": "9edd76fd01244d99549f1ec744600565d86f0b5e9d8f7575c527a1fc64fb9f00",
+      "bytes": 726200
+    },
+    "system/bin/adbd": {
+      "sha256": "12de5af10ab261dbba1e906a4199f17bcddcd3e9b52091ca40b586739e8c156a",
+      "bytes": 30448
+    },
+    "system/bin/bootstrap/linker64": {
+      "sha256": "9ac5d2e7f415d85c159c0a456819ea3d03f9283f3b8da993c5597e5dff4de1bd",
+      "bytes": 1602848
+    },
+    "system/bin/h700_window_probe64": {
+      "sha256": "cb5a007677a0ae56fe3e999f3eb8cf4054cc8821b02be76e11cce0be95554ddd",
+      "bytes": 20600
+    },
+    "system/bin/h700_window_probe32": {
+      "sha256": "9a52a6a46aa81dfb7cd1da5bf70c4c06b1887a72282f2b9b01003a0674c57562",
+      "bytes": 20084
+    },
+    "system/app/H700AbiProbe64/H700AbiProbe64.apk": {
+      "sha256": "94084bd456de8fad98c7f0344cfe497fc1655a09b64060b1e9038a53f3743f9d",
+      "bytes": 40858
+    },
+    "vendor/lib64/hw/gralloc.h700proto.so": {
+      "sha256": "d2ed53c23c384349b9e893b2478c0b32654225055c1a57dfb2633d02b631cf71",
+      "bytes": 79304
+    },
+    "vendor/lib/hw/gralloc.h700proto.so": {
+      "sha256": "d5ba93e4bc874c610c29d43d4c48eef299b014d5436a555bb1b2656784469745",
+      "bytes": 76500
+    }
+  },
+  "resource_limits": {
+    "cpu_affinity": [
+      0,
+      1
+    ],
+    "aggregate_cpus": 1,
+    "jobs": 1,
+    "memory_gib": 6,
+    "swap_mib": 512,
+    "nice": 19
+  },
+  "first_exec_out_screenshot": "failed_pty_fork_ENODEV",
+  "file_capture_control": true,
+  "raw_device_evidence": "local_only",
+  "physical_panel_observation": "pending"
+}

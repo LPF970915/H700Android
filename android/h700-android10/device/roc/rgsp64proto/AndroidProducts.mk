@@ -1,0 +1,2 @@
+PRODUCT_MAKEFILES := $(LOCAL_DIR)/h700_rgsp64proto.mk
+COMMON_LUNCH_CHOICES := h700_rgsp64proto-eng

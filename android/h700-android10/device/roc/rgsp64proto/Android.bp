@@ -1,0 +1,11 @@
+cc_binary {
+    name: "h700_window_probe",
+    srcs: ["window_probe.cpp"],
+    compile_multilib: "both",
+    multilib: {
+        lib32: { suffix: "32" },
+        lib64: { suffix: "64" },
+    },
+    shared_libs: ["libgui", "libui", "libutils", "libbinder", "libEGL", "libGLESv2"],
+    cflags: ["-Wall", "-Wextra", "-Werror"],
+}

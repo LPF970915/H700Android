@@ -4,6 +4,9 @@ static long call(long n,long a,long b,long c,long d,long e) {
  register long x3 __asm__("x3")=d,x4 __asm__("x4")=e,x8 __asm__("x8")=n;
  __asm__ volatile("svc #0":"+r"(x0):"r"(x1),"r"(x2),"r"(x3),"r"(x4),"r"(x8):"memory");return x0;
 }
+#ifndef ROOTFS_PREFIX
+#define ROOTFS_PREFIX "/data/local/tmp/h700-arm64-isolated-20261030/rootfs/"
+#endif
 static int same(const char*a,const char*b){while(*a&&*a==*b){a++;b++;}return *a==*b;}
 int guarded_mount(long argc,char**argv) {
  if(argc!=2&&argc!=3&&argc!=4)return 2;
@@ -14,7 +17,7 @@ int guarded_mount(long argc,char**argv) {
  if(argc==2)r=call(40,0,(long)"/",0,0x44000,0); /* MS_PRIVATE|MS_REC */
  else {
   const char *target=argv[argc-1];
-  const char *p=target,*q="/data/local/tmp/h700-arm64-isolated-20261030/rootfs/";
+  const char *p=target,*q=ROOTFS_PREFIX;
   while(*q&&*q==*p){q++;p++;}if(*q)return 5;
   for(const char*t=p;*t;t++)if(t[0]=='.'&&t[1]=='.')return 6;
   if(argc==4) {
