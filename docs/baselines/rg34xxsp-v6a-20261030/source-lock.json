@@ -1,0 +1,24 @@
+{
+  "input_commit": "f717506ff008c58f88af961a162058b77a902d15",
+  "hash_convention": "SHA256 with LF line endings",
+  "files": {
+    "tools/package_h700_v6a.py": "60dc0136f0c04c16d1ffda2257f063a018f48232e1374bfee0505483425def71",
+    "tools/build_h700_low_pressure.sh": "16fddd93af71d408b044c9c22c68459b98267b217c0248f539aebcebc2b30eda",
+    "tools/build_h700_low_pressure.ps1": "7121ff0560930bc677074e31d1b849f71941e8d152e91e113852123cb474d7bb",
+    "tools/test_h700_release_guards.py": "6143e868a4fe64231638b64d51a707491449874b9cf2c28c50991b051820054c",
+    "android/h700-android10/device/roc/rgsp/h700_rgsp.mk": "68300d04e40555da5c59556b2c23dac2420aec04fd5c032150fa257e2776c6a6",
+    "android/h700-android10/device/roc/rgsp/h700-preinstall.rc": "d5a9ea2770679750b0b3aaaa61a74c1cb1861244ccffacc6be3bbb645de3dc50",
+    "android/h700-android10/device/roc/rgsp/h700-preinstall.sh": "7acabb56ec5eb1cd8a9be4b22f7e65f9f6785c76a5586360ab94476778609cf7",
+    "android/h700-android10/device/roc/rgsp/h700-media-compat.rc": "dde3ccf39b600d06df5f599fb300f7927751933088772f695805202bccd8a3d6",
+    "config/pegasus/global.glslp": "943aa229664835d7a2ac00960ae226680361fe8c0784758824df8000efe97e6d",
+    "config/pegasus/preinstall-apks.json": "e35205cb2527315a841495745311963fc0f18cab113eeb62f038e068e7aa5b1e",
+    "config/pegasus/README.md": "21aa71bffd4fada97131d2daf8d6f517e340e7f362f8b113d212c1890c058994",
+    "config/pegasus/retroarch-gba.cfg": "1b7421f1c4d4a7a31f85a97e3f84a99e07245f36ad1ec5c01f5e1318e4bf5f25",
+    "config/pegasus/theme-defaults.json": "915ec36b8a02fc3d41617d6f7e0aa0741936d6dc700ee46a2f95203d5c072ed0",
+    "config/ppsspp/controls.ini": "d1c35fc9d9d9600efe9ab5cc37e76e681abba2665fea6a0cb24d7533ed1ff4a3",
+    "config/koreader/2-h700-dpad.lua": "1246e5b3b9dcc2a82637c32664ea64b3538cd2174afbaff319cf064270b6d848",
+    "config/koreader/README.md": "db9467c3e0333d3a33ce790dcb494fedb9618d1fd82e6b63735fc16c17e49d2f",
+    "config/retroarch/h700-menu-overrides.cfg": "6f8bb6cc2e8e95e7a6f0c128f8ef6a33eac2053bc6437f6089ce75c84a29ead6",
+    "config/retroarch/android/H700_ANBERNIC_keys.cfg": "5b1dca2df4f29acc11ce9ba4333f83e0ed28daa534689355e2d34d26766853fb"
+  }
+}

@@ -57,10 +57,14 @@ python3 tools/restore_h700_baseline.py --source /path/to/android \
 
 第二轮空间清理已删除原生树 `out/`，保留完整源码和工具链。下次构建需重新生成中间文件，不能依赖旧增量缓存。整 IMG 与最终分区 raw 的无损压缩包和原文件现状见 [空间复核](SPACE_REVIEW_20261028.md)；需要 raw 输入时先解压并核验原始 SHA，不能把 gzip 直接当作 raw 文件传给历史封装器。
 
-## 当前整镜像复现缺口
+## 历史 v5g 封装入口的限制
 
 冻结之后的 APK/摇杆模块构建由 [RG34XXSP 开发记录](RG34XXSP_DEVELOPMENT_20261028.md) 单独描述。恢复冻结快照会回到旧基线，不能代替同步当前日常产品增量；原 364 文件锁不随新功能改变。
 
 `tools/package_rgsp_v5g.py` 仍固定要求 SHA 为 `fed34834...` 的 v5f 整镜像 seed；此次盘点未找到该文件。保留的 v5i 包含当前硬件前缀和原厂空数据/ROMS，但历史脚本不会直接接受它作为替代。
 
 不能宣称仅从 Git clone 就能一键重建相同 IMG，也不能把未来封装输入适配当成本次已验证内容。保留唯一 v5i IMG、最终 native35 阶段及私有保全目录；以后适配 seed/封装时仍需重新做文件系统、组件、范围读回和整镜像 SHA 校验。
+
+## 2026-10-30 v5i 输入的新入口
+
+[RG34XXSP v6a](RG34XXSP_V6A_IMAGE_20261030.md) 已由新增的 `tools/package_h700_v6a.py` 对保留 v5i gzip 实际封装并通过离线校验，解决了本轮候选封装所需的 seed 入口问题；旧 v5g 工具不改写、不冒充接受 v5i。使用 `tools/build_h700_low_pressure.ps1 -Targets H700ReleaseImage -Execute`，仍需所有受保护本地二进制/主题/媒体，不能仅凭 Git 一键得到相同 IMG。新候选的首刷/首次应用初始化尚待验收，不代表全源码重编完成。

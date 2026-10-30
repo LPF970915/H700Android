@@ -1,5 +1,7 @@
 # H700 workspace instructions
 
+Latest image candidate: `baseline/rg34xxsp-v6a-norom-20261030`; read `docs/RG34XXSP_V6A_IMAGE_20261030.md`. RG34XXSP H700 2GB only. Pinned v5i hardware prefix and clean factory tail plus current tested deltas and seven selected app payloads; no ROM/BIOS/accounts/saves. Filesystems, 3,643 modified files/labels, ranges, full raw SHA and full gzip decompression passed. No card flash or fresh first-boot acceptance. The full AOSP framework rebuild and first-boot interruption recovery remain unverified. Preserve the new gzip and local stage/receipts; do not confuse it with the unchanged older v5i seed.
+
 Read `docs/CURRENT_BASELINE_20261028.md`, `docs/REPRODUCE_BASELINE_20261028.md`, and `docs/STORAGE_RETENTION_20261028.md` before changing build inputs, device state, or storage.
 
 Latest system/input checkpoint: `baseline/rg34xxsp-menu-landscape-20261029`; read `docs/RG34XXSP_MENU_LANDSCAPE_20261029.md`. Navigation v8 uses physical Menu short-release for Home and a 700ms standalone hold for full Quick Settings; D-pad pages, A confirms, B collapses. H700Rotation defaults on and persists user choice. The pinned ActivityRecord DEX delta is installed, with matching source patch applied to the native tree; full AOSP framework rebuild remains unverified. Preserve original JAR, rotation state, v7 APK and root rollback script under the local force-landscape preservation directory. Never apply the original DEX patch to an already-patched JAR. Select mouse remains unchanged.

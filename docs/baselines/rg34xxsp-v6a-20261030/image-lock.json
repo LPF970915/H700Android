@@ -1,0 +1,129 @@
+{
+  "release": "H700_RG34XXSP_2GB_v6a_20261030_NoROM",
+  "bytes": 32434554368,
+  "sha256": "2c4b6178a0202353d9dd31787f7a1b720141c62c2fbdff7120ae5684d45cabea",
+  "base_sha256": "3fd34fef4d5a2275f14023dba5dc488330ab0669a50889e8b748e30c9f3e68cd",
+  "status": "FILESYSTEM_COMPONENTS_AND_RANGES_VERIFIED_PENDING_COLD_FLASH_ACCEPTANCE",
+  "ranges": [
+    {
+      "name": "prefix",
+      "offset": 0,
+      "bytes": 222298112,
+      "sha256": "b2484137c531bb9b87d15bf4d0b10fafd8de685112504933c9a0c1208981460a"
+    },
+    {
+      "name": "system",
+      "offset": 222298112,
+      "bytes": 8589934592,
+      "sha256": "dc9ef4ea1dd8d23a13cb7301fd15617f280f4e6d322f3211711ad9a33f8138c3"
+    },
+    {
+      "name": "vendor",
+      "offset": 8812232704,
+      "bytes": 2147483648,
+      "sha256": "4b1978fc86e223870ec8a4c4215e01d4b1efb0502ebf91eff586776ce396ce75"
+    },
+    {
+      "name": "factory_tail",
+      "offset": 10959716352,
+      "bytes": 21474838016,
+      "sha256": "eab9dbbe980e819e7610b11fc46e795cba1cf2f7dca560bd8ed60777274fbd0f"
+    }
+  ],
+  "media_files": 3035,
+  "collection_entries": 604,
+  "game_rom_files": 0,
+  "factory_userdata_and_roms_preserved": true,
+  "full_aosp_rebuild": false,
+  "physical_flash_performed": false,
+  "fresh_first_boot_verified": false,
+  "cpu_quota": "one aggregate CPU, affinity 0-1, nice 19",
+  "memory_max_gib": 6,
+  "swap_max_mib": 512,
+  "hardware_voltage_telemetry_available": false,
+  "partition_component_manifest_sha256": "8467a9145e9b3749fb2ea957735e4c32d4222a4e9228cc151285f18b1ed200a4",
+  "payload_manifest_sha256": "34e0ef4b9b4ad13f88354207431752fdd4c10837182273eb50d316a6a81289f7",
+  "gzip": {
+    "file": "H700_RG34XXSP_2GB_v6a_20261030_NoROM.img.gz",
+    "bytes": 3427499036,
+    "sha256": "a56c96460e1a92cbfe280925d2c6312a12f056afc8233a30106a8064fe8413ad",
+    "full_decompressed_sha256_verified": true
+  },
+  "raw_retained": false,
+  "raw_removed_only_after_verified_gzip": true,
+  "packaging_inputs_commit": "f717506ff008c58f88af961a162058b77a902d15",
+  "successful_run": {
+    "wall_seconds": 1512.536,
+    "cpu_seconds": 563.211,
+    "memory_peak_gib": 5.0,
+    "swap_peak_bytes": 0,
+    "exit_code": 0
+  },
+  "checkpoint": "baseline/rg34xxsp-v6a-norom-20261030",
+  "preinstall_apps": [
+    {
+      "id": "QQMusicTV",
+      "package": "com.tencent.qqmusictv",
+      "sha256": "c37369d85ea817a68e91bb100f1e0994e53b37592c0e80237932f762428128a2",
+      "bytes": 72156717
+    },
+    {
+      "id": "AnimekoTV",
+      "package": "me.him188.ani.tv",
+      "sha256": "ee3126653e5554906f99eb7eda7bb254f69e7246258e55f19e1aaf997bde23da",
+      "bytes": 32209143
+    },
+    {
+      "id": "PPSSPP",
+      "package": "org.ppsspp.ppsspp",
+      "sha256": "dd702a31270ecd68db37afee311d6efe08b1d4da9601d2750ce1a73bbd316c3f",
+      "bytes": 45448397
+    },
+    {
+      "id": "RetroArch",
+      "package": "com.retroarch.ra32",
+      "sha256": "9e964f53089a302401a6d5b1451d7ce5539f39b85eb0a305d8d77e6edcbf803f",
+      "bytes": 183797621
+    },
+    {
+      "id": "NOVA",
+      "package": "org.courville.nova",
+      "sha256": "8b79a340b7e015ecd80c9b82f4d3b992ac34785cdfd0fbb82d98f7da693f84b6",
+      "bytes": 32031731
+    },
+    {
+      "id": "KOReader",
+      "package": "org.koreader.launcher",
+      "sha256": "37c5b72202241ee8e85d186b9147534ffde28d39a98981e3e8f794274ee7df93",
+      "bytes": 29085335
+    },
+    {
+      "id": "Pegasus",
+      "package": "org.pegasus_frontend.android",
+      "sha256": "c3971ad63a6ea4a410bf5e3fc80bb8803a31612765cb62d0a2156f3eed8f8b51",
+      "bytes": 15888624
+    }
+  ],
+  "verification": {
+    "modified_system_files_read_back": 3628,
+    "modified_vendor_files_read_back": 15,
+    "system_vendor_fsck_exit": 0,
+    "all_modified_file_selinux_xattrs_verified": true,
+    "untouched_native35_components_verified": true,
+    "factory_userdata_root": [
+      ".",
+      "..",
+      "lost+found"
+    ],
+    "factory_roms_files": 0,
+    "android_pax_utf8_long_path_and_copy_no_clobber_smoke": true,
+    "host_boundary_tests": 5
+  },
+  "limitations": [
+    "Cold-flash and seven-app first-boot workflow not physically accepted",
+    "First-boot interruption/recovery not tested; abrupt power loss can leave the directory lock",
+    "Existing lid/backlight/deep-suspend/brightness/Bluetooth limits remain",
+    "No full AOSP framework source rebuild",
+    "No 1GB game-performance or long thermal endurance claim"
+  ]
+}

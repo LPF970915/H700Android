@@ -47,3 +47,9 @@
 2026-10-29 Menu/横屏增量另保留 `LOCAL_PRESERVE_H700_BASELINE_20261028/force-landscape-20261029/` 的旧系统 JAR、Navigation v7、显示策略、源码和私有回退脚本，以及 `out/force-landscape-20261029/` 的新 APK/JAR/验收证据。Git 只收脱敏锁和源码；这些文件不是本轮可清缓存。见 [增量记录](RG34XXSP_MENU_LANDSCAPE_20261029.md)。
 
 2026-10-30 增补 [天马 G / GBA 实测与预装](RG34XXSP_PEGASUS_GBA_20261030.md)。官方 ARM32 前端、主题/元数据适配、独立 LCD3x 配置及 NuPlayer 预览修复已在现机验证；新镜像封装另计。`out/pegasus-gba-20261030/` 与本地保全同名子目录保存 APK、原始材料、测试/回退输入，不能按缓存删除；ROM 不上传 Git、不加入新镜像。
+
+## 2026-10-30 新镜像与实际保留状态
+
+三个旧 raw（v5i 整 IMG、native35 system/vendor raw）目前已不在原路径，其经过校验的 `.gz` 均仍在；此前“原文件与 gzip 并存”仅描述 10-28 自动清理未执行时的状态。
+
+`out/h700-v6a-preinstall-20261030/` 的新无 ROM 镜像 gzip、整镜像/分区/资源锁、首次启动平台测试与构建日志，以及 WSL `/home/lpf/h700-release-v6a-20261030/` 的新候选分区、payload、保留的中断材料和回读证明，均需保护，不能因代码已推 Git 而视为缓存。新 raw 在 gzip 完整解压 SHA 和再次 gzip 哈希确认后移除，保留可无损恢复的压缩包，释放约 30.2GiB；未删除旧压缩基底、源码、ROCreader 或原始材料。镜像未上传 Git。
