@@ -224,7 +224,32 @@ def main():
     WORK.mkdir(exist_ok=True)
     parent, parts, payload, selected = preflight()
     print('PATCH_FIVE_EXPLICIT_FILES', flush=True)
-    parts, payload = patch_system(parts, payload, selected)
+    if (WORK / 'partitions-verified.json').exists():
+        print('VERIFY_COMPLETED_STAGE_BEFORE_RESUME', flush=True)
+        saved = json.loads((WORK / 'partitions-verified.json').read_text())
+        payload_saved = json.loads((WORK / 'payload-verified.json').read_text())
+        delta = json.loads((WORK / 'delta-lock.json').read_text())
+        expected = {'/system/etc/h700-preinstall/apks/MTManager.apk',
+                    '/system/etc/h700-preinstall/apps.list', '/system/etc/h700-preinstall/SHA256SUMS',
+                    '/system/build.prop', '/system/bin/h700-preinstall.sh'}
+        changed = {k for k, v in saved['system']['files'].items() if parts['system']['files'].get(k) != v}
+        script = ROOT / 'android/h700-android10/device/roc/rgsp/h700-preinstall-v6b.sh'
+        if changed != expected or set(delta) != expected or payload_saved['apps'] != selected:
+            raise ValueError('Completed stage does not match the approved five-file delta')
+        if delta['/system/bin/h700-preinstall.sh'] != base.sha(script):
+            raise ValueError('Factory source changed since completed stage')
+        if delta['/system/etc/h700-preinstall/apks/MTManager.apk'] != MT_SHA:
+            raise ValueError('Wrong MT in completed stage')
+        if any(saved['system']['files'][k] != v for k, v in delta.items()) or saved['vendor'] != parts['vendor']:
+            raise ValueError('Completed stage changed unexpected components')
+        for name in ('system', 'vendor'):
+            image = WORK / 'system.candidate.raw' if name == 'system' else base.WORK / 'vendor.candidate.raw'
+            if base.sha(base.regular(image)) != saved[name]['sha256']:
+                raise ValueError('Completed partition no longer matches its full readback proof')
+            subprocess.run(['e2fsck', '-f', '-n', str(image)], check=True, capture_output=True)
+        parts, payload = saved, payload_saved
+    else:
+        parts, payload = patch_system(parts, payload, selected)
     compress(parent, parts, payload)
 
 
