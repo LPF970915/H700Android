@@ -4,6 +4,9 @@
 *.h text eol=lf
 *.java text eol=lf
 config/koreader/*.lua text eol=lf
+config/pegasus/*.cfg text eol=lf
+config/pegasus/*.glslp text eol=lf
+config/ppsspp/*.ini text eol=lf
 *.smali text eol=lf
 *.config text eol=lf
 Makefile text eol=lf

@@ -172,3 +172,8 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     device/roc/rgsp/h700-media-compat.rc:$(TARGET_COPY_OUT_SYSTEM)/etc/init/h700-media-compat.rc
 
+# Guarded fresh-image installer; local payload is pinned by the release packager.
+PRODUCT_COPY_FILES += \
+    device/roc/rgsp/h700-preinstall.rc:$(TARGET_COPY_OUT_SYSTEM)/etc/init/h700-preinstall.rc \
+    device/roc/rgsp/h700-preinstall.sh:$(TARGET_COPY_OUT_SYSTEM)/bin/h700-preinstall.sh
+
