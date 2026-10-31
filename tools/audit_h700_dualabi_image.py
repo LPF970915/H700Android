@@ -67,7 +67,7 @@ def main():
     for path in ['/system/bin/h700-bootstrap/init','/system/bin/h700-bootstrap/adbd','/system/bin/bootstrap/linker64']:
         if read(system,path)[:5]!=b'\x7fELF\x02':raise ValueError('Bootstrap executable not ELF64')
     init_stat=base.debug(system,'stat /init')
-    if 'Fast link dest: "/system/bin/init"' not in init_stat:raise ValueError('Root init link unexpected')
+    if 'Fast link dest: "/system/bin/h700-bootstrap/init"' not in init_stat:raise ValueError('First-stage root link must directly select the bootstrap namespace')
     configs=[p for p in stage['overlay']['system'] if '/ld.config.' in p]
     if len(configs)<4:raise ValueError('Linker configuration coverage insufficient')
     for path in configs:

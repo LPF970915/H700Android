@@ -257,7 +257,9 @@ def main():
     if base.sha(mali)!='03333d495e3566c7d85ca2e000da569a16ce8f022ea25c0ea61950c891d5c7f8':raise ValueError('Mali64 changed')
     vmaps['/lib64/egl/libGLES_mali.so']=(mali,'0100644','u:object_r:same_process_hal_file:s0')
     print('WRITE_AND_VERIFY_SYSTEM_OVERLAY',len(maps),flush=True)
-    records={'system':modify(system,maps,'system_file',{'/system/bin/init':'/system/bin/h700-bootstrap/init'}),
+    # Before proc mounts, Bionic first-stage init reads /init only once. Its
+    # first hop must already select the private bootstrap namespace.
+    records={'system':modify(system,maps,'system_file',{'/init':'/system/bin/h700-bootstrap/init','/system/bin/init':'/system/bin/h700-bootstrap/init'}),
              'vendor':modify(vendor,vmaps,'vendor_file')}
     ranges=[]
     for name,path in [('prefix',prefix),('system',system),('vendor',vendor),('factory_tail',tail)]:

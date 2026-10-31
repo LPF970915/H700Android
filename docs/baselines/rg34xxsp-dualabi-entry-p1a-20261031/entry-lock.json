@@ -1,0 +1,65 @@
+{
+  "revision": "p1a-one-hop-20261031",
+  "partition_bytes": 8589934592,
+  "parent_system_sha256": "9cf30b6e8da166ab8824beb87423fc5419b2cbe5cbaec609c5808227c736287b",
+  "system_sha256": "236a5233ad650c69ef03a3d5c10832ad70c92902af9ae8ecdbfa805ec1e85c94",
+  "gzip_file": "H700_DualABI_P1a_system_entryfix_20261031.img.gz",
+  "gzip_sha256": "98d53a09c98022143fef8cfbe565965fd5536212401ce8f6bc0440478512c9a1",
+  "gzip_bytes": 859662928,
+  "root_init_target": "/system/bin/h700-bootstrap/init",
+  "first_stage_one_hop_check": true,
+  "filesystem_check": true,
+  "full_component_decompression": true,
+  "ranges": [
+    {
+      "offset": 0,
+      "bytes": 8192,
+      "old_sha256": "759490f2036a7bda758f93aa98decb91ace6bcc69b46d2d78ac0bf8cd17284e9",
+      "new_sha256": "abf7f7d07fdee853206f56a03e3f6d5fefa6859d59ce5e75307c216166cbd17e",
+      "old_file": "000.old.bin",
+      "new_file": "000.new.bin"
+    },
+    {
+      "offset": 376832,
+      "bytes": 4096,
+      "old_sha256": "766c65134b81841ca18cd001268ad7660a8a09c012e3ec71080b05f8d59bef2b",
+      "new_sha256": "d1715453122a3689c3c4f7abd230a4d128c5fe5990699cba837b8d6cc4333293",
+      "old_file": "001.old.bin",
+      "new_file": "001.new.bin"
+    },
+    {
+      "offset": 134582272,
+      "bytes": 4096,
+      "old_sha256": "c87f3af59543a1e53b278c823e0ba3e8146273ac559a6e6096b8908085abb509",
+      "new_sha256": "e8f930763bec96337f53d1ca0ceabb79197d90335dbe77b31092479cf5542152",
+      "old_file": "002.old.bin",
+      "new_file": "002.new.bin"
+    },
+    {
+      "offset": 178954240,
+      "bytes": 4096,
+      "old_sha256": "d1065ae6b539ee495d11c805f23451dab49e97623a5b70bed223814a7b89ba03",
+      "new_sha256": "0dcaacb66af38dffdf3650855d64f7e4afa5e31dc8377b63c6d9274502c80a7d",
+      "old_file": "003.old.bin",
+      "new_file": "003.new.bin"
+    },
+    {
+      "offset": 1407565824,
+      "bytes": 4096,
+      "old_sha256": "2586da67b244d264315571fe245c3e54b65279363bf3809b78a98e59a67d8b50",
+      "new_sha256": "8886fb1ff48aa609c15dd7dc206dd2ebf1ff8442c1e46559e80817cdb49fe6bf",
+      "old_file": "004.old.bin",
+      "new_file": "004.new.bin"
+    },
+    {
+      "offset": 1476399104,
+      "bytes": 8192,
+      "old_sha256": "84cc25fc2e91f233425b207c4324abd30e40ba3a9079f1a8112522f27395666d",
+      "new_sha256": "fa44a6fa4bf169649f7d27881bd62b3abca3bfb8a95e7ed12ca4dd6867766655",
+      "old_file": "005.old.bin",
+      "new_file": "005.new.bin"
+    }
+  ],
+  "card_modified": false,
+  "boot_pass": false
+}

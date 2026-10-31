@@ -1,0 +1,49 @@
+{
+  "checkpoint": "baseline/rg34xxsp-dualabi-entry-p1a-20261031",
+  "parent_checkpoint": "baseline/rg34xxsp-dualabi-spare-p1-20261031",
+  "parent_commit": "869d430c9be6392e28652e534099356e1634e8aa",
+  "scope": "RG34XXSP H700 2GB only",
+  "fix": "direct root /init first hop into private bootstrap namespace before proc/APEX",
+  "source_constraint": "bionic/linker/linker_main.cpp get_executable_info first-stage readlink(/init) once",
+  "first_stage_constraint_sha256": "dd775ba6a9d44c1c98bb4b6da7476b1ec96b8be6c4cc0ed95698239afafda634",
+  "changed_system_blocks_bytes": 32768,
+  "delta_ranges": 6,
+  "guarded_uncached_full_system_readback": true,
+  "original_work_system_invariants_unchanged": true,
+  "userdata_vendor_gpt_written": false,
+  "component_build": {
+    "wall_seconds": 176.106,
+    "cpu_seconds": 138.099
+  },
+  "full_image_package": {
+    "wall_seconds": 394.154,
+    "cpu_seconds": 357.556
+  },
+  "resource_limits": {
+    "cpu_affinity": [
+      0,
+      1
+    ],
+    "aggregate_cpus": 1,
+    "jobs": 1,
+    "memory_gib": 6,
+    "swap_mib": 512,
+    "nice": 19
+  },
+  "physical_corrected_boot": "failed_static_logo_no_usb_ramdisk_executable_preflight",
+  "bootlog_evidence": "ERROR: Android /system/bin/init is missing",
+  "private_init_file_present": true,
+  "outside_chroot_absolute_link_access": false,
+  "ramdisk_mounts_proc_before_selinux_setup": true,
+  "first_stage_link_change_not_proven_boot_cause": true,
+  "ramdisk_auto_grow_observed": true,
+  "capacity_sectors": 244277248,
+  "fat_grow_pending": false,
+  "art64_jni": "not_tested",
+  "mt64": "not_tested",
+  "ra32_ppsspp32_coexistence": "not_tested",
+  "full_source_64_framework_rebuild": "unverified",
+  "fresh_whole_card_p1a_flash": "not_executed",
+  "release_candidate": "v6b unchanged",
+  "raw_logs_private_identity_and_binaries": "local_only"
+}

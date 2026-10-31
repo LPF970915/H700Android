@@ -1,0 +1,11 @@
+{
+  "revision": "p1a-one-hop-20261031",
+  "mode": "delta",
+  "partition": "spare system only",
+  "bytes_verified": 8589934592,
+  "system_sha256": "236a5233ad650c69ef03a3d5c10832ad70c92902af9ae8ecdbfa805ec1e85c94",
+  "uncached_full_system_readback": true,
+  "original_work_system_invariants_unchanged": true,
+  "userdata_vendor_gpt_not_written": true,
+  "boot_acceptance": false
+}
