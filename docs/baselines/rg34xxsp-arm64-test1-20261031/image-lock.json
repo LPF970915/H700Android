@@ -1,0 +1,113 @@
+{
+  "release": "H700_RG34XXSP_2GB_ARM64_Test1_GSI10_20261031_NoROM",
+  "bytes": 32434554368,
+  "sha256": "6b96ac34ded730e0b26d47e28aba5e219c16452bd4cbf971815ec74a25c6b5e0",
+  "gzip_bytes": 959605830,
+  "gzip_sha256": "bb8f3e695bcd17a07905d92598a8d0c90f3c4fedc10b4ddc57e82c5bedad019b",
+  "ranges": [
+    {
+      "name": "prefix",
+      "offset": 0,
+      "bytes": 222298112,
+      "sha256": "9e89204206e56a9b438e5dee2d689946ea1a4037586f454c9211c2eb7245322d"
+    },
+    {
+      "name": "system",
+      "offset": 222298112,
+      "bytes": 8589934592,
+      "sha256": "642fe398b0e8e506ba667fb89c588de0276cee4e4ae24cd9ee5d511c5e5c3fa9"
+    },
+    {
+      "name": "vendor",
+      "offset": 8812232704,
+      "bytes": 2147483648,
+      "sha256": "bd5ce38b28600e4cf1e471097906c8e24593d5480f2f430f103c460c435e23b6"
+    },
+    {
+      "name": "factory_tail",
+      "offset": 10959716352,
+      "bytes": 21474838016,
+      "sha256": "b2c91359ac2912e773a28fff4db563f033a99e79bcb321ce1977bb2436d9c964"
+    }
+  ],
+  "layout": {
+    "disk_guid": "49edabee-ce1d-5d19-815d-5419553e7b22",
+    "partitions": {
+      "special": {
+        "old_partuuid": "a0085546-4166-744a-a353-fca9272b8e45",
+        "partuuid": "936a880a-9904-5599-b0a3-282fb074e785"
+      },
+      "boot-resource": {
+        "old_partuuid": "a0085546-4166-744a-a353-fca9272b8e46",
+        "partuuid": "6edd1f62-e07f-580b-9db8-e361442caf4a"
+      },
+      "env": {
+        "old_partuuid": "a0085546-4166-744a-a353-fca9272b8e47",
+        "partuuid": "cd73d9c2-b542-5624-8e8f-0a07d0863b26"
+      },
+      "boot": {
+        "old_partuuid": "a0085546-4166-744a-a353-fca9272b8e48",
+        "partuuid": "304e806e-d5c2-59b9-a9b1-a9fbf409e379"
+      },
+      "system": {
+        "old_partuuid": "096d7fa1-62e8-c242-9876-cfdd5a92b8eb",
+        "partuuid": "abe9984b-d5c6-5dc1-aa53-c2f1f8c4c0e5"
+      },
+      "vendor": {
+        "old_partuuid": "6aa8b46e-b96f-9545-bbfb-1b7d2bdc7da8",
+        "partuuid": "5f634828-4295-5656-945d-0a068612d549"
+      },
+      "data": {
+        "old_partuuid": "734716ed-e7d9-e74f-9b3e-4f1cb8d448ed",
+        "partuuid": "a6c273e3-f229-54cd-ac14-89ff4a3dcfa0"
+      },
+      "ROMS": {
+        "old_partuuid": "b4d04d65-2c35-4b7f-b9c5-8f24d2f10505",
+        "partuuid": "f8d48532-2854-5249-bac2-788125189eb0"
+      }
+    }
+  },
+  "runtime_marker": "rg34xxsp-dualabi-gsi10-p1-20261031",
+  "image_marker": "dualabi-test1-20261031",
+  "entry_revision": "p1b-ramdisk-handoff-20261031",
+  "full_gzip_decompression_verified": true,
+  "all_decompressed_range_hashes_verified": true,
+  "modified_files": {
+    "/system/app/RGSPNavigation/RGSPNavigation.apk": {
+      "sha256": "ccfd564a67be3e7ed440b2a9638d1317e80d8211d6e3d3b2588846eaa48c9663",
+      "mode": "0100644",
+      "selinux": "u:object_r:system_file:s0"
+    },
+    "/system/bin/h700-prototype-setup.sh": {
+      "sha256": "6dba870eb08d5b4610944527ce95e44e55ff77bcddfb3b5ef498bca9c041da28",
+      "mode": "0100755",
+      "selinux": "u:object_r:shell_exec:s0"
+    },
+    "/system/etc/h700-prototype/H700_ANBERNIC_keys.cfg": {
+      "sha256": "5b1dca2df4f29acc11ce9ba4333f83e0ed28daa534689355e2d34d26766853fb",
+      "mode": "0100644",
+      "selinux": "u:object_r:system_file:s0"
+    },
+    "/system/etc/h700-prototype/image-revision": {
+      "sha256": "82d8d1cd7ae87777d4bbd29540baf2637214a4523424a58e156833977e292500",
+      "mode": "0100644",
+      "selinux": "u:object_r:system_file:s0"
+    },
+    "/system/etc/h700-prototype/retroarch-test.cfg": {
+      "sha256": "91430fb46b0d67cd70a6e233ca6ffb74503c49641914ddde38803f2b842159e0",
+      "mode": "0100644",
+      "selinux": "u:object_r:system_file:s0"
+    },
+    "/system/etc/prop.default": {
+      "sha256": "d2e396ba5f17da41b742ff20b2425ab6f287eaf06b528748c05948210f5a22ee",
+      "mode": "0100644",
+      "selinux": "u:object_r:system_file:s0"
+    }
+  },
+  "inherited_overlay_files_readback": 87,
+  "factory_tail_from_pinned_clean_parent": true,
+  "fresh_whole_card_flash": false,
+  "fresh_first_boot": false,
+  "rom_bios_accounts_saves": false,
+  "contains_official_runtime_probe_fixture_core_or_cube": false
+}

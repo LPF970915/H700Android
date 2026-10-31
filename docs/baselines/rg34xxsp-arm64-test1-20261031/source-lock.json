@@ -1,0 +1,21 @@
+{
+  "encoding": "Git-normalized LF bytes, not frozen overlay",
+  "parent_source_lock": "docs/baselines/rg34xxsp-dualabi-runtime-p1c-20261031/source-lock.json",
+  "files": {
+    ".gitattributes": "b678adf8d5f23e91777665582a4d99340a64b21151e386e34f7295add0d73f50",
+    "AGENTS.md": "ee3b43aace3ee25c830ff34923656aa5075bb0e251acd74d6e28ddade4d1a31f",
+    "docs/CURRENT_BASELINE_20261028.md": "e5da275d010cdd6bd05f821a481db8bf34a4ae2ec332aaf79a661a5ec9a18986",
+    "docs/REPRODUCE_BASELINE_20261028.md": "542e5a0065dc4b9f3426a099f351b6b540ce0ef525ca922b015e216cb0da96f7",
+    "docs/STORAGE_RETENTION_20261028.md": "b3745d35847bf39ef6e719b3db1dafdac3ff6fa658a105de928fee5e360c4485",
+    "docs/RG34XXSP_ARM64_TEST1_20261031.md": "0f67be1c90480e08c998b8d4e82c55f6e24c3a2bc01a865f9146f60e7c3d11ea",
+    "config/retroarch/android/H700_DualABI_Test1.cfg": "91430fb46b0d67cd70a6e233ca6ffb74503c49641914ddde38803f2b842159e0",
+    "tools/build_h700_apps.py": "eb91eaa2824678d0b68076ad98046ff37abc5b2a4d78026e23c0e4d31b0122e6",
+    "tools/build_h700_low_pressure.ps1": "b667a7beb6dd066a01fa89bb88610cd401bf13ebfa9d07b26aa141bcf1b13415",
+    "tools/build_h700_low_pressure.sh": "e8c90369989f7fd0e0e197679ab6816b606cf2cfb381cbd490a456c2937fd137",
+    "tools/arm64_probe/prototype_unlock/PrototypeUnlockActivity.java": "1c4bec8fdd50f804c77df2107c6ba3880d153e60c1a8972d6e671df9accdf17e",
+    "tools/arm64_probe/test1_setup.sh": "6dba870eb08d5b4610944527ce95e44e55ff77bcddfb3b5ef498bca9c041da28",
+    "tools/package_h700_dualabi_test1.py": "a1044dfddd9e472821299fd124f528d2bf25780a31be1e6b004ced7dc648c64a",
+    "tools/audit_h700_dualabi_test1.py": "0c9cb15b35e36f4ebf78999ab85627a594bb339f7402b9c6210e1bdf335e12f9",
+    "tools/write_h700_dualabi_test1.py": "2c19734cb6e1a634a21d49bc226c3278d79be59183c11a9a1e72f1bfc2970582"
+  }
+}

@@ -6,7 +6,7 @@ test -f "$root/build/envsetup.sh"
 test "$#" -gt 0
 for target in "$@"; do
     case "$target" in systemimage|vendorimage|ramdisk|adbd|vold|services|Settings|SettingsIntelligence|SystemUI|MediaProvider|LatinIME|LeanbackIME|Calendar|DocumentsUI|RGSPLauncher|RGSPNavigation|H700Apps|H700Navigation|H700Input|H700KernelInput|H700Lid|H700Rotation|H700RotationFramework|H700ReleaseImage|H700ReleaseImageMT|H700Arm64Feasibility|H700Arm64Isolated|rgsp_vsync_probe|rgsp_egl_import_probe|hwcomposer.cupid|libsurfaceflinger|PermissionController) ;;
-        H700DualAbiWindow|H700DualAbiBoot|H700DualAbiImage|H700DualAbiAudit|H700DualAbiBootEntry|H700DualAbiEntryImage|H700DualAbiHandoff|H700DualAbiHandoffImage) ;;
+        H700DualAbiWindow|H700DualAbiBoot|H700DualAbiImage|H700DualAbiAudit|H700DualAbiBootEntry|H700DualAbiEntryImage|H700DualAbiHandoff|H700DualAbiHandoffImage|H700DualAbiTestNavigation|H700DualAbiTestImage|H700DualAbiTestAudit) ;;
         *) echo "Unsupported target: $target" >&2; exit 2 ;;
     esac
 done
@@ -30,6 +30,24 @@ export GOGC=50
 export JAVA_TOOL_OPTIONS='-Xmx2048m'
 export NINJA_ARGS='-j1'
 export MAKEFLAGS='-j1'
+if [ "$#" = 1 ] && [ "$1" = H700DualAbiTestAudit ]; then
+    echo "LOW_PRESSURE_START=$(date -Is)"
+    python3 "$(dirname "$(realpath "$0")")/audit_h700_dualabi_test1.py"
+    echo "LOW_PRESSURE_COMPLETE=$(date -Is)"
+    exit 0
+fi
+if [ "$#" = 1 ] && [ "$1" = H700DualAbiTestNavigation ]; then
+    echo "LOW_PRESSURE_START=$(date -Is)"
+    python3 "$(dirname "$(realpath "$0")")/build_h700_apps.py" --source "$root" --prototype-navigation-only
+    echo "LOW_PRESSURE_COMPLETE=$(date -Is)"
+    exit 0
+fi
+if [ "$#" = 1 ] && [ "$1" = H700DualAbiTestImage ]; then
+    echo "LOW_PRESSURE_START=$(date -Is)"
+    python3 "$(dirname "$(realpath "$0")")/package_h700_dualabi_test1.py"
+    echo "LOW_PRESSURE_COMPLETE=$(date -Is)"
+    exit 0
+fi
 if [ "$#" = 1 ] && [ "$1" = H700DualAbiHandoffImage ]; then
     echo "LOW_PRESSURE_START=$(date -Is)"
     python3 "$(dirname "$(realpath "$0")")/package_h700_dualabi_entry_image.py" --handoff-p1b
