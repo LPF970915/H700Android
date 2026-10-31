@@ -32,6 +32,11 @@ def main():
     setup=base.dump(system,'/system/bin/h700-prototype-setup.sh',WORK/'setup.audit')
     if setup.read_bytes()!=(ROOT/'tools/arm64_probe/test1_setup.sh').read_bytes():raise ValueError('Installer mismatch')
     subprocess.run(['bash','-n',str(setup)],check=True)
+    for command in ['flock','restorecon','svc','pm','sh']:
+        info=base.debug(system,'stat /system/bin/'+command)
+        if 'Inode:' not in info:
+            raise ValueError('First-boot dependency absent: '+command)
+    checks['first_boot_command_paths_present']=True
     for path,target in [('/init','/system/bin/h700-bootstrap/init'),('/system/bin/init','h700-bootstrap/init')]:
         if 'Fast link dest: "'+target+'"' not in base.debug(system,'stat '+base.q(path)):
             raise ValueError('Preserved ramdisk handoff no longer valid')

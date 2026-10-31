@@ -15,7 +15,8 @@
     "tools/arm64_probe/prototype_unlock/PrototypeUnlockActivity.java": "1c4bec8fdd50f804c77df2107c6ba3880d153e60c1a8972d6e671df9accdf17e",
     "tools/arm64_probe/test1_setup.sh": "6dba870eb08d5b4610944527ce95e44e55ff77bcddfb3b5ef498bca9c041da28",
     "tools/package_h700_dualabi_test1.py": "a1044dfddd9e472821299fd124f528d2bf25780a31be1e6b004ced7dc648c64a",
-    "tools/audit_h700_dualabi_test1.py": "0c9cb15b35e36f4ebf78999ab85627a594bb339f7402b9c6210e1bdf335e12f9",
-    "tools/write_h700_dualabi_test1.py": "2c19734cb6e1a634a21d49bc226c3278d79be59183c11a9a1e72f1bfc2970582"
+    "tools/audit_h700_dualabi_test1.py": "f4b97bf4d4a133f66c19d26ea9c3cf4124c18d5f4ad9f643d166d9ba65970680",
+    "tools/write_h700_dualabi_test1.py": "2c19734cb6e1a634a21d49bc226c3278d79be59183c11a9a1e72f1bfc2970582",
+    "tools/audit_h700_dualabi_test1_device.py": "c277da74bfb963cb90edb6fccbb227b80310ca416d29b7c7fe23dd5f998994e6"
   }
 }
