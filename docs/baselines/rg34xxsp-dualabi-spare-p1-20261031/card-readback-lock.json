@@ -1,0 +1,16 @@
+{
+  "image_sha256": "2e9244197b4745a91c885efe3442fe71a1752772b99fff5ceaf9eb4d2147d193",
+  "card_written": true,
+  "image_range_bytes": 32434554368,
+  "readback_sha256": "fb65bf0c73e69db72e5e39d7729ee775347838658be3311421db5915d16d1bad",
+  "physical_backup_sha256": "b981fb38d287bda09ecf111d8f654d45039889907c34150be4846e1b4b24f6fc",
+  "full_readback_pass": true,
+  "working_system_unchanged": true,
+  "partitions_resized": false,
+  "physical_boot_pending": true,
+  "block_cache_invalidated_at_readback_start": true,
+  "uncached_prefix_recheck_bytes": 268435456,
+  "uncached_prefix_recheck_sha256": "6cb9df992abd9c9e9ef95fa1f0767f9a577031066431dbd3b3a793d8d19624b6",
+  "bounded_preflush_reader_bytes": 8434497,
+  "full_physical_readback_pass": true
+}

@@ -1,0 +1,18 @@
+{
+  "encoding": "Git-normalized LF bytes, not frozen source overlay",
+  "parent_product_source_lock": "docs/baselines/rg34xxsp-dualabi-window-20261031/source-lock.json",
+  "files": {
+    "AGENTS.md": "6ffd85630470a4218d9dc9c524daf0c22a4d28239a91c8109e054bcd42bd4a89",
+    "docs/RG34XXSP_DUALABI_SPARE_P1_20261031.md": "04c9ff4f4005c8faa49bec39bf23782984c3984857df838ad064366b94ace20d",
+    "docs/CURRENT_BASELINE_20261028.md": "5ed875662506e7500c3a8ca7106eea741753fab6e94f785322561f3843e056d9",
+    "docs/STORAGE_RETENTION_20261028.md": "9fc1bee9a7eb18361b53d498f6584aa353c4cd30e52dae4904bbe00eca726df4",
+    "tools/build_h700_low_pressure.ps1": "7aa9ac04d891db1686c5d3acdb258e6d6872d35fc9def83aaad95b692c21b26c",
+    "tools/build_h700_low_pressure.sh": "154e307b7705c90c5523c7611c14399ba2e2080ffa96436e7b915d721b671b7c",
+    "tools/package_h700_dualabi_prototype.py": "9262a9821263386e6bd7e0e5e94524afa8df312e36eadc6f89b80e451e618a63",
+    "tools/audit_h700_dualabi_image.py": "6a552b1da4a9b48e56e1632affa75b14a6634e417b7ceae2cd2cf4443a3e4a8e",
+    "tools/write_h700_dualabi_spare.py": "a483b3756dc39b1b4e8f9d4d89ed5c7aa74f99d7837620ad9ebec0c484bb607e",
+    "tools/dualabi_image_layout.py": "e361030ad1e009bf36a87b8b62ba9d331908f31e1b4c28f62cf9ac424ff5f34a",
+    "tools/arm64_probe/prototype_setup.sh": "d5ae6d5770c5de8d87ff0a63db5587443b737008508e8d26c3edd44dee7bf412",
+    "tools/arm64_probe/prototype_setup.rc": "4284e205bb4582dba7a0546cea251c2b69885f7639373f7597934021bc5a2a24"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "image_sha256": "2e9244197b4745a91c885efe3442fe71a1752772b99fff5ceaf9eb4d2147d193",
+  "offline_boot_inputs_pass": true,
+  "first_boot_verified": false,
+  "checks": {
+    "app_process64": "dc746f6ee85c0943a6b4e22455d5bdedf35190ad7cc8bf0b7b450052af9de623",
+    "app_process32": "8a21ad4b941d637aec7c6fa3d176de8718fb97b0a1be6030c86df64c2ad1f9ff",
+    "/system/framework/services.jar": "23be701b603cf2cb20eb28678322d3bcc6b42f03c368f9e1ad4fa5d916f225fc",
+    "/system/framework/framework.jar": "fffef5a9f80fb7c2c5fc2857569e4151f94fb62d1d5e445080e2b82d4b515e03",
+    "/system/apex/com.android.runtime.release/lib64/libart.so": "7e381c2c9a79eaf7b0abc5ef31fec20a108234741f77ab8a4e6eb577d18a0830",
+    "/system/apex/com.android.runtime.release/lib/libart.so": "3db03b3ae3c035df293fc75685cad0c8fdec403b248670ed5c1f5622296d64bd",
+    "/system/apex/com.android.runtime.release/lib64/bionic/libc.so": "c48172d1d642328447fcb9bc8e9a79d569e4287add3e90f263f70b46b225a20e",
+    "/system/apex/com.android.runtime.release/lib/bionic/libc.so": "caa1b3b45845d4a372487b1c239baa02871474d9d577ccffd16fc5b24551452a",
+    "dual_zygote": true,
+    "coherent_gsi_art_framework": true,
+    "arm64_only_sentinel": true,
+    "private_bootstrap": true,
+    "mali32_preserved": true,
+    "mali64_present": true,
+    "relocated_primary_sha256": "b942dd4a238d9503f1eae6ef0f28060d1aaf2077bb872bdcc5bd2be01ffbd40f",
+    "relocated_backup_sha256": "b981fb38d287bda09ecf111d8f654d45039889907c34150be4846e1b4b24f6fc"
+  }
+}

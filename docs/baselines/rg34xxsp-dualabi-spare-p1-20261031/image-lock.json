@@ -1,0 +1,97 @@
+{
+  "release": "H700_RG34XXSP_2GB_DualABI_P1_GSI10_20261031_NoROM",
+  "bytes": 32434554368,
+  "sha256": "2e9244197b4745a91c885efe3442fe71a1752772b99fff5ceaf9eb4d2147d193",
+  "gzip_sha256": "0870dea1c1e97ea61e3014c52ef3c8df48d06e080253ad19af42d9da7c97da21",
+  "gzip_bytes": 959614367,
+  "ranges": [
+    {
+      "name": "prefix",
+      "offset": 0,
+      "bytes": 222298112,
+      "sha256": "9e89204206e56a9b438e5dee2d689946ea1a4037586f454c9211c2eb7245322d"
+    },
+    {
+      "name": "system",
+      "offset": 222298112,
+      "bytes": 8589934592,
+      "sha256": "9cf30b6e8da166ab8824beb87423fc5419b2cbe5cbaec609c5808227c736287b"
+    },
+    {
+      "name": "vendor",
+      "offset": 8812232704,
+      "bytes": 2147483648,
+      "sha256": "bbf85d15d504e1df7d2bc963ab62589518c8bc7a71eccfb127529d137dc26fd4"
+    },
+    {
+      "name": "factory_tail",
+      "offset": 10959716352,
+      "bytes": 21474838016,
+      "sha256": "b2c91359ac2912e773a28fff4db563f033a99e79bcb321ce1977bb2436d9c964"
+    }
+  ],
+  "layout": {
+    "disk_guid": "49edabee-ce1d-5d19-815d-5419553e7b22",
+    "partitions": {
+      "special": {
+        "old_partuuid": "a0085546-4166-744a-a353-fca9272b8e45",
+        "partuuid": "936a880a-9904-5599-b0a3-282fb074e785"
+      },
+      "boot-resource": {
+        "old_partuuid": "a0085546-4166-744a-a353-fca9272b8e46",
+        "partuuid": "6edd1f62-e07f-580b-9db8-e361442caf4a"
+      },
+      "env": {
+        "old_partuuid": "a0085546-4166-744a-a353-fca9272b8e47",
+        "partuuid": "cd73d9c2-b542-5624-8e8f-0a07d0863b26"
+      },
+      "boot": {
+        "old_partuuid": "a0085546-4166-744a-a353-fca9272b8e48",
+        "partuuid": "304e806e-d5c2-59b9-a9b1-a9fbf409e379"
+      },
+      "system": {
+        "old_partuuid": "096d7fa1-62e8-c242-9876-cfdd5a92b8eb",
+        "partuuid": "abe9984b-d5c6-5dc1-aa53-c2f1f8c4c0e5"
+      },
+      "vendor": {
+        "old_partuuid": "6aa8b46e-b96f-9545-bbfb-1b7d2bdc7da8",
+        "partuuid": "5f634828-4295-5656-945d-0a068612d549"
+      },
+      "data": {
+        "old_partuuid": "734716ed-e7d9-e74f-9b3e-4f1cb8d448ed",
+        "partuuid": "a6c273e3-f229-54cd-ac14-89ff4a3dcfa0"
+      },
+      "ROMS": {
+        "old_partuuid": "b4d04d65-2c35-4b7f-b9c5-8f24d2f10505",
+        "partuuid": "f8d48532-2854-5249-bac2-788125189eb0"
+      }
+    }
+  },
+  "marker": "rg34xxsp-dualabi-gsi10-p1-20261031",
+  "gsi_sha256": "0bbbf53e1164b032eace999cbd6bf0877ab636819a2e929f63079ccfe71095c7",
+  "full_gzip_decompression_verified": true,
+  "card_written": false,
+  "first_boot_verified": false,
+  "test_apps": [
+    {
+      "package": "com.roc.h700.abiprobe",
+      "abi": "arm64-v8a",
+      "sha256": "94084bd456de8fad98c7f0344cfe497fc1655a09b64060b1e9038a53f3743f9d"
+    },
+    {
+      "package": "bin.mt.plus",
+      "abi": "arm64-v8a",
+      "sha256": "8f83cef8ac63f76a81e1fee3ededb213f6ba43cc19761e38bc4e567c87edd47d"
+    },
+    {
+      "package": "com.retroarch.ra32",
+      "abi": "armeabi-v7a",
+      "sha256": "9e964f53089a302401a6d5b1451d7ce5539f39b85eb0a305d8d77e6edcbf803f"
+    },
+    {
+      "package": "org.ppsspp.ppsspp",
+      "abi": "armeabi-v7a",
+      "sha256": "dd702a31270ecd68db37afee311d6efe08b1d4da9601d2750ce1a73bbd316c3f"
+    }
+  ]
+}

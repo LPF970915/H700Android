@@ -1,0 +1,491 @@
+{
+  "system": {
+    "/file_contexts.bin": {
+      "sha256": "fd8ec38117575eb86828c41d6ce96db6549570c245a37e58e0adf338d1a3f3cf",
+      "mode": "0100644",
+      "selinux": "u:object_r:system_file:s0"
+    },
+    "/init.usb.rc": {
+      "sha256": "4ff70d113187e5b3f5497162e5251c5eebaaaa3d680d386f22a6cf7ec812d07c",
+      "mode": "0100750",
+      "selinux": "u:object_r:rootfs:s0"
+    },
+    "/system/app/RGSPNavigation/RGSPNavigation.apk": {
+      "sha256": "c83a009d65e6786814a0763a6233d8557c3e5813b9dd6eda8e4aca6bca7b8014",
+      "mode": "0100644",
+      "selinux": "u:object_r:system_file:s0"
+    },
+    "/system/bin/bootstrap/linker64": {
+      "sha256": "9ac5d2e7f415d85c159c0a456819ea3d03f9283f3b8da993c5597e5dff4de1bd",
+      "mode": "0100755",
+      "selinux": "u:object_r:system_linker_exec:s0"
+    },
+    "/system/bin/h700-bootstrap/adbd": {
+      "sha256": "12de5af10ab261dbba1e906a4199f17bcddcd3e9b52091ca40b586739e8c156a",
+      "mode": "0100755",
+      "selinux": "u:object_r:adbd_exec:s0"
+    },
+    "/system/bin/h700-bootstrap/init": {
+      "sha256": "9edd76fd01244d99549f1ec744600565d86f0b5e9d8f7575c527a1fc64fb9f00",
+      "mode": "0100755",
+      "selinux": "u:object_r:init_exec:s0"
+    },
+    "/system/bin/h700-network-validation-defaults.sh": {
+      "sha256": "47f60c1b18fe16059800124c5d5f84c2c170cf99cd102e03e76738afce0e8395",
+      "mode": "0100755",
+      "selinux": "u:object_r:system_file:s0"
+    },
+    "/system/bin/h700-prototype-setup.sh": {
+      "sha256": "d5ae6d5770c5de8d87ff0a63db5587443b737008508e8d26c3edd44dee7bf412",
+      "mode": "0100755",
+      "selinux": "u:object_r:shell_exec:s0"
+    },
+    "/system/etc/cgroups.json": {
+      "sha256": "933c1723dac793a201e17e17c068f4d264dcd300e69cc42e4a856571ff5b1ad5",
+      "mode": "0100644",
+      "selinux": "u:object_r:system_file:s0"
+    },
+    "/system/etc/h700-prototype/apks/H700AbiProbe64.apk": {
+      "sha256": "94084bd456de8fad98c7f0344cfe497fc1655a09b64060b1e9038a53f3743f9d",
+      "mode": "0100644",
+      "selinux": "u:object_r:system_file:s0"
+    },
+    "/system/etc/h700-prototype/apks/MTManager.apk": {
+      "sha256": "8f83cef8ac63f76a81e1fee3ededb213f6ba43cc19761e38bc4e567c87edd47d",
+      "mode": "0100644",
+      "selinux": "u:object_r:system_file:s0"
+    },
+    "/system/etc/h700-prototype/apks/PPSSPP.apk": {
+      "sha256": "dd702a31270ecd68db37afee311d6efe08b1d4da9601d2750ce1a73bbd316c3f",
+      "mode": "0100644",
+      "selinux": "u:object_r:system_file:s0"
+    },
+    "/system/etc/h700-prototype/apks/RetroArch.apk": {
+      "sha256": "9e964f53089a302401a6d5b1451d7ce5539f39b85eb0a305d8d77e6edcbf803f",
+      "mode": "0100644",
+      "selinux": "u:object_r:system_file:s0"
+    },
+    "/system/etc/h700-prototype/apps.list": {
+      "sha256": "813f59e5a6ce3bda09b7e85a38f7a8cc83b63a5c8be03c7adff0ed5d69172035",
+      "mode": "0100644",
+      "selinux": "u:object_r:system_file:s0"
+    },
+    "/system/etc/init/h700-media-compat.rc": {
+      "sha256": "dde3ccf39b600d06df5f599fb300f7927751933088772f695805202bccd8a3d6",
+      "mode": "0100644",
+      "selinux": "u:object_r:system_file:s0"
+    },
+    "/system/etc/init/h700-network-validation-defaults.rc": {
+      "sha256": "94c5f6cca1be8f92717d540481d6c0719381ddc01d10fc46519763227f488430",
+      "mode": "0100644",
+      "selinux": "u:object_r:system_file:s0"
+    },
+    "/system/etc/init/h700-prototype-setup.rc": {
+      "sha256": "4284e205bb4582dba7a0546cea251c2b69885f7639373f7597934021bc5a2a24",
+      "mode": "0100644",
+      "selinux": "u:object_r:system_file:s0"
+    },
+    "/system/etc/init/h700-usb-configfs.rc": {
+      "sha256": "16c0d49a69509e0113fdc247f944c9c0eb0c34458dede7e73fb71ea307fce621",
+      "mode": "0100644",
+      "selinux": "u:object_r:system_file:s0"
+    },
+    "/system/etc/init/rgsp-single-console.rc": {
+      "sha256": "f33f63a531ad666214efedfc07ca818ec0956ac08fff769005ce39ae12622ba5",
+      "mode": "0100644",
+      "selinux": "u:object_r:system_file:s0"
+    },
+    "/system/etc/init/rgsp_fix63_graphics.rc": {
+      "sha256": "5511c62c415c33a80f309a91a01c8c694454a2dbbdde1472bb2d95ca9f60ed03",
+      "mode": "0100644",
+      "selinux": "u:object_r:system_file:s0"
+    },
+    "/system/etc/ld.config.27.txt": {
+      "sha256": "ff93bebc2f354d264abdaf9d740597d876acb4cfb8fa6e6a38d925a5a928e27f",
+      "mode": "0100644",
+      "selinux": "u:object_r:system_file:s0"
+    },
+    "/system/etc/ld.config.28.txt": {
+      "sha256": "583aa360fe825acf17bf7db9bd376af56663e7b82a495bebbbdf1364358f9cf9",
+      "mode": "0100644",
+      "selinux": "u:object_r:system_file:s0"
+    },
+    "/system/etc/ld.config.29.txt": {
+      "sha256": "ee4a69a050091c1c94504cf744d3844e62c41032897fab83bf9062bc464e073d",
+      "mode": "0100644",
+      "selinux": "u:object_r:system_file:s0"
+    },
+    "/system/etc/ld.config.txt": {
+      "sha256": "eaedce9955c674ce0d632d9ef7436410c773d641f853e4570ef6fe1ef708fb66",
+      "mode": "0100644",
+      "selinux": "u:object_r:system_file:s0"
+    },
+    "/system/etc/ld.config.vndk_lite.txt": {
+      "sha256": "562fce9137438f98cb04d161fa7da9106f30f5d0e362f68034160cda710a2d71",
+      "mode": "0100644",
+      "selinux": "u:object_r:system_file:s0"
+    },
+    "/system/etc/prop.default": {
+      "sha256": "4f24c9f50ed2123bbbb8661fad9564af39db2bd607dc7a08f47e9caa46441ecd",
+      "mode": "0100644",
+      "selinux": "u:object_r:system_file:s0"
+    },
+    "/system/etc/rgsp-graphics-diag.sh": {
+      "sha256": "4015ef930d874dc6b7f159f2b48ecf196b608c9b595a0400415ecb3bb2e14144",
+      "mode": "0100755",
+      "selinux": "u:object_r:system_file:s0"
+    },
+    "/system/etc/selinux/mapping/26.0.cil": {
+      "sha256": "fccf124ca0cf548a67fa2c573ffcd9ce5111aef4b8dc0b35b35de6d235d0652d",
+      "mode": "0100644",
+      "selinux": "u:object_r:system_file:s0"
+    },
+    "/system/etc/selinux/mapping/27.0.cil": {
+      "sha256": "5d6ddf138e5ae40cc26373fc7f98be24abba5e3cad6cb8ddf30fe461ace8f709",
+      "mode": "0100644",
+      "selinux": "u:object_r:system_file:s0"
+    },
+    "/system/etc/selinux/mapping/28.0.cil": {
+      "sha256": "58c25919dec57c770164996fab29df9ed256e046d25619718f81d5e6f62e0c99",
+      "mode": "0100644",
+      "selinux": "u:object_r:system_file:s0"
+    },
+    "/system/etc/selinux/mapping/29.0.cil": {
+      "sha256": "388bacad08afe5bc5da600937f4ef020c4ada437ae6c6eba8d8f760489a77094",
+      "mode": "0100644",
+      "selinux": "u:object_r:system_file:s0"
+    },
+    "/system/etc/selinux/plat_file_contexts": {
+      "sha256": "b0672ea8069ba0cf201755ce2522268ec200faab6f4c0bad210b6d514106d5f6",
+      "mode": "0100644",
+      "selinux": "u:object_r:system_file:s0"
+    },
+    "/system/etc/selinux/plat_hwservice_contexts": {
+      "sha256": "cf1c8d9d6c0c161ae3eb5df42136785906c6570d1a2bfbec0e8a140897f246db",
+      "mode": "0100644",
+      "selinux": "u:object_r:system_file:s0"
+    },
+    "/system/etc/selinux/plat_property_contexts": {
+      "sha256": "81c000a3aaa5446d3dbd66c00c5b1648444e54684812fad8e425f7644cb7d298",
+      "mode": "0100644",
+      "selinux": "u:object_r:system_file:s0"
+    },
+    "/system/etc/selinux/plat_seapp_contexts": {
+      "sha256": "c8d84642261503c1e55ec56aae3d39d5fa9b151cf06b4309c6d2e01290255196",
+      "mode": "0100644",
+      "selinux": "u:object_r:system_file:s0"
+    },
+    "/system/etc/selinux/plat_sepolicy.cil": {
+      "sha256": "a04cc685ca207458e75da5769f6aa017828d8b32cf16874340390a968d4b1ca9",
+      "mode": "0100644",
+      "selinux": "u:object_r:system_file:s0"
+    },
+    "/system/etc/selinux/plat_sepolicy_and_mapping.sha256": {
+      "sha256": "ee1ec1976c7274359762c8b98224293d0f4e833a7371423eabca622d470a3105",
+      "mode": "0100644",
+      "selinux": "u:object_r:system_file:s0"
+    },
+    "/system/etc/selinux/plat_service_contexts": {
+      "sha256": "4617ee8e7813159625bea57819ba46e72517e85507b0b5e0df78c4a32f97cf9a",
+      "mode": "0100644",
+      "selinux": "u:object_r:system_file:s0"
+    },
+    "/system/etc/task_profiles.json": {
+      "sha256": "4065fbb58bf584267d5b7e8265c14c7be9218e6a3752b7fae47040433de4adb1",
+      "mode": "0100644",
+      "selinux": "u:object_r:system_file:s0"
+    },
+    "/system/lib/modules/mali_kbase.ko": {
+      "sha256": "987e2feb5621f455c139c9e93c0c2a972f6eee0478b755b2cdfecfeb249970a9",
+      "mode": "0100644",
+      "selinux": "u:object_r:system_file:s0"
+    },
+    "/system/lib64/bootstrap/libadbd.so": {
+      "sha256": "821e234d33a2dc1818654eab8ebb75c191f28367988546bcacc3f0fb977cbed4",
+      "mode": "0100644",
+      "selinux": "u:object_r:system_lib_file:s0"
+    },
+    "/system/lib64/bootstrap/libadbd_services.so": {
+      "sha256": "e266ee1c68c3737afaf9fab4984ec50b64c33d1946199def050a6c32c65632fa",
+      "mode": "0100644",
+      "selinux": "u:object_r:system_lib_file:s0"
+    },
+    "/system/lib64/bootstrap/libasyncio.so": {
+      "sha256": "bef022881b41a6efd437fa02e550c1f55148e18241324fd60161f3c21c2594e2",
+      "mode": "0100644",
+      "selinux": "u:object_r:system_lib_file:s0"
+    },
+    "/system/lib64/bootstrap/libbacktrace.so": {
+      "sha256": "55f0056bac78c3792f61734c4642980c8fb582f606f6068aeba456b7f48c9224",
+      "mode": "0100644",
+      "selinux": "u:object_r:system_lib_file:s0"
+    },
+    "/system/lib64/bootstrap/libbase.so": {
+      "sha256": "ffd6c09efef7527a31320b4717e55fa062d6201dea7d2fb4e168c75fcefff1cd",
+      "mode": "0100644",
+      "selinux": "u:object_r:system_lib_file:s0"
+    },
+    "/system/lib64/bootstrap/libbinder.so": {
+      "sha256": "f280217e89ed90d099d6000cb7acdf711a3b5914b9188a487b3dde98dd100ba5",
+      "mode": "0100644",
+      "selinux": "u:object_r:system_lib_file:s0"
+    },
+    "/system/lib64/bootstrap/libbinderthreadstate.so": {
+      "sha256": "f3757e3cf607a82935251babe8c7c795a7c1b19f2de25afd00889ce210b88bb8",
+      "mode": "0100644",
+      "selinux": "u:object_r:system_lib_file:s0"
+    },
+    "/system/lib64/bootstrap/libbootloader_message.so": {
+      "sha256": "ce40d054b4899ec5a848ba1004fd30dbe3a4b75f8617073967efefe9965ef768",
+      "mode": "0100644",
+      "selinux": "u:object_r:system_lib_file:s0"
+    },
+    "/system/lib64/bootstrap/libc++.so": {
+      "sha256": "c5d8d7fb0fcfd334d7ea9c8ab6c56af3c3a944d761921ac417a1a1cbcc88a35e",
+      "mode": "0100644",
+      "selinux": "u:object_r:system_lib_file:s0"
+    },
+    "/system/lib64/bootstrap/libc.so": {
+      "sha256": "02183fb35d56f2c6aad448dbf5528cc3bab9eebd47acfecf12cf339fa181e7b0",
+      "mode": "0100644",
+      "selinux": "u:object_r:system_lib_file:s0"
+    },
+    "/system/lib64/bootstrap/libcap.so": {
+      "sha256": "5ff98086fd4a9e509dbb352e4692c194af46ecf3fecf35a5f3dec5e8a8b6cc44",
+      "mode": "0100644",
+      "selinux": "u:object_r:system_lib_file:s0"
+    },
+    "/system/lib64/bootstrap/libcgrouprc.so": {
+      "sha256": "3ba34737c2865cbc94b300ad2edf84865c698895d733fd01922d6020cdad4e81",
+      "mode": "0100644",
+      "selinux": "u:object_r:system_lib_file:s0"
+    },
+    "/system/lib64/bootstrap/libcrypto.so": {
+      "sha256": "5fa12f01f31229bb5198804a19639fe8fca1e1e9391a9e9b0c282c270d9b6c87",
+      "mode": "0100644",
+      "selinux": "u:object_r:system_lib_file:s0"
+    },
+    "/system/lib64/bootstrap/libcrypto_utils.so": {
+      "sha256": "437f20c40ce4cff917210f36abc59fa03b17699f8e4971893e6dc62aa27bf953",
+      "mode": "0100644",
+      "selinux": "u:object_r:system_lib_file:s0"
+    },
+    "/system/lib64/bootstrap/libcutils.so": {
+      "sha256": "6ec75941668d63e3c9d59fd5c88d9f599a3816f4d5c0b349b6bab750d206cd36",
+      "mode": "0100644",
+      "selinux": "u:object_r:system_lib_file:s0"
+    },
+    "/system/lib64/bootstrap/libdexfile_support.so": {
+      "sha256": "5a2498b27160e40789803b73c39d9985baa49dead9d1946f76e1e2cedcc419fc",
+      "mode": "0100644",
+      "selinux": "u:object_r:system_lib_file:s0"
+    },
+    "/system/lib64/bootstrap/libdl.so": {
+      "sha256": "d49dba9e449f25ebfed4edfa2af6b811ba36bd1fe6683475cd8e5821fefe5acd",
+      "mode": "0100644",
+      "selinux": "u:object_r:system_lib_file:s0"
+    },
+    "/system/lib64/bootstrap/libdl_android.so": {
+      "sha256": "3deec16a88d1df86c476e541799f32c98e3f20f48c7c24e63f829413803d4d95",
+      "mode": "0100644",
+      "selinux": "u:object_r:system_lib_file:s0"
+    },
+    "/system/lib64/bootstrap/libext2_uuid.so": {
+      "sha256": "909eb95392dfe26ff73ea581ccc7e27529d3ba7fb7a5efc05b8f73427e9db2aa",
+      "mode": "0100644",
+      "selinux": "u:object_r:system_lib_file:s0"
+    },
+    "/system/lib64/bootstrap/libext4_utils.so": {
+      "sha256": "7cc472c0df19525048c33ba8873a57085bbaa0863558462f6dfaf711b6b455f6",
+      "mode": "0100644",
+      "selinux": "u:object_r:system_lib_file:s0"
+    },
+    "/system/lib64/bootstrap/libfec.so": {
+      "sha256": "a1e0e8cce0864b51722300fa79f77a49af8b7be06b468db7f417163c4b24280b",
+      "mode": "0100644",
+      "selinux": "u:object_r:system_lib_file:s0"
+    },
+    "/system/lib64/bootstrap/libfs_mgr.so": {
+      "sha256": "9397324d198d40e7b2372d7c9596148a9aa58d634d4d15cb5d508dd6ad622a53",
+      "mode": "0100644",
+      "selinux": "u:object_r:system_lib_file:s0"
+    },
+    "/system/lib64/bootstrap/libfscrypt.so": {
+      "sha256": "724b4026bf80a99c483c5851d770f2f61d0237f9abde8656bb04d2b107feead2",
+      "mode": "0100644",
+      "selinux": "u:object_r:system_lib_file:s0"
+    },
+    "/system/lib64/bootstrap/libgsi.so": {
+      "sha256": "73c4892e6b3c1725eb93a84f41bd1794dceefe38bfe103afe5906ed2f332f28c",
+      "mode": "0100644",
+      "selinux": "u:object_r:system_lib_file:s0"
+    },
+    "/system/lib64/bootstrap/libhidl-gen-utils.so": {
+      "sha256": "6ab9779ac92153938f3b2800796ef21fb61d4ae8772328408c67ecd8dcede5db",
+      "mode": "0100644",
+      "selinux": "u:object_r:system_lib_file:s0"
+    },
+    "/system/lib64/bootstrap/libjsoncpp.so": {
+      "sha256": "e0ffab526d296bc1b49505ccc2c4e7be86d1d46df1d0be334b6850e380334246",
+      "mode": "0100644",
+      "selinux": "u:object_r:system_lib_file:s0"
+    },
+    "/system/lib64/bootstrap/libkeyutils.so": {
+      "sha256": "9e2d1dc8730db6e8374c8be666113562234a3665667ce46d3777dd2ee8af144b",
+      "mode": "0100644",
+      "selinux": "u:object_r:system_lib_file:s0"
+    },
+    "/system/lib64/bootstrap/liblog.so": {
+      "sha256": "49750318f078ce9ff51f52628a20f966bcc394055b25800b521d21b3660e0a6a",
+      "mode": "0100644",
+      "selinux": "u:object_r:system_lib_file:s0"
+    },
+    "/system/lib64/bootstrap/liblogwrap.so": {
+      "sha256": "de093011497f6de2244eb25ee70f3de3f464a02b378dd84c6c9d544b0983ea02",
+      "mode": "0100644",
+      "selinux": "u:object_r:system_lib_file:s0"
+    },
+    "/system/lib64/bootstrap/liblp.so": {
+      "sha256": "bf4bb793e46e981dd0f53d04212dded87df022c47e98d4b3d3a25bad34937596",
+      "mode": "0100644",
+      "selinux": "u:object_r:system_lib_file:s0"
+    },
+    "/system/lib64/bootstrap/liblzma.so": {
+      "sha256": "156ec1c22c3de1c5e19fd5a9ef954efa0f1bb65913f1804867d5f2594073d031",
+      "mode": "0100644",
+      "selinux": "u:object_r:system_lib_file:s0"
+    },
+    "/system/lib64/bootstrap/libm.so": {
+      "sha256": "d5e7dc5c9d74de3ab232e7a53300a8884d3fe7661b649400bab43edcc04050f3",
+      "mode": "0100644",
+      "selinux": "u:object_r:system_lib_file:s0"
+    },
+    "/system/lib64/bootstrap/libmdnssd.so": {
+      "sha256": "9d6b79cdb8c87a4f23e3c561fba331ff09d806bd1e068f7ca52dd4041a79729b",
+      "mode": "0100644",
+      "selinux": "u:object_r:system_lib_file:s0"
+    },
+    "/system/lib64/bootstrap/libminijail.so": {
+      "sha256": "9e041976b22b461503d0f0cd8936280dbd0dcdecffafa9fdd4e77630c88b1af9",
+      "mode": "0100644",
+      "selinux": "u:object_r:system_lib_file:s0"
+    },
+    "/system/lib64/bootstrap/libpackagelistparser.so": {
+      "sha256": "8a051460854c9d4d58a954008c903750698565c03541175b0f20437704bc42de",
+      "mode": "0100644",
+      "selinux": "u:object_r:system_lib_file:s0"
+    },
+    "/system/lib64/bootstrap/libpcre2.so": {
+      "sha256": "074c0f42e4bf79e1e3e38a8146e783ed7a2145f2e5647e2534fe07a5decb009a",
+      "mode": "0100644",
+      "selinux": "u:object_r:system_lib_file:s0"
+    },
+    "/system/lib64/bootstrap/libprocessgroup.so": {
+      "sha256": "2ad93bdeb32a4f62f1d099ba3fa751466599d666e7562143e64389dd5b1d8b3b",
+      "mode": "0100644",
+      "selinux": "u:object_r:system_lib_file:s0"
+    },
+    "/system/lib64/bootstrap/libprocessgroup_setup.so": {
+      "sha256": "01f16e7a05bfe310d0348139d35d8035d48209ee65bf19561b3b5cfe59a2b92c",
+      "mode": "0100644",
+      "selinux": "u:object_r:system_lib_file:s0"
+    },
+    "/system/lib64/bootstrap/libselinux.so": {
+      "sha256": "8ab6ce57df46b3a242e750aa0b0b2d3887d7ad0f821674298cdfd9fd61459092",
+      "mode": "0100644",
+      "selinux": "u:object_r:system_lib_file:s0"
+    },
+    "/system/lib64/bootstrap/libsparse.so": {
+      "sha256": "ca7bd230ebb7a47790891eb09822e0a3b9f69929e9e2aa8c01b35d7c8c965950",
+      "mode": "0100644",
+      "selinux": "u:object_r:system_lib_file:s0"
+    },
+    "/system/lib64/bootstrap/libsquashfs_utils.so": {
+      "sha256": "68d268925f48e7064ecdab825e283ff44ea9cc2b37c3798ab0da3cffe235c292",
+      "mode": "0100644",
+      "selinux": "u:object_r:system_lib_file:s0"
+    },
+    "/system/lib64/bootstrap/libunwindstack.so": {
+      "sha256": "b134b915db1408c8c4b2591a662fde7f2a1d08eeddfd5920e39bffc4a6af71c6",
+      "mode": "0100644",
+      "selinux": "u:object_r:system_lib_file:s0"
+    },
+    "/system/lib64/bootstrap/libutils.so": {
+      "sha256": "4844c80e7e67a4c98d66b506d500c2ba19d65c7b507af1d246d0d1aa15d371bd",
+      "mode": "0100644",
+      "selinux": "u:object_r:system_lib_file:s0"
+    },
+    "/system/lib64/bootstrap/libvndksupport.so": {
+      "sha256": "10b9da29cd59c0a54890a11c6a10f03cfcda808feaa02021863271ddcfe4ce91",
+      "mode": "0100644",
+      "selinux": "u:object_r:system_lib_file:s0"
+    },
+    "/system/lib64/bootstrap/libz.so": {
+      "sha256": "66d2849d765cf14fe0effcf8fd055b6a670b08a0ee8431103076040f5e725916",
+      "mode": "0100644",
+      "selinux": "u:object_r:system_lib_file:s0"
+    },
+    "/system/media/wallpapers/IMG_3111.jpg": {
+      "sha256": "0d99ad08346620e240fa6eb7e765bb55996d4a311c8141a209626e08cad88997",
+      "mode": "0100644",
+      "selinux": "u:object_r:system_file:s0"
+    },
+    "/system/priv-app/AT4K/AT4K.apk": {
+      "sha256": "93041269d215dd450f4b559cb4fe57337267753d6ff7444ca142e17d07d997cf",
+      "mode": "0100644",
+      "selinux": "u:object_r:system_file:s0"
+    },
+    "/system/usr/keylayout/ANBERNIC-keys.kl": {
+      "sha256": "a1de983c27e5991f29479fe3f34fada59e4f2fd871dd72c5fe2a9489490158c9",
+      "mode": "0100644",
+      "selinux": "u:object_r:system_file:s0"
+    },
+    "/system/usr/keylayout/Vendor_0001_Product_0001.kl": {
+      "sha256": "a1de983c27e5991f29479fe3f34fada59e4f2fd871dd72c5fe2a9489490158c9",
+      "mode": "0100644",
+      "selinux": "u:object_r:system_file:s0"
+    },
+    "/system/usr/keylayout/Vendor_0001_Product_0001_Version_0100.kl": {
+      "sha256": "a1de983c27e5991f29479fe3f34fada59e4f2fd871dd72c5fe2a9489490158c9",
+      "mode": "0100644",
+      "selinux": "u:object_r:system_file:s0"
+    }
+  },
+  "vendor": {
+    "/etc/fstab.sun50iw9p1": {
+      "sha256": "7997a5dcb66c07ba8af479b0b559245c870e40038a47a84738b527e232d1a345",
+      "mode": "0100644",
+      "selinux": "u:object_r:vendor_configs_file:s0"
+    },
+    "/etc/vintf/manifest.xml": {
+      "sha256": "e6c225cf18457c8c32502d287c7aa3107f4e6bb40924f253a5f54fcf4c31903b",
+      "mode": "0100644",
+      "selinux": "u:object_r:vendor_configs_file:s0"
+    },
+    "/lib/hw/android.hardware.graphics.mapper@2.0-impl-2.1.so": {
+      "sha256": "988d8bb58063dd6d65b43edcc03a4033547e7d6c9df82ba240b9541b7d8800dc",
+      "mode": "0100644",
+      "selinux": "u:object_r:same_process_hal_file:s0"
+    },
+    "/lib/hw/gralloc.h700proto.so": {
+      "sha256": "d5ba93e4bc874c610c29d43d4c48eef299b014d5436a555bb1b2656784469745",
+      "mode": "0100644",
+      "selinux": "u:object_r:same_process_hal_file:s0"
+    },
+    "/lib64/egl/libGLES_mali.so": {
+      "sha256": "03333d495e3566c7d85ca2e000da569a16ce8f022ea25c0ea61950c891d5c7f8",
+      "mode": "0100644",
+      "selinux": "u:object_r:same_process_hal_file:s0"
+    },
+    "/lib64/hw/android.hardware.graphics.mapper@2.0-impl-2.1.so": {
+      "sha256": "e6696bcffc897f32e82558e50f00389cf8ad953a59ea8491469b01db32b8ab6c",
+      "mode": "0100644",
+      "selinux": "u:object_r:same_process_hal_file:s0"
+    },
+    "/lib64/hw/gralloc.h700proto.so": {
+      "sha256": "d2ed53c23c384349b9e893b2478c0b32654225055c1a57dfb2633d02b631cf71",
+      "mode": "0100644",
+      "selinux": "u:object_r:same_process_hal_file:s0"
+    }
+  }
+}

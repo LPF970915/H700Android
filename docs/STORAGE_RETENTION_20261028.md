@@ -61,3 +61,5 @@ ARM64 可行性验证的 `out/arm64-feasibility-20261030/` 与对应低负载构
 ARM64 隔离实验：保护 `out/arm64-isolated-20261030/` 与 WSL `/home/lpf/h700-arm64-isolated-20261030/` 的官方 GSI/供体解包、运行库、探针、rootfs、失败原型和私有证据。只提交脱敏锁和自有源码，二进制/原始日志不上传，当前 v6b 不改写。
 
 双ABI原型：保护 `out/dualabi-prototype-20261030/`、WSL `/home/lpf/h700-dualabi-prototype-20261030/` 和原生源码树内独立 `device/roc/rgsp64proto/gralloc-variant` 的派生源/输入锁；包括 bootstrap/GLES1 补齐前的失败包、旧截图通道失败、成功窗口证据及128G备用卡私有身份记录。Git只保留自有准备工具/产品/脱敏元数据，不包含二进制、卡身份、截图或镜像。备用卡格式化授权不扩大到当前工作卡或既有本地保留输入。
+
+2026-10-31 独立卡 P1：保护 `out/dualabi-prototype-image-20261031/` 的约960MB原型 gzip、镜像/覆盖/启动审计锁、写卡前后回执及私有原分区元数据；保留 WSL `/home/lpf/h700-dualabi-image-20261031/` 与同前缀 `-before-*` 的失败阶段。没有生成新的整卡32GB raw，按分区流压缩；旧 v5i/v6a/v6b gzip 和父阶段不删。Git不替代本地这些输入。原型使用独立分区标识和 GSI 配套ART，不等于正式64位全源码重建，详见 [独立卡记录](RG34XXSP_DUALABI_SPARE_P1_20261031.md)。
