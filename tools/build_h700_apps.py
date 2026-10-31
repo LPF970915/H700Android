@@ -40,6 +40,9 @@ def main():
     parser.add_argument('--lid-only', action='store_true')
     parser.add_argument('--rotation-only', action='store_true')
     parser.add_argument('--prototype-navigation-only', action='store_true')
+    parser.add_argument('--prototype-interaction-only', action='store_true')
+    parser.add_argument('--interaction-label', default='probe')
+    parser.add_argument('--interaction-version', type=int, default=10)
     args = parser.parse_args()
     cg = Path('/sys/fs/cgroup') / Path('/proc/self/cgroup').read_text().strip().split('::')[-1].lstrip('/')
     assert int((cg / 'memory.max').read_text()) <= 6442450944
@@ -63,6 +66,16 @@ def main():
         delivery.mkdir(exist_ok=True)
         if (delivery / 'RGSPNavigation64Test1.apk').exists():
             raise ValueError('Preserve the already built test1 navigation APK')
+    if args.prototype_interaction_only:
+        import re
+        if not re.fullmatch('[a-z0-9-]+', args.interaction_label) or not 10 <= args.interaction_version <= 99:
+            raise ValueError('Invalid interaction variant')
+        work = Path('/home/lpf/h700-dualabi-interaction-20261101') / time.strftime('%Y%m%d-%H%M%S')
+        work.mkdir(parents=True)
+        delivery = REPO / 'out/dualabi-interaction-20261101' / args.interaction_label
+        delivery.mkdir(parents=True, exist_ok=True)
+        if (delivery/'RGSPNavigation64Interaction.apk').exists():
+            raise ValueError('Preserve this interaction variant before another build')
     os.environ['LD_LIBRARY_PATH'] = str(sdk / 'lib64')
     java, javac = jdk / 'bin/java', jdk / 'bin/javac'
     key = native / 'build/make/target/product/security/platform.pk8'
@@ -147,7 +160,7 @@ def main():
         sign(prepared, 'H700InputProbe')
         return
     nav = REPO / 'android/h700-android10/device/roc/rgsp/RGSPNavigation'
-    if args.prototype_navigation_only:
+    if args.prototype_navigation_only or args.prototype_interaction_only:
         source_nav = nav
         nav = work / 'prototype-navigation'
         shutil.copytree(source_nav, nav)
@@ -158,20 +171,27 @@ def main():
             raise ValueError('Navigation entry changed')
         text = text.replace(anchor, '    private final PrototypeUnlock prototypeUnlock = new PrototypeUnlock();\n\n' +
                             anchor + '\n        if (prototypeUnlock.handle(this, event)) return true;')
+        if args.prototype_interaction_only:
+            text=text.replace('prototypeUnlock.handle(this, event)', 'prototypeUnlock.handle(this, event, !powerDialogVisible())')
+            spec=importlib.util.spec_from_file_location('interaction_patch', REPO/'tools/interaction/patch_navigation.py')
+            module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module)
+            text=module.patch(text)
         service.write_text(text, encoding='utf-8', newline='\n')
         manifest = nav / 'AndroidManifest.xml'
         text = manifest.read_text()
         if 'android:versionCode="8"' not in text or text.count('    </application>') != 1:
             raise ValueError('Navigation manifest changed')
         text = text.replace('android:versionCode="8" android:versionName="1.5-menu-shade"',
-                            'android:versionCode="9" android:versionName="1.6-prototype-a-unlock"')
+                            ('android:versionCode="'+str(args.interaction_version)+'" android:versionName="1.7-interaction-'+args.interaction_label+'"')
+                            if args.prototype_interaction_only else 'android:versionCode="9" android:versionName="1.6-prototype-a-unlock"')
         text = text.replace('    </application>',
                             '        <activity android:name=".PrototypeUnlockActivity" android:exported="false"\n'
                             '            android:excludeFromRecents="true" android:noHistory="true"\n'
                             '            android:theme="@android:style/Theme.Translucent.NoTitleBar" />\n'
                             '    </application>')
         manifest.write_text(text, encoding='utf-8', newline='\n')
-        shutil.copyfile(REPO / 'tools/arm64_probe/prototype_unlock/PrototypeUnlockActivity.java',
+        shutil.copyfile(REPO / ('tools/interaction/PrototypeUnlockActivity.java' if args.prototype_interaction_only else
+                               'tools/arm64_probe/prototype_unlock/PrototypeUnlockActivity.java'),
                         nav / 'src/com/roc/rgsp/navtrial/PrototypeUnlockActivity.java')
     gen = work / 'nav-gen'; gen.mkdir(exist_ok=True)
     resource_apk = work / 'nav-resources.apk'
@@ -180,8 +200,9 @@ def main():
     dex = compile_java([*sorted((nav / 'src').rglob('*.java')), *sorted(gen.rglob('*.java'))], 'navigation')
     prepared = work / 'nav-prepared.apk'
     prepared_zip(resource_apk, prepared, {'classes.dex': dex})
-    outputs = [sign(prepared, 'RGSPNavigation64Test1' if args.prototype_navigation_only else 'RGSPNavigation-rg34xxsp')]
-    if args.navigation_only or args.prototype_navigation_only:
+    outputs = [sign(prepared, 'RGSPNavigation64Interaction' if args.prototype_interaction_only else
+                    'RGSPNavigation64Test1' if args.prototype_navigation_only else 'RGSPNavigation-rg34xxsp')]
+    if args.navigation_only or args.prototype_navigation_only or args.prototype_interaction_only:
         receipt_path = delivery / 'apps-build.json'
         receipt = json.loads(receipt_path.read_text()) if receipt_path.exists() else {}
         receipt[outputs[0].name] = {'bytes': outputs[0].stat().st_size,

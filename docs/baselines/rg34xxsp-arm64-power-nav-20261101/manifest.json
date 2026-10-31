@@ -1,0 +1,31 @@
+{
+  "checkpoint": "baseline/rg34xxsp-arm64-power-nav-20261101",
+  "date": "2026-11-01",
+  "scope": "RG34XXSP 2GB Test1 runtime navigation APK only",
+  "navigation": {
+    "version_code": 11,
+    "version_name": "1.7-interaction-power-safe",
+    "bytes": 78303,
+    "sha256": "a886e2edec521241becd498fa5ff8426099cecc97207ef663390dcf90c26cd3c"
+  },
+  "physical_a_unlock": "USER_FAILED_STILL_Y; awaiting real event diagnosis",
+  "physical_power_navigation": "pending",
+  "controlled_power_navigation": "four actions reachable; injected scan304 Screenshot succeeded; B cancelled; keyguard stayed locked",
+  "controlled_retained_flows": [
+    "Settings Down",
+    "Menu short Home",
+    "Menu hold Quick Settings",
+    "shade direction/B",
+    "Select hold mouse/right/B"
+  ],
+  "test1_image": "unchanged",
+  "original_work_card": "not modified",
+  "source_lf_sha256": {
+    "tools/build_h700_apps.py": "7bbed0639e60217de1499657fc0703982c0f465e2667c742ad37bea9129a479c",
+    "tools/build_h700_low_pressure.ps1": "41cb8e0a00725d56a44bd7b8373de9d909ae8b28303d597f05eab145a7b1a051",
+    "tools/build_h700_low_pressure.sh": "677c5845fabc56f61ab522c5927fd304391d4852e7f05fbbe50a126b18a55c7f",
+    "tools/interaction/patch_navigation.py": "e4184cc83626d650526213fe74ac51b4171d0a1e3e981700f7c620e44be62fea",
+    "tools/interaction/PrototypeUnlockActivity.java": "4985cfc106e15a198df5629a778d27144380242a413c5f29333e9c17df30d121",
+    "tools/audit_h700_dualabi_test1_device.py": "464ac7d4f5ee0f9e3b3076f24be2f5f73c9bafbcb29399cd5abb5394cf76d65b"
+  }
+}

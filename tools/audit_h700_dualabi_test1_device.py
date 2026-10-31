@@ -75,6 +75,8 @@ def main():
         apps.append({'package':package,'abi':abi,'sha256':digest})
     nav=query('navigation','pm path com.roc.rgsp.navtrial; dumpsys package com.roc.rgsp.navtrial | grep versionName; '
               'sha256sum /system/app/RGSPNavigation/RGSPNavigation.apk')
+    if not nav.startswith('package:/system/app/RGSPNavigation/RGSPNavigation.apk\n'):
+        save();raise ValueError('Runtime navigation update present; not the unmodified Test1 runtime')
     if 'versionName=1.6-prototype-a-unlock' not in nav or image['modified_files']['/system/app/RGSPNavigation/RGSPNavigation.apk']['sha256'] not in nav:
         save();raise ValueError('Navigation9 mismatch')
     defaults=query('defaults','cmd package resolve-activity --brief -a android.intent.action.MAIN -c android.intent.category.HOME; '
