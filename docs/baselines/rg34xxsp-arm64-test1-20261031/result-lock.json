@@ -1,6 +1,6 @@
 {
   "checkpoint": "baseline/rg34xxsp-arm64-test1-20261031",
-  "status": "image and exact-spare full flash/readback passed; awaiting physical Test1 first boot",
+  "status": "clean-data Test1 first boot and two normal reboots passed; initial stock Launcher3 issue recorded",
   "production_candidate_unchanged": true,
   "physical_A_unlock_before_reflash_confirmed": true,
   "face_evdev": {
@@ -12,7 +12,7 @@
   "image_gzip_sha256": "bb8f3e695bcd17a07905d92598a8d0c90f3c4fedc10b4ddc57e82c5bedad019b",
   "image_raw_sha256": "6b96ac34ded730e0b26d47e28aba5e219c16452bd4cbf971815ec74a25c6b5e0",
   "offline_inputs_full_decompression_and_ranges_pass": true,
-  "new_clean_first_boot_pass": false,
+  "new_clean_first_boot_pass": true,
   "source_64_framework_rebuild": false,
   "eight_app_production_integration": false,
   "build_limits": {
@@ -28,5 +28,20 @@
   },
   "spare_whole_image_range_readback_pass": true,
   "physical_backup_gpt_readback_pass": true,
-  "original_work_system_invariants_unchanged": true
+  "original_work_system_invariants_unchanged": true,
+  "normal_reboots_passed": 2,
+  "three_distinct_boot_ids_verified": true,
+  "retention_file_setting_home_and_install_once_marker_pass": true,
+  "fresh_installed_apk_sha_and_abi_all_pass": true,
+  "fresh_art64_jni_mali_probe_pass": true,
+  "probe_green_pixels": 255600,
+  "fresh_controlled_A_unlock_pass": true,
+  "fresh_physical_A_unlock_confirmed": false,
+  "initial_stock_launcher3_appwidget_null_crash_observed": true,
+  "no_new_crash_after_default_at4k_selection": true,
+  "both_normal_reboot_crash_buffers_empty": true,
+  "roms_capacity_expansion_pass": true,
+  "roms_exposed_to_android_vold": false,
+  "data_partition_gib": 16,
+  "temporary_usb_stay_awake_restored_to": 0
 }

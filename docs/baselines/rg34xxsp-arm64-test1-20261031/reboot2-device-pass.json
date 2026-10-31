@@ -1,0 +1,38 @@
+{
+  "phase": "reboot2",
+  "image_sha256": "6b96ac34ded730e0b26d47e28aba5e219c16452bd4cbf971815ec74a25c6b5e0",
+  "exact_spare_guard_pass": true,
+  "boot_and_fresh_installer_complete": true,
+  "installed_apks": [
+    {
+      "package": "com.roc.h700.abiprobe",
+      "abi": "arm64-v8a",
+      "sha256": "94084bd456de8fad98c7f0344cfe497fc1655a09b64060b1e9038a53f3743f9d"
+    },
+    {
+      "package": "bin.mt.plus",
+      "abi": "arm64-v8a",
+      "sha256": "8f83cef8ac63f76a81e1fee3ededb213f6ba43cc19761e38bc4e567c87edd47d"
+    },
+    {
+      "package": "com.retroarch.ra32",
+      "abi": "armeabi-v7a",
+      "sha256": "9e964f53089a302401a6d5b1451d7ce5539f39b85eb0a305d8d77e6edcbf803f"
+    },
+    {
+      "package": "org.ppsspp.ppsspp",
+      "abi": "armeabi-v7a",
+      "sha256": "dd702a31270ecd68db37afee311d6efe08b1d4da9601d2750ce1a73bbd316c3f"
+    }
+  ],
+  "actual_core_elf_bits": {
+    "zygote64": 64,
+    "zygote": 32,
+    "system_server": 64,
+    "surfaceflinger": 64
+  },
+  "home_and_navigation_defaults": true,
+  "capacity_and_read_only_root_checked": true,
+  "physical_A_unlock_checked_by_this_read_only_audit": false,
+  "app_rendering_performance_or_full_hardware_acceptance": false
+}

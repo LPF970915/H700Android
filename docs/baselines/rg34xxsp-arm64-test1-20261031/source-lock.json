@@ -3,11 +3,11 @@
   "parent_source_lock": "docs/baselines/rg34xxsp-dualabi-runtime-p1c-20261031/source-lock.json",
   "files": {
     ".gitattributes": "b678adf8d5f23e91777665582a4d99340a64b21151e386e34f7295add0d73f50",
-    "AGENTS.md": "a9fafa5e14026373a9ffdd5f1ae8b22d853fdb3646d5ed06c463a395595880a2",
-    "docs/CURRENT_BASELINE_20261028.md": "59eb04f31749a8fee577ba08263e53f9b63f054a1fdda5dd68027972b6341493",
+    "AGENTS.md": "dd2e34905376d2d0ef408675d0546418ccc50300b8f95e7428036b65d568da94",
+    "docs/CURRENT_BASELINE_20261028.md": "7b91479300ef17d064caf78b8c666cb3ed0ebdb7145e1b15abf69bffc379112d",
     "docs/REPRODUCE_BASELINE_20261028.md": "542e5a0065dc4b9f3426a099f351b6b540ce0ef525ca922b015e216cb0da96f7",
     "docs/STORAGE_RETENTION_20261028.md": "b3745d35847bf39ef6e719b3db1dafdac3ff6fa658a105de928fee5e360c4485",
-    "docs/RG34XXSP_ARM64_TEST1_20261031.md": "6da1f42509d658cc82f5ed02dd1f5bb63bc61992d2411c0467a45953b988664a",
+    "docs/RG34XXSP_ARM64_TEST1_20261031.md": "b075df41e6bba97a93d088d121ae8d54f79bd28565aa968c384dde7d842961b0",
     "config/retroarch/android/H700_DualABI_Test1.cfg": "91430fb46b0d67cd70a6e233ca6ffb74503c49641914ddde38803f2b842159e0",
     "tools/build_h700_apps.py": "eb91eaa2824678d0b68076ad98046ff37abc5b2a4d78026e23c0e4d31b0122e6",
     "tools/build_h700_low_pressure.ps1": "b667a7beb6dd066a01fa89bb88610cd401bf13ebfa9d07b26aa141bcf1b13415",
@@ -17,6 +17,7 @@
     "tools/package_h700_dualabi_test1.py": "a1044dfddd9e472821299fd124f528d2bf25780a31be1e6b004ced7dc648c64a",
     "tools/audit_h700_dualabi_test1.py": "f4b97bf4d4a133f66c19d26ea9c3cf4124c18d5f4ad9f643d166d9ba65970680",
     "tools/write_h700_dualabi_test1.py": "2c19734cb6e1a634a21d49bc226c3278d79be59183c11a9a1e72f1bfc2970582",
-    "tools/audit_h700_dualabi_test1_device.py": "c277da74bfb963cb90edb6fccbb227b80310ca416d29b7c7fe23dd5f998994e6"
+    "tools/audit_h700_dualabi_test1_device.py": "c277da74bfb963cb90edb6fccbb227b80310ca416d29b7c7fe23dd5f998994e6",
+    "README.md": "0c2122723a6323594032a43eea05d6dda121b35f46489ca8a67350027795a72f"
   }
 }

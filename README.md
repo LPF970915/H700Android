@@ -1,5 +1,7 @@
 # H700 Android 10 — 开发基线
 
+首版 [ARM64 测试镜像 Test1](docs/RG34XXSP_ARM64_TEST1_20261031.md) 已完成完整实卡读回、干净工厂数据首启、四个测试 APK 自动安装/指定 ABI、64 位渲染与两次正常重启及配置保留检查。原64GB工作卡保留，当前128GB测试卡继续验收；首启系统自带Launcher3在切换AT4K前有已记录的异常，八款正式预装及硬件全面回归仍在后续范围。
+
 2026-10-31 实验进展：[独立双 ABI 原型 P1c](docs/RG34XXSP_DUALABI_RUNTIME_P1C_20261031.md) 已在 128GB 备用卡完成受控重启、ART64/JNI/Mali、MT64 协议页与 RA32/PPSSPP32 共存及画面切换检查。原 64GB 工作卡保留，v6b 正式候选不变；实体/冷启、完整源码 64 位重建和正式功能回归仍有验收缺口，未另交付 P1c 镜像。
 
 整理基线：**v5i / native35 + USB ConfigFS 与网络检测修复，2026-10-28**。源码冻结标签为 `baseline/h700-v5i-usb-network-20261028`，空间整理检查点为 `baseline/h700-storage-trim-20261028`。其上已加入 RG34XXSP 菜单、双摇杆和锁屏增量，见 [本轮记录](docs/RG34XXSP_DEVELOPMENT_20261028.md)。原交付镜像尚未加入这些修复重新封装。
