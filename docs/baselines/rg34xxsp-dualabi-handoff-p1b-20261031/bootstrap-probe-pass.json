@@ -1,0 +1,9 @@
+{
+  "relative_prefix_preflight": true,
+  "adbd_elf64_version_only": true,
+  "mount_and_network_namespaces_isolated": true,
+  "no_host_usb_properties_or_binder_bound": true,
+  "original_invariants_unchanged": true,
+  "init_executed": false,
+  "daemon_started": false
+}

@@ -228,9 +228,10 @@ def main():
     fst=base.dump(vendor,'/etc/fstab.sun50iw9p1',WORK/'fstab.sun50iw9p1')
     text=fst.read_text()
     for name in ['system','vendor','data']:
-        old=layout['partitions'][name]['old_partuuid'];new=layout['partitions'][name]['partuuid']
-        if text.count(old)!=1:raise ValueError('Unexpected PARTUUID in fstab: '+name)
-        text=text.replace(old,new)
+        old=layout['partitions'][name]['old_partuuid']
+        # The retained ramdisk explicitly creates these compatibility symlink
+        # names to mmcblk0p5/6/7. They are paths, not a kernel UUID lookup.
+        if text.count('/dev/block/by-partuuid/'+old)!=1:raise ValueError('Unexpected ramdisk boot alias in fstab: '+name)
     # Keep only emulated internal storage during the feasibility test. Stock GSI
     # vold must not enumerate/offer to format the boot card's hardware partitions.
     text='\n'.join(l for l in text.splitlines() if 'voldmanaged=' not in l)+'\n';base.write(fst,text)
@@ -259,7 +260,7 @@ def main():
     print('WRITE_AND_VERIFY_SYSTEM_OVERLAY',len(maps),flush=True)
     # Before proc mounts, Bionic first-stage init reads /init only once. Its
     # first hop must already select the private bootstrap namespace.
-    records={'system':modify(system,maps,'system_file',{'/init':'/system/bin/h700-bootstrap/init','/system/bin/init':'/system/bin/h700-bootstrap/init'}),
+    records={'system':modify(system,maps,'system_file',{'/init':'/system/bin/h700-bootstrap/init','/system/bin/init':'h700-bootstrap/init'}),
              'vendor':modify(vendor,vmaps,'vendor_file')}
     ranges=[]
     for name,path in [('prefix',prefix),('system',system),('vendor',vendor),('factory_tail',tail)]:

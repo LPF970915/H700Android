@@ -1,0 +1,51 @@
+{
+  "checkpoint": "baseline/rg34xxsp-dualabi-handoff-p1b-20261031",
+  "parent_checkpoint": "baseline/rg34xxsp-dualabi-entry-p1a-20261031",
+  "parent_commit": "2315936",
+  "device_scope": "RG34XXSP H700 2GB only",
+  "boot_blocker_evidence": "ramdisk ERROR Android /system/bin/init is missing; real private init present; outside-chroot absolute link fails",
+  "fix": [
+    "relative system/bin/init",
+    "fstab legacy symlink aliases matching retained ramdisk"
+  ],
+  "real_gpt_guids_changed": false,
+  "kernel_boot0_ramdisk_changed": false,
+  "delta_bytes": 28672,
+  "uncached_full_partition_bytes": 10737418240,
+  "original_work_system_invariants_unchanged": true,
+  "dynamic_block_node_rdev_mountinfo_and_cid_guards": true,
+  "isolated_adbd_elf64_version": "1.0.41",
+  "init_executed_by_probe": false,
+  "adbd_daemon_started_by_probe": false,
+  "host_usb_properties_binder_bound": false,
+  "component_prepare": {
+    "wall_seconds": 220.725,
+    "cpu_seconds": 181.211
+  },
+  "image_package": {
+    "wall_seconds": 391.956,
+    "cpu_seconds": 364.626
+  },
+  "resource_limits": {
+    "cpu_affinity": [
+      0,
+      1
+    ],
+    "aggregate_cpus": 1,
+    "jobs": 1,
+    "memory_gib": 6,
+    "swap_mib": 512,
+    "nice": 19
+  },
+  "physical_p1b_boot": "pending_user_card_swap",
+  "art64_jni": "not_tested",
+  "mt64": "not_tested",
+  "ra32_ppsspp32_coexistence": "not_tested",
+  "fresh_whole_card_flash": "not_executed",
+  "full_source_64_framework_rebuild": "unverified",
+  "production_candidate": "v6b unchanged",
+  "ramdisk_auto_grow_retained": true,
+  "observed_capacity_sectors": 244277248,
+  "fat_grow_pending": false,
+  "raw_private_evidence_and_binaries": "local_only"
+}

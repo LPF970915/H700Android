@@ -4,27 +4,37 @@ from pathlib import Path
 import gzip
 import hashlib
 import json
+import argparse
 import package_h700_v6a as base
 from prepare_h700_dualabi_boot_entry import ROOT, PARENT, WORK, OUT
 
 def main():
     base.constrained()
-    entry=json.loads((OUT/'entry-lock.json').read_text())
+    parser=argparse.ArgumentParser();parser.add_argument('--handoff-p1b',action='store_true');args=parser.parse_args()
+    work=WORK;out=OUT
+    if args.handoff_p1b:
+        from prepare_h700_dualabi_handoff import WORK as handoff_work, OUT as handoff_out
+        work=handoff_work;out=handoff_out
+        entry=json.loads((out/'handoff-lock.json').read_text())
+        component_hashes={n:c['sha256'] for n,c in entry['components'].items()}
+    else:
+        entry=json.loads((out/'entry-lock.json').read_text())
+        component_hashes={'system':entry['system_sha256']}
     parent=json.loads((ROOT/'docs/baselines/rg34xxsp-dualabi-spare-p1-20261031/image-lock.json').read_text())
     ranges=[]
     for e in parent['ranges']:
-        source=WORK/'system.candidate.raw' if e['name']=='system' else PARENT/(e['name']+'.candidate.raw')
-        expected=entry['system_sha256'] if e['name']=='system' else e['sha256']
+        source=(work if e['name'] in component_hashes else PARENT)/(e['name']+'.candidate.raw')
+        expected=component_hashes.get(e['name'],e['sha256'])
         base.regular(source)
         if source.stat().st_size!=e['bytes'] or base.sha(source)!=expected:raise ValueError('P1a source range mismatch')
         ranges.append({'name':e['name'],'offset':e['offset'],'bytes':e['bytes'],'sha256':expected,'source':source})
-    release='H700_RG34XXSP_2GB_DualABI_P1a_GSI10_20261031_NoROM'
-    target=OUT/(release+'.img.gz')
+    release='H700_RG34XXSP_2GB_DualABI_'+('P1b' if args.handoff_p1b else 'P1a')+'_GSI10_20261031_NoROM'
+    target=out/(release+'.img.gz')
     if target.exists():raise ValueError('Preserve the existing P1a image')
     digest=hashlib.sha256()
     with target.open('xb') as raw,gzip.GzipFile(fileobj=raw,mode='wb',compresslevel=6,mtime=0,filename='') as z:
         for e in ranges:
-            print('P1A_COMPRESS',e['name'],flush=True)
+            print('HANDOFF_IMAGE_COMPRESS',e['name'],flush=True)
             with e['source'].open('rb') as f:
                 while b:=f.read(8*1024**2):digest.update(b);z.write(b)
     check=hashlib.sha256();total=0
@@ -44,7 +54,7 @@ def main():
             'full_gzip_decompression_verified':True,'all_decompressed_range_hashes_verified':True,
             'source_parent_checkpoint':'baseline/rg34xxsp-dualabi-spare-p1-20261031',
             'fresh_whole_card_flash':False,'fresh_first_boot':False,'rom_bios_accounts_saves':False}
-    base.jsonwrite(OUT/'image-lock.json',result)
-    print('P1A_FULL_IMAGE_GZIP_VERIFIED',flush=True)
+    base.jsonwrite(out/'image-lock.json',result)
+    print(('P1B' if args.handoff_p1b else 'P1A')+'_FULL_IMAGE_GZIP_VERIFIED',flush=True)
 
 if __name__=='__main__':main()

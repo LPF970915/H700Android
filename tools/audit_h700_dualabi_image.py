@@ -68,6 +68,7 @@ def main():
         if read(system,path)[:5]!=b'\x7fELF\x02':raise ValueError('Bootstrap executable not ELF64')
     init_stat=base.debug(system,'stat /init')
     if 'Fast link dest: "/system/bin/h700-bootstrap/init"' not in init_stat:raise ValueError('First-stage root link must directly select the bootstrap namespace')
+    if 'Fast link dest: "h700-bootstrap/init"' not in base.debug(system,'stat /system/bin/init'):raise ValueError('Ramdisk executable preflight requires a relative system init symlink')
     configs=[p for p in stage['overlay']['system'] if '/ld.config.' in p]
     if len(configs)<4:raise ValueError('Linker configuration coverage insufficient')
     for path in configs:
@@ -81,7 +82,7 @@ def main():
     fst=text(vendor,'/etc/fstab.sun50iw9p1')
     if 'voldmanaged=' in fst:raise ValueError('Prototype must not expose boot-card hardware partitions to GSI vold')
     for name in ['system','vendor','data']:
-        if stage['layout']['partitions'][name]['partuuid'] not in fst:raise ValueError('Prototype fstab identity mismatch')
+        if '/dev/block/by-partuuid/'+stage['layout']['partitions'][name]['old_partuuid'] not in fst:raise ValueError('Retained ramdisk compatibility alias mismatch')
     with (base.WORK/'prefix.raw').open('rb') as f:head,backup,layout=prototype_gpt(f.read(2048))
     with (WORK/'prefix.candidate.raw').open('rb') as f:
         if f.read(2048)!=head:raise ValueError('Prototype compact GPT differs')

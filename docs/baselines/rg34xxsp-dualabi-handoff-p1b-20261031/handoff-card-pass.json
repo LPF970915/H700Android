@@ -1,0 +1,11 @@
+{
+  "revision": "p1b-ramdisk-handoff-20261031",
+  "delta_bytes": 28672,
+  "system_sha256": "7ad3c9eecf602c0b6b7fda38f80668464713e12fcbce397c9734ee2799d3e5d9",
+  "vendor_sha256": "bd5ce38b28600e4cf1e471097906c8e24593d5480f2f430f103c460c435e23b6",
+  "uncached_full_partition_bytes_verified": 10737418240,
+  "original_work_system_invariants_unchanged": true,
+  "userdata_gpt_kernel_boot0_not_written_by_this_patch": true,
+  "dynamic_device_numbers_verified": true,
+  "boot_acceptance": false
+}

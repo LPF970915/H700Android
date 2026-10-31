@@ -65,3 +65,5 @@ ARM64 隔离实验：保护 `out/arm64-isolated-20261030/` 与 WSL `/home/lpf/h7
 2026-10-31 独立卡 P1：保护 `out/dualabi-prototype-image-20261031/` 的约960MB原型 gzip、镜像/覆盖/启动审计锁、写卡前后回执及私有原分区元数据；保留 WSL `/home/lpf/h700-dualabi-image-20261031/` 与同前缀 `-before-*` 的失败阶段。没有生成新的整卡32GB raw，按分区流压缩；旧 v5i/v6a/v6b gzip 和父阶段不删。Git不替代本地这些输入。原型使用独立分区标识和 GSI 配套ART，不等于正式64位全源码重建，详见 [独立卡记录](RG34XXSP_DUALABI_SPARE_P1_20261031.md)。
 
 P1a入口修正：保护 `out/dualabi-entry-p1a-20261031/` 的system组件gzip、整卡gzip、6段32KiB旧/新块及实际回读备份、锁和私有会话日志；保留 WSL `/home/lpf/h700-dualabi-entry-p1a-20261031/`。旧P1的失败首启证据和gzip继续保留，不能因有修正版就删除；不回改P1已发布标签。P1a当前经P1加入口补丁验证，尚未整卡重刷验全新首启；见 [修正记录](RG34XXSP_DUALABI_ENTRY_P1A_20261031.md)。
+
+P1b切根兼容：保护 `out/dualabi-bootchain-p1b-20261031/` 的早期boot log、system/vendor组件、整卡gzip、28KiB旧/新块及设备回读、动态设备号守卫、隔离加载探针和锁；保留 WSL `/home/lpf/h700-dualabi-handoff-p1b-20261031/`。只读取证使用私有挂载空间与noload，父挂载表不变。P1/P1a失败镜像与标签均保留，不把早期失败当作普通缓存删除，详见 [P1b记录](RG34XXSP_DUALABI_HANDOFF_P1B_20261031.md)。

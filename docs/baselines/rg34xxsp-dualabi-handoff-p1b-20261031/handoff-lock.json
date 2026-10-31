@@ -1,0 +1,108 @@
+{
+  "revision": "p1b-ramdisk-handoff-20261031",
+  "components": {
+    "system": {
+      "partition": 5,
+      "bytes": 8589934592,
+      "parent_sha256": "236a5233ad650c69ef03a3d5c10832ad70c92902af9ae8ecdbfa805ec1e85c94",
+      "sha256": "7ad3c9eecf602c0b6b7fda38f80668464713e12fcbce397c9734ee2799d3e5d9",
+      "ranges": [
+        {
+          "offset": 0,
+          "bytes": 4096,
+          "old_sha256": "7a3e90def789bb11b01745826c4810d2331a5276bbcc07cdaeba58ea45dc0bf2",
+          "new_sha256": "aed6e523a5b179ecde5d7d15bff83273e2887f8b6199e9bb5f20671adcf8eb2f",
+          "old_file": "000.old.bin",
+          "new_file": "000.new.bin"
+        },
+        {
+          "offset": 134651904,
+          "bytes": 4096,
+          "old_sha256": "cff0fda85b5642126cd781d806d1047f6d2cda0ef27390b5532bd0fbc988e11e",
+          "new_sha256": "1ceb20ee505bbe8ce82238d8c12de6f56d0c8af50f1ade78a0cc97acf0d6cda9",
+          "old_file": "001.old.bin",
+          "new_file": "001.new.bin"
+        },
+        {
+          "offset": 178954240,
+          "bytes": 4096,
+          "old_sha256": "0dcaacb66af38dffdf3650855d64f7e4afa5e31dc8377b63c6d9274502c80a7d",
+          "new_sha256": "a99a89436aae6e54a7882001a2e241fd43dacdfc6aaf3bff6115712df8193d95",
+          "old_file": "002.old.bin",
+          "new_file": "002.new.bin"
+        },
+        {
+          "offset": 1476403200,
+          "bytes": 4096,
+          "old_sha256": "640aecdd87ddc73638b15061aac59861c29589781eae450f501fb307ce3589b2",
+          "new_sha256": "b88964e48f8b7a69d8d89516dc138533f5fdd36ecdd86a14ce1d0646f6f2736a",
+          "old_file": "003.old.bin",
+          "new_file": "003.new.bin"
+        }
+      ],
+      "gzip_file": "H700_DualABI_P1b_system_20261031.img.gz",
+      "gzip_bytes": 859663117,
+      "gzip_sha256": "a4954f9b18d49f8d4e12bb93f81928ca04efda9a9a52dbeb3ec65887c8eb9e91"
+    },
+    "vendor": {
+      "partition": 6,
+      "bytes": 2147483648,
+      "parent_sha256": "bbf85d15d504e1df7d2bc963ab62589518c8bc7a71eccfb127529d137dc26fd4",
+      "sha256": "bd5ce38b28600e4cf1e471097906c8e24593d5480f2f430f103c460c435e23b6",
+      "ranges": [
+        {
+          "offset": 0,
+          "bytes": 4096,
+          "old_sha256": "381fbda7b2ee7cd13b668155882abcc0c328de82c8f197b5fbf660e6762910a2",
+          "new_sha256": "702f6dcfad6b3dae72115cd918a6e599fd0576c4bd8bfa07549127ffc4595c1a",
+          "old_file": "000.old.bin",
+          "new_file": "000.new.bin"
+        },
+        {
+          "offset": 593920,
+          "bytes": 4096,
+          "old_sha256": "7cc8b9487847d29ef7c10bf82ff6338b879a57cf496b2caefe5164b2726f8aa7",
+          "new_sha256": "530adc564e1d1374413d312f54f770ae7847b4f4f9fb33010d6245c51aeb270d",
+          "old_file": "001.old.bin",
+          "new_file": "001.new.bin"
+        },
+        {
+          "offset": 9121792,
+          "bytes": 4096,
+          "old_sha256": "0f3aa3df4bf761e625f9fe66f9bc557046a4549d59ec56484c4c040183f87b73",
+          "new_sha256": "8409591edd6fbc8b0aa4a90706ca5b5bab3879b82172b26134415866d70623d2",
+          "old_file": "002.old.bin",
+          "new_file": "002.new.bin"
+        }
+      ],
+      "gzip_file": "H700_DualABI_P1b_vendor_20261031.img.gz",
+      "gzip_bytes": 27884478,
+      "gzip_sha256": "9b9a711db4cc59e76ae503971ab2cba06bde353a0c7f2d291af3d665f6f3b92f"
+    }
+  },
+  "legacy_boot_aliases": {
+    "system": {
+      "boot_alias": "/dev/block/by-partuuid/096d7fa1-62e8-c242-9876-cfdd5a92b8eb",
+      "real_gpt_partuuid": "abe9984b-d5c6-5dc1-aa53-c2f1f8c4c0e5",
+      "device": "mmcblk0p5"
+    },
+    "vendor": {
+      "boot_alias": "/dev/block/by-partuuid/6aa8b46e-b96f-9545-bbfb-1b7d2bdc7da8",
+      "real_gpt_partuuid": "5f634828-4295-5656-945d-0a068612d549",
+      "device": "mmcblk0p6"
+    },
+    "data": {
+      "boot_alias": "/dev/block/by-partuuid/734716ed-e7d9-e74f-9b3e-4f1cb8d448ed",
+      "real_gpt_partuuid": "a6c273e3-f229-54cd-ac14-89ff4a3dcfa0",
+      "device": "mmcblk0p7"
+    }
+  },
+  "ramdisk_init_sha256": "3b8c6c1458d28c9a664900f92a92b111b91da2afbf69ad1e606cb9f47c5db053",
+  "ramdisk_outside_chroot_negative_and_relative_positive": true,
+  "prefix_kernel_boot0_unchanged": true,
+  "real_gpt_guids_unchanged": true,
+  "auto_grow_retained_in_pinned_ramdisk": true,
+  "filesystems_and_component_decompression": true,
+  "card_modified": false,
+  "boot_pass": false
+}
