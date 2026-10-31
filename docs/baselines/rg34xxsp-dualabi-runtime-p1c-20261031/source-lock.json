@@ -1,0 +1,15 @@
+{
+  "encoding": "Git-normalized LF bytes, not frozen source overlay",
+  "parent_source_lock": "docs/baselines/rg34xxsp-dualabi-handoff-p1b-20261031/source-lock.json",
+  "files": {
+    "AGENTS.md": "9f4a7396bb9996cd5c507bbaaa3aa9327b7949317d91d2bf3dce393f263dd75c",
+    "README.md": "56234da07a6840733f0d4f18c943f083f3bbaf2507561cffcb1ba5e42f8f2205",
+    "docs/CURRENT_BASELINE_20261028.md": "7fbcad47da6a7a4a3ec9a8d2047f6ae435f6d1acc80a420f46a3e02df571066a",
+    "docs/REPRODUCE_BASELINE_20261028.md": "9c467d245f798a12b11d7f749ce80bed260506637d1f8ae0e344756112ac4389",
+    "docs/STORAGE_RETENTION_20261028.md": "7a151a65e2e6fec02a52b6e4029381421d72dfe5d2eb3ad49d6d26ecf687e222",
+    "docs/RG34XXSP_DUALABI_RUNTIME_P1C_20261031.md": "b4cf6779fc291eccd10ff1e9c26d41e0bbaca0e26bba9ae80c21f487a5739da5",
+    "tools/test_h700_dualabi_vndk29.py": "b0ec80d481d0b83a4fc42cb5677a7c515d330e865aa55fa7d7e6c588d1b69627",
+    "tools/apply_h700_dualabi_runtime.py": "301e17f470a84a10aca17c029a4f87d2f1e9c8c8d6ce2d93f71a62163a2973eb",
+    "config/retroarch/android/H700_ANBERNIC_keys.cfg": "5b1dca2df4f29acc11ce9ba4333f83e0ed28daa534689355e2d34d26766853fb"
+  }
+}

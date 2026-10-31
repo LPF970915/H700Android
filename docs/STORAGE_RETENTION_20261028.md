@@ -6,6 +6,7 @@
 
 | 路径 | 保留原因 |
 | --- | --- |
+| `out/dualabi-runtime-p1c-20261031/` 与实验卡内 `/data/local/tmp/h700-p1c-*` | P1c 两阶段属性原件/候选/回退、启动与 VSYNC 失败记录、真实 ELF/库/内存、最终截图和 RA 配置/夹具；含私有身份，仅本地保护。P1/P1a/P1b gzip 和 WSL stage 继续保留，没有新 P1c gzip |
 | `LOCAL_PRESERVE_H700_BASELINE_20261028/` | 签名、关键小型二进制、原始凭据、整理前 Git bundle 和未提交文件；本次增加旧阶段小型证明与清理记录，含私钥，不能公开 |
 | `out/H700_Android_SingleCard_v5i_ChineseDpadWifiGfx.img` | 唯一保留的当前完整 IMG，32,434,554,368 字节，未上传 GitHub，也未加入 USB/网络修复重新封装 |
 | `out/h700-v5i-dpad-20261027-native35-notouch-stage/` | 最终 system/vendor raw/sparse 及组件/源码锁；其他 14 轮旧阶段已删除 |

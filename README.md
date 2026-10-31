@@ -1,5 +1,7 @@
 # H700 Android 10 — 开发基线
 
+2026-10-31 实验进展：[独立双 ABI 原型 P1c](docs/RG34XXSP_DUALABI_RUNTIME_P1C_20261031.md) 已在 128GB 备用卡完成受控重启、ART64/JNI/Mali、MT64 协议页与 RA32/PPSSPP32 共存及画面切换检查。原 64GB 工作卡保留，v6b 正式候选不变；实体/冷启、完整源码 64 位重建和正式功能回归仍有验收缺口，未另交付 P1c 镜像。
+
 整理基线：**v5i / native35 + USB ConfigFS 与网络检测修复，2026-10-28**。源码冻结标签为 `baseline/h700-v5i-usb-network-20261028`，空间整理检查点为 `baseline/h700-storage-trim-20261028`。其上已加入 RG34XXSP 菜单、双摇杆和锁屏增量，见 [本轮记录](docs/RG34XXSP_DEVELOPMENT_20261028.md)。原交付镜像尚未加入这些修复重新封装。
 
 导航 v8 新增 [Menu 下拉入口与默认强制横屏](docs/RG34XXSP_MENU_LANDSCAPE_20261029.md)：短按 Menu 回桌面、单独长按约 0.7 秒展开快捷设置，十字键导航/分页、A 切换、B 收起；横屏默认开启并记住偏好，微信读书正文已验证 720×480 重排。此前的 [Select 长按鼠标呼出](docs/RG34XXSP_SELECT_HOLD_20261028.md)：Navigation v7 改用 **Select 单独按住至少 2 秒后松开**，旧肩键组合已移除，Select＋Start 不触发鼠标，开启时光标居中并提示。用户已在 2026-10-29 确认实体呼出、移动和 B 关闭；四肩键单键采样与当前 Android 映射一致。此前 [控制器鼠标、电源盘点与模拟器初测](docs/RG34XXSP_INPUT_POWER_EMULATORS_20261028.md)保留 v6 历史记录。当前开发在 `codex/rg34xxsp-at4k-input-lockscreen` 分支，`main` 仍为整理基线。

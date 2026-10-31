@@ -1,5 +1,7 @@
 # 当前基线与接手状态
 
+2026-10-31 [双 ABI 运行修正版 P1c](RG34XXSP_DUALABI_RUNTIME_P1C_20261031.md)：P1b 已连通 USB，进一步补齐显式 VNDK29、原 BSP 堆参数和软件 VSYNC。备用卡正常文件替换后根分区恢复只读，无临时 bind 的受控重启通过；ART64/JNI/Mali、MT64 协议页、RA32 的官方 2048 与 PPSSPP32 的官方 cube、四应用同时驻留及画面往返切换已做受控验证。绿色页已获用户实体确认，其余实体输入、断电冷启、干净镜像首启和完整源码 64 位重建仍待验收；v6b 不变。当前 TF1 为 128GB 实验卡，原 64GB 卡已取下保存；未另封装 P1c gzip。
+
 2026-10-31 [双ABI切根兼容修正版P1b](RG34XXSP_DUALABI_HANDOFF_P1B_20261031.md)：根据真实ramdisk日志，改相对init链接并匹配保留的兼容分区别名。28KiB补丁已应用，system/vendor共10GiB清缓存完整读回通过，原工作系统关键状态不变；实际前缀可执行检查和隔离ELF64 adbd版本加载通过，整卡NoROM gzip完整分段校验通过。仍待物理换卡启动，未验收ART64/MT64及RA32/PPSSPP32共存，不替代v6b。
 
 2026-10-31 [双ABI入口修正版P1a](RG34XXSP_DUALABI_ENTRY_P1A_20261031.md)：32KiB修正、完整8GiB读回及整卡NoROM压缩校验通过，但第二次首启仍静态Logo/无USB。卡上日志证实ramdisk在切根前无法通过绝对软链接的init检查；实际proc已由ramdisk挂载，先前单层入口改良不是当前故障证明。待改相对链接并匹配兼容分区别名；原工作卡和v6b保留，ARM64/模拟器共存未测。

@@ -1,0 +1,97 @@
+{
+  "checkpoint": "baseline/rg34xxsp-dualabi-runtime-p1c-20261031",
+  "parent_checkpoint": "baseline/rg34xxsp-dualabi-handoff-p1b-20261031",
+  "parent_commit": "cdf033c2788e2cb6232c6a6115b66308a69bb9eb",
+  "device_scope": "RG34XXSP H700 2GB, exact user-authorized spare TF1 only",
+  "runtime_marker": "p1c-vndk29-heap-20261031",
+  "production_candidate_unchanged": "baseline/rg34xxsp-v6b-mt-norom-20261030",
+  "original_work_card_saved_and_not_written": true,
+  "vndk_root_cause": "Missing vendor VNDK declaration caused GSI legacy init fallback to27; API29 config required",
+  "persisted_properties": {
+    "ro.vndk.version": "29",
+    "dalvik.vm.heapgrowthlimit": "128m",
+    "dalvik.vm.heapsize": "256m",
+    "ro.h700.prototype.runtime": "p1c-vndk29-heap-20261031",
+    "persist.vendor.hwc.software_vsync": "true"
+  },
+  "prop_default_sha256": {
+    "p1b_parent": "4f24c9f50ed2123bbbb8661fad9564af39db2bd607dc7a08f47e9caa46441ecd",
+    "four_property_intermediate": "f76f29a2a76834fb4180653f482fd0b0f9bbef065bc339f0a247dacfda98810e",
+    "final_five_property": "9f4c02456346b99309840c0869f8cfcd3ae594c0b2e7706df593ff2837acbaad"
+  },
+  "normal_atomic_filesystem_replacement_only": true,
+  "root_read_only_restored": true,
+  "raw_block_gpt_boot0_kernel_ramdisk_vendor_writes": false,
+  "controlled_reboot_without_linker_bind_passed": true,
+  "software_vsync_timer_interval_ns": 16904379,
+  "art64_jni_pointer_bits": 64,
+  "gles_renderer": "Mali-G31",
+  "probe_green_pixel_count": 255600,
+  "physical_green_probe_confirmed_by_user": true,
+  "apps": {
+    "com.roc.h700.abiprobe": {
+      "elf_bits": 64,
+      "pss_kib_sample": 22943,
+      "swap_kib_sample": 0
+    },
+    "bin.mt.plus": {
+      "elf_bits": 64,
+      "pss_kib_sample": 85370,
+      "swap_kib_sample": 0
+    },
+    "com.retroarch.ra32": {
+      "elf_bits": 32,
+      "pss_kib_sample": 60261,
+      "swap_kib_sample": 0
+    },
+    "org.ppsspp.ppsspp": {
+      "elf_bits": 32,
+      "pss_kib_sample": 140880,
+      "swap_kib_sample": 0
+    }
+  },
+  "mt_acceptance": "64-bit native loading and agreement-page rendering only",
+  "retroarch_acceptance": "Official2048 ELF32 core rendered; existing controller profile, absolute autoconfig path, swap_ok_cancel=false; controlled evdev A/Start/direction path, board down move confirmed",
+  "ppsspp_acceptance": {
+    "fixture": "official cube.elf",
+    "interval_seconds": 3,
+    "crop": [
+      120,
+      70,
+      600,
+      450
+    ],
+    "changed_pixels": 103490
+  },
+  "all_four_apps_simultaneously_resident": true,
+  "task_and_visible_frame_roundtrip": [
+    "PPSSPP32",
+    "MT64",
+    "RA32",
+    "ARM64 probe"
+  ],
+  "core_and_all_four_app_pids_unchanged_during_roundtrip": true,
+  "frame_sha256_local_evidence_only": {
+    "ppsspp": "49e6724a93ec572f554534de7c84009d65973309972949475652dcb76dcf689c",
+    "mt": "2fe9dbf09d094f0986e0126a7b069566551305e7f4c7c0323fbde741ad7014a1",
+    "ra": "e1fc2ff8a342c9e17e93e6f1fc650a7534787a29b4e2f01b2753c347fb0cf932",
+    "probe": "2bb0135e5800de7d4797a15c43faec2d36bcf3b37855e9959037fa0d87cbc172"
+  },
+  "post_final_boot_crash_buffer_empty": true,
+  "temporary_usb_stay_awake_restored_to_original": 0,
+  "bluetooth_disabled_after_hci_crash_not_fixed": true,
+  "new_p1c_image_packaged": false,
+  "new_source_compilation_or_image_package_this_checkpoint": false,
+  "not_accepted": [
+    "full MT workflow",
+    "all third-party ARM64 applications",
+    "physical full input regression",
+    "cold power cycle",
+    "freshly reflashed image first boot",
+    "first boot interruption recovery",
+    "full BSP64 framework/ART rebuild",
+    "production feature parity",
+    "1GB device",
+    "game performance or sustained load"
+  ]
+}
