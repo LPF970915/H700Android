@@ -1,6 +1,6 @@
 {
   "checkpoint": "baseline/rg34xxsp-arm64-test1-20261031",
-  "status": "offline image passed; exact spare reflash in progress; fresh boot pending",
+  "status": "image and exact-spare full flash/readback passed; awaiting physical Test1 first boot",
   "production_candidate_unchanged": true,
   "physical_A_unlock_before_reflash_confirmed": true,
   "face_evdev": {
@@ -25,5 +25,8 @@
     "memory_gib": 6,
     "swap_mib": 512,
     "nice": 19
-  }
+  },
+  "spare_whole_image_range_readback_pass": true,
+  "physical_backup_gpt_readback_pass": true,
+  "original_work_system_invariants_unchanged": true
 }

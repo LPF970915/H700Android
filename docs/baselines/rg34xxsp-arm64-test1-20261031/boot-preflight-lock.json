@@ -9,6 +9,7 @@
     "/system/apex/com.android.runtime.release/lib/libart.so": "3db03b3ae3c035df293fc75685cad0c8fdec403b248670ed5c1f5622296d64bd",
     "/system/apex/com.android.runtime.release/lib64/bionic/libc.so": "c48172d1d642328447fcb9bc8e9a79d569e4287add3e90f263f70b46b225a20e",
     "/system/apex/com.android.runtime.release/lib/bionic/libc.so": "caa1b3b45845d4a372487b1c239baa02871474d9d577ccffd16fc5b24551452a",
+    "first_boot_command_paths_present": true,
     "relocated_primary_sha256": "b942dd4a238d9503f1eae6ef0f28060d1aaf2077bb872bdcc5bd2be01ffbd40f",
     "relocated_backup_sha256": "b981fb38d287bda09ecf111d8f654d45039889907c34150be4846e1b4b24f6fc",
     "five_runtime_properties_persisted": true,
