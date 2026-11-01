@@ -1,5 +1,7 @@
 # ARM64 Test2a：固化简体中文和 AT4K 默认桌面
 
+用户随后指定本版为后续修复与镜像封装的开发基线。定位为ARM64主运行时、ARM32兼容的Android10系统：`ro.zygote=zygote64_32`、`ro.product.cpu.abilist64=arm64-v8a`；同源实机的实际64位运行证据见[运行摘要](baselines/rg34xxsp-arm64-parity-test2-20261101/runtime-summary.json)。该决定不改变本版尚待干净首启验收的边界，也不代表完整BSP64源码重建已完成。
+
 日期：2026-11-01。承接[Parity Test2](RG34XXSP_ARM64_PARITY_20261101.md)，只修改六个系统文件；七款ARM64预装、核心、主题/媒体、vendor、硬件前缀及干净userdata/ROMS/GPT保持原字节。原Test2及所有标签/产物不变。本轮不刷卡、不重置设备数据。
 
 ## 修改原因和实现
