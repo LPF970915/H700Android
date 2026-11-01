@@ -210,6 +210,14 @@ mac.write_bytes(merged)
 add('/system/etc/selinux/plat_mac_permissions.xml', mac)
 
 product = REPO / 'android/h700-android10/device/roc/rgsp'
+add('/system/etc/preferred-apps/at4k-home.xml', product / 'configs/at4k-home.xml')
+build_prop = base.dump(system, '/system/build.prop', WORK / 'build.prop.before').read_text()
+for key, value in {'ro.product.locale': 'zh-CN', 'ro.product.locale.language': 'zh', 'ro.product.locale.region': 'CN'}.items():
+    build_prop = re.sub(r'^' + re.escape(key) + r'=.*(?:\n|$)', '', build_prop, flags=re.M)
+    build_prop += key + '=' + value + '\n'
+build_prop_file = WORK / 'build.prop'
+build_prop_file.write_text(build_prop, newline='\n')
+add('/system/build.prop', build_prop_file)
 for stem in ('rgsp-roms-handoff', 'rgsp-wallpapers'):
     add('/system/bin/' + stem + '.sh', product / (stem + '.sh'), '0100755', 'u:object_r:shell_exec:s0')
     add('/system/etc/init/' + stem + '.rc', product / (stem + '.rc'))
@@ -226,6 +234,9 @@ add('/system/etc/permissions/h700-framework-features.xml', feature)
 prop = base.dump(system, '/system/etc/prop.default', WORK / 'prop.default.before').read_text()
 for name, value in {'ro.h700.prototype.image': 'dualabi-parity-test2-20261101',
                     'ro.h700.release': 'arm64-parity-test2-20261101',
+                    'ro.product.locale': 'zh-CN',
+                    'ro.product.locale.language': 'zh',
+                    'ro.product.locale.region': 'CN',
                     'persist.sys.locale': 'zh-CN'}.items():
     prop = re.sub(r'^' + re.escape(name) + r'=.*\n', '', prop, flags=re.M)
     prop += name + '=' + value + '\n'

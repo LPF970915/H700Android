@@ -5,17 +5,23 @@ import json
 from pathlib import Path
 import subprocess
 import sys
+import argparse
+import re
 
 REPO = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(REPO / 'tools'))
 import package_h700_v6a as base
 base.constrained()
-STAGE = Path('/home/lpf/h700-dualabi-parity-20261101/sealed-stage-v1')
-OUT = REPO / 'out/dualabi-parity-test2-20261101-final'
+parser = argparse.ArgumentParser()
+parser.add_argument('--factory-defaults', action='store_true')
+defaults = parser.parse_args().factory_defaults
+STAGE = Path('/home/lpf/h700-dualabi-parity-20261101') / ('defaults-stage-v1' if defaults else 'sealed-stage-v1')
+OUT = REPO / ('out/dualabi-defaults-test2a-20261101/image' if defaults else 'out/dualabi-parity-test2-20261101-final')
 OUT.mkdir(exist_ok=False)
-RELEASE = 'H700_RG34XXSP_2GB_ARM64_Parity_Test2_20261101_NoROM'
+RELEASE = 'H700_RG34XXSP_2GB_ARM64_Parity_' + ('Test2a' if defaults else 'Test2') + '_20261101_NoROM'
 parent = json.loads((REPO / 'docs/baselines/rg34xxsp-arm64-test1-20261031/image-lock.json').read_text())
-stage = json.loads((REPO / 'out/dualabi-parity-20261101/sealed-stage-v1.json').read_text())
+stage_lock = REPO / ('out/dualabi-defaults-test2a-20261101/defaults-stage-v1.json' if defaults else 'out/dualabi-parity-20261101/sealed-stage-v1.json')
+stage = json.loads(stage_lock.read_text())
 payload = json.loads((REPO / 'out/dualabi-parity-20261101/payload64-v1.json').read_text())
 assert stage['e2fsck_both_exit_0'] and stage['shared_user_signatures_unified']
 assert stage['navigation_version'] == 12 and stage['native_systemui_navigation_marker']
@@ -33,6 +39,26 @@ for entry in parent['ranges']:
     assert path.stat().st_size == entry['bytes'] and base.sha(path) == expected
     ranges.append({**entry, 'sha256': expected, 'source': path})
 assert all(r['offset'] == sum(p['bytes'] for p in ranges[:i]) for i, r in enumerate(ranges))
+locale_inputs = {}
+if defaults:
+    # Android10 init accumulates these files in order, including ro.* keys.
+    # Check the effective factory values, not merely prop.default in isolation.
+    effective = {}
+    for index, (image, inside) in enumerate([
+        (STAGE / 'system.candidate.raw', '/system/etc/prop.default'),
+        (STAGE / 'system.candidate.raw', '/system/build.prop'),
+        (ranges[2]['source'], '/default.prop'), (ranges[2]['source'], '/build.prop'),
+        (ranges[2]['source'], '/odm/etc/build.prop'),
+        (STAGE / 'system.candidate.raw', '/system/product/build.prop'),
+        (STAGE / 'system.candidate.raw', '/system/product_services/build.prop')]):
+        if 'Type: regular' not in base.debug(image, 'stat ' + base.q(inside)):
+            continue
+        file = base.dump(image, inside, OUT / ('locale-input-' + str(index) + '.txt'))
+        locale_inputs[image.stem + ':' + inside] = base.sha(file)
+        effective.update(re.findall(r'^([a-zA-Z0-9_.-]+)=(.*)$', file.read_text(), re.M))
+    assert effective['persist.sys.locale'] == effective['ro.product.locale'] == 'zh-CN'
+    assert effective['ro.product.locale.language'] == 'zh' and effective['ro.product.locale.region'] == 'CN'
+    print('FACTORY_LOCALE_PROPERTY_PRECEDENCE_PASS', flush=True)
 target = OUT / (RELEASE + '.img.gz')
 whole = hashlib.sha256()
 with target.open('xb') as output, gzip.GzipFile(fileobj=output, mode='wb', compresslevel=6, mtime=0, filename='') as zipped:
@@ -59,16 +85,20 @@ with gzip.open(target, 'rb') as source:
 assert total == parent['bytes'] and whole.hexdigest() == verify.hexdigest()
 gzip_sha = base.sha(target)
 (OUT / (target.name + '.sha256')).write_text(gzip_sha + '  ' + target.name + '\n')
-result = {'release': RELEASE, 'image_marker': 'dualabi-parity-test2-20261101',
+result = {'release': RELEASE, 'image_marker': 'dualabi-parity-' + ('test2a' if defaults else 'test2') + '-20261101',
           'bytes': total, 'sha256': whole.hexdigest(), 'gzip_bytes': target.stat().st_size, 'gzip_sha256': gzip_sha,
           'ranges': [{k: v for k, v in e.items() if k != 'source'} for e in ranges],
           'layout': parent['layout'], 'runtime_marker': parent['runtime_marker'], 'entry_revision': parent['entry_revision'],
           'full_gzip_decompression_verified': True, 'all_decompressed_range_hashes_verified': True,
           'factory_tail_from_pinned_clean_parent': True, 'hardware_prefix_unchanged_from_test1': True,
-          'final_stage_lock_sha256': base.sha(REPO / 'out/dualabi-parity-20261101/sealed-stage-v1.json'),
+          'final_stage_lock_sha256': base.sha(stage_lock),
           'payload_lock_sha256': base.sha(REPO / 'out/dualabi-parity-20261101/payload64-v1.json'),
           'selected_arm64_apps': [a['package'] for a in payload['apps']],
           'fresh_whole_card_flash': False, 'fresh_first_boot': False, 'whole_framework_rebuild': False,
           'rom_bios_accounts_saves': False, 'contains_diagnostic_core_cube_or_probe_apk': False}
+if defaults:
+    result.update({'factory_locale': stage['factory_locale'], 'factory_default_home': stage['factory_default_home'],
+                   'factory_home_preference_installed_before_first_home': True,
+                   'factory_locale_property_precedence_checked': True, 'locale_input_file_sha256': locale_inputs})
 base.jsonwrite(OUT / 'image-lock.json', result)
 print('TEST2_IMAGE_ALL_RANGES_AND_FULL_DECOMPRESSION_PASS', flush=True)

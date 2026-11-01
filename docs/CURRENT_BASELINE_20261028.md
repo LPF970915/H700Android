@@ -1,5 +1,7 @@
 # 当前基线与接手状态
 
+2026-11-01 [ARM64 Test2a 默认值增量](RG34XXSP_ARM64_DEFAULTS_TEST2A_20261101.md)：修正GSI build.prop英语默认值对prop.default的覆盖，并安装AT4K工厂HOME首选配置，避免只在boot_completed后选择桌面的时间窗口。六项文件/标签、fsck、关键运行库及属性顺序检查通过；最终镜像完整解压/分段SHA通过，首启无选择框仍待实卡确认。七款应用、vendor/硬件前缀/干净尾部不变，现机未操作。
+
 2026-11-01 [ARM64 Parity Test2](RG34XXSP_ARM64_PARITY_20261101.md)：最新ARM32系统行为按GSI资源/API迁移，七款第三方应用改ARM64，QQ音乐TV无官方ARM64包暂不纳入；原生SystemUI锁屏/电源焦点、Navigation12、ARM64受保护vold及ROMS交接、Leanback/资源覆盖、横屏/合盖、天马G配置已进入独立候选。分区回读/fsck/签名/API检查通过；最终3.63GB整卡gzip已通过4段范围及完整解压SHA，见镜像锁，新镜像未刷卡、首启/实体组合回归待验收。用户已确认Navigation运行更新后实体A解锁通过；旧power-nav冻结记录不修改。当前128GB仍为带运行增量的Test1，原64GB卡保存，v6b/Test1不替代。
 
 2026-11-01 [ARM64 输入迁移复核](RG34XXSP_ARM64_INTERACTION_20261101.md)：用户确认新卡仍需 Y 解锁，电源菜单缺少十字键支持。已确认旧 ARM32 SystemUI 原生补丁未进入 GSI；现以 Navigation11 运行更新补上电源菜单代理导航，四项可达、注入 A 截图、B 取消及锁屏隔离通过受控检查。实体 A 问题仍待双层采样定位，不能标为修复；其余原生组件按迁移表继续核对。Test1 gzip 与 Navigation9 系统原件不变，原64GB卡保留。

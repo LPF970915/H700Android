@@ -1,0 +1,17 @@
+{
+  "checkpoint": "baseline/rg34xxsp-arm64-defaults-test2a-20261101",
+  "parent_image_lock": "docs/baselines/rg34xxsp-arm64-parity-test2-20261101/image-lock.json",
+  "parent_image_lock_sha256": "b5a9fb461e0841b762e9b141e784f890f62cd6ec75612f9a3b62c626d7abf094",
+  "digest_format": "SHA256 of LF-normalized source text; frozen snapshots are not changed",
+  "files": {
+    "tools/interaction/seal_defaults.py": "a5112493cf8622f837d50f2966507eed602ea8453d18400db1aa7a8bafbc149a",
+    "tools/interaction/package_test2.py": "9c4772809f25aff8172fd428823175c56f117bf4c3a4385f54db096b25c12cc0",
+    "tools/interaction/prepare_stage.py": "3d2706486afcbf2db13b22df0785c565ef4a95a16b0744d7d8a34ad506cefe78",
+    "tools/build_h700_low_pressure.ps1": "f93f3fcfb48bbb852a8624aefdb23b1a26127050f6221c4097d508b41f449e48",
+    "tools/build_h700_low_pressure.sh": "bea240b1a2f2deeea0fc536315d7adf184bc028f13641a365c4bdc9a6992a692",
+    "tools/package_h700_dualabi_prototype.py": "8db2193acffd1e2cbb54f7de4580a2b4e6d066bf35bd9d0c7fe891118ddb31ff",
+    "android/h700-android10/device/roc/rgsp/configs/at4k-home.xml": "267d77fa1c53f5aa74489a40d7a2d8caf7f330e97de93596306a7c100c775c1e"
+  },
+  "fresh_first_boot": false,
+  "source_framework_rebuild": false
+}

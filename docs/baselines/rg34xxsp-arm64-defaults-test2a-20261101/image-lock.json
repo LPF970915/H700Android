@@ -1,0 +1,104 @@
+{
+  "release": "H700_RG34XXSP_2GB_ARM64_Parity_Test2a_20261101_NoROM",
+  "image_marker": "dualabi-parity-test2a-20261101",
+  "bytes": 32434554368,
+  "sha256": "ff6e8fb89afc20b13dfdac3d086fecbd7460b42d9122fd70f9e984e9c3f290ad",
+  "gzip_bytes": 3625312231,
+  "gzip_sha256": "ed2aee0bd712c0fc74f86c8d120d6abbee76a8f4ae02a8e2153dcb147d811a80",
+  "ranges": [
+    {
+      "name": "prefix",
+      "offset": 0,
+      "bytes": 222298112,
+      "sha256": "9e89204206e56a9b438e5dee2d689946ea1a4037586f454c9211c2eb7245322d"
+    },
+    {
+      "name": "system",
+      "offset": 222298112,
+      "bytes": 8589934592,
+      "sha256": "6ed43f76d90bef80226e951076590becb985e34e61607bd33bb79e0109784b41"
+    },
+    {
+      "name": "vendor",
+      "offset": 8812232704,
+      "bytes": 2147483648,
+      "sha256": "0c74b9d51834994a5fc4c282896c93330b9362bc1d4297ce3ce66d4b22e515d2"
+    },
+    {
+      "name": "factory_tail",
+      "offset": 10959716352,
+      "bytes": 21474838016,
+      "sha256": "b2c91359ac2912e773a28fff4db563f033a99e79bcb321ce1977bb2436d9c964"
+    }
+  ],
+  "layout": {
+    "disk_guid": "49edabee-ce1d-5d19-815d-5419553e7b22",
+    "partitions": {
+      "special": {
+        "old_partuuid": "a0085546-4166-744a-a353-fca9272b8e45",
+        "partuuid": "936a880a-9904-5599-b0a3-282fb074e785"
+      },
+      "boot-resource": {
+        "old_partuuid": "a0085546-4166-744a-a353-fca9272b8e46",
+        "partuuid": "6edd1f62-e07f-580b-9db8-e361442caf4a"
+      },
+      "env": {
+        "old_partuuid": "a0085546-4166-744a-a353-fca9272b8e47",
+        "partuuid": "cd73d9c2-b542-5624-8e8f-0a07d0863b26"
+      },
+      "boot": {
+        "old_partuuid": "a0085546-4166-744a-a353-fca9272b8e48",
+        "partuuid": "304e806e-d5c2-59b9-a9b1-a9fbf409e379"
+      },
+      "system": {
+        "old_partuuid": "096d7fa1-62e8-c242-9876-cfdd5a92b8eb",
+        "partuuid": "abe9984b-d5c6-5dc1-aa53-c2f1f8c4c0e5"
+      },
+      "vendor": {
+        "old_partuuid": "6aa8b46e-b96f-9545-bbfb-1b7d2bdc7da8",
+        "partuuid": "5f634828-4295-5656-945d-0a068612d549"
+      },
+      "data": {
+        "old_partuuid": "734716ed-e7d9-e74f-9b3e-4f1cb8d448ed",
+        "partuuid": "a6c273e3-f229-54cd-ac14-89ff4a3dcfa0"
+      },
+      "ROMS": {
+        "old_partuuid": "b4d04d65-2c35-4b7f-b9c5-8f24d2f10505",
+        "partuuid": "f8d48532-2854-5249-bac2-788125189eb0"
+      }
+    }
+  },
+  "runtime_marker": "rg34xxsp-dualabi-gsi10-p1-20261031",
+  "entry_revision": "p1b-ramdisk-handoff-20261031",
+  "full_gzip_decompression_verified": true,
+  "all_decompressed_range_hashes_verified": true,
+  "factory_tail_from_pinned_clean_parent": true,
+  "hardware_prefix_unchanged_from_test1": true,
+  "final_stage_lock_sha256": "dcc09c661b4cde8e740beb811a1d7edd95a535fa309664d84eab3bfd78da046f",
+  "payload_lock_sha256": "4f8f483b5865d0acf9e2075a439f8a459612aa94daef10cf49f2bb2d712d1367",
+  "selected_arm64_apps": [
+    "me.him188.ani.tv",
+    "org.courville.nova",
+    "org.koreader.launcher",
+    "org.pegasus_frontend.android",
+    "com.retroarch.aarch64",
+    "org.ppsspp.ppsspp",
+    "bin.mt.plus"
+  ],
+  "fresh_whole_card_flash": false,
+  "fresh_first_boot": false,
+  "whole_framework_rebuild": false,
+  "rom_bios_accounts_saves": false,
+  "contains_diagnostic_core_cube_or_probe_apk": false,
+  "factory_locale": "zh-CN",
+  "factory_default_home": "com.overdevs.at4k/.MainActivity",
+  "factory_home_preference_installed_before_first_home": true,
+  "factory_locale_property_precedence_checked": true,
+  "locale_input_file_sha256": {
+    "system.candidate:/system/etc/prop.default": "81d36a762fe3bf55a0bbf95f824b4bad44d7400c94e4ec4ec40be6a7617557d8",
+    "system.candidate:/system/build.prop": "fa9830a683f1d2d78ed7cc2e6dbbd83a83fa897470b678a9ccd148e5f8cd35dd",
+    "vendor.candidate:/build.prop": "780e085fc29f5b8d9ba1ef38588b5495fea5badd76bec495693d052df96dd7bd",
+    "vendor.candidate:/odm/etc/build.prop": "60d2f254db87a7fad9fef2c72346b31bf8243afb8f37629a840da22a5b0ad37e",
+    "system.candidate:/system/product/build.prop": "d671cf47c752fc0d8a6e3717ecab2c10221b9c788713da6c4fd370bddd162b6e"
+  }
+}
