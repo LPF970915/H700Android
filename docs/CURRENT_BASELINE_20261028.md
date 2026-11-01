@@ -1,5 +1,7 @@
 # 当前基线与接手状态
 
+2026-11-01 [Test2a写入原64GB卡并校验通过](RG34XXSP_ARM64_TEST2A_FLASH_64G_20261101.md)：用户授权覆盖旧32位工作卡并手动完成Rufus写入。全部32.43GB镜像范围已回读；system/vendor/userdata精确保持来源，GPT规范化与Windows SVI引起的198字节FAT元数据增量均独立审查并重算匹配。紧凑GPT及引导几何检查通过，原始mismatch和综合通过回执都保留。卡尚待安全弹出、装入TF1并保持TF2空进行新首启；不代表开机/扩容/UI/apps验收。原64GB不再是32位回退，v6b镜像和128GB旧开发卡保留。
+
 2026-11-01 用户明确选定 **ARM64 Test2a作为后续修复与镜像封装的开发基线**，对应`baseline/rg34xxsp-arm64-defaults-test2a-20261101`。镜像为`zygote64_32`，主ABI为`arm64-v8a`，保留ARM32兼容；同源实机已验证ART64/JNI/Mali、七款应用实际ELF64进程及RA/PPSSPP的64位渲染。开发基线采用GSI10 ARM64加H700厂商适配，完整BSP64源码重建另计；Test2a干净刷卡首启和整套实体回归仍待验收，不等于正式稳定发行。后续增量以该镜像/组件锁和受保护本地阶段为父输入，原镜像/标签不回改，原64GB与ARM32 v6b保留回退。
 
 2026-11-01 [ARM64 Test2a 默认值增量](RG34XXSP_ARM64_DEFAULTS_TEST2A_20261101.md)：修正GSI build.prop英语默认值对prop.default的覆盖，并安装AT4K工厂HOME首选配置，避免只在boot_completed后选择桌面的时间窗口。六项文件/标签、fsck、关键运行库及属性顺序检查通过；最终镜像完整解压/分段SHA通过，首启无选择框仍待实卡确认。七款应用、vendor/硬件前缀/干净尾部不变，现机未操作。

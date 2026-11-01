@@ -1,5 +1,7 @@
 # H700 Android 10 — 开发基线
 
+2026-11-01 [Test2a已刷入原64GB卡并完成回读](docs/RG34XXSP_ARM64_TEST2A_FLASH_64G_20261101.md)：完整镜像范围验证通过，Rufus GPT和Windows FAT元数据差异已逐项审查；首启仍待验收。该卡已取代旧32位工作卡，旧镜像和128GB开发卡保留。
+
 2026-11-01 [ARM64 Test2a 默认中文/AT4K](docs/RG34XXSP_ARM64_DEFAULTS_TEST2A_20261101.md)：在系统层统一简体中文属性，补入首次HOME前生效的AT4K工厂默认桌面配置。六项文件增量，原七款ARM64预装及Test2保留；完整镜像分段及整体解压SHA校验已通过，尚未刷卡首启验收。
 
 2026-11-01 [ARM64 Parity Test2 测试候选](docs/RG34XXSP_ARM64_PARITY_20261101.md)：迁入最新掌机系统补丁、七款ARM64应用及无ROM天马G配置；原ARM32八款锁保留，QQ音乐TV因没有取得官方ARM64包暂不纳入。新3.63GB镜像已通过离线文件系统/组件及完整gzip解压SHA检查，文件信息见报告/镜像锁，未刷卡，干净首启和整套实体操作需单独验收。

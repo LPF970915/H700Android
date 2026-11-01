@@ -1,0 +1,68 @@
+{
+  "checkpoint": "baseline/rg34xxsp-arm64-test2a-64g-flash-20261101",
+  "source_checkpoint": "baseline/rg34xxsp-arm64-defaults-test2a-20261101",
+  "source_image_lock_sha256": "1447a23085f624efe414ef75af7383e92236f3473ace818d6e943466b315cced",
+  "scope": "User-authorized original64GB ARM32 work card, Rufus4.7 manual write; guarded read-only full-image-region readback",
+  "physical_card_bytes": 63864569856,
+  "image_region_bytes_read": 32434554368,
+  "source_gzip_sha256": "ed2aee0bd712c0fc74f86c8d120d6abbee76a8f4ae02a8e2153dcb147d811a80",
+  "source_raw_sha256": "ff6e8fb89afc20b13dfdac3d086fecbd7460b42d9122fd70f9e984e9c3f290ad",
+  "card_image_region_sha256": "0b8c71a3f50f9bb4acbdf260d5fe149e8b33c71d5dd51d0be796642cbd785936",
+  "byte_identical_to_original_raw_image": false,
+  "rufus_gpt_lba1_relocation_explicitly_reviewed": true,
+  "all_four_ranges_pass_after_reviewed_gpt_and_windows_fat_metadata": true,
+  "windows_svi_metadata_audited": true,
+  "windows_fat_changed_sectors": 6,
+  "windows_fat_changed_bytes": 198,
+  "windows_svi_files": [
+    {
+      "name": "WPSettings.dat",
+      "bytes": 12
+    }
+  ],
+  "userdata16gb_identical_to_source": true,
+  "ranges": [
+    {
+      "name": "prefix",
+      "bytes": 222298112,
+      "source_sha256": "9e89204206e56a9b438e5dee2d689946ea1a4037586f454c9211c2eb7245322d",
+      "expected_card_sha256": "1f21207cfc09989837ad84c61e3339606e77ced532a8dc71281cf0e2187ed1de",
+      "actual_card_sha256": "1f21207cfc09989837ad84c61e3339606e77ced532a8dc71281cf0e2187ed1de",
+      "match": true
+    },
+    {
+      "name": "system",
+      "bytes": 8589934592,
+      "source_sha256": "6ed43f76d90bef80226e951076590becb985e34e61607bd33bb79e0109784b41",
+      "expected_card_sha256": "6ed43f76d90bef80226e951076590becb985e34e61607bd33bb79e0109784b41",
+      "actual_card_sha256": "6ed43f76d90bef80226e951076590becb985e34e61607bd33bb79e0109784b41",
+      "match": true
+    },
+    {
+      "name": "vendor",
+      "bytes": 2147483648,
+      "source_sha256": "0c74b9d51834994a5fc4c282896c93330b9362bc1d4297ce3ce66d4b22e515d2",
+      "expected_card_sha256": "0c74b9d51834994a5fc4c282896c93330b9362bc1d4297ce3ce66d4b22e515d2",
+      "actual_card_sha256": "0c74b9d51834994a5fc4c282896c93330b9362bc1d4297ce3ce66d4b22e515d2",
+      "match": true
+    },
+    {
+      "name": "factory_tail",
+      "bytes": 21474838016,
+      "source_sha256": "b2c91359ac2912e773a28fff4db563f033a99e79bcb321ce1977bb2436d9c964",
+      "expected_card_sha256": "3595d13fc6c385f2ae2baca06d31b7f3a5b7e1553902e14342155567a526ed58",
+      "actual_card_sha256": "3595d13fc6c385f2ae2baca06d31b7f3a5b7e1553902e14342155567a526ed58",
+      "match": true
+    }
+  ],
+  "primary_old_image_backup_and_physical_backup_all_crc_valid": true,
+  "compact_eight_entry_gpt_preserved": true,
+  "partition_guids_and_extents_unchanged": true,
+  "physical_backup_matches_known_relocation_function": true,
+  "boot_growth_geometry_check": "GPT_CHECK_OK",
+  "project_tools_performed_additional_card_writes": false,
+  "old_64gb_arm32_rollback_card_overwritten_by_user_authorization": true,
+  "first_boot": false,
+  "actual_first_boot_capacity_growth": false,
+  "sanitized_no_serial_cid_os_ids_or_raw_logs": true
+}

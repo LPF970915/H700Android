@@ -1,5 +1,7 @@
 # 本地保留与清理后的边界
 
+2026-11-01 原64GB卡经用户明确授权已由Rufus写入Test2a，不再保留该卡上的旧32位系统；保留政策中的原卡回退描述仅代表此前状态。新增保护`out/test2a-usb-flash-64g-20261101/`及WSL`/home/lpf/h700-dualabi-parity-20261101/flash64g-geometry-20261101/`：私有卡身份/原始片段/两轮失败和成功审计/只读回读进度与回执/稀疏元数据夹具。夹具逻辑64GB但只分配少量元数据块，不能按逻辑长度误判为新整卡备份；Git不含上述私有文件。
+
 2026-11-01 Test2a默认值：新增保护`out/dualabi-defaults-test2a-20261101/`（含image子目录gzip和属性审计）及WSL`/home/lpf/h700-dualabi-parity-20261101/defaults-stage-v1/`。只复制并修改独立system；旧Test2/各失败阶段/原工作卡均保留，不因新镜像封装而授权清理。
 
 2026-11-01 ARM64掌机同步保全：保护`out/dualabi-interaction-20261101/`、`out/dualabi-parity-20261101/`、`out/dualabi-parity-test2-20261101/`（中断压缩草稿，不可刷写）、`out/dualabi-parity-test2-20261101-final/`（最终候选）、WSL`/home/lpf/h700-dualabi-interaction-20261101/`及`/home/lpf/h700-dualabi-parity-20261101/`。包括失败fsck/API/签名/资源候选、原始取证、下载APK/核心、Stage2、Final、Seal及完整gzip；均不是普通缓存，Git不含这些二进制或私有记录。原64GB工作卡与v6b/Test1继续保留。
