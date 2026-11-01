@@ -1,0 +1,40 @@
+{
+  "status": "controlled_smoke_pass_with_limits",
+  "version": "0.3.3-a10-h700-r9",
+  "apk_sha256": "fc300ecd1be74d9d0273b4f4b523959d3423aed2e15a17014283439e1256768b",
+  "installed_apk_matches": true,
+  "test_device": "RG34XXSP H700 2GB Android10 ARM64",
+  "input_acceptance": "injected real evdev keys/axes; user physical acceptance pending",
+  "rom_sample_count": 3,
+  "external_media_sets": 13,
+  "external_video_samples": 3,
+  "library_counts": {
+    "rom_file": 3,
+    "file_location": 3,
+    "rom_folder": 1,
+    "identification_result": 3
+  },
+  "menu_chord_pause_resume": true,
+  "select_hold_mouse_and_b_close": true,
+  "start_alone_retained": true,
+  "dpad_a_confirmed_exit_to_platform": true,
+  "full_rom_pack_tested": false,
+  "app_preinstall_requested": false,
+  "image_rebuilt": false,
+  "limits": [
+    "modified-ROM placeholder cover",
+    "one first-permission follow-up used touch",
+    "long-term games/audio/network/sync/full feature acceptance pending",
+    "known system Bluetooth HCI and nonfatal GL/URI fallback diagnostics retained"
+  ],
+  "original_apk_sha256": "205cbf8b87d3b696b3c3873dbaa0ad47fbe0e57acce8ca208961a7aea476df38",
+  "min_sdk": 29,
+  "target_sdk": 29,
+  "abi": [
+    "arm64-v8a"
+  ],
+  "changed_system_partitions": false,
+  "game_roms_in_apk": false,
+  "unchanged_original_assets_native_resource_entries": 1129,
+  "sql_oracle_sequences": 243
+}

@@ -1,0 +1,11 @@
+{
+  "files": {
+    "tools/ayaspace2/audit_apk.py": "6cfe1883e8b6670a97904a4e4a81f1da32d3bce4a74df35c2283d4210e5333e8",
+    "tools/ayaspace2/build.py": "28de5f5d86c736ca04aa922056e5270ad4da1b79a63fcb4b00157d449cbf4c7e",
+    "tools/ayaspace2/manifest.py": "c2ecf3536ce47ebc0cd1002c7d8423a9195147845ce7c74daef4a39eab4671a6",
+    "tools/ayaspace2/test_sql_compat.py": "80926c275f93961d21a03980afe8f5cdb3a36ab4380e2bed90ac5e582111cb77",
+    "tools/ayaspace2/Compat.java": "2fffd45bb9375cb49d2f3e537ffb5b8c4c49ba5c27c37df6771805667892949a",
+    "tools/build_h700_low_pressure.ps1": "5c8be6d40232019a5fa6575b49b15183a159463c11b349073abe653f1dd69667",
+    "tools/build_h700_low_pressure.sh": "f1329ab6277f7192eee6cb82a76eca3506fb95595d822073fdf9c7f39d2fbb1f"
+  }
+}
