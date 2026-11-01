@@ -1,0 +1,28 @@
+# RG34XXSP ARM64 离线硬件候选
+
+这些工具为冻结的 Test2a 准备下一轮候选组件。**不调用 ADB、不打开块设备、不改写现卡，也不生成整卡 IMG。** 离线检查不能代替亮度、待机及实体输入验收。
+
+```powershell
+.\tools\build_h700_low_pressure.ps1 -Targets H700ReadinessBuild -Execute
+.\tools\build_h700_low_pressure.ps1 -Targets H700ReadinessStage -Execute
+```
+
+仍使用合计一核、CPU 0–1、`-j1`、nice 19、6GiB RAM、512MiB swap 和 idle IO。每次构建/阶段使用新目录；不要删除失败目录来重试。
+
+## Light 候选
+
+`android/h700-android10/device/roc/rgsp/H700Light/` 提供独立文件名的 ARM64 HIDL Light 2.0 服务，只声明 BACKLIGHT。仅接受 `rgsp` 加明确 `rg34xxsp` profile；使用标准 Android RGB 亮度换算，经 `/dev/disp` 的 `0x102`、四个 `unsigned long` 参数访问 screen 0。不操作电池 brightness 扩展属性、LED、振动、CPU/GPU 频率或唤醒锁。
+
+`prepare.py` 只同步这一新增模块到保留的 native 树，并备份被替换的模块草稿；现有产品列表和厂商 Light 实现不变。主机测试用替代 IO 覆盖 256 档灰度、off、参数布局、设备不可用和 IO 错误，没有访问真实屏幕。
+
+`audit.py` 审查 ELF64、Test2a 的 VNDK29/LLNDK 依赖与强导入符号、VINTF 冲突及既有执行类型。不会把缺失依赖静默替换成整套 BSP 系统库。符号闭包通过不等于 Android linker namespace、HwBinder 注册或 SELinux enforcing 真机通过。
+
+## 离线阶段
+
+`stage.py` 校验父分区 SHA 后复制到新的 WSL 目录，集成 Light 服务、必要接口库、RC、VINTF 和文件标签规则，以及首启 setup 的 nice19/idle0 RC。新增 image marker 与脚本守卫一并更新；冻结 Test2a 不回改。每个新文件回读 SHA/mode/属主/标签，两分区只读 fsck，原有锁定覆盖文件及关键 GSI 运行库再次核对。
+
+`file_contexts` 是该服务独立路径的增量规则。离线阶段将其追加到候选 vendor contexts，并为候选文件设置既有 `hal_light_default_exec`。若以后做原生产品全量集成，应显式选择该模块、排除其他注册 `ILight/default` 的服务，并把此规则纳入产品的 SELinux contexts；本工具不启用整个产品的 enforcing，也不放宽原有策略。
+
+`audit_power.py` 只读取与 Test2a 镜像锁匹配的 prefix，解析其中 boot/DTB。Hall 的 PE7 配置、powerkey wakeup 属性和本地 pinctrl IRQ 功能仅用于下一轮排查；不能据此宣称现机已注册可唤醒中断。它不申请 GPIO、不装模块、不改 DTB，也不解除 bringup 锁。
+
+原始/失败/候选及私有连接检查保存在 `out/rg34xxsp-readiness-20261102/` 和 WSL `/home/lpf/h700-readiness-20261102/`。只将源码与脱敏结果锁入 Git。

@@ -1,0 +1,341 @@
+{
+  "date": "2026-11-02",
+  "parent_tag": "baseline/rg34xxsp-arm64-defaults-test2a-20261101",
+  "scope": "RG34XXSP H700 2GB Android10 ARM64 offline candidate",
+  "marker": "dualabi-readiness-r1-20261102",
+  "source_parent_commit": "6f230b2",
+  "parent_components_lock_sha256": "dcc09c661b4cde8e740beb811a1d7edd95a535fa309664d84eab3bfd78da046f",
+  "candidate_components": {
+    "system": {
+      "bytes": 8589934592,
+      "sha256": "8ac3183fd7610b864d6fb5b3174b50288e682b1b1d5ac743045c01834b2c9143"
+    },
+    "vendor": {
+      "bytes": 2147483648,
+      "sha256": "8910ea27cf52bec96730f3eb568a220eecf5cc655e188779e2cb71ecb455d99c"
+    }
+  },
+  "changed_files": {
+    "system": {
+      "/system/bin/h700-preinstall.sh": {
+        "sha256": "2e7b973ee7401ae0c19091a1451042d7381a00d498531a18bb619903a24a7ade",
+        "mode": "0100755",
+        "selinux": "u:object_r:shell_exec:s0"
+      },
+      "/system/bin/h700-prototype-setup.sh": {
+        "sha256": "1e630acc76ba401836a68efae936bc9356c55a5ff73125ba32af73be8010508e",
+        "mode": "0100755",
+        "selinux": "u:object_r:shell_exec:s0"
+      },
+      "/system/etc/h700-prototype/image-revision": {
+        "sha256": "834ced7ce0027dacb529f3caf4e62c8692e2e4d07aef68344396e19d3d897b41",
+        "mode": "0100644",
+        "selinux": "u:object_r:system_file:s0"
+      },
+      "/system/etc/init/h700-prototype-setup.rc": {
+        "sha256": "3a0e24ba7c1c9030dd4d9aaec1b0da701fc6ecfc4c45252320442bf2c6980c69",
+        "mode": "0100644",
+        "selinux": "u:object_r:system_file:s0"
+      },
+      "/system/etc/prop.default": {
+        "sha256": "8246e3d73a24edb116cb40baec4abc0af4cfd27c8c292e9b002d15fb4e577a37",
+        "mode": "0100644",
+        "selinux": "u:object_r:system_file:s0"
+      }
+    },
+    "vendor": {
+      "/bin/hw/android.hardware.light@2.0-service.h700": {
+        "sha256": "579e75ba63e8cb1b51392af1e31a58560b415bdd7ab72766fd88e230308ff799",
+        "mode": "0100755",
+        "selinux": "u:object_r:hal_light_default_exec:s0"
+      },
+      "/etc/init/h700-light.rc": {
+        "sha256": "2af4444a55dfa6c37a4088ef3c8c53d124b66913812606ec9e1f4b6cb6ffe60d",
+        "mode": "0100644",
+        "selinux": "u:object_r:vendor_configs_file:s0"
+      },
+      "/etc/selinux/vendor_file_contexts": {
+        "sha256": "40e7ce49448217eb98ddf68e4bfdda2b5f2479fdee68cf849a0258c91aab0dbc",
+        "mode": "0100644",
+        "selinux": "u:object_r:vendor_configs_file:s0"
+      },
+      "/etc/vintf/manifest.xml": {
+        "sha256": "4b78da93404b34638c31aab4b378263f1f1b100358ef35d179f11055249e6d71",
+        "mode": "0100644",
+        "selinux": "u:object_r:vendor_configs_file:s0"
+      }
+    }
+  },
+  "checked_locked_files": {
+    "system": 3747,
+    "vendor": 5
+  },
+  "critical_runtime_unchanged_count": 10,
+  "e2fsck_both_exit_0": true,
+  "merged_vintf_android_parser_passed": true,
+  "frozen_parent_system_vendor_hashes_unchanged": true,
+  "light": {
+    "binary_sha256": "579e75ba63e8cb1b51392af1e31a58560b415bdd7ab72766fd88e230308ff799",
+    "elf_class": 64,
+    "dependency_object_count": 20,
+    "libraries": {
+      "vndk:libbase.so": {
+        "source": "vndk:system:/system/lib64/vndk-sp-29/libbase.so",
+        "sha256": "9cbead60e47da43627211c9bd8564e7e9735624c4a3a9a9a772be1eb3371ac76",
+        "needed": [
+          "liblog.so",
+          "libc++.so",
+          "libc.so",
+          "libm.so",
+          "libdl.so"
+        ]
+      },
+      "system:liblog.so": {
+        "source": "system:system:/system/lib64/liblog.so",
+        "sha256": "73d013238eaa563fff666ad15eaa4e949dd5251f4a8dd4a725d8756551e438cf",
+        "needed": [
+          "libc++.so",
+          "libc.so",
+          "libm.so",
+          "libdl.so"
+        ]
+      },
+      "vndk:libhidlbase.so": {
+        "source": "vndk:system:/system/lib64/vndk-sp-29/libhidlbase.so",
+        "sha256": "2e1b518fa6c2af532cdcd880c96cf85dc5177a302f3811bde888ec8505ac8db1",
+        "needed": [
+          "libhwbinder.so",
+          "libvndksupport.so",
+          "libbase.so",
+          "liblog.so",
+          "libcutils.so",
+          "libutils.so",
+          "libbinderthreadstate.so",
+          "libc++.so",
+          "libc.so",
+          "libm.so",
+          "libdl.so"
+        ]
+      },
+      "vndk:libhidltransport.so": {
+        "source": "vndk:system:/system/lib64/vndk-sp-29/libhidltransport.so",
+        "sha256": "81f85fb055b2dd5572a9b4a1126fc5fa8de8fbaabfe32268721649f4a4fa4b87",
+        "needed": [
+          "libc++.so",
+          "libc.so",
+          "libm.so",
+          "libdl.so"
+        ]
+      },
+      "vndk:libutils.so": {
+        "source": "vndk:system:/system/lib64/vndk-sp-29/libutils.so",
+        "sha256": "5c5be8715cabc2ff0e43e51fccf29dee94510edd0f1bbfea4f31fbbf7d3b9f24",
+        "needed": [
+          "libcutils.so",
+          "liblog.so",
+          "libprocessgroup.so",
+          "libvndksupport.so",
+          "libc++.so",
+          "libc.so",
+          "libm.so",
+          "libdl.so"
+        ]
+      },
+      "vndk:android.hardware.light@2.0.so": {
+        "source": "vndk:system:/system/lib64/vndk-29/android.hardware.light@2.0.so",
+        "sha256": "d8d41393872298c17abd1a5addfb6c7b6234217453575c4240c17da335305b9f",
+        "needed": [
+          "libhidlbase.so",
+          "libhidltransport.so",
+          "libhwbinder.so",
+          "liblog.so",
+          "libutils.so",
+          "libcutils.so",
+          "libc++.so",
+          "libc.so",
+          "libm.so",
+          "libdl.so"
+        ]
+      },
+      "vndk:libc++.so": {
+        "source": "vndk:system:/system/lib64/vndk-sp-29/libc++.so",
+        "sha256": "4ef356c8c09906603fec272e3309cf8757560b724f09349fe905853f8c8a29de",
+        "needed": [
+          "libc.so",
+          "libm.so",
+          "libdl.so"
+        ]
+      },
+      "system:libc.so": {
+        "source": "system:system:/system/apex/com.android.runtime.release/lib64/bionic/libc.so",
+        "sha256": "c48172d1d642328447fcb9bc8e9a79d569e4287add3e90f263f70b46b225a20e",
+        "needed": [
+          "ld-android.so",
+          "libdl.so"
+        ]
+      },
+      "system:libm.so": {
+        "source": "system:system:/system/apex/com.android.runtime.release/lib64/bionic/libm.so",
+        "sha256": "8d43b89d537e09e643fb878420569ec6df4b7428f056896771c5dd272242db66",
+        "needed": [
+          "libc.so"
+        ]
+      },
+      "system:libdl.so": {
+        "source": "system:system:/system/apex/com.android.runtime.release/lib64/bionic/libdl.so",
+        "sha256": "975b5f56014aee297b0c4875d7c377c9b09368d7f74fbdf1d72a20f806da0960",
+        "needed": [
+          "ld-android.so"
+        ]
+      },
+      "system:libc++.so": {
+        "source": "system:system:/system/lib64/libc++.so",
+        "sha256": "9a30c7a29915eb00045ea429e35d9823b1f603bcca0f98cc60882d2cc2dcc3bf",
+        "needed": [
+          "libc.so",
+          "libm.so",
+          "libdl.so"
+        ]
+      },
+      "vndk:libhwbinder.so": {
+        "source": "vndk:system:/system/lib64/vndk-sp-29/libhwbinder.so",
+        "sha256": "5bad2335cbc7be6aad6f569e63c9675d93bfd603948090b849b260b8640b7c54",
+        "needed": [
+          "libc++.so",
+          "libc.so",
+          "libm.so",
+          "libdl.so"
+        ]
+      },
+      "system:libvndksupport.so": {
+        "source": "system:system:/system/lib64/libvndksupport.so",
+        "sha256": "d1aec43e0f03b8c4e25b8e281a64c34b1ebff64948061ad54a499532479f005b",
+        "needed": [
+          "libdl_android.so",
+          "liblog.so",
+          "libc++.so",
+          "libc.so",
+          "libm.so",
+          "libdl.so"
+        ]
+      },
+      "vndk:libcutils.so": {
+        "source": "vndk:system:/system/lib64/vndk-sp-29/libcutils.so",
+        "sha256": "4e820618915250caa52029fc859ad1c5c091857b7cd995e1195f83d102daad02",
+        "needed": [
+          "liblog.so",
+          "libbase.so",
+          "libc++.so",
+          "libc.so",
+          "libm.so",
+          "libdl.so"
+        ]
+      },
+      "vndk:libbinderthreadstate.so": {
+        "source": "vndk:system:/system/lib64/vndk-sp-29/libbinderthreadstate.so",
+        "sha256": "243562a1904e595ac27976c3df1b391d2e3bfa7cd72253dfa86b47c855d63711",
+        "needed": [
+          "liblog.so",
+          "libc++.so",
+          "libc.so",
+          "libm.so",
+          "libdl.so"
+        ]
+      },
+      "vndk:libprocessgroup.so": {
+        "source": "vndk:system:/system/lib64/vndk-sp-29/libprocessgroup.so",
+        "sha256": "38428d4be4ead905609806b2f9ebc745519ef7a84eb733299afb3566023b252c",
+        "needed": [
+          "libbase.so",
+          "libcgrouprc.so",
+          "libc++.so",
+          "libc.so",
+          "libm.so",
+          "libdl.so"
+        ]
+      },
+      "system:ld-android.so": {
+        "source": "system:system:/system/lib64/ld-android.so",
+        "sha256": "e78d947d12322158b7b9654a1ba7e56abafefd0f51bbf9798e798dbb1d2a9faf",
+        "needed": []
+      },
+      "system:libdl_android.so": {
+        "source": "system:system:/system/lib64/libdl_android.so",
+        "sha256": "e54a88cb3256ad2b7918773f28207fa93ebbfa02cace176f565834482398dbc7",
+        "needed": [
+          "ld-android.so"
+        ]
+      },
+      "system:libcgrouprc.so": {
+        "source": "system:system:/system/lib64/libcgrouprc.so",
+        "sha256": "c42262d38d2529085c699b3307c553a6b993b79a39c2731b3d318ca48199f9be",
+        "needed": [
+          "libbase.so",
+          "libc++.so",
+          "libc.so",
+          "libm.so",
+          "libdl.so"
+        ]
+      },
+      "system:libbase.so": {
+        "source": "system:system:/system/lib64/libbase.so",
+        "sha256": "8157df5d792e2b6f8877bcdb901405c43b0ac2b1b9559586f86123a18ffcce02",
+        "needed": [
+          "liblog.so",
+          "libc++.so",
+          "libc.so",
+          "libm.so",
+          "libdl.so"
+        ]
+      }
+    },
+    "unresolved_symbols": {},
+    "new_runtime_libraries": 0,
+    "host_tests": "BACKLIGHT_256_LEVELS_DRIVER_ABI_AND_ERRORS_PASS",
+    "read_only_display_open": true,
+    "ld_config_sha256": "ee4a69a050091c1c94504cf744d3844e62c41032897fab83bf9062bc464e073d"
+  },
+  "hall": {
+    "prefix_sha256": "9e89204206e56a9b438e5dee2d689946ea1a4037586f454c9211c2eb7245322d",
+    "boot_sha256": "4a159a64d03129cc1b36d78a1f1e623e94c6f90e9428580d64c3ac70caf706f3",
+    "dtb_sha256": "7185c0b78f521cb7e187943bb4652378898771828d524c75e1d262617ee7b045",
+    "hall_pin": "PE7",
+    "hall_function": "gpio_in",
+    "reference_pinctrl_sha256": "24b215d5abd8edc88f68133f7b984e51fd550c5fc6f16320511cf21e2252dec3",
+    "reference_pin_has_irq_function": true,
+    "powerkey_wakeup_rising_present": true,
+    "powerkey_wakeup_falling_present": true
+  },
+  "setup": {
+    "priority": 19,
+    "ioprio": "idle 0",
+    "integrated_in_offline_stage": true,
+    "applied_to_current_card": false,
+    "new_priority_factory_boot_tested": false
+  },
+  "device_connected": false,
+  "device_controlled": false,
+  "device_installed": false,
+  "image_packaged": false,
+  "physical_brightness_accepted": false,
+  "runtime_hidl_registration_accepted": false,
+  "selinux_enforcing_accepted": false,
+  "hall_irq_wake_accepted": false,
+  "deep_suspend_accepted": false,
+  "bringup_lock_changed": false,
+  "third_party_preloads_unchanged": 7,
+  "limits": {
+    "aggregate_cpu": 1,
+    "affinity": [
+      0,
+      1
+    ],
+    "jobs": 1,
+    "nice": 19,
+    "ram_bytes": 6442450944,
+    "swap_bytes": 536870912,
+    "io_class": "idle"
+  },
+  "successful_build_log": "h700-low-pressure-20261102-034723.log",
+  "successful_stage_log": "h700-low-pressure-20261102-034912.log"
+}

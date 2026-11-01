@@ -1,5 +1,7 @@
 # 本地保留与清理后的边界
 
+2026-11-02 ARM64 离线收尾：保护 `out/rg34xxsp-readiness-20261102/`、WSL `/home/lpf/h700-readiness-20261102/` 的全部 build-v*/stage-v*、候选 system/vendor、模块二进制、源备份、失败审计、DTB/启动前段只读取证及构建/fsck/回读日志。阶段通过不授权删除失败材料或父 Test2a；本轮未生成整卡 IMG、未写设备。Git 只收自有源码与脱敏结果，见 [本轮记录](RG34XXSP_ARM64_OFFLINE_READINESS_20261102.md)。
+
 2026-11-01 AYASpace2 Android10 试验：保护 `out/ayaspace2-20261101/`、WSL `/home/lpf/h700-ayaspace2-20261101/`、`LOCAL_PRESERVE_H700_BASELINE_20261028/ayaspace2-20261101/` 的签名材料，以及用户下载目录中的原始 APK/媒体包/ROM 整合包。保留失败构建、各轮候选、原始反编译输入、截图/数据库/日志、3个本地样本和最终 r9 APK；Git 只保存自有适配工具及脱敏记录。该试验不授权清理旧材料或将 ROM/媒体加入镜像，见 [适配记录](RG34XXSP_AYASPACE2_ANDROID10_20261101.md)。
 
 2026-11-01 新卡首启与性能证据新增保护`out/test2a-firstboot-64g-20261101/`（新64GB私有设备守卫、早期启动/蓝牙异常/安装进度、截图及首启/后台结束帧统计）。Git只收脱敏指标和自有源码，原始CID/USB标识/日志/截图不上传；原128GB卡及旧镜像保留。

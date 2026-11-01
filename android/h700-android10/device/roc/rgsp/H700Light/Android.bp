@@ -1,0 +1,14 @@
+cc_binary {
+    name: "android.hardware.light@2.0-service.h700",
+    vendor: true,
+    relative_install_path: "hw",
+    compile_multilib: "64",
+    srcs: ["service.cpp", "Backlight.cpp"],
+    cflags: ["-Wall", "-Wextra", "-Werror"],
+    shared_libs: [
+        "libbase", "liblog", "libhidlbase", "libhidltransport", "libutils",
+        "android.hardware.light@2.0",
+    ],
+    init_rc: ["h700-light.rc"],
+    vintf_fragments: ["h700-light.xml"],
+}
