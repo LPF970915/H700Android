@@ -222,6 +222,7 @@ for stem in ('rgsp-roms-handoff', 'rgsp-wallpapers'):
     add('/system/bin/' + stem + '.sh', product / (stem + '.sh'), '0100755', 'u:object_r:shell_exec:s0')
     add('/system/etc/init/' + stem + '.rc', product / (stem + '.rc'))
 add('/system/bin/h700-prototype-setup.sh', REPO / 'tools/interaction/test2_setup.sh', '0100755', 'u:object_r:shell_exec:s0')
+add('/system/etc/init/h700-prototype-setup.rc', REPO / 'tools/arm64_probe/prototype_setup.rc')
 add('/system/bin/h700-preinstall.sh', ROOT / 'payload64-v1/h700-preinstall.sh', '0100755', 'u:object_r:shell_exec:s0')
 for name, digest in payload_lock['files'].items():
     file = ROOT / 'payload64-v1/payload' / name

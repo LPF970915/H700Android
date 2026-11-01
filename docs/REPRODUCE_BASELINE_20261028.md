@@ -1,5 +1,7 @@
 # 源码恢复与构建边界
 
+2026-11-01 [首启性能增量](RG34XXSP_TEST2A_FIRSTBOOT_UI_PERF_20261101.md)：只改`tools/arm64_probe/prototype_setup.rc`的初始化优先级及`ParityStage`显式复制RC；没有运行AOSP编译或重封装。后续从冻结Test2a生成新增量时必须带入该RC并单独验收首次初始化负载，不能把源码更新描述为已刷镜像更新。
+
 2026-11-01 默认值增量见[Test2a](RG34XXSP_ARM64_DEFAULTS_TEST2A_20261101.md)：通过低压力目标`H700DualAbiDefaultsStage`、`H700DualAbiDefaultsImage`顺序生成新阶段和gzip，旧Test2输入只读保留。新源码同时补齐未来ParityStage的工厂HOME配置和build.prop语言；不能在已有目录上重放。
 
 2026-11-01 新候选及实际生成链见 [ARM64 Parity Test2](RG34XXSP_ARM64_PARITY_20261101.md)。`H700DualAbiParity*`离线目标与`H700DualAbiInteraction`均通过低压力包装器执行。精确输入/输出及源码另锁；不能将历史失败阶段按日期重放，工具拒绝覆盖现有工作目录。Final从已通过system与干净vendor父原件生成，Seal补安装完成属性恢复窗口；新完整框架/ART源码重建、刷卡首启与中断恢复验收仍未通过。

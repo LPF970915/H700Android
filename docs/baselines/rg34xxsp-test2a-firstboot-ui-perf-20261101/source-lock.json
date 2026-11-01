@@ -1,0 +1,9 @@
+{
+  "text_hash_format": "SHA256 LF-normalized; frozen native bytes untouched",
+  "files": {
+    "tools/arm64_probe/prototype_setup.rc": "3a0e24ba7c1c9030dd4d9aaec1b0da701fc6ecfc4c45252320442bf2c6980c69",
+    "tools/interaction/prepare_stage.py": "974ecf85734c44f58701e1896ed598f8a467316c001883070c1665e2960f7e5c"
+  },
+  "currently_flashed_test2a_image_unmodified": true,
+  "new_init_priority_not_yet_packaged_or_live_accepted": true
+}

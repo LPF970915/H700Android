@@ -1,0 +1,106 @@
+{
+  "checkpoint": "baseline/rg34xxsp-test2a-firstboot-ui-perf-20261101",
+  "device": "RG34XXSP H7002GB; user-authorized original64GB card",
+  "image": "dualabi-parity-test2a-20261101",
+  "first_boot_android_completed": true,
+  "physical_AT4K_desktop_confirmed_by_user": true,
+  "system_locale": "zh-CN",
+  "resolved_home_after_provisioning": "com.overdevs.at4k/.MainActivity",
+  "first_boot_ROMS_partition_bytes": 35724982784,
+  "ROMS_public_volume_mounted": true,
+  "graphics": {
+    "renderer": "ARM Mali-G31",
+    "egl": "1.4 Bifrost r20p0",
+    "gles": "3.2",
+    "at4k_systemui_settings_and_surfaceflinger_load_vendor_lib64_mali": true,
+    "app_pipeline": "Skia OpenGL",
+    "hwc_enabled": true,
+    "observed_idle_composition": "CLIENT/FORCE_GPU with HWC scanout target",
+    "vendor_force_client_low_frame_rate_policy_found": true,
+    "software_vsync_enabled": true,
+    "vsync_period_ns": 16904379,
+    "gpu_frequency_sample_hz": 420000000
+  },
+  "before_during_factory_copy": {
+    "cpu_idle_percent_of_all_four_cores": 22.5,
+    "root_asset_copy_percent_of_one_core": 96.6,
+    "cp_nice": 0,
+    "kswapd_percent_of_one_core": 30.0,
+    "mem_available_kib": 1466488,
+    "frame_samples": {
+      "com.overdevs.at4k": {
+        "frames": 639,
+        "janky_frames": 325,
+        "janky_percent": 50.86,
+        "p50_ms": 17.0,
+        "p95_ms": 89.0,
+        "pipeline": "Skia (OpenGL)"
+      },
+      "com.android.systemui": {
+        "frames": 310,
+        "janky_frames": 219,
+        "janky_percent": 70.65,
+        "p50_ms": 24.0,
+        "p95_ms": 250.0,
+        "pipeline": "Skia (OpenGL)"
+      }
+    }
+  },
+  "after_provisioning_user_navigation_sample": {
+    "cpu_idle_percent_of_all_four_cores": 92.75,
+    "frame_samples": {
+      "com.overdevs.at4k": {
+        "frames": 514,
+        "janky_frames": 22,
+        "janky_percent": 4.28,
+        "p50_ms": 7.0,
+        "p95_ms": 15.0,
+        "pipeline": "Skia (OpenGL)"
+      },
+      "com.android.settings": {
+        "frames": 263,
+        "janky_frames": 17,
+        "janky_percent": 6.46,
+        "p50_ms": 6.0,
+        "p95_ms": 25.0,
+        "pipeline": "Skia (OpenGL)"
+      },
+      "com.android.systemui": {
+        "frames": 52,
+        "janky_frames": 1,
+        "janky_percent": 1.92,
+        "p50_ms": 8.0,
+        "p95_ms": 14.0,
+        "pipeline": "Skia (OpenGL)"
+      }
+    }
+  },
+  "user_report_after_background_finished": "markedly improved",
+  "interpretation": "Evidence points to first-boot provisioning contention as the main observed UI jank source; native Mali hardware rendering is active",
+  "same_action_controlled_benchmark": false,
+  "end_to_end_input_latency_fully_accepted": false,
+  "future_source_change": {
+    "setup_service_nice": 19,
+    "io_priority_class": "idle",
+    "io_priority": 0,
+    "aosp_init_source_parser_support_reviewed": true,
+    "applied_to_running_card": false,
+    "repacked_image_this_checkpoint": false,
+    "fresh_boot_effect_of_new_priority_tested": false
+  },
+  "known_boot_issue": "Bluetooth HCI SIGABRT before late defaults disabled Bluetooth; not fixed and not a zero-crash first boot",
+  "deferred_by_user": [
+    "application workflow/ABI acceptance",
+    "physical A unlock and power menu",
+    "full reboot and persistence regression"
+  ],
+  "diagnostic_settings": {
+    "gfxinfo_counters_reset_for_fresh_sample": true,
+    "usb_stay_awake_observed_factory_value": 7,
+    "usb_stay_awake_not_changed_by_this_probe": true,
+    "interaction_trace_observed": "null/off",
+    "no_compositor_or_clock_properties_changed": true
+  },
+  "source_image_tag_unchanged": true,
+  "raw_identity_cid_logs_frames_private_only": true
+}

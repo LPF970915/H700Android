@@ -5,6 +5,9 @@ service h700-prototype-setup /system/bin/sh /system/bin/h700-prototype-setup.sh
     class late_start
     user root
     group root system shell
+    # Factory verification/extraction yields to foreground UI and input.
+    priority 19
+    ioprio idle 0
     seclabel u:r:su:s0
     disabled
     oneshot
