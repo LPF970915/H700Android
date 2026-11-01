@@ -1,5 +1,6 @@
 # 本地保留与清理后的边界
 
+2026-11-01 ARM64掌机同步保全：保护`out/dualabi-interaction-20261101/`、`out/dualabi-parity-20261101/`、`out/dualabi-parity-test2-20261101/`（中断压缩草稿，不可刷写）、`out/dualabi-parity-test2-20261101-final/`（最终候选）、WSL`/home/lpf/h700-dualabi-interaction-20261101/`及`/home/lpf/h700-dualabi-parity-20261101/`。包括失败fsck/API/签名/资源候选、原始取证、下载APK/核心、Stage2、Final、Seal及完整gzip；均不是普通缓存，Git不含这些二进制或私有记录。原64GB工作卡与v6b/Test1继续保留。
 2026-10-28 已按用户指令清理旧版本与冗余产物。首轮具体删除范围、空间变化、检查结果和未执行项见 [清理记录](CLEANUP_20261028.md)，其标签为 `baseline/h700-clean-20261028`。第二轮 WSL 空间整理后的检查点为 `baseline/h700-storage-trim-20261028`；Git 源码冻结标签不变。
 
 ## 继续保护的内容

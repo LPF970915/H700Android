@@ -10,7 +10,7 @@ def replace_once(text, old, new):
 def patch(text):
     text = replace_once(text,
         'if ("com.android.systemui".equals(pkg)) return shadeRoot(root) ? "shade" : "inactive";',
-        'if ("com.android.systemui".equals(pkg)) return powerRoot(root) ? "power" : shadeRoot(root) ? "shade" : "inactive";')
+        'if ("com.android.systemui".equals(pkg)) return powerRoot(root) ? (nativeSystemUi() ? "inactive" : "power") : shadeRoot(root) ? "shade" : "inactive";')
     text = replace_once(text, '|| "shade".equals(mode);', '|| "shade".equals(mode) || "power".equals(mode);')
     text = replace_once(text,
         'if (!((PowerManager) getSystemService(POWER_SERVICE)).isInteractive()\n'
@@ -52,6 +52,10 @@ def patch(text):
         '        if (key == KeyEvent.KEYCODE_BUTTON_B')
     methods = '''
     private boolean powerBack;
+
+    private boolean nativeSystemUi() {
+        return new java.io.File("/system/etc/h700-parity/systemui-native").isFile();
+    }
 
     private boolean powerRoot(AccessibilityNodeInfo root) {
         if (root == null || !"com.android.systemui".equals(String.valueOf(root.getPackageName()))) return false;

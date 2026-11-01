@@ -1,0 +1,50 @@
+{
+  "device_scope": "Exact guarded RG34XXSP H7002GB spare running incrementally modified Test1; not fresh Test2",
+  "all_seven_processes_observed_ELF64": true,
+  "apps_startup_observed": [
+    "AnimekoTV",
+    "NOVA",
+    "KOReader",
+    "Pegasus",
+    "RetroArch",
+    "PPSSPP",
+    "MTManager"
+  ],
+  "nova_software_codec_vintf_fix": {
+    "prior_crash": true,
+    "omx_store_declared": true,
+    "normal_reboot_passed": true,
+    "post_fix_phone_mode_startup_passed": true,
+    "hardware_codec_claimed": false
+  },
+  "retroarch": {
+    "initial_default_configuration_background_SIGSEGV_observed": true,
+    "root_cause_not_proven": true,
+    "absolute_paths_and_factory_assets_used_on_retest": true,
+    "official_diagnostic_2048_ELF64_rendered": true,
+    "physical_scan311_start_and_HAT_down_controlled": true,
+    "HAT_move_changed_pixels": 32000,
+    "same_pid_core_retained_across_PPSSPP_roundtrip": true,
+    "new_RA_crash_during_retest": false,
+    "full_game_performance_accepted": false
+  },
+  "ppsspp": {
+    "actual_ELF64": true,
+    "official_cube_sha256": "15fa6f30d2fdc70a67b1cae646f82e6a4187d473ca4882c4631dc5b3fb43fc1d",
+    "cube_rendered": true,
+    "three_second_changed_pixels": 130461,
+    "measured_region": [
+      120,
+      70,
+      600,
+      450
+    ],
+    "RA_remained_resident": true,
+    "full_game_performance_accepted": false
+  },
+  "crash_attribution": "PPSSPP/MT probe crash buffers contained prior RA process crash, not proof of their own crash",
+  "trace_and_usb_stay_awake_final": 0,
+  "raw_logs_screenshots_identities_local_only": true,
+  "fresh_image_first_boot": false,
+  "physical_input_full_regression": false
+}

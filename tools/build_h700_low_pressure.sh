@@ -6,7 +6,7 @@ test -f "$root/build/envsetup.sh"
 test "$#" -gt 0
 for target in "$@"; do
     case "$target" in systemimage|vendorimage|ramdisk|adbd|vold|services|Settings|SettingsIntelligence|SystemUI|MediaProvider|LatinIME|LeanbackIME|Calendar|DocumentsUI|RGSPLauncher|RGSPNavigation|H700Apps|H700Navigation|H700Input|H700KernelInput|H700Lid|H700Rotation|H700RotationFramework|H700ReleaseImage|H700ReleaseImageMT|H700Arm64Feasibility|H700Arm64Isolated|rgsp_vsync_probe|rgsp_egl_import_probe|hwcomposer.cupid|libsurfaceflinger|PermissionController) ;;
-        H700DualAbiWindow|H700DualAbiBoot|H700DualAbiImage|H700DualAbiAudit|H700DualAbiBootEntry|H700DualAbiEntryImage|H700DualAbiHandoff|H700DualAbiHandoffImage|H700DualAbiTestNavigation|H700DualAbiTestImage|H700DualAbiTestAudit|H700DualAbiInteraction) ;;
+        H700DualAbiWindow|H700DualAbiBoot|H700DualAbiImage|H700DualAbiAudit|H700DualAbiBootEntry|H700DualAbiEntryImage|H700DualAbiHandoff|H700DualAbiHandoffImage|H700DualAbiTestNavigation|H700DualAbiTestImage|H700DualAbiTestAudit|H700DualAbiInteraction|H700DualAbiParity|H700DualAbiParityApps|H700DualAbiParityUi|H700DualAbiParityServices|H700DualAbiParityVold|H700DualAbiParityOverlay|H700DualAbiParityLinkage|H700DualAbiParityVoldAudit|H700DualAbiParitySettingsApi|H700DualAbiParityPayload|H700DualAbiParityStage|H700DualAbiParityFinal|H700DualAbiParitySeal|H700DualAbiParityImage) ;;
         *) echo "Unsupported target: $target" >&2; exit 2 ;;
     esac
 done
@@ -30,9 +30,84 @@ export GOGC=50
 export JAVA_TOOL_OPTIONS='-Xmx2048m'
 export NINJA_ARGS='-j1'
 export MAKEFLAGS='-j1'
+if [ "$#" = 1 ] && [ "$1" = H700DualAbiParitySeal ]; then
+    python3 "$(dirname "$(realpath "$0")")/interaction/seal_stage.py"
+    echo "LOW_PRESSURE_COMPLETE=$(date -Is)"
+    exit 0
+fi
+if [ "$#" = 1 ] && [ "$1" = H700DualAbiParityFinal ]; then
+    python3 "$(dirname "$(realpath "$0")")/interaction/finalize_stage.py"
+    echo "LOW_PRESSURE_COMPLETE=$(date -Is)"
+    exit 0
+fi
+if [ "$#" = 1 ] && [ "$1" = H700DualAbiParityImage ]; then
+    python3 "$(dirname "$(realpath "$0")")/interaction/package_test2.py"
+    echo "LOW_PRESSURE_COMPLETE=$(date -Is)"
+    exit 0
+fi
+if [ "$#" = 1 ] && [ "$1" = H700DualAbiParityStage ]; then
+    echo "LOW_PRESSURE_START=$(date -Is)"
+    python3 "$(dirname "$(realpath "$0")")/interaction/prepare_stage.py"
+    echo "LOW_PRESSURE_COMPLETE=$(date -Is)"
+    exit 0
+fi
+if [ "$#" = 1 ] && [ "$1" = H700DualAbiParityPayload ]; then
+    echo "LOW_PRESSURE_START=$(date -Is)"
+    python3 "$(dirname "$(realpath "$0")")/interaction/prepare_payload64.py"
+    echo "LOW_PRESSURE_COMPLETE=$(date -Is)"
+    exit 0
+fi
+if [ "$#" = 1 ] && [ "$1" = H700DualAbiParitySettingsApi ]; then
+    echo "LOW_PRESSURE_START=$(date -Is)"
+    python3 "$(dirname "$(realpath "$0")")/interaction/build_parity_settings_api.py"
+    echo "LOW_PRESSURE_COMPLETE=$(date -Is)"
+    exit 0
+fi
+if [ "$#" = 1 ] && [ "$1" = H700DualAbiParityVoldAudit ]; then
+    echo "LOW_PRESSURE_START=$(date -Is)"
+    python3 "$(dirname "$(realpath "$0")")/interaction/audit_vold64.py"
+    echo "LOW_PRESSURE_COMPLETE=$(date -Is)"
+    exit 0
+fi
+if [ "$#" = 1 ] && [ "$1" = H700DualAbiParityLinkage ]; then
+    echo "LOW_PRESSURE_START=$(date -Is)"
+    python3 "$(dirname "$(realpath "$0")")/interaction/audit_parity_apis.py"
+    echo "LOW_PRESSURE_COMPLETE=$(date -Is)"
+    exit 0
+fi
+if [ "$#" = 1 ] && [ "$1" = H700DualAbiParityOverlay ]; then
+    echo "LOW_PRESSURE_START=$(date -Is)"
+    python3 "$(dirname "$(realpath "$0")")/interaction/build_parity_overlay.py"
+    echo "LOW_PRESSURE_COMPLETE=$(date -Is)"
+    exit 0
+fi
+if [ "$#" = 1 ] && [ "$1" = H700DualAbiParityServices ]; then
+    echo "LOW_PRESSURE_START=$(date -Is)"
+    python3 "$(dirname "$(realpath "$0")")/interaction/build_parity_services.py"
+    echo "LOW_PRESSURE_COMPLETE=$(date -Is)"
+    exit 0
+fi
+if [ "$#" = 1 ] && [ "$1" = H700DualAbiParityUi ]; then
+    echo "LOW_PRESSURE_START=$(date -Is)"
+    python3 "$(dirname "$(realpath "$0")")/interaction/build_parity_systemui.py"
+    echo "LOW_PRESSURE_COMPLETE=$(date -Is)"
+    exit 0
+fi
+if [ "$#" = 1 ] && [ "$1" = H700DualAbiParityApps ]; then
+    echo "LOW_PRESSURE_START=$(date -Is)"
+    python3 "$(dirname "$(realpath "$0")")/interaction/build_parity_apps.py"
+    echo "LOW_PRESSURE_COMPLETE=$(date -Is)"
+    exit 0
+fi
+if [ "$#" = 1 ] && [ "$1" = H700DualAbiParity ]; then
+    echo "LOW_PRESSURE_START=$(date -Is)"
+    python3 "$(dirname "$(realpath "$0")")/interaction/audit_parity.py"
+    echo "LOW_PRESSURE_COMPLETE=$(date -Is)"
+    exit 0
+fi
 if [ "$#" = 1 ] && [ "$1" = H700DualAbiInteraction ]; then
     echo "LOW_PRESSURE_START=$(date -Is)"
-    python3 "$(dirname "$(realpath "$0")")/build_h700_apps.py" --source "$root" --prototype-interaction-only --interaction-label power-safe --interaction-version 11
+    python3 "$(dirname "$(realpath "$0")")/build_h700_apps.py" --source "$root" --prototype-interaction-only --interaction-label native-parity --interaction-version 12
     echo "LOW_PRESSURE_COMPLETE=$(date -Is)"
     exit 0
 fi
@@ -90,7 +165,7 @@ if [ "$#" = 1 ] && [ "$1" = H700DualAbiImage ]; then
     echo "LOW_PRESSURE_COMPLETE=$(date -Is)"
     exit 0
 fi
-if [ "$#" = 1 ] && { [ "$1" = H700DualAbiWindow ] || [ "$1" = H700DualAbiBoot ]; }; then
+if [ "$#" = 1 ] && { [ "$1" = H700DualAbiWindow ] || [ "$1" = H700DualAbiBoot ] || [ "$1" = H700DualAbiParityVold ]; }; then
     # The dual-arch graph has more live Go data. Collect sooner instead of
     # raising MemoryHigh/MemoryMax or allowing extra CPUs.
     export GOGC=10
@@ -103,6 +178,9 @@ if [ "$#" = 1 ] && { [ "$1" = H700DualAbiWindow ] || [ "$1" = H700DualAbiBoot ];
     if [ "$1" = H700DualAbiWindow ]; then
         m -j1 h700_window_probe gralloc.h700proto android.hardware.graphics.mapper@2.0-impl-2.1 linker libc.bootstrap libdl.bootstrap libm.bootstrap libGLESv1_CM libz H700AbiProbe64
         python3 "$(dirname "$(realpath "$0")")/build_h700_dualabi_bundle.py"
+    elif [ "$1" = H700DualAbiParityVold ]; then
+        python3 "$(dirname "$(realpath "$0")")/interaction/check_vold_source.py"
+        m -j1 vold
     else
         m -j1 init_second_stage adbd H700AbiProbe64
     fi

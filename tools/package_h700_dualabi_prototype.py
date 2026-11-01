@@ -61,11 +61,15 @@ def modify(image, mapping, label_default, links=None):
         p=PurePosixPath(inside).parent
         while str(p)!='/': directories.add(str(p));p=p.parent
     for directory in sorted(directories,key=lambda p:(p.count('/'),p)):
-        commands.append('mkdir '+base.q(directory))
+        info = base.debug(image, 'stat '+base.q(directory))
+        if 'Type: directory' not in info:
+            if 'Inode:' in info:
+                raise ValueError('Overlay parent is not a directory: '+directory)
+            commands.append('mkdir '+base.q(directory))
     expected={}
     for i,(inside,(source,mode,label)) in enumerate(sorted(mapping.items())):
         base.regular(source)
-        context=base.write(WORK/('label-'+str(i)+'.txt'),label+'\x00')
+        context=base.write(WORK/(image.stem+'-label-'+str(i)+'.txt'),label+'\x00')
         commands += ['rm '+base.q(inside),'write '+base.q(source)+' '+base.q(inside),
                      'set_inode_field '+base.q(inside)+' mode '+mode,
                      'set_inode_field '+base.q(inside)+' uid 0','set_inode_field '+base.q(inside)+' gid 0',

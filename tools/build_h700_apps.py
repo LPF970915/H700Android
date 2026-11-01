@@ -172,7 +172,7 @@ def main():
         text = text.replace(anchor, '    private final PrototypeUnlock prototypeUnlock = new PrototypeUnlock();\n\n' +
                             anchor + '\n        if (prototypeUnlock.handle(this, event)) return true;')
         if args.prototype_interaction_only:
-            text=text.replace('prototypeUnlock.handle(this, event)', 'prototypeUnlock.handle(this, event, !powerDialogVisible())')
+            text=text.replace('prototypeUnlock.handle(this, event)', 'prototypeUnlock.handle(this, event, !powerDialogVisible() && !nativeSystemUi())')
             spec=importlib.util.spec_from_file_location('interaction_patch', REPO/'tools/interaction/patch_navigation.py')
             module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module)
             text=module.patch(text)

@@ -1,0 +1,153 @@
+{
+  "requested_abi": "arm64-v8a",
+  "apps": [
+    {
+      "id": "AnimekoTV",
+      "package": "me.him188.ani.tv",
+      "version_name": "6.4.0",
+      "version_code": 50406,
+      "minimum_api": 26,
+      "file": "out/dualabi-parity-20261101/arm64-apps/ani-tv-6.4.0-arm64-v8a.apk",
+      "bytes": 33530323,
+      "sha256": "45cfab767e3b99e46638fbba3256e1567e83370afa23449143863d9e155148b9",
+      "publisher_certificate_sha256": "6fb65ce60084971a84f40095979b36f9058bbc9f30949fb8094fb47e2a17e813",
+      "same_publisher_as_validated_arm32": true,
+      "available_abis": [
+        "arm64-v8a"
+      ],
+      "install_abi": "arm64-v8a",
+      "elf64_libraries_checked": 24,
+      "url": "https://github.com/open-ani/animeko/releases/download/v6.4.0/ani-tv-6.4.0-arm64-v8a.apk",
+      "runtime_accepted": false
+    },
+    {
+      "id": "NOVA",
+      "package": "org.courville.nova",
+      "version_name": "6.6.2-20261027.1847",
+      "version_code": 2673649,
+      "minimum_api": 23,
+      "file": "out/dualabi-parity-20261101/arm64-apps/org.courville.nova-2673649-6.6.2-20261027.1847-arm64-v8a-release.apk",
+      "bytes": 34983051,
+      "sha256": "6b047bc95d84785ac473a7dd031e4279b8cf5bf842facd2e19d0f57c53eb03ed",
+      "publisher_certificate_sha256": "05af6804bcad9e7e6d22d2ffc39fca1857a4aeb4385097cad91b11e5bac1f615",
+      "same_publisher_as_validated_arm32": true,
+      "available_abis": [
+        "arm64-v8a"
+      ],
+      "install_abi": "arm64-v8a",
+      "elf64_libraries_checked": 22,
+      "url": "https://github.com/nova-video-player/aos-AVP/releases/download/v6.6.2/org.courville.nova-2673649-6.6.2-20261027.1847-arm64-v8a-release.apk",
+      "runtime_accepted": false
+    },
+    {
+      "id": "KOReader",
+      "package": "org.koreader.launcher",
+      "version_name": "v2026.07.1",
+      "version_code": 119462,
+      "minimum_api": 18,
+      "file": "out/dualabi-parity-20261101/arm64-apps/koreader-android-arm64-v2026.07.1.apk",
+      "bytes": 30084751,
+      "sha256": "89cecbe06eacd2ff7d91e37152d6beeb52809f2ca38060b6515ed8b00d152412",
+      "publisher_certificate_sha256": "fd492a4fe001f17058b826da4358a1dceac38d26686f342522c5a497bcd4dccc",
+      "same_publisher_as_validated_arm32": true,
+      "available_abis": [
+        "arm64-v8a"
+      ],
+      "install_abi": "arm64-v8a",
+      "elf64_libraries_checked": 5,
+      "url": "https://github.com/koreader/koreader/releases/download/v2026.07.1/koreader-android-arm64-v2026.07.1.apk",
+      "runtime_accepted": false
+    },
+    {
+      "id": "Pegasus",
+      "package": "org.pegasus_frontend.android",
+      "version_name": "alpha16-112-g2a13b4f4",
+      "version_code": 1975,
+      "minimum_api": 21,
+      "file": "out/dualabi-parity-20261101/arm64-apps/pegasus-fe_alpha16-112-g2a13b4f4_android64.apk",
+      "bytes": 18210866,
+      "sha256": "1bf8f649b522b34f2558422db542bf8562cfc370844bbeb794e2fb50a44918bb",
+      "publisher_certificate_sha256": "99ea1ec9971be91de245778dfb3c5cdde835243bde274fc1236c1cae54b27a78",
+      "same_publisher_as_validated_arm32": true,
+      "available_abis": [
+        "arm64-v8a"
+      ],
+      "install_abi": "arm64-v8a",
+      "elf64_libraries_checked": 49,
+      "url": "https://github.com/mmatyas/pegasus-frontend/releases/download/continuous/pegasus-fe_alpha16-112-g2a13b4f4_android64.apk",
+      "runtime_accepted": false
+    },
+    {
+      "id": "RetroArch",
+      "package": "com.retroarch.aarch64",
+      "version_name": "1.22.2_GIT",
+      "version_code": 1763607214,
+      "minimum_api": 16,
+      "file": "out/dualabi-parity-20261101/arm64-apps/RetroArch_aarch64-1.22.2.apk",
+      "bytes": 183956821,
+      "sha256": "7bd5d208dfe93cc8e2ea6c04608948ce1a045980f160a58ca2d0993aa20ad213",
+      "publisher_certificate_sha256": "d7a5eab30902c9b2775af6fb4eac2d294a64634fb47dd1382bc3ac5bf669982e",
+      "same_publisher_as_validated_arm32": true,
+      "available_abis": [
+        "arm64-v8a",
+        "x86_64"
+      ],
+      "install_abi": "arm64-v8a",
+      "elf64_libraries_checked": 1,
+      "url": "https://buildbot.libretro.com/stable/1.22.2/android/RetroArch_aarch64.apk",
+      "runtime_accepted": false
+    },
+    {
+      "id": "PPSSPP",
+      "package": "org.ppsspp.ppsspp",
+      "version_name": "v1.20.4",
+      "version_code": 120040000,
+      "minimum_api": 21,
+      "file": "out/rg34xxsp-input-power-20261028/emulators/ppsspp.apk",
+      "bytes": 45448397,
+      "sha256": "dd702a31270ecd68db37afee311d6efe08b1d4da9601d2750ce1a73bbd316c3f",
+      "publisher_certificate_sha256": "c5342629df16762391907b3297aad122b4c1a8a9e608dfb94217a08e3bbf13a2",
+      "same_publisher_as_validated_arm32": true,
+      "available_abis": [
+        "arm64-v8a",
+        "armeabi-v7a",
+        "x86_64"
+      ],
+      "install_abi": "arm64-v8a",
+      "elf64_libraries_checked": 6,
+      "url": null,
+      "runtime_accepted": false
+    },
+    {
+      "id": "MTManager",
+      "package": "bin.mt.plus",
+      "version_name": "2.26.10",
+      "version_code": 26101061,
+      "minimum_api": 21,
+      "file": "out/mt-manager-20261030/MT2.26.10.apk",
+      "bytes": 37521106,
+      "sha256": "8f83cef8ac63f76a81e1fee3ededb213f6ba43cc19761e38bc4e567c87edd47d",
+      "publisher_certificate_sha256": "8501dd29dc8b452391ff427936591e19c4bdc1bdd9f15ee8e5ace4e8b74cc96b",
+      "same_publisher_as_validated_arm32": true,
+      "available_abis": [
+        "arm64-v8a",
+        "armeabi-v7a",
+        "x86",
+        "x86_64"
+      ],
+      "install_abi": "arm64-v8a",
+      "elf64_libraries_checked": 11,
+      "url": null,
+      "runtime_accepted": false
+    }
+  ],
+  "excluded": [
+    {
+      "id": "QQMusicTV",
+      "reason": "Current official TV download is armeabi-v7a only; no automatic ARM32 or phone fallback"
+    }
+  ],
+  "scope": "ARM64 Parity Test2; selected app payloads only, not a full workflow acceptance",
+  "qq_music_tv": "Official TV9.0.0.39 is ARM32 only; excluded; no phone or ARM32 fallback",
+  "first_boot_accepted": false
+}

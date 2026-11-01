@@ -1,0 +1,141 @@
+{
+  "systemui-v6": {
+    "base_sha256": "d0e694c96be84ac82e00e0ce463354eef5163d0c18e928a18122feb4bba6bbc6",
+    "bytes": 20151875,
+    "sha256": "b41d5324083d599b2edfa0a94eaf0dd77dc724b011ec4904dbc87d5ae800e2a8",
+    "modified_classes": [
+      "com/android/systemui/globalactions/GlobalActionsDialog$ActionsDialog",
+      "com/android/systemui/statusbar/phone/StatusBarWindowView"
+    ],
+    "all_other_classes_canonically_verified": true,
+    "all_non_dex_resources_unchanged": true,
+    "native_systemui_window_input_port": true,
+    "runtime_accepted": false,
+    "requires_coherent_new_system_signing": true
+  },
+  "services-v3": {
+    "unchanged_classes_compared": 6088,
+    "changed_classes": [
+      "com/android/server/StorageManagerService",
+      "com/android/server/SystemServer",
+      "com/android/server/inputmethod/InputMethodManagerService",
+      "com/android/server/oemlock/OemLockService",
+      "com/android/server/wm/ActivityRecord"
+    ],
+    "added_classes": [
+      "com/android/server/oemlock/RgspUnsupportedOemLock"
+    ],
+    "non_modified_zip_entries_unchanged": true,
+    "sha256": "3bc800100884f809d713524c6a31402c0e95958430387167f58e0740218235ab",
+    "runtime_accepted": false,
+    "full_source_framework_rebuild": false,
+    "roms_native_vold_port_still_required": true,
+    "ime_method_from_pinned_arm32": true,
+    "oem_fallback_reports_unsupported": true
+  },
+  "settings-api-v1": {
+    "unchanged_classes_compared": 6862,
+    "changed_classes": [
+      "com/android/settings/biometrics/face/FaceEnrollSidecar",
+      "com/android/settings/biometrics/face/FaceSettingsAttentionPreferenceController"
+    ],
+    "added_classes": [],
+    "non_modified_zip_entries_unchanged": true,
+    "sha256": "132652381b5df7e464791cdbd1f6aa6b0afb6f99d50f46c4eeb25e350f10d27e",
+    "source_sha256": "20ae48a202aaabe94fce43202c1b25680dda946864eed6e664b18a6adc7d5df2",
+    "added_user_ids": "Enrollment target user with USER_NULL fallback; preference Context user",
+    "new_facial_hardware_support_claimed": false,
+    "runtime_accepted": false
+  },
+  "framework-overlay-v3": {
+    "bytes": 16891,
+    "sha256": "97d7f0d78c421cef1e80685655d9caeeb3e31435dcfcb4fe732c07b661e416b4",
+    "overrides": [
+      "integer/config_defaultUiModeType",
+      "bool/config_showNavigationBar",
+      "integer/config_overrideHasPermanentMenuKey",
+      "bool/config_hasPermanentDpad",
+      "bool/config_defaultInTouchMode",
+      "bool/config_dreamsActivatedOnDockByDefault"
+    ],
+    "absent_gsi_configuration_names_skipped": [],
+    "resolver_layouts": [
+      "resolver_list",
+      "resolver_list_with_default"
+    ],
+    "runtime_accepted": false,
+    "requires_coherent_new_system_signing": true
+  },
+  "api-audit-v3": {
+    "dependencies": [
+      "framework.jar",
+      "services.parity.jar",
+      "core-oj.jar",
+      "core-libart.jar",
+      "apache-xml.jar",
+      "bouncycastle.jar",
+      "conscrypt.jar",
+      "okhttp.jar",
+      "ext.jar",
+      "telephony-common.jar",
+      "ims-common.jar",
+      "voip-common.jar",
+      "android.hidl.base-V1.0-java.jar",
+      "android.test.base.jar",
+      "updatable-media.jar"
+    ],
+    "output": "APK=Settings.apk UNRESOLVED=0\nAPK=SystemUI.apk UNRESOLVED=0\nPicked up JAVA_TOOL_OPTIONS: -Xmx2048m\n",
+    "runtime_accepted": false,
+    "access_flags_jni_and_reflection_not_validated": true
+  },
+  "historical_api_v2_before_final_Settings_fix": [
+    "APK=Settings.apk UNRESOLVED=3",
+    "MISSING=Landroid/hardware/face/FaceManager;->enroll([BLandroid/os/CancellationSignal;Landroid/hardware/face/FaceManager$EnrollmentCallback;[I)V",
+    "MISSING=Landroid/hardware/face/FaceManager;->getFeature(ILandroid/hardware/face/FaceManager$GetFeatureCallback;)V",
+    "MISSING=Landroid/hardware/face/FaceManager;->setFeature(IZ[BLandroid/hardware/face/FaceManager$SetFeatureCallback;)V",
+    "APK=DocumentsUI.apk UNRESOLVED=0",
+    "APK=LatinIME.apk UNRESOLVED=0",
+    "APK=PermissionController.apk UNRESOLVED=0",
+    "APK=PackageInstaller.apk UNRESOLVED=0",
+    "APK=SettingsIntelligence.apk UNRESOLVED=0",
+    "APK=Calendar.apk UNRESOLVED=0",
+    "APK=Contacts.apk UNRESOLVED=0",
+    "APK=Traceur.apk UNRESOLVED=0",
+    "APK=MediaProvider.apk UNRESOLVED=0",
+    "APK=SystemUI.apk UNRESOLVED=0",
+    "APK=services.parity.jar UNRESOLVED=0"
+  ],
+  "vold": {
+    "vold_sha256": "9bfc92dce29021a65deb93f731a0e54eb93ae00b0c9abd8a71a12603dbb2dc56",
+    "native_elf64": true,
+    "daemon_executed": false,
+    "errors": [],
+    "unresolved_dynamic_symbols": {},
+    "binder_protocols_match": {
+      "android/os/IVold": true,
+      "android/os/IVold$Stub": true,
+      "android/os/IVoldListener": true,
+      "android/os/IVoldListener$Stub": true,
+      "android/os/IVoldTaskListener": true,
+      "android/os/IVoldTaskListener$Stub": true
+    },
+    "binder_aidl_source_sha256": {
+      "IVold": "6d628dd21429f53ce1192ab094f7969e867b4723943fa2874573bf9815982477",
+      "IVoldListener": "666a5d6cc06d8f9aea6ff0caed40c37057749056290982125fa688fcd45acc80",
+      "IVoldTaskListener": "adb2d110b8b6d2c4232e2854c9795d9332e82f1570836acc222886e4a26b6508"
+    },
+    "offline_checks_passed": true,
+    "runtime_accepted": false,
+    "dependency_closure_files": 41
+  },
+  "idmap": {
+    "create_exit_code": 0,
+    "policy_checks_enabled": true,
+    "policies": [
+      "public",
+      "signature",
+      "system"
+    ],
+    "runtime_overlay_activation_not_yet_accepted": true
+  }
+}

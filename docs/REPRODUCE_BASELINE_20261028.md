@@ -1,6 +1,8 @@
 # 源码恢复与构建边界
 
-2026-11-01 原型交互增量见 [迁移复核](RG34XXSP_ARM64_INTERACTION_20261101.md)。`H700DualAbiInteraction` 仅构建独立 Navigation11 APK，不更新 Test1 镜像，也不安装/刷卡。它保留物理采样开关；实体 A 尚未验收通过。运行 APK 更新后的设备不能作为未修改 Test1 再采验收，审计工具已增加系统安装路径守卫。
+2026-11-01 新候选及实际生成链见 [ARM64 Parity Test2](RG34XXSP_ARM64_PARITY_20261101.md)。`H700DualAbiParity*`离线目标与`H700DualAbiInteraction`均通过低压力包装器执行。精确输入/输出及源码另锁；不能将历史失败阶段按日期重放，工具拒绝覆盖现有工作目录。Final从已通过system与干净vendor父原件生成，Seal补安装完成属性恢复窗口；新完整框架/ART源码重建、刷卡首启与中断恢复验收仍未通过。
+
+此前2026-11-01 原型交互增量见 [迁移复核](RG34XXSP_ARM64_INTERACTION_20261101.md)。当时的`H700DualAbiInteraction` 仅构建独立 Navigation11 APK（当前目标已推进Navigation12），不更新 Test1 镜像，也不安装/刷卡。它保留物理采样开关；实体 A 尚未验收通过。运行 APK 更新后的设备不能作为未修改 Test1 再采验收，审计工具已增加系统安装路径守卫。
 
 首版可重新刷写的 ARM64 测试候选见 [Test1](RG34XXSP_ARM64_TEST1_20261031.md)：三个低压力目标依次构建导航、封装与审计，写卡工具默认仅计划。全新卡启动必须单独验收，不得将已修过的 P1c 数据区拼入新镜像，也不得重放已开始的写卡记录。原64GB卡继续作为独立回退。
 

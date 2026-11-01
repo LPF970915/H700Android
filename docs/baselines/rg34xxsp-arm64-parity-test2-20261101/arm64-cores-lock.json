@@ -1,0 +1,39 @@
+{
+  "cores": [
+    {
+      "id": "mgba",
+      "url": "https://buildbot.libretro.com/nightly/android/latest/arm64-v8a/mgba_libretro_android.so.zip",
+      "http_last_modified": "Sat, 31 Oct 2026 07:11:12 GMT",
+      "zip_sha256": "2189872d0fa9ff9656358ddf761e76d99919c731a8e4a6f3ad243b5239353435",
+      "so_sha256": "b5a6ed40ede735ea7f1d56916f4ceed8c2aabe4d481fe3383ae2b5e5485b6545",
+      "bytes": 2472240,
+      "elf_class": 64,
+      "machine": "AArch64",
+      "diagnostic_only_not_preinstall": false
+    },
+    {
+      "id": "gpsp",
+      "url": "https://buildbot.libretro.com/nightly/android/latest/arm64-v8a/gpsp_libretro_android.so.zip",
+      "http_last_modified": "Sat, 31 Oct 2026 07:59:26 GMT",
+      "zip_sha256": "ca794bd6add63eca97410ec2a960e14f10d7c7650494323c3befda8f8924f9ee",
+      "so_sha256": "8b496b64f388b48abe7e8a5d8dc942574d0c67bafd431d2890711021a7dfc432",
+      "bytes": 706128,
+      "elf_class": 64,
+      "machine": "AArch64",
+      "diagnostic_only_not_preinstall": false
+    },
+    {
+      "id": "vbam",
+      "url": "https://buildbot.libretro.com/nightly/android/latest/arm64-v8a/vbam_libretro_android.so.zip",
+      "http_last_modified": "Sat, 31 Oct 2026 09:58:42 GMT",
+      "zip_sha256": "c4bfe76d19229a4c78a19345dcd3cb2c59b0d9ae24974a2cd34429a6d2d81fa9",
+      "so_sha256": "f68fb2a5d688ba76bd5c0aeb4b08d830b6a35db732150f66fa550e9e6bf9bef7",
+      "bytes": 1524448,
+      "elf_class": 64,
+      "machine": "AArch64",
+      "diagnostic_only_not_preinstall": false
+    }
+  ],
+  "rom_bios": false,
+  "diagnostic_2048_not_packaged": true
+}
