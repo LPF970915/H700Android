@@ -7,7 +7,7 @@ test "$#" -gt 0
 for target in "$@"; do
     case "$target" in systemimage|vendorimage|ramdisk|adbd|vold|services|Settings|SettingsIntelligence|SystemUI|MediaProvider|LatinIME|LeanbackIME|Calendar|DocumentsUI|RGSPLauncher|RGSPNavigation|H700Apps|H700Navigation|H700Input|H700KernelInput|H700Lid|H700Rotation|H700RotationFramework|H700ReleaseImage|H700ReleaseImageMT|H700Arm64Feasibility|H700Arm64Isolated|rgsp_vsync_probe|rgsp_egl_import_probe|hwcomposer.cupid|libsurfaceflinger|PermissionController) ;;
         H700DualAbiWindow|H700DualAbiBoot|H700DualAbiImage|H700DualAbiAudit|H700DualAbiBootEntry|H700DualAbiEntryImage|H700DualAbiHandoff|H700DualAbiHandoffImage|H700DualAbiTestNavigation|H700DualAbiTestImage|H700DualAbiTestAudit|H700DualAbiInteraction|H700DualAbiParity|H700DualAbiParityApps|H700DualAbiParityUi|H700DualAbiParityServices|H700DualAbiParityVold|H700DualAbiParityOverlay|H700DualAbiParityLinkage|H700DualAbiParityVoldAudit|H700DualAbiParitySettingsApi|H700DualAbiParityPayload|H700DualAbiParityStage|H700DualAbiParityFinal|H700DualAbiParitySeal|H700DualAbiParityImage) ;;
-        H700DualAbiDefaultsStage|H700DualAbiDefaultsImage|H700AyaspaceInspect|H700AyaspaceCompat|H700ReadinessBuild|H700ReadinessStage|H700ReadinessBrandingAudit|H700QsBrightness) ;;
+        H700DualAbiDefaultsStage|H700DualAbiDefaultsImage|H700AyaspaceInspect|H700AyaspaceCompat|H700ReadinessBuild|H700ReadinessStage|H700ReadinessBrandingAudit|H700QsBrightness|H700Source64Prepare|H700Source64Graph|H700Source64Build) ;;
         *) echo "Unsupported target: $target" >&2; exit 2 ;;
     esac
 done
@@ -31,6 +31,28 @@ export GOGC=50
 export JAVA_TOOL_OPTIONS='-Xmx2048m'
 export NINJA_ARGS='-j1'
 export MAKEFLAGS='-j1'
+if [ "$#" = 1 ] && { [ "$1" = H700Source64Prepare ] || [ "$1" = H700Source64Graph ] || [ "$1" = H700Source64Build ]; }; then
+    python3 "$(dirname "$(realpath "$0")")/source64/prepare.py"
+    if [ "$1" != H700Source64Prepare ]; then
+        export GOGC=10
+        export OUT_DIR=/home/lpf/roc-os-source64-20261103/out
+        cd "$root"
+        source build/envsetup.sh >/dev/null
+        lunch roc_os_source64-eng
+        source64_rc=0
+        if [ "$1" = H700Source64Graph ]; then
+            m -j1 nothing || source64_rc=$?
+            source64_phase=graph
+        else
+            m -j1 systemimage vendorimage ramdisk || source64_rc=$?
+            source64_phase=images
+        fi
+        python3 "$(dirname "$(realpath "$0")")/source64/record.py" "$source64_phase" "$source64_rc"
+        test "$source64_rc" = 0
+    fi
+    echo "LOW_PRESSURE_COMPLETE=$(date -Is)"
+    exit 0
+fi
 if [ "$#" = 1 ] && [ "$1" = H700QsBrightness ]; then
     python3 "$(dirname "$(realpath "$0")")/build_h700_apps.py" --source "$root" --prototype-interaction-only --interaction-label qs-brightness --interaction-version 13
     echo "LOW_PRESSURE_COMPLETE=$(date -Is)"

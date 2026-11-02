@@ -1,0 +1,62 @@
+{
+  "date": "2026-11-03",
+  "scope": "round1 independent full-source ARM64 build baseline",
+  "product": "roc_os_source64-eng",
+  "source_base_build_id": "QP1A.191105.004",
+  "primary_arch": "arm64",
+  "secondary_arch": "arm",
+  "source_tree_kind": "vendor archive plus file overlays; no complete repo manifest",
+  "key_inputs_count": 371,
+  "historical_freeze_delta_paths": [
+    "device/roc/rgsp/ANBERNIC-keys.kl",
+    "device/roc/rgsp/RGSPNavigation/AndroidManifest.xml",
+    "device/roc/rgsp/RGSPNavigation/src/com/roc/rgsp/navtrial/MouseController.java",
+    "device/roc/rgsp/RGSPNavigation/src/com/roc/rgsp/navtrial/NavigationService.java",
+    "device/roc/rgsp/h700_rgsp.mk",
+    "device/roc/rgsp/prebuilts/local/set_rgsp_home.sh",
+    "device/roc/rgsp/rgsp-firstboot.sh"
+  ],
+  "prototype_gralloc_unchanged": true,
+  "prepare_receipt_sha256": "6652fe618a90f5eb66ca52eb18d577b9a36ec0d984ff0cee9d9298324e047792",
+  "build_graph_status": "passed",
+  "full_source_image_build_passed": false,
+  "device_boot_accepted": false,
+  "current_card_modified": false,
+  "new_partition_layout": false,
+  "resource_limits": {
+    "aggregate_CPUs": 1,
+    "CPU_affinity": "0-1",
+    "jobs": 1,
+    "nice": 19,
+    "RAM_GiB": 6,
+    "swap_MiB": 512,
+    "IO": "idle"
+  },
+  "graph_result": {
+    "phase": "graph",
+    "passed": true,
+    "exit_status": 0,
+    "log_sha256": "fd424ec5f9cbd00aa8e832dc2128cb1c8a7a0055a4608ad60afacf6d190d49ef",
+    "product": "roc_os_source64-eng",
+    "full_source_image_build_passed": false,
+    "device_boot_accepted": false,
+    "warnings": [
+      "optional missing configs search directory (fixed for next prepare)",
+      "host sched_setaffinity warning; cgroup CPU restriction remained0-1",
+      "external kernel OTA metadata not supplied; no kernel or OTA produced",
+      "unselected platform test module references"
+    ]
+  },
+  "image_build_status": "running",
+  "source_config_sha256": {
+    "android/h700-android10/device/roc/roc_os_source64/Android.mk": "df985e67113bd371b19c7b6016feaf2245404cc460d11f218614b0573cfc7379",
+    "android/h700-android10/device/roc/roc_os_source64/AndroidProducts.mk": "a5b27fdcc32febba26a344d7f3172987e42d4bb5d99d685e56fb82a6fd53df52",
+    "android/h700-android10/device/roc/roc_os_source64/BoardConfig.mk": "56f38ec53b24bcad3626c491761f36259bb4e871a2d27fba815d256754a34d2b",
+    "android/h700-android10/device/roc/roc_os_source64/roc_os_source64.mk": "3a06bd64fbd80666a13b226bc40c6807ab413d2796d0d4e4849a0449ad4ad926",
+    "tools/source64/prepare.py": "193cd9f39421372f8a7025536aaa09d4017ea5fa1dc03d6bb33986fd29c57ab0",
+    "tools/source64/record.py": "7235141245cfc7a79e72d4520d6163833c418cbb6ccaa53109729ef79944e5a1",
+    "tools/build_h700_low_pressure.ps1": "b1cc05cf147fb4c4dacd25aea8334c1c271c85433159dcb22ea549e2b3eb15ea",
+    "tools/build_h700_low_pressure.sh": "aad291bc6af66d261616ae4a517b22812d1b56ee2c37d116cd5a4eb8bcea172f"
+  },
+  "image_prepare_receipt_sha256": "4b9fcc41e592fa905b6ad6c6c0236ef4a679e2aa6d396145feece3775d90855d"
+}

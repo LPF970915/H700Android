@@ -1,5 +1,7 @@
 # 源码恢复与构建边界
 
+2026-11-03源码构建第一轮：新增`H700Source64Prepare`、`H700Source64Graph`、`H700Source64Build`低压力入口，独立`roc_os_source64-eng`产品与输出目录。以保留BSP QP1A源码重新建立图，当前GSI卡与旧产品不改。准备锁记录371项关键输入、7项历史增量和独立Gralloc源副本；完整树清单、整镜像构建、现行补丁一致性及新产物启动仍待验收。精确进度见[第一轮锁](baselines/roc-os-source64-round1-20261103/result-lock.json)，不能把图解析成功当作系统编译成功。
+
 2026-11-03 ROC OS命名增量：`H700ReadinessStage`现默认新r4 marker，另以`H700ReadinessBrandingAudit`审计；均走同一低压力包装器。已接受stage-v5，初始stage-v4执行域草稿已拒绝并保留，不能按目录日期盲目重放。见[入口](../tools/readiness/README.md)和[脱敏锁](baselines/rg34xxsp-physical-acceptance-20261102/roc-os-branding-lock.json)。现卡只修改保存名称；没有新IMG，未合入纯净预装/新存储布局。
 
 2026-11-01 [首启性能增量](RG34XXSP_TEST2A_FIRSTBOOT_UI_PERF_20261101.md)：只改`tools/arm64_probe/prototype_setup.rc`的初始化优先级及`ParityStage`显式复制RC；没有运行AOSP编译或重封装。后续从冻结Test2a生成新增量时必须带入该RC并单独验收首次初始化负载，不能把源码更新描述为已刷镜像更新。
