@@ -1,5 +1,7 @@
 # 当前基线与接手状态
 
+2026-11-02 [快捷设置亮度条修复](RG34XXSP_QS_BRIGHTNESS_20261102.md)：Navigation13 data更新已安装，修正shade被排除的滑条动作；长按Menu后选中亮度条，左右进度/设置/多档驱动读回、上下离开和B关闭通过受控事件验证。恢复亮度102/超时60000。上端设置255但驱动200差异保留待查，实体手感/重启未重验。当前是Test2a+Light+data Nav13，使用新守卫核对已安装APK。Nav13已进入r3独立离线阶段并通过签名/文件/关键库/fsck/VINTF检查，未封装新IMG。
+
 2026-11-02 [ARM64 背光运行验证](RG34XXSP_ARM64_LIGHT_RUNTIME_20261102.md)：原64GB卡现为Test2a加四项vendor增量，必须用本轮身份+文件SHA守卫。五档设置/驱动读回、两次正常重启保留、受控A解锁、息屏背光0与唤醒102通过；肉眼亮度、实体输入/合盖和深睡仍待测。原亮度/超时/USB常亮设置已恢复。Hall GPIO135已由hall switch持有，有真实IRQ条目，但IRQ wake未证明，不解除bringup锁。七款APK哈希及ARM64安装标记匹配，未重验全部业务。r2离线阶段通过且vendor四文件与现卡相同；当前system/marker仍是Test2a，不包含r2首启低优先级RC，也未生成新IMG。
 
 2026-11-02 [ARM64 离线发布收尾](RG34XXSP_ARM64_OFFLINE_READINESS_20261102.md)：设备未连接，现卡与 Test2a 镜像不变。新 ARM64 背光 Light 服务完成模块构建、主机测试和按父配置划分命名空间的依赖审计；独立离线阶段集成 nice19/idle0 首启 RC。9 项增量、3,752 项锁定文件 SHA、10 项关键库及双分区 fsck 通过，父分区 SHA 保持。没有生成整卡镜像、没有安装或实测亮度。固定 prefix 的 DTB 明确 Hall=PE7，但 IRQ wake/深睡仍待真机核对；不解除 bringup 锁。下一轮从该候选元数据继续验证，不能把它当作已经刷入的版本。

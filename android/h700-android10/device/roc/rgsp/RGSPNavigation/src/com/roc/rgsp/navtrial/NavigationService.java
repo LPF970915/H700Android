@@ -1227,9 +1227,12 @@ public final class NavigationService extends AccessibilityService {
     private boolean adjustRange(AccessibilityNodeInfo target,int key) {
         target.refresh();
         AccessibilityNodeInfo.RangeInfo range=target.getRangeInfo();
-        if(!"settings".equals(mode) || !target.isEnabled() || range==null
+        boolean shadeBrightness = "shade".equals(mode)
+                && "com.android.systemui:id/slider".equals(target.getViewIdResourceName());
+        if((!"settings".equals(mode) && !shadeBrightness) || !target.isEnabled() || range==null
                 || (key!=Direction.LEFT && key!=Direction.RIGHT)) return false;
-        float step=range.getType()==AccessibilityNodeInfo.RangeInfo.RANGE_TYPE_INT ? 1 : (range.getMax()-range.getMin())/20f;
+        float step=shadeBrightness ? Math.max(1f, Math.round((range.getMax()-range.getMin())/20f))
+                : range.getType()==AccessibilityNodeInfo.RangeInfo.RANGE_TYPE_INT ? 1 : (range.getMax()-range.getMin())/20f;
         float value=Math.max(range.getMin(),Math.min(range.getMax(),range.getCurrent()+(key==Direction.LEFT ? -step : step)));
         pendingRangeKey=withoutWindow(identity(target)); pendingRangeTitle=windowTitle(target);
         pendingRangeUntil=SystemClock.uptimeMillis()+5000;
@@ -1285,7 +1288,7 @@ public final class NavigationService extends AccessibilityService {
         writer.println("menuHome=" + menuHomeCount + " menuShade=" + menuShadeCount);
         writer.println("lastInput=" + lastInputKey + "/" + lastInputScan + "/" + lastInputAction
                 + " shadeClose=" + shadeCloseCount);
-        writer.println("navigationVersion=36 mode=" + mode + " moveTopId=" + moveTop
+        writer.println("navigationVersion=37 mode=" + mode + " moveTopId=" + moveTop
                 + " keyDownCount=" + keyDownCount + " actionCount=" + actionCount
                 + " lastAction=" + lastAction + " navigationCallbacks=" + navigationCallbacks
                 + " lastKeyScope=" + lastKeyScope + " flags=" + (serviceInfo == null ? 0 : serviceInfo.flags));

@@ -1,0 +1,152 @@
+{
+  "date": "2026-11-02",
+  "source_parent_commit": "e0b54a9",
+  "base_image_tag": "baseline/rg34xxsp-arm64-defaults-test2a-20261101",
+  "package": "com.roc.rgsp.navtrial",
+  "version_code": 13,
+  "diagnostic_version": 37,
+  "apk_sha256": "b3d3dfe5a51003e9534a1d03942480077f09a41f7844c40cdc0c5a3c963d3594",
+  "original_system_apk_sha256": "c241643c5ddc02776172b1d4014459e8290fda43039f99ce82300cd4c452b7a0",
+  "same_signer_verified": true,
+  "data_update_installed": true,
+  "system_apk_unchanged": true,
+  "original_app_data_backed_up": true,
+  "scope": "SystemUI shade slider only; Settings range behavior retained",
+  "range": {
+    "min": 0,
+    "max": 1023,
+    "step": 51
+  },
+  "controlled_tests": {
+    "menu_hold": true,
+    "left_right_changes_range_and_setting": true,
+    "up_down_escape": true,
+    "upper_endpoint_no_wrap": true,
+    "B_close": true
+  },
+  "samples": [
+    {
+      "label": "04-left",
+      "range": 785,
+      "setting": 81,
+      "driver": 81
+    },
+    {
+      "label": "05-right",
+      "range": 836,
+      "setting": 102,
+      "driver": 102
+    },
+    {
+      "label": "08-right-bound-0",
+      "range": 887,
+      "setting": 130,
+      "driver": 130
+    },
+    {
+      "label": "08-right-bound-3",
+      "range": 1023,
+      "setting": 255,
+      "driver": 200
+    },
+    {
+      "label": "08-right-bound-4",
+      "range": 1023,
+      "setting": 255,
+      "driver": 200
+    },
+    {
+      "label": "09-left-from-max",
+      "range": 972,
+      "setting": 197,
+      "driver": 197
+    }
+  ],
+  "upper_setting255_driver200_unresolved": true,
+  "restored_brightness": 102,
+  "restored_timeout": 60000,
+  "reboot_tested_this_increment": false,
+  "physical_acceptance": false,
+  "vendor_light_files_unchanged": true,
+  "preloads_changed": false,
+  "ayaspace_changed": false,
+  "offline_stage": {
+    "marker": "dualabi-readiness-r3-20261102",
+    "system": {
+      "bytes": 8589934592,
+      "sha256": "b0aec0052f402f14e3f8486cffc6ab9ad8f4318a68e75b80bd99c49107727f3d"
+    },
+    "vendor": {
+      "bytes": 2147483648,
+      "sha256": "1778d06a797c57417f632d6210d2b0d93288787343458c5f34bad7b959b769e8"
+    },
+    "navigation_version": 13,
+    "changed_from_test2a": {
+      "system": {
+        "/system/app/RGSPNavigation/RGSPNavigation.apk": {
+          "sha256": "b3d3dfe5a51003e9534a1d03942480077f09a41f7844c40cdc0c5a3c963d3594",
+          "mode": "0100644",
+          "selinux": "u:object_r:system_file:s0"
+        },
+        "/system/bin/h700-preinstall.sh": {
+          "sha256": "488c47f04ffb1e15944981be1b46d9763a4eec2f3551cd777299f54473bdb775",
+          "mode": "0100755",
+          "selinux": "u:object_r:shell_exec:s0"
+        },
+        "/system/bin/h700-prototype-setup.sh": {
+          "sha256": "d1437e80d3595cca4536b1337460e4bb7e589d83d79f5b511a2711b1d18fac85",
+          "mode": "0100755",
+          "selinux": "u:object_r:shell_exec:s0"
+        },
+        "/system/etc/h700-prototype/image-revision": {
+          "sha256": "40d394237de798708723ff195715cb762adf4926d36fbf0232101bb15c9dd4b3",
+          "mode": "0100644",
+          "selinux": "u:object_r:system_file:s0"
+        },
+        "/system/etc/init/h700-prototype-setup.rc": {
+          "sha256": "3a0e24ba7c1c9030dd4d9aaec1b0da701fc6ecfc4c45252320442bf2c6980c69",
+          "mode": "0100644",
+          "selinux": "u:object_r:system_file:s0"
+        },
+        "/system/etc/prop.default": {
+          "sha256": "eafb5f3737a478786fcab232a89f46b94b74afd9b627376fd73c8e7a9a4ddc83",
+          "mode": "0100644",
+          "selinux": "u:object_r:system_file:s0"
+        }
+      },
+      "vendor": {
+        "/bin/hw/android.hardware.light@2.0-service.h700": {
+          "sha256": "579e75ba63e8cb1b51392af1e31a58560b415bdd7ab72766fd88e230308ff799",
+          "mode": "0100755",
+          "selinux": "u:object_r:hal_light_default_exec:s0"
+        },
+        "/etc/init/h700-light.rc": {
+          "sha256": "1f5977479b29680f6393c0f2c5595e1b4fc3a0f0fc5f225ee70df8ea3ca8f6a9",
+          "mode": "0100644",
+          "selinux": "u:object_r:vendor_configs_file:s0"
+        },
+        "/etc/selinux/vendor_file_contexts": {
+          "sha256": "40e7ce49448217eb98ddf68e4bfdda2b5f2479fdee68cf849a0258c91aab0dbc",
+          "mode": "0100644",
+          "selinux": "u:object_r:vendor_configs_file:s0"
+        },
+        "/etc/vintf/manifest.xml": {
+          "sha256": "4b78da93404b34638c31aab4b378263f1f1b100358ef35d179f11055249e6d71",
+          "mode": "0100644",
+          "selinux": "u:object_r:vendor_configs_file:s0"
+        }
+      }
+    },
+    "locked_file_counts": {
+      "system": 3747,
+      "vendor": 5
+    },
+    "critical_unchanged_count": 10,
+    "e2fsck_both_exit_0": true,
+    "vintf_parser_passed": true,
+    "full_stage_on_card": false,
+    "new_img_packaged": false
+  },
+  "build_log": "h700-low-pressure-20261102-221925.log",
+  "stage_log": "h700-low-pressure-20261102-222559.log"
+}

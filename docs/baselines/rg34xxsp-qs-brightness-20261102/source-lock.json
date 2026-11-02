@@ -1,0 +1,93 @@
+{
+  "source_parent_commit": "e0b54a9",
+  "files": {
+    "android/h700-android10/device/roc/rgsp/H700Light/Android.bp": {
+      "sha256": "9825a14cd54fe2711d3b176adc5d52d8a73697b21fbd2ef9ba4d864d9ee54c7f",
+      "bytes": 448
+    },
+    "android/h700-android10/device/roc/rgsp/H700Light/Backlight.cpp": {
+      "sha256": "ad5fe132710b946474197075937953875ed21b2514e8264d476ecb58371c500e",
+      "bytes": 815
+    },
+    "android/h700-android10/device/roc/rgsp/H700Light/Backlight.h": {
+      "sha256": "8cdc2a4646985f3d56db1e4b072387eeb4b4c722156cb2c476f2698409b86e8c",
+      "bytes": 701
+    },
+    "android/h700-android10/device/roc/rgsp/H700Light/file_contexts": {
+      "sha256": "3c397bd61b6d5c4e99a246c59967386e4d9a839959beb33d4f0b3fc891fd4526",
+      "bytes": 99
+    },
+    "android/h700-android10/device/roc/rgsp/H700Light/h700-light.rc": {
+      "sha256": "1f5977479b29680f6393c0f2c5595e1b4fc3a0f0fc5f225ee70df8ea3ca8f6a9",
+      "bytes": 401
+    },
+    "android/h700-android10/device/roc/rgsp/H700Light/h700-light.xml": {
+      "sha256": "024484189392b24e3143533ce34df107cea267357a46e4ef1527b123bb61529d",
+      "bytes": 315
+    },
+    "android/h700-android10/device/roc/rgsp/H700Light/service.cpp": {
+      "sha256": "ab7befa421fd59b9c9fb77e38b6226b371f9013a4b9d329d8386052286fe0540",
+      "bytes": 2651
+    },
+    "android/h700-android10/device/roc/rgsp/RGSPNavigation/src/com/roc/rgsp/navtrial/NavigationService.java": {
+      "sha256": "81dd8c1fd52d8253f0085f7386ae896cd489be85e1b191385675870930a53fbd",
+      "bytes": 68170
+    },
+    "tools/arm64_probe/prototype_setup.rc": {
+      "sha256": "3a0e24ba7c1c9030dd4d9aaec1b0da701fc6ecfc4c45252320442bf2c6980c69",
+      "bytes": 363
+    },
+    "tools/build_h700_apps.py": {
+      "sha256": "fcf8ada16f56c268369609b2f9bf316bd6f88d24e436dc0c03f9f221bda1c2dc",
+      "bytes": 14930
+    },
+    "tools/build_h700_low_pressure.ps1": {
+      "sha256": "b9e7c156e13d3dcd90d427aff5d1e1009306ff42e0f284e76e54ebeefee59bd5",
+      "bytes": 3698
+    },
+    "tools/build_h700_low_pressure.sh": {
+      "sha256": "f1a81a5d0b3860edbb8ea4f92fe0990a1e0be0a01a58fb2d654d5915321d3853",
+      "bytes": 13107
+    },
+    "tools/interaction/PrototypeUnlockActivity.java": {
+      "sha256": "4985cfc106e15a198df5629a778d27144380242a413c5f29333e9c17df30d121",
+      "bytes": 3998
+    },
+    "tools/interaction/patch_navigation.py": {
+      "sha256": "ccad38e3e26fa6d32d4e4a1aace49d3eed37fa380affe91c4e2201cd95c97920",
+      "bytes": 5627
+    },
+    "tools/package_h700_dualabi_prototype.py": {
+      "sha256": "8db2193acffd1e2cbb54f7de4580a2b4e6d066bf35bd9d0c7fe891118ddb31ff",
+      "bytes": 20121
+    },
+    "tools/package_h700_v6a.py": {
+      "sha256": "60dc0136f0c04c16d1ffda2257f063a018f48232e1374bfee0505483425def71",
+      "bytes": 31589
+    },
+    "tools/readiness/README.md": {
+      "sha256": "9d1764872e3c8d8097f9f18fabf418e72cdd9e72469e858c5c1a97d51f51cc38",
+      "bytes": 3284
+    },
+    "tools/readiness/audit.py": {
+      "sha256": "84776bf1aa04af8c350d47d1dbf4421e6a77df070d760fffa6971904623b0e7f",
+      "bytes": 8944
+    },
+    "tools/readiness/audit_power.py": {
+      "sha256": "edcf1cab74460dcd0ea7791152a85e16469fe5785778cc99e497b10fecc05b58",
+      "bytes": 5268
+    },
+    "tools/readiness/backlight_test.cpp": {
+      "sha256": "7f74cedaa1526b96a65278b115b9e4779bda5eef5d44630d97bec6f487a00a38",
+      "bytes": 1493
+    },
+    "tools/readiness/prepare.py": {
+      "sha256": "d90482aebb7242624815020503e11f9651ffd1168584a620b20c04e5da3510c8",
+      "bytes": 2324
+    },
+    "tools/readiness/stage.py": {
+      "sha256": "a3ed611fad6710a90ce6d4a489430ad79379e0f9e1b68929d440f55a3c90ffeb",
+      "bytes": 8916
+    }
+  }
+}

@@ -1,5 +1,7 @@
 # 本地保留与清理后的边界
 
+2026-11-02 快捷设置增量：保护 `out/rg34xxsp-qs-brightness-20261102/` 的原Navigation12/应用数据备份、严格守卫、UI树/截图/事件/端点读数及失败断言，`out/dualabi-interaction-20261101/qs-brightness/`、对应WSL交互构建和readiness stage-v3。上端255/200差异原始证据保留。原system APK未改；旧r1/r2阶段和所有失败材料不删；源码与脱敏结果可入Git，APK/原始会话/身份不入Git。
+
 2026-11-02 背光实机增量：保护 `out/rg34xxsp-brightness-runtime-20261102/` 的新严格设备守卫、原vendor备份/元数据、临时回退脚本、失败DIM和短等待样本、两次重启、截图、命名空间/IRQ证据及设置恢复记录；保护WSL `/home/lpf/h700-readiness-20261102/stage-v2/` 和新增构建/审计版本。r1阶段、冻结Test2a和全部失败材料不删除。当前卡已修改四个vendor文件，不再能按原Test2a字节验收；只将自有源码与脱敏证明提交Git，见[运行记录](RG34XXSP_ARM64_LIGHT_RUNTIME_20261102.md)。
 
 2026-11-02 ARM64 离线收尾：保护 `out/rg34xxsp-readiness-20261102/`、WSL `/home/lpf/h700-readiness-20261102/` 的全部 build-v*/stage-v*、候选 system/vendor、模块二进制、源备份、失败审计、DTB/启动前段只读取证及构建/fsck/回读日志。阶段通过不授权删除失败材料或父 Test2a；本轮未生成整卡 IMG、未写设备。Git 只收自有源码与脱敏结果，见 [本轮记录](RG34XXSP_ARM64_OFFLINE_READINESS_20261102.md)。

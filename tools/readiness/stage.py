@@ -45,11 +45,11 @@ def changed(inside, content, name, mode='0100644', label='u:object_r:system_file
     return file
 
 oldmarker = 'dualabi-parity-test2a-20261101'
-marker = 'dualabi-readiness-r2-20261102'
+marker = 'dualabi-readiness-r3-20261102'
 props = text(system, '/system/etc/prop.default', 'prop.default.before')
 assert props.count('ro.h700.prototype.image=' + oldmarker) == 1
 props = props.replace('ro.h700.prototype.image=' + oldmarker, 'ro.h700.prototype.image=' + marker)
-props = re.sub(r'^ro.h700.release=.*$', 'ro.h700.release=arm64-readiness-r2-20261102', props, flags=re.M)
+props = re.sub(r'^ro.h700.release=.*$', 'ro.h700.release=arm64-readiness-r3-20261102', props, flags=re.M)
 changed('/system/etc/prop.default', props, 'prop.default')
 changed('/system/etc/h700-prototype/image-revision', marker + '\n', 'image-revision')
 for name in ('h700-prototype-setup.sh', 'h700-preinstall.sh'):
@@ -57,12 +57,12 @@ for name in ('h700-prototype-setup.sh', 'h700-preinstall.sh'):
     # Setup checks the image marker; preinstall independently checks release.
     # Both must advance together or the first-boot installer will refuse to run.
     content = content.replace(oldmarker, marker)
-    content = content.replace('arm64-parity-test2a-20261101', 'arm64-readiness-r2-20261102')
-    content = content.replace('ARM64_PARITY_TEST2A_DEFAULTS', 'ARM64_READINESS_R2_DEFAULTS')
+    content = content.replace('arm64-parity-test2a-20261101', 'arm64-readiness-r3-20261102')
+    content = content.replace('ARM64_PARITY_TEST2A_DEFAULTS', 'ARM64_READINESS_R3_DEFAULTS')
     if name == 'h700-prototype-setup.sh':
         assert '[ "$(getprop ro.h700.prototype.image)" = ' + marker + ' ]' in content
     else:
-        assert '[ "$(getprop ro.h700.release)" = arm64-readiness-r2-20261102 ]' in content
+        assert '[ "$(getprop ro.h700.release)" = arm64-readiness-r3-20261102 ]' in content
     file = changed('/system/bin/' + name, content, name, '0100755', 'u:object_r:shell_exec:s0')
     subprocess.run(['bash', '-n', file], check=True)
 rc = REPO / 'tools/arm64_probe/prototype_setup.rc'
@@ -70,6 +70,23 @@ assert b'\r' not in rc.read_bytes()
 assert re.search(r'^    priority 19$', rc.read_text(), re.M)
 assert re.search(r'^    ioprio idle 0$', rc.read_text(), re.M)
 maps['/system/etc/init/h700-prototype-setup.rc'] = (rc, '0100644', 'u:object_r:system_file:s0')
+navdir = REPO / 'out/dualabi-interaction-20261101/qs-brightness'
+nav = navdir / 'RGSPNavigation64Interaction.apk'
+navlock = json.loads((navdir / 'apps-build.json').read_text())['RGSPNavigation64Interaction.apk']
+assert base.sha(nav) == navlock['sha256']
+native = Path('/home/lpf/h700-android10/android')
+java = native / 'prebuilts/jdk/jdk9/linux-x86/bin/java'
+sdk = native / 'prebuilts/sdk/tools/linux'
+oldnav = base.dump(system, '/system/app/RGSPNavigation/RGSPNavigation.apk', WORK / 'Navigation.before.apk')
+def certificate(apk):
+    value = subprocess.check_output([str(java), '-Xmx256m', '-jar', str(sdk / 'lib/apksigner.jar'),
+        'verify', '--min-sdk-version', '29', '--max-sdk-version', '29', '--print-certs', str(apk)], text=True)
+    return re.search(r'certificate SHA-256 digest: (\w+)', value)[1]
+assert certificate(oldnav) == certificate(nav)
+badging = subprocess.check_output([str(sdk / 'bin/aapt'), 'dump', 'badging', str(nav)], text=True,
+    env={**os.environ, 'LD_LIBRARY_PATH': str(sdk / 'lib64')})
+assert "name='com.roc.rgsp.navtrial' versionCode='13'" in badging
+maps['/system/app/RGSPNavigation/RGSPNavigation.apk'] = (nav, '0100644', 'u:object_r:system_file:s0')
 
 light = REPO / 'android/h700-android10/device/roc/rgsp/H700Light'
 binary = Path(audit['binary'])
@@ -127,6 +144,7 @@ record.update({'parent_components_sha256': base.sha(parentfile), 'work': str(WOR
     'light_audit_sha256': base.sha(OUT / 'light-candidate.json'),
     'power_audit_sha256': base.sha(OUT / 'power-audit.json'),
     'setup_priority': 19, 'setup_ioprio': 'idle 0',
+    'navigation_version': 13, 'navigation_apk_sha256': navlock['sha256'],
     'merged_vintf_android_parser_passed': True,
     'e2fsck_both_exit_0': True, 'device_installed': False,
     'fresh_first_boot': False, 'physical_brightness_accepted': False,
