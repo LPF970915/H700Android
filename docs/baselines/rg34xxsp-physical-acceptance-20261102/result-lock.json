@@ -170,6 +170,36 @@
       "https_status": 204,
       "kernel_deep_suspend_tested": false,
       "USB_connected": true
+    },
+    "battery-usb-result": {
+      "confirmed_date": "2026-11-03",
+      "user_report": "无明显异常",
+      "physical_power_switch_no_obvious_anomaly_reported": true,
+      "adb_reconnected_and_strict_guard_passed": true,
+      "boot_id_unchanged": true,
+      "core_pids_unchanged": true,
+      "usb_powered_after_reconnect": true,
+      "battery_level_after": 99,
+      "battery_voltage_mV_after": 4088,
+      "battery_temperature_tenths_C_after": 300,
+      "android_charging_status_after": 2,
+      "observer_usb_zero_samples": 0,
+      "observer_limitation": "bounded observer completed before unplug transition was captured; no offline transition claimed",
+      "physical_charging_icon_explicitly_confirmed": false,
+      "charging_capacity_accuracy_or_standby_accepted": false
+    },
+    "audio-lid-result": {
+      "confirmed_date": "2026-11-03",
+      "user_report": "盒盖时声音继续，开盖后持续出声",
+      "physical_audio_continues_lid_closed_confirmed": true,
+      "physical_audio_continues_after_lid_open_confirmed": true,
+      "USB_connected": true,
+      "boot_id_unchanged": true,
+      "core_pids_unchanged": true,
+      "android_awake_after_open": true,
+      "deep_suspend_accepted": false,
+      "audio_focus_or_app_background_accepted": false,
+      "long_duration_audio_accepted": false
     }
   },
   "helper_injected_keys_this_round": false,
@@ -181,11 +211,11 @@
   "remaining": [
     "audio/headphones",
     "network repeated/long-run/deep-suspend lifecycle",
-    "applications and saves",
     "storage/recovery",
     "charging/thermal",
     "long-run and repeated/cold-boot regression",
-    "release engineering"
+    "release engineering",
+    "clean-system image integration and fresh boot"
   ],
   "android_headphone_device_tag_correct": false,
   "physical_headphone_insert_unplug_one_sample_accepted": true,
@@ -196,5 +226,14 @@
     "setup_toggle_and_USB_screen_sleep_samples_accepted": true,
     "earlier_pending_fields_are_historical": true,
     "long_duration_network_and_deep_suspend_pending": true
+  },
+  "release_scope_update": {
+    "date": "2026-11-03",
+    "user_report": "纯净系统暂时不打算预装软件",
+    "future_third_party_preloads_requested": false,
+    "AT4K_and_system_helpers_retained": true,
+    "application_acceptance_deferred": true,
+    "current_apps_uninstalled": false,
+    "installer_or_image_updated": false
   }
 }
