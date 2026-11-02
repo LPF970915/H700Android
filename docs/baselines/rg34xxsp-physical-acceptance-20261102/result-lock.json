@@ -97,6 +97,50 @@
       "at4k_present": true,
       "mouse_mode_off_observed": true,
       "boot_core_light_pids_unchanged": true
+    },
+    "speaker-heard-result": {
+      "user_report": "外放有声，音量随按键变化，没有明显异常",
+      "physical_speaker_audible_confirmed": true,
+      "physical_volume_keys_confirmed": true,
+      "no_obvious_distortion_or_interruptions_in_this_sample": true,
+      "long_duration_audio_accepted": false
+    },
+    "headphone-inserted-result": {
+      "user_report": "耳机有声，机身扬声器已自动静音",
+      "physical_headphone_audible_confirmed": true,
+      "physical_speaker_auto_mute_confirmed": true,
+      "channels_and_unplug_pending": true
+    },
+    "headphone-reversed-result": {
+      "user_report": "低音在右耳，高音在左耳，左右颠倒",
+      "fixture_first_tone_left_only_verified": true,
+      "physical_stereo_orientation_passed": false,
+      "physical_left_right_reversed_confirmed": true,
+      "scope": "current wired headphone and current Android AudioPreview path; cause not yet localized"
+    },
+    "headphone-pc-comparison-result": {
+      "user_report": "我已播放，低音先在右耳，高音后在左耳",
+      "same_headphone_same_fixture_on_pc": true,
+      "pc_low_tone_right_high_tone_left": true,
+      "android_specific_reversal_confirmed": false,
+      "earphone_cable_orientation_or_other_common_factor_not_excluded": true,
+      "system_channel_swap_applied": false,
+      "stereo_acceptance": "unresolved; comparison reproduces reversal on PC"
+    },
+    "headphone-user-accepted-parity-result": {
+      "user_report": "确认耳机L在左，R在右，可能是耳机本身就是反的，影响不大，机器与电脑一致，视为通过",
+      "user_accepts_device_pc_stereo_parity": true,
+      "absolute_left_right_orientation_verified_correct": false,
+      "headphone_hardware_cause_proven": false,
+      "system_channel_swap_applied": false,
+      "acceptance_scope": "user-accepted parity with PC using this headset; original reversed orientation observations retained"
+    },
+    "headphone-unplugged-result": {
+      "user_report": "外放自动恢复，音量键仍有效，无明显异常",
+      "physical_speaker_restore_after_unplug_confirmed": true,
+      "physical_volume_after_unplug_confirmed": true,
+      "vendor_spk_state_after_unplug": "1",
+      "repeated_10_cycles_accepted": false
     }
   },
   "helper_injected_keys_this_round": false,
@@ -113,5 +157,9 @@
     "charging/thermal",
     "long-run and repeated/cold-boot regression",
     "release engineering"
-  ]
+  ],
+  "android_headphone_device_tag_correct": false,
+  "physical_headphone_insert_unplug_one_sample_accepted": true,
+  "absolute_stereo_orientation_accepted": false,
+  "stereo_device_pc_parity_user_accepted": true
 }
