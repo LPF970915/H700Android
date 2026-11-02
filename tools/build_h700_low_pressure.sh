@@ -36,6 +36,7 @@ if [ "$#" = 1 ] && { [ "$1" = H700Source64Prepare ] || [ "$1" = H700Source64Grap
     if [ "$1" != H700Source64Prepare ]; then
         export GOGC=10
         export OUT_DIR=/home/lpf/roc-os-source64-20261103/out
+        export LD_LIBRARY_PATH=/home/lpf/roc-os-source64-20261103/host-compat/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}
         cd "$root"
         source build/envsetup.sh >/dev/null
         lunch roc_os_source64-eng

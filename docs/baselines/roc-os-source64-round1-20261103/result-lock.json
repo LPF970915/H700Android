@@ -47,16 +47,38 @@
       "unselected platform test module references"
     ]
   },
-  "image_build_status": "running",
+  "image_build_status": "retry_running_after_host_compat_fix",
   "source_config_sha256": {
     "android/h700-android10/device/roc/roc_os_source64/Android.mk": "df985e67113bd371b19c7b6016feaf2245404cc460d11f218614b0573cfc7379",
     "android/h700-android10/device/roc/roc_os_source64/AndroidProducts.mk": "a5b27fdcc32febba26a344d7f3172987e42d4bb5d99d685e56fb82a6fd53df52",
     "android/h700-android10/device/roc/roc_os_source64/BoardConfig.mk": "56f38ec53b24bcad3626c491761f36259bb4e871a2d27fba815d256754a34d2b",
     "android/h700-android10/device/roc/roc_os_source64/roc_os_source64.mk": "3a06bd64fbd80666a13b226bc40c6807ab413d2796d0d4e4849a0449ad4ad926",
-    "tools/source64/prepare.py": "193cd9f39421372f8a7025536aaa09d4017ea5fa1dc03d6bb33986fd29c57ab0",
+    "tools/source64/prepare.py": "ced4b4c931a1f3dcdfb5222913fb6f603751a7a1e19f2e3dabbd5ea7d2183e10",
     "tools/source64/record.py": "7235141245cfc7a79e72d4520d6163833c418cbb6ccaa53109729ef79944e5a1",
     "tools/build_h700_low_pressure.ps1": "b1cc05cf147fb4c4dacd25aea8334c1c271c85433159dcb22ea549e2b3eb15ea",
-    "tools/build_h700_low_pressure.sh": "aad291bc6af66d261616ae4a517b22812d1b56ee2c37d116cd5a4eb8bcea172f"
+    "tools/build_h700_low_pressure.sh": "cf730fdbeee44b22e142c856a09dc891b2281895056f06c7e506203171b4f086"
   },
-  "image_prepare_receipt_sha256": "4b9fcc41e592fa905b6ad6c6c0236ef4a679e2aa6d396145feece3775d90855d"
+  "image_prepare_receipt_sha256": "3531303c8bc0557b5a8a05605d1155343ca7785096ea284189d0589e2b7aced2",
+  "first_image_build_attempt": {
+    "phase": "images",
+    "exit_status": 1,
+    "passed": false,
+    "prepare_receipt": "prepare-v2.json",
+    "protected_sources_unchanged": true,
+    "product_sources_unchanged_during_build": true,
+    "images": {},
+    "full_source_image_build_passed": false,
+    "device_boot_accepted": false,
+    "current_card_modified": false
+  },
+  "first_image_build_error": "old host RenderScript Clang cannot find libncurses.so.5 and libtinfo.so.5",
+  "host_compat": {
+    "isolated_real_ABI5_libraries_from_retained_toolchain": {
+      "libncurses.so.5": "19494299d25cbb3dd6a19b7de3906b8b33881998801d423deeadc6e2259460f5",
+      "libtinfo.so.5": "87ec5f63974b9a4646309fa6e0033ef45b2cdea6c98a319f98596ea613a91ddd"
+    },
+    "old_clang_renderscript_bitcode_probe_passed": true,
+    "global_libraries_or_old_compat_symlinks_modified": false,
+    "libraries_downloaded": false
+  }
 }

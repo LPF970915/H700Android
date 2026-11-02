@@ -4,6 +4,9 @@ import json
 from pathlib import Path
 import shutil
 import sys
+import os
+import struct
+import subprocess
 
 REPO = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(REPO / 'tools'))
@@ -71,6 +74,33 @@ for relative, digest in variant_pin.items():
     if target.exists(): assert target.read_bytes() == content, 'Do not overwrite an experimental fork'
     else: target.write_bytes(content)
 assert protected == {name: sha(NATIVE / name) for name in protected}, 'Protected native source changed'
+# RenderScript's old host Clang needs the real ABI5 libraries. Never alias ABI6
+# or put the entire old sysroot (including libc) on the host loader path.
+compat = ROOT / 'host-compat/lib'
+compat.mkdir(parents=True, exist_ok=True)
+sysroot = NATIVE / 'prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8/sysroot/usr/lib'
+compat_pin = {
+    'libncurses.so.5': '19494299d25cbb3dd6a19b7de3906b8b33881998801d423deeadc6e2259460f5',
+    'libtinfo.so.5': '87ec5f63974b9a4646309fa6e0033ef45b2cdea6c98a319f98596ea613a91ddd',
+}
+for name, digest in compat_pin.items():
+    original = sysroot / name
+    assert sha(original) == digest
+    payload = original.read_bytes()
+    assert payload[:4] == b'\x7fELF' and payload[4] == 2 and struct.unpack_from('<H', payload, 18)[0] == 62
+    target = compat / name
+    if target.exists(): assert not target.is_symlink() and sha(target) == digest
+    else: target.write_bytes(payload)
+env = {**os.environ, 'LD_LIBRARY_PATH': str(compat) + ':' + os.environ.get('LD_LIBRARY_PATH', '')}
+clang = NATIVE / 'prebuilts/clang/host/linux-x86/clang-3289846/bin/clang.real'
+probe = ROOT / 'host-compat/probe.c'
+probe.write_text('int roc_host_probe(int value) { return value + 1; }\n')
+verification = subprocess.run([str(clang), '-target', 'renderscript64-linux-android',
+    '-emit-llvm', '-c', str(probe), '-o', str(probe.with_suffix('.bc'))],
+    env=env, capture_output=True, text=True)
+(OUT / 'host-compat-probe.log').write_text(verification.stdout + verification.stderr)
+assert verification.returncode == 0
+assert probe.with_suffix('.bc').read_bytes()[:4] == b'BC\xc0\xde'
 receipt = {
     'product': 'roc_os_source64-eng', 'out_dir': str(ROOT / 'out'),
     'native_root': str(NATIVE), 'has_repo_manifest': (NATIVE / '.repo/manifest.xml').exists(),
@@ -80,6 +110,7 @@ receipt = {
     'product_sha256': {p.relative_to(destination).as_posix(): sha(p)
                        for p in sorted(destination.rglob('*')) if p.is_file()},
     'prototype_gralloc_unchanged': all(sha(variant / n) == v for n, v in variant_pin.items()),
+    'host_compat_library_sha256': compat_pin, 'old_clang_renderscript_bitcode_probe_passed': True,
     'whole_source_manifest_complete': False, 'full_build_passed': False,
     'current_GSI_or_card_modified': False, 'new_partition_layout': False,
 }
