@@ -1,0 +1,230 @@
+{
+  "date": "2026-11-02",
+  "source_parent_commit": "9f2db60",
+  "base_image_tag": "baseline/rg34xxsp-arm64-defaults-test2a-20261101",
+  "current_card_state": "Test2a with four vendor Light files; not an unmodified Test2a card",
+  "device_guard": "private identity plus four vendor file SHA256s",
+  "live_vendor_files": {
+    "/vendor/bin/hw/android.hardware.light@2.0-service.h700": "579e75ba63e8cb1b51392af1e31a58560b415bdd7ab72766fd88e230308ff799",
+    "/vendor/etc/vintf/manifest.xml": "4b78da93404b34638c31aab4b378263f1f1b100358ef35d179f11055249e6d71",
+    "/vendor/etc/selinux/vendor_file_contexts": "40e7ce49448217eb98ddf68e4bfdda2b5f2479fdee68cf849a0258c91aab0dbc",
+    "/vendor/etc/init/h700-light.rc": "1f5977479b29680f6393c0f2c5595e1b4fc3a0f0fc5f225ee70df8ea3ca8f6a9"
+  },
+  "elf64_executable_verified": true,
+  "service_binary_sha256": "579e75ba63e8cb1b51392af1e31a58560b415bdd7ab72766fd88e230308ff799",
+  "five_brightness_levels": [
+    {
+      "requested": 32,
+      "actual": 32
+    },
+    {
+      "requested": 64,
+      "actual": 64
+    },
+    {
+      "requested": 128,
+      "actual": 128
+    },
+    {
+      "requested": 192,
+      "actual": 192
+    },
+    {
+      "requested": 224,
+      "actual": 224
+    }
+  ],
+  "second_boot_levels": [
+    {
+      "requested": 64,
+      "actual": 64
+    },
+    {
+      "requested": 192,
+      "actual": 192
+    }
+  ],
+  "normal_reboots": 2,
+  "distinct_kernel_boot_ids_verified": true,
+  "cold_boots_accepted": false,
+  "controlled_scan304_unlock_passed": true,
+  "physical_A_accepted_this_checkpoint": false,
+  "screen_power": {
+    "controlled_android_sleep": "Asleep/OFF",
+    "off_driver_brightness": 0,
+    "controlled_android_wake": "Awake/ON",
+    "wake_driver_brightness": 102,
+    "boot_and_core_light_pids_unchanged": true,
+    "panel_power_off_accepted": false,
+    "deep_suspend_accepted": false
+  },
+  "restored_settings": {
+    "screen_brightness": 102,
+    "screen_brightness_mode": 0,
+    "screen_off_timeout": 60000,
+    "stay_on_while_plugged_in": 7,
+    "trace_modified": false
+  },
+  "dimming_samples_preserved": true,
+  "lockscreen_timeout_override_observed_ms": 10000,
+  "temporary_test_timeout_restored": true,
+  "timeout_rollback": {
+    "armed_seconds": 240,
+    "temporary_init_stanza_removed": true,
+    "second_boot_service_not_defined": true,
+    "rollback_triggered": false,
+    "failure_recovery_accepted": false
+  },
+  "display_node_label_after_reboot": "u:object_r:graphics_device:s0",
+  "selinux_mode": "Permissive",
+  "hwbinder_label_gap_remaining": "u:object_r:device:s0",
+  "enforcing_accepted": false,
+  "hall": {
+    "gpio": 135,
+    "pin": "PE7",
+    "owner": "hall switch",
+    "observed_irq": 120,
+    "hwirq": 103,
+    "irq_wake_verified": false,
+    "private_readonly_debugfs_probe_passed": true,
+    "parent_mounts_unchanged": true,
+    "bringup_wakelock_removed": false,
+    "physical_lid_tested": false
+  },
+  "seven_preloads": [
+    {
+      "id": "AnimekoTV",
+      "package": "me.him188.ani.tv",
+      "sha256": "45cfab767e3b99e46638fbba3256e1567e83370afa23449143863d9e155148b9",
+      "primary_abi": "arm64-v8a"
+    },
+    {
+      "id": "NOVA",
+      "package": "org.courville.nova",
+      "sha256": "6b047bc95d84785ac473a7dd031e4279b8cf5bf842facd2e19d0f57c53eb03ed",
+      "primary_abi": "arm64-v8a"
+    },
+    {
+      "id": "KOReader",
+      "package": "org.koreader.launcher",
+      "sha256": "89cecbe06eacd2ff7d91e37152d6beeb52809f2ca38060b6515ed8b00d152412",
+      "primary_abi": "arm64-v8a"
+    },
+    {
+      "id": "Pegasus",
+      "package": "org.pegasus_frontend.android",
+      "sha256": "1bf8f649b522b34f2558422db542bf8562cfc370844bbeb794e2fb50a44918bb",
+      "primary_abi": "arm64-v8a"
+    },
+    {
+      "id": "RetroArch",
+      "package": "com.retroarch.aarch64",
+      "sha256": "7bd5d208dfe93cc8e2ea6c04608948ce1a045980f160a58ca2d0993aa20ad213",
+      "primary_abi": "arm64-v8a"
+    },
+    {
+      "id": "PPSSPP",
+      "package": "org.ppsspp.ppsspp",
+      "sha256": "dd702a31270ecd68db37afee311d6efe08b1d4da9601d2750ce1a73bbd316c3f",
+      "primary_abi": "arm64-v8a"
+    },
+    {
+      "id": "MTManager",
+      "package": "bin.mt.plus",
+      "sha256": "8f83cef8ac63f76a81e1fee3ededb213f6ba43cc19761e38bc4e567c87edd47d",
+      "primary_abi": "arm64-v8a"
+    }
+  ],
+  "all_application_workflows_reaccepted": false,
+  "ayaspace_trial_changed": false,
+  "critical_system_file_sha_count": 10,
+  "system_root_and_vendor_readonly_at_exit": true,
+  "offline_stage": {
+    "marker": "dualabi-readiness-r2-20261102",
+    "system": {
+      "bytes": 8589934592,
+      "sha256": "26e67688386b95bfc0abe4a8f5ee3c99746201c39772eddb2ea8f89cfd52a7e6"
+    },
+    "vendor": {
+      "bytes": 2147483648,
+      "sha256": "b6d2f37c97469d80f49d6944f9f984dfcd4405eb3ce8c804c65fc554949bdf95"
+    },
+    "changed_files": {
+      "system": {
+        "/system/bin/h700-preinstall.sh": {
+          "sha256": "b04b270674d7983a78928f2056b15fcefcb3730eba6f5e7cb7ca3b1b8bec66b8",
+          "mode": "0100755",
+          "selinux": "u:object_r:shell_exec:s0"
+        },
+        "/system/bin/h700-prototype-setup.sh": {
+          "sha256": "dc100d5bdbbfd5f167a297daf136c9989f47801f3004bcae887498eb2082ebe2",
+          "mode": "0100755",
+          "selinux": "u:object_r:shell_exec:s0"
+        },
+        "/system/etc/h700-prototype/image-revision": {
+          "sha256": "06d8b2dce5db01bbe66b28307fe25336d2563ce37272547e4ac8c8970cef4711",
+          "mode": "0100644",
+          "selinux": "u:object_r:system_file:s0"
+        },
+        "/system/etc/init/h700-prototype-setup.rc": {
+          "sha256": "3a0e24ba7c1c9030dd4d9aaec1b0da701fc6ecfc4c45252320442bf2c6980c69",
+          "mode": "0100644",
+          "selinux": "u:object_r:system_file:s0"
+        },
+        "/system/etc/prop.default": {
+          "sha256": "8a816f9395a2e9f8b4f49772fd199e15a0b375eb32b73cab28395d55572febd8",
+          "mode": "0100644",
+          "selinux": "u:object_r:system_file:s0"
+        }
+      },
+      "vendor": {
+        "/bin/hw/android.hardware.light@2.0-service.h700": {
+          "sha256": "579e75ba63e8cb1b51392af1e31a58560b415bdd7ab72766fd88e230308ff799",
+          "mode": "0100755",
+          "selinux": "u:object_r:hal_light_default_exec:s0"
+        },
+        "/etc/init/h700-light.rc": {
+          "sha256": "1f5977479b29680f6393c0f2c5595e1b4fc3a0f0fc5f225ee70df8ea3ca8f6a9",
+          "mode": "0100644",
+          "selinux": "u:object_r:vendor_configs_file:s0"
+        },
+        "/etc/selinux/vendor_file_contexts": {
+          "sha256": "40e7ce49448217eb98ddf68e4bfdda2b5f2479fdee68cf849a0258c91aab0dbc",
+          "mode": "0100644",
+          "selinux": "u:object_r:vendor_configs_file:s0"
+        },
+        "/etc/vintf/manifest.xml": {
+          "sha256": "4b78da93404b34638c31aab4b378263f1f1b100358ef35d179f11055249e6d71",
+          "mode": "0100644",
+          "selinux": "u:object_r:vendor_configs_file:s0"
+        }
+      }
+    },
+    "checked_locked_files": {
+      "system": 3747,
+      "vendor": 5
+    },
+    "e2fsck_both_exit_0": true,
+    "merged_vintf_parser_passed": true,
+    "four_vendor_file_sha_match_live": true,
+    "full_stage_on_card": false,
+    "setup_nice19_idle0_on_card": false,
+    "new_priority_first_boot_accepted": false,
+    "new_img_packaged": false
+  },
+  "physical_brightness_accepted": false,
+  "limits": {
+    "aggregate_cpu": 1,
+    "affinity": [
+      0,
+      1
+    ],
+    "jobs": 1,
+    "nice": 19,
+    "ram_bytes": 6442450944,
+    "swap_bytes": 536870912,
+    "io_class": "idle"
+  },
+  "successful_build_log": "h700-low-pressure-20261102-115832.log",
+  "successful_stage_log": "h700-low-pressure-20261102-120152.log"
+}

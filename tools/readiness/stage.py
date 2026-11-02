@@ -45,11 +45,11 @@ def changed(inside, content, name, mode='0100644', label='u:object_r:system_file
     return file
 
 oldmarker = 'dualabi-parity-test2a-20261101'
-marker = 'dualabi-readiness-r1-20261102'
+marker = 'dualabi-readiness-r2-20261102'
 props = text(system, '/system/etc/prop.default', 'prop.default.before')
 assert props.count('ro.h700.prototype.image=' + oldmarker) == 1
 props = props.replace('ro.h700.prototype.image=' + oldmarker, 'ro.h700.prototype.image=' + marker)
-props = re.sub(r'^ro.h700.release=.*$', 'ro.h700.release=arm64-readiness-r1-20261102', props, flags=re.M)
+props = re.sub(r'^ro.h700.release=.*$', 'ro.h700.release=arm64-readiness-r2-20261102', props, flags=re.M)
 changed('/system/etc/prop.default', props, 'prop.default')
 changed('/system/etc/h700-prototype/image-revision', marker + '\n', 'image-revision')
 for name in ('h700-prototype-setup.sh', 'h700-preinstall.sh'):
@@ -57,12 +57,12 @@ for name in ('h700-prototype-setup.sh', 'h700-preinstall.sh'):
     # Setup checks the image marker; preinstall independently checks release.
     # Both must advance together or the first-boot installer will refuse to run.
     content = content.replace(oldmarker, marker)
-    content = content.replace('arm64-parity-test2a-20261101', 'arm64-readiness-r1-20261102')
-    content = content.replace('ARM64_PARITY_TEST2A_DEFAULTS', 'ARM64_READINESS_R1_DEFAULTS')
+    content = content.replace('arm64-parity-test2a-20261101', 'arm64-readiness-r2-20261102')
+    content = content.replace('ARM64_PARITY_TEST2A_DEFAULTS', 'ARM64_READINESS_R2_DEFAULTS')
     if name == 'h700-prototype-setup.sh':
         assert '[ "$(getprop ro.h700.prototype.image)" = ' + marker + ' ]' in content
     else:
-        assert '[ "$(getprop ro.h700.release)" = arm64-readiness-r1-20261102 ]' in content
+        assert '[ "$(getprop ro.h700.release)" = arm64-readiness-r2-20261102 ]' in content
     file = changed('/system/bin/' + name, content, name, '0100755', 'u:object_r:shell_exec:s0')
     subprocess.run(['bash', '-n', file], check=True)
 rc = REPO / 'tools/arm64_probe/prototype_setup.rc'

@@ -1,5 +1,7 @@
 # 当前基线与接手状态
 
+2026-11-02 [ARM64 背光运行验证](RG34XXSP_ARM64_LIGHT_RUNTIME_20261102.md)：原64GB卡现为Test2a加四项vendor增量，必须用本轮身份+文件SHA守卫。五档设置/驱动读回、两次正常重启保留、受控A解锁、息屏背光0与唤醒102通过；肉眼亮度、实体输入/合盖和深睡仍待测。原亮度/超时/USB常亮设置已恢复。Hall GPIO135已由hall switch持有，有真实IRQ条目，但IRQ wake未证明，不解除bringup锁。七款APK哈希及ARM64安装标记匹配，未重验全部业务。r2离线阶段通过且vendor四文件与现卡相同；当前system/marker仍是Test2a，不包含r2首启低优先级RC，也未生成新IMG。
+
 2026-11-02 [ARM64 离线发布收尾](RG34XXSP_ARM64_OFFLINE_READINESS_20261102.md)：设备未连接，现卡与 Test2a 镜像不变。新 ARM64 背光 Light 服务完成模块构建、主机测试和按父配置划分命名空间的依赖审计；独立离线阶段集成 nice19/idle0 首启 RC。9 项增量、3,752 项锁定文件 SHA、10 项关键库及双分区 fsck 通过，父分区 SHA 保持。没有生成整卡镜像、没有安装或实测亮度。固定 prefix 的 DTB 明确 Hall=PE7，但 IRQ wake/深睡仍待真机核对；不解除 bringup 锁。下一轮从该候选元数据继续验证，不能把它当作已经刷入的版本。
 
 2026-11-01 [Test2a 64GB首启与UI卡顿定位](RG34XXSP_TEST2A_FIRSTBOOT_UI_PERF_20261101.md)：新卡已进Android并获实体AT4K确认，默认中文/HOME解析和p8扩容挂载通过观察。用户要求优先查卡顿：已证明Mali64/Skia OpenGL硬件路径工作，首启cp占满单核是主要负载；后台结束后桌面卡顿帧约51%→4.3%、SystemUI约71%→1.9%，用户确认明显改善。源码已为下一镜像将初始化设nice19/IO idle，并补显式RC集成；尚未写入现机或重封IMG，新优先级首启效果未验收。应用、实体A/电源菜单和重启回归按用户要求暂缓；首启蓝牙HCI异常保留，不称为零错误首启。

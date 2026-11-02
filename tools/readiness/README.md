@@ -2,6 +2,8 @@
 
 这些工具为冻结的 Test2a 准备下一轮候选组件。**不调用 ADB、不打开块设备、不改写现卡，也不生成整卡 IMG。** 离线检查不能代替亮度、待机及实体输入验收。
 
+当前入口生成独立r2阶段，加入启动后按既有contexts恢复 `/dev/disp` 标签的RC。现卡四项vendor运行增量及两次正常重启的边界见[实机记录](../../docs/RG34XXSP_ARM64_LIGHT_RUNTIME_20261102.md)；整个r2阶段仍未刷卡首启，nice19/idle0也未应用当前卡。
+
 ```powershell
 .\tools\build_h700_low_pressure.ps1 -Targets H700ReadinessBuild -Execute
 .\tools\build_h700_low_pressure.ps1 -Targets H700ReadinessStage -Execute
