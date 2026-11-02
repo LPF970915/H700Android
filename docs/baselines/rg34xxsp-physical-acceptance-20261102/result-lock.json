@@ -200,6 +200,22 @@
       "deep_suspend_accepted": false,
       "audio_focus_or_app_background_accepted": false,
       "long_duration_audio_accepted": false
+    },
+    "physical-reboot-result": {
+      "confirmed_date": "2026-11-03",
+      "user_report": "重启后是中文，无需选择桌面，A能进入AR4K，壁纸正常，鼠标和下拉正常，wifi自动连接",
+      "physical_power_menu_restart_confirmed": true,
+      "distinct_boot_id_observed": true,
+      "strict_identity_vendor_navigation_hash_guards_passed": true,
+      "locale_zh_CN": true,
+      "resolved_home_AT4K": true,
+      "physical_A_unlock_wallpaper_mouse_shade_confirmed": true,
+      "physical_wifi_auto_reconnect_confirmed": true,
+      "brightness_setting_retained": true,
+      "manual_brightness_mode_retained": true,
+      "timeout_60000_retained": true,
+      "USB_stayawake_7_unchanged": true,
+      "cold_power_cycle_tested": false
     }
   },
   "helper_injected_keys_this_round": false,
