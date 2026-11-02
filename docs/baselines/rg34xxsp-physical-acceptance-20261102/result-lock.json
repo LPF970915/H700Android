@@ -1,0 +1,117 @@
+{
+  "date": "2026-11-02",
+  "software_checkpoint": "7cab14c",
+  "physical_acceptance_in_progress": true,
+  "items": {
+    "brightness-user-confirmed": {
+      "item": "brightness_and_menu",
+      "user_report": "屏幕明显变暗再变亮，左右和B均正常",
+      "physical_brightness_change_confirmed": true,
+      "physical_menu_hold_confirmed": true,
+      "physical_left_right_confirmed": true,
+      "physical_B_close_confirmed": true,
+      "full_range_or_maximum_accepted": false
+    },
+    "lid-closed-result": {
+      "user_report": "已合盖，看不到屏幕或背光发亮",
+      "hall_closed": true,
+      "android_asleep": true,
+      "display_off": true,
+      "driver_brightness_zero": true,
+      "boot_core_light_pids_unchanged": true,
+      "deep_suspend_accepted": false
+    },
+    "lid-open-result": {
+      "user_report": "自动亮屏并显示锁屏",
+      "hall_open": true,
+      "android_awake": true,
+      "display_on": true,
+      "lockscreen_showing": true,
+      "boot_core_light_pids_unchanged": true,
+      "physical_open_wake_confirmed": true,
+      "deep_suspend_accepted": false
+    },
+    "physical-A-result": {
+      "user_report": "A直接解锁，AT4K和樱花壁纸正常",
+      "physical_A_unlock_confirmed": true,
+      "at4k_and_wallpaper_confirmed": true,
+      "keyguard_hidden": true,
+      "at4k_present": true,
+      "boot_core_light_pids_unchanged": true
+    },
+    "physical-power-off-result": {
+      "user_report": "屏幕和背光均熄灭，未见重启或异常",
+      "physical_power_off_confirmed": true,
+      "hall_remains_open": true,
+      "android_asleep": true,
+      "display_off": true,
+      "driver_zero": true,
+      "sleep_reason_power_button": true,
+      "boot_core_light_pids_unchanged": true,
+      "deep_suspend_accepted": false
+    },
+    "physical-power-wake-result": {
+      "user_report": "正常唤醒并按A回到AT4K，画面正常",
+      "physical_power_wake_confirmed": true,
+      "physical_A_after_power_wake_confirmed": true,
+      "normal_picture_confirmed": true,
+      "android_awake": true,
+      "display_on": true,
+      "keyguard_hidden": true,
+      "at4k_present": true,
+      "hall_remains_open": true,
+      "boot_core_light_pids_unchanged": true,
+      "deep_suspend_accepted": false
+    },
+    "physical-power-menu-cancel-result": {
+      "user_report": "菜单正常出现，各项可达，B能关闭",
+      "physical_power_menu_open_confirmed": true,
+      "physical_all_items_reachable_confirmed": true,
+      "physical_B_cancel_confirmed": true,
+      "boot_core_light_pids_unchanged": true,
+      "physical_A_menu_confirmation_pending": false
+    },
+    "physical-power-menu-screenshot-result": {
+      "user_report": "截图成功，菜单已退出",
+      "physical_A_screenshot_confirmed": true,
+      "screenshot_file_listed": true,
+      "boot_core_light_pids_unchanged": true
+    },
+    "physical-mouse-movement-result": {
+      "user_report": "呼出、三种移动及松手停止、B退出均正常",
+      "physical_select_hold_confirmed": true,
+      "physical_dpad_mouse_confirmed": true,
+      "physical_left_stick_mouse_confirmed": true,
+      "physical_right_stick_mouse_confirmed": true,
+      "physical_direction_and_release_stop_confirmed": true,
+      "physical_mouse_B_exit_confirmed": true,
+      "mouse_mode_off_observed": true,
+      "boot_core_light_pids_unchanged": true,
+      "A_click_pending": false
+    },
+    "physical-mouse-click-result": {
+      "user_report": "A能打开目标，B退出鼠标及短按Menu回桌面均正常",
+      "physical_mouse_A_click_confirmed": true,
+      "physical_mouse_B_exit_confirmed": true,
+      "physical_Menu_short_home_confirmed": true,
+      "at4k_present": true,
+      "mouse_mode_off_observed": true,
+      "boot_core_light_pids_unchanged": true
+    }
+  },
+  "helper_injected_keys_this_round": false,
+  "repeated_lid_20_cycles_accepted": false,
+  "deep_suspend_accepted": false,
+  "standby_current_measured": false,
+  "panel_supply_measured": false,
+  "maximum_brightness_driver_difference_resolved": false,
+  "remaining": [
+    "audio/headphones",
+    "network lifecycle",
+    "applications and saves",
+    "storage/recovery",
+    "charging/thermal",
+    "long-run and repeated/cold-boot regression",
+    "release engineering"
+  ]
+}
