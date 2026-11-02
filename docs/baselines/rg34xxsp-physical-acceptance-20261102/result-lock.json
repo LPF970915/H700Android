@@ -216,6 +216,24 @@
       "timeout_60000_retained": true,
       "USB_stayawake_7_unchanged": true,
       "cold_power_cycle_tested": false
+    },
+    "storage-visible-and-layout-request-result": {
+      "date": "2026-11-03",
+      "user_report": "能看到内部存储17.71G/32G，ROMS有35.72G，我之后打算一整张系统卡都做成内部存储，除系统外的空间外识别为内部存储剩余空间，不再分出ROMS分区，真的外置内存卡由我第二个卡槽识别",
+      "physical_internal_and_ROMS_visible_confirmed": true,
+      "physical_complete_directory_navigation_or_B_return_explicitly_confirmed": false,
+      "observed_data_partition_bytes": 17179869184,
+      "observed_data_fs_total_KiB": 16337788,
+      "observed_data_fs_available_KiB": 14813080,
+      "physical_ui_internal_32GB_is_not_data_filesystem_capacity": true,
+      "storage_read_write_or_recovery_acceptance": false,
+      "future_layout": {
+        "TF1_free_space_after_required_system_partitions_to_userdata": true,
+        "TF1_separate_ROMS_partition": false,
+        "TF2_is_external_removable_storage": true,
+        "implemented": false,
+        "current_card_repartitioned": false
+      }
     }
   },
   "helper_injected_keys_this_round": false,
@@ -231,7 +249,8 @@
     "charging/thermal",
     "long-run and repeated/cold-boot regression",
     "release engineering",
-    "clean-system image integration and fresh boot"
+    "clean-system image integration and fresh boot",
+    "unified TF1 userdata layout / capacity reporting / TF2 external storage"
   ],
   "android_headphone_device_tag_correct": false,
   "physical_headphone_insert_unplug_one_sample_accepted": true,
