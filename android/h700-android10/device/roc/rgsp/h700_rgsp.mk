@@ -136,7 +136,11 @@ PRODUCT_MANUFACTURER := ANBERNIC
 PRODUCT_NAME := h700_rgsp
 PRODUCT_DEVICE := rgsp
 PRODUCT_BOARD := rgsp
-PRODUCT_MODEL := RGSP H700
+PRODUCT_MODEL := ROC OS
+
+PRODUCT_COPY_FILES += \
+    device/roc/rgsp/roc-os-branding.rc:$(TARGET_COPY_OUT_SYSTEM)/etc/init/roc-os-branding.rc \
+    device/roc/rgsp/roc-os-branding.sh:$(TARGET_COPY_OUT_SYSTEM)/bin/roc-os-branding.sh
 
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     persist.sys.usb.config=adb \

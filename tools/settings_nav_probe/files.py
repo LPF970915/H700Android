@@ -28,7 +28,7 @@ def focus(a,text,limit=120,expected_package=PACKAGE):
         return (signature(node) if node else '[NONE]',viewport(root),choices)
     drawer=any(n.get('visible') and n.get('id','').endswith('/drawer_roots')
                and n.get('bounds',[0,0,0,0])[0]>=0 and n.get('bounds',[0,0,0,0])[2]>100 for n in descendants(root))
-    root_name=text in {'最近','图片','视频','音频','下载','RGSP H700','ROMS','错误报告','系统跟踪记录'}
+    root_name=text in {'最近','图片','视频','音频','下载','ROC OS','RGSP H700','ROMS','错误报告','系统跟踪记录'}
     if state['window']=='弹出式窗口' or (drawer and root_name):
         origin=state['window_id']
         for direction in ('d','u'):

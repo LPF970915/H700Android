@@ -1,5 +1,7 @@
 # 当前基线与接手状态
 
+2026-11-03最新需求与实测：[分项验收](RG34XXSP_PHYSICAL_ACCEPTANCE_20261102.md)已确认亮度、合盖息屏/开盖恢复、A解锁、电源菜单、鼠标、耳机基本切换、WLAN、正常重启及一次关机重开。系统命名为ROC OS；后续改为纯净系统与TF1统一userdata、TF2外置存储。现卡Test2a+Light+data Nav13仍带七应用/独立ROMS，仅保存名称已更改；ROC OS r4 stage-v5已通过离线属性/文件/fsck/VINTF和名称迁移检查，完整型号/USB尚未写卡；新命名候选不等于新IMG，纯净/新分区及整机发行验收仍待完成。
+
 2026-11-02 [快捷设置亮度条修复](RG34XXSP_QS_BRIGHTNESS_20261102.md)：Navigation13 data更新已安装，修正shade被排除的滑条动作；长按Menu后选中亮度条，左右进度/设置/多档驱动读回、上下离开和B关闭通过受控事件验证。恢复亮度102/超时60000。上端设置255但驱动200差异保留待查，实体手感/重启未重验。当前是Test2a+Light+data Nav13，使用新守卫核对已安装APK。Nav13已进入r3独立离线阶段并通过签名/文件/关键库/fsck/VINTF检查，未封装新IMG。
 
 2026-11-02 [ARM64 背光运行验证](RG34XXSP_ARM64_LIGHT_RUNTIME_20261102.md)：原64GB卡现为Test2a加四项vendor增量，必须用本轮身份+文件SHA守卫。五档设置/驱动读回、两次正常重启保留、受控A解锁、息屏背光0与唤醒102通过；肉眼亮度、实体输入/合盖和深睡仍待测。原亮度/超时/USB常亮设置已恢复。Hall GPIO135已由hall switch持有，有真实IRQ条目，但IRQ wake未证明，不解除bringup锁。七款APK哈希及ARM64安装标记匹配，未重验全部业务。r2离线阶段通过且vendor四文件与现卡相同；当前system/marker仍是Test2a，不包含r2首启低优先级RC，也未生成新IMG。

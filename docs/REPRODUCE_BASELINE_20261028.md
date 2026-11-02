@@ -1,5 +1,7 @@
 # 源码恢复与构建边界
 
+2026-11-03 ROC OS命名增量：`H700ReadinessStage`现默认新r4 marker，另以`H700ReadinessBrandingAudit`审计；均走同一低压力包装器。已接受stage-v5，初始stage-v4执行域草稿已拒绝并保留，不能按目录日期盲目重放。见[入口](../tools/readiness/README.md)和[脱敏锁](baselines/rg34xxsp-physical-acceptance-20261102/roc-os-branding-lock.json)。现卡只修改保存名称；没有新IMG，未合入纯净预装/新存储布局。
+
 2026-11-01 [首启性能增量](RG34XXSP_TEST2A_FIRSTBOOT_UI_PERF_20261101.md)：只改`tools/arm64_probe/prototype_setup.rc`的初始化优先级及`ParityStage`显式复制RC；没有运行AOSP编译或重封装。后续从冻结Test2a生成新增量时必须带入该RC并单独验收首次初始化负载，不能把源码更新描述为已刷镜像更新。
 
 2026-11-01 默认值增量见[Test2a](RG34XXSP_ARM64_DEFAULTS_TEST2A_20261101.md)：通过低压力目标`H700DualAbiDefaultsStage`、`H700DualAbiDefaultsImage`顺序生成新阶段和gzip，旧Test2输入只读保留。新源码同时补齐未来ParityStage的工厂HOME配置和build.prop语言；不能在已有目录上重放。

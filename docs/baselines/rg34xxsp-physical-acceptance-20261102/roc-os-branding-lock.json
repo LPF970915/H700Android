@@ -1,0 +1,46 @@
+{
+  "date": "2026-11-03",
+  "new_image_marker": "roc-os-readiness-r4-20261103",
+  "accepted_offline_stage": "stage-v5",
+  "rejected_initial_stage": "stage-v4",
+  "candidate_metadata_sha256": "cddd8de465e8a9b6cd926e15adbd1de35a316625189e29c0cdde3fa57bc60c39",
+  "system_sha256": "65358952ae0503ba15ad963912e3ce416e509fad79c7951963e2d00e9dd3dd12",
+  "vendor_sha256": "956873d6970989988321de9738d95decb47d78c8a5049f13113fd6c7f5ef8760",
+  "system_delta_count": 11,
+  "vendor_delta_count": 6,
+  "locked_files_read_back": 3758,
+  "critical_runtime_unchanged": 10,
+  "fsck_both_passed": true,
+  "vintf_parser_passed": true,
+  "branding_audit": {
+    "new_image_marker": "roc-os-readiness-r4-20261103",
+    "candidate_metadata_sha256": "cddd8de465e8a9b6cd926e15adbd1de35a316625189e29c0cdde3fa57bc60c39",
+    "offline_model_namespaces_passed": [
+      "ro.product.model",
+      "ro.product.system.model",
+      "ro.product.vendor.model",
+      "ro.product.odm.model",
+      "ro.product.product.model",
+      "ro.product.system_ext.model"
+    ],
+    "property_order_and_nonbranding_properties_preserved": true,
+    "seven_saved_name_cases_idempotent_and_custom_preserved": true,
+    "wrong_device_migration_denied": true,
+    "runtime_model_or_USB_acceptance": false,
+    "new_IMG": false,
+    "clean_preload_or_storage_layout_included": false
+  },
+  "runtime_saved_names_read_back_ROC_OS": true,
+  "runtime_ro_model_or_USB_changed": false,
+  "full_image_packaged": false,
+  "clean_preloads_or_unified_userdata_implemented": false,
+  "source_sha256": {
+    "tools/readiness/branding.py": "0c6c964448548331f472e138aff47520310f0baa678d3d376242b83e1bd2468d",
+    "tools/readiness/stage.py": "e9f276902f008a8f641702f6abd0382c634a7c54ef658202b161769a4219235b",
+    "tools/readiness/audit_branding.py": "14dcbb3b7629e89d492bf7d253ecbfef2b116e835a0e08f2fd3060165a6abd19",
+    "android/h700-android10/device/roc/rgsp/roc-os-branding.sh": "ab635038fea03c40da0577c6c2a519dd3584becdbdc72744e8f39a998634f652",
+    "android/h700-android10/device/roc/rgsp/roc-os-branding.rc": "f17adf0c9a14b31298596d2ce1bd8c21dce2a1b7bc4c5e5a770ad65878a3a2de",
+    "android/h700-android10/device/roc/rgsp/h700_rgsp.mk": "19f8bc0569331c4eb36279feeb89ec16096c5a13f594b99828fc3f88e50e26b8",
+    "android/h700-android10/device/roc/rgsp/h700-usb-configfs.rc": "22f997977e9cff313a1037172a1883873b14d8fa190a98c944db74f0255bc68c"
+  }
+}

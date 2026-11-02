@@ -2,12 +2,13 @@
 
 这些工具为冻结的 Test2a 准备下一轮候选组件。**不调用 ADB、不打开块设备、不改写现卡，也不生成整卡 IMG。** 离线检查不能代替亮度、待机及实体输入验收。
 
-当前入口生成独立r3阶段，包含r2的背光初始化标签修正及[Navigation13快捷设置滑条修复](../../docs/RG34XXSP_QS_BRIGHTNESS_20261102.md)。现卡四项vendor运行增量及两次正常重启的边界见[实机记录](../../docs/RG34XXSP_ARM64_LIGHT_RUNTIME_20261102.md)；整个r3阶段仍未刷卡首启，nice19/idle0也未应用当前卡。
+当前入口生成独立r4阶段（`roc-os-readiness-r4-20261103`），包含r2的背光初始化标签修正、[Navigation13快捷设置滑条修复](../../docs/RG34XXSP_QS_BRIGHTNESS_20261102.md)和ROC OS名称。r1/r2/r3及初始r4执行域草稿全部保留。现卡仍为Test2a加四项vendor运行增量及data Nav13，只更新了保存的设备/蓝牙名称；完整r4及nice19/idle0未写入现卡。实体分项结果、纯净系统和统一userdata要求见[本轮验收](../../docs/RG34XXSP_PHYSICAL_ACCEPTANCE_20261102.md)；这两项布局/预装调整尚未进入r4。
 
 ```powershell
 .\tools\build_h700_low_pressure.ps1 -Targets H700ReadinessBuild -Execute
 .\tools\build_h700_low_pressure.ps1 -Targets H700QsBrightness -Execute
 .\tools\build_h700_low_pressure.ps1 -Targets H700ReadinessStage -Execute
+.\tools\build_h700_low_pressure.ps1 -Targets H700ReadinessBrandingAudit -Execute
 ```
 
 仍使用合计一核、CPU 0–1、`-j1`、nice 19、6GiB RAM、512MiB swap 和 idle IO。每次构建/阶段使用新目录；不要删除失败目录来重试。
@@ -29,3 +30,9 @@
 `audit_power.py` 只读取与 Test2a 镜像锁匹配的 prefix，解析其中 boot/DTB。Hall 的 PE7 配置、powerkey wakeup 属性和本地 pinctrl IRQ 功能仅用于下一轮排查；不能据此宣称现机已注册可唤醒中断。它不申请 GPIO、不装模块、不改 DTB，也不解除 bringup 锁。
 
 原始/失败/候选及私有连接检查保存在 `out/rg34xxsp-readiness-20261102/` 和 WSL `/home/lpf/h700-readiness-20261102/`。只将源码与脱敏结果锁入 Git。
+
+## ROC OS 名称
+
+`branding.py`在system默认属性/build.prop、product、vendor与ODM属性文件中统一型号，并设置测试版显示名；保留device/product内部代号、真实硬件/厂商、ABI、VNDK和指纹。USB产品描述使用ROC OS，串号、VID/PID和接口配置保持。`roc-os-branding`仅在本项目启动完成后补默认名称、迁移旧RGSP名称，保留用户自定义名称；当前开发版执行域沿用已有su，不能当作正式enforcing集成。
+
+`audit_branding.py`对独立候选复核属性加载顺序、非品牌属性保持和RC哈希，并在隔离的主机命令替身下验证7种名称输入、重复执行和错误设备拒绝。检查不调用ADB；当前卡保存名称的改动有单独私有备份。型号/USB的实际显示及干净首启仍须新镜像验证，未宣称整机已经完成更名。

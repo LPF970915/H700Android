@@ -1,4 +1,6 @@
-# H700 Android 10 — 开发基线
+# ROC OS — H700 Android 10 开发基线
+
+2026-11-03：用户将系统命名为 **ROC OS**。当前ARM64 Test2a加Light/Nav13已完成[一批实体分项验收](docs/RG34XXSP_PHYSICAL_ACCEPTANCE_20261102.md)，包括亮度、合盖、A解锁、电源菜单、鼠标、音频基本切换、WLAN、正常重启与关机重开。后续镜像采用纯净系统，并计划统一TF1内部存储、由TF2提供外置存储；上述新布局/纯净镜像尚未完成，旧Test2a不回改。ROC OS完整型号/USB名称随独立候选固化，现卡目前只更新保存名称。
 
 2026-11-01 [Test2a已刷入原64GB卡并完成回读](docs/RG34XXSP_ARM64_TEST2A_FLASH_64G_20261101.md)：完整镜像范围验证通过，Rufus GPT和Windows FAT元数据差异已逐项审查；首启仍待验收。该卡已取代旧32位工作卡，旧镜像和128GB开发卡保留。
 

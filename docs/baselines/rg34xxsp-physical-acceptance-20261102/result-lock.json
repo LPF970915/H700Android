@@ -234,6 +234,18 @@
         "implemented": false,
         "current_card_repartitioned": false
       }
+    },
+    "cold-power-cycle-result": {
+      "date": "2026-11-03",
+      "user_report": "一切正常，未见明显异常",
+      "physical_shutdown_unplugged_wait_and_power_on_confirmed": true,
+      "distinct_boot_id_observed": true,
+      "strict_identity_vendor_nav_guards_passed": true,
+      "locale_zh_CN": true,
+      "brightness_mode_timeout_stayawake_retained": true,
+      "physical_defaults_and_wifi_no_obvious_anomaly_reported": true,
+      "crash_buffer_java_native_fatal_markers_absent": true,
+      "repeat_10_cycles_accepted": false
     }
   },
   "helper_injected_keys_this_round": false,
@@ -270,5 +282,13 @@
     "application_acceptance_deferred": true,
     "current_apps_uninstalled": false,
     "installer_or_image_updated": false
+  },
+  "branding_request": {
+    "date": "2026-11-03",
+    "name": "ROC OS",
+    "saved_device_and_bluetooth_names_changed_and_read_back": true,
+    "bluetooth_enabled_by_this_change": false,
+    "runtime_ro_model_and_USB_product_changed": false,
+    "historical_images_rebranded": false
   }
 }

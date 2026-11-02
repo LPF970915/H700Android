@@ -7,6 +7,7 @@ import re
 import subprocess
 import sys
 import xml.etree.ElementTree as ET
+from branding import brand_properties, MODEL_KEYS, MODEL
 
 REPO = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(REPO / 'tools'))
@@ -45,24 +46,50 @@ def changed(inside, content, name, mode='0100644', label='u:object_r:system_file
     return file
 
 oldmarker = 'dualabi-parity-test2a-20261101'
-marker = 'dualabi-readiness-r3-20261102'
+marker = 'roc-os-readiness-r4-20261103'
 props = text(system, '/system/etc/prop.default', 'prop.default.before')
 assert props.count('ro.h700.prototype.image=' + oldmarker) == 1
 props = props.replace('ro.h700.prototype.image=' + oldmarker, 'ro.h700.prototype.image=' + marker)
-props = re.sub(r'^ro.h700.release=.*$', 'ro.h700.release=arm64-readiness-r3-20261102', props, flags=re.M)
+props = re.sub(r'^ro.h700.release=.*$', 'ro.h700.release=roc-os-readiness-r4-20261103', props, flags=re.M)
+props = brand_properties(props, system=True)
 changed('/system/etc/prop.default', props, 'prop.default')
+build = text(system, '/system/build.prop', 'build.prop.before')
+changed('/system/build.prop', brand_properties(build, system=True), 'build.prop')
+for inside, local in (('/build.prop', 'vendor.build.prop'),
+                      ('/odm/etc/build.prop', 'odm.build.prop')):
+    vendor_props = text(vendor, inside, local + '.before')
+    vfile = WORK / local
+    vfile.write_text(brand_properties(vendor_props), newline='\n')
+    vmaps[inside] = (vfile, '0100644', 'u:object_r:vendor_file:s0')
+product_props = text(system, '/system/product/build.prop', 'product.build.prop.before')
+changed('/system/product/build.prop', brand_properties(product_props), 'product.build.prop')
+device = REPO / 'android/h700-android10/device/roc/rgsp'
+for inside, local, executable in (
+    ('/system/etc/init/roc-os-branding.rc', 'roc-os-branding.rc', False),
+    ('/system/bin/roc-os-branding.sh', 'roc-os-branding.sh', True),
+    ('/system/etc/init/h700-usb-configfs.rc', 'h700-usb-configfs.rc', False),
+):
+    candidate = device / local
+    assert b'\r' not in candidate.read_bytes()
+    if local == 'roc-os-branding.rc':
+        # Match the current eng provisioning domain; enforcing release is separate.
+        assert '    seclabel u:r:su:s0\n' in candidate.read_text()
+    maps[inside] = (candidate, '0100755' if executable else '0100644',
+                   'u:object_r:shell_exec:s0' if executable else 'u:object_r:system_file:s0')
+    if executable:
+        subprocess.run(['bash', '-n', candidate], check=True)
 changed('/system/etc/h700-prototype/image-revision', marker + '\n', 'image-revision')
 for name in ('h700-prototype-setup.sh', 'h700-preinstall.sh'):
     content = text(system, '/system/bin/' + name, name + '.before')
     # Setup checks the image marker; preinstall independently checks release.
     # Both must advance together or the first-boot installer will refuse to run.
     content = content.replace(oldmarker, marker)
-    content = content.replace('arm64-parity-test2a-20261101', 'arm64-readiness-r3-20261102')
-    content = content.replace('ARM64_PARITY_TEST2A_DEFAULTS', 'ARM64_READINESS_R3_DEFAULTS')
+    content = content.replace('arm64-parity-test2a-20261101', 'roc-os-readiness-r4-20261103')
+    content = content.replace('ARM64_PARITY_TEST2A_DEFAULTS', 'ROC_OS_READINESS_R4_DEFAULTS')
     if name == 'h700-prototype-setup.sh':
         assert '[ "$(getprop ro.h700.prototype.image)" = ' + marker + ' ]' in content
     else:
-        assert '[ "$(getprop ro.h700.release)" = arm64-readiness-r3-20261102 ]' in content
+        assert '[ "$(getprop ro.h700.release)" = roc-os-readiness-r4-20261103 ]' in content
     file = changed('/system/bin/' + name, content, name, '0100755', 'u:object_r:shell_exec:s0')
     subprocess.run(['bash', '-n', file], check=True)
 rc = REPO / 'tools/arm64_probe/prototype_setup.rc'
@@ -149,6 +176,10 @@ record.update({'parent_components_sha256': base.sha(parentfile), 'work': str(WOR
     'e2fsck_both_exit_0': True, 'device_installed': False,
     'fresh_first_boot': False, 'physical_brightness_accepted': False,
     'full_image_packaged': False, 'selinux_enforcing_accepted': False,
-    'power_wakelocks_changed': False, 'third_party_apps_changed': False})
+    'power_wakelocks_changed': False, 'third_party_apps_changed': False,
+    'user_visible_model': MODEL, 'model_property_keys': MODEL_KEYS,
+    'saved_name_legacy_migration_included': True,
+    'USB_product_name': MODEL,
+    'clean_system_without_preloads': False, 'unified_userdata_layout': False})
 (OUT / ('candidate-' + WORK.name + '.json')).write_text(json.dumps(record, indent=2) + '\n')
 print('READINESS_OFFLINE_STAGE_PASS', WORK.name, len(modified['system']), len(modified['vendor']), flush=True)

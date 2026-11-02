@@ -7,7 +7,7 @@ test "$#" -gt 0
 for target in "$@"; do
     case "$target" in systemimage|vendorimage|ramdisk|adbd|vold|services|Settings|SettingsIntelligence|SystemUI|MediaProvider|LatinIME|LeanbackIME|Calendar|DocumentsUI|RGSPLauncher|RGSPNavigation|H700Apps|H700Navigation|H700Input|H700KernelInput|H700Lid|H700Rotation|H700RotationFramework|H700ReleaseImage|H700ReleaseImageMT|H700Arm64Feasibility|H700Arm64Isolated|rgsp_vsync_probe|rgsp_egl_import_probe|hwcomposer.cupid|libsurfaceflinger|PermissionController) ;;
         H700DualAbiWindow|H700DualAbiBoot|H700DualAbiImage|H700DualAbiAudit|H700DualAbiBootEntry|H700DualAbiEntryImage|H700DualAbiHandoff|H700DualAbiHandoffImage|H700DualAbiTestNavigation|H700DualAbiTestImage|H700DualAbiTestAudit|H700DualAbiInteraction|H700DualAbiParity|H700DualAbiParityApps|H700DualAbiParityUi|H700DualAbiParityServices|H700DualAbiParityVold|H700DualAbiParityOverlay|H700DualAbiParityLinkage|H700DualAbiParityVoldAudit|H700DualAbiParitySettingsApi|H700DualAbiParityPayload|H700DualAbiParityStage|H700DualAbiParityFinal|H700DualAbiParitySeal|H700DualAbiParityImage) ;;
-        H700DualAbiDefaultsStage|H700DualAbiDefaultsImage|H700AyaspaceInspect|H700AyaspaceCompat|H700ReadinessBuild|H700ReadinessStage|H700QsBrightness) ;;
+        H700DualAbiDefaultsStage|H700DualAbiDefaultsImage|H700AyaspaceInspect|H700AyaspaceCompat|H700ReadinessBuild|H700ReadinessStage|H700ReadinessBrandingAudit|H700QsBrightness) ;;
         *) echo "Unsupported target: $target" >&2; exit 2 ;;
     esac
 done
@@ -50,6 +50,11 @@ if [ "$#" = 1 ] && [ "$1" = H700ReadinessBuild ]; then
 fi
 if [ "$#" = 1 ] && [ "$1" = H700ReadinessStage ]; then
     python3 "$(dirname "$(realpath "$0")")/readiness/stage.py"
+    echo "LOW_PRESSURE_COMPLETE=$(date -Is)"
+    exit 0
+fi
+if [ "$#" = 1 ] && [ "$1" = H700ReadinessBrandingAudit ]; then
+    python3 "$(dirname "$(realpath "$0")")/readiness/audit_branding.py"
     echo "LOW_PRESSURE_COMPLETE=$(date -Is)"
     exit 0
 fi
