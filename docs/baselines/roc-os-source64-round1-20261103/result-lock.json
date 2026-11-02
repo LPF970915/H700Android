@@ -47,7 +47,7 @@
       "unselected platform test module references"
     ]
   },
-  "image_build_status": "retry_running_after_host_compat_fix",
+  "image_build_status": "incremental_resume_after_configured_timeout",
   "source_config_sha256": {
     "android/h700-android10/device/roc/roc_os_source64/Android.mk": "df985e67113bd371b19c7b6016feaf2245404cc460d11f218614b0573cfc7379",
     "android/h700-android10/device/roc/roc_os_source64/AndroidProducts.mk": "a5b27fdcc32febba26a344d7f3172987e42d4bb5d99d685e56fb82a6fd53df52",
@@ -80,5 +80,19 @@
     "old_clang_renderscript_bitcode_probe_passed": true,
     "global_libraries_or_old_compat_symlinks_modified": false,
     "libraries_downloaded": false
+  },
+  "current_build_unit": "h700-low-pressure-20261103-050122.service",
+  "current_build_log": "out/logs/build/h700-low-pressure-20261103-050122.log",
+  "configured_timeout_resume": {
+    "old_unit": "h700-low-pressure-20261103-014838.service",
+    "old_batch_completed": 30856,
+    "old_batch_total": 93206,
+    "old_log_sha256": "5b6a51aea2d32985cc7b6be151d9a1341eec02bfdd13b6a52d0ef8374d5cc71f",
+    "compiler_failed_markers": 0,
+    "old_processes_exited_and_locks_free": true,
+    "native371_product57_host2_guards_passed": true,
+    "new_batch_task_total": 62351,
+    "ninja_regeneration_needed": false,
+    "limits_unchanged": true
   }
 }
