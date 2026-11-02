@@ -141,6 +141,35 @@
       "physical_volume_after_unplug_confirmed": true,
       "vendor_spk_state_after_unplug": "1",
       "repeated_10_cycles_accepted": false
+    },
+    "wifi-setup-result": {
+      "user_report": "已连接，全程十字键和A/B可完成",
+      "physical_wifi_setup_connected_confirmed": true,
+      "physical_wifi_setup_dpad_AB_only_confirmed": true,
+      "internet_and_lifecycle_pending": true
+    },
+    "wifi-toggle-result": {
+      "confirmed_date": "2026-11-03",
+      "user_report": "自动连回原网络，不用重输密码",
+      "physical_wifi_toggle_auto_reconnect_confirmed": true,
+      "saved_credentials_retained_confirmed": true,
+      "supplicant_completed": true,
+      "http_status": 204,
+      "https_status": 204,
+      "normal_certificate_verification": true,
+      "ten_toggle_cycles_accepted": false,
+      "sleep_recovery_pending": true
+    },
+    "wifi-screen-sleep-result": {
+      "confirmed_date": "2026-11-03",
+      "user_report": "仍连接或自动恢复，无需手动重连",
+      "physical_screen_sleep_network_retained_or_recovered_confirmed": true,
+      "manual_reconnect_not_needed_confirmed": true,
+      "supplicant_completed": true,
+      "http_status": 204,
+      "https_status": 204,
+      "kernel_deep_suspend_tested": false,
+      "USB_connected": true
     }
   },
   "helper_injected_keys_this_round": false,
@@ -151,7 +180,7 @@
   "maximum_brightness_driver_difference_resolved": false,
   "remaining": [
     "audio/headphones",
-    "network lifecycle",
+    "network repeated/long-run/deep-suspend lifecycle",
     "applications and saves",
     "storage/recovery",
     "charging/thermal",
@@ -161,5 +190,11 @@
   "android_headphone_device_tag_correct": false,
   "physical_headphone_insert_unplug_one_sample_accepted": true,
   "absolute_stereo_orientation_accepted": false,
-  "stereo_device_pc_parity_user_accepted": true
+  "stereo_device_pc_parity_user_accepted": true,
+  "updated_date": "2026-11-03",
+  "wifi_followup_status": {
+    "setup_toggle_and_USB_screen_sleep_samples_accepted": true,
+    "earlier_pending_fields_are_historical": true,
+    "long_duration_network_and_deep_suspend_pending": true
+  }
 }
