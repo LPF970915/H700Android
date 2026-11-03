@@ -1,0 +1,6 @@
+# ROC OS TF1 internal userdata, TF2 only removable storage. Boot creates these names.
+/dev/block/by-name/system /system ext4 ro,barrier=1 wait,first_stage_mount
+/dev/block/by-name/vendor /vendor ext4 ro,barrier=1 wait,first_stage_mount
+/dev/block/by-name/userdata /data ext4 noatime,nosuid,nodev,noauto_da_alloc wait,check,formattable,quota,latemount
+/dev/block/zram0 none swap defaults zramsize=75%
+/devices/platform/soc/sdc2/mmc_host/mmc*/mmc*:*/block/mmcblk* auto auto defaults voldmanaged=sdcard1:auto

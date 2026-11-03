@@ -1,0 +1,142 @@
+{
+  "completed_at": "2026-11-04T00:26:50+08:00",
+  "product": "roc_os_source64-eng",
+  "source_base": "archived BSP QP1A.191105.004 plus isolated derived modules; incomplete source manifest",
+  "full_source_image_build_passed": true,
+  "offline_parity_audit_passed": true,
+  "whole_source_manifest_complete": false,
+  "build_result": {
+    "receipt": "images-result-v9.json",
+    "sha256": "6ae1daeb39817b2141648c84abf5c23abe0bc9c84ecdfa332d0a604dbcc637f1",
+    "prepare_receipt": "prepare-v12.json",
+    "unit": "h700-low-pressure-20261104-002045",
+    "runtime_seconds": 212.734,
+    "cpu_seconds": 129.919,
+    "peak_ram_gib": 5.0,
+    "peak_swap_mib": 0
+  },
+  "audit_result": {
+    "receipt": "round2-audit-v7.json",
+    "sha256": "fb5c393661b24616236680bbf9322fda783f4e8a820d410189c623c6006fe3ab",
+    "unit": "h700-low-pressure-20261104-002513",
+    "runtime_seconds": 96.543,
+    "checks": 118,
+    "host_cases": 20,
+    "host_receipt_sha256": "501b385e43fa4b01b724b17d48c4a083a5e6920cf7f3ccee506317e204d8d3b4",
+    "actual_Android_ARM64_tools_emulated": true
+  },
+  "logs": {
+    "build": {
+      "path": "out/logs/build/h700-low-pressure-20261104-002045.log",
+      "sha256": "4c870bff8c87d7d54df6e3c92407d060ec95320042ddbbde712da9209f90a9ff"
+    },
+    "audit": {
+      "path": "out/logs/build/h700-low-pressure-20261104-002513.log",
+      "sha256": "7633848cd348b3783a90811db8b1dd5194c4f773c298d8f72db3b51659cb9e3c"
+    }
+  },
+  "images": {
+    "system.img": {
+      "bytes": 1148056036,
+      "sha256": "1cd7dff07d0dbd53ec5ae589c5cd4151ef07cf9c9e3f1aa414259dc1aced6daa",
+      "format": "android_sparse",
+      "logical_bytes": 8589934592
+    },
+    "vendor.img": {
+      "bytes": 65859804,
+      "sha256": "83229b2db58535275a943b2ab6588d06bbff6a4773719c502a31c96540271f42",
+      "format": "android_sparse",
+      "logical_bytes": 2147483648
+    },
+    "ramdisk.img": {
+      "bytes": 800471,
+      "sha256": "caca37654a34b39abe274828e5e6aa9a39b3748510bd59eb2f46fe753d34f709",
+      "format": "gzip_cpio",
+      "drop_in_custom_boot_replacement": false
+    }
+  },
+  "linkage": {
+    "root_count": 35,
+    "namespace_object_states": 628,
+    "unique_ELF_objects": 545,
+    "errors": [],
+    "pre_apex_bootstrap_objects": 41,
+    "pre_apex_bootstrap_errors": [],
+    "new_daemon_strong_symbols": {
+      "/system/bin/vold.rocsource": {
+        "dependency_states": 42,
+        "unresolved_strong_symbol_names": []
+      },
+      "/vendor/bin/hw/android.hardware.light@2.0-service.rocsource": {
+        "dependency_states": 21,
+        "unresolved_strong_symbol_names": []
+      }
+    },
+    "notes": [
+      "DT_NEEDED and interpreter/ELF checks plus new-daemon symbol names; not exported symbol versions, dlopen completeness, kernel ABI or runtime acceptance",
+      "APEX runtime paths resolved to flattened directories for post-APEX audit; early bootstrap checked separately"
+    ]
+  },
+  "static_boot_tools": {
+    "roc-grow-userdata-gpt": {
+      "sha256": "edcd9e8d5aad745b501a576434586ed2c1fc2d8ff3796b610058aa029e38421d",
+      "bytes": 601576,
+      "required_future_ramdisk_mode": "0100755"
+    },
+    "e2fsck_static": {
+      "sha256": "9e1b2d56f4a9d603438272baf0060fc5bcb334d10365a8e01dd9e3b1c9e21949",
+      "bytes": 2018056,
+      "required_future_ramdisk_mode": "0100755"
+    },
+    "roc-resize2fs-static": {
+      "sha256": "99450f8bd604bb3891655d659517d83734c16daebb73582aba33cca5bbbf56fe",
+      "bytes": 798488,
+      "required_future_ramdisk_mode": "0100755"
+    }
+  },
+  "protected_native_inputs": 371,
+  "derived_product_files": 1228,
+  "protected_ABI5_libraries": 2,
+  "protected_native_guard_sha256": "324b6a1b3c39841d7ee53b0ae6f764dccdceb169c2a8ed3d37e85e7e8357b71f",
+  "source_config_sha256": {
+    ".gitattributes": "e575c5b59e3a4affd7f655f544cd110e412e2b0e3a648d01b646b40a0947579f",
+    "android/h700-android10/device/roc/roc_os_source64/Android.mk": "66dd96e1ca3968fa58cbeed1c788d750dd614a5c6e211988e3155a8988561530",
+    "android/h700-android10/device/roc/roc_os_source64/AndroidProducts.mk": "a5b27fdcc32febba26a344d7f3172987e42d4bb5d99d685e56fb82a6fd53df52",
+    "android/h700-android10/device/roc/roc_os_source64/BoardConfig.mk": "6accf558e9d784d51252fe26157473bb9c7c227d86a85dfed539c6f5b1cd8177",
+    "android/h700-android10/device/roc/roc_os_source64/configs/audio_mixer_paths.xml": "b2d44f61da7a748ae0beae89639de41d70c9b4397d500cd1aeb88a5ea725d870",
+    "android/h700-android10/device/roc/roc_os_source64/configs/fstab.sun50iw9p1": "249a8023c190380a98e47feac024aa85ee32c40970175f0c45bda95a789e90bc",
+    "android/h700-android10/device/roc/roc_os_source64/configs/h700-usb-configfs.rc": "22f997977e9cff313a1037172a1883873b14d8fa190a98c944db74f0255bc68c",
+    "android/h700-android10/device/roc/roc_os_source64/configs/roc-factory.rc": "85aa9fb961ca02911c69a85614306fa7ebbc8ea103512988d96fe71172b8a1bc",
+    "android/h700-android10/device/roc/roc_os_source64/configs/roc-factory.sh": "a08a5ec09f5b7858242f9e275501d192dcf97afe8380b67eae133e25295d82f4",
+    "android/h700-android10/device/roc/roc_os_source64/configs/roc-os-branding.rc": "f17adf0c9a14b31298596d2ce1bd8c21dce2a1b7bc4c5e5a770ad65878a3a2de",
+    "android/h700-android10/device/roc/roc_os_source64/configs/roc-os-branding.sh": "ab635038fea03c40da0577c6c2a519dd3584becdbdc72744e8f39a998634f652",
+    "android/h700-android10/device/roc/roc_os_source64/roc_os_source64.mk": "a37fa30306e24dbe2bc6de31e22916f382e81e1a0a60978749f0debf76eb40b3",
+    "android/h700-android10/device/roc/roc_os_source64/sepolicy/file_contexts": "0a75c8986d805f1b16f0b1b0d2bd34eb275a98c643be1cf7a1d3b37d37eb2dab",
+    "tools/build_h700_low_pressure.ps1": "3758ef7207b2cab50dc6131912923188829a6c80de4be5183e155fd728265671",
+    "tools/build_h700_low_pressure.sh": "3d08107866e754e445b81645ff5029830a7d640ccbced1d58b261dcb6b582f68",
+    "tools/source64/audit_images.py": "28a6a75430c965cffeacec5436d707d093974185c78c3af4f9ad5f12c47d2749",
+    "tools/source64/audit_linkage.py": "31eef66e5885c8b450d3460bd43f3899effac440deb9001d3a553e45201b7b95",
+    "tools/source64/check_round2.py": "a96d60ace4b9e7101479787cdbd7fc24bd8f1716d79379e58a38d1c9840f1c1d",
+    "tools/source64/prepare.py": "be6d273fd66c8df246014e2a47ea3ef53daf3a7b7f8653f3026ca2ffa8593717",
+    "tools/source64/record.py": "41d5117c5a5a5353c34b58ebd4481498134176fa82b0001f1aac1c089e19ee5a",
+    "tools/source64/round2.py": "e6fd2bd2e9821d8f5021279dceb6039c542428c7968579a55584b68da0789b2c",
+    "tools/source64/storage/RocStoragePolicy.h": "aefdf6aa08399e4002399c93378e52f8d6b1337fa208a7accb3b1e4ed3b0fac0",
+    "tools/source64/storage/grow_gpt.c": "4a8348fcab99be3fada52f8074f148136ff35b67bfefd959e262b8e66fc6b958",
+    "tools/source64/storage/grow_userdata.sh": "24b0a5cb0cf2322eeaed34add37eecd7f349f93e6ff1bac3a7e17f654c55dd9f",
+    "tools/source64/storage/layout.py": "526a95a59d4ab7124d36ba5de2b0972e9597da3e150f1c439bcd2f3e11ea918c",
+    "tools/source64/test_factory.py": "49d9ed8fd6f9297c5ca3351877805a8eddcc7371c26ee52f6d95d5909c155dd6"
+  },
+  "round1_images_and_source_archive_preserved": true,
+  "boot_image_created": false,
+  "whole_card_image_created": false,
+  "device_boot_accepted": false,
+  "current_card_modified": false,
+  "minimum_seed_bytes": 32434554368,
+  "recommended_minimum_card_GB": 64,
+  "remaining": [
+    "User approval before custom boot/whole-card assembly",
+    "Fresh compatible userdata, compact GPT/ramdisk tool integration and full decompression/range validation",
+    "Spare-card clean boot, capacity/TF2, physical regression and power-loss recovery",
+    "Full source manifest/reproduction and independent release security/power/thermal/stability gates"
+  ]
+}

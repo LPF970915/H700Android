@@ -10,7 +10,7 @@ from package_h700_v6a import constrained
 constrained()
 phase, status = sys.argv[1], int(sys.argv[2])
 assert phase in {'graph', 'images'}
-OUT = REPO / 'out/roc-os-source64-20261103'
+OUT = REPO / 'out/roc-os-source64-round2-20261103'
 latest = json.loads((OUT / 'latest-prepare.json').read_text())
 prepared = json.loads((OUT / latest['receipt']).read_text())
 native = Path(prepared['native_root'])

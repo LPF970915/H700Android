@@ -1,0 +1,130 @@
+{
+  "date": "2026-11-03",
+  "scope": "isolated source64 parity repair, incremental rebuild, offline storage/boot validation; no whole-card packaging",
+  "status": "complete-offline-audit-pass",
+  "product": "roc_os_source64-eng",
+  "current_build_unit": "h700-low-pressure-20261104-002045.service",
+  "current_build_log": "out/logs/build/h700-low-pressure-20261104-002045.log",
+  "prepare_receipt": "prepare-v12.json",
+  "parent_completion_sha256": "5d94c4c8dca51fc1bd3ed8da9a41a3f4d151c72d6631257070c71456c24d3921",
+  "parent_product_and_images_preserved": "/home/lpf/roc-os-source64-20261103/round1-preserved",
+  "source_config_sha256": {
+    ".gitattributes": "e575c5b59e3a4affd7f655f544cd110e412e2b0e3a648d01b646b40a0947579f",
+    "android/h700-android10/device/roc/roc_os_source64/Android.mk": "66dd96e1ca3968fa58cbeed1c788d750dd614a5c6e211988e3155a8988561530",
+    "android/h700-android10/device/roc/roc_os_source64/AndroidProducts.mk": "a5b27fdcc32febba26a344d7f3172987e42d4bb5d99d685e56fb82a6fd53df52",
+    "android/h700-android10/device/roc/roc_os_source64/BoardConfig.mk": "6accf558e9d784d51252fe26157473bb9c7c227d86a85dfed539c6f5b1cd8177",
+    "android/h700-android10/device/roc/roc_os_source64/configs/audio_mixer_paths.xml": "b2d44f61da7a748ae0beae89639de41d70c9b4397d500cd1aeb88a5ea725d870",
+    "android/h700-android10/device/roc/roc_os_source64/configs/fstab.sun50iw9p1": "249a8023c190380a98e47feac024aa85ee32c40970175f0c45bda95a789e90bc",
+    "android/h700-android10/device/roc/roc_os_source64/configs/h700-usb-configfs.rc": "22f997977e9cff313a1037172a1883873b14d8fa190a98c944db74f0255bc68c",
+    "android/h700-android10/device/roc/roc_os_source64/configs/roc-factory.rc": "85aa9fb961ca02911c69a85614306fa7ebbc8ea103512988d96fe71172b8a1bc",
+    "android/h700-android10/device/roc/roc_os_source64/configs/roc-factory.sh": "a08a5ec09f5b7858242f9e275501d192dcf97afe8380b67eae133e25295d82f4",
+    "android/h700-android10/device/roc/roc_os_source64/configs/roc-os-branding.rc": "f17adf0c9a14b31298596d2ce1bd8c21dce2a1b7bc4c5e5a770ad65878a3a2de",
+    "android/h700-android10/device/roc/roc_os_source64/configs/roc-os-branding.sh": "ab635038fea03c40da0577c6c2a519dd3584becdbdc72744e8f39a998634f652",
+    "android/h700-android10/device/roc/roc_os_source64/roc_os_source64.mk": "a37fa30306e24dbe2bc6de31e22916f382e81e1a0a60978749f0debf76eb40b3",
+    "android/h700-android10/device/roc/roc_os_source64/sepolicy/file_contexts": "0a75c8986d805f1b16f0b1b0d2bd34eb275a98c643be1cf7a1d3b37d37eb2dab",
+    "tools/build_h700_low_pressure.ps1": "3758ef7207b2cab50dc6131912923188829a6c80de4be5183e155fd728265671",
+    "tools/build_h700_low_pressure.sh": "3d08107866e754e445b81645ff5029830a7d640ccbced1d58b261dcb6b582f68",
+    "tools/source64/audit_images.py": "28a6a75430c965cffeacec5436d707d093974185c78c3af4f9ad5f12c47d2749",
+    "tools/source64/audit_linkage.py": "31eef66e5885c8b450d3460bd43f3899effac440deb9001d3a553e45201b7b95",
+    "tools/source64/check_round2.py": "a96d60ace4b9e7101479787cdbd7fc24bd8f1716d79379e58a38d1c9840f1c1d",
+    "tools/source64/prepare.py": "be6d273fd66c8df246014e2a47ea3ef53daf3a7b7f8653f3026ca2ffa8593717",
+    "tools/source64/record.py": "41d5117c5a5a5353c34b58ebd4481498134176fa82b0001f1aac1c089e19ee5a",
+    "tools/source64/round2.py": "e6fd2bd2e9821d8f5021279dceb6039c542428c7968579a55584b68da0789b2c",
+    "tools/source64/storage/RocStoragePolicy.h": "aefdf6aa08399e4002399c93378e52f8d6b1337fa208a7accb3b1e4ed3b0fac0",
+    "tools/source64/storage/grow_gpt.c": "4a8348fcab99be3fada52f8074f148136ff35b67bfefd959e262b8e66fc6b958",
+    "tools/source64/storage/grow_userdata.sh": "24b0a5cb0cf2322eeaed34add37eecd7f349f93e6ff1bac3a7e17f654c55dd9f",
+    "tools/source64/storage/layout.py": "526a95a59d4ab7124d36ba5de2b0972e9597da3e150f1c439bcd2f3e11ea918c",
+    "tools/source64/test_factory.py": "49d9ed8fd6f9297c5ca3351877805a8eddcc7371c26ee52f6d95d5909c155dd6"
+  },
+  "protected_native_count": 371,
+  "derived_product_count": 1225,
+  "host_checks_passed": 20,
+  "resource_limits": {
+    "aggregate_CPUs": 1,
+    "allowed_CPUs": "0-1",
+    "jobs": 1,
+    "nice": 19,
+    "RAM_GiB": 6,
+    "swap_MiB": 512,
+    "IO": "idle"
+  },
+  "completed_image_build": false,
+  "whole_card_image_created": false,
+  "boot_image_created": false,
+  "current_card_modified": false,
+  "runtime_accepted": false,
+  "whole_card_packaging_requires_user_confirmation": true,
+  "preserved_attempts": [
+    {
+      "unit": "221308",
+      "phase": "prepare",
+      "result": "rejected unmerged-manifest sepolicy anchor; fixed derived manifest composition"
+    },
+    {
+      "unit": "221639",
+      "phase": "graph",
+      "result": "unrecognized system_static_libs in private resize module; fixed exact shared_libs replacement"
+    },
+    {
+      "unit": "221743",
+      "phase": "graph",
+      "result": "manually stopped after review found relative version.h include; private include fixed"
+    },
+    {
+      "unit": "221953",
+      "phase": "graph",
+      "result": "manually stopped to add framework TF2 visibility; private services jar with explicit SYSTEMSERVERCLASSPATH now selected"
+    },
+    {
+      "unit": "223233",
+      "result": "rejected duplicate install target; private Light/vold executable and RC paths made unique"
+    },
+    {
+      "unit": "225540",
+      "result": "private Vold string/nullptr C++ type error; corrected controller predicate, explicit SystemServer jar list"
+    },
+    {
+      "unit": "232758",
+      "phase": "audit",
+      "result": "build v4 passed but offline audit rejected old services.jar pulled in by Wi-Fi required-install edge; private Wi-Fi module fixes only module dependencies"
+    },
+    {
+      "unit": "234626",
+      "phase": "audit",
+      "result": "build v5 passed but audit rejected absent private Wi-Fi jar; legacy make subtree needs explicit include, now added only to independent product"
+    },
+    {
+      "unit": "235340",
+      "phase": "audit",
+      "result": "build v6 passed but final DEX lacked storage delta because priorityboosted srcs still referenced original core; fixed colon module reference, rebuild underway"
+    },
+    {
+      "unit": "000801",
+      "phase": "audit",
+      "result": "final storage DEX passed; actual vendor fstab/mixer still inherited old COPY entries; fixed replacement priority before deferred vendor placeholders"
+    },
+    {
+      "unit": "001601",
+      "phase": "audit-tool",
+      "result": "native default.prop fallback/partition model derivation differs from GSI path assumption; fixed audit to match protected init source, no OS change"
+    },
+    {
+      "unit": "001839",
+      "phase": "audit",
+      "result": "copy priority fix selected different ARM32 Mali variant; source mapping pinned back to accepted arm/lib SHA, ARM64 unchanged"
+    },
+    {
+      "unit": "002513",
+      "phase": "audit",
+      "result": "PASS 118 checks; 20 host cases plus actual Android ARM64 GPT/ext4 tools under QEMU; zero unresolved startup dependencies"
+    }
+  ],
+  "build_result": "images-result-v9.json",
+  "current_audit_unit": "h700-low-pressure-20261104-002513.service",
+  "current_audit_log": "out/logs/build/h700-low-pressure-20261104-002513.log",
+  "updated_at": "2026-11-04T00:30:45.862346+08:00",
+  "audit_result": "round2-audit-v7.json",
+  "completion_sha256": "d100281fcbc98e5cdc2fda8f9acc8a94a4cba5fbcbfd16b19c9d7731a7314692",
+  "active_build": false,
+  "offline_parity_audit_passed": true
+}
