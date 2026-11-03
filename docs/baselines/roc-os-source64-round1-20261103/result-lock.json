@@ -19,7 +19,7 @@
   "prototype_gralloc_unchanged": true,
   "prepare_receipt_sha256": "6652fe618a90f5eb66ca52eb18d577b9a36ec0d984ff0cee9d9298324e047792",
   "build_graph_status": "passed",
-  "full_source_image_build_passed": false,
+  "full_source_image_build_passed": true,
   "device_boot_accepted": false,
   "current_card_modified": false,
   "new_partition_layout": false,
@@ -47,7 +47,7 @@
       "unselected platform test module references"
     ]
   },
-  "image_build_status": "incremental_resume_after_configured_timeout",
+  "image_build_status": "passed",
   "source_config_sha256": {
     "android/h700-android10/device/roc/roc_os_source64/Android.mk": "df985e67113bd371b19c7b6016feaf2245404cc460d11f218614b0573cfc7379",
     "android/h700-android10/device/roc/roc_os_source64/AndroidProducts.mk": "a5b27fdcc32febba26a344d7f3172987e42d4bb5d99d685e56fb82a6fd53df52",
@@ -156,5 +156,34 @@
       "ninja_regeneration_needed": false,
       "limits_unchanged": true
     }
-  ]
+  ],
+  "image_build_result": {
+    "phase": "images",
+    "exit_status": 0,
+    "passed": true,
+    "prepare_receipt": "prepare-v8.json",
+    "protected_sources_unchanged": true,
+    "product_sources_unchanged_during_build": true,
+    "images": {
+      "system.img": {
+        "bytes": 1144652260,
+        "sha256": "1e5650be2e05f5774045e20c3df0ba53d2839b4619740aac79272bcd1ca0601a"
+      },
+      "vendor.img": {
+        "bytes": 65843420,
+        "sha256": "9b3c38ec5d6efb8777123fce4c5529fd38352cf39f2d92f72a60f607cedd9d27"
+      },
+      "ramdisk.img": {
+        "bytes": 800471,
+        "sha256": "caca37654a34b39abe274828e5e6aa9a39b3748510bd59eb2f46fe753d34f709"
+      }
+    },
+    "full_source_image_build_passed": true,
+    "device_boot_accepted": false,
+    "current_card_modified": false
+  },
+  "completion_audit": "completion.json",
+  "completed_at": "2026-11-03T18:55:00+08:00",
+  "current_build_active": false,
+  "monitor_status": "PAUSED"
 }

@@ -1,5 +1,7 @@
 # 源码恢复与构建边界
 
+2026-11-03 18:55源码构建第一轮已完成：独立`roc_os_source64-eng`的system/vendor/ramdisk构建退出0，三镜像SHA和371项原输入、57项独立产品文件、2项ABI5主机库复核通过；10项实际ELF证明ARM64/ARM32的应用进程、加载器、ART、JNI运行库及私有Gralloc产物。完整结果见[本轮交付记录](ROC_OS_SOURCE64_ROUND1_20261103.md)与[完成锁](baselines/roc-os-source64-round1-20261103/completion.json)。定时跟进已暂停，没有刷卡或整卡IMG；新源码产物启动、现行补丁一致性、纯净预装及新存储布局仍待后续独立阶段。
+
 2026-11-03源码构建第一轮：新增`H700Source64Prepare`、`H700Source64Graph`、`H700Source64Build`低压力入口，独立`roc_os_source64-eng`产品与输出目录。以保留BSP QP1A源码重新建立图，当前GSI卡与旧产品不改。准备锁记录371项关键输入、7项历史增量和独立Gralloc源副本；完整树清单、整镜像构建、现行补丁一致性及新产物启动仍待验收。首轮图通过后，实际整镜像编译遇旧RenderScript主机Clang缺少ncurses/tinfo ABI5；准备器现从保留GCC sysroot复制两个已锁SHA的真实ABI5库到独立目录并验证位码编译，通过专用LD_LIBRARY_PATH续编。不替换系统库、不使用旧兼容目录ABI6软链，首次失败与输出保留。精确进度见[第一轮锁](baselines/roc-os-source64-round1-20261103/result-lock.json)，不能把图解析成功当作系统编译成功。
 
 2026-11-03 ROC OS命名增量：`H700ReadinessStage`现默认新r4 marker，另以`H700ReadinessBrandingAudit`审计；均走同一低压力包装器。已接受stage-v5，初始stage-v4执行域草稿已拒绝并保留，不能按目录日期盲目重放。见[入口](../tools/readiness/README.md)和[脱敏锁](baselines/rg34xxsp-physical-acceptance-20261102/roc-os-branding-lock.json)。现卡只修改保存名称；没有新IMG，未合入纯净预装/新存储布局。

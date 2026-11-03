@@ -1,5 +1,7 @@
 # 当前基线与接手状态
 
+2026-11-03 18:55源码构建第一轮已完成：独立`roc_os_source64-eng`的system/vendor/ramdisk构建退出0，三镜像SHA和371项原输入、57项独立产品文件、2项ABI5主机库复核通过；10项实际ELF证明ARM64/ARM32的应用进程、加载器、ART、JNI运行库及私有Gralloc产物。完整结果见[本轮交付记录](ROC_OS_SOURCE64_ROUND1_20261103.md)与[完成锁](baselines/roc-os-source64-round1-20261103/completion.json)。定时跟进已暂停，没有刷卡或整卡IMG；新源码产物启动、现行补丁一致性、纯净预装及新存储布局仍待后续独立阶段。
+
 2026-11-03源码构建第一轮已启动：独立`roc_os_source64-eng`及全新输出目录，371项关键源输入与私有Gralloc副本锁定，ARM64主架构/ARM32兼容/API29确认。完整依赖图已通过；system/vendor/ramdisk实际编译正在运行，尚无整镜像或启动通过结论。使用原单核/6GiB/512MiB/nice19限制，不刷现卡、不改分区。见[首轮进度锁](baselines/roc-os-source64-round1-20261103/result-lock.json)。
 
 2026-11-03最新需求与实测：[分项验收](RG34XXSP_PHYSICAL_ACCEPTANCE_20261102.md)已确认亮度、合盖息屏/开盖恢复、A解锁、电源菜单、鼠标、耳机基本切换、WLAN、正常重启及一次关机重开。系统命名为ROC OS；后续改为纯净系统与TF1统一userdata、TF2外置存储。现卡Test2a+Light+data Nav13仍带七应用/独立ROMS，仅保存名称已更改；ROC OS r4 stage-v5已通过离线属性/文件/fsck/VINTF和名称迁移检查，完整型号/USB尚未写卡；新命名候选不等于新IMG，纯净/新分区及整机发行验收仍待完成。

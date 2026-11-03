@@ -1,0 +1,168 @@
+{
+  "completed_at": "2026-11-03T18:55:00+08:00",
+  "product": "roc_os_source64-eng",
+  "source_base": "archived BSP QP1A.191105.004 plus guarded overlays; incomplete repo manifest",
+  "build_exit_status": 0,
+  "full_source_image_build_passed": true,
+  "build_log_sha256": "33420cc768b8d884125bc79f6dac0cc425dd92b3e43a2545369af57e23b9343f",
+  "images": {
+    "system.img": {
+      "bytes": 1144652260,
+      "sha256": "1e5650be2e05f5774045e20c3df0ba53d2839b4619740aac79272bcd1ca0601a",
+      "format": "android_sparse",
+      "logical_bytes": 8589934592
+    },
+    "vendor.img": {
+      "bytes": 65843420,
+      "sha256": "9b3c38ec5d6efb8777123fce4c5529fd38352cf39f2d92f72a60f607cedd9d27",
+      "format": "android_sparse",
+      "logical_bytes": 2147483648
+    },
+    "ramdisk.img": {
+      "bytes": 800471,
+      "sha256": "caca37654a34b39abe274828e5e6aa9a39b3748510bd59eb2f46fe753d34f709",
+      "format": "gzip",
+      "decompressed_cpio_bytes": 1864960
+    }
+  },
+  "ELF_artifacts": {
+    "system/bin/app_process64": {
+      "ELF_class": 2,
+      "e_machine": 183,
+      "bytes": 33424,
+      "sha256": "e081261cb966435f57a4712baf610018ffa6e254e3cb89c346483f25073efe4a"
+    },
+    "system/bin/app_process32": {
+      "ELF_class": 1,
+      "e_machine": 40,
+      "bytes": 25124,
+      "sha256": "eb281b69ee90b748e0be4b61b315b77b5508624d1d7d6c3a8fc0afd29f4faaaf"
+    },
+    "system/lib64/libandroid_runtime.so": {
+      "ELF_class": 2,
+      "e_machine": 183,
+      "bytes": 2090696,
+      "sha256": "bd6f78c7b52330c6a29b79566c4ec1308317d7ccb407648893f0012160a1632f"
+    },
+    "system/lib/libandroid_runtime.so": {
+      "ELF_class": 1,
+      "e_machine": 40,
+      "bytes": 1478976,
+      "sha256": "0505aef99304c60f62cbf0365d8835c65fe727eb5dcbbe2d96400ecbf40b3d6f"
+    },
+    "system/apex/com.android.runtime.release/lib64/libart.so": {
+      "ELF_class": 2,
+      "e_machine": 183,
+      "bytes": 7740072,
+      "sha256": "2f60543989081ed464e576d5910bf872fb61bdba9c63c326a2f2a89ec1659244"
+    },
+    "system/apex/com.android.runtime.release/lib/libart.so": {
+      "ELF_class": 1,
+      "e_machine": 40,
+      "bytes": 6067276,
+      "sha256": "6cd0a83b2a6b405cf737ed7e940b900098dd298aeb2015d059f2ac1965998b57"
+    },
+    "system/apex/com.android.runtime.release/bin/linker64": {
+      "ELF_class": 2,
+      "e_machine": 183,
+      "bytes": 1602848,
+      "sha256": "b7cfc0e71d8b3fc0d8cf5253ebf0433b80609bf769055a25608521c8613d6dbe"
+    },
+    "system/apex/com.android.runtime.release/bin/linker": {
+      "ELF_class": 1,
+      "e_machine": 40,
+      "bytes": 1162224,
+      "sha256": "790edbddb2942c271156929ac794b6de26e05849a993dde62d8ed322f7a0e411"
+    },
+    "vendor/lib64/hw/gralloc.rocsource.so": {
+      "ELF_class": 2,
+      "e_machine": 183,
+      "bytes": 79304,
+      "sha256": "aa0771259f5ae3817eabc0470c659dc89873ef4622cf53ca4b92a7aedaacb4b3"
+    },
+    "vendor/lib/hw/gralloc.rocsource.so": {
+      "ELF_class": 1,
+      "e_machine": 40,
+      "bytes": 76500,
+      "sha256": "99ab73c5e8a7a6f08239b5ff931aab899e8d8a4c4c8b91e466b4b7dae18a2745"
+    }
+  },
+  "properties": {
+    "system/build.prop:ro.product.cpu.abi": "arm64-v8a",
+    "system/build.prop:ro.product.cpu.abilist": "arm64-v8a,armeabi-v7a,armeabi",
+    "system/build.prop:ro.product.cpu.abilist32": "armeabi-v7a,armeabi",
+    "system/build.prop:ro.product.cpu.abilist64": "arm64-v8a"
+  },
+  "input_guards": {
+    "native": 371,
+    "independent_product": 57,
+    "host_ABI5_libraries": 2,
+    "passed": true
+  },
+  "attempts": [
+    {
+      "log": "h700-low-pressure-20261103-013310.log",
+      "success": false,
+      "configured_timeout": false,
+      "compiler_failed_markers": 1
+    },
+    {
+      "log": "h700-low-pressure-20261103-014838.log",
+      "success": false,
+      "configured_timeout": true,
+      "compiler_failed_markers": 0
+    },
+    {
+      "log": "h700-low-pressure-20261103-050122.log",
+      "success": false,
+      "configured_timeout": true,
+      "compiler_failed_markers": 0
+    },
+    {
+      "log": "h700-low-pressure-20261103-080230.log",
+      "success": false,
+      "configured_timeout": true,
+      "compiler_failed_markers": 0
+    },
+    {
+      "log": "h700-low-pressure-20261103-110351.log",
+      "success": false,
+      "configured_timeout": true,
+      "compiler_failed_markers": 0
+    },
+    {
+      "log": "h700-low-pressure-20261103-141602.log",
+      "success": false,
+      "configured_timeout": true,
+      "compiler_failed_markers": 0
+    },
+    {
+      "log": "h700-low-pressure-20261103-173038.log",
+      "success": true,
+      "configured_timeout": false,
+      "compiler_failed_markers": 0
+    }
+  ],
+  "final_batch_runtime": "1h24m21.562s",
+  "final_batch_CPU_time": "1h18m52.430s",
+  "peak_RAM_GiB": 5.0,
+  "peak_swap_MiB": 512,
+  "resource_limits": {
+    "aggregate_CPUs": 1,
+    "CPU_affinity": "0-1",
+    "jobs": 1,
+    "nice": 19,
+    "RAM_GiB": 6,
+    "swap_MiB": 512,
+    "IO": "idle"
+  },
+  "device_boot_accepted": false,
+  "current_card_modified": false,
+  "whole_card_image_created": false,
+  "whole_source_manifest_complete": false,
+  "filesystem_fsck_accepted": false,
+  "current_patch_parity_accepted": false,
+  "clean_system_preload_policy_integrated": false,
+  "new_partition_layout": false,
+  "automation_status": "PAUSED"
+}
