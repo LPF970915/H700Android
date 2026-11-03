@@ -81,17 +81,17 @@
     "global_libraries_or_old_compat_symlinks_modified": false,
     "libraries_downloaded": false
   },
-  "current_build_unit": "h700-low-pressure-20261103-141602.service",
-  "current_build_log": "out/logs/build/h700-low-pressure-20261103-141602.log",
+  "current_build_unit": "h700-low-pressure-20261103-173038.service",
+  "current_build_log": "out/logs/build/h700-low-pressure-20261103-173038.log",
   "configured_timeout_resume": {
-    "old_unit": "h700-low-pressure-20261103-110351.service",
-    "old_batch_completed": 9534,
-    "old_batch_total": 36321,
-    "old_log_sha256": "874930292bbd47cc48c14b78d88e075f19310c2edac88807aa25d29425083467",
+    "old_unit": "h700-low-pressure-20261103-141602.service",
+    "old_batch_completed": 6071,
+    "old_batch_total": 26787,
+    "old_log_sha256": "cccd720178f49842c2b5dc2d78147d5a6f88987132cd71698c02ac1632daa686",
     "compiler_failed_markers": 0,
     "old_processes_exited_and_locks_free": true,
     "native371_product57_host2_guards_passed": true,
-    "new_batch_task_total": 26787,
+    "new_batch_task_total": 20716,
     "ninja_regeneration_needed": false,
     "limits_unchanged": true
   },
@@ -141,6 +141,18 @@
       "old_processes_exited_and_locks_free": true,
       "native371_product57_host2_guards_passed": true,
       "new_batch_task_total": 26787,
+      "ninja_regeneration_needed": false,
+      "limits_unchanged": true
+    },
+    {
+      "old_unit": "h700-low-pressure-20261103-141602.service",
+      "old_batch_completed": 6071,
+      "old_batch_total": 26787,
+      "old_log_sha256": "cccd720178f49842c2b5dc2d78147d5a6f88987132cd71698c02ac1632daa686",
+      "compiler_failed_markers": 0,
+      "old_processes_exited_and_locks_free": true,
+      "native371_product57_host2_guards_passed": true,
+      "new_batch_task_total": 20716,
       "ninja_regeneration_needed": false,
       "limits_unchanged": true
     }
