@@ -17,7 +17,9 @@ elif name=='am':out='0'
 elif name=='pm':
  if a[0]=='path':out='package:'+s['apk']
  elif a[0]=='set-home-activity':s['home']=a[-1]
-elif name=='cmd':out=s.get('home','com.android.launcher3/.Launcher')
+elif name=='cmd':
+ if a[:2]==['role','add-role-holder']:s['home_role']=a[-2]
+ else:out=s.get('home','com.android.launcher3/.Launcher')
 elif name=='ime':
  if a[0]=='list':out='com.android.inputmethod.leanback/.service.LeanbackImeService'
  elif a[0]=='set':s['settings']['secure.default_input_method']=a[-1]
@@ -64,6 +66,7 @@ def checks(product, work):
     folder, local, rc, s = case('fresh', existing={'secure.enabled_accessibility_services':'other/.Service'})
     assert rc==0 and (folder/'state/complete').is_file()
     assert s['home']=='com.overdevs.at4k/.MainActivity'
+    assert s['home_role']=='com.overdevs.at4k'
     assert s['settings']['secure.show_ime_with_hard_keyboard']=='1'
     assert s['settings']['global.device_provisioned']=='1'
     assert s['settings']['secure.enabled_accessibility_services']=='other/.Service:com.roc.rgsp.navtrial/.NavigationService'

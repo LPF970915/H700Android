@@ -1,0 +1,9 @@
+# Native BSP's non-first-boot shortcut skips font initialization in app zygote.
+# This event runs after persisted properties are loaded and before zygote-start.
+on load_persist_props_action && property:ro.roc.source64.round=2
+    setprop persist.sys.boot.first true
+
+# Early ramdisk bind-mounts /dev; its nested devpts mount does not follow a bind.
+on post-fs-data && property:ro.roc.source64.round=2
+    mkdir /dev/pts 0755 root root
+    mount devpts devpts /dev/pts mode=0620,gid=5,ptmxmode=0666

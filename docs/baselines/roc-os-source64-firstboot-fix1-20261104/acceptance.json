@@ -1,0 +1,49 @@
+{
+  "product": "roc_os_source64-eng",
+  "build_receipt": "images-result-v14.json",
+  "prepare": "prepare-v17.json",
+  "audit_receipt": "round2-audit-v10.json",
+  "offline_checks": 120,
+  "host_cases": 21,
+  "images": {
+    "system.img": {
+      "bytes": 1148064228,
+      "sha256": "b3cad6bdb68b77e9d57103b4dff6525c3eb97d411199f154af0204abeb2c4836"
+    },
+    "vendor.img": {
+      "bytes": 65859804,
+      "sha256": "20733665540a41b0bc2533bf25345af33d760972d90cb3fa92a86087cffd4b48"
+    },
+    "ramdisk.img": {
+      "bytes": 800471,
+      "sha256": "caca37654a34b39abe274828e5e6aa9a39b3748510bd59eb2f46fe753d34f709"
+    }
+  },
+  "runtime_navigation": 16,
+  "firstboot_and_growth_observed": true,
+  "data_filesystem_bytes": 113592975360,
+  "wifi_user_connected": true,
+  "wifi_reconnect_validated": true,
+  "hardware_GLES_observed": "ARM Mali-G31 OpenGL ES 3.2",
+  "controlled_mouse_wifi_desktop_repeated": true,
+  "post_reboot_mouse_checked": true,
+  "latest_physical_mouse_confirmation": false,
+  "HOME_role_retained": true,
+  "permissions_UI_after_two_startup_fix_reboots": true,
+  "devpts_and_exec_out_fixed": true,
+  "prior_distribution_gzip_immutable": true,
+  "new_whole_card_image_created": false,
+  "release_accepted": false,
+  "retained_limits": "single CPU, affinity0-1, nice19, RAM6GiB, swap512MiB, idle IO",
+  "source_sha256": {
+    "tools/source64/round2.py": "0c678c8a66f0f902447f6f1ab02b4da492277ad9e69377f465412957ed1b951b",
+    "tools/source64/SelectFallbackTest.java": "018bd05a9efe602d77a65bcd97e94e4b9e2f89f9d8e9a88c2304387b4feb162d",
+    "android/h700-android10/device/roc/roc_os_source64/configs/roc-source64-startup.rc": "02b9b0c29e1372f9ccbe07d4d51ed34f1f89d0fd46740372ca5faa4b32fb1af2",
+    "android/h700-android10/device/roc/roc_os_source64/configs/roc-factory.sh": "caec83113c2fd12ce1f9b67e85110d2546a5734a62aed8eea0efb0b1880d659d",
+    "tools/source64/check_round2.py": "41719fe45420dd63fd128ded12a4b9145b4ed8950b458c1ba78bf404356e9d76",
+    "tools/source64/audit_images.py": "8ab1a9d70b672ca21eea19b8fbf95deb98a62c7f81f61711780c97801330e018",
+    "tools/source64/test_factory.py": "0c562376e4347cfce940d9b0d39a09622581b747bb222581abd7b81d4a09c513",
+    "android/h700-android10/device/roc/roc_os_source64/roc_os_source64.mk": "41174272427e5ff5a7ea95d84486101c84962acf1b1f293d007e838616ab2bcc"
+  },
+  "controlled_HAT_movement_and_release_stop": true
+}

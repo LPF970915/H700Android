@@ -29,6 +29,7 @@ settings --user 0 put secure user_setup_complete 1
 # The preferred HOME XML handles the first HOME intent. Reassert only until complete.
 pm path com.overdevs.at4k | grep -q '^package:'
 pm set-home-activity --user 0 com.overdevs.at4k/.MainActivity
+cmd role add-role-holder --user 0 android.app.role.HOME com.overdevs.at4k 0
 home=$(cmd package resolve-activity --brief --user 0 -a android.intent.action.MAIN -c android.intent.category.HOME | tail -n 1)
 [ "$home" = com.overdevs.at4k/.MainActivity ]
 services=$(settings --user 0 get secure enabled_accessibility_services)

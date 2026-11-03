@@ -156,6 +156,14 @@ run(['sh', '-n', Path(contract['work']) / 'init'])
 passed.append('boot-and-provisioning-shell-syntax')
 from test_factory import checks
 passed.extend(checks(PRODUCT, WORK))
+classes = WORK / 'select-fallback-classes'
+classes.mkdir()
+jdk = Path('/home/lpf/h700-android10/android/prebuilts/jdk/jdk9/linux-x86/bin')
+run([jdk / 'javac', '-d', classes,
+     PRODUCT / 'Navigation/src/com/roc/rgsp/navtrial/MouseHotkey.java',
+     REPO / 'tools/source64/SelectFallbackTest.java'])
+run([jdk / 'java', '-Xmx256m', '-cp', classes, 'com.roc.rgsp.navtrial.SelectFallbackTest'])
+passed.append('Select-fallback-without-flag-and-chord-preservation')
 result = {'passed': True, 'work': str(WORK), 'cases': passed, 'case_count': len(passed),
           'devices_accessed': False, 'synthetic_fixtures_not_flashable': True, 'whole_card_image_created': False}
 (OUT / (WORK.name + '.json')).write_text(json.dumps(result, indent=2)+'\n')

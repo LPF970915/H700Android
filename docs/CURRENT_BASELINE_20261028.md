@@ -1,5 +1,7 @@
 # 当前基线与接手状态
 
+2026-11-04 Source64 128GB 首启及运行修正：扩容、ARM64/Mali、Wi-Fi 联网已观察，补齐 supplicant、HOME 角色、Navigation16、字体预加载与 devpts；当前卡已修改，旧 Test1 gzip 未重新封装。新分区构建及 120 项复审通过，最新物理鼠标复测待确认。见 [运行修正记录](ROC_OS_SOURCE64_FIRSTBOOT_128G_20261104.md)。
+
 2026-11-04 Source64 Clean Test1 整卡镜像已完成：596,398,309 字节 gzip、完整解压/分段哈希/空白 userdata/启动保护校验通过。用户已明确授权本轮封装，未授权刷卡且本轮未操作设备。最低 64GB TF 卡，实机首启仍待验收。见 [交付及烧录说明](ROC_OS_SOURCE64_CARD_TEST1_20261104.md)。
 
 2026-11-04 Source64 第二轮：差异修正、增量编译和最终离线复审通过；118 项分区检查、20 项主机检查及实际 ARM64 扩容工具模拟执行通过。545 ELF 启动依赖无缺项。尚未制作启动/整卡镜像、未操作设备，等待用户确认后才进入封装与备用卡验收。见 [修正与复审记录](ROC_OS_SOURCE64_ROUND2_20261103.md) 和 [完成证明](baselines/roc-os-source64-round2-20261103/completion.json)。旧版本、失败材料及 SPACE_REVIEW 用户修改保留。

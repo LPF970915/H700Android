@@ -31,6 +31,7 @@ roc_removed_destinations := \
 # Prepend replacements before inherit-product expansion. Vendor placeholders in
 # inherited entries are resolved later; filtering literal vendor paths is not enough.
 roc_source64_copy_files := \
+    device/roc/roc_os_source64/configs/roc-source64-startup.rc:system/etc/init/roc-source64-startup.rc \
     device/roc/roc_os_source64/configs/audio_mixer_paths.xml:vendor/etc/audio_mixer_paths.xml \
     hardware/aw/gpu/mali-bifrost/mali-g31/arm/lib/libGLES_mali.so:vendor/lib/egl/libGLES_mali.so \
     hardware/aw/gpu/mali-bifrost/mali-g31/arm64/lib64/libGLES_mali.so:vendor/lib64/egl/libGLES_mali.so \

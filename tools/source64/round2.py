@@ -23,8 +23,8 @@ def generate(repo, native, dest):
     p.write_text(p.read_text().replace('name: "RGSPNavigation"', 'name: "ROCNavigation"'))
     p = nav / 'AndroidManifest.xml'
     s = p.read_text().replace('android:versionCode="8" android:versionName="1.5-menu-shade"',
-                            'android:versionCode="14" android:versionName="2.0-source64-range"')
-    assert 'android:versionCode="14"' in s
+                            'android:versionCode="16" android:versionName="2.2-source64-select-fallback"')
+    assert 'android:versionCode="16"' in s
     p.write_text(s)
     p = nav / 'src/com/roc/rgsp/navtrial/NavigationService.java'
     s = p.read_text()
@@ -39,6 +39,44 @@ def generate(repo, native, dest):
                   '                : range.getType()==AccessibilityNodeInfo.RangeInfo.RANGE_TYPE_INT ? 1 : (range.getMax()-range.getMin())/20f;')
     # The source SystemUI already owns A/power focus; do not add GSI proxies.
     assert 'nativeSystemUi()' not in s and 'PrototypeUnlock' not in s
+    old = 'if((key==KeyEvent.KEYCODE_MENU || key==KeyEvent.KEYCODE_BUTTON_SELECT)'
+    assert s.count(old) == 1
+    s = s.replace(old, 'if((key==KeyEvent.KEYCODE_MENU && event.getScanCode()!=310)')
+    old = '''        @Override public boolean dispatchKeyEvent(KeyEvent event) {
+            if (mouse != null && mouse.onKey(event)) return true;
+            int code = event.getKeyCode();'''
+    assert s.count(old) == 1
+    s = s.replace(old, '''        @Override public boolean dispatchKeyEvent(KeyEvent event) {
+            int code = event.getKeyCode();''')
+    old = '''                    || code == KeyEvent.KEYCODE_ESCAPE) {
+                if (event.getAction() == KeyEvent.ACTION_UP'''
+    assert s.count(old) == 1
+    s = s.replace(old, '''                    || code == KeyEvent.KEYCODE_ESCAPE) {
+                if (mouse != null && mouse.onKey(event)) return true;
+                if (event.getAction() == KeyEvent.ACTION_UP''')
+    old = 'if(!hasFocus) {stopRepeat();held.clear();armedIdentity=null;armedKey=0;}'
+    assert s.count(old) == 1
+    s = s.replace(old, 'if(!hasFocus) {stopRepeat();held.clear();menu.clear();armedIdentity=null;armedKey=0; if(mouse!=null) mouse.windowFocusLost();}')
+    p.write_text(s)
+    p = nav / 'src/com/roc/rgsp/navtrial/MouseHotkey.java'
+    s = p.read_text().replace('return fallback && scan == 310 && key == 82 ? SELECT : key;',
+                             'return scan == 310 && key == 82 ? SELECT : key;')
+    s = s.replace('    void clear() {', '    String debugState() { return "held="+held+" presses="+presses.size(); }\n\n    void clear() {')
+    p.write_text(s)
+    p = nav / 'src/com/roc/rgsp/navtrial/MouseController.java'
+    s = p.read_text()
+    s = s.replace('    boolean isActive() { return active; }', '''    boolean isActive() { return active; }
+
+    void windowFocusLost() {
+        // Releases may be cancelled when the Settings overlay loses focus.
+        // Never carry those held keys into the next standalone Select hold.
+        // Active gestures intentionally release focus to deliver a touch.
+        if (!active) { hotkey.clear(); cancelSelectToggle(); }
+    }''')
+    s = s.replace('event.isCanceled(), event.getEventTime());', '''event.isCanceled(), event.getEventTime());
+        if (event.getScanCode()==310) android.util.Log.i("ROCSelect",
+            "key="+key+" action="+event.getAction()+" flags="+event.getFlags()
+            +" canonical="+triggerKey+" result="+hotkey.lastResult+" "+hotkey.debugState());''')
     p.write_text(s)
 
     # The source framework's legacy ROMS visibility rule cannot expose TF2.
@@ -100,7 +138,12 @@ def generate(repo, native, dest):
     # This is an unmerged board fragment; the sepolicy section is added later.
     s = s.replace('</manifest>', BLOCK.decode() + '</manifest>')
     hal = ET.tostring(ET.fromstring((light / 'h700-light.xml').read_bytes()).find('hal'), encoding='unicode')
-    (dest / 'manifest.xml').write_text(s.replace('</manifest>', hal + '\n</manifest>'))
+    # The running supplicant registers 1.2; omitting its declaration makes the
+    # framework fall back to 1.0 listInterfaces instead of 1.1 addInterface.
+    supplicant = '''<hal format="hidl"><name>android.hardware.wifi.supplicant</name>
+<transport>hwbinder</transport><version>1.2</version><interface><name>ISupplicant</name>
+<instance>default</instance></interface><fqname>@1.2::ISupplicant/default</fqname></hal>'''
+    (dest / 'manifest.xml').write_text(s.replace('</manifest>', hal + '\n' + supplicant + '\n</manifest>'))
 
     # Private vold library/binary; the AIDL protocol and old modules stay intact.
     vold = dest / 'Vold'

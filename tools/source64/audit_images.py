@@ -137,7 +137,7 @@ def main():
         check('retained dual ABI ' + name, sha(f) == item['sha256'] and data[4] == item['ELF_class']
               and struct.unpack_from('<H', data, 18)[0] == item['e_machine'])
     nav = apk('ROCNavigation')
-    check('Navigation14 manifest', "versionCode='14'" in run([HOST / 'aapt2', 'dump', 'badging', nav]).stdout)
+    check('Navigation16 manifest', "versionCode='16'" in run([HOST / 'aapt2', 'dump', 'badging', nav]).stdout)
     check('Navigation shade range marker', 'com.android.systemui:id/slider' in dex(nav))
     check('old Navigation APK absent', file('/system/app/RGSPNavigation/RGSPNavigation.apk', False) is None)
     environment = text('/init.environ.rc')
@@ -216,6 +216,8 @@ def main():
     check('no extra backlight VINTF fragment', len(light_declarations) == 1)
     check('OMX and OMXStore declared', set(instances('android.hardware.media.omx')) ==
           {'@1.0::IOmx/default', '@1.0::IOmxStore/default'})
+    check('supplicant 1.2 declared', instances('android.hardware.wifi.supplicant') ==
+          ['@1.2::ISupplicant/default'])
     check('H700 light init', '/vendor/bin/hw/android.hardware.light@2.0-service.rocsource' in
           text('/vendor/etc/init/roc-light.rc'))
     for path, label in [('/vendor/bin/hw/android.hardware.light@2.0-service.rocsource', 'hal_light_default_exec'),
@@ -273,6 +275,12 @@ def main():
     check('new layout and factory profile', properties.get('ro.roc.storage.layout') == 'unified-v1' and
           properties.get('ro.roc.source64.round') == '2' and properties.get('ro.product.device') == 'rgsp' and
           properties.get('persist.vendor.rgsp.input_profile') == 'rg34xxsp')
+    startup = text('/system/etc/init/roc-source64-startup.rc')
+    check('zygote preload and devpts startup fix',
+          sha(file('/system/etc/init/roc-source64-startup.rc')) ==
+          sha(REPO / 'android/h700-android10/device/roc/roc_os_source64/configs/roc-source64-startup.rc')
+          and 'on load_persist_props_action' in startup and 'setprop persist.sys.boot.first true' in startup
+          and 'mount devpts devpts /dev/pts' in startup)
     check('factory HOME XML', 'com.overdevs.at4k/.MainActivity' in text('/system/etc/preferred-apps/at4k-home.xml'))
     check('Leanback hash for factory defaults', sha(apk('LeanbackIME')) ==
           text('/system/etc/rgsp/leanback.sha256').strip().split()[0])
