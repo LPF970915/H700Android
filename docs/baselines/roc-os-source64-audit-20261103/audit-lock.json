@@ -1,0 +1,171 @@
+{
+  "date": "2026-11-03",
+  "audit_only": true,
+  "source_product": "roc_os_source64-eng",
+  "source_image_build_passed": true,
+  "offline_parity_accepted": false,
+  "ready_for_whole_card_packaging": false,
+  "reference": "Test2a plus physically accepted Light4 and data Navigation13; pinned offline readiness r4 stage-v5 used for comparison, r4 not installed on current card",
+  "source_images": {
+    "system.img": {
+      "bytes": 1144652260,
+      "sha256": "1e5650be2e05f5774045e20c3df0ba53d2839b4619740aac79272bcd1ca0601a"
+    },
+    "vendor.img": {
+      "bytes": 65843420,
+      "sha256": "9b3c38ec5d6efb8777123fce4c5529fd38352cf39f2d92f72a60f607cedd9d27"
+    },
+    "ramdisk.img": {
+      "bytes": 800471,
+      "sha256": "caca37654a34b39abe274828e5e6aa9a39b3748510bd59eb2f46fe753d34f709"
+    }
+  },
+  "checks": {
+    "source_image_integrity": true,
+    "system_e2fsck_exit": 0,
+    "vendor_e2fsck_exit": 0,
+    "startup_roots_checked": 34,
+    "unique_ELF_objects": 543,
+    "namespace_states": 626,
+    "DT_NEEDED_missing": 0,
+    "pre_APEX_init_objects": 41,
+    "pre_APEX_missing": 0,
+    "selected_APK_count": 23,
+    "selected_APK_signature_failures": 0
+  },
+  "identical_checked_inputs": [
+    {
+      "partition": "system",
+      "path": "/system/priv-app/AT4K/AT4K.apk",
+      "sha256": "93041269d215dd450f4b559cb4fe57337267753d6ff7444ca142e17d07d997cf"
+    },
+    {
+      "partition": "system",
+      "path": "/system/app/LeanbackIME/LeanbackIME.apk",
+      "sha256": "6f29e76aeb91d5caba1690325f9e4dd22d29f2f1acd713dd14f95f3c867e2efd"
+    },
+    {
+      "partition": "system",
+      "path": "/system/etc/preferred-apps/at4k-home.xml",
+      "sha256": "267d77fa1c53f5aa74489a40d7a2d8caf7f330e97de93596306a7c100c775c1e"
+    },
+    {
+      "partition": "system",
+      "path": "/system/media/wallpapers/IMG_3111.jpg",
+      "sha256": "0d99ad08346620e240fa6eb7e765bb55996d4a311c8141a209626e08cad88997"
+    },
+    {
+      "partition": "system",
+      "path": "/system/usr/keylayout/ANBERNIC-keys.kl",
+      "sha256": "a1de983c27e5991f29479fe3f34fada59e4f2fd871dd72c5fe2a9489490158c9"
+    },
+    {
+      "partition": "vendor",
+      "path": "/modules/h700_stick_axes.ko",
+      "sha256": "9c8eacf887cd9d00f5416c05b24118ce625e4deef73003f79ea1805c6a31faf5"
+    },
+    {
+      "partition": "vendor",
+      "path": "/modules/8821cs.ko",
+      "sha256": "59933ce6ca29c88d5c8382e0aa7bf794b1fb42c2595b03f2694901bbfa206a72"
+    },
+    {
+      "partition": "vendor",
+      "path": "/lib64/egl/libGLES_mali.so",
+      "sha256": "03333d495e3566c7d85ca2e000da569a16ce8f022ea25c0ea61950c891d5c7f8"
+    },
+    {
+      "partition": "vendor",
+      "path": "/lib/egl/libGLES_mali.so",
+      "sha256": "05dc81f866b7ab947d20f283f25dcd96ca2f56ffd48e637b68778c1a994a6925"
+    }
+  ],
+  "features_present": {
+    "zh_CN": true,
+    "AT4K_preferred_HOME": true,
+    "wallpaper": true,
+    "physical_A_scan304_ENTER_guard_in_SystemUI_DEX": true,
+    "power_menu_DPAD_HAT_focus_in_SystemUI_DEX": true,
+    "Hall_sensor_power_button_API_helper_present": true,
+    "Hall_new_runtime_accepted": false,
+    "bringup_wakelock_preserved": true,
+    "arm64_primary_arm32_secondary": true
+  },
+  "blocking_findings": [
+    {
+      "id": "NAV",
+      "item": "Navigation8 vs accepted Navigation13; adjustRange excludes SystemUI shade",
+      "action": "Integrate scoped slider fix and source64-compatible native SystemUI delegation marker; rebuild navigation."
+    },
+    {
+      "id": "LIGHT",
+      "item": "H700 Light service/RC/context/VINTF not present",
+      "action": "Integrate selected BACKLIGHT-only HIDL2 service with exactly one default instance and validate labels/closure."
+    },
+    {
+      "id": "AUDIO",
+      "item": "Mixer XML contains donor controls, differs from physically accepted H700 mapping",
+      "action": "Pin accepted H700 mixer in independent product; audit HAL configuration and rebuild vendor."
+    },
+    {
+      "id": "MEDIA",
+      "item": "IOmx/IOmxStore absent from vendor VINTF despite OMX service binary/RC",
+      "action": "Restore existing software codec catalog declarations and validate merged manifest."
+    },
+    {
+      "id": "STORAGE_BOOT",
+      "item": "Old fstab/ROMS handoff and retained boot grower require p8; unified TF1 userdata and TF2 removable not implemented",
+      "action": "Design independent compact GPT/boot handoff/userdata grow/TF2 fstab-vold/recovery flow; offline test geometry and interruption branches before packaging."
+    },
+    {
+      "id": "DEFAULTS",
+      "item": "Model ROC OS present but USB still H700 Android USB; saved-name migration absent; orphan v6b installer and default-priority provisioning RCs remain",
+      "action": "Align branding and pure-system initialization, remove installer from candidate policy, preserve AT4K/helpers, use low-priority first boot."
+    }
+  ],
+  "boot_contract": {
+    "prefix_sha256": "9e89204206e56a9b438e5dee2d689946ea1a4037586f454c9211c2eb7245322d",
+    "retained_init_sha256": "3b8c6c1458d28c9a664900f92a92b111b91da2afbf69ad1e606cb9f47c5db053",
+    "pre_switch_root_x_check": true,
+    "switch_root_selinux_setup": true,
+    "new_system_bin_init_regular": true,
+    "new_root_init_direct_symlink": true,
+    "new_init_interpreter": "/system/bin/bootstrap/linker64",
+    "new_interpreter_regular": true,
+    "new_ramdisk_replaces_retained_boot_contract": false,
+    "boot_execution_tested": false
+  },
+  "limitations": [
+    "DT_NEEDED/ELF checks do not prove runtime symbol versions, dlopen paths, kernel ioctl ABI or actual boot.",
+    "SystemUI source-native implementation differs from GSI helper implementation; lack of SystemUiKeys marker is not itself missing A or power navigation.",
+    "Only selected 23 APKs verified; not whole-system sharedUID/signing audit.",
+    "Current user card was not read or controlled; physical acceptance applies to historical guarded runtime, not these new images.",
+    "No whole-source manifest or full parity/SELinux/release certification."
+  ],
+  "next_steps": [
+    "Repair isolated source product configuration and helper deltas; keep old/native products untouched.",
+    "Incrementally rebuild affected source modules and partition images via original capped wrapper.",
+    "Re-audit new immutable outputs, APK/API/signing, VINTF, namespace closures, labels and fsck.",
+    "Implement and test new storage/boot layout offline without modifying cards.",
+    "After user confirmation, assemble separate whole-card test candidate with pinned boot0/boot resources and verify all ranges/decompression.",
+    "Use explicit later authorization and physical acceptance for flash/first boot; full release acceptance remains separate."
+  ],
+  "no_build_inputs_modified": true,
+  "no_build_started": true,
+  "no_device_or_card_access": true,
+  "no_whole_card_image_created": true,
+  "automation_status": "PAUSED",
+  "local_evidence_sha256": {
+    "apk-signatures.json": "c9c4e00373af7f485f222946cdbafe131760a864d4e10d60ac6bd6381162d888",
+    "apks.json": "f2c00d822561bc10974c08a2d0c10cf830032f402c185410c299e8fc3d49f0e4",
+    "boot-contract-v2-rejected.json": "431b6dce8cd1116f46cb1cf95b19c4f9c7397888f40f86990348b406039bf3a0",
+    "boot-contract-v3.json": "fed75cb5685df6517710165c91b5d2271c00416a8f334736244d1fefa1b8c64d",
+    "boot-dex.json": "09e77393c6723b3db47b76c74cc98f1af2214d582fc6490e99066e745a9891dd",
+    "boot-stats.json": "76e5eee176d86e6e9cb4fcc1045077fc9c57af57ed4e6f5c6731d6c45fb78656",
+    "dependency-closure.json": "6e39506561d72b64191406c221fe9671ad0b726e4a1e29883efb2aa288d47f30",
+    "files.json": "f4fc269051a88974a942647036ad3d695c92963c1b2c267652a5f54a0103b66a",
+    "filesystem.json": "3642ad81e84a5a30391b84e851edce29c75f28161bbe79c14d9718feaf3190fe",
+    "final-guard.json": "88e2bd6d4d7bc660a407d1de58a1928ee25cb2102e5e11f738e7a018ef0cb63b",
+    "signature-semantics.json": "a1a7d66fd88eb245ab763bb954c008f19d3166f291f652160bac6ea7bb5c3acb"
+  }
+}

@@ -1,5 +1,7 @@
 # 当前基线与接手状态
 
+2026-11-03源码产物离线审计完成：[差异报告](ROC_OS_SOURCE64_AUDIT_20261103.md)及[审计锁](baselines/roc-os-source64-audit-20261103/audit-lock.json)。双分区只读fsck、启动DT_NEEDED与选定APK签名检查通过，A解锁/电源焦点已在实际DEX中保留；但Navigation滑条、Light、音频混音、OMX声明和初始化/品牌尚未对齐，TF1统一userdata/TF2外置布局也未实施。当前仅审计，原三镜像/源码输入/设备卡未修改，没有重新编译或制作整卡镜像；等待用户确认后才进入镜像制作。
+
 2026-11-03 18:55源码构建第一轮已完成：独立`roc_os_source64-eng`的system/vendor/ramdisk构建退出0，三镜像SHA和371项原输入、57项独立产品文件、2项ABI5主机库复核通过；10项实际ELF证明ARM64/ARM32的应用进程、加载器、ART、JNI运行库及私有Gralloc产物。完整结果见[本轮交付记录](ROC_OS_SOURCE64_ROUND1_20261103.md)与[完成锁](baselines/roc-os-source64-round1-20261103/completion.json)。定时跟进已暂停，没有刷卡或整卡IMG；新源码产物启动、现行补丁一致性、纯净预装及新存储布局仍待后续独立阶段。
 
 2026-11-03源码构建第一轮已启动：独立`roc_os_source64-eng`及全新输出目录，371项关键源输入与私有Gralloc副本锁定，ARM64主架构/ARM32兼容/API29确认。完整依赖图已通过；system/vendor/ramdisk实际编译正在运行，尚无整镜像或启动通过结论。使用原单核/6GiB/512MiB/nice19限制，不刷现卡、不改分区。见[首轮进度锁](baselines/roc-os-source64-round1-20261103/result-lock.json)。
