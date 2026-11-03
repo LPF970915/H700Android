@@ -1,0 +1,79 @@
+{
+  "passed": true,
+  "image": "ROC_OS_ARM64_Source64_Clean_Test1_20261104.img.gz",
+  "bytes": 596398309,
+  "sha256": "d9e3bff75cf1fa5f9f71ffdbd14073c5cec81cb6bff6191294cf720724188a4b",
+  "raw_bytes": 32434554368,
+  "raw_sha256": "e03c5d9a501185f97aeda4f76ea6498499f631a66ca8ffaf311f7e44ff4e6530",
+  "ranges": [
+    {
+      "name": "prefix",
+      "offset": 0,
+      "bytes": 222298112,
+      "sha256": "490a9860d21854b015418aea3714af6d5673ac7e2d1a8b49c99c7fcf19f57dab"
+    },
+    {
+      "name": "system",
+      "offset": 222298112,
+      "bytes": 8589934592,
+      "sha256": "7ff474ac2d1b2e290ffc514b39a8a6f3e0ad4604912ac8659a7e913633cb7058"
+    },
+    {
+      "name": "vendor",
+      "offset": 8812232704,
+      "bytes": 2147483648,
+      "sha256": "0094e720c96340eba34c6de965c7cc2e7bd31a51a99cbfdfedc1aa4e2dcad312"
+    },
+    {
+      "name": "userdata",
+      "offset": 10959716352,
+      "bytes": 21474836480,
+      "sha256": "847eefab7d0dfa332b710bc7e84d38bf712d5dd3fa7ef0215b19d738bf2d1653"
+    },
+    {
+      "name": "backup_gpt",
+      "offset": 32434552832,
+      "bytes": 1536,
+      "sha256": "ba9ba2c16fbb57653f2d5b221bb2f0c2ee698550f1d9dc33df30b5565d23c5dc"
+    }
+  ],
+  "work": "/home/lpf/roc-os-source64-card-20261104-v1",
+  "boot_kernel_dtb_preserved": true,
+  "factory_userdata_empty": true,
+  "Android_ARM64_fsck_passed": true,
+  "full_gzip_verified": true,
+  "whole_card_image_created": true,
+  "device_or_card_modified": false,
+  "device_boot_accepted": false,
+  "minimum_card_GB": 64,
+  "scope": "RG34XXSP H700 2GB engineering test; no third-party preloads/ROM/accounts",
+  "source_completion_sha256": "d100281fcbc98e5cdc2fda8f9acc8a94a4cba5fbcbfd16b19c9d7731a7314692",
+  "completed_at": "2026-11-04T01:55:56+08:00",
+  "final_check": {
+    "passed": true,
+    "source_sparse_ranges_match_card": true,
+    "compressed_sha256": "d9e3bff75cf1fa5f9f71ffdbd14073c5cec81cb6bff6191294cf720724188a4b",
+    "userdata_root_uid": 1000,
+    "userdata_root_gid": 1000,
+    "userdata_root_mode": "0771",
+    "userdata_context": "u:object_r:system_data_root_file:s0",
+    "device_modified": false
+  },
+  "packaging_unit": "h700-low-pressure-20261104-014644.service",
+  "verification_unit": "h700-low-pressure-20261104-015543.service",
+  "packaging_runtime_seconds": 420.185,
+  "packaging_peak_ram_gib": 5.0,
+  "packaging_peak_swap_mib": 0,
+  "source_commit": "42e4f67",
+  "parent_result_immutable": true,
+  "packaging_source_sha256": {
+    "tools/source64/package_card.py": "381840e38b9e2c938ec61ab1072b73dde60765b2f394265e134c824f292a7a2f",
+    "tools/source64/verify_card.py": "aabc1c99d69fa770f0d8d2c0c6776eee1c41122c9788915f6eb15107d5bca39c",
+    "tools/build_h700_low_pressure.ps1": "14dd940ad71b603163f4734ce8fbd888d3ed7772fa690d68ab47d9301b131e71",
+    "tools/build_h700_low_pressure.sh": "fc53b1d2173a1a539b3ee72c5504e9eb425a6d4b69f477e48e8b1f5ed1cba5b1"
+  },
+  "logs_sha256": {
+    "h700-low-pressure-20261104-014644.log": "73905d29f741d2d6d7a224bb101199effd633fb4af5d62c3838f85a014547f20",
+    "h700-low-pressure-20261104-015543.log": "bf0be77a31aeaf879d031d7a3829cf32c4dbe3e4e8c5a77f0ca23e21f2ae04c5"
+  }
+}
