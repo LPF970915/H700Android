@@ -1,0 +1,43 @@
+{
+  "date": "2026-11-04",
+  "scope": "Source64 repaired source/runtime engineering baseline; no image upload",
+  "source_fix_commit": "03362c3",
+  "baseline_tag": "baseline/roc-os-source64-live-fix1-20261104",
+  "product": "roc_os_source64-eng",
+  "source_build_receipt": "images-result-v14.json",
+  "source_audit_receipt": "round2-audit-v10.json",
+  "offline_checks": 120,
+  "host_cases": 21,
+  "runtime": "Clean Test1 plus guarded supplicant/startup RC/HOME role/data Navigation16 fixes",
+  "storage": {
+    "tf1_card_nominal_GB": 128,
+    "layout": "unified-v1; p7 userdata; no p8 ROMS",
+    "data_filesystem_bytes": 113592975360,
+    "file_count": 66,
+    "large_fixture_bytes": 8388608,
+    "unicode_and_space_filenames": true,
+    "zero_length_file": true,
+    "shared_and_backing_hashes_match_before_and_after": true,
+    "distinct_normal_reboot": true,
+    "critical_guard_retained": true,
+    "HOME_after_reboot": "com.overdevs.at4k/.MainActivity",
+    "locale_after_reboot": "zh-CN",
+    "post_reboot_crash_buffer_empty": true,
+    "tf2_card_present": false,
+    "tf2_host_matches_fstab": true
+  },
+  "pending": [
+    "latest physical Navigation16 confirmation",
+    "TF2 actual insertion/removal/persistence",
+    "other TF1 card capacities",
+    "recovery and power-loss acceptance",
+    "charging thermal deep-suspend",
+    "audio network peripheral complete regression",
+    "release security licensing reproducibility",
+    "single final-image acceptance"
+  ],
+  "whole_card_repack_after_fix": false,
+  "image_uploaded": false,
+  "release_accepted": false,
+  "raw_evidence": "private ignored out/source64-storage-20261104/"
+}
