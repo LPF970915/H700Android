@@ -127,6 +127,8 @@ boot = boot_contract(REPO, ROOT, OUT)
 retired = []
 staging = ROOT / 'out/target/product/roc_os_source64'
 for relative in [
+    'system/etc/init/roc-factory.rc', 'system/bin/roc-factory.sh',
+    'system/etc/init/roc-os-branding.rc', 'system/bin/roc-os-branding.sh',
     'system/app/RGSPNavigation',
     'system/framework/services.jar',
     'system/framework/services.jar.prof', 'system/framework/wifi-service.jar',

@@ -1,0 +1,15 @@
+{
+  "distinct_kernel_boot": true,
+  "critical_hashes_unchanged": true,
+  "navigation16_hash_unchanged": true,
+  "thermal_init_service_running": true,
+  "thermal_UID": 1000,
+  "thermal_domain": "hal_thermal_default",
+  "framework_HAL_ready": true,
+  "AT4K_resolved": true,
+  "TF2_absent": true,
+  "user_reports_chinese_A_unlock_AT4K_normal": true,
+  "physical_cold_boot_count": 1,
+  "final_user_release_acceptance": false,
+  "TF1_66_file_hashes_shared_and_backing_retained": true
+}

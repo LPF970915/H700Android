@@ -1,0 +1,72 @@
+{
+  "schema": 1,
+  "date": "2026-11-04",
+  "parent_commit": "24ea1f0",
+  "baseline_tag": "baseline/roc-os-release-run-r1-20261104",
+  "scope": "TF2 physical hotplug, engineering cold boot, signing identity backup, nonroot provisioning migration",
+  "build": {
+    "unit": "h700-low-pressure-20261104-222540",
+    "receipt": "images-result-v18.json",
+    "prepare": "prepare-v22.json",
+    "images": {
+      "system.img": {
+        "bytes": 1148080612,
+        "sha256": "9bb577067ba25ac73e0e9413e95a718fe8b064f135e5d2d5c61657a8a22c2cf5"
+      },
+      "vendor.img": {
+        "bytes": 65925340,
+        "sha256": "e61a2792a75d8149bda0a22796e62dfba52a66ad6896b3a8aef1da41fe7ce60f"
+      },
+      "ramdisk.img": {
+        "bytes": 800471,
+        "sha256": "caca37654a34b39abe274828e5e6aa9a39b3748510bd59eb2f46fe753d34f709"
+      }
+    },
+    "original_inputs_unchanged": 371,
+    "host_cases": 18,
+    "host_receipt": "round2-test-v22.json",
+    "wall_seconds": 628.533,
+    "peak_RAM_GiB": 5,
+    "peak_swap_MiB": 445.7
+  },
+  "audit": {
+    "unit": "h700-low-pressure-20261104-223629",
+    "receipt": "round2-audit-v13.json",
+    "checks": 121,
+    "passed": true,
+    "namespace": {
+      "roots": 36,
+      "ELF_objects": 548,
+      "namespace_states": 631,
+      "early_objects": 41
+    }
+  },
+  "release_tools": {
+    "unit": "h700-low-pressure-20261104-225006",
+    "run": "run-v6",
+    "tests_passed": 11,
+    "actual_snapshot": "round2-audit-v13",
+    "build_receipt": "images-result-v18.json",
+    "refuse_stale_or_failed_build_receipts": true,
+    "formal_release_allowed": false
+  },
+  "physical_brightness_user_reports_normal": true,
+  "TF2_currently_physically_removed": true,
+  "current_card_data_provisioning_APK_added": true,
+  "current_card_engineering_root_scripts_not_removed": true,
+  "fresh_factory_userdata_not_accepted": true,
+  "formal_keys_not_used_for_this_engineering_build": true,
+  "whole_card_image_created": false,
+  "current_card_flashed": false,
+  "release_allowed": false,
+  "remaining": [
+    "other su-domain hardware/network/wallpaper services",
+    "isolated user build",
+    "formal signing of all packages",
+    "root-console-USB and boot security",
+    "SELinux enforcing and runtime policy validation",
+    "power/charging/deep-sleep/thermal protection",
+    "ordinary-app SAF and recovery hardware acceptance",
+    "license review and full final-image regression"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "archive_copied": true,
+  "hash_verified": true,
+  "independent_USB_medium": true,
+  "recovery_passphrase_external_copy": true,
+  "archive_and_passphrase_on_same_medium_user_selected": true,
+  "external_backup_decrypt_verified": true,
+  "all_12_members_match_original": true,
+  "backup_sha256": "2021af43a0d1db04ac35b5894f11e680f423dd81efda2f4eb00750056f12e4a7",
+  "private_material_printed": false
+}

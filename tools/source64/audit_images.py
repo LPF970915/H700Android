@@ -231,10 +231,8 @@ def main():
     check('ROC USB branding', 'ROC OS' in text('/system/etc/init/h700-usb-configfs.rc'))
     for leaf in ['roc-os-branding', 'roc-factory']:
         for ext, folder in [('sh', 'bin'), ('rc', 'etc/init')]:
-            check(leaf + '.' + ext + ' exact', sha(file('/system/' + folder + '/' + leaf + '.' + ext)) ==
-                  sha(REPO / 'android/h700-android10/device/roc/roc_os_source64/configs' / (leaf + '.' + ext)))
-        service = text('/system/etc/init/' + leaf + '.rc')
-        check(leaf + ' low priority', 'priority 19' in service and 'ioprio idle 0' in service)
+            check('removed root provisioning '+leaf+'.'+ext, file('/system/'+folder+'/'+leaf+'.'+ext,False) is None)
+    check('privileged provisioning boot receiver', 'android.intent.action.BOOT_COMPLETED' in dex(apk('ROCProvisioning')) or 'Defaults complete; mode=' in dex(apk('ROCProvisioning')))
     # Follow this BSP's property_load_boot_defaults fallback and late-file order,
     # then property_initialize_ro_product_props partition-source derivation.
     default = next((p for name in ['/system/etc/prop.default', '/prop.default', '/default.prop']
@@ -296,16 +294,17 @@ def main():
         old = prior['new-' + part + ':' + name]
         check('retained hardware ' + path, sha(file(path)) == old['sha256'])
     signers = {}
-    for leaf in ['AT4K', 'ROCNavigation', 'H700Lid', 'H700Rotation', 'SystemUI', 'Settings', 'LeanbackIME']:
+    for leaf in ['AT4K', 'ROCNavigation', 'H700Lid', 'H700Rotation', 'SystemUI', 'Settings', 'LeanbackIME', 'ROCProvisioning']:
         f = apk(leaf)
         verification = run([NATIVE / 'prebuilts/jdk/jdk9/linux-x86/bin/java', '-Xmx256m', '-jar',
             NATIVE / 'prebuilts/sdk/tools/linux/lib/apksigner.jar', 'verify', '--min-sdk-version', '29',
             '--max-sdk-version', '29', '--print-certs', f])
         signers[leaf] = re.findall(r'certificate SHA-256 digest: (\w+)', verification.stdout)
-        if leaf != 'ROCNavigation':
+        if leaf not in ['ROCNavigation','ROCProvisioning']:
             old = next(v for k, v in prior.items() if k.startswith('new-system:') and
                        k.endswith('/' + leaf + '/' + leaf + '.apk'))
             check('retained APK ' + leaf, sha(f) == old['sha256'])
+    check('Provisioning platform signer', signers['ROCProvisioning'] == signers['SystemUI'])
     check('Navigation SystemUI platform signer', signers['ROCNavigation'] == signers['SystemUI'])
     # The complete installed APK catalog, not merely seven selected names.
     packages = {}
@@ -390,7 +389,7 @@ def main():
     services = []
     for f in (WORK / 'init-catalog').rglob('*.rc'):
         services.extend(re.findall(r'^service\s+(\S+)\s+(.*)$', f.read_text(), re.M))
-    for name in ['vold', 'vendor.h700-light', 'roc-factory', 'roc-os-branding']:
+    for name in ['vold', 'vendor.h700-light']:
         check('single init service ' + name, sum(x[0] == name for x in services) == 1)
     (WORK / 'init-services.json').write_text(json.dumps(services, indent=2) + '\n')
     result = {'passed': True, 'build_receipt': results[-1].name, 'work': str(WORK), 'checks': checks,

@@ -1,0 +1,9 @@
+{
+  "same_card_CID": true,
+  "sdc2_host": true,
+  "block_removed_before_reinsert": true,
+  "auto_mount": true,
+  "file_count": 66,
+  "raw_and_shared_hashes": true,
+  "format_or_repair": false
+}

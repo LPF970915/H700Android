@@ -1,12 +1,27 @@
 import hashlib,json,os,shutil,struct,subprocess,tempfile,unittest
 from pathlib import Path
 from unittest.mock import patch
-import inventory,recovery,audit_release
+import inventory,recovery,audit_release,build_receipts
 class ReleaseTests(unittest.TestCase):
  def setUp(self):
   base=Path(os.environ['ROC_RELEASE_TEST_FIXTURES']) if 'ROC_RELEASE_TEST_FIXTURES' in os.environ else Path(tempfile.mkdtemp(prefix='roc-release-tests-'))
   base.mkdir(parents=True,exist_ok=True);self.root=base/self._testMethodName;self.root.mkdir()
  def tearDown(self):pass # Keep regular-file fixtures and failed evidence.
+ def test_latest_build_and_audit_cannot_fall_back(self):
+  receipts=self.root/'receipts';receipts.mkdir();work=self.root/'audit';work.mkdir()
+  images={'system.img':{'sha256':'fixture'}}
+  def write(p,v):p.write_text(json.dumps(v))
+  write(receipts/'images-result-v9.json',{'passed':True,'images':images})
+  write(receipts/'images-result-v10.json',{'passed':True,'images':images})
+  write(work/'result.json',{'passed':True,'images':images})
+  write(receipts/'round2-audit-v1.json',{'passed':True,'images':images,'build_receipt':'images-result-v9.json','work':str(work)})
+  with self.assertRaises(ValueError):build_receipts.current_audit(receipts)
+  write(receipts/'round2-audit-v2.json',{'passed':True,'images':images,'build_receipt':'images-result-v10.json','work':str(work)})
+  self.assertEqual(build_receipts.current_audit(receipts)[0].name,'images-result-v10.json')
+  write(receipts/'images-result-v11.json',{'passed':False,'images':{}})
+  with self.assertRaises(ValueError):build_receipts.current_audit(receipts)
+  write(receipts/'images-result-v11.json',{'passed':True,'images':{'system.img':{'sha256':'changed'}}})
+  with self.assertRaises(ValueError):build_receipts.current_audit(receipts)
  def test_inventory_drift_links_and_added_files(self):
   source=self.root/'source';source.mkdir();(source/'a').write_bytes(b'pin');(source/'link').symlink_to('a');m=self.root/'manifest';inventory.inventory(source,m);self.assertTrue(inventory.verify(source,m));(source/'a').write_bytes(b'bad')
   with self.assertRaises(AssertionError):inventory.verify(source,m)

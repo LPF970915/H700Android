@@ -1,0 +1,33 @@
+{
+  "schema": 1,
+  "identity": "ROC OS production-v1",
+  "created_UTC": "2026-11-04T14:19:05.418413+00:00",
+  "key_bits": 4096,
+  "roles": {
+    "releasekey": {
+      "certificate_sha256": "0c36c56fc987292638584955eb12d4fe93eaef265a2ca7964a1b431d521d9db0",
+      "public_key_sha256": "0ba5d48dc6d9f3a343aa8c1fc4a299f6faacab26cea7b96d4115ec902a2a9371"
+    },
+    "platform": {
+      "certificate_sha256": "fc30e834b3c2914a0646d0b46c4faaa045aa8d46189950012555a5f2c36745c9",
+      "public_key_sha256": "8fa5305c3bd50d27938a7e8d73e462116c192d8ff5d5fe0142bcb845435167eb"
+    },
+    "shared": {
+      "certificate_sha256": "16cd421337536d47ddea66c2eb94cf9d91f856d05228fa9a8d7515c6937c9ee9",
+      "public_key_sha256": "67337f097b404650ef7d7f743eed21d9cd7010e05b145eb9fd27bccfd39778fa"
+    },
+    "media": {
+      "certificate_sha256": "f07dc4431821aa621566ec371f16ec69aec730203ace35aa47dda3286d2ad198",
+      "public_key_sha256": "17b31302ddd9de653afbff1e8d22a861d33abca547169947f08a80d830f52b99"
+    },
+    "networkstack": {
+      "certificate_sha256": "849703b189a014765a8de097be80a847a45d36261ffce8d22dc94155715ea561",
+      "public_key_sha256": "5f6d04946e85526624590f02e401156e39b288aa4d578d6e659df434a3b79fd4"
+    }
+  },
+  "external_backup_accepted": false,
+  "backup_sha256": "2021af43a0d1db04ac35b5894f11e680f423dd81efda2f4eb00750056f12e4a7",
+  "encrypted_backup_decrypt_verified": true,
+  "tamper_rejected": true,
+  "private_keys_outside_repository": true
+}

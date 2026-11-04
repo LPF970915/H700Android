@@ -154,8 +154,7 @@ for file in [PRODUCT / 'configs/roc-factory.sh', PRODUCT / 'configs/roc-os-brand
 contract = json.loads((OUT / 'boot-contract.json').read_text())
 run(['sh', '-n', Path(contract['work']) / 'init'])
 passed.append('boot-and-provisioning-shell-syntax')
-from test_factory import checks
-passed.extend(checks(PRODUCT, WORK))
+
 classes = WORK / 'select-fallback-classes'
 classes.mkdir()
 jdk = Path('/home/lpf/h700-android10/android/prebuilts/jdk/jdk9/linux-x86/bin')
@@ -170,6 +169,12 @@ run(['g++', '-std=c++14', '-Wall', '-Wextra', '-Werror', '-I', PRODUCT / 'Therma
      REPO / 'tools/source64/thermal_model_test.cpp', '-o', WORK / 'thermal-model-test'])
 run([WORK / 'thermal-model-test', WORK / 'thermal-fixture'])
 passed.append('Thermal-real-unit-trip-boundaries-missing-invalid-and-cooling')
+
+provision = WORK / 'provision-policy-classes'
+provision.mkdir()
+run([jdk / 'javac', '-d', provision, PRODUCT / 'Provisioning/src/com/roc/os/provisioning/ProvisionPolicy.java', REPO / 'tools/source64/ProvisionPolicyTest.java'])
+run([jdk / 'java', '-Xmx128m', '-cp', provision, 'com.roc.os.provisioning.ProvisionPolicyTest'])
+passed.append('unprivileged-provision-policy-fresh-retry-adopt-name-and-component-preservation')
 
 result = {'passed': True, 'work': str(WORK), 'cases': passed, 'case_count': len(passed),
           'devices_accessed': False, 'synthetic_fixtures_not_flashable': True, 'whole_card_image_created': False}

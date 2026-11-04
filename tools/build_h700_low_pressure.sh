@@ -7,7 +7,7 @@ test "$#" -gt 0
 for target in "$@"; do
     case "$target" in systemimage|vendorimage|ramdisk|adbd|vold|services|Settings|SettingsIntelligence|SystemUI|MediaProvider|LatinIME|LeanbackIME|Calendar|DocumentsUI|RGSPLauncher|RGSPNavigation|H700Apps|H700Navigation|H700Input|H700KernelInput|H700Lid|H700Rotation|H700RotationFramework|H700ReleaseImage|H700ReleaseImageMT|H700Arm64Feasibility|H700Arm64Isolated|rgsp_vsync_probe|rgsp_egl_import_probe|hwcomposer.cupid|libsurfaceflinger|PermissionController) ;;
         H700DualAbiWindow|H700DualAbiBoot|H700DualAbiImage|H700DualAbiAudit|H700DualAbiBootEntry|H700DualAbiEntryImage|H700DualAbiHandoff|H700DualAbiHandoffImage|H700DualAbiTestNavigation|H700DualAbiTestImage|H700DualAbiTestAudit|H700DualAbiInteraction|H700DualAbiParity|H700DualAbiParityApps|H700DualAbiParityUi|H700DualAbiParityServices|H700DualAbiParityVold|H700DualAbiParityOverlay|H700DualAbiParityLinkage|H700DualAbiParityVoldAudit|H700DualAbiParitySettingsApi|H700DualAbiParityPayload|H700DualAbiParityStage|H700DualAbiParityFinal|H700DualAbiParitySeal|H700DualAbiParityImage) ;;
-        H700DualAbiDefaultsStage|H700DualAbiDefaultsImage|H700AyaspaceInspect|H700AyaspaceCompat|H700ReadinessBuild|H700ReadinessStage|H700ReadinessBrandingAudit|H700QsBrightness|H700Source64Prepare|H700Source64Graph|H700Source64Build|H700Source64Audit|H700Source64Card|H700Source64CardAudit|H700ReleasePrep|H700SourceInventory|H700BuildManifest) ;;
+        H700DualAbiDefaultsStage|H700DualAbiDefaultsImage|H700AyaspaceInspect|H700AyaspaceCompat|H700ReadinessBuild|H700ReadinessStage|H700ReadinessBrandingAudit|H700QsBrightness|H700Source64Prepare|H700Source64Graph|H700Source64Build|H700Source64Audit|H700Source64Card|H700Source64CardAudit|H700ReleasePrep|H700SourceInventory|H700BuildManifest|H700ReleaseKeys) ;;
         *) echo "Unsupported target: $target" >&2; exit 2 ;;
     esac
 done
@@ -31,6 +31,11 @@ export GOGC=50
 export JAVA_TOOL_OPTIONS='-Xmx2048m'
 export NINJA_ARGS='-j1'
 export MAKEFLAGS='-j1'
+if [ "$#" = 1 ] && [ "$1" = H700ReleaseKeys ]; then
+    PYTHONPATH="$(dirname "$(realpath "$0")")" python3 "$(dirname "$(realpath "$0")")/release/create_keys.py"
+    echo "LOW_PRESSURE_COMPLETE=$(date -Is)"
+    exit 0
+fi
 if [ "$#" = 1 ] && [ "$1" = H700BuildManifest ]; then
     PYTHONPATH="$(dirname "$(realpath "$0")")" python3 "$(dirname "$(realpath "$0")")/release/build_commands.py"
     echo "LOW_PRESSURE_COMPLETE=$(date -Is)"

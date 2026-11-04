@@ -6,7 +6,7 @@ PRODUCT_NAME := roc_os_source64
 PRODUCT_DEVICE := roc_os_source64
 PRODUCT_MODEL := ROC OS
 PRODUCT_PACKAGES := $(filter-out RGSPNavigation vold services wifi-service preinstall,$(PRODUCT_PACKAGES))
-PRODUCT_PACKAGES += gralloc.rocsource ROCNavigation vold.rocsource services.rocsource wifi-service.rocsource \
+PRODUCT_PACKAGES += ROCProvisioning gralloc.rocsource ROCNavigation vold.rocsource services.rocsource wifi-service.rocsource \
     android.hardware.thermal@2.0-service.rocsource \
     android.hardware.light@2.0-service.rocsource \
     roc-grow-userdata-gpt e2fsck_static roc-resize2fs-static
@@ -28,7 +28,9 @@ roc_removed_destinations := \
     system/etc/init/rgsp-navigation-defaults.rc system/bin/rgsp-navigation-defaults.sh \
     system/etc/init/rgsp-roms-handoff.rc system/bin/rgsp-roms-handoff.sh \
     system/etc/init/h700-usb-configfs.rc vendor/etc/fstab.sun50iw9p1 \
-    fstab.sun50iw9p1
+    fstab.sun50iw9p1 \
+    system/etc/init/roc-factory.rc system/bin/roc-factory.sh \
+    system/etc/init/roc-os-branding.rc system/bin/roc-os-branding.sh
 # Prepend replacements before inherit-product expansion. Vendor placeholders in
 # inherited entries are resolved later; filtering literal vendor paths is not enough.
 roc_source64_copy_files := \
@@ -38,9 +40,5 @@ roc_source64_copy_files := \
     hardware/aw/gpu/mali-bifrost/mali-g31/arm64/lib64/libGLES_mali.so:vendor/lib64/egl/libGLES_mali.so \
     device/roc/roc_os_source64/Wifi/roc-wifi-events.rc:system/etc/init/roc-wifi-events.rc \
     device/roc/roc_os_source64/configs/fstab.sun50iw9p1:vendor/etc/fstab.sun50iw9p1 \
-    device/roc/roc_os_source64/configs/h700-usb-configfs.rc:system/etc/init/h700-usb-configfs.rc \
-    device/roc/roc_os_source64/configs/roc-os-branding.rc:system/etc/init/roc-os-branding.rc \
-    device/roc/roc_os_source64/configs/roc-os-branding.sh:system/bin/roc-os-branding.sh \
-    device/roc/roc_os_source64/configs/roc-factory.rc:system/etc/init/roc-factory.rc \
-    device/roc/roc_os_source64/configs/roc-factory.sh:system/bin/roc-factory.sh
+    device/roc/roc_os_source64/configs/h700-usb-configfs.rc:system/etc/init/h700-usb-configfs.rc
 PRODUCT_COPY_FILES := $(roc_source64_copy_files) $(filter-out $(foreach d,$(roc_removed_destinations),%:$(d)),$(PRODUCT_COPY_FILES))
