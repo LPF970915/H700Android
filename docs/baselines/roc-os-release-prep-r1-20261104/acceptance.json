@@ -1,0 +1,178 @@
+{
+  "date": "2026-11-04",
+  "baseline_tag": "baseline/roc-os-release-prep-r1-20261104",
+  "parent_commit": "2045bee",
+  "scope": "offline release preparation, regular-file recovery, content/build command inventories",
+  "device_contacted": false,
+  "runtime_changed": false,
+  "source64_BSP_product_modified": false,
+  "release_candidate": {
+    "name": "roc_os_release_candidate-user",
+    "configuration_created": true,
+    "deployed_to_native_tree": false,
+    "compiled": false,
+    "keys_created": false,
+    "user_and_external_key_guards_tested": true,
+    "safe_property_overlay_make_test": true
+  },
+  "validation": {
+    "unit_tests": 10,
+    "actual_64MiB_ext4_corruption_restore_fsck_save_readback": true,
+    "actual_frozen_32GB_seed_geometry": {
+      "image_bytes": 32434554368,
+      "start": 10959716352,
+      "bytes": 21474836480,
+      "filesystem_uuid": "cd5e86c5-155f-5d96-8e90-12ec44abf24a",
+      "gpt_sha256": "79e274daa15c4b0755d11fa51fb64c46538842f5871953e38c958cefddcf44d7"
+    },
+    "recovery_PS_path_with_spaces_and_invalid_image_rejection": true,
+    "only_regular_files_used": true,
+    "physical_card_recovery_accepted": false,
+    "first_run_result_index_TypeError_preserved_and_fixed": true
+  },
+  "release_gate": {
+    "actual_engineering_build_rejected": true,
+    "actual_snapshot": "round2-audit-v12",
+    "blockers": [
+      "ro.secure",
+      "ro.adb.secure",
+      "ro.debuggable",
+      "persist.sys.usb.config",
+      "user_build",
+      "no_test_keys",
+      "no_su_domain",
+      "no_root_console",
+      "no_permissive_boot",
+      "private_signing_verified",
+      "selinux_enforcing_runtime",
+      "authenticated_USB_ADB",
+      "root_denied",
+      "cold_boot",
+      "recovery_restore",
+      "license_review",
+      "source_rebuild_comparison",
+      "complete_apk_signature_review",
+      "boot_ramdisk_review",
+      "late_factory_properties_review"
+    ],
+    "BSP_public_platform_keys_refused": 6,
+    "not_a_release_security_acceptance": true
+  },
+  "source_inventory": {
+    "files": 762117,
+    "bytes": 48435602474,
+    "symlinks": 1520,
+    "sha256": "465352e1ff2334dd515dc8e0a89ecb1344400b2bf8a8d44994d6668d4520bab2",
+    "exclusions": [
+      ".git",
+      ".repo",
+      "__pycache__"
+    ],
+    "seconds": 711.86,
+    "complete_repo_manifest": false,
+    "source": "retained Android10 BSP tree",
+    "scope": "content snapshot, not reconstructed upstream repo commits",
+    "native_repo_manifest_exists": false,
+    "toolchain_and_vendor_inputs_included": true,
+    "protected_371_inputs_match": true,
+    "isolated_ABI5_libraries_match": true,
+    "build_receipt": "images-result-v17.json",
+    "prepare_receipt": "prepare-v20.json",
+    "whole_source_upstream_manifest_complete": false,
+    "unhashed_lexically_external_symlinks": 2,
+    "symlinks_followed": false,
+    "root_out_excluded": true,
+    "reference_Longan_not_compiled_or_inventoried": true,
+    "atomic_filesystem_snapshot": false,
+    "complete_upstream_manifest": false
+  },
+  "build_command_inventory": {
+    "commands": 96167,
+    "commands_sha256": "756e63d14ba0451deb18e05586c10a4c6ba88d30a98c3897a1644ab1826afd9b",
+    "bytes": 228182755,
+    "targets": [
+      "system.img",
+      "vendor.img",
+      "ramdisk.img"
+    ],
+    "ninja_version": "1.8.2.git",
+    "graph": {
+      "combined-roc_os_source64.ninja": "f9a2b843bc90696c978cad85ce0fbb4157e19e353bbd6567d009a4a4411055df",
+      "build-roc_os_source64.ninja": "d38432b1cd9c1d1f5a70319bf7148835a4cc80980b9e9535fc7d997279ca6426",
+      "build.ninja": "8b395409c6f28b95bc9029a3590f069463855ad6e2924f05f0d8a5ed75fcc924"
+    },
+    "external_symlinks": [
+      {
+        "source_symlink": "device/linaro/bootloader/edk2/EmulatorPkg/Unix/Host/X11IncludeHack",
+        "recorded_target": "/opt/X11/include",
+        "exists": false,
+        "command_literal_reference": false
+      },
+      {
+        "source_symlink": "external/e2fsprogs/config/ltmain.sh",
+        "recorded_target": "/usr/share/libtool/build-aux/ltmain.sh",
+        "exists": true,
+        "command_literal_reference": false,
+        "external_file_sha256": "579a1445e6a9a8b0809a44aa9f908387d4a43a2a440c9b84ea979f2b4f17816c"
+      }
+    ],
+    "scope": "read-only rebuild command plan; not execution history or complete upstream repo manifest",
+    "commands_executed": false
+  },
+  "external_components": {
+    "selected_APK_modules_Mali_count": 121,
+    "reviewed_for_redistribution": false,
+    "boot_prefix_sha256": "9e89204206e56a9b438e5dee2d689946ea1a4037586f454c9211c2eb7245322d",
+    "selected_APK_signers": {
+      "AT4K": [
+        "c8a2e9bccf597c2fb6dc66bee293fc13f2fc47ec77bc6b2b0d52c11f51192ab8"
+      ],
+      "ROCNavigation": [
+        "c8a2e9bccf597c2fb6dc66bee293fc13f2fc47ec77bc6b2b0d52c11f51192ab8"
+      ],
+      "H700Lid": [
+        "c8a2e9bccf597c2fb6dc66bee293fc13f2fc47ec77bc6b2b0d52c11f51192ab8"
+      ],
+      "H700Rotation": [
+        "c8a2e9bccf597c2fb6dc66bee293fc13f2fc47ec77bc6b2b0d52c11f51192ab8"
+      ],
+      "SystemUI": [
+        "c8a2e9bccf597c2fb6dc66bee293fc13f2fc47ec77bc6b2b0d52c11f51192ab8"
+      ],
+      "Settings": [
+        "c8a2e9bccf597c2fb6dc66bee293fc13f2fc47ec77bc6b2b0d52c11f51192ab8"
+      ],
+      "LeanbackIME": [
+        "a40da80a59d170caa950cf15c18c454d47a39b26989d8b640ecd745ba71bf5dc"
+      ]
+    }
+  },
+  "runs": {
+    "inventory": "h700-low-pressure-20261104-193459",
+    "command_plan": "h700-low-pressure-20261104-195604",
+    "final_tools": "h700-low-pressure-20261104-195952"
+  },
+  "limits": "single aggregate CPU, affinity0-1, nice19, RAM6GiB, swap512MiB, idleIO, global flock, 3h",
+  "no_new_image": true,
+  "no_image_upload": true,
+  "private_raw_manifests_not_in_Git": true,
+  "SPACE_REVIEW_preserved": true,
+  "source_sha256": {
+    "android/h700-android10/device/roc/roc_os_release_candidate/AndroidProducts.mk": "ce726d8d80581d6db28d747c1566036505aff02ee9c8f17c4146bebf12018756",
+    "android/h700-android10/device/roc/roc_os_release_candidate/release_properties.mk": "8b3ff646265f7c5d3420e14afe5e943603c4897112bfa251df117313be98fb3c",
+    "android/h700-android10/device/roc/roc_os_release_candidate/roc_os_release_candidate.mk": "86dfb8c5856b4c8908964c2e8af75c6097896512c7b888d3fbd61185fe52c3b8",
+    "tools/build_h700_low_pressure.ps1": "04062a6575bd4c62cb79e17953f98a129b9370c223be7522a3cd9e1976c8b603",
+    "tools/build_h700_low_pressure.sh": "e29c9ed48c678c1f2b10c5064287d20ce7b9c93e33935a94d2252358a4956c6a",
+    "tools/release/README.md": "692dd2b953045ab407aba55dda77ed8db658ceded3e56691f599ff31dc3d3917",
+    "tools/release/audit_release.py": "b7108d7a9e6b2c48f91b5bc1d64319807183ad77413b9cb81a7f7aa0d06d4155",
+    "tools/release/build_commands.py": "57d598559a8d0c03a05395f015be9f88aa11c764aa9ff777bede5c1b36546af2",
+    "tools/release/inventory.py": "266ee04f0c8c0798fc3144e574199ad923c318c933826bebeb70657ccc8746e7",
+    "tools/release/recover.ps1": "3aa549d6cd98bd377992d9225a5cd0dfce43181015a01553b62b6942e470bfc7",
+    "tools/release/recovery.py": "4c274ac5afe6ccee200fbac6daa95ac9f250ccf82e6b98b28e993216033ab58c",
+    "tools/release/release-policy.json": "a8d339c3c84ee4f017e49664a061aa63cb781fc8d7975eaaf9596247ea0ce075",
+    "tools/release/roc_release_properties.mk": "8b3ff646265f7c5d3420e14afe5e943603c4897112bfa251df117313be98fb3c",
+    "tools/release/run.py": "bb37ecb529df0a3afa57f8eb61c8d76557299d08fd6b07e1b055c886c90379eb",
+    "tools/release/signing-policy.template.json": "fb377706c821c1e76613bb8d091f1ec4f288c611df3f0c5d8e4d2145a40a5afa",
+    "tools/release/test_release_tools.py": "666625352621d4f607706b9fd232f0fe19d5aa24b0b47c3ce1f7afd613c4e2c4"
+  }
+}

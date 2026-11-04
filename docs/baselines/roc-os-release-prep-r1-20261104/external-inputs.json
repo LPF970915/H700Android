@@ -1,0 +1,758 @@
+{
+  "schema": 1,
+  "boot_prefix_sha256": "9e89204206e56a9b438e5dee2d689946ea1a4037586f454c9211c2eb7245322d",
+  "kernel_DTB": "retained binary, not rebuilt by Android source target",
+  "APK_and_vendor_components": [
+    {
+      "artifact_path": "/system/app/ROCNavigation/ROCNavigation.apk",
+      "sha256": "5208e1cce73e6d1e9bea05207f91c4f9b3a450a15abf6ff1ba12e258b395322d",
+      "bytes": 82410,
+      "redistribution_review": "not_accepted"
+    },
+    {
+      "artifact_path": "/system/app/LeanbackIME/LeanbackIME.apk",
+      "sha256": "6f29e76aeb91d5caba1690325f9e4dd22d29f2f1acd713dd14f95f3c867e2efd",
+      "bytes": 389088,
+      "redistribution_review": "not_accepted"
+    },
+    {
+      "artifact_path": "/vendor/modules/h700_stick_axes.ko",
+      "sha256": "9c8eacf887cd9d00f5416c05b24118ce625e4deef73003f79ea1805c6a31faf5",
+      "bytes": 20160,
+      "redistribution_review": "not_accepted"
+    },
+    {
+      "artifact_path": "/vendor/modules/8821cs.ko",
+      "sha256": "59933ce6ca29c88d5c8382e0aa7bf794b1fb42c2595b03f2694901bbfa206a72",
+      "bytes": 3889256,
+      "redistribution_review": "not_accepted"
+    },
+    {
+      "artifact_path": "/vendor/lib/egl/libGLES_mali.so",
+      "sha256": "05dc81f866b7ab947d20f283f25dcd96ca2f56ffd48e637b68778c1a994a6925",
+      "bytes": 13279144,
+      "redistribution_review": "not_accepted"
+    },
+    {
+      "artifact_path": "/vendor/lib64/egl/libGLES_mali.so",
+      "sha256": "03333d495e3566c7d85ca2e000da569a16ce8f022ea25c0ea61950c891d5c7f8",
+      "bytes": 18145112,
+      "redistribution_review": "not_accepted"
+    },
+    {
+      "artifact_path": "/system/priv-app/AT4K/AT4K.apk",
+      "sha256": "93041269d215dd450f4b559cb4fe57337267753d6ff7444ca142e17d07d997cf",
+      "bytes": 12276307,
+      "redistribution_review": "not_accepted"
+    },
+    {
+      "artifact_path": "/system/priv-app/H700Lid/H700Lid.apk",
+      "sha256": "e3e4aedbda6fc18880f55b34501c28352e4e3ae002a17c652e928048f1b9b181",
+      "bytes": 24990,
+      "redistribution_review": "not_accepted"
+    },
+    {
+      "artifact_path": "/system/priv-app/H700Rotation/H700Rotation.apk",
+      "sha256": "15f468d19d05990337e1b89dfe8e1c59a90c7af9b93e5e34fc30369b29a33f18",
+      "bytes": 29161,
+      "redistribution_review": "not_accepted"
+    },
+    {
+      "artifact_path": "/system/product/priv-app/SystemUI/SystemUI.apk",
+      "sha256": "0232e8f434267406881c44746be5b0d0ac3c713ee101ba69e3b542a33dbd6e78",
+      "bytes": 21014088,
+      "redistribution_review": "not_accepted"
+    },
+    {
+      "artifact_path": "/system/product/priv-app/Settings/Settings.apk",
+      "sha256": "1b6e0430b1432e5ced199af74a7472f666d766d71a867f1faeb65b7e4a97d25f",
+      "bytes": 51959218,
+      "redistribution_review": "not_accepted"
+    },
+    {
+      "artifact_path": "/system/app/BasicDreams/BasicDreams.apk",
+      "sha256": "99423223409c4d0daec1eeeb2f5ba738ce78538fe0bd1702fc55309e21c367f6",
+      "bytes": 58087,
+      "redistribution_review": "not_accepted"
+    },
+    {
+      "artifact_path": "/system/app/BluetoothMidiService/BluetoothMidiService.apk",
+      "sha256": "fdb511e157e2249388633a579abb80441c03a60dfb6124f6dd52f1f93f04525a",
+      "bytes": 33182,
+      "redistribution_review": "not_accepted"
+    },
+    {
+      "artifact_path": "/system/app/BookmarkProvider/BookmarkProvider.apk",
+      "sha256": "31ca95a7c1b1b4f648c9c042ff7c15390b2cb8b8705c29053cccf3b849919342",
+      "bytes": 29424,
+      "redistribution_review": "not_accepted"
+    },
+    {
+      "artifact_path": "/system/app/BuiltInPrintService/BuiltInPrintService.apk",
+      "sha256": "7bbf3d6a387b574c9e57652c5fc37843a1ddca2e17ffd60a3a7d4dc6c19a539c",
+      "bytes": 455822,
+      "redistribution_review": "not_accepted"
+    },
+    {
+      "artifact_path": "/system/app/CertInstaller/CertInstaller.apk",
+      "sha256": "4d09ae84cad4d9511d94c7bf043d72700987d3ed1fd259188132a9c3cd37587a",
+      "bytes": 459665,
+      "redistribution_review": "not_accepted"
+    },
+    {
+      "artifact_path": "/system/app/CompanionDeviceManager/CompanionDeviceManager.apk",
+      "sha256": "ea7baf30ecb681000f03d47a59426dec9fcb207b398a4ad8995c7c030ef13419",
+      "bytes": 70415,
+      "redistribution_review": "not_accepted"
+    },
+    {
+      "artifact_path": "/system/app/CtsShimPrebuilt/CtsShimPrebuilt.apk",
+      "sha256": "7511d5fa669e86cdeb02be41009cf788b2c97ec1a39f4b004b9983342f9bdb09",
+      "bytes": 4837,
+      "redistribution_review": "not_accepted"
+    },
+    {
+      "artifact_path": "/system/app/EasterEgg/EasterEgg.apk",
+      "sha256": "5e05cc2fd2e2710b4c01455bc54422b1ed06a63e7367f916fd94493ee256cbe8",
+      "bytes": 1522259,
+      "redistribution_review": "not_accepted"
+    },
+    {
+      "artifact_path": "/system/app/ExtShared/ExtShared.apk",
+      "sha256": "c145929f6d9d0b6a74bed9ec89a8bbdfd751ba3447a5fda873670d535b69fc88",
+      "bytes": 16791,
+      "redistribution_review": "not_accepted"
+    },
+    {
+      "artifact_path": "/system/app/HTMLViewer/HTMLViewer.apk",
+      "sha256": "b7e9a1c1d069f90214a581a32723856244ff23f62fec309789a134f661e84019",
+      "bytes": 29151,
+      "redistribution_review": "not_accepted"
+    },
+    {
+      "artifact_path": "/system/app/KeyChain/KeyChain.apk",
+      "sha256": "d0d0aef408c26257fcc0fa019da03ab851e066cba42e76a686a42781653b1302",
+      "bytes": 148094,
+      "redistribution_review": "not_accepted"
+    },
+    {
+      "artifact_path": "/system/app/Music/Music.apk",
+      "sha256": "5e76cc3fab2e29ba40110f50bfa8d3febd69995a4e440a5badcda6962d691d86",
+      "bytes": 927036,
+      "redistribution_review": "not_accepted"
+    },
+    {
+      "artifact_path": "/system/app/NfcNci/NfcNci.apk",
+      "sha256": "634499a03facfefc9a3b7ef75640c48a1a11331f6b51112c16f822fb5c7a5d71",
+      "bytes": 2532062,
+      "redistribution_review": "not_accepted"
+    },
+    {
+      "artifact_path": "/system/app/OsuLogin/OsuLogin.apk",
+      "sha256": "6e7c574e4665e12fadf9ebaf77203360e593786e15c4a051b4636b76a3cdcdaa",
+      "bytes": 236427,
+      "redistribution_review": "not_accepted"
+    },
+    {
+      "artifact_path": "/system/app/PacProcessor/PacProcessor.apk",
+      "sha256": "dfc7565971574d3002089210db36a716189ea8a6e75d1ccba9b0eda39d0c4edf",
+      "bytes": 16798,
+      "redistribution_review": "not_accepted"
+    },
+    {
+      "artifact_path": "/system/app/PlatformCaptivePortalLogin/PlatformCaptivePortalLogin.apk",
+      "sha256": "56e47d664cb134fcf419d3b52af37fa0dd61e1a6db673e21453fa38c3a280750",
+      "bytes": 400588,
+      "redistribution_review": "not_accepted"
+    },
+    {
+      "artifact_path": "/system/app/PrintRecommendationService/PrintRecommendationService.apk",
+      "sha256": "7266c0a06223216efe6e97adea3cd72c205a874fb4bdadbe270aa1cd4ebe62ce",
+      "bytes": 101468,
+      "redistribution_review": "not_accepted"
+    },
+    {
+      "artifact_path": "/system/app/PrintSpooler/PrintSpooler.apk",
+      "sha256": "260f2ec43e3b25a81bd6d61570a877c522754720cc1125fcdc1d3371267a660e",
+      "bytes": 1156363,
+      "redistribution_review": "not_accepted"
+    },
+    {
+      "artifact_path": "/system/app/SecureElement/SecureElement.apk",
+      "sha256": "56919db8e88d395dd45b0acb349394e583dec0389db5469854ce752ba92cc56e",
+      "bytes": 156062,
+      "redistribution_review": "not_accepted"
+    },
+    {
+      "artifact_path": "/system/app/SimAppDialog/SimAppDialog.apk",
+      "sha256": "f5d2abdcaa7de23b1911f164b2f543009fdc6609a99e8229893580c602daf6d5",
+      "bytes": 228877,
+      "redistribution_review": "not_accepted"
+    },
+    {
+      "artifact_path": "/system/app/Traceur/Traceur.apk",
+      "sha256": "a8d8bb7733485ddaff4c9a3eb0afefe173fdcd6e89152dfcd70edcf68584cd43",
+      "bytes": 7527146,
+      "redistribution_review": "not_accepted"
+    },
+    {
+      "artifact_path": "/system/app/WallpaperBackup/WallpaperBackup.apk",
+      "sha256": "2dbffc3dadbc628cf8fd9f45586856b900245883a20816e4250685c721a6e0c0",
+      "bytes": 20894,
+      "redistribution_review": "not_accepted"
+    },
+    {
+      "artifact_path": "/system/framework/framework-res.apk",
+      "sha256": "a8e4d04bdc7a37120c143a781204d9166cd76c96f108f52cc2d789884f5d3d86",
+      "bytes": 46983876,
+      "redistribution_review": "not_accepted"
+    },
+    {
+      "artifact_path": "/system/priv-app/BackupRestoreConfirmation/BackupRestoreConfirmation.apk",
+      "sha256": "8278935c1e74d9b8e11bd2eef496398a458592560c9bedd00dc8af36ea2ecf47",
+      "bytes": 262709,
+      "redistribution_review": "not_accepted"
+    },
+    {
+      "artifact_path": "/system/priv-app/BlockedNumberProvider/BlockedNumberProvider.apk",
+      "sha256": "3a4d63b84687451ddadf2e4c735f27306378d0da1059545c7673c30ae02fcab5",
+      "bytes": 377246,
+      "redistribution_review": "not_accepted"
+    },
+    {
+      "artifact_path": "/system/priv-app/CalendarProvider/CalendarProvider.apk",
+      "sha256": "871da056ca24214ec7599d9f9f6fa338541423158dddee2bbe8f00a20c8d35d7",
+      "bytes": 680758,
+      "redistribution_review": "not_accepted"
+    },
+    {
+      "artifact_path": "/system/priv-app/ContactsProvider/ContactsProvider.apk",
+      "sha256": "07516abc9bd35013bcd0448a3e7154b1b5c3a02ee5e02611529009c68c498a4f",
+      "bytes": 1143715,
+      "redistribution_review": "not_accepted"
+    },
+    {
+      "artifact_path": "/system/priv-app/CtsShimPrivPrebuilt/CtsShimPrivPrebuilt.apk",
+      "sha256": "06f757354a7c2497264f8ff699942d2e3e26d337c9a47b6d8841d7ff83981b86",
+      "bytes": 82129,
+      "redistribution_review": "not_accepted"
+    },
+    {
+      "artifact_path": "/system/priv-app/DocumentsUI/DocumentsUI.apk",
+      "sha256": "57ca44f8dc20b1c2e8026d41866a61e0dc9f6e08e464913d455f90d1070d084b",
+      "bytes": 5503775,
+      "redistribution_review": "not_accepted"
+    },
+    {
+      "artifact_path": "/system/priv-app/DownloadProvider/DownloadProvider.apk",
+      "sha256": "1ce86b8217324d1ba27a0f2b713a7d4263c0504566e0bfd5036714976e2f80c1",
+      "bytes": 873352,
+      "redistribution_review": "not_accepted"
+    },
+    {
+      "artifact_path": "/system/priv-app/DownloadProviderUi/DownloadProviderUi.apk",
+      "sha256": "88fb99f3df53816f3083d25b7e42f3dcc81f547048ab5566f54be3f20d7e27f9",
+      "bytes": 271240,
+      "redistribution_review": "not_accepted"
+    },
+    {
+      "artifact_path": "/system/priv-app/DynamicSystemInstallationService/DynamicSystemInstallationService.apk",
+      "sha256": "aeb104bb5697ddafc3c815b1f4af8fd2e8192fbda0b9e24b311d97fb7623692d",
+      "bytes": 41467,
+      "redistribution_review": "not_accepted"
+    },
+    {
+      "artifact_path": "/system/priv-app/ExtServices/ExtServices.apk",
+      "sha256": "ffa0c5b5df8bc58489b2408594c391f1fdcc5ca9b5e661b3aae247c0fc426fcc",
+      "bytes": 90526,
+      "redistribution_review": "not_accepted"
+    },
+    {
+      "artifact_path": "/system/priv-app/ExternalStorageProvider/ExternalStorageProvider.apk",
+      "sha256": "e3f43b8a3bcd277c89e0bf7668cbac62f4a7485e18f5fa9fc7bed3ad7df10744",
+      "bytes": 65950,
+      "redistribution_review": "not_accepted"
+    },
+    {
+      "artifact_path": "/system/priv-app/FusedLocation/FusedLocation.apk",
+      "sha256": "5233d4fb190eef0b948141069ab0b1ec3ed1f52f8fda7174e8cab7d31cdc011c",
+      "bytes": 37278,
+      "redistribution_review": "not_accepted"
+    },
+    {
+      "artifact_path": "/system/priv-app/InProcessNetworkStack/InProcessNetworkStack.apk",
+      "sha256": "f52eb576b4447e1119b8cb153faf4fa0fb26c5f77d852a4bfb6120f9801073e2",
+      "bytes": 422390,
+      "redistribution_review": "not_accepted"
+    },
+    {
+      "artifact_path": "/system/priv-app/InputDevices/InputDevices.apk",
+      "sha256": "b94c3193396b9d678674ea670f1329fc1dce3bfd43e47263a7dd0992cab1a9f9",
+      "bytes": 265974,
+      "redistribution_review": "not_accepted"
+    },
+    {
+      "artifact_path": "/system/priv-app/LocalTransport/LocalTransport.apk",
+      "sha256": "9afc2b339e2737cc4a505fc23e73cdc33c3e03d4769de68bf8e32fec7a7febdc",
+      "bytes": 29086,
+      "redistribution_review": "not_accepted"
+    },
+    {
+      "artifact_path": "/system/priv-app/ManagedProvisioning/ManagedProvisioning.apk",
+      "sha256": "891b2a7acdd602b086b6a208c0dbfe491c6f64b298c7aa0d0fa3118231b3579f",
+      "bytes": 8369783,
+      "redistribution_review": "not_accepted"
+    },
+    {
+      "artifact_path": "/system/priv-app/MediaProvider/MediaProvider.apk",
+      "sha256": "409f45f78aba09503b8a3675aa70061355167338e278856ce60c2746c3c60839",
+      "bytes": 505898,
+      "redistribution_review": "not_accepted"
+    },
+    {
+      "artifact_path": "/system/priv-app/MmsService/MmsService.apk",
+      "sha256": "37d59c2f0e1d2b6ca41f82bfab4e96ccb3bf065385d3d889ab719ac4b6ca9949",
+      "bytes": 82402,
+      "redistribution_review": "not_accepted"
+    },
+    {
+      "artifact_path": "/system/priv-app/MtpDocumentsProvider/MtpDocumentsProvider.apk",
+      "sha256": "c184520d1fa6db33ae00b4539e3dac66ad18b2692aac6cafa7d464b6766c93f9",
+      "bytes": 177554,
+      "redistribution_review": "not_accepted"
+    },
+    {
+      "artifact_path": "/system/priv-app/MusicFX/MusicFX.apk",
+      "sha256": "6c53aab529f61cdd6c69a8f3042f85ec239ae3be58e56915e39da441b4b7b7a8",
+      "bytes": 123757,
+      "redistribution_review": "not_accepted"
+    },
+    {
+      "artifact_path": "/system/priv-app/PackageInstaller/PackageInstaller.apk",
+      "sha256": "d4940f0c41ed90d75a00af89bf7246587ecfec4b7effcef95321f62b399bbee1",
+      "bytes": 3564090,
+      "redistribution_review": "not_accepted"
+    },
+    {
+      "artifact_path": "/system/priv-app/PermissionController/PermissionController.apk",
+      "sha256": "6335844edbf0be9d9e6feeacfcabfd38608c24b8016625bb73943389d344270c",
+      "bytes": 6522579,
+      "redistribution_review": "not_accepted"
+    },
+    {
+      "artifact_path": "/system/priv-app/PlatformNetworkPermissionConfig/PlatformNetworkPermissionConfig.apk",
+      "sha256": "1506c0d94624f3ad09d8b4a8183582dfa8b5cb56efd27bcf6e7eee185b46932f",
+      "bytes": 12702,
+      "redistribution_review": "not_accepted"
+    },
+    {
+      "artifact_path": "/system/priv-app/ProxyHandler/ProxyHandler.apk",
+      "sha256": "956d86543560734ac1f7ebe2be2e1ad46a6a685d8379458a8006d5f4561bf019",
+      "bytes": 24990,
+      "redistribution_review": "not_accepted"
+    },
+    {
+      "artifact_path": "/system/priv-app/SettingsProvider/SettingsProvider.apk",
+      "sha256": "1a39ff436dafdaa0bd4dcaf1148959eb7cd47532dc39a3fe82d0f2984ffa67bf",
+      "bytes": 332745,
+      "redistribution_review": "not_accepted"
+    },
+    {
+      "artifact_path": "/system/priv-app/SharedStorageBackup/SharedStorageBackup.apk",
+      "sha256": "cdbbdf1c4586bb2b825e525bcce139620152a970f4ca115e9ef00bbca60f0186",
+      "bytes": 20894,
+      "redistribution_review": "not_accepted"
+    },
+    {
+      "artifact_path": "/system/priv-app/Shell/Shell.apk",
+      "sha256": "dbc4c9dfe089ae87843f6c7ac1ebdd8fe9584dcbbba92ca882c0556b8dd7aa74",
+      "bytes": 417969,
+      "redistribution_review": "not_accepted"
+    },
+    {
+      "artifact_path": "/system/priv-app/StatementService/StatementService.apk",
+      "sha256": "6a0872df4c6d8e8b6d0ab79afd31f2eac74b13fcda23c5bd4c50a239b7a183b5",
+      "bytes": 74142,
+      "redistribution_review": "not_accepted"
+    },
+    {
+      "artifact_path": "/system/priv-app/TeleService/TeleService.apk",
+      "sha256": "d75b797a0d04c844be42a21ea53306d721c588ab80930cda2fb85575aa67db9c",
+      "bytes": 13211649,
+      "redistribution_review": "not_accepted"
+    },
+    {
+      "artifact_path": "/system/priv-app/Telecom/Telecom.apk",
+      "sha256": "f11ec7aa3836fc3b34bf0e7c7a8bfcda15cea075c35cac5fcf863a580bd757d6",
+      "bytes": 7891180,
+      "redistribution_review": "not_accepted"
+    },
+    {
+      "artifact_path": "/system/priv-app/TelephonyProvider/TelephonyProvider.apk",
+      "sha256": "b0858461dd1d6839d3b5e7f163aa7a527c551434c07d839463b5833c1bda32a6",
+      "bytes": 496855,
+      "redistribution_review": "not_accepted"
+    },
+    {
+      "artifact_path": "/system/priv-app/UserDictionaryProvider/UserDictionaryProvider.apk",
+      "sha256": "acb1bfc1b978f65b9b41e816767f5b9313174777b2b1eb7125ecf8d8ea91ad75",
+      "bytes": 41374,
+      "redistribution_review": "not_accepted"
+    },
+    {
+      "artifact_path": "/system/priv-app/VpnDialogs/VpnDialogs.apk",
+      "sha256": "727aa7d3aee91ed0bc94b49d0a3666b6eb96338da61bf89efdb7928b4aa6fbb3",
+      "bytes": 176836,
+      "redistribution_review": "not_accepted"
+    },
+    {
+      "artifact_path": "/system/product/app/Browser2/Browser2.apk",
+      "sha256": "97852c418e07fae550d5923e11cea206a64edffff79041d8c73d4b8eac0731d0",
+      "bytes": 75164,
+      "redistribution_review": "not_accepted"
+    },
+    {
+      "artifact_path": "/system/product/app/Calendar/Calendar.apk",
+      "sha256": "ca1f0c9f5c3837674c31acd996b24432d81d1f03e3bddfc3717006df67a7a713",
+      "bytes": 2386118,
+      "redistribution_review": "not_accepted"
+    },
+    {
+      "artifact_path": "/system/product/app/Camera2/Camera2.apk",
+      "sha256": "3ef4b2b6a75e8ac5c8945a325dd30cad1d01dbb0540407d100408ae8f1a21429",
+      "bytes": 8657466,
+      "redistribution_review": "not_accepted"
+    },
+    {
+      "artifact_path": "/system/product/app/DeskClock/DeskClock.apk",
+      "sha256": "37021f611437b9b76c1eaeb787600ea28eee749afc7e0c1efd135944aaa4a0ff",
+      "bytes": 6473239,
+      "redistribution_review": "not_accepted"
+    },
+    {
+      "artifact_path": "/system/product/app/Email/Email.apk",
+      "sha256": "8fbbd4dbc5623646ecf287b056b28913d54ab8c38dc112c8dfc8fbac4e2684c8",
+      "bytes": 6959768,
+      "redistribution_review": "not_accepted"
+    },
+    {
+      "artifact_path": "/system/product/app/Gallery2/Gallery2.apk",
+      "sha256": "3671325cfc081696a50d000e83aa80e3575cebcab8edcbccc00ea3cbad91b1be",
+      "bytes": 6660157,
+      "redistribution_review": "not_accepted"
+    },
+    {
+      "artifact_path": "/system/product/app/LatinIME/LatinIME.apk",
+      "sha256": "0109375e241ed53ff69d71d5f6abc2797d4618967753d925052a54118eae14be",
+      "bytes": 18637057,
+      "redistribution_review": "not_accepted"
+    },
+    {
+      "artifact_path": "/system/product/app/ModuleMetadata/ModuleMetadata.apk",
+      "sha256": "8e7200329049eddf5a1962fe82ef4761e44457d834bd0cf045eac0db4035780d",
+      "bytes": 16864,
+      "redistribution_review": "not_accepted"
+    },
+    {
+      "artifact_path": "/system/product/app/PackageOverride/PackageOverride.apk",
+      "sha256": "b5265f22b8eb4fc4792f8da03635ae0488258498bf6ac8f209a2d3ce49e45d84",
+      "bytes": 12638,
+      "redistribution_review": "not_accepted"
+    },
+    {
+      "artifact_path": "/system/product/app/QuickSearchBox/QuickSearchBox.apk",
+      "sha256": "0b5fed2d4cd3de0b44124cb0400694b5286c00cfb81ec481f205a09e24c406ea",
+      "bytes": 766672,
+      "redistribution_review": "not_accepted"
+    },
+    {
+      "artifact_path": "/system/product/app/RGSPLauncher/RGSPLauncher.apk",
+      "sha256": "bba26f4edce04d57cd6c788ad60d5bea95491cb13e80f7102381254b3e85ce65",
+      "bytes": 24990,
+      "redistribution_review": "not_accepted"
+    },
+    {
+      "artifact_path": "/system/product/app/webview/webview.apk",
+      "sha256": "0bb949cd5613ad40b29ec2e8248050e8d15055a2d6e3717f3a1c3bc75f759f09",
+      "bytes": 133486789,
+      "redistribution_review": "not_accepted"
+    },
+    {
+      "artifact_path": "/system/product/overlay/AccentColorBlack/AccentColorBlackOverlay.apk",
+      "sha256": "8f495e4dd0b9ef0cca0888d55811ef29dbe9692942b685480ab716c27b322208",
+      "bytes": 12638,
+      "redistribution_review": "not_accepted"
+    },
+    {
+      "artifact_path": "/system/product/overlay/AccentColorCinnamon/AccentColorCinnamonOverlay.apk",
+      "sha256": "8d238011a89317953ba20bd00c183149ad13e81e9cae151c0300581cc221d9e6",
+      "bytes": 12638,
+      "redistribution_review": "not_accepted"
+    },
+    {
+      "artifact_path": "/system/product/overlay/AccentColorGreen/AccentColorGreenOverlay.apk",
+      "sha256": "8e4a6d0e7493860293dcb90044668c03b587a4f6ac47d4a4921fc4c01d4507a0",
+      "bytes": 12638,
+      "redistribution_review": "not_accepted"
+    },
+    {
+      "artifact_path": "/system/product/overlay/AccentColorOcean/AccentColorOceanOverlay.apk",
+      "sha256": "ba5f2ba2d17d12dd779456849c5a1ce34c19dab3656fa2b39f5c0d49433b77ce",
+      "bytes": 12638,
+      "redistribution_review": "not_accepted"
+    },
+    {
+      "artifact_path": "/system/product/overlay/AccentColorOrchid/AccentColorOrchidOverlay.apk",
+      "sha256": "4f32ee5eeea5d31d17deadfadc24b6b18552885fe4cf109d24f7b5d653744384",
+      "bytes": 12638,
+      "redistribution_review": "not_accepted"
+    },
+    {
+      "artifact_path": "/system/product/overlay/AccentColorPurple/AccentColorPurpleOverlay.apk",
+      "sha256": "1670b375815a81cae53f8acdeda8ea55b88580aedd1e6f32cdda0abc015676ac",
+      "bytes": 12638,
+      "redistribution_review": "not_accepted"
+    },
+    {
+      "artifact_path": "/system/product/overlay/AccentColorSpace/AccentColorSpaceOverlay.apk",
+      "sha256": "c618de9e5b0025bf47368f2da9e4a0841755ee2f9f544af4c2e0c9c9086517b6",
+      "bytes": 12638,
+      "redistribution_review": "not_accepted"
+    },
+    {
+      "artifact_path": "/system/product/overlay/DisplayCutoutEmulationCorner/DisplayCutoutEmulationCornerOverlay.apk",
+      "sha256": "61e2b155a2f76e7791049ad27e54c0cd8eae8f89a19d422169cb4cafa6a21d4d",
+      "bytes": 29022,
+      "redistribution_review": "not_accepted"
+    },
+    {
+      "artifact_path": "/system/product/overlay/DisplayCutoutEmulationDouble/DisplayCutoutEmulationDoubleOverlay.apk",
+      "sha256": "71ab7dc24a6152a5f3ba8b19aa8f4be099e90a53e29dd8f196d526f55a988312",
+      "bytes": 29022,
+      "redistribution_review": "not_accepted"
+    },
+    {
+      "artifact_path": "/system/product/overlay/DisplayCutoutEmulationTall/DisplayCutoutEmulationTallOverlay.apk",
+      "sha256": "1b5ca2dbc18e296c7f302d9dfadb888f278e8db0ef4dd3c65fb4a7fddee162dc",
+      "bytes": 29022,
+      "redistribution_review": "not_accepted"
+    },
+    {
+      "artifact_path": "/system/product/overlay/FontNotoSerifSource/FontNotoSerifSourceOverlay.apk",
+      "sha256": "f62aa37b53c9c2254776aba29f01e8a7cebce879ef3258585dcab73cfd306b08",
+      "bytes": 12638,
+      "redistribution_review": "not_accepted"
+    },
+    {
+      "artifact_path": "/system/product/overlay/IconPackCircularAndroid/IconPackCircularAndroidOverlay.apk",
+      "sha256": "16e4c5bd460190baa51fce5988b39cca21d390427e6bbf6de4fc3f8c8ec2e0ea",
+      "bytes": 84201,
+      "redistribution_review": "not_accepted"
+    },
+    {
+      "artifact_path": "/system/product/overlay/IconPackCircularLauncher/IconPackCircularLauncherOverlay.apk",
+      "sha256": "53430918f66ad5473be54adb10d849b1c1b81bc719beac0b1386141ff8a7b7af",
+      "bytes": 26008,
+      "redistribution_review": "not_accepted"
+    },
+    {
+      "artifact_path": "/system/product/overlay/IconPackCircularSettings/IconPackCircularSettingsOverlay.apk",
+      "sha256": "5a680519406e02ea07407c97cb18a90519fcec71fcc67c983f9971a40db9740d",
+      "bytes": 84348,
+      "redistribution_review": "not_accepted"
+    },
+    {
+      "artifact_path": "/system/product/overlay/IconPackCircularSystemUI/IconPackCircularSystemUIOverlay.apk",
+      "sha256": "4266e9765ea890c1737e34a1c9bcfc89b483661a5310354376b64c01b029b78e",
+      "bytes": 65956,
+      "redistribution_review": "not_accepted"
+    },
+    {
+      "artifact_path": "/system/product/overlay/IconPackCircularThemePicker/IconPackCircularThemePickerOverlay.apk",
+      "sha256": "3d7a2019b573e8885fb252f9e8d5094b8a316d53fb5b9bdcf07714ec9967902e",
+      "bytes": 25827,
+      "redistribution_review": "not_accepted"
+    },
+    {
+      "artifact_path": "/system/product/overlay/IconPackFilledAndroid/IconPackFilledAndroidOverlay.apk",
+      "sha256": "89b27ffd7683c9757f80c2ed465fb47183aeb7bc2aff2f791a56b2a7ae4e14b9",
+      "bytes": 71438,
+      "redistribution_review": "not_accepted"
+    },
+    {
+      "artifact_path": "/system/product/overlay/IconPackFilledLauncher/IconPackFilledLauncherOverlay.apk",
+      "sha256": "32cd1f3ec272baea0c4243905bfe0841ce119c9255a21aaf24dff44dd9342b7f",
+      "bytes": 26008,
+      "redistribution_review": "not_accepted"
+    },
+    {
+      "artifact_path": "/system/product/overlay/IconPackFilledSettings/IconPackFilledSettingsOverlay.apk",
+      "sha256": "208d1413f0b704b0e4511cee6c4094b42fcec3e83112b1652c45a9284bb0ccf0",
+      "bytes": 80252,
+      "redistribution_review": "not_accepted"
+    },
+    {
+      "artifact_path": "/system/product/overlay/IconPackFilledSystemUI/IconPackFilledSystemUIOverlay.apk",
+      "sha256": "78a6fc3355b41f73767ffbddb07fbeffbde5b563bfd103daf1c9e8d3ced49bc6",
+      "bytes": 61860,
+      "redistribution_review": "not_accepted"
+    },
+    {
+      "artifact_path": "/system/product/overlay/IconPackFilledThemePicker/IconPackFilledThemePickerOverlay.apk",
+      "sha256": "7ba5d93e97cb766fe3c807767f1d5a66a097f9dd4cfdfd4a33884341ac1fc9f2",
+      "bytes": 21731,
+      "redistribution_review": "not_accepted"
+    },
+    {
+      "artifact_path": "/system/product/overlay/IconPackRoundedAndroid/IconPackRoundedAndroidOverlay.apk",
+      "sha256": "fd9fbead621a1e3d0cabe11edf816f7ccce905590c8d7d483fa7a75cdb832c5f",
+      "bytes": 75534,
+      "redistribution_review": "not_accepted"
+    },
+    {
+      "artifact_path": "/system/product/overlay/IconPackRoundedLauncher/IconPackRoundedLauncherOverlay.apk",
+      "sha256": "76acaa087bb6421bbd6027078d071f6884e234050ba9e498f3181a89aab210f3",
+      "bytes": 26008,
+      "redistribution_review": "not_accepted"
+    },
+    {
+      "artifact_path": "/system/product/overlay/IconPackRoundedSettings/IconPackRoundedSettingsOverlay.apk",
+      "sha256": "179c1c1d9f0d225c38a64b658a4e2b08c58bd547a574c4b6b59052b10fb62ccd",
+      "bytes": 84348,
+      "redistribution_review": "not_accepted"
+    },
+    {
+      "artifact_path": "/system/product/overlay/IconPackRoundedSystemUI/IconPackRoundedSystemUIOverlay.apk",
+      "sha256": "ee889a2f978d30598457feb022c9b44c532d1f09d7d4034b2b6668733aea510e",
+      "bytes": 65956,
+      "redistribution_review": "not_accepted"
+    },
+    {
+      "artifact_path": "/system/product/overlay/IconShapeRoundedRect/IconShapeRoundedRectOverlay.apk",
+      "sha256": "cac281a74b7d16d70c4554aabb6a50fafc72e0fb660a0783d77eacc731695701",
+      "bytes": 12638,
+      "redistribution_review": "not_accepted"
+    },
+    {
+      "artifact_path": "/system/product/overlay/IconShapeSquare/IconShapeSquareOverlay.apk",
+      "sha256": "672e4d4173f07bf9591010afc0d698ac52a95470b5bcd2e0aca9786dd3871288",
+      "bytes": 12638,
+      "redistribution_review": "not_accepted"
+    },
+    {
+      "artifact_path": "/system/product/overlay/IconShapeSquircle/IconShapeSquircleOverlay.apk",
+      "sha256": "1e05bb7897aa47d567a05a84a1042d00157bc6239124daadb5380a221c1ef64f",
+      "bytes": 12638,
+      "redistribution_review": "not_accepted"
+    },
+    {
+      "artifact_path": "/system/product/overlay/IconShapeTeardrop/IconShapeTeardropOverlay.apk",
+      "sha256": "c2fba933610a30d622812d07b99755136aa2938ee906238b3a5de2e0f7ba2029",
+      "bytes": 12638,
+      "redistribution_review": "not_accepted"
+    },
+    {
+      "artifact_path": "/system/product/overlay/NavigationBarMode2Button/NavigationBarMode2ButtonOverlay.apk",
+      "sha256": "960fe5f22576d1411b316253720c407b652feadcec7a1ecf38f18163ff327b60",
+      "bytes": 12638,
+      "redistribution_review": "not_accepted"
+    },
+    {
+      "artifact_path": "/system/product/overlay/NavigationBarMode3Button/NavigationBarMode3ButtonOverlay.apk",
+      "sha256": "4a5acaaec1e94e76ef14d28002ec798fd9806e6fbbd4f726081c0d66b2bd6643",
+      "bytes": 12638,
+      "redistribution_review": "not_accepted"
+    },
+    {
+      "artifact_path": "/system/product/overlay/NavigationBarModeGestural/NavigationBarModeGesturalOverlay.apk",
+      "sha256": "cb881276afc10bfe76a8a41bc090d82f528c1cbd15853e64cb71e5ec06ed016e",
+      "bytes": 16734,
+      "redistribution_review": "not_accepted"
+    },
+    {
+      "artifact_path": "/system/product/overlay/NavigationBarModeGesturalExtraWideBack/NavigationBarModeGesturalOverlayExtraWideBack.apk",
+      "sha256": "90efb63fc7ab2bd5f5bac1f7ddd2f08024ad1aeb78e5778b55f4123f8ba4c3b9",
+      "bytes": 16734,
+      "redistribution_review": "not_accepted"
+    },
+    {
+      "artifact_path": "/system/product/overlay/NavigationBarModeGesturalNarrowBack/NavigationBarModeGesturalOverlayNarrowBack.apk",
+      "sha256": "e92effe729f3eac1e8768975ba21d329368b4ca6d0c5118b84f166884ee7abc0",
+      "bytes": 16734,
+      "redistribution_review": "not_accepted"
+    },
+    {
+      "artifact_path": "/system/product/overlay/NavigationBarModeGesturalWideBack/NavigationBarModeGesturalOverlayWideBack.apk",
+      "sha256": "4041c9c6ab2486fb3cc0e4bbfe933ac9dc9222729ad0377d491ea4134d6228b7",
+      "bytes": 16734,
+      "redistribution_review": "not_accepted"
+    },
+    {
+      "artifact_path": "/system/product/priv-app/Contacts/Contacts.apk",
+      "sha256": "9f08a20353be12760721f34ac18fba16c740109eed901e5f1968835ddb0792fb",
+      "bytes": 11031554,
+      "redistribution_review": "not_accepted"
+    },
+    {
+      "artifact_path": "/system/product/priv-app/Launcher3QuickStep/Launcher3QuickStep.apk",
+      "sha256": "8e4d896c77e40d233b8e4f46fe9e678fa95920cc5ad504e0d1133f582dfcc16d",
+      "bytes": 9081531,
+      "redistribution_review": "not_accepted"
+    },
+    {
+      "artifact_path": "/system/product/priv-app/OneTimeInitializer/OneTimeInitializer.apk",
+      "sha256": "3cb89f83249ed874fa1204265bcf3c65cad8f2c62b52db217946102895cdd430",
+      "bytes": 20894,
+      "redistribution_review": "not_accepted"
+    },
+    {
+      "artifact_path": "/system/product/priv-app/Provision/Provision.apk",
+      "sha256": "1f33ed32a40c762ae0e1d5fe7ac1fadd828b126ca72b5746881610e9141bc000",
+      "bytes": 16798,
+      "redistribution_review": "not_accepted"
+    },
+    {
+      "artifact_path": "/system/product/priv-app/SettingsIntelligence/SettingsIntelligence.apk",
+      "sha256": "70541876e27c2211dd981735fb4126823c8d297bfb5d40cdc639f276c5b1a233",
+      "bytes": 2408441,
+      "redistribution_review": "not_accepted"
+    },
+    {
+      "artifact_path": "/system/product/priv-app/StorageManager/StorageManager.apk",
+      "sha256": "427a19be0c0de176c8bd04dd4d1853108b34de6ae1a6bc637db613b8d87ede14",
+      "bytes": 7100978,
+      "redistribution_review": "not_accepted"
+    },
+    {
+      "artifact_path": "/system/product/priv-app/WallpaperCropper/WallpaperCropper.apk",
+      "sha256": "457c5edda1a424ca86896f708cc85328cd0356cf9a6d932d6150834b9d218e62",
+      "bytes": 144226,
+      "redistribution_review": "not_accepted"
+    }
+  ],
+  "selected_APK_signers": {
+    "AT4K": [
+      "c8a2e9bccf597c2fb6dc66bee293fc13f2fc47ec77bc6b2b0d52c11f51192ab8"
+    ],
+    "ROCNavigation": [
+      "c8a2e9bccf597c2fb6dc66bee293fc13f2fc47ec77bc6b2b0d52c11f51192ab8"
+    ],
+    "H700Lid": [
+      "c8a2e9bccf597c2fb6dc66bee293fc13f2fc47ec77bc6b2b0d52c11f51192ab8"
+    ],
+    "H700Rotation": [
+      "c8a2e9bccf597c2fb6dc66bee293fc13f2fc47ec77bc6b2b0d52c11f51192ab8"
+    ],
+    "SystemUI": [
+      "c8a2e9bccf597c2fb6dc66bee293fc13f2fc47ec77bc6b2b0d52c11f51192ab8"
+    ],
+    "Settings": [
+      "c8a2e9bccf597c2fb6dc66bee293fc13f2fc47ec77bc6b2b0d52c11f51192ab8"
+    ],
+    "LeanbackIME": [
+      "a40da80a59d170caa950cf15c18c454d47a39b26989d8b640ecd745ba71bf5dc"
+    ]
+  },
+  "licenses_accepted": false,
+  "keys": "public fingerprints only; no private keys generated"
+}

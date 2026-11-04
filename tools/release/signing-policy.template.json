@@ -1,0 +1,6 @@
+{
+ "schema":1,
+ "platform_sha256":"",
+ "presigned_certificates":{},
+ "notes":"Public certificate fingerprints only. Private .pk8 and keystores stay outside Git. Fill from verified actual release certificates; public BSP test certificates are refused."
+}

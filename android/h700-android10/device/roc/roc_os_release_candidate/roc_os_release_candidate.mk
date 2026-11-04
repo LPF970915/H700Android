@@ -1,0 +1,22 @@
+# Isolated user candidate; never substitute the live eng product/output.
+$(call inherit-product, device/roc/roc_os_source64/roc_os_source64.mk)
+include $(dir $(lastword $(MAKEFILE_LIST)))release_properties.mk
+PRODUCT_NAME := roc_os_release_candidate
+# Use the guarded H700 board configuration and internal device identity.
+PRODUCT_DEVICE := roc_os_source64
+PRODUCT_MODEL := ROC OS
+ifeq ($(TARGET_PRODUCT),roc_os_release_candidate)
+ifneq ($(TARGET_BUILD_VARIANT),user)
+$(error ROC release candidate requires user variant)
+endif
+ifeq ($(strip $(ROC_RELEASE_KEYS_DIR)),)
+$(error ROC_RELEASE_KEYS_DIR must point to separately managed private release keys)
+endif
+ifeq ($(filter /%,$(ROC_RELEASE_KEYS_DIR)),)
+$(error ROC_RELEASE_KEYS_DIR must be an absolute Linux path)
+endif
+roc_required_key_files := releasekey platform shared media networkstack
+$(foreach k,$(roc_required_key_files),$(if $(wildcard $(ROC_RELEASE_KEYS_DIR)/$(k).pk8),,$(error Missing $(k).pk8)))
+$(foreach k,$(roc_required_key_files),$(if $(wildcard $(ROC_RELEASE_KEYS_DIR)/$(k).x509.pem),,$(error Missing $(k).x509.pem)))
+PRODUCT_DEFAULT_DEV_CERTIFICATE := $(ROC_RELEASE_KEYS_DIR)/releasekey
+endif
