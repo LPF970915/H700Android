@@ -1,0 +1,23 @@
+{
+  "user_reports_unplug_replug_without_anomaly": true,
+  "trace_sample_count": 600,
+  "trace_complete": true,
+  "kernel_boot_unchanged": true,
+  "USB_online_transitions": [
+    "1",
+    "0"
+  ],
+  "USB_transition_captured": true,
+  "charging_accuracy_accepted": false,
+  "battery_full_cycle_accepted": false,
+  "low_battery_accepted": false,
+  "deep_suspend_accepted": false,
+  "initial_150_sample_window_missed_transition": true,
+  "post_trace_USB_online": 1,
+  "post_trace_framework_USB_powered": true,
+  "return_to_USB_confirmed_after_trace": true,
+  "continuous_replug_edge_captured": false,
+  "basic_power_source_switch_pass": true,
+  "user_reports_no_anomaly": true,
+  "observer_terminated_at_bound": true
+}

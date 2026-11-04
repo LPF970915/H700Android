@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "source_graph_receipt": "graph-result-v3.json",
+  "source_prepare_receipt": "prepare-v4.json",
+  "source_APK_sha256": "93041269d215dd450f4b559cb4fe57337267753d6ff7444ca142e17d07d997cf",
+  "production_signed_APK_sha256": "727bf97755d9d7635a42823c0cdda8759eac57bfc6da911283e386d5103b5b55",
+  "platform_certificate_sha256": "fc30e834b3c2914a0646d0b46c4faaa045aa8d46189950012555a5f2c36745c9",
+  "actual_Ninja_plan_selects_private_platform_key": true,
+  "Android10_signature_verification": true,
+  "zipalign_check": true,
+  "all_non_signature_ZIP_members_unchanged": true,
+  "payload_member_count": 966,
+  "source_original_APK_unchanged": true,
+  "installed_on_device": false,
+  "actual_user_make_APK_compiled": false,
+  "Android_images_compiled": false,
+  "formal_release_accepted": false
+}

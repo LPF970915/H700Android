@@ -1,0 +1,27 @@
+{
+  "schema": 1,
+  "product": "roc_os_release_candidate-user",
+  "source_build_receipt": "images-result-v18.json",
+  "source_audit": "round2-audit-v13",
+  "protected_371_and_source64_product_unchanged": true,
+  "candidate_files": {
+    ".roc-owned-candidate": "d613dd3375e5a1c1da5435a8ccefeeb97cae7b9e1f62e54396a978eac7b42677",
+    "AndroidProducts.mk": "ce726d8d80581d6db28d747c1566036505aff02ee9c8f17c4146bebf12018756",
+    "Launcher/AT4K.apk": "93041269d215dd450f4b559cb4fe57337267753d6ff7444ca142e17d07d997cf",
+    "Launcher/Android.mk": "189938bd99d85ee8248383412b836cc09c5d67ce3227741fe84705e7c5f7b4c3",
+    "release_properties.mk": "8b3ff646265f7c5d3420e14afe5e943603c4897112bfa251df117313be98fb3c",
+    "roc_os_release_candidate.mk": "de6cf95b13e5b41c8e5c71f5cb994cc846e6e6023008a593c0ddbd5ffe2fdd13"
+  },
+  "private_key_bytes_copied_to_source": false,
+  "launcher_original_retained": true,
+  "launcher_source_sha256": "93041269d215dd450f4b559cb4fe57337267753d6ff7444ca142e17d07d997cf",
+  "platform_certificate_sha256": "fc30e834b3c2914a0646d0b46c4faaa045aa8d46189950012555a5f2c36745c9",
+  "external_backup_verified": true,
+  "required_private_key_environment": "ROC_RELEASE_KEYS_DIR",
+  "separate_output": "/home/lpf/roc-os-user-20261104/out",
+  "compiled": false,
+  "device_accessed": false,
+  "security_and_boot_acceptance": false,
+  "whole_card_image_created": false,
+  "private_directory_link_target_guarded": true
+}

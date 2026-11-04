@@ -1,0 +1,15 @@
+{
+  "closed_Hall": 0,
+  "closed_Android": "Asleep/OFF",
+  "kernel_boot_unchanged": true,
+  "USB_connected": true,
+  "user_closed_confirmed": true,
+  "open_pending": false,
+  "deep_suspend_accepted": false,
+  "open_Hall": 1,
+  "open_wake_confirmed_by_PowerManager_and_H700Lid_events": true,
+  "open_snapshot_caught_later_timeout": true,
+  "lockscreen_timeout_seconds_after_wake": 10,
+  "user_reports_automatic_lock_screen_no_anomaly": true,
+  "physical_USB_lid_cycles": 1
+}

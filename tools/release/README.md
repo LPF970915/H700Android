@@ -16,7 +16,9 @@
 
 ## 发行配置
 
-新增 `android/h700-android10/device/roc/roc_os_release_candidate/`，仅注册 `roc_os_release_candidate-user`。它要求外部 `ROC_RELEASE_KEYS_DIR` 包含releasekey/platform/shared/media/networkstack的pk8和x509；缺少密钥或选择eng时拒绝解析。该目录当前只保存在仓库，尚未同步进保留BSP或编译。后续同步时须更新源码清单并使用独立输出目录，不能复用当前eng输出。
+`android/h700-android10/device/roc/roc_os_release_candidate/` 仅注册 `roc_os_release_candidate-user`。它要求外部 `ROC_RELEASE_KEYS_DIR` 包含releasekey/platform/shared/media/networkstack的pk8和x509；缺少密钥或选择eng时拒绝解析。早期准备阶段仅在仓库定义；后续已在 Native 独立目录准备并生成构建图，完整user分区仍未编出。见[隔离候选进度](../../docs/ROC_OS_USER_CANDIDATE_20261104.md)。
+
+`H700UserPrepare` 核对最新工程构建/审计和原输入，创建受守卫的Native候选目录；只在本地复制已审计AT4K并创建指向私有密钥目录的符号链接，不复制私钥实体。`H700UserGraph` 在独立输出执行 `m -j1 nothing` 并保存成功或失败结果。`H700UserSigningProbe` 核对Ninja签名计划并离线验证专用平台密钥签署APK，**不安装、不编全系统、不制作镜像**。三者都经过低负载入口，不得与其他构建并发；实际源码增量、链接目标、密钥公开摘要和原工程三镜像另有守卫。
 
 `roc_release_properties.mk` 应用在独立 **user 候选**继承 Source64 产品之后，清理属性变量中的旧安全值，设置认证 ADB、非 debuggable、默认 USB 无功能、禁用 TCP ADB，并排除 su/Superuser 包。它目前是隔离的配置输入，未部署到原产品、未编出或验证 user 系统。继承延迟展开、复制来的属性文件和启动脚本仍需以实际产物复审，不能只看 Make 变量。
 

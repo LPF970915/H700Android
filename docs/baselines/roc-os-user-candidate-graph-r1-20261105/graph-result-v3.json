@@ -1,0 +1,18 @@
+{
+  "phase": "graph",
+  "exit_status": 0,
+  "passed": true,
+  "prepare_receipt": "prepare-v4.json",
+  "product": "roc_os_release_candidate-user",
+  "candidate_sources_unchanged": true,
+  "source64_protected_inputs_and_product_unchanged": true,
+  "source64_three_images_unchanged": true,
+  "graph_sha256": {
+    "build-roc_os_release_candidate-cleanspec.ninja": "a8c2b041b2efca610ea6e8ffd1e88cf462d477a1915e29cb52fd1bb3344eea52",
+    "build-roc_os_release_candidate.ninja": "9052ca59e108e532f3bb53622db592d1ce16b7922238513358d29d2a2c828b6c",
+    "build-roc_os_release_candidate-package.ninja": "9a9cc044830a6cebb7410b54f968f0d41a3263a87a566a1c2d3b1f31fcc32e51",
+    "combined-roc_os_release_candidate.ninja": "345ef3d10e22fab79bd2000babe61a674acfcc008bea2042297048c9450d1790"
+  },
+  "android_images_compiled": false,
+  "runtime_or_flash_accepted": false
+}

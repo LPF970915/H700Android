@@ -1,0 +1,6 @@
+{
+  "actual_system_image_graph_contains_release_launcher": true,
+  "old_PRESIGNED_launcher_install_path_absent_from_system_image_dependencies": true,
+  "graph_receipt": "graph-result-v3.json",
+  "actual_system_image_not_built": true
+}

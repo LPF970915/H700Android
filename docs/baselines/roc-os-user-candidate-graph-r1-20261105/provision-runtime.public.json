@@ -1,0 +1,23 @@
+{
+  "installed_audited_APK": true,
+  "independent_application_UID": 10094,
+  "platform_signature_permissions_granted": true,
+  "verified_predecessor_adoption": true,
+  "all_existing_settings_unchanged": true,
+  "completion_committed": true,
+  "temporary_legacy_flag_restored": true,
+  "repeat_without_legacy_flag_pending": false,
+  "fresh_factory_userdata_pending": true,
+  "current_image_eng_not_production_signed": true,
+  "repeat_without_legacy_flag_pass": true,
+  "fresh_API_branch_on_already_configured_system": true,
+  "settings_unchanged_after_fresh_branch": true,
+  "process_domain": "platform_app",
+  "process_exited_after_first_capture_not_a_test_failure": true,
+  "real_reboot_BOOT_COMPLETED_auto_run": true,
+  "distinct_kernel_boot": true,
+  "settings_retained_after_reboot": true,
+  "thermal_init_and_HAL_ready_after_reboot": true,
+  "Wifi_VALIDATED_after_reboot": true,
+  "user_reports_chinese_HOME_A_Select_network_normal": true
+}
