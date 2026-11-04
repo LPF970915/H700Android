@@ -155,7 +155,8 @@ def generate(repo, native, dest):
     supplicant = '''<hal format="hidl"><name>android.hardware.wifi.supplicant</name>
 <transport>hwbinder</transport><version>1.2</version><interface><name>ISupplicant</name>
 <instance>default</instance></interface><fqname>@1.2::ISupplicant/default</fqname></hal>'''
-    (dest / 'manifest.xml').write_text(s.replace('</manifest>', hal + '\n' + supplicant + '\n</manifest>'))
+    thermal = '<hal format="hidl"><name>android.hardware.thermal</name><transport>hwbinder</transport><version>2.0</version><interface><name>IThermal</name><instance>default</instance></interface></hal>'
+    (dest / 'manifest.xml').write_text(s.replace('</manifest>', hal + '\n' + supplicant + '\n' + thermal + '\n</manifest>'))
 
     # Private vold library/binary; the AIDL protocol and old modules stay intact.
     vold = dest / 'Vold'

@@ -121,7 +121,7 @@ def audit(w, run, file):
             symbols[path] = exports, imports
         return symbols[path]
     strong_checks = {}
-    for root in ['/system/bin/vold.rocsource', '/vendor/bin/hw/android.hardware.light@2.0-service.rocsource']:
+    for root in ['/system/bin/vold.rocsource', '/vendor/bin/hw/android.hardware.light@2.0-service.rocsource', '/vendor/bin/hw/android.hardware.thermal@2.0-service.rocsource']:
         section = 'vendor' if root.startswith('/vendor/') else 'system'
         todo = [section + '|default|' + root]
         scope = set()

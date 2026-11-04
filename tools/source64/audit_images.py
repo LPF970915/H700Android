@@ -204,6 +204,9 @@ def main():
         # assemble_vintf may emit interface+fqname for the same logical instance.
         return sorted(set(result))
     check('one backlight HAL', instances('android.hardware.light') == ['@2.0::ILight/default'])
+    check('one real Thermal HAL2', instances('android.hardware.thermal') == ['@2.0::IThermal/default'])
+    check('thermal read-only init', 'user system' in text('/vendor/etc/init/roc-thermal.rc'))
+    check('thermal service label', 'hal_thermal_default_exec' in stat('/vendor/bin/hw/android.hardware.thermal@2.0-service.rocsource'))
     vintf = WORK / 'vintf-catalog'
     vintf.mkdir()
     run(['/usr/sbin/debugfs', '-R', 'rdump /etc/vintf ' + str(vintf), WORK / 'vendor.raw'])

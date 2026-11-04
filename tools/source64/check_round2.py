@@ -164,6 +164,13 @@ run([jdk / 'javac', '-d', classes,
      REPO / 'tools/source64/SelectFallbackTest.java'])
 run([jdk / 'java', '-Xmx256m', '-cp', classes, 'com.roc.rgsp.navtrial.SelectFallbackTest'])
 passed.append('Select-fallback-without-flag-and-chord-preservation')
+
+# Thermal model tests use regular temporary files, never thermal emulation nodes.
+run(['g++', '-std=c++14', '-Wall', '-Wextra', '-Werror', '-I', PRODUCT / 'Thermal',
+     REPO / 'tools/source64/thermal_model_test.cpp', '-o', WORK / 'thermal-model-test'])
+run([WORK / 'thermal-model-test', WORK / 'thermal-fixture'])
+passed.append('Thermal-real-unit-trip-boundaries-missing-invalid-and-cooling')
+
 result = {'passed': True, 'work': str(WORK), 'cases': passed, 'case_count': len(passed),
           'devices_accessed': False, 'synthetic_fixtures_not_flashable': True, 'whole_card_image_created': False}
 (OUT / (WORK.name + '.json')).write_text(json.dumps(result, indent=2)+'\n')

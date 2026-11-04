@@ -1,0 +1,125 @@
+{
+  "date": "2026-11-04",
+  "baseline_tag": "baseline/roc-os-source64-thermal-r1-20261104",
+  "product": "roc_os_source64-eng",
+  "build_receipt": "images-result-v17.json",
+  "prepare_receipt": "prepare-v20.json",
+  "audit_receipt": "round2-audit-v12.json",
+  "checks": 123,
+  "host_cases": 22,
+  "images": {
+    "system.img": {
+      "bytes": 1148064228,
+      "sha256": "fefd10ed27e21d3b57f7b480743e97f07f133c5abd566ecd97c8e44afd6b7e05"
+    },
+    "vendor.img": {
+      "bytes": 65925340,
+      "sha256": "e61a2792a75d8149bda0a22796e62dfba52a66ad6896b3a8aef1da41fe7ce60f"
+    },
+    "ramdisk.img": {
+      "bytes": 800471,
+      "sha256": "caca37654a34b39abe274828e5e6aa9a39b3748510bd59eb2f46fe753d34f709"
+    }
+  },
+  "closure": {
+    "root_count": 36,
+    "namespace_object_states": 631,
+    "unique_ELF_objects": 548,
+    "errors": [],
+    "pre_apex_bootstrap_objects": 41,
+    "pre_apex_bootstrap_errors": [],
+    "new_daemon_strong_symbols": {
+      "/system/bin/vold.rocsource": {
+        "dependency_states": 42,
+        "unresolved_strong_symbol_names": []
+      },
+      "/vendor/bin/hw/android.hardware.light@2.0-service.rocsource": {
+        "dependency_states": 21,
+        "unresolved_strong_symbol_names": []
+      },
+      "/vendor/bin/hw/android.hardware.thermal@2.0-service.rocsource": {
+        "dependency_states": 22,
+        "unresolved_strong_symbol_names": []
+      }
+    },
+    "notes": [
+      "DT_NEEDED and interpreter/ELF checks plus new-daemon symbol names; not exported symbol versions, dlopen completeness, kernel ABI or runtime acceptance",
+      "APEX runtime paths resolved to flattened directories for post-APEX audit; early bootstrap checked separately"
+    ]
+  },
+  "HAL": {
+    "version": "2.0",
+    "HAL_Ready": true,
+    "framework_connected": true,
+    "real_sensor_count": 5,
+    "cooling_device_count": 2,
+    "CPU_cache_samples_C": [
+      57.086,
+      55.466,
+      53.846,
+      51.254
+    ],
+    "callback_cache_changes_observed": true,
+    "service_uid": 1000,
+    "service_domain": "hal_thermal_default",
+    "sensors_read_only": true,
+    "poll_interval_s": 2,
+    "unknown_thresholds": "NaN",
+    "kernel_passive_trip_mapping": "first LIGHT / second MODERATE",
+    "kernel_critical_trip_mapping": "SHUTDOWN",
+    "cooling_devfreq_identity": "COMPONENT; not guessed GPU",
+    "legacy_CPU_usage_from_proc_stat": true,
+    "synthetic_temperature_on_device": false,
+    "host_boundary_simulations_only": true
+  },
+  "runtime": {
+    "vendor_delta_sha256": {
+      "/vendor/bin/hw/android.hardware.thermal@2.0-service.rocsource": "f8cd6954ac1e0362cc1f2de91e3d35f39d377edda622eba5026a3a071bec2df0",
+      "/vendor/etc/init/roc-thermal.rc": "e6a8fb6028d4c447f5d9ce68d0bf3a7be70f3ade519a7cc1cf5733290d6c1d85",
+      "/vendor/etc/vintf/manifest.xml": "632247a71e537b4de4532b14296c223f4d7fe6da2a72ae00a9fd94a17e00b181",
+      "/vendor/etc/selinux/vendor_file_contexts": "5a872868bfe638650e02acf8aaa31ff5aef2f8fd051e6f94952a2c1eb89d6035"
+    },
+    "kernel_boot_id_retained": true,
+    "vold_PID_retained": true,
+    "framework_restarted_for_manifest_and_HAL_connection": true,
+    "temporary_no_physical_media_restriction_restored": true,
+    "TF2_never_remounted": true,
+    "HAL_process_reconnect": true,
+    "core_retained_during_HAL_reconnect": true,
+    "vendor_readonly": true,
+    "brightness": 100,
+    "manual_mode": 0,
+    "timeout_ms": 60000,
+    "final_screen": "Asleep",
+    "bringup_lock_kept": true,
+    "crash_buffer_empty": true,
+    "init_RC_installed": true,
+    "current_launch": "controlled background process; no init-RC reload; init autostart awaits cold boot"
+  },
+  "unaccepted": [
+    "cold-boot init autostart",
+    "real high-temperature throttling/recovery/shutdown",
+    "battery sensor accuracy and charging protection",
+    "hysteresis and severity policy under sustained load",
+    "deep suspend and physical acceptance",
+    "SELinux enforcing and release security",
+    "full Thermal VTS"
+  ],
+  "old_whole_card_gzip_unchanged": true,
+  "new_whole_card_image": false,
+  "image_uploaded": false,
+  "SPACE_REVIEW_preserved": true,
+  "source_sha256": {
+    "tools/source64/round2.py": "f8d0f7eb90c2bb1bd781bed5486be9da36cecec6a07a4413da02b7d4dda42900",
+    "tools/source64/check_round2.py": "6d34bd910e2bc4091339091aa82c7ddf5d5ef27cc2b495a91909bd4a521daa6e",
+    "tools/source64/audit_images.py": "4d9029de3125ef1a4d57cad1fe9a4b94c26e7deeec2dd425f674918fd6d759a6",
+    "tools/source64/audit_linkage.py": "369ee809fafb3057874048a89af692c45dc8e1dc08d8425dfa68142fbdeb9365",
+    "tools/source64/thermal_model_test.cpp": "c078697461e274710fe06de336c33e743f23193b56b36e1ee280bebe58d9d8eb",
+    "android/h700-android10/device/roc/roc_os_source64/Thermal/Android.bp": "dce7230dfaa107a14c517abbcbf376b4662738598080161ee7a3a30f85552373",
+    "android/h700-android10/device/roc/roc_os_source64/Thermal/Model.h": "ca7719660ce694a422ccf650b7205b6e3e429eb9036d4b1f5312609a1eb40ef8",
+    "android/h700-android10/device/roc/roc_os_source64/Thermal/roc-thermal.rc": "e6a8fb6028d4c447f5d9ce68d0bf3a7be70f3ade519a7cc1cf5733290d6c1d85",
+    "android/h700-android10/device/roc/roc_os_source64/Thermal/service.cpp": "c5f89fb7c3cb04eded57cb53d87a9e7e1d0347d6b880c345995deb736e8dec59",
+    "android/h700-android10/device/roc/roc_os_source64/roc_os_source64.mk": "5fe411cfa0aa5810c5c1a370bddadca98dc2238bd0f2055bd1fb7eef65de1e7c",
+    "android/h700-android10/device/roc/roc_os_source64/sepolicy/file_contexts": "f658e6f470b9ffdf7e43ab75a7c30b50cfef535d3e8cd2a11c131ea83c74f027"
+  }
+}

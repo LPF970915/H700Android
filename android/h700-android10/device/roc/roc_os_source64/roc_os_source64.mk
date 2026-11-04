@@ -7,6 +7,7 @@ PRODUCT_DEVICE := roc_os_source64
 PRODUCT_MODEL := ROC OS
 PRODUCT_PACKAGES := $(filter-out RGSPNavigation vold services wifi-service preinstall,$(PRODUCT_PACKAGES))
 PRODUCT_PACKAGES += gralloc.rocsource ROCNavigation vold.rocsource services.rocsource wifi-service.rocsource \
+    android.hardware.thermal@2.0-service.rocsource \
     android.hardware.light@2.0-service.rocsource \
     roc-grow-userdata-gpt e2fsck_static roc-resize2fs-static
 GLOBAL_REMOVED_PACKAGES += gralloc.cupid RGSPNavigation vold services wifi-service preinstall
