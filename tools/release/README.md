@@ -20,6 +20,8 @@
 
 `H700UserPrepare` 核对最新工程构建/审计和原输入，创建受守卫的Native候选目录；只在本地复制已审计AT4K并创建指向私有密钥目录的符号链接，不复制私钥实体。`H700UserGraph` 在独立输出执行 `m -j1 nothing` 并保存成功或失败结果。`H700UserSigningProbe` 核对Ninja签名计划并离线验证专用平台密钥签署APK，**不安装、不编全系统、不制作镜像**。三者都经过低负载入口，不得与其他构建并发；实际源码增量、链接目标、密钥公开摘要和原工程三镜像另有守卫。
 
+`H700UserBuild` 在同一隔离user输出执行 systemimage/vendorimage/ramdisk完整编译，使用相同资源上限；记录实际退出码、源保持、三分区SHA及六个真实ARM64/ARM32 ELF。当前首次运行是仍有功能/安全遗留项的中间构建，不能据编译成功直接封装、刷卡或发布。活动批次中不得改其Native输入、候选源或构建脚本；3小时超时续编还须核对动态输入锁和失败类型。
+
 `roc_release_properties.mk` 应用在独立 **user 候选**继承 Source64 产品之后，清理属性变量中的旧安全值，设置认证 ADB、非 debuggable、默认 USB 无功能、禁用 TCP ADB，并排除 su/Superuser 包。它目前是隔离的配置输入，未部署到原产品、未编出或验证 user 系统。继承延迟展开、复制来的属性文件和启动脚本仍需以实际产物复审，不能只看 Make 变量。
 
 `release-policy.json` 与 `audit_release.py` 检查实际已审计分区的属性加载顺序、init 控制台/su 域、boot permissive 参数、签名和验收证据。当前工程镜像应被拒绝，这个拒绝是门禁正常工作，不是工具执行失败。
