@@ -144,11 +144,11 @@ run(['g++', '-std=c++11', '-Wall', '-Wextra', '-Werror', '-I', PRODUCT / 'Vold',
 run([WORK / 'policy-test'])
 passed.append('TF2-controller-policy-independent-of-MMC-number')
 
-# Existing audited 256-level backlight boundary test, using the selected source.
+# Private product endpoint compatibility, tested over every logical level.
 run(['g++', '-std=c++11', '-Wall', '-Wextra', '-Werror', '-I', PRODUCT / 'Light',
-     REPO / 'tools/readiness/backlight_test.cpp', PRODUCT / 'Light/Backlight.cpp', '-o', WORK / 'backlight-test'])
+     REPO / 'tools/source64/backlight_endpoint_test.cpp', PRODUCT / 'Light/Backlight.cpp', '-o', WORK / 'backlight-test'])
 run([WORK / 'backlight-test'])
-passed.append('selected-Light-256-level-ABI-and-error-boundaries')
+passed.append('selected-Light-256-logical-levels-monotonic-254-endpoint-ABI-errors')
 for file in [PRODUCT / 'configs/roc-factory.sh', PRODUCT / 'configs/roc-os-branding.sh', REPO / 'tools/source64/storage/grow_userdata.sh']:
     run(['bash', '-n', file])
 contract = json.loads((OUT / 'boot-contract.json').read_text())

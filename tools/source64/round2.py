@@ -121,6 +121,18 @@ def generate(repo, native, dest):
 
     light = dest / 'Light'
     shutil.copytree(repo / 'android/h700-android10/device/roc/rgsp/H700Light', light, dirs_exist_ok=True)
+    p = light / 'Backlight.cpp'
+    s = p.read_text()
+    old = 'unsigned long args[4] = {0, brightness(argb), 0, 0};'
+    assert s.count(old) == 1
+    s = s.replace(old, '''// The retained RG34XXSP display stack reads back 200 at ioctl value
+    // 255, while 248/250/254 remain exact. Keep the logical endpoint
+    // monotonic using the highest validated driver value; true off stays 0.
+    // This is a private product compatibility rule, not a kernel fix.
+    const unsigned int requested = brightness(argb);
+    const unsigned int driver = requested == 255 ? 254 : requested;
+    unsigned long args[4] = {0, driver, 0, 0};''')
+    p.write_text(s)
     p = light / 'Android.bp'
     s = p.read_text().replace('name: "android.hardware.light@2.0-service.h700",',
                             'name: "android.hardware.light@2.0-service.rocsource",')

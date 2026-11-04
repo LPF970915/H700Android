@@ -1,0 +1,186 @@
+{
+  "date": "2026-11-04",
+  "baseline_tag": "baseline/roc-os-source64-unattended-r1-20261104",
+  "parent_commit": "7835624",
+  "scope": "user deferred physical acceptance; autonomous software checks and scoped endpoint repair",
+  "build": {
+    "unit": "h700-low-pressure-20261104-130202",
+    "receipt": "images-result-v15.json",
+    "prepare": "prepare-v18.json",
+    "audit": "round2-audit-v11.json",
+    "host_tests": "round2-test-v18.json",
+    "checks": 120,
+    "host_cases": 21,
+    "images": {
+      "system.img": {
+        "bytes": 1148064228,
+        "sha256": "b3cad6bdb68b77e9d57103b4dff6525c3eb97d411199f154af0204abeb2c4836"
+      },
+      "vendor.img": {
+        "bytes": 65859804,
+        "sha256": "e515b2c699d41a5d317869a90e749827cbd43dc23e8046a0d9aa74d5edc4c8cc"
+      },
+      "ramdisk.img": {
+        "bytes": 800471,
+        "sha256": "caca37654a34b39abe274828e5e6aa9a39b3748510bd59eb2f46fe753d34f709"
+      }
+    },
+    "limits": "aggregate1CPU affinity0-1 nice19 -j1 RAM6GiB swap512MiB idleIO RuntimeMax3h"
+  },
+  "brightness": {
+    "original_failure": "requested255/readback200 under BRIGHT/manual; repeated; ioctl success",
+    "compatibility_rule": "logical255-to-driver254; other0..254 unchanged",
+    "before": {
+      "32": 32,
+      "64": 64,
+      "128": 128,
+      "192": 192,
+      "224": 224,
+      "248": 248,
+      "250": 250,
+      "254": 254,
+      "255": 200
+    },
+    "after": [
+      {
+        "requested": 32,
+        "driver": 32
+      },
+      {
+        "requested": 64,
+        "driver": 64
+      },
+      {
+        "requested": 128,
+        "driver": 128
+      },
+      {
+        "requested": 192,
+        "driver": 192
+      },
+      {
+        "requested": 224,
+        "driver": 224
+      },
+      {
+        "requested": 248,
+        "driver": 248
+      },
+      {
+        "requested": 250,
+        "driver": 250
+      },
+      {
+        "requested": 254,
+        "driver": 254
+      },
+      {
+        "requested": 255,
+        "driver": 254
+      },
+      {
+        "requested": 254,
+        "driver": 254
+      },
+      {
+        "requested": 255,
+        "driver": 254
+      }
+    ],
+    "kernel_root_cause_proven": false,
+    "original_255_driver_level_recovered": false,
+    "true_off_retained": true,
+    "light_elf_sha256": "cead4dfee5876f10dab81c3300d95735f49a9690373f30a6ca1752f77be60f7d",
+    "vendor_readonly_restored": true,
+    "rollback_triggered": false,
+    "whole_system_reboot_after_light_update": false
+  },
+  "application": {
+    "ARM64_only_temporary_probe": true,
+    "actual_ELF_class": 64,
+    "ART64_and_JNI_pointer64": true,
+    "Mali_G31_GLES_green_render": true,
+    "diagnostic_apk_uninstalled": true,
+    "not_a_preload": true
+  },
+  "screen": {
+    "controlled_cycles_before_fix": 3,
+    "controlled_cycles_after_fix": 3,
+    "OFF_backlight_zero": true,
+    "ON_backlight_restored": true,
+    "core_processes_and_boot_id_retained": true,
+    "physical_Hall_or_power_cycles": false,
+    "deep_suspend_accepted": false
+  },
+  "network": {
+    "disable_enable_cycles": 3,
+    "all_automatically_VALIDATED": true,
+    "seconds_to_validation": [
+      6.83,
+      6.84,
+      6.84
+    ],
+    "password_reentry": false,
+    "deep_suspend_recovery_accepted": false
+  },
+  "storage": {
+    "internal_provider_enumeration": true,
+    "provider_bytes_match_for_8MiB_empty_Unicode": true,
+    "client_privilege": "shell",
+    "ordinary_app_SAF_grant_accepted": false,
+    "TF2_kept_unmounted": true,
+    "physical_TF2_hotplug_deferred_by_user": true
+  },
+  "power_and_security": {
+    "readable_thermal_zones": 5,
+    "CPU_passive_thresholds_C": [
+      60,
+      70
+    ],
+    "CPU_critical_threshold_C": 115,
+    "CPU_GPU_cooling_devices_present": true,
+    "thermal_HAL_ready": false,
+    "thermal_protection_trigger_tested": false,
+    "battery_accuracy_accepted": false,
+    "bringup_lock_retained": true,
+    "Hall_IRQ_wake_proven": false,
+    "build_type": "eng",
+    "build_tags": "test-keys",
+    "ro_adb_secure": 0,
+    "ro_secure": 0,
+    "ro_debuggable": 1,
+    "SELinux": "Permissive",
+    "USB_ADB_root": true,
+    "ADB_TCP5555_listener_observed": false,
+    "TCP5037_bound_to_IPv4_loopback": true,
+    "security_configuration_changed": false
+  },
+  "final": {
+    "brightness_setting": 100,
+    "brightness_mode": 0,
+    "screen_off_timeout_ms": 60000,
+    "screen_state": "Asleep",
+    "WiFi_enabled_and_VALIDATED": true,
+    "critical_source64_runtime_guards_match": true,
+    "crash_buffer_empty": true,
+    "SPACE_REVIEW_preserved": true
+  },
+  "whole_card_repacked": false,
+  "image_uploaded": false,
+  "release_accepted": false,
+  "pending": [
+    "physical TF2 remove/reinsert",
+    "physical brightness and system navigation",
+    "full updated-candidate clean first boot and cold boot",
+    "ordinary app SAF/exFAT/other card capacities/recovery",
+    "charging low battery thermal HAL and protection",
+    "Hall wake/deep suspend/power consumption",
+    "audio Bluetooth peripherals long load",
+    "release security licensing reproducibility"
+  ],
+  "source_sha256": {
+    "tools/source64/round2.py": "19666fa942caa9169741a2f0d259446de67c8053c9740df1353bb3bb86938bcb",
+    "tools/source64/check_round2.py": "49c71ebd0509fb29bc5fc84a3ce10994723d1ff97c0c793cea6b706b71788d7f",
+    "tools/source64/backlight_endpoint_test.cpp": "5917d65479191ec9e1126c153de4e0c4304a1af7a85f6538ad7695f144935328"
+  }
+}
