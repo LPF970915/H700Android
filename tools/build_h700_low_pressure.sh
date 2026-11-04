@@ -47,6 +47,13 @@ if [ "$#" = 1 ] && { [ "$1" = H700UserGraph ] || [ "$1" = H700UserBuild ]; }; th
     source build/envsetup.sh >/dev/null
     candidate_status=0
     lunch roc_os_release_candidate-user || candidate_status=$?
+    if [ "$candidate_status" = 0 ]; then
+        candidate_private_policy="$(get_build_var PRODUCT_PRIVATE_SEPOLICY_DIRS)"
+        case " $candidate_private_policy " in
+            *" device/roc/roc_os_release_candidate/sepolicy/private "*) ;;
+            *) echo "USER_POLICY_OVERRIDE_NOT_SELECTED: $candidate_private_policy" >&2; candidate_status=33 ;;
+        esac
+    fi
     candidate_phase=graph
     if [ "$1" = H700UserBuild ]; then candidate_phase=images; fi
     if [ "$candidate_status" = 0 ]; then

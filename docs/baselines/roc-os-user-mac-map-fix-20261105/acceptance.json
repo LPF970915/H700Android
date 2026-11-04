@@ -1,0 +1,45 @@
+{
+  "schema": 1,
+  "date": "2026-11-05",
+  "parent_commit": "7e36176",
+  "failed_unit": "h700-low-pressure-20261105-002018",
+  "failed_receipt": "images-result-v1.json",
+  "failed_task": 9518,
+  "original_task_total": 95883,
+  "cause": "stock @RELEASE USER referenced absent testkey.x509.pem despite custom releasekey default",
+  "failure_was_not_timeout": true,
+  "old_inputs_verified_before_fix": true,
+  "scope": "isolated candidate product/private certificate mapping, real insertkeys preflight and startup selection guard",
+  "old_BSP_or_keys_changed": false,
+  "public_test_key_fallback": false,
+  "production_keys_regenerated": false,
+  "private_key_alias_as_testkey_created": false,
+  "platform_and_product_preflight": {
+    "executed": true,
+    "actual_insertkeys_passed": true,
+    "release_USER_points_to_production_releasekey": true,
+    "output_sha256": "994790f5b9907d46f2a43d9550e1d180d700e09b85e475863b0cc563d9650c7d",
+    "signer_certificate_sha256": [
+      "849703b189a014765a8de097be80a847a45d36261ffce8d22dc94155715ea561",
+      "f07dc4431821aa621566ec371f16ec69aec730203ace35aa47dda3286d2ad198",
+      "fc30e834b3c2914a0646d0b46c4faaa045aa8d46189950012555a5f2c36745c9"
+    ],
+    "product_empty_policy_no_extra_signer_grants": true,
+    "product_output_sha256": "9fc6e3bc49b67055ec3e2059f5fce7c7e5b72069697d82f963aec4dd2d61fcf0"
+  },
+  "intermediate_failures_preserved": [
+    "prepare-v6 build-python launcher unavailable before envsetup",
+    "images-result-v2 board entry overridden; startup guard stopped before compile"
+  ],
+  "new_unit": "h700-low-pressure-20261105-011601",
+  "new_prepare": "prepare-v9.json",
+  "old_engineering_inputs_product_and_images_retained": true,
+  "actual_compiled_plat_mac_XML_valid": true,
+  "actual_compiled_plat_mac_XML_matches_preflight": true,
+  "compile_resumed_after_reviewed_source_fix": true,
+  "all_outputs_failures_and_user_SPACE_REVIEW_retained": true,
+  "full_user_images_complete": false,
+  "device_accessed": false,
+  "whole_card_image_created": false,
+  "SELinux_runtime_or_release_accepted": false
+}

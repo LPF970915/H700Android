@@ -1,5 +1,13 @@
 # ROC OS 独立 user 候选准备（2026-11-04—05）
 
+2026-11-05 编译修正：首批002018在9518/95883任务处因平台MAC签名映射失败停止，用时35分43秒、峰值5GiB/swap0，images-result-v1与全部日志保留。旧keys.conf的@RELEASE USER固定请求testkey.x509.pem，与专用releasekey名称不符；不是超时，未原样重试。
+
+独立产品新增私有keys.conf，仅将USER映射到现有正式releasekey证书。使用PRODUCT_PRIVATE_SEPOLICY_DIRS接入；板级入口被BSP覆盖的中间草案已被启动前守卫阻止（010812/images-v2），未进入重复编译。实际BSP insertkeys预检查通过平台XML及产品空XML两条路径，所有平台模板签名来自原正式身份，产品侧不增加签名权限规则。旧BSP、五组密钥及私有目录链接未修改；没有创建名为testkey的正式密钥别名。预检查使用保留的64位py2启动器，不安装全局Python；首个缺启动器PATH的prepare-v6预检查失败也保留。
+
+修复前已核对repo和Native输入守卫；仅四个编译输入变化：候选mk、新keys.conf、prepare_candidate.py和低负载shell入口。11项发行工具测试通过（run-v8）。新批次011601/prepare-v9已启动，实际产品私有策略路径守卫通过，正在重生成构建图；复用旧输出，未清理已有产物。动态锁已按本次审查过的差异更新，旧锁与失败记录另存。源码修正和预检查通过尚不表示实际完整编译越过失败点，更不代表enforcing运行通过。
+
+01:19实际编译已越过原失败点：真实plat_mac_permissions.xml为有效XML，SHA与正式证书预检查输出一致。新批次528/86878时正在编译libc++fs，内存约4.67GiB/swap0；计数域因增量图改变而重置，不与旧95883任务图逐项相加。见[修复证明](baselines/roc-os-user-mac-map-fix-20261105/acceptance.json)。完整分区、enforcing及正式发行仍未通过。
+
 在发行收口基线 `1127cfd` 上继续。当前完成工程卡开合盖一轮及安装新初始化应用之后的真实重启：用户确认画面、中文桌面、A 解锁、Wi-Fi 和 Select 无异常；关键 SHA 保持，ROCProvisioning 在新 boot 下自动收到开机广播并保留设置，Thermal init 自启与框架 HAL Ready、Wi-Fi VALIDATED 再次通过。开盖采样晚于锁屏10秒自动息屏，保留这段样本；H700Lid/PowerManager事件与用户观察共同证明实际开盖亮屏，未把晚采样当成瞬间ON状态。均为当前 eng 工程卡验收，不是 user 镜像验收。
 
 ## 隔离准备
