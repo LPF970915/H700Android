@@ -1,5 +1,7 @@
 # 当前基线与接手状态
 
+2026-11-04 TF2 增量：用户确认 Select 有效；TF2 FAT 数据卷 66 文件读写/改名/删除、带卡正常重启保留及全部已挂载卷安全卸载通过，实体拔出/重插待测。见 [TF2 实测](ROC_OS_SOURCE64_TF2_20261104.md)。此前“TF2缺卡/实体Select待确认”是历史状态。
+
 2026-11-04 当前开发基线：`baseline/roc-os-source64-live-fix1-20261104`，修复源码 `03362c3`，见[七步计划与后续顺序](ROC_OS_PLAN_PROGRESS_20261104.md)及[存储增量证明](baselines/roc-os-source64-live-baseline-20261104/acceptance.json)。128GB 统一内部存储的 66 个文件跨正常重启哈希保持，当前主线为第 3 步 TF2/存储闭环；实体鼠标复测待确认。镜像不上传，旧 Test1 gzip 未包含运行修复。以下日期条目为历史检查点，不能当作最新待办。
 
 2026-11-04 Source64 128GB 首启及运行修正：扩容、ARM64/Mali、Wi-Fi 联网已观察，补齐 supplicant、HOME 角色、Navigation16、字体预加载与 devpts；当前卡已修改，旧 Test1 gzip 未重新封装。新分区构建及 120 项复审通过，最新物理鼠标复测待确认。见 [运行修正记录](ROC_OS_SOURCE64_FIRSTBOOT_128G_20261104.md)。

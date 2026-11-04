@@ -1,0 +1,56 @@
+{
+  "date": "2026-11-04",
+  "parent_baseline": "baseline/roc-os-source64-live-fix1-20261104",
+  "runtime_navigation": 16,
+  "physical_select_user_confirmed": true,
+  "physical_confirmation_scope": "User replied Select valid to WLAN/desktop call, D-pad and B test request; not a new full dual-stick acceptance",
+  "tf2": {
+    "host": "sdc2",
+    "card_bytes": 62534975488,
+    "old_card_partition_count": 8,
+    "mounted_FAT_volumes": 3,
+    "tested_filesystem": "vfat",
+    "tested_filesystem_bytes": 49330749440,
+    "files": 66,
+    "large_fixture_bytes": 8388608,
+    "unicode_space_empty_cases": true,
+    "portable_and_raw_hashes_match": true,
+    "unicode_rename_delete": true,
+    "normal_reboot_remount_and_all_hashes": true,
+    "tf1_files_retained": true,
+    "critical_hashes_retained": true,
+    "post_reboot_crash_empty": true,
+    "Android_safe_unmount_all_3_volumes": true,
+    "physical_removal_confirmed": false,
+    "physical_reinsert_verified": false,
+    "format_or_partition_changes": false,
+    "tested_directory_only": true
+  },
+  "pending": [
+    "TF2 physical removal/reinsertion",
+    "SAF normal app access",
+    "exFAT and other capacities",
+    "recovery power-loss",
+    "power thermal full acceptance"
+  ],
+  "read_only_power_precheck": {
+    "USB_power_reported": true,
+    "battery_percent_reported": 100,
+    "battery_temperature_reported_C": 30,
+    "battery_voltage_reported_mV": 4081,
+    "thermal_zones_present": [
+      "cpu",
+      "gpu",
+      "ve",
+      "ddr",
+      "battery"
+    ],
+    "cpu_temperature_sample_C": 44.531,
+    "bringup_lock_present": true,
+    "deep_suspend_accepted": false,
+    "battery_measurement_accuracy_accepted": false,
+    "power_configuration_changed": false
+  },
+  "new_image": false,
+  "raw_evidence": "ignored local out/source64-storage-20261104/ and out/source64-power-20261104/"
+}
