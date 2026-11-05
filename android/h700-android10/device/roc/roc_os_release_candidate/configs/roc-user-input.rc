@@ -1,0 +1,9 @@
+# Relabel inherited devtmpfs nodes after Android policy loads and before init
+# starts Binder services. The boot handoff performs ownership without a shell
+# service running inside Android's init or su domain.
+on early-init
+    restorecon_recursive /dev
+
+on post-fs-data
+    restorecon_recursive /dev/input
+    restorecon_recursive /dev/snd

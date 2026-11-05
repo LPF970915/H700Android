@@ -1,0 +1,3 @@
+# One read-only Hall endpoint; no sysfs writes or broad sysfs file reads.
+type sysfs_roc_hall, fs_type, sysfs_type;
+allow platform_app sysfs_roc_hall:file { getattr open read };

@@ -1,6 +1,36 @@
 # Isolated user candidate; never substitute the live eng product/output.
 $(call inherit-product, device/roc/roc_os_source64/roc_os_source64.mk)
 include $(dir $(lastword $(MAKEFILE_LIST)))release_properties.mk
+# Replace inherited root startup helpers only in this independent user product.
+roc_user_retired := system/etc/rgsp/leanback.sha256 system/etc/init/h700-network-validation-defaults.rc system/bin/h700-network-validation-defaults.sh \
+    system/etc/init/rgsp-wallpapers.rc system/bin/rgsp-wallpapers.sh \
+    vendor/etc/init/rgsp-stick-axes.rc vendor/bin/rgsp-stick-axes.sh \
+    vendor/etc/init/rgsp-input-bringup.rc vendor/bin/rgsp-input-prepare.sh vendor/bin/rgsp-kmsg-start.sh \
+    system/bin/rgsp-wifi-adb-session.sh
+roc_user_retired_sources := device/roc/rgsp/configs/leanback.sha256 device/roc/rgsp/h700-network-validation-defaults.rc device/roc/rgsp/h700-network-validation-defaults.sh device/roc/rgsp/rgsp-wallpapers.rc device/roc/rgsp/rgsp-wallpapers.sh device/roc/rgsp/input/rgsp-stick-axes.rc device/roc/rgsp/input/rgsp-stick-axes.sh device/roc/rgsp/rgsp-input-bringup.rc device/roc/rgsp/rgsp-input-prepare.sh device/roc/rgsp/rgsp-kmsg-start.sh device/roc/rgsp/rgsp-wifi-adb-session.sh
+# BSP resolves inherited copies late; the first destination wins.
+PRODUCT_COPY_FILES := \
+    device/roc/roc_os_release_candidate/configs/roc-user-build.txt:system/etc/roc-user-build.txt \
+    device/roc/roc_os_release_candidate/configs/retired-service.rc:system/etc/init/h700-network-validation-defaults.rc \
+    device/roc/roc_os_release_candidate/configs/retired-service.rc:system/etc/init/rgsp-wallpapers.rc \
+    device/roc/roc_os_release_candidate/configs/retired-service.rc:vendor/etc/init/rgsp-stick-axes.rc \
+    device/roc/roc_os_release_candidate/configs/retired-service.rc:vendor/etc/init/rgsp-input-bringup.rc \
+    device/roc/roc_os_release_candidate/configs/retired-helper.sh:system/bin/h700-network-validation-defaults.sh \
+    device/roc/roc_os_release_candidate/configs/retired-helper.sh:system/bin/rgsp-wallpapers.sh \
+    device/roc/roc_os_release_candidate/configs/retired-helper.sh:vendor/bin/rgsp-stick-axes.sh \
+    device/roc/roc_os_release_candidate/configs/retired-helper.sh:vendor/bin/rgsp-input-prepare.sh \
+    device/roc/roc_os_release_candidate/configs/retired-helper.sh:vendor/bin/rgsp-kmsg-start.sh \
+    device/roc/roc_os_release_candidate/configs/retired-helper.sh:system/bin/rgsp-wifi-adb-session.sh \
+    device/roc/roc_os_release_candidate/configs/roc-user-input.rc:vendor/etc/init/roc-user-input.rc \
+    device/roc/roc_os_release_candidate/configs/default-permissions-roc-setup.xml:system/etc/default-permissions/default-permissions-roc-setup.xml \
+    device/roc/roc_os_release_candidate/configs/leanback.sha256:system/etc/rgsp/leanback.sha256 \
+    $(PRODUCT_COPY_FILES)
+PRODUCT_PACKAGES := $(filter-out ROCProvisioning rgsp_kmsg_logger,$(PRODUCT_PACKAGES))
+PRODUCT_PACKAGES := $(filter-out CtsShimPrivPrebuilt CtsShimPrebuilt,$(PRODUCT_PACKAGES))
+GLOBAL_REMOVED_PACKAGES += CtsShimPrivPrebuilt CtsShimPrebuilt
+PRODUCT_PACKAGES += ROCReleaseProvisioning
+GLOBAL_REMOVED_PACKAGES += ROCProvisioning rgsp_kmsg_logger
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES := ro.roc.user.candidate=rc1 $(PRODUCT_SYSTEM_DEFAULT_PROPERTIES)
 PRODUCT_NAME := roc_os_release_candidate
 # Use the guarded H700 board configuration and internal device identity.
 PRODUCT_DEVICE := roc_os_source64

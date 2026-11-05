@@ -57,6 +57,9 @@ if [ "$#" = 1 ] && { [ "$1" = H700UserGraph ] || [ "$1" = H700UserBuild ]; }; th
             candidate_status=33
         else
             echo "USER_PLATFORM_KEYMAP_ROUTE_SELECTED; ORIGINAL_BSP_PRIVATE_DIR_RETAINED; NO_PRODUCT_POLICY"
+            candidate_copies="$(get_build_var PRODUCT_COPY_FILES)"
+            candidate_defaults="$(get_build_var PRODUCT_SYSTEM_DEFAULT_PROPERTIES)"
+            python3 "$candidate_tools/check_candidate_copy_plan.py" "$candidate_copies" "$candidate_defaults" || candidate_status=35
         fi
     fi
     candidate_phase=graph

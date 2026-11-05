@@ -46,6 +46,14 @@ if retired.exists():
  assert sha(retired)=='fd7984c92868d9ba52cd366cf2107971738012b33fd018ca6d6f1e81dd656ce7'
  shutil.copyfile(retired,OUT/(receipt.stem+'-retired-product-attributes'))
  retired.unlink()
+# Retire only the exact reviewed candidate-only abandoned keyboard genrule.
+# The full source tar above preserves it without dereferencing private keys.
+retired_bp=destination/'Android.bp'
+if retired_bp.exists():
+ assert retired_bp.is_file() and not retired_bp.is_symlink()
+ assert sha(retired_bp)=='7a490afb5d3d19dd8d313e1a186644dcf2ac1e2420c856e99e9a44de6a2115dc'
+ shutil.copyfile(retired_bp,OUT/(receipt.stem+'-retired-keyboard-genrule.bp'))
+ retired_bp.unlink()
 for p in source.rglob('*'):
  if p.is_dir():continue
  assert p.is_file() and not p.is_symlink()
@@ -104,8 +112,8 @@ if insert.is_file():
 
 # A certificate map belongs to the platform-private input. Enabling a product
 # policy for it creates empty product CIL/mapping files in this old BSP.
-assert sorted(p.name for p in (destination/'sepolicy/private').iterdir())==['keys.conf']
-policy_route={'certificate_map_only':True,'unused_product_attribute_retired':True,
+assert sorted(p.name for p in (destination/'sepolicy/private').iterdir())==['genfs_contexts','keys.conf','roc_hall.te']
+policy_route={'certificate_map_only':False,'candidate_Hall_read_only_policy':True,'unused_product_attribute_retired':True,
  'expected_board_private_directories':['device/softwinner/common/sepolicy/private',
                                      'device/roc/roc_os_release_candidate/sepolicy/private'],
  'expected_product_public_and_private_directories':[],

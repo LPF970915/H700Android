@@ -1,5 +1,7 @@
 # ROC OS 独立 user 候选准备（2026-11-04—05）
 
+2026-11-05 22:15：用户授权后完成四组su候选源码迁移、实际分区及116 APK签名审计、完整RC1整卡封装和独立复查。交付、SHA、烧录方式及仍开放的新user真机/正式发行边界见[User RC1整卡说明](ROC_OS_USER_CARD_RC1_20261105.md)。当前无活动作业，原工程及全部失败/中间产物保留，心跳保持暂停；没有设备操作或镜像上传。
+
 2026-11-05 18:51 首轮隔离user镜像编译完成：184520/prepare-v22退出0，Ninja 691/691项，较上一报告增加12项；images-result-v5通过。末批用时5分59.692秒、CPU4分22.938秒，峰值内存5GiB、swap960KiB，无FAILED/OOM。独立post-build-audit-v1重算三镜像SHA，并核对10个真实ARM64/ARM32 ELF：app_process、APEX linker/ART、Android runtime和私有Gralloc；wifi-service.rocsource.jar已安装且SHA保持。扩展审计首个尝试将Android绝对/apex链接当作主机路径打开，失败记录保留；随后按实际APEX安装路径与链接目标核对通过，没有修改源码或产物。
 
 repo11项/候选6文件完整集合、Native371原输入/1237项Source64/8候选文件及私有链接、两项ABI5库、五组固定证书和私钥公开摘要、旧工程三镜像全部保持。完成锁和采样已保存，当前无活动构建，roc-os心跳已暂停，禁止自动重启已完成作业。

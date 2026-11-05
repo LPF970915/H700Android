@@ -1,0 +1,1 @@
+genfscon sysfs /devices/platform/soc/twi5/i2c-5/5-0034/axp2202-bat-power-supply.0/power_supply/axp2202-battery/hallkey u:object_r:sysfs_roc_hall:s0

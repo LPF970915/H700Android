@@ -75,3 +75,7 @@ PowerShell 入口施加同样的资源限制和全局互斥锁。恢复前必须
 清单不是备份，也不授权删除源码、Longan参考内核树、外部输入、旧镜像或失败产物。完整 JSONL 留本地，Git 只保存工具、脱敏摘要和清单本身的 SHA。仅克隆公开 Git 仍不能重建整个 BSP。
 
 `H700BuildManifest` 使用只读 `ninja -t commands` 保存当前三个分区目标的重建命令计划和Ninja图文件SHA，不执行其中任何命令。原始计划可能含本地路径，只留忽略的out；它不是历史编译执行日志，也不能替代编译器发现的全部依赖或上游提交清单。树外两项链接单独记录存在性、字面命令引用和可用文件哈希，不静默跟随任意外部目录。
+
+## 2026-11-05 User RC1整卡
+
+user候选分区、全量签名扫描及本地整卡已完成，见[RC1说明](../../docs/ROC_OS_USER_CARD_RC1_20261105.md)。`package_candidate.ps1 -Execute`在原限额与全局锁下先审计再封装；`-VerifyOnly -Execute`独立检查sparse展开、整卡区段、10项ELF和userdata元数据。工具不刷卡、不触碰现机、拒绝覆盖旧交付。RC1仍待真机与正式发行验收，formal_release_allowed保持false。
