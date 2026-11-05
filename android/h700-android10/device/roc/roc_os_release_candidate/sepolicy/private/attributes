@@ -1,0 +1,5 @@
+# A certificate-only product directory otherwise produces an empty product CIL.
+# This BSP's grep step treats that empty output as a build failure. Reserve an
+# unexpanded, memberless private attribute; grant no permissions or labels.
+attribute roc_release_candidate_marker;
+expandattribute roc_release_candidate_marker false;

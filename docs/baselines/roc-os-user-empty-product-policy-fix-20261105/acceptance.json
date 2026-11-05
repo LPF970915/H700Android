@@ -1,0 +1,86 @@
+{
+  "schema": 1,
+  "date": "2026-11-05",
+  "scope": "isolated user candidate empty product SELinux CIL build repair",
+  "failed_build": {
+    "unit": "h700-low-pressure-20261105-135525.service",
+    "result": "images-result-v3.json",
+    "completed": 565,
+    "total": 23938,
+    "step_delta_since_previous": 309,
+    "cause": "certificate-only product private directory -> identical product/platform policy.conf -> empty filtered CIL -> grep -v exits1",
+    "timeout": false,
+    "OOM": false,
+    "runtime_seconds": 1683.857,
+    "CPU_seconds": 1605.116,
+    "memory_peak_GiB": 5,
+    "swap_peak_MiB": 0
+  },
+  "protected_inputs_before_fix": {
+    "original_native": 371,
+    "Source64_product": 1237,
+    "ABI5": 2,
+    "candidate": 7,
+    "all_hashes_and_sets_match": true,
+    "old_eng_three_images_unchanged": true,
+    "production_certificates_and_key_public_digests_unchanged": true,
+    "no_active_builders_and_locks_free": true
+  },
+  "repair": {
+    "candidate_attribute": "roc_release_candidate_marker",
+    "members": 0,
+    "new_permission_rules": 0,
+    "new_labels": 0,
+    "old_BSP_or_global_libraries_changed": false,
+    "private_key_bytes_in_source_or_Git": false,
+    "preparer_adds_real_tool_positive_and_negative_preflight": true,
+    "line_endings": "candidate attribute explicitly LF"
+  },
+  "preflight": {
+    "receipt": "prepare-v18.json",
+    "empty_cil_failure_reproduced": true,
+    "checkpolicy_filter_grep_secilc_passed": true,
+    "product_CIL_sha256": "61ab12d74738a2e8c9edb2f9f0ae78270dd31212713af7f8419d334ce51b5495",
+    "product_CIL_statements": [
+      "(typeattribute roc_release_candidate_marker)",
+      "(expandtypeattribute (roc_release_candidate_marker) false)"
+    ],
+    "actual_tool_sha256": {
+      "checkpolicy": "16f12c8756767e96226325dd20a2243a60a0c45e80540a741e5bfbd450b6b026",
+      "build_sepolicy": "26dba855513505bb20678a51f0af22885cf519aa4016cf28034181890d2fb258",
+      "secilc": "80702e32e162a980be5340add77456235d67804380b66acea66fb06c0b613631"
+    },
+    "certificate_preflight_still_passed": true,
+    "preserved_failed_probes": {
+      "v14": "missing python PATH",
+      "v15": "zipapp nested python2.7 PATH missing",
+      "v16": "probe declaration wrongly appended after contexts; corrected to TE ordering"
+    },
+    "global_Python_changed": false
+  },
+  "current": {
+    "unit": "h700-low-pressure-20261105-144030.service",
+    "log": "out/logs/build/h700-low-pressure-20261105-144030.log",
+    "prepare": "prepare-v18.json",
+    "phase": "graph regeneration",
+    "active": true,
+    "actual_failed_Ninja_step_repassed": false,
+    "whole_build_passed": false,
+    "source64_engineering_build_restarted": false
+  },
+  "caps": {
+    "aggregate_CPU": 1,
+    "AllowedCPUs": "0-1",
+    "jobs": 1,
+    "nice": 19,
+    "RAM_GiB": 6,
+    "swap_MiB": 512,
+    "IO": "idle",
+    "batch_hours": 3
+  },
+  "device_accessed": false,
+  "whole_card_packaged": false,
+  "runtime_security_or_release_accepted": false,
+  "four_su_function_groups_unmigrated": true,
+  "SPACE_REVIEW_preserved": true
+}

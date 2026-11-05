@@ -93,6 +93,56 @@ if insert.is_file():
  mac_probe={'executed':True,'actual_insertkeys_passed':True,'release_USER_points_to_production_releasekey':True,
   'output_sha256':sha(output),'signer_certificate_sha256':sorted(signers),
   'product_empty_policy_no_extra_signer_grants':True,'product_output_sha256':sha(product_output)}
+
+# Reproduce the certificate-only product CIL failure and validate the candidate
+# workaround with the actual retained tools. All writes stay in this probe.
+policy_probe={'executed':False,'reason':'user policy tools not built yet'}
+host=Path('/home/lpf/roc-os-user-20261104/out/host/linux-x86/bin')
+policy_root=Path('/home/lpf/roc-os-user-20261104/out/target/product/roc_os_source64/obj/ETC')
+plat_conf=policy_root/'plat_sepolicy.cil_intermediates/plat_policy.conf'
+plat_cil=policy_root/'plat_sepolicy.cil_intermediates/plat_sepolicy.cil'
+if all((host/n).is_file() for n in ['checkpolicy','build_sepolicy','secilc']):
+ assert plat_conf.is_file() and plat_cil.is_file(),'Missing actual platform policy inputs'
+ probe=OUT/(receipt.stem+'-policy-probe');probe.mkdir()
+ tool_sha={n:sha(host/n) for n in ['checkpolicy','build_sepolicy','secilc']}
+ input_sha={str(p):sha(p) for p in [plat_conf,plat_cil]}
+ def run_policy_step(name,args,expected=0,stdout=None):
+  if Path(args[0]).name=='build_sepolicy':
+   args=[NATIVE/'prebuilts/build-tools/path/linux-x86/python',*args]
+  policy_env={**os.environ,'PATH':str(NATIVE/'prebuilts/build-tools/path/linux-x86')+os.pathsep+os.environ.get('PATH','')}
+  result=subprocess.run([str(a) for a in args],capture_output=True,env=policy_env)
+  (probe/(name+'.log')).write_bytes(result.stdout+result.stderr)
+  assert result.returncode==expected,'Policy preflight failed: '+name
+  if stdout is not None:stdout.write_bytes(result.stdout)
+ empty=probe/'empty-product.cil';shutil.copyfile(plat_cil,empty)
+ run_policy_step('empty-filter',[host/'build_sepolicy','-a',host,'filter_out','-f',plat_cil,'-t',empty])
+ assert empty.stat().st_size==0,'Expected identical product/platform policy to filter to empty'
+ run_policy_step('empty-grep',['grep','-v',';;',empty],expected=1)
+ attribute=destination/'sepolicy/private/attributes'
+ declarations=[s.strip() for s in attribute.read_text().splitlines() if s.strip() and not s.lstrip().startswith('#')]
+ assert declarations==['attribute roc_release_candidate_marker;',
+                       'expandattribute roc_release_candidate_marker false;']
+ # TE declarations must precede role/context sections, as in Make's attributes inputs.
+ base=plat_conf.read_bytes();position=base.find(b'\nattribute ');assert position>=0
+ conf=probe/'product_policy.conf'
+ conf.write_bytes(base[:position+1]+attribute.read_bytes()+b'\n'+base[position+1:])
+ cil=probe/'product_sepolicy.cil'
+ run_policy_step('checkpolicy',[host/'checkpolicy','-M','-C','-c','30','-o',cil,conf])
+ run_policy_step('product-filter',[host/'build_sepolicy','-a',host,'filter_out','-f',plat_cil,'-t',cil])
+ clean=probe/'product-clean.cil'
+ run_policy_step('product-grep',['grep','-v',';;',cil],stdout=clean)
+ statements={s.strip() for s in clean.read_text().splitlines() if s.strip()}
+ assert statements=={'(typeattribute roc_release_candidate_marker)',
+                     '(expandtypeattribute (roc_release_candidate_marker) false)'},statements
+ run_policy_step('secilc',[host/'secilc','-m','-M','true','-G','-c','30',plat_cil,clean,
+                          '-o',probe/'policy.bin','-f',probe/'file_contexts'])
+ assert all(sha(Path(p))==h for p,h in input_sha.items())
+ assert all(sha(host/n)==h for n,h in tool_sha.items())
+ policy_probe={'executed':True,'empty_cil_grep_failure_reproduced':True,
+  'actual_checkpolicy_filter_grep_secilc_passed':True,'memberless_private_attribute_only':True,
+  'additional_permission_or_label_rules':0,'product_cil_sha256':sha(clean),
+  'tool_sha256':tool_sha,'platform_inputs_sha256':input_sha}
+
 guards()
 report={'schema':1,'passed':True,'incomplete':False,'product':'roc_os_release_candidate-user','source_build_receipt':build.name,
  'source_audit':work.name,'protected_371_and_source64_product_unchanged':True,
@@ -102,6 +152,7 @@ report={'schema':1,'passed':True,'incomplete':False,'product':'roc_os_release_ca
  'platform_certificate_sha256':identity['roles']['platform']['certificate_sha256'],
  'external_backup_verified':True,'required_private_key_environment':'ROC_RELEASE_KEYS_DIR',
  'platform_mac_permissions_preflight':mac_probe,
+ 'product_cil_preflight':policy_probe,
  'separate_output':'/home/lpf/roc-os-user-20261104/out','compiled':False,'device_accessed':False,
  'security_and_boot_acceptance':False,'whole_card_image_created':False}
 receipt.write_text(json.dumps(report,indent=2)+'\n')
