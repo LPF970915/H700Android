@@ -27,44 +27,32 @@
     "no_active_builders_and_locks_free": true
   },
   "repair": {
-    "candidate_attribute": "roc_release_candidate_marker",
-    "members": 0,
-    "new_permission_rules": 0,
-    "new_labels": 0,
-    "old_BSP_or_global_libraries_changed": false,
-    "private_key_bytes_in_source_or_Git": false,
-    "preparer_adds_real_tool_positive_and_negative_preflight": true,
-    "line_endings": "candidate attribute explicitly LF"
+    "platform_private_keymap_only": true,
+    "board_assignment_uses_override_to_survive_later_BSP_reset": true,
+    "original_board_private_directory_preserved": "device/softwinner/common/sepolicy/private",
+    "candidate_keys_directory": "device/roc/roc_os_release_candidate/sepolicy/private",
+    "PRODUCT_PRIVATE_and_PRODUCT_PUBLIC_policy_directories": [],
+    "extra_attribute_or_type_declarations": 0,
+    "extra_permission_or_label_rules": 0,
+    "retired_attribute_preserved_in_Git_and_local_archives": true,
+    "BSP_and_global_tools_changed": false,
+    "keys_changed": false
   },
   "preflight": {
-    "receipt": "prepare-v18.json",
-    "empty_cil_failure_reproduced": true,
-    "checkpolicy_filter_grep_secilc_passed": true,
-    "product_CIL_sha256": "61ab12d74738a2e8c9edb2f9f0ae78270dd31212713af7f8419d334ce51b5495",
-    "product_CIL_statements": [
-      "(typeattribute roc_release_candidate_marker)",
-      "(expandtypeattribute (roc_release_candidate_marker) false)"
-    ],
-    "actual_tool_sha256": {
-      "checkpolicy": "16f12c8756767e96226325dd20a2243a60a0c45e80540a741e5bfbd450b6b026",
-      "build_sepolicy": "26dba855513505bb20678a51f0af22885cf519aa4016cf28034181890d2fb258",
-      "secilc": "80702e32e162a980be5340add77456235d67804380b66acea66fb06c0b613631"
-    },
-    "certificate_preflight_still_passed": true,
-    "preserved_failed_probes": {
-      "v14": "missing python PATH",
-      "v15": "zipapp nested python2.7 PATH missing",
-      "v16": "probe declaration wrongly appended after contexts; corrected to TE ordering"
-    },
-    "global_Python_changed": false
+    "receipt": "prepare-v20.json",
+    "real_certificate_substitution_passed": true,
+    "platform_MAC_XML_sha256": "994790f5b9907d46f2a43d9550e1d180d700e09b85e475863b0cc563d9650c7d",
+    "real_Make_route_selection_guard_passed": true,
+    "original_BSP_directory_retained": true,
+    "no_product_policy_enabled": true,
+    "actual_post_route_policy_build_pending": true
   },
   "current": {
-    "unit": "h700-low-pressure-20261105-144030.service",
-    "log": "out/logs/build/h700-low-pressure-20261105-144030.log",
-    "prepare": "prepare-v18.json",
-    "phase": "graph regeneration",
+    "unit": "h700-low-pressure-20261105-145131.service",
+    "log": "out/logs/build/h700-low-pressure-20261105-145131.log",
+    "prepare": "prepare-v20.json",
+    "phase": "incremental build/graph regeneration after platform-private route change",
     "active": true,
-    "actual_failed_Ninja_step_repassed": false,
     "whole_build_passed": false,
     "source64_engineering_build_restarted": false
   },
@@ -82,5 +70,58 @@
   "whole_card_packaged": false,
   "runtime_security_or_release_accepted": false,
   "four_su_function_groups_unmigrated": true,
-  "SPACE_REVIEW_preserved": true
+  "SPACE_REVIEW_preserved": true,
+  "historical_attribute_attempt": {
+    "preflight": {
+      "receipt": "prepare-v18.json",
+      "empty_cil_failure_reproduced": true,
+      "checkpolicy_filter_grep_secilc_passed": true,
+      "product_CIL_sha256": "61ab12d74738a2e8c9edb2f9f0ae78270dd31212713af7f8419d334ce51b5495",
+      "product_CIL_statements": [
+        "(typeattribute roc_release_candidate_marker)",
+        "(expandtypeattribute (roc_release_candidate_marker) false)"
+      ],
+      "actual_tool_sha256": {
+        "checkpolicy": "16f12c8756767e96226325dd20a2243a60a0c45e80540a741e5bfbd450b6b026",
+        "build_sepolicy": "26dba855513505bb20678a51f0af22885cf519aa4016cf28034181890d2fb258",
+        "secilc": "80702e32e162a980be5340add77456235d67804380b66acea66fb06c0b613631"
+      },
+      "certificate_preflight_still_passed": true,
+      "preserved_failed_probes": {
+        "v14": "missing python PATH",
+        "v15": "zipapp nested python2.7 PATH missing",
+        "v16": "probe declaration wrongly appended after contexts; corrected to TE ordering"
+      },
+      "global_Python_changed": false
+    },
+    "repair": {
+      "candidate_attribute": "roc_release_candidate_marker",
+      "members": 0,
+      "new_permission_rules": 0,
+      "new_labels": 0,
+      "old_BSP_or_global_libraries_changed": false,
+      "private_key_bytes_in_source_or_Git": false,
+      "preparer_adds_real_tool_positive_and_negative_preflight": true,
+      "line_endings": "candidate attribute explicitly LF"
+    },
+    "actual_product_CIL_step_passed": true,
+    "actual_CIL_matches_preflight": true,
+    "next_failure": "images-result-v4.json: zero-byte product mapping rejected by secilc in plat_pub_versioned.cil",
+    "retired_and_preserved": true
+  },
+  "second_failure": {
+    "unit": "h700-low-pressure-20261105-144030.service",
+    "receipt": "images-result-v4.json",
+    "completed": 489,
+    "total": 23868,
+    "first_failure_step_repassed": true,
+    "error": "secilc Failure reading zero-byte product_mapping_file_intermediates/29.0.cil",
+    "timeout": false,
+    "OOM": false,
+    "runtime_seconds": 236.171,
+    "CPU_seconds": 165.219,
+    "memory_peak_GiB": 5,
+    "swap_peak_KiB": 160,
+    "all_sources_and_eng_images_retained": true
+  }
 }

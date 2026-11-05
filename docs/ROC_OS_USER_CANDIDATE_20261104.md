@@ -1,5 +1,11 @@
 # ROC OS 独立 user 候选准备（2026-11-04—05）
 
+2026-11-05 14:52 证书映射接入修正：144030真实Ninja已在487项通过product_sepolicy.cil，实际CIL与探针SHA一致；随后489/23,868项在plat_pub_versioned.cil失败，原因是没有产品公开策略，生成的product_mapping_file/29.0.cil为零字节，旧secilc拒绝读取。失败结果v4、原映射和策略输入保留；3分56秒、峰值5GiB/swap160KiB，不是超时或OOM。
+
+最终改为候选专用的**平台私有证书映射**：用override保持BSP原有device/softwinner/common/sepolicy/private，再追加候选keys.conf，防止BoardConfigCommon后续普通赋值覆盖；不启用PRODUCT_PUBLIC/PRIVATE策略目录。真实Make变量守卫已确认原目录与候选目录都在、产品策略目录为空。临时无成员属性和相应探针已退役，Git及准备归档中保留历史；Native仅在所有权、精确SHA和归档检查后移除该文件。最终没有新增类型、属性、权限或标签规则，也未改BSP、全局工具和密钥。
+
+prepare-v19/v20的真实证书替换检查保持通过，按审查的mk、shell守卫、准备器及退役文件变化更新输入锁，旧锁保留。新完整构建145131/prepare-v20已启动，沿用独立输出与全部限额，实际路由守卫通过。后续仍须核对新路由下的真实策略、完整镜像和正式验收，当前不封装或刷写。
+
 2026-11-05 14:42 策略构建修正：135525在565/23,938项生成product_sepolicy.cil失败，较上次增加309项，用时28分04秒；不是超时或OOM，峰值5GiB/swap0。此前证书映射启用PRODUCT_PRIVATE_SEPOLICY_DIRS，但目录没有实际策略，生成的product_policy.conf与平台完全相同；扣除平台CIL后为空，旧BSP的grep -v把空输出视作失败，没有打印策略语法错误。失败镜像结果v3、完整日志和原策略输入均已备份。
 
 修改前完整输入/文件集合、密钥公开摘要、旧工程三镜像和锁状态均核对通过。仅在独立候选中加入一个无成员、不展开的私有属性，新增权限规则和标签均为零；保留BSP规则、正式密钥和现场系统。准备器用实际checkpolicy、filter、grep、secilc复现空结果失败，并验证修正后只剩两条属性声明且能与平台合并。prepare-v17/v18通过；v14/v15因探针Python启动环境不足、v16因人工组合探针的声明顺序错误失败，均保留，已明确使用现有BSP Python2路径并按TE声明位置构造探针，没有修改全局Python。

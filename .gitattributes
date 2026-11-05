@@ -36,4 +36,3 @@ docs/baselines/*.sha256 text eol=lf
 android/h700-android10/snapshots/v5i-native35-20261028/** -text
 
 tools/arm64_probe/*.S text eol=lf
-android/h700-android10/device/roc/roc_os_release_candidate/sepolicy/private/attributes text eol=lf

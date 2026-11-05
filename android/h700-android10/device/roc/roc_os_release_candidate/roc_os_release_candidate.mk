@@ -25,5 +25,7 @@ $(foreach k,$(roc_required_key_files),$(if $(wildcard $(ROC_RELEASE_KEYS_DIR)/$(
 # The preparer creates this guarded directory symlink in Native only. Key bytes
 # remain outside both source trees; nothing under this link is committed.
 PRODUCT_DEFAULT_DEV_CERTIFICATE := device/roc/roc_os_release_candidate/.private-signing/releasekey
-PRODUCT_PRIVATE_SEPOLICY_DIRS += device/roc/roc_os_release_candidate/sepolicy/private
+# BoardConfigCommon replaces ordinary assignments after product parsing. Keep
+# its audited private directory and append only the candidate certificate map.
+override BOARD_PLAT_PRIVATE_SEPOLICY_DIR := device/softwinner/common/sepolicy/private device/roc/roc_os_release_candidate/sepolicy/private
 endif

@@ -48,11 +48,16 @@ if [ "$#" = 1 ] && { [ "$1" = H700UserGraph ] || [ "$1" = H700UserBuild ]; }; th
     candidate_status=0
     lunch roc_os_release_candidate-user || candidate_status=$?
     if [ "$candidate_status" = 0 ]; then
-        candidate_private_policy="$(get_build_var PRODUCT_PRIVATE_SEPOLICY_DIRS)"
-        case " $candidate_private_policy " in
-            *" device/roc/roc_os_release_candidate/sepolicy/private "*) ;;
-            *) echo "USER_POLICY_OVERRIDE_NOT_SELECTED: $candidate_private_policy" >&2; candidate_status=33 ;;
-        esac
+        candidate_private_policy="$(get_build_var BOARD_PLAT_PRIVATE_SEPOLICY_DIR)"
+        candidate_product_private="$(get_build_var PRODUCT_PRIVATE_SEPOLICY_DIRS)"
+        candidate_product_public="$(get_build_var PRODUCT_PUBLIC_SEPOLICY_DIRS)"
+        if [ "$candidate_private_policy" != "device/softwinner/common/sepolicy/private device/roc/roc_os_release_candidate/sepolicy/private" ] ||
+           [ -n "$candidate_product_private$candidate_product_public" ]; then
+            echo "USER_PLATFORM_KEYMAP_ROUTE_NOT_SELECTED: $candidate_private_policy; product=$candidate_product_private/$candidate_product_public" >&2
+            candidate_status=33
+        else
+            echo "USER_PLATFORM_KEYMAP_ROUTE_SELECTED; ORIGINAL_BSP_PRIVATE_DIR_RETAINED; NO_PRODUCT_POLICY"
+        fi
     fi
     candidate_phase=graph
     if [ "$1" = H700UserBuild ]; then candidate_phase=images; fi
