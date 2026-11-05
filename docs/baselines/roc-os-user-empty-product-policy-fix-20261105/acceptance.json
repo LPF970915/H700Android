@@ -48,15 +48,15 @@
     "actual_post_route_policy_build_pending": false
   },
   "current": {
-    "unit": "h700-low-pressure-20261105-145131.service",
-    "log": "out/logs/build/h700-low-pressure-20261105-145131.log",
-    "prepare": "prepare-v20.json",
-    "phase": "Java compilation after SystemUI build",
+    "unit": "h700-low-pressure-20261105-180227.service",
+    "log": "out/logs/build/h700-low-pressure-20261105-180227.log",
+    "prepare": "prepare-v21.json",
+    "phase": "incremental continuation after timeout",
     "active": true,
     "whole_build_passed": false,
     "source64_engineering_build_restarted": false,
-    "last_observed_completed": 2917,
-    "last_observed_total": 23855
+    "last_observed_completed": 0,
+    "last_observed_total": null
   },
   "caps": {
     "aggregate_CPU": 1,
@@ -139,5 +139,21 @@
     ],
     "staging_not_deleted": true,
     "runtime_enforcing_or_release_accepted": false
-  }
+  },
+  "subsequent_guarded_timeout_batches": [
+    {
+      "unit": "h700-low-pressure-20261105-145131.service",
+      "last_completed": 22605,
+      "total": 23855,
+      "only_timeout": true,
+      "compiler_FAILED": false,
+      "OOM": false,
+      "full_input_key_and_image_guards_passed": true,
+      "CPU_seconds": 10345.265,
+      "memory_peak_GiB": 5,
+      "swap_peak_MiB": 512,
+      "new_unit": "h700-low-pressure-20261105-180227.service",
+      "new_prepare": "prepare-v21.json"
+    }
+  ]
 }
