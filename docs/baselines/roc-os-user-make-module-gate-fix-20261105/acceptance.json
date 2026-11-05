@@ -95,10 +95,10 @@
       "IO": "idle",
       "per_job_hours": 3
     },
-    "actual_module_build_and_images": "pending"
+    "actual_module_build_and_images": "PASS images-result-v5; independently rehashed in post-build-audit-v1"
   },
   "acceptance": {
-    "full_user_images": false,
+    "full_user_images": true,
     "four_su_functional_migrations": false,
     "device_boot_or_security": false,
     "whole_card_or_release": false
@@ -106,5 +106,112 @@
   "retained": {
     "all_failures_outputs_and_old_locks": true,
     "SPACE_REVIEW_user_edits_untouched": true
+  },
+  "completion": {
+    "completed_at": "2026-11-05T18:51:20+08:00",
+    "build_receipt": "images-result-v5.json",
+    "post_build_audit": "post-build-audit-v1.json",
+    "images": {
+      "system.img": {
+        "bytes": 1128784356,
+        "sha256": "86d91324bcfb049d3f2d9bf75d680c446002dbb03173dc8f1f1280e0049624bd"
+      },
+      "vendor.img": {
+        "bytes": 65757404,
+        "sha256": "f3c1b1fc993237631ce5289914ecf0145aba38af99bdfbe62a11b068e682d831"
+      },
+      "ramdisk.img": {
+        "bytes": 786340,
+        "sha256": "8a624e70a8109b0bb660212dc31a727e0cdbdf92d982742dd83b7ebadca55e87"
+      }
+    },
+    "actual_ELF": {
+      "system/bin/app_process64": {
+        "ELF_class": 2,
+        "e_machine": 183,
+        "sha256": "17adbfd47244eb618fd5223f581e0cd8044257e631b73fee699a865558f49849"
+      },
+      "system/bin/app_process32": {
+        "ELF_class": 1,
+        "e_machine": 40,
+        "sha256": "df55877c90627800df11ac706f1477f243ee19b4c16ee4b74a12a2a35020fd24"
+      },
+      "system/apex/com.android.runtime.release/bin/linker64": {
+        "ELF_class": 2,
+        "e_machine": 183,
+        "sha256": "52dc1d7b01309d4ec0c3173ee97b512db7b000c49b5d2257e36fef58395c9812"
+      },
+      "system/apex/com.android.runtime.release/bin/linker": {
+        "ELF_class": 1,
+        "e_machine": 40,
+        "sha256": "fcf9d481390dd2e128a3a1316fb1a0668bc5bf383a54e890778bac55a06b34c8"
+      },
+      "system/apex/com.android.runtime.release/lib64/libart.so": {
+        "ELF_class": 2,
+        "e_machine": 183,
+        "sha256": "3aba6bbafd3d31fd7bc2465ed14b399ceed9bcabd941c92e1328fa6d89a043ff"
+      },
+      "system/apex/com.android.runtime.release/lib/libart.so": {
+        "ELF_class": 1,
+        "e_machine": 40,
+        "sha256": "4f44f11d06fd8c00c0c91d30d9258b78700d005c46053436dfdc051d4a84ac70"
+      },
+      "system/lib64/libandroid_runtime.so": {
+        "ELF_class": 2,
+        "e_machine": 183,
+        "sha256": "d98c02084a67d939990261a29bfd26c06dd7a665e48843871690ca4e659f2791"
+      },
+      "system/lib/libandroid_runtime.so": {
+        "ELF_class": 1,
+        "e_machine": 40,
+        "sha256": "824e1134bc32a369de611497d0657d9561a55afb3481fe93f6ec67f8a914a515"
+      },
+      "vendor/lib64/hw/gralloc.rocsource.so": {
+        "ELF_class": 2,
+        "e_machine": 183,
+        "sha256": "4fadaa3fb76e9c7db62c251e4bf5c0c34b4678a2267af03f140a5171e09f1028"
+      },
+      "vendor/lib/hw/gralloc.rocsource.so": {
+        "ELF_class": 1,
+        "e_machine": 40,
+        "sha256": "b2eee21a3defee618f42b2223b683465968e9145a7ae5250d2a35cafe69d7678"
+      }
+    },
+    "Android_linker_symlinks": {
+      "linker64": "/apex/com.android.runtime/bin/linker64",
+      "linker": "/apex/com.android.runtime/bin/linker"
+    },
+    "runtime_files": {
+      "system/framework/wifi-service.rocsource.jar": {
+        "bytes": 2984765,
+        "sha256": "17d12b708fb274bd91a4fe3d78f0430ff20740aee44ae8c8c470d7e95bcacae9"
+      }
+    },
+    "guards": {
+      "repo_compile_inputs": 11,
+      "repo_candidate_full_set": 6,
+      "Native_original_inputs": 371,
+      "Source64_full_set": 1237,
+      "Native_candidate_full_set": 8,
+      "ABI5_libraries": 2,
+      "five_production_certificate_and_private_public_digests_match": true,
+      "private_link_target_matches": true,
+      "old_eng_three_images_unchanged": true
+    },
+    "last_batch": {
+      "completed": 691,
+      "total": 691,
+      "same_batch_step_increment_since_last_report": 12,
+      "runtime_seconds": 359.692,
+      "CPU_seconds": 262.938,
+      "memory_peak_GiB": 5,
+      "swap_peak_KiB": 960,
+      "FAILED": false,
+      "OOM": false
+    },
+    "automation_status": "PAUSED",
+    "no_active_builder": true,
+    "host_APEX_path_discovery_attempt_preserved": true,
+    "release_allowed": false
   }
 }

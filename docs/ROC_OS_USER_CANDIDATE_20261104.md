@@ -1,5 +1,11 @@
 # ROC OS 独立 user 候选准备（2026-11-04—05）
 
+2026-11-05 18:51 首轮隔离user镜像编译完成：184520/prepare-v22退出0，Ninja 691/691项，较上一报告增加12项；images-result-v5通过。末批用时5分59.692秒、CPU4分22.938秒，峰值内存5GiB、swap960KiB，无FAILED/OOM。独立post-build-audit-v1重算三镜像SHA，并核对10个真实ARM64/ARM32 ELF：app_process、APEX linker/ART、Android runtime和私有Gralloc；wifi-service.rocsource.jar已安装且SHA保持。扩展审计首个尝试将Android绝对/apex链接当作主机路径打开，失败记录保留；随后按实际APEX安装路径与链接目标核对通过，没有修改源码或产物。
+
+repo11项/候选6文件完整集合、Native371原输入/1237项Source64/8候选文件及私有链接、两项ABI5库、五组固定证书和私钥公开摘要、旧工程三镜像全部保持。完成锁和采样已保存，当前无活动构建，roc-os心跳已暂停，禁止自动重启已完成作业。
+
+这次仅通过**中间user完整编译**。四组su启动功能迁移、遗留product MAC/hash镜像清单、完整签名/安全/启动审计、干净数据user首启、深睡与电源、恢复/许可及同一最终镜像验收仍未完成；没有整卡封装、刷写、现场安全切换或镜像上传。完成镜像SHA和实际产物详见[本轮证明](baselines/roc-os-user-make-module-gate-fix-20261105/acceptance.json)。
+
 2026-11-05 18:45 产物门禁修复：180227已完成全部1,257项Ninja任务和三分区生成，但最终核对发现ARM64/ARM32私有Gralloc与wifi-service.rocsource.jar均未安装，因此整轮仍判失败。不是超时/OOM；用时23分40秒、CPU20分28秒，峰值5GiB/swap498.5MiB。原因是旧Source64根Android.mk只接受原产品名，新user产品未载入两个私有Make模块。失败三镜像已完整复制并核对SHA，原日志与所有旧结果保留。
 
 在全部repo/Native文件集合与SHA、正式密钥公开摘要、旧工程三镜像及锁状态通过后，仅给独立候选新增根Android.mk，引用受守卫的原Gralloc/Wifi源码，并明确包含原Launcher子入口；不改旧产品或BSP。结果记录器新增Wi-Fi必需文件和ELF机器类型检查，产物门禁失败也会保存明确凭据。审查过的两文件差异已更新锁，旧锁保留。prepare-v22通过，Native候选为8项；新184520按原限额增量重编，真实模块和最终镜像尚待通过。见[修复证明](baselines/roc-os-user-make-module-gate-fix-20261105/acceptance.json)。没有设备操作、整卡封装或安全模式变化，四组su功能与最终发行验收仍未完成。
