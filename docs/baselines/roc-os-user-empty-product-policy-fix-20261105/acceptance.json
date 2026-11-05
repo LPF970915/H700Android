@@ -45,16 +45,18 @@
     "real_Make_route_selection_guard_passed": true,
     "original_BSP_directory_retained": true,
     "no_product_policy_enabled": true,
-    "actual_post_route_policy_build_pending": true
+    "actual_post_route_policy_build_pending": false
   },
   "current": {
     "unit": "h700-low-pressure-20261105-145131.service",
     "log": "out/logs/build/h700-low-pressure-20261105-145131.log",
     "prepare": "prepare-v20.json",
-    "phase": "incremental build/graph regeneration after platform-private route change",
+    "phase": "Java compilation after SystemUI build",
     "active": true,
     "whole_build_passed": false,
-    "source64_engineering_build_restarted": false
+    "source64_engineering_build_restarted": false,
+    "last_observed_completed": 2917,
+    "last_observed_total": 23855
   },
   "caps": {
     "aggregate_CPU": 1,
@@ -123,5 +125,19 @@
     "memory_peak_GiB": 5,
     "swap_peak_KiB": 160,
     "all_sources_and_eng_images_retained": true
+  },
+  "actual_build_review": {
+    "observed_at": "2026-11-05T08:25:04.715295+00:00",
+    "versioned_platform_policy_passed": true,
+    "precompiled_policy_built_and_installed": true,
+    "neverallow_compile_checkpoint_passed": true,
+    "actual_MAC_XML_matches_production_preflight": true,
+    "actual_MAC_XML_sha256": "994790f5b9907d46f2a43d9550e1d180d700e09b85e475863b0cc563d9650c7d",
+    "staged_product_policy_files_for_final_inventory_review": [
+      "system/product/etc/selinux/product_mac_permissions.xml",
+      "system/product/etc/selinux/product_sepolicy_and_mapping.sha256"
+    ],
+    "staging_not_deleted": true,
+    "runtime_enforcing_or_release_accepted": false
   }
 }

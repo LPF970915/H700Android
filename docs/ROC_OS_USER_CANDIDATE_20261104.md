@@ -1,5 +1,9 @@
 # ROC OS 独立 user 候选准备（2026-11-04—05）
 
+2026-11-05 16:28 实际策略关卡通过：145131/prepare-v20的真实Ninja已经通过neverallow检查、平台CIL、版本化平台CIL，并生成和安装预编译策略。实际平台MAC证书XML的SHA为994790f5开头，与正式证书预检查一致；保留BSP原私有目录，追加候选keys.conf的路径得到实际Soong/Make记录确认。完整编译继续运行，SystemUI已进入APK合并，后续Java模块推进至2917/23,855项，尚无新的FAILED/OOM；完整镜像仍未完成，不能视为enforcing或正式发行验收。
+
+保留的构建输出中现有product_mac_permissions.xml和product_sepolicy_and_mapping.sha256两个staging文件已记录，最终镜像清单仍须核对来源和是否应包含；本轮没有清理输出。依照前次同机同限额SystemUI阶段至18:55完成的历史窗口，暂将余时估为2–6小时，前提是不再出现新错误；user变体仍有不确定性，未用任务百分比推算耗时。
+
 2026-11-05 14:52 证书映射接入修正：144030真实Ninja已在487项通过product_sepolicy.cil，实际CIL与探针SHA一致；随后489/23,868项在plat_pub_versioned.cil失败，原因是没有产品公开策略，生成的product_mapping_file/29.0.cil为零字节，旧secilc拒绝读取。失败结果v4、原映射和策略输入保留；3分56秒、峰值5GiB/swap160KiB，不是超时或OOM。
 
 最终改为候选专用的**平台私有证书映射**：用override保持BSP原有device/softwinner/common/sepolicy/private，再追加候选keys.conf，防止BoardConfigCommon后续普通赋值覆盖；不启用PRODUCT_PUBLIC/PRIVATE策略目录。真实Make变量守卫已确认原目录与候选目录都在、产品策略目录为空。临时无成员属性和相应探针已退役，Git及准备归档中保留历史；Native仅在所有权、精确SHA和归档检查后移除该文件。最终没有新增类型、属性、权限或标签规则，也未改BSP、全局工具和密钥。
