@@ -1,0 +1,110 @@
+{
+  "schema": 1,
+  "date": "2026-11-05",
+  "scope": "isolated user private Make module discovery repair; intermediate compilation only",
+  "prior_job": {
+    "unit": "h700-low-pressure-20261105-180227.service",
+    "Ninja_completed": 1257,
+    "Ninja_total": 1257,
+    "Ninja_passed": true,
+    "post_build_validation_passed": false,
+    "timeout": false,
+    "OOM": false,
+    "first_error": "FileNotFoundError vendor/lib64/hw/gralloc.rocsource.so",
+    "all_missing_required_artifacts": [
+      "vendor/lib64/hw/gralloc.rocsource.so",
+      "vendor/lib/hw/gralloc.rocsource.so",
+      "system/framework/wifi-service.rocsource.jar"
+    ],
+    "runtime_seconds": 1419.61,
+    "CPU_seconds": 1227.836,
+    "memory_peak_GiB": 5,
+    "swap_peak_MiB": 498.5
+  },
+  "guards_before_fix": {
+    "repo": 10,
+    "native371": 371,
+    "Source64": 1237,
+    "ABI5": 2,
+    "candidate": 7
+  },
+  "full_file_sets_keys_original_eng_images_preserved": true,
+  "failed_user_three_images_snapshotted_and_hash_verified": {
+    "system.img": {
+      "bytes": 1125675492,
+      "sha256": "8a3fca5292ff452f8f147a17394a3dd9e473c3abd22d0c637e7ae53d93c8f2b1"
+    },
+    "vendor.img": {
+      "bytes": 65597660,
+      "sha256": "f99e161220421f90fa277c1a945ab2d7c500e9f319cf0bfec40d2e9eb1ddb931"
+    },
+    "ramdisk.img": {
+      "bytes": 786340,
+      "sha256": "8a624e70a8109b0bb660212dc31a727e0cdbdf92d982742dd83b7ebadca55e87"
+    }
+  },
+  "failed_user_image_snapshot_directory": "/home/lpf/roc-os-user-20261104/failure-180227-before-make-gate-fix",
+  "reviewed_delta": {
+    "tools/release/record_candidate.py": {
+      "before": "ecabee799f31bed033754426df08731abdecf41d4db9e71c8f66450f1c87b0ae",
+      "after": "8cf24d8e5a20830d8e6a45a3c52d9f6e9e527ca03c93265d398f477ebdd62709"
+    },
+    "android/h700-android10/device/roc/roc_os_release_candidate/Android.mk": {
+      "before": null,
+      "after": "e8b038a23355eca68cc8b720b73c6fe2dc7bb273a57784360d78566a11f4600b"
+    }
+  },
+  "repair": {
+    "candidate_root_imports_unchanged_Source64_Gralloc_and_Wifi": true,
+    "existing_launcher_child_explicitly_included": true,
+    "old_Source64_product_or_BSP_changed": false,
+    "artifact_recorder_retains_failure_receipt": true,
+    "requires_real_ARM64_ARM32_ELF_machines": true,
+    "requires_wifi_service_jar": true,
+    "security_policy_or_signing_identity_changed": false
+  },
+  "prepare": {
+    "receipt": "prepare-v22.json",
+    "passed": true,
+    "native_candidate_files": 8,
+    "private_key_bytes_copied_to_source": false,
+    "platform_mac_permissions_preflight": {
+      "executed": true,
+      "actual_insertkeys_passed": true,
+      "release_USER_points_to_production_releasekey": true,
+      "output_sha256": "994790f5b9907d46f2a43d9550e1d180d700e09b85e475863b0cc563d9650c7d",
+      "signer_certificate_sha256": [
+        "849703b189a014765a8de097be80a847a45d36261ffce8d22dc94155715ea561",
+        "f07dc4431821aa621566ec371f16ec69aec730203ace35aa47dda3286d2ad198",
+        "fc30e834b3c2914a0646d0b46c4faaa045aa8d46189950012555a5f2c36745c9"
+      ],
+      "product_empty_policy_no_extra_signer_grants": true,
+      "product_output_sha256": "9fc6e3bc49b67055ec3e2059f5fce7c7e5b72069697d82f963aec4dd2d61fcf0"
+    }
+  },
+  "current_job": {
+    "unit": "h700-low-pressure-20261105-184520.service",
+    "log": "out/logs/build/h700-low-pressure-20261105-184520.log",
+    "caps": {
+      "aggregate_CPUs": 1,
+      "AllowedCPUs": "0-1",
+      "nice": 19,
+      "RAM_GiB": 6,
+      "swap_MiB": 512,
+      "jobs": 1,
+      "IO": "idle",
+      "per_job_hours": 3
+    },
+    "actual_module_build_and_images": "pending"
+  },
+  "acceptance": {
+    "full_user_images": false,
+    "four_su_functional_migrations": false,
+    "device_boot_or_security": false,
+    "whole_card_or_release": false
+  },
+  "retained": {
+    "all_failures_outputs_and_old_locks": true,
+    "SPACE_REVIEW_user_edits_untouched": true
+  }
+}
