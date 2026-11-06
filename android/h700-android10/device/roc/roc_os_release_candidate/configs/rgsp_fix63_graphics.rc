@@ -1,0 +1,10 @@
+# Candidate-only graphics startup; original BSP RC and module remain retained.
+# The identical module is copied into vendor so its vendor_file label matches
+# the existing init module_load policy. ueventd creates the actual device node;
+# do not run a root toolbox mknod or assume a fixed misc minor number.
+on post-fs-data
+    insmod /vendor/modules/mali_kbase.ko
+    setprop vold.decrypt trigger_restart_framework
+
+# The bringup wake lock is acquired by the trusted ramdisk before policy load.
+# No unauthenticated serial shell or root graphics diagnostic service here.

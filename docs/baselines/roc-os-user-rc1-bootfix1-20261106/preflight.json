@@ -1,0 +1,78 @@
+{
+  "passed": true,
+  "runtime_enforcing_accepted": false,
+  "work": "/home/lpf/roc-os-user-bootfix1-20261106-preflight-v1",
+  "cases": [
+    {
+      "name": "fresh",
+      "exit": 0
+    },
+    {
+      "name": "refuse_existing_mount",
+      "exit": 3
+    },
+    {
+      "name": "invalid_id",
+      "exit": 2
+    },
+    {
+      "name": "non_numeric",
+      "exit": 2
+    },
+    {
+      "name": "actual_ARM64_BusyBox_mknod",
+      "exit": 0
+    }
+  ],
+  "policy": [
+    {
+      "rule": "neverallow init tmpfs:chr_file open;",
+      "allow_found": true
+    },
+    {
+      "rule": "neverallow init tmpfs:chr_file read;",
+      "allow_found": true
+    },
+    {
+      "rule": "neverallow init tmpfs:chr_file write;",
+      "allow_found": true
+    },
+    {
+      "rule": "neverallow init tmpfs:chr_file relabelfrom;",
+      "allow_found": true
+    },
+    {
+      "rule": "neverallow init null_device:chr_file relabelto;",
+      "allow_found": true
+    },
+    {
+      "rule": "neverallow init ptmx_device:chr_file relabelto;",
+      "allow_found": true
+    },
+    {
+      "rule": "neverallow init random_device:chr_file relabelto;",
+      "allow_found": true
+    },
+    {
+      "rule": "neverallow init kmsg_device:chr_file relabelto;",
+      "allow_found": true
+    },
+    {
+      "rule": "neverallow ueventd binder_device:chr_file create;",
+      "allow_found": true
+    },
+    {
+      "rule": "neverallow init device:chr_file open;",
+      "allow_found": false
+    },
+    {
+      "rule": "neverallow init device:chr_file relabelfrom;",
+      "allow_found": false
+    }
+  ],
+  "inputs": {
+    "tools/release/prepare_android_dev_bootfix1.sh": "71018104ae888cb5a34869a357df244a76ff37b6b4194fed0d1756e1736d6eeb",
+    "tools/release/user_boot_init_bootfix1.sh": "81163cd31c5a0860d82478d623c980ed11fa940b85375bf4eeb21d111b516811",
+    "out/roc-os-user-rc1-firstboot-20261105/actual-rc1-precompiled_sepolicy": "ab95ce00cbb537c6e05f5e9580d390d0c66e3b4cc94592fadb54e1be5a5a7cce"
+  }
+}

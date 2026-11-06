@@ -9,7 +9,7 @@ TARGET=Path('/home/lpf/roc-os-user-20261104/out/target/product/roc_os_source64')
 def sha(p):
  with p.open('rb') as f:return hashlib.file_digest(f,'sha256').hexdigest()
 
-def audit(work,run):
+def audit(work,run,expected_marker='User RC1',boot_entry='user_boot_init.sh'):
  out=REPO/'out/source64-user-candidate-20261104'
  receipt=max(out.glob('images-result-v*.json'),key=lambda p:int(re.search(r'v(\d+)',p.name)[1]))
  built=json.loads(receipt.read_text());assert built['passed'] and built['exit_status']==0
@@ -78,7 +78,7 @@ def audit(work,run):
   assert file(name,False) is None,'Root helper present in user image'
  for name in ['/system/priv-app/CtsShimPrivPrebuilt/CtsShimPrivPrebuilt.apk','/system/app/CtsShimPrebuilt/CtsShimPrebuilt.apk']:
   assert file(name,False) is None,'Retired CTS test shim remains inside actual filesystem'
- assert 'User RC1' in file('/system/etc/roc-user-build.txt').read_text()
+ assert expected_marker in file('/system/etc/roc-user-build.txt').read_text()
  # AOSP keeps an explicitly disabled shell-UID console behind ro.debuggable=1.
  # It must never be a root console or have an unconditional start action.
  console=re.search(r'^service console .*?(?=^\S|\Z)',rc,re.M|re.S)
@@ -146,9 +146,19 @@ def audit(work,run):
   assert b'captive_portal_https_url' in dex and b'Wallpaper hash mismatch' in dex,'Migrated provisioning code missing'
  for phrase in ['android.permission.READ_EXTERNAL_STORAGE','android.permission.WRITE_EXTERNAL_STORAGE']:
   assert phrase in file('/system/etc/default-permissions/default-permissions-roc-setup.xml').read_text()
- boot=(REPO/'tools/release/user_boot_init.sh').read_text();module=file('/vendor/modules/h700_stick_axes.ko')
+ boot=(REPO/'tools/release'/boot_entry).read_text();module=file('/vendor/modules/h700_stick_axes.ko')
  assert sha(module) in boot and 'insmod /android-root/vendor/modules/h700_stick_axes.ko profile=rg34xxsp' in boot
- assert 'exec /bin/ash' not in boot and 'chown 0:1004 "$node"' in boot
+ assert 'exec /bin/ash' not in boot
+ if boot_entry=='user_boot_init.sh':
+  assert 'chown 0:1004 "$node"' in boot
+ else:
+  helper_path=REPO/'tools/release/prepare_android_dev_bootfix1.sh'
+  helper=helper_path.read_text()
+  assert '/bin/sh /grow/prepare-android-dev-bootfix1.sh /android-root /sys' in boot
+  preflight=json.loads(Path('/home/lpf/roc-os-user-bootfix1-20261106-preflight-v1/result.json').read_text())
+  assert preflight['passed'] and sha(helper_path)==preflight['inputs']['tools/release/prepare_android_dev_bootfix1.sh']
+  assert 'mount -t tmpfs -o mode=0755,nosuid tmpfs "$root/dev"' in helper
+  assert '[ ! -e "$root/dev/.coldboot_done" ]' in helper
  (work/'files.json').write_text(json.dumps(metadata,indent=2)+'\n')
  report={'passed':True,'build_receipt':receipt.name,'prepare_receipt':built['prepare_receipt'],'images':built['images'],'work':str(work),'APK_count':len(apks),'signers':signers,'retained_presigned_identity':presigned,'properties':props,'source_build_tag_requires_formal_release_step':props.get('ro.build.tags')=='dev-keys','no_su_startup_services':True,'stock_adbd_root_context_argument_is_not_a_su_service':True,'native_Debuggable':False,'no_permissive_policy_domains':True,'default_keyboard_actual_signed_hash_matches':True,'namespace_closure':{k:v for k,v in linkage.items() if k not in ['objects','graph','roots']},'runtime_acceptance':False,'formal_release_allowed':False}
  (work/'user-partition-audit.json').write_text(json.dumps(report,indent=2)+'\n')

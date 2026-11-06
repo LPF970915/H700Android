@@ -1,1 +1,6 @@
 genfscon sysfs /devices/platform/soc/twi5/i2c-5/5-0034/axp2202-bat-power-supply.0/power_supply/axp2202-battery/hallkey u:object_r:sysfs_roc_hall:s0
+genfscon sysfs /class/thermal u:object_r:sysfs_roc_thermal:s0
+genfscon sysfs /devices/virtual/thermal u:object_r:sysfs_roc_thermal:s0
+genfscon sysfs /class/power_supply u:object_r:sysfs_batteryinfo:s0
+genfscon sysfs /devices/platform/soc/twi5/i2c-5/5-0034/axp2202-bat-power-supply.0/power_supply/axp2202-battery u:object_r:sysfs_batteryinfo:s0
+genfscon sysfs /devices/platform/soc/twi5/i2c-5/5-0034/axp2202-usb-power-supply.0/power_supply/axp2202-usb u:object_r:sysfs_batteryinfo:s0

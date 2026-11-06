@@ -1,0 +1,8 @@
+# Exact public hardware profile needed by signed provisioning and Hall apps.
+# Do not expose the generic vendor_default_prop area or grant app writes.
+type roc_input_profile_prop, property_type;
+get_prop(platform_app, roc_input_profile_prop)
+get_prop(shell, roc_input_profile_prop)
+# Hardware services validate the same profile before registering their HAL.
+get_prop(hal_light_server, roc_input_profile_prop)
+get_prop(hal_thermal_server, roc_input_profile_prop)

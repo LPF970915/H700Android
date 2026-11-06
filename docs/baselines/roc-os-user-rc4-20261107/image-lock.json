@@ -1,0 +1,71 @@
+{
+  "passed": true,
+  "image": "/mnt/d/Works/H700Android/out/roc-os-user-card-rc4-20261107/ROC_OS_ARM64_User_RC4_20261107.img.gz",
+  "bytes": 591012777,
+  "sha256": "a7394633a4e8ebaf2d64c6af9eec6c2eab53cebe4c1154ba77232731d7e0c644",
+  "raw_bytes": 32434554368,
+  "raw_sha256": "c77f82a5d3ed22a8e09cca24da830ed3b11e13920f4ada42f373b5eb1ccef620",
+  "ranges": [
+    {
+      "name": "prefix",
+      "offset": 0,
+      "bytes": 222298112,
+      "sha256": "d44c542ed5f64777936358d62bc7b84d2c2246ce9a2773ad70d1247bb0ff66d4"
+    },
+    {
+      "name": "system",
+      "offset": 222298112,
+      "bytes": 8589934592,
+      "sha256": "f1e53c42436c48a1539f03072b73a6b09ea54adc9bf30df3d9eb01f140040507"
+    },
+    {
+      "name": "vendor",
+      "offset": 8812232704,
+      "bytes": 2147483648,
+      "sha256": "58ed79e0f216bd59015d8baedb660d2a4e8bd44fc8795d2c66b0b0ca089be113"
+    },
+    {
+      "name": "userdata",
+      "offset": 10959716352,
+      "bytes": 21474836480,
+      "sha256": "6d28384038ab377f1aee19f4f0b770622812e2825181eabba625a002dff1bc12"
+    },
+    {
+      "name": "backup_gpt",
+      "offset": 32434552832,
+      "bytes": 1536,
+      "sha256": "ba9ba2c16fbb57653f2d5b221bb2f0c2ee698550f1d9dc33df30b5565d23c5dc"
+    }
+  ],
+  "work": "/home/lpf/roc-os-user-card-rc4-20261107-v1",
+  "boot_kernel_dtb_preserved": true,
+  "factory_userdata_empty_except_host_public_ADB_key": true,
+  "authenticated_ADB_retained": true,
+  "ADB_root_allowed": false,
+  "network_ADB": false,
+  "userdata_context": "u:object_r:system_data_file:s0",
+  "Android_ARM64_fsck_passed": true,
+  "full_gzip_verified": true,
+  "whole_card_image_created": true,
+  "device_or_card_modified": false,
+  "device_boot_accepted": false,
+  "minimum_card_GB": 64,
+  "scope": "RG34XXSP H700 2GB user RC4; offline verified flashable test candidate; runtime and formal release unaccepted",
+  "source_user_build": "images-result-v15.json",
+  "user_partition_audit": "user-partition-audit.json",
+  "boot_cmdline": "selinux=1 enforcing=1 androidboot.selinux=enforcing",
+  "unauthenticated_failure_shell_removed": true,
+  "signing_identity": "ROC OS production-v1",
+  "formal_release_allowed": false,
+  "source_build_receipt_sha256": "4585c28013d3345ab126e40e2744611eb8986ee40c5a5fe2da8182b6179cb8c8",
+  "packaging_inputs_sha256": {
+    "tools/release/package_rc4.py": "b6399fbd97f4937b1e8d55b08b4e4b3b2cc0cea250ec513bdb511b441756b9ad",
+    "tools/release/audit_rc2_card.py": "b93f516c408ce35ba866a62f15b0b134d8857b2cfa103499cea538f40e302821",
+    "tools/release/audit_rc3_card.py": "0a01a6f45db134c8e00667c546c7cc2696c8021717fb55bde9e5ea5fc8d09d8a",
+    "tools/release/audit_rc4_card.py": "e1bed39cf075afcfc86d8a71fbf86863e83f184750113bb72b3a34f71b93fcea",
+    "tools/release/audit_candidate_card.py": "f035610b87c91131aaea1ae4cbe74d575f6c6c79dcf5b34fb2c876367a34f7b9",
+    "tools/release/user_boot_init_rc2.sh": "7e832c9ac2a41ff8a0bce53767d97f95c1487bba427d0dc9ce0cdf85511a5e48",
+    "tools/release/prepare_android_dev_bootfix1.sh": "71018104ae888cb5a34869a357df244a76ff37b6b4194fed0d1756e1736d6eeb"
+  },
+  "completed_at": "2026-11-06T16:35:46.412147+00:00"
+}

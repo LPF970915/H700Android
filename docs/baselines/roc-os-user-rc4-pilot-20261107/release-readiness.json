@@ -1,0 +1,28 @@
+{
+  "schema": 1,
+  "assessment_at": "2026-11-06T18:28:45.547514+00:00",
+  "bound_image_sha256": "a7394633a4e8ebaf2d64c6af9eec6c2eab53cebe4c1154ba77232731d7e0c644",
+  "controlled_internal_pilot_allowed": true,
+  "formal_release_allowed": false,
+  "public_binary_distribution_ready": false,
+  "policy_reference": "tools/release/release-policy.json",
+  "required_evidence_assessment": {
+    "selinux_enforcing_runtime": "pass",
+    "authenticated_USB_ADB": "pass",
+    "root_denied": "user flags/source verified; explicit runtime negative test not recorded",
+    "cold_boot": "fresh boot passed; formal repeated/no-ADB cold-cycle acceptance incomplete",
+    "recovery_restore": "ordinary-file fixtures passed; device recovery acceptance open",
+    "license_review": "open",
+    "source_rebuild_comparison": "open",
+    "complete_apk_signature_review": "pass:116 APKs, pinned production roles",
+    "boot_ramdisk_review": "pass within documented user-candidate scope",
+    "late_factory_properties_review": "diagnostic USB ADB enabled and workstation key seeded; formal policy open"
+  },
+  "known_formal_property_differences": {
+    "ro.build.tags": "dev-keys (actual ROC production certificate signatures verified; not a public testkey claim)",
+    "persist.sys.usb.config": "adb at runtime by diagnostic init RC; formal policy requires none"
+  },
+  "license_review_complete": false,
+  "private_keys_or_logs_published": false,
+  "no_release_gate_was_weakened": true
+}

@@ -8,6 +8,12 @@ for item in sys.argv[1].split():
 base='device/roc/roc_os_release_candidate/configs/'
 required={x:base+'retired-service.rc' for x in ['system/etc/init/h700-network-validation-defaults.rc','system/etc/init/rgsp-wallpapers.rc','vendor/etc/init/rgsp-stick-axes.rc','vendor/etc/init/rgsp-input-bringup.rc']}
 required.update({'system/etc/rgsp/leanback.sha256':base+'leanback.sha256','vendor/etc/init/roc-user-input.rc':base+'roc-user-input.rc'})
+required.update({
+ 'system/etc/init/rgsp_fix63_graphics.rc':base+'rgsp_fix63_graphics.rc',
+ 'vendor/modules/mali_kbase.ko':'device/roc/rgsp/prebuilts/local/mali_kbase.ko',
+ 'system/etc/init/roc-source64-startup.rc':base+'roc-source64-startup.rc',
+ 'system/etc/init/h700-usb-configfs.rc':base+'h700-usb-configfs.rc',
+ 'vendor/etc/init/roc-audio-interface.rc':base+'roc-audio-interface.rc'})
 for name,source in required.items():assert selected.get(name)==source,(name,selected.get(name))
 defaults={}
 for item in sys.argv[2].split():

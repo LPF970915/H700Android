@@ -1,0 +1,43 @@
+{
+  "passed": true,
+  "actual_profile_consumers": {
+    "android.hardware.light@2.0-service.rocsource": {
+      "format": "ELF",
+      "domain": "hal_light_default",
+      "profile_read_allowed": true
+    },
+    "android.hardware.thermal@2.0-service.rocsource": {
+      "format": "ELF",
+      "domain": "hal_thermal_default",
+      "profile_read_allowed": true
+    },
+    "H700Lid": {
+      "format": "DEX",
+      "domain": "platform_app",
+      "profile_read_allowed": true
+    },
+    "ROCReleaseProvisioning": {
+      "format": "DEX",
+      "domain": "platform_app",
+      "profile_read_allowed": true
+    }
+  },
+  "all_actual_ELF_and_APK_DEX_readers_reviewed": true,
+  "HAL_regression_controls": [
+    {
+      "domain": "hal_light_default",
+      "old_RC3_read_denied": true,
+      "RC4_read_open_getattr_map": true,
+      "write_forbidden": true
+    },
+    {
+      "domain": "hal_thermal_default",
+      "old_RC3_read_denied": true,
+      "RC4_read_open_getattr_map": true,
+      "write_forbidden": true
+    }
+  ],
+  "scope": "Exact profile read for all existing consumers; no property write or generic area access added",
+  "runtime_first_boot_retest_required": true,
+  "formal_release_allowed": false
+}

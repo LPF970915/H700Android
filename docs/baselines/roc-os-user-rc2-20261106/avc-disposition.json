@@ -1,0 +1,271 @@
+{
+  "groups": [
+    {
+      "count": 741,
+      "key": [
+        "read",
+        "u:r:hal_thermal_default:s0",
+        "u:object_r:sysfs:s0",
+        "dir"
+      ],
+      "cause": "thermal generic sysfs",
+      "action": "precise private genfs + read-only HAL server policy",
+      "RC2_runtime_recheck_required": true
+    },
+    {
+      "count": 316,
+      "key": [
+        "read",
+        "u:r:audioserver:s0",
+        "u:object_r:vendor_file:s0",
+        "file"
+      ],
+      "cause": "optional msd passthrough probe; primary audio successfully opened",
+      "action": "no broad allow; audio actual5 init interfaces aligned; runtime recheck",
+      "RC2_runtime_recheck_required": true
+    },
+    {
+      "count": 14,
+      "key": [
+        "getattr",
+        "u:r:vendor_init:s0",
+        "u:object_r:audio_device:s0",
+        "chr_file"
+      ],
+      "cause": "obsolete restorecon_recursive /dev",
+      "action": "retired candidate action; real ueventd coldboot retained",
+      "RC2_runtime_recheck_required": true
+    },
+    {
+      "count": 8,
+      "key": [
+        "getattr",
+        "u:r:vendor_init:s0",
+        "u:object_r:input_device:s0",
+        "chr_file"
+      ],
+      "cause": "obsolete restorecon_recursive /dev",
+      "action": "retired candidate action; real ueventd coldboot retained",
+      "RC2_runtime_recheck_required": true
+    },
+    {
+      "count": 4,
+      "key": [
+        "write",
+        "u:r:init:s0",
+        "u:object_r:device:s0",
+        "chr_file"
+      ],
+      "cause": "inherited ramdisk serial descriptors",
+      "action": "null stdio before enforcing handoff",
+      "RC2_runtime_recheck_required": true
+    },
+    {
+      "count": 4,
+      "key": [
+        "search",
+        "u:r:logd:s0",
+        "u:object_r:unlabeled:s0",
+        "dir"
+      ],
+      "cause": "invalid Native userdata root type",
+      "action": "valid Native system_data_file + early root restorecon",
+      "RC2_runtime_recheck_required": true
+    },
+    {
+      "count": 4,
+      "key": [
+        "mounton",
+        "u:r:init:s0",
+        "u:object_r:unlabeled:s0",
+        "dir"
+      ],
+      "cause": "invalid Native userdata root type",
+      "action": "valid Native system_data_file + early root restorecon",
+      "RC2_runtime_recheck_required": true
+    },
+    {
+      "count": 4,
+      "key": [
+        "open",
+        "u:r:hal_health_default:s0",
+        "u:object_r:sysfs:s0",
+        "file"
+      ],
+      "cause": "AXP2202 battery generic label",
+      "action": "exact battery and USB genfs sysfs_batteryinfo",
+      "RC2_runtime_recheck_required": true
+    },
+    {
+      "count": 2,
+      "key": [
+        "read",
+        "u:r:init:s0",
+        "u:object_r:device:s0",
+        "chr_file"
+      ],
+      "cause": "inherited ramdisk serial descriptors",
+      "action": "null stdio before enforcing handoff",
+      "RC2_runtime_recheck_required": true
+    },
+    {
+      "count": 2,
+      "key": [
+        "relabelfrom",
+        "u:r:vendor_init:s0",
+        "u:object_r:device:s0",
+        "dir"
+      ],
+      "cause": "obsolete restorecon_recursive /dev",
+      "action": "retired candidate action; real ueventd coldboot retained",
+      "RC2_runtime_recheck_required": true
+    },
+    {
+      "count": 2,
+      "key": [
+        "getattr",
+        "u:r:vendor_init:s0",
+        "u:object_r:wifi_prop:s0",
+        "file"
+      ],
+      "cause": "obsolete restorecon_recursive /dev",
+      "action": "retired candidate action; real ueventd coldboot retained",
+      "RC2_runtime_recheck_required": true
+    },
+    {
+      "count": 2,
+      "key": [
+        "getattr",
+        "u:r:vendor_init:s0",
+        "u:object_r:vold_prop:s0",
+        "file"
+      ],
+      "cause": "obsolete restorecon_recursive /dev",
+      "action": "retired candidate action; real ueventd coldboot retained",
+      "RC2_runtime_recheck_required": true
+    },
+    {
+      "count": 2,
+      "key": [
+        "getattr",
+        "u:r:vendor_init:s0",
+        "u:object_r:vendor_ril_prop:s0",
+        "file"
+      ],
+      "cause": "obsolete restorecon_recursive /dev",
+      "action": "retired candidate action; real ueventd coldboot retained",
+      "RC2_runtime_recheck_required": true
+    },
+    {
+      "count": 2,
+      "key": [
+        "getattr",
+        "u:r:vendor_init:s0",
+        "u:object_r:traced_lazy_prop:s0",
+        "file"
+      ],
+      "cause": "obsolete restorecon_recursive /dev",
+      "action": "retired candidate action; real ueventd coldboot retained",
+      "RC2_runtime_recheck_required": true
+    },
+    {
+      "count": 2,
+      "key": [
+        "getattr",
+        "u:r:vendor_init:s0",
+        "u:object_r:traced_enabled_prop:s0",
+        "file"
+      ],
+      "cause": "obsolete restorecon_recursive /dev",
+      "action": "retired candidate action; real ueventd coldboot retained",
+      "RC2_runtime_recheck_required": true
+    },
+    {
+      "count": 2,
+      "key": [
+        "execute_no_trans",
+        "u:r:init:s0",
+        "u:object_r:toolbox_exec:s0",
+        "file"
+      ],
+      "cause": "legacy hardcoded Mali mknod",
+      "action": "retired; module hotplug uses ueventd",
+      "RC2_runtime_recheck_required": true
+    },
+    {
+      "count": 2,
+      "key": [
+        "module_load",
+        "u:r:init:s0",
+        "u:object_r:system_lib_file:s0",
+        "system"
+      ],
+      "cause": "Mali module labeled system_lib_file",
+      "action": "same original module copied vendor/modules/vendor_file",
+      "RC2_runtime_recheck_required": true
+    },
+    {
+      "count": 2,
+      "key": [
+        "write",
+        "u:r:init:s0",
+        "u:object_r:sysfs_wake_lock:s0",
+        "file"
+      ],
+      "cause": "Android init write denied",
+      "action": "fixed bringup lock requested before policy load",
+      "RC2_runtime_recheck_required": true
+    },
+    {
+      "count": 2,
+      "key": [
+        "mounton",
+        "u:r:init:s0",
+        "u:object_r:devpts:s0",
+        "dir"
+      ],
+      "cause": "duplicate devpts mount",
+      "action": "removed candidate duplicate; fresh-dev helper owns single mount",
+      "RC2_runtime_recheck_required": true
+    },
+    {
+      "count": 2,
+      "key": [
+        "getattr",
+        "u:r:vendor_init:s0",
+        "u:object_r:graphics_device:s0",
+        "chr_file"
+      ],
+      "cause": "obsolete restorecon_recursive /dev",
+      "action": "retired candidate action; real ueventd coldboot retained",
+      "RC2_runtime_recheck_required": true
+    },
+    {
+      "count": 2,
+      "key": [
+        "mounton",
+        "u:r:init:s0",
+        "u:object_r:functionfs:s0",
+        "dir"
+      ],
+      "cause": "duplicate diagnostic and normal USB setup",
+      "action": "single post-fs-data ConfigFS/FunctionFS setup",
+      "RC2_runtime_recheck_required": true
+    },
+    {
+      "count": 2,
+      "key": [
+        "read write",
+        "u:r:init:s0",
+        "u:object_r:serial_device:s0",
+        "chr_file"
+      ],
+      "cause": "legacy root serial console",
+      "action": "retired candidate service and start",
+      "RC2_runtime_recheck_required": true
+    }
+  ],
+  "unique_groups": 22,
+  "all_observed_groups_reviewed": true,
+  "runtime_fix_accepted": false
+}

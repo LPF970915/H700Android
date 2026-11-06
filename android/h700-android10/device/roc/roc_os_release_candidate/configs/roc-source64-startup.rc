@@ -1,0 +1,10 @@
+# The retained H700 handoff mounts data before policy, unlike stock first stage.
+# Restore only its root label before logd or the later filesystem operations.
+on early-init
+    restorecon /data
+
+# Preserve the accepted BSP font initialization workaround before zygote starts.
+on load_persist_props_action && property:ro.roc.source64.round=2
+    setprop persist.sys.boot.first true
+
+# The fresh tmpfs /dev already carries devpts; no duplicate post-fs-data mount.

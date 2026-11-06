@@ -1,0 +1,62 @@
+{
+  "passed": true,
+  "runtime_or_release_accepted": false,
+  "device_modified": false,
+  "work": "/home/lpf/roc-os-user-card-bootfix1-20261106-v1",
+  "parent": "/mnt/d/Works/H700Android/out/roc-os-user-card-20261105/ROC_OS_ARM64_User_RC1_20261105.img.gz",
+  "image": "/mnt/d/Works/H700Android/out/roc-os-user-card-bootfix1-20261106/ROC_OS_ARM64_User_RC1_Bootfix1_20261106.img.gz",
+  "preflight_sha256": "503c5c8a5d97db2ff797ee38a5a856f17451234539814dc49bec760eee0fd704",
+  "inputs": {
+    "tools/release/prepare_android_dev_bootfix1.sh": "71018104ae888cb5a34869a357df244a76ff37b6b4194fed0d1756e1736d6eeb",
+    "tools/release/user_boot_init_bootfix1.sh": "81163cd31c5a0860d82478d623c980ed11fa940b85375bf4eeb21d111b516811",
+    "out/roc-os-user-rc1-firstboot-20261105/actual-rc1-precompiled_sepolicy": "ab95ce00cbb537c6e05f5e9580d390d0c66e3b4cc94592fadb54e1be5a5a7cce"
+  },
+  "boot_sha256": "b52268737297007e6142d4ee92856511d23b3ff039366cc3af38e90f84c5740f",
+  "parent_boot_sha256": "477776fd1748fb2cfa6631d82594f4797f1ca9dfc2a92000ef3c420444f196ac",
+  "kernel_dtb_preserved": true,
+  "system_vendor_userdata_preserved": true,
+  "cmdline": "selinux=1 enforcing=1 androidboot.selinux=enforcing",
+  "bytes": 585708720,
+  "sha256": "3f697d7d93357156585564c03053bfaa5f1e2c5d1f9690f8104576d882abbb23",
+  "raw_bytes": 32434554368,
+  "raw_sha256": "f335a2db7c12d8e8cd3438b554c5ec1c3c3ff393bfcf023a1e7f6e1ed15c6f61",
+  "parent_gzip_sha256": "c549d011a1a332e92a1b317601f6128e2b849813ec40bdac988eaa05913e4ee5",
+  "parent_raw_sha256": "44dfc8e35744f92260c64005e2fc4ca0410c6205bcbd8d92f62bea13fc99c8ed",
+  "full_gzip_verified": true,
+  "every_non_boot_byte_identical_to_RC1": true,
+  "recorded_at": "2026-11-05T17:20:01.105594+00:00",
+  "scope": "RC1 Bootfix1 local test candidate; current failure-card read-only evidence and offline mount/policy checks; new real boot pending",
+  "unit": "roc-user-bootfix1-20261106-010931.service",
+  "resources": {
+    "runtime_seconds": 484.389,
+    "cpu_seconds": 459.481,
+    "memory_peak_bytes": 536080384,
+    "swap_peak_bytes": 0,
+    "CPUQuota": "100%",
+    "AllowedCPUs": "0-1",
+    "nice": 19,
+    "MemoryMax": "6GiB",
+    "MemorySwapMax": "512MiB",
+    "IO": "idle",
+    "runtime_limit": "3h"
+  },
+  "actual_failed_card": {
+    "boot_matches_RC1": true,
+    "full8GiB_system_matches": true,
+    "full2GiB_vendor_matches": true,
+    "two_boot_log_entries_reach_pre_switch_root": true,
+    "exact_Android_error_captured": false,
+    "card_written": false
+  },
+  "reviewed_source_files": {
+    "tools/release/check_bootfix1_dev.py": "7e817575bca6e77a621b06dc897599ca26fba8e7140bd1c1a31cd39295a62d91",
+    "tools/release/prepare_android_dev_bootfix1.sh": "71018104ae888cb5a34869a357df244a76ff37b6b4194fed0d1756e1736d6eeb",
+    "tools/release/user_boot_init_bootfix1.sh": "81163cd31c5a0860d82478d623c980ed11fa940b85375bf4eeb21d111b516811",
+    "tools/release/package_bootfix1.py": "29e44e8e96dad454512654d73f540c4f11f8f2532e0471cc0ddbf8866f6b0e8f",
+    "tools/release/package_bootfix1.ps1": "f71e2fbb77bc6962f30bf639bf148b4f45a6556e2cdd9f05467e989748958428"
+  },
+  "failed_launcher_retained": {
+    "unit_not_started": "roc-user-bootfix1-20261106-010919",
+    "reason": "PowerShell path regex invalid before systemd launch; switched to literal character replacement; no card/image operation in that failed launcher"
+  }
+}

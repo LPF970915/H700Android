@@ -38,3 +38,6 @@ android/h700-android10/snapshots/v5i-native35-20261028/** -text
 tools/arm64_probe/*.S text eol=lf
 android/h700-android10/device/roc/roc_os_release_candidate/sepolicy/private/genfs_contexts text eol=lf
 android/h700-android10/device/roc/roc_os_release_candidate/sepolicy/private/roc_hall.te text eol=lf
+android/h700-android10/device/roc/roc_os_release_candidate/sepolicy/private/roc_profile.te text eol=lf
+android/h700-android10/device/roc/roc_os_release_candidate/sepolicy/private/roc_thermal.te text eol=lf
+android/h700-android10/device/roc/roc_os_release_candidate/sepolicy/private/property_contexts text eol=lf

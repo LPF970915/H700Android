@@ -112,8 +112,8 @@ if insert.is_file():
 
 # A certificate map belongs to the platform-private input. Enabling a product
 # policy for it creates empty product CIL/mapping files in this old BSP.
-assert sorted(p.name for p in (destination/'sepolicy/private').iterdir())==['genfs_contexts','keys.conf','roc_hall.te']
-policy_route={'certificate_map_only':False,'candidate_Hall_read_only_policy':True,'unused_product_attribute_retired':True,
+assert sorted(p.name for p in (destination/'sepolicy/private').iterdir())==['genfs_contexts','keys.conf','property_contexts','roc_hall.te','roc_profile.te','roc_thermal.te']
+policy_route={'certificate_map_only':False,'candidate_Hall_read_only_policy':True,'candidate_thermal_read_only_policy':True,'unused_product_attribute_retired':True,
  'expected_board_private_directories':['device/softwinner/common/sepolicy/private',
                                      'device/roc/roc_os_release_candidate/sepolicy/private'],
  'expected_product_public_and_private_directories':[],

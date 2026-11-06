@@ -1,0 +1,70 @@
+{
+  "passed": true,
+  "source_sparse_ranges_match_card": true,
+  "gzip_sha256": "a7394633a4e8ebaf2d64c6af9eec6c2eab53cebe4c1154ba77232731d7e0c644",
+  "raw_sha256": "c77f82a5d3ed22a8e09cca24da830ed3b11e13920f4ada42f373b5eb1ccef620",
+  "userdata_root_uid": 1000,
+  "userdata_root_gid": 1000,
+  "userdata_root_mode": "0771",
+  "userdata_context": "u:object_r:system_data_file:s0",
+  "runtime_or_release_accepted": false,
+  "device_modified": false,
+  "actual_ELF": {
+    "system/bin/app_process64": {
+      "ELF_class": 2,
+      "e_machine": 183,
+      "sha256": "17adbfd47244eb618fd5223f581e0cd8044257e631b73fee699a865558f49849"
+    },
+    "system/bin/app_process32": {
+      "ELF_class": 1,
+      "e_machine": 40,
+      "sha256": "df55877c90627800df11ac706f1477f243ee19b4c16ee4b74a12a2a35020fd24"
+    },
+    "system/lib64/libandroid_runtime.so": {
+      "ELF_class": 2,
+      "e_machine": 183,
+      "sha256": "d98c02084a67d939990261a29bfd26c06dd7a665e48843871690ca4e659f2791"
+    },
+    "system/lib/libandroid_runtime.so": {
+      "ELF_class": 1,
+      "e_machine": 40,
+      "sha256": "824e1134bc32a369de611497d0657d9561a55afb3481fe93f6ec67f8a914a515"
+    },
+    "vendor/lib64/hw/gralloc.rocsource.so": {
+      "ELF_class": 2,
+      "e_machine": 183,
+      "sha256": "4fadaa3fb76e9c7db62c251e4bf5c0c34b4678a2267af03f140a5171e09f1028"
+    },
+    "vendor/lib/hw/gralloc.rocsource.so": {
+      "ELF_class": 1,
+      "e_machine": 40,
+      "sha256": "b2eee21a3defee618f42b2223b683465968e9145a7ae5250d2a35cafe69d7678"
+    },
+    "system/apex/com.android.runtime.release/bin/linker64": {
+      "ELF_class": 2,
+      "e_machine": 183,
+      "sha256": "52dc1d7b01309d4ec0c3173ee97b512db7b000c49b5d2257e36fef58395c9812"
+    },
+    "system/apex/com.android.runtime.release/bin/linker": {
+      "ELF_class": 1,
+      "e_machine": 40,
+      "sha256": "fcf9d481390dd2e128a3a1316fb1a0668bc5bf383a54e890778bac55a06b34c8"
+    },
+    "system/apex/com.android.runtime.release/lib64/libart.so": {
+      "ELF_class": 2,
+      "e_machine": 183,
+      "sha256": "3aba6bbafd3d31fd7bc2465ed14b399ceed9bcabd941c92e1328fa6d89a043ff"
+    },
+    "system/apex/com.android.runtime.release/lib/libart.so": {
+      "ELF_class": 1,
+      "e_machine": 40,
+      "sha256": "4f44f11d06fd8c00c0c91d30d9258b78700d005c46053436dfdc051d4a84ac70"
+    }
+  },
+  "actual_whole_card_boot_sha256": "04e11bbdb1d14f8672439d948b6f5cbe95e3294634304cd510df10e3064ced49",
+  "actual_boot_cmdline": "selinux=1 enforcing=1 androidboot.selinux=enforcing",
+  "actual_ramdisk_entries_match_RC2": true,
+  "authenticated_ADB_public_key_seed_verified": true,
+  "Mali_ARM64_kernel_4_9_170": true,
+  "repo_compile_guards_unchanged": true
+}

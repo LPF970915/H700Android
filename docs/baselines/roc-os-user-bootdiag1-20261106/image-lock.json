@@ -1,0 +1,59 @@
+{
+  "passed": true,
+  "diagnostic_only": true,
+  "release_accepted": false,
+  "runtime_accepted": false,
+  "physical_card_written": false,
+  "work": "/home/lpf/roc-os-user-bootdiag1-20261106-v2",
+  "image": "/mnt/d/Works/H700Android/out/roc-os-user-bootdiag1-20261106-v2/ROC_OS_ARM64_User_BootDiag1_20261106.img.gz",
+  "ADB_authentication": true,
+  "ADB_root_allowed": false,
+  "network_ADB": false,
+  "SELinux_enforcing_requested": true,
+  "host_public_key_sha256": "817982431f56cba42111e2244f7ecc244d2867cbfe5a59c4c6a31b0b99c6e123",
+  "diagnostic_rc_sha256": "8e5810c7a6407a8ec111a1b3b3f0ae86526cad4668c495efc060eed4122efa39",
+  "system_sha256": "dd69ec3c9c2655ffd6b1819b1366a119873b01603a577ff24b758bf69285b6e7",
+  "userdata_sha256": "019e43998150d8a3c6a5e88321cc62e3014430193ac011c69bfa624bd18dbc1e",
+  "raw_sha256": "cfd33927ef5b631f659e64a4381a5e880534262329334d1d7feeeeb8fafafbd9",
+  "sha256": "0e2ee363759b220b41961f4caab5e0bfeef7461bb6a8e3a15764ada2055f8f86",
+  "bytes": 585710201,
+  "raw_bytes": 32434554368,
+  "full_gzip_verified": true,
+  "boot_vendor_all_other_ranges_identical_to_Bootfix1": true,
+  "recorded_at": "2026-11-05T18:49:23.669706+00:00",
+  "unit": "roc-user-bootdiag1-20261106-020457.service",
+  "resources": {
+    "runtime_seconds": 612.288,
+    "cpu_seconds": 559.325,
+    "memory_peak_bytes": 5370806272,
+    "swap_peak_bytes": 0,
+    "CPUQuota": "100%",
+    "AllowedCPUs": "0-1",
+    "nice": 19,
+    "MemoryMax": "6GiB",
+    "MemorySwapMax": "512MiB",
+    "IO": "idle",
+    "runtime_limit": "3h"
+  },
+  "critical_files_unchanged": {
+    "system_bin_init": "bf586cb3200230bf0e1ce38f603399a3029de8623237b4a5202bb8e6fa357a88",
+    "system_etc_init_h700-usb-configfs.rc": "22f997977e9cff313a1037172a1883873b14d8fa190a98c944db74f0255bc68c",
+    "system_build.prop": "9c20a5767bb2bc0dc297f38e8bb8f7d150ade9ae3e83aed96499e1ba189f4a03",
+    "system_etc_selinux_plat_sepolicy.cil": "2e19a13136539d5a408960834f382a660167fdc818416b00f5fa9d7c63111b85",
+    "default.prop": "7dccc98162f8bd44347de8926d6263b6164b2c282702df200363785c5c6c36a0",
+    "system_bin_bootstrap_linker64": "52dc1d7b01309d4ec0c3173ee97b512db7b000c49b5d2257e36fef58395c9812",
+    "system_bin_adbd": "d70399370a7f28350e9afdbf4380d9e34633920c2c4683e40a63020019bcb19d"
+  },
+  "security_properties": {
+    "ro.secure": "1",
+    "ro.adb.secure": "1",
+    "ro.debuggable": "0",
+    "ro.build.type": "user"
+  },
+  "source_files_sha256": {
+    "tools/release/package_bootdiag1.py": "9db7a8dcd1b4935bff1a0500169bfee208e13d6710d0d5039c8a2fdd076e1c20",
+    "tools/release/package_bootdiag1.ps1": "219e9578815dc3c962380a4c88dad2bb9f6f138a108d6be32ad5b68e0c19062c",
+    "tools/release/roc-usb-bootdiag1.rc": "8e5810c7a6407a8ec111a1b3b3f0ae86526cad4668c495efc060eed4122efa39"
+  },
+  "acceptance_boundary": "Private live-log diagnostic image only. Bootfix1 still failed to reach UI after user waited over10min. No exact later error captured; do not claim new image fixes boot or passes release. Withdraw temporary USB default and seeded host authorization before final release."
+}

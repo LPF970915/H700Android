@@ -1,0 +1,103 @@
+{
+  "schema": 1,
+  "recorded_at": "2026-11-05T16:45:47.851106+00:00",
+  "scope": "read-only RC1 vs booted Source64 Test1 boot-path audit",
+  "runtime_status": "RC1_FIRST_BOOT_FAILED_USER_REPORT",
+  "exact_first_runtime_failure": "NOT_CAPTURED",
+  "checks": {
+    "kernel_dtb_same": true,
+    "cpio_set_same": true,
+    "cpio_changed": [
+      "init"
+    ],
+    "prefix_outside_boot_same": true,
+    "fstab_same": true,
+    "stick_module_same": true,
+    "policy_matches_actual_card_source": true,
+    "test1_init_bootstrap_interpreter": true,
+    "rc1_init_bootstrap_interpreter": true
+  },
+  "policy_sha256": "ab95ce00cbb537c6e05f5e9580d390d0c66e3b4cc94592fadb54e1be5a5a7cce",
+  "policy_queries": [
+    {
+      "name": "positive_ueventd_create",
+      "rule": "ueventd binder_device:chr_file create",
+      "returncode": 255,
+      "allow_found": true,
+      "output": "libsepol.report_failure: neverallow violated by allow ueventd binder_device:chr_file { create };\nlibsepol.check_assertions: 1 neverallow failures occurred\n"
+    },
+    {
+      "name": "negative_app_loadpolicy",
+      "rule": "platform_app kernel:security load_policy",
+      "returncode": 0,
+      "allow_found": false,
+      "output": ""
+    },
+    {
+      "name": "init_null_open",
+      "rule": "init device:chr_file { open read write }",
+      "returncode": 0,
+      "allow_found": false,
+      "output": ""
+    },
+    {
+      "name": "init_device_relabelfrom",
+      "rule": "init device:chr_file relabelfrom",
+      "returncode": 0,
+      "allow_found": false,
+      "output": ""
+    },
+    {
+      "name": "vendor_init_device_relabelfrom",
+      "rule": "vendor_init device:chr_file relabelfrom",
+      "returncode": 0,
+      "allow_found": false,
+      "output": ""
+    },
+    {
+      "name": "init_binder_relabelto",
+      "rule": "init binder_device:chr_file relabelto",
+      "returncode": 0,
+      "allow_found": false,
+      "output": ""
+    },
+    {
+      "name": "vendor_init_binder_relabelto",
+      "rule": "vendor_init binder_device:chr_file relabelto",
+      "returncode": 0,
+      "allow_found": false,
+      "output": ""
+    }
+  ],
+  "confirmed_defects": [
+    "vendor early-init relabel action occurs after second-stage initial /dev/null open",
+    "inherited generic device character nodes lack queried init/vendor_init relabel permissions; coldboot sentinel remains"
+  ],
+  "limits": [
+    "No flashed-card readback or current boot log",
+    "Inherited /dev/null label not measured on failed RC1 boot",
+    "USB fastboot mode does not prove init-fatal cause; user init panic-to-bootloader flag disabled",
+    "Rufus4.7 supports gzip image; compression choice alone not a proven failure"
+  ],
+  "probe_control_correction": "The earlier receipt named init/setenforce positive_control incorrectly; it returned zero and was not a positive control. This receipt uses actual ueventd/create violation as positive control.",
+  "no_changes": [
+    "source",
+    "images",
+    "device",
+    "security",
+    "build",
+    "flash",
+    "cleanup"
+  ],
+  "preserved": [
+    "RC1",
+    "Test1",
+    "all failures",
+    "SPACE_REVIEW"
+  ],
+  "local_receipts": {
+    "boot-delta-v1.json": "5f3d9626ba9d74b7b3ff6aeab4a30052fc9acd2dd56509d9fed272a3a17b6fb1",
+    "vendor-boot-delta-v1.json": "191491e04cb8bc2759663d80fc5bdaa44ac6ecac7a22fca8a0b48f38c0595ae9",
+    "ramdisk-init-old-to-rc1.diff": "652bfc69473dfde696bd39a9deb4d1b160e110982006b824287fe25e5a39294b"
+  }
+}

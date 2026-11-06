@@ -1,0 +1,15 @@
+{
+  "runtime_first_boot_failed": true,
+  "image_sha256": "a6c81241980d8805a4b44012cd5517b1e6e1478931a4c0881a3d98f9233696ad",
+  "observed_product": "rc3",
+  "SELinux": "Enforcing",
+  "authenticated_user_ADB": true,
+  "Mali_and_SurfaceFlinger_present": true,
+  "boot_completed": false,
+  "Light_and_Thermal_profile_read_denied": true,
+  "framework_waits_ILight": true,
+  "raw_evidence_private": "out/roc-os-user-rc3-firstboot-20261107",
+  "cause": "RC3 exact property relabel omitted existing HAL readers",
+  "security_downgraded": false,
+  "device_modified_by_agent_this_turn": false
+}

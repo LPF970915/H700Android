@@ -1,0 +1,485 @@
+{
+  "schema": 1,
+  "recorded_at": "2026-11-05T20:28:04.293550+00:00",
+  "scope": "RC2 offline verified flashable test candidate; actual RC2 runtime and formal release unaccepted",
+  "whole_card": {
+    "passed": true,
+    "image": "/mnt/d/Works/H700Android/out/roc-os-user-card-rc2-20261106/ROC_OS_ARM64_User_RC2_20261106.img.gz",
+    "bytes": 591012706,
+    "sha256": "13eb405d04fa4fb73450e6c651832b6e033067b89ceef49d6de539974f86abab",
+    "raw_bytes": 32434554368,
+    "raw_sha256": "3c9a6423af7f7757b0ee69beeb4d48ddcfeb5866ca15983e08367549f9464674",
+    "ranges": [
+      {
+        "name": "prefix",
+        "offset": 0,
+        "bytes": 222298112,
+        "sha256": "d44c542ed5f64777936358d62bc7b84d2c2246ce9a2773ad70d1247bb0ff66d4"
+      },
+      {
+        "name": "system",
+        "offset": 222298112,
+        "bytes": 8589934592,
+        "sha256": "a601d9c64225c9cdd2ce6a1547eb898d8bdeb6e201e6e3861d09cb96e948f1ad"
+      },
+      {
+        "name": "vendor",
+        "offset": 8812232704,
+        "bytes": 2147483648,
+        "sha256": "03b47b79d228dde27efd05241d56b25e2d37afba4fda2802ee4e3fa9501338bc"
+      },
+      {
+        "name": "userdata",
+        "offset": 10959716352,
+        "bytes": 21474836480,
+        "sha256": "b3318220300a0e3f135c6092d1166829109a0389a75a4df239544a1d4c1ab0e5"
+      },
+      {
+        "name": "backup_gpt",
+        "offset": 32434552832,
+        "bytes": 1536,
+        "sha256": "ba9ba2c16fbb57653f2d5b221bb2f0c2ee698550f1d9dc33df30b5565d23c5dc"
+      }
+    ],
+    "work": "/home/lpf/roc-os-user-card-rc2-20261106-v4",
+    "boot_kernel_dtb_preserved": true,
+    "factory_userdata_empty_except_host_public_ADB_key": true,
+    "authenticated_ADB_retained": true,
+    "ADB_root_allowed": false,
+    "network_ADB": false,
+    "userdata_context": "u:object_r:system_data_file:s0",
+    "Android_ARM64_fsck_passed": true,
+    "full_gzip_verified": true,
+    "whole_card_image_created": true,
+    "device_or_card_modified": false,
+    "device_boot_accepted": false,
+    "minimum_card_GB": 64,
+    "scope": "RG34XXSP H700 2GB user RC2; offline verified flashable test candidate; runtime and formal release unaccepted",
+    "source_user_build": "images-result-v13.json",
+    "user_partition_audit": "user-partition-audit.json",
+    "boot_cmdline": "selinux=1 enforcing=1 androidboot.selinux=enforcing",
+    "unauthenticated_failure_shell_removed": true,
+    "signing_identity": "ROC OS production-v1",
+    "formal_release_allowed": false,
+    "source_build_receipt_sha256": "157e64de412901d25261c504fc4c9a1a4d46dfff870bdcc9bb639c61aa6fcba2",
+    "packaging_inputs_sha256": {
+      "tools/release/package_rc2.py": "4f01b7cd9d3992c39692c7559ecf45931948bee80a32ca83b8f1c9e839f86201",
+      "tools/release/audit_rc2_card.py": "1d24ad732dcb4c7b243dac141c0fcd2be9acad6701475728f16b82960d776ebb",
+      "tools/release/audit_candidate_card.py": "f035610b87c91131aaea1ae4cbe74d575f6c6c79dcf5b34fb2c876367a34f7b9",
+      "tools/release/user_boot_init_rc2.sh": "7e832c9ac2a41ff8a0bce53767d97f95c1487bba427d0dc9ce0cdf85511a5e48",
+      "tools/release/prepare_android_dev_bootfix1.sh": "71018104ae888cb5a34869a357df244a76ff37b6b4194fed0d1756e1736d6eeb"
+    },
+    "completed_at": "2026-11-05T20:25:34.790576+00:00"
+  },
+  "independent_check": {
+    "passed": true,
+    "source_sparse_ranges_match_card": true,
+    "gzip_sha256": "13eb405d04fa4fb73450e6c651832b6e033067b89ceef49d6de539974f86abab",
+    "raw_sha256": "3c9a6423af7f7757b0ee69beeb4d48ddcfeb5866ca15983e08367549f9464674",
+    "userdata_root_uid": 1000,
+    "userdata_root_gid": 1000,
+    "userdata_root_mode": "0771",
+    "userdata_context": "u:object_r:system_data_file:s0",
+    "runtime_or_release_accepted": false,
+    "device_modified": false,
+    "actual_ELF": {
+      "system/bin/app_process64": {
+        "ELF_class": 2,
+        "e_machine": 183,
+        "sha256": "17adbfd47244eb618fd5223f581e0cd8044257e631b73fee699a865558f49849"
+      },
+      "system/bin/app_process32": {
+        "ELF_class": 1,
+        "e_machine": 40,
+        "sha256": "df55877c90627800df11ac706f1477f243ee19b4c16ee4b74a12a2a35020fd24"
+      },
+      "system/lib64/libandroid_runtime.so": {
+        "ELF_class": 2,
+        "e_machine": 183,
+        "sha256": "d98c02084a67d939990261a29bfd26c06dd7a665e48843871690ca4e659f2791"
+      },
+      "system/lib/libandroid_runtime.so": {
+        "ELF_class": 1,
+        "e_machine": 40,
+        "sha256": "824e1134bc32a369de611497d0657d9561a55afb3481fe93f6ec67f8a914a515"
+      },
+      "vendor/lib64/hw/gralloc.rocsource.so": {
+        "ELF_class": 2,
+        "e_machine": 183,
+        "sha256": "4fadaa3fb76e9c7db62c251e4bf5c0c34b4678a2267af03f140a5171e09f1028"
+      },
+      "vendor/lib/hw/gralloc.rocsource.so": {
+        "ELF_class": 1,
+        "e_machine": 40,
+        "sha256": "b2eee21a3defee618f42b2223b683465968e9145a7ae5250d2a35cafe69d7678"
+      },
+      "system/apex/com.android.runtime.release/bin/linker64": {
+        "ELF_class": 2,
+        "e_machine": 183,
+        "sha256": "52dc1d7b01309d4ec0c3173ee97b512db7b000c49b5d2257e36fef58395c9812"
+      },
+      "system/apex/com.android.runtime.release/bin/linker": {
+        "ELF_class": 1,
+        "e_machine": 40,
+        "sha256": "fcf9d481390dd2e128a3a1316fb1a0668bc5bf383a54e890778bac55a06b34c8"
+      },
+      "system/apex/com.android.runtime.release/lib64/libart.so": {
+        "ELF_class": 2,
+        "e_machine": 183,
+        "sha256": "3aba6bbafd3d31fd7bc2465ed14b399ceed9bcabd941c92e1328fa6d89a043ff"
+      },
+      "system/apex/com.android.runtime.release/lib/libart.so": {
+        "ELF_class": 1,
+        "e_machine": 40,
+        "sha256": "4f44f11d06fd8c00c0c91d30d9258b78700d005c46053436dfdc051d4a84ac70"
+      }
+    },
+    "actual_whole_card_boot_sha256": "04e11bbdb1d14f8672439d948b6f5cbe95e3294634304cd510df10e3064ced49",
+    "actual_boot_cmdline": "selinux=1 enforcing=1 androidboot.selinux=enforcing",
+    "actual_ramdisk_entries_match_RC2": true,
+    "authenticated_ADB_public_key_seed_verified": true,
+    "Mali_ARM64_kernel_4_9_170": true,
+    "repo_compile_guards_unchanged": true
+  },
+  "source_build": {
+    "phase": "images",
+    "exit_status": 0,
+    "passed": true,
+    "prepare_receipt": "prepare-v30.json",
+    "product": "roc_os_release_candidate-user",
+    "candidate_sources_unchanged": true,
+    "source64_protected_inputs_and_product_unchanged": true,
+    "source64_three_images_unchanged": true,
+    "artifact_validation_error": null,
+    "runtime_files": {
+      "system/framework/wifi-service.rocsource.jar": {
+        "bytes": 2984765,
+        "sha256": "17d12b708fb274bd91a4fe3d78f0430ff20740aee44ae8c8c470d7e95bcacae9"
+      },
+      "vendor/modules/mali_kbase.ko": {
+        "bytes": 17590792,
+        "sha256": "987e2feb5621f455c139c9e93c0c2a972f6eee0478b755b2cdfecfeb249970a9"
+      },
+      "system/etc/init/rgsp_fix63_graphics.rc": {
+        "bytes": 572,
+        "sha256": "a5374239d79a1ac540c4d62a780615ef28db7baa30d1de82ce75e58b3dde8ef8"
+      },
+      "system/etc/init/roc-source64-startup.rc": {
+        "bytes": 462,
+        "sha256": "36c2d93f4e76d8aeb18912ee0d33b00b8cca43078a653f1dfe10ee97f1928db0"
+      },
+      "system/etc/init/h700-usb-configfs.rc": {
+        "bytes": 1903,
+        "sha256": "aef0c06688868a918fdfbd7bec4104334873029ed7bf300f020fdd0c1396538c"
+      },
+      "vendor/etc/init/roc-audio-interface.rc": {
+        "bytes": 861,
+        "sha256": "43fcd2bb4c491156e1e80b69463856b3f890fa6b0040e60d0a1344f0db0265eb"
+      },
+      "vendor/etc/init/roc-user-input.rc": {
+        "bytes": 231,
+        "sha256": "9a86700ac58851c705d1dbb17377293ec6611ca81f923d76b9a67efd75d7387c"
+      }
+    },
+    "graph_sha256": {
+      "build-roc_os_release_candidate-cleanspec.ninja": "a8c2b041b2efca610ea6e8ffd1e88cf462d477a1915e29cb52fd1bb3344eea52",
+      "build-roc_os_release_candidate.ninja": "3496e50291bd986c81401719807082c1ecff80110ee578ceeeae76686abe0a64",
+      "build-roc_os_release_candidate-package.ninja": "9a9cc044830a6cebb7410b54f968f0d41a3263a87a566a1c2d3b1f31fcc32e51",
+      "combined-roc_os_release_candidate.ninja": "345ef3d10e22fab79bd2000babe61a674acfcc008bea2042297048c9450d1790"
+    },
+    "images": {
+      "system.img": {
+        "bytes": 1128792548,
+        "sha256": "b814b83442b028f362ec904dd2d930491718d6713306003e13db80d8a15c2322"
+      },
+      "vendor.img": {
+        "bytes": 83357916,
+        "sha256": "d61aaa41dd5ab18a8c963876adeabb5669ba8d8c1c3268acdf3bda20cb87dabb"
+      },
+      "ramdisk.img": {
+        "bytes": 786340,
+        "sha256": "8a624e70a8109b0bb660212dc31a727e0cdbdf92d982742dd83b7ebadca55e87"
+      }
+    },
+    "actual_ELF": {
+      "system/bin/app_process64": {
+        "ELF_class": 2,
+        "e_machine": 183,
+        "sha256": "17adbfd47244eb618fd5223f581e0cd8044257e631b73fee699a865558f49849"
+      },
+      "system/bin/app_process32": {
+        "ELF_class": 1,
+        "e_machine": 40,
+        "sha256": "df55877c90627800df11ac706f1477f243ee19b4c16ee4b74a12a2a35020fd24"
+      },
+      "system/lib64/libandroid_runtime.so": {
+        "ELF_class": 2,
+        "e_machine": 183,
+        "sha256": "d98c02084a67d939990261a29bfd26c06dd7a665e48843871690ca4e659f2791"
+      },
+      "system/lib/libandroid_runtime.so": {
+        "ELF_class": 1,
+        "e_machine": 40,
+        "sha256": "824e1134bc32a369de611497d0657d9561a55afb3481fe93f6ec67f8a914a515"
+      },
+      "vendor/lib64/hw/gralloc.rocsource.so": {
+        "ELF_class": 2,
+        "e_machine": 183,
+        "sha256": "4fadaa3fb76e9c7db62c251e4bf5c0c34b4678a2267af03f140a5171e09f1028"
+      },
+      "vendor/lib/hw/gralloc.rocsource.so": {
+        "ELF_class": 1,
+        "e_machine": 40,
+        "sha256": "b2eee21a3defee618f42b2223b683465968e9145a7ae5250d2a35cafe69d7678"
+      }
+    },
+    "android_images_compiled": true,
+    "runtime_or_flash_accepted": false,
+    "release_allowed": false
+  },
+  "APK_count": 116,
+  "ELF_namespace_closure": {
+    "root_count": 36,
+    "namespace_object_states": 631,
+    "unique_ELF_objects": 548,
+    "errors": [],
+    "pre_apex_bootstrap_objects": 41,
+    "pre_apex_bootstrap_errors": [],
+    "new_daemon_strong_symbols": {
+      "/system/bin/vold.rocsource": {
+        "dependency_states": 42,
+        "unresolved_strong_symbol_names": []
+      },
+      "/vendor/bin/hw/android.hardware.light@2.0-service.rocsource": {
+        "dependency_states": 21,
+        "unresolved_strong_symbol_names": []
+      },
+      "/vendor/bin/hw/android.hardware.thermal@2.0-service.rocsource": {
+        "dependency_states": 22,
+        "unresolved_strong_symbol_names": []
+      }
+    },
+    "notes": [
+      "DT_NEEDED and interpreter/ELF checks plus new-daemon symbol names; not exported symbol versions, dlopen completeness, kernel ABI or runtime acceptance",
+      "APEX runtime paths resolved to flattened directories for post-APEX audit; early bootstrap checked separately"
+    ]
+  },
+  "observed_AVC_groups_reviewed": 22,
+  "repair_audit": {
+    "passed": true,
+    "actual_policy_checks": [
+      {
+        "domain": "hal_thermal_default",
+        "type": "sysfs_roc_thermal",
+        "class": "dir",
+        "permission": "open",
+        "allowed": true
+      },
+      {
+        "domain": "hal_thermal_default",
+        "type": "sysfs_roc_thermal",
+        "class": "dir",
+        "permission": "read",
+        "allowed": true
+      },
+      {
+        "domain": "hal_thermal_default",
+        "type": "sysfs_roc_thermal",
+        "class": "dir",
+        "permission": "getattr",
+        "allowed": true
+      },
+      {
+        "domain": "hal_thermal_default",
+        "type": "sysfs_roc_thermal",
+        "class": "dir",
+        "permission": "search",
+        "allowed": true
+      },
+      {
+        "domain": "hal_thermal_default",
+        "type": "sysfs_roc_thermal",
+        "class": "file",
+        "permission": "open",
+        "allowed": true
+      },
+      {
+        "domain": "hal_thermal_default",
+        "type": "sysfs_roc_thermal",
+        "class": "file",
+        "permission": "read",
+        "allowed": true
+      },
+      {
+        "domain": "hal_thermal_default",
+        "type": "sysfs_roc_thermal",
+        "class": "file",
+        "permission": "getattr",
+        "allowed": true
+      },
+      {
+        "domain": "hal_thermal_default",
+        "type": "sysfs_roc_thermal",
+        "class": "lnk_file",
+        "permission": "read",
+        "allowed": true
+      },
+      {
+        "domain": "hal_thermal_default",
+        "type": "sysfs_roc_thermal",
+        "class": "file",
+        "permission": "write",
+        "allowed": false
+      },
+      {
+        "domain": "hal_thermal_default",
+        "type": "sysfs_roc_thermal",
+        "class": "file",
+        "permission": "append",
+        "allowed": false
+      },
+      {
+        "domain": "hal_thermal_default",
+        "type": "sysfs_roc_thermal",
+        "class": "file",
+        "permission": "create",
+        "allowed": false
+      },
+      {
+        "domain": "hal_thermal_default",
+        "type": "sysfs_roc_thermal",
+        "class": "file",
+        "permission": "setattr",
+        "allowed": false
+      },
+      {
+        "domain": "hal_health_default",
+        "type": "sysfs_batteryinfo",
+        "class": "file",
+        "permission": "read",
+        "allowed": true
+      },
+      {
+        "domain": "hal_health_default",
+        "type": "sysfs_batteryinfo",
+        "class": "file",
+        "permission": "open",
+        "allowed": true
+      },
+      {
+        "domain": "init",
+        "type": "vendor_file",
+        "class": "system",
+        "permission": "module_load",
+        "allowed": true
+      },
+      {
+        "domain": "init",
+        "type": "system_lib_file",
+        "class": "system",
+        "permission": "module_load",
+        "allowed": false
+      },
+      {
+        "domain": "surfaceflinger",
+        "type": "gpu_device",
+        "class": "chr_file",
+        "permission": "open",
+        "allowed": true
+      },
+      {
+        "domain": "surfaceflinger",
+        "type": "gpu_device",
+        "class": "chr_file",
+        "permission": "read",
+        "allowed": true
+      },
+      {
+        "domain": "surfaceflinger",
+        "type": "gpu_device",
+        "class": "chr_file",
+        "permission": "write",
+        "allowed": true
+      },
+      {
+        "domain": "surfaceflinger",
+        "type": "gpu_device",
+        "class": "chr_file",
+        "permission": "ioctl",
+        "allowed": true
+      },
+      {
+        "domain": "adbd",
+        "type": "adb_keys_file",
+        "class": "file",
+        "permission": "read",
+        "allowed": true
+      },
+      {
+        "domain": "adbd",
+        "type": "adb_keys_file",
+        "class": "file",
+        "permission": "open",
+        "allowed": true
+      },
+      {
+        "domain": "init",
+        "type": "system_radio_prop",
+        "class": "property_service",
+        "permission": "set",
+        "allowed": true
+      },
+      {
+        "domain": "init",
+        "type": "configfs",
+        "class": "file",
+        "permission": "write",
+        "allowed": true
+      }
+    ],
+    "Mali_original_SHA_preserved": "987e2feb5621f455c139c9e93c0c2a972f6eee0478b755b2cdfecfeb249970a9",
+    "Mali_vendor_file_label": true,
+    "Native_userdata_context_valid": true,
+    "old_GSI_context_rejected": true,
+    "thermal_read_only": true,
+    "battery_exact_genfs": true,
+    "Hall_exact_child_retained": true,
+    "audio_5_interface_override_parsed": true,
+    "single_early_authenticated_USB_setup": true,
+    "config_files": {
+      "/system/etc/init/rgsp_fix63_graphics.rc": "a5374239d79a1ac540c4d62a780615ef28db7baa30d1de82ce75e58b3dde8ef8",
+      "/system/etc/init/roc-source64-startup.rc": "36c2d93f4e76d8aeb18912ee0d33b00b8cca43078a653f1dfe10ee97f1928db0",
+      "/system/etc/init/h700-usb-configfs.rc": "aef0c06688868a918fdfbd7bec4104334873029ed7bf300f020fdd0c1396538c",
+      "/vendor/etc/init/roc-user-input.rc": "9a86700ac58851c705d1dbb17377293ec6611ca81f923d76b9a67efd75d7387c",
+      "/vendor/etc/init/roc-audio-interface.rc": "43fcd2bb4c491156e1e80b69463856b3f890fa6b0040e60d0a1344f0db0265eb"
+    },
+    "runtime_retest_required": true,
+    "formal_release_allowed": false
+  },
+  "protected_inputs": {
+    "Native_originals": 371,
+    "Source64_files": 1237,
+    "ABI5_libraries": 2,
+    "original_eng_three_images_unchanged": true,
+    "candidate_source_full_set": 23,
+    "production_five_key_public_identities_unchanged": true,
+    "SPACE_REVIEW_unchanged": true
+  },
+  "jobs": {
+    "build": "h700-low-pressure-20261106-035203.service",
+    "packaging": "roc-user-rc2-card-20261106-041625.service",
+    "independent_verify": "roc-user-rc2-card-20261106-042620.service",
+    "packaging_elapsed_seconds": 545.898,
+    "packaging_CPU_seconds": 422.422,
+    "packaging_peak_memory_GiB": 5,
+    "packaging_peak_swap_MiB": 20.3,
+    "verify_elapsed_seconds": 16.069,
+    "verify_CPU_seconds": 9.291,
+    "all_exited_zero": true
+  },
+  "retained_attempts": "out/roc-os-user-repair-20261106-v2/packaging-attempts.json",
+  "device_modified": false,
+  "runtime_accepted": false,
+  "release_allowed": false,
+  "automation_status": "PAUSED"
+}

@@ -1,0 +1,179 @@
+{
+  "passed": true,
+  "actual_policy_checks": [
+    {
+      "domain": "platform_app",
+      "type": "roc_input_profile_prop",
+      "class": "file",
+      "permission": "read",
+      "allowed": true
+    },
+    {
+      "domain": "platform_app",
+      "type": "roc_input_profile_prop",
+      "class": "file",
+      "permission": "open",
+      "allowed": true
+    },
+    {
+      "domain": "platform_app",
+      "type": "roc_input_profile_prop",
+      "class": "file",
+      "permission": "getattr",
+      "allowed": true
+    },
+    {
+      "domain": "platform_app",
+      "type": "roc_input_profile_prop",
+      "class": "file",
+      "permission": "map",
+      "allowed": true
+    },
+    {
+      "domain": "shell",
+      "type": "roc_input_profile_prop",
+      "class": "file",
+      "permission": "read",
+      "allowed": true
+    },
+    {
+      "domain": "shell",
+      "type": "roc_input_profile_prop",
+      "class": "file",
+      "permission": "open",
+      "allowed": true
+    },
+    {
+      "domain": "shell",
+      "type": "roc_input_profile_prop",
+      "class": "file",
+      "permission": "getattr",
+      "allowed": true
+    },
+    {
+      "domain": "shell",
+      "type": "roc_input_profile_prop",
+      "class": "file",
+      "permission": "map",
+      "allowed": true
+    },
+    {
+      "domain": "init",
+      "type": "roc_input_profile_prop",
+      "class": "property_service",
+      "permission": "set",
+      "allowed": true
+    },
+    {
+      "domain": "platform_app",
+      "type": "roc_input_profile_prop",
+      "class": "property_service",
+      "permission": "set",
+      "allowed": false
+    },
+    {
+      "domain": "platform_app",
+      "type": "vendor_default_prop",
+      "class": "file",
+      "permission": "read",
+      "allowed": false
+    },
+    {
+      "domain": "untrusted_app",
+      "type": "roc_input_profile_prop",
+      "class": "file",
+      "permission": "read",
+      "allowed": false
+    },
+    {
+      "domain": "hal_thermal_default",
+      "type": "sysfs_thermal",
+      "class": "file",
+      "permission": "read",
+      "allowed": true
+    },
+    {
+      "domain": "hal_thermal_default",
+      "type": "sysfs_thermal",
+      "class": "file",
+      "permission": "open",
+      "allowed": true
+    },
+    {
+      "domain": "hal_thermal_default",
+      "type": "sysfs_thermal",
+      "class": "file",
+      "permission": "getattr",
+      "allowed": true
+    },
+    {
+      "domain": "hal_thermal_default",
+      "type": "sysfs_thermal",
+      "class": "file",
+      "permission": "write",
+      "allowed": false
+    },
+    {
+      "domain": "hal_thermal_default",
+      "type": "sysfs_thermal",
+      "class": "file",
+      "permission": "append",
+      "allowed": false
+    },
+    {
+      "domain": "hal_thermal_default",
+      "type": "sysfs_thermal",
+      "class": "file",
+      "permission": "create",
+      "allowed": false
+    },
+    {
+      "domain": "hal_thermal_default",
+      "type": "sysfs_thermal",
+      "class": "file",
+      "permission": "setattr",
+      "allowed": false
+    },
+    {
+      "domain": "platform_app",
+      "type": "sysfs_batteryinfo",
+      "class": "dir",
+      "permission": "search",
+      "allowed": true
+    },
+    {
+      "domain": "platform_app",
+      "type": "sysfs_batteryinfo",
+      "class": "lnk_file",
+      "permission": "read",
+      "allowed": true
+    },
+    {
+      "domain": "platform_app",
+      "type": "sysfs_batteryinfo",
+      "class": "file",
+      "permission": "read",
+      "allowed": false
+    },
+    {
+      "domain": "platform_app",
+      "type": "sysfs_roc_hall",
+      "class": "file",
+      "permission": "read",
+      "allowed": true
+    },
+    {
+      "domain": "platform_app",
+      "type": "sysfs_roc_hall",
+      "class": "file",
+      "permission": "write",
+      "allowed": false
+    }
+  ],
+  "exact_profile_property_mapping": true,
+  "generic_vendor_property_area_still_inaccessible": true,
+  "no_app_property_write": true,
+  "CPU_existing_sysfs_thermal_read_only": true,
+  "fresh_BOOT_COMPLETED_provisioning_retest_required": true,
+  "formal_release_allowed": false
+}

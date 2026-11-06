@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "scope": "add only Light/Thermal server get_prop on the same exact property; retain all device guards",
+  "files": {
+    "android/h700-android10/device/roc/roc_os_release_candidate/configs/roc-user-build.txt": {
+      "old": "f2cb6ad5833cd59d67e300e1edea37803c505ba7997bff73232d48431069a902",
+      "new": "d47325623168d0674f05f2809899e056e8b5ebd73872d20575cba521908aa351"
+    },
+    "android/h700-android10/device/roc/roc_os_release_candidate/roc_os_release_candidate.mk": {
+      "old": "9a1a69f694b82b8641c0fa52f62874969ac3277e74e0c68a7fb84fbf4cadb461",
+      "new": "1f53a61c6b95da9ea24a2765189a1e3ebd5b8d7af24becf1a79b0a17de4b670f"
+    },
+    "android/h700-android10/device/roc/roc_os_release_candidate/sepolicy/private/roc_profile.te": {
+      "old": "329e528220765eadded7817ff7bede6091394c5bf389a84280067ee2789da313",
+      "new": "330e955e974909b1b9f8a74f3ab9269a62870898e378a04a53f57fff1837b3b2"
+    }
+  }
+}

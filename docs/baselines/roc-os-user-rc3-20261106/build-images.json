@@ -1,0 +1,96 @@
+{
+  "phase": "images",
+  "exit_status": 0,
+  "passed": true,
+  "prepare_receipt": "prepare-v31.json",
+  "product": "roc_os_release_candidate-user",
+  "candidate_sources_unchanged": true,
+  "source64_protected_inputs_and_product_unchanged": true,
+  "source64_three_images_unchanged": true,
+  "artifact_validation_error": null,
+  "runtime_files": {
+    "system/framework/wifi-service.rocsource.jar": {
+      "bytes": 2984765,
+      "sha256": "17d12b708fb274bd91a4fe3d78f0430ff20740aee44ae8c8c470d7e95bcacae9"
+    },
+    "vendor/modules/mali_kbase.ko": {
+      "bytes": 17590792,
+      "sha256": "987e2feb5621f455c139c9e93c0c2a972f6eee0478b755b2cdfecfeb249970a9"
+    },
+    "system/etc/init/rgsp_fix63_graphics.rc": {
+      "bytes": 572,
+      "sha256": "a5374239d79a1ac540c4d62a780615ef28db7baa30d1de82ce75e58b3dde8ef8"
+    },
+    "system/etc/init/roc-source64-startup.rc": {
+      "bytes": 462,
+      "sha256": "36c2d93f4e76d8aeb18912ee0d33b00b8cca43078a653f1dfe10ee97f1928db0"
+    },
+    "system/etc/init/h700-usb-configfs.rc": {
+      "bytes": 1903,
+      "sha256": "aef0c06688868a918fdfbd7bec4104334873029ed7bf300f020fdd0c1396538c"
+    },
+    "vendor/etc/init/roc-audio-interface.rc": {
+      "bytes": 861,
+      "sha256": "43fcd2bb4c491156e1e80b69463856b3f890fa6b0040e60d0a1344f0db0265eb"
+    },
+    "vendor/etc/init/roc-user-input.rc": {
+      "bytes": 231,
+      "sha256": "9a86700ac58851c705d1dbb17377293ec6611ca81f923d76b9a67efd75d7387c"
+    }
+  },
+  "graph_sha256": {
+    "build-roc_os_release_candidate-cleanspec.ninja": "a8c2b041b2efca610ea6e8ffd1e88cf462d477a1915e29cb52fd1bb3344eea52",
+    "build-roc_os_release_candidate.ninja": "fd9bd45b12ec0e824188318585986f91ce639ea0c735818e973eb6ac4a2a8ffb",
+    "build-roc_os_release_candidate-package.ninja": "9a9cc044830a6cebb7410b54f968f0d41a3263a87a566a1c2d3b1f31fcc32e51",
+    "combined-roc_os_release_candidate.ninja": "345ef3d10e22fab79bd2000babe61a674acfcc008bea2042297048c9450d1790"
+  },
+  "images": {
+    "system.img": {
+      "bytes": 1128792548,
+      "sha256": "1caafc59282c7c780962f7b88541dfe2c8fd0a376d46cc90f9d9cf4f3abc9f47"
+    },
+    "vendor.img": {
+      "bytes": 83357916,
+      "sha256": "ac4f6b2988010f2f6181ad0c6486c0aa9bb3786e830e40451b6eab384ca76965"
+    },
+    "ramdisk.img": {
+      "bytes": 786340,
+      "sha256": "8a624e70a8109b0bb660212dc31a727e0cdbdf92d982742dd83b7ebadca55e87"
+    }
+  },
+  "actual_ELF": {
+    "system/bin/app_process64": {
+      "ELF_class": 2,
+      "e_machine": 183,
+      "sha256": "17adbfd47244eb618fd5223f581e0cd8044257e631b73fee699a865558f49849"
+    },
+    "system/bin/app_process32": {
+      "ELF_class": 1,
+      "e_machine": 40,
+      "sha256": "df55877c90627800df11ac706f1477f243ee19b4c16ee4b74a12a2a35020fd24"
+    },
+    "system/lib64/libandroid_runtime.so": {
+      "ELF_class": 2,
+      "e_machine": 183,
+      "sha256": "d98c02084a67d939990261a29bfd26c06dd7a665e48843871690ca4e659f2791"
+    },
+    "system/lib/libandroid_runtime.so": {
+      "ELF_class": 1,
+      "e_machine": 40,
+      "sha256": "824e1134bc32a369de611497d0657d9561a55afb3481fe93f6ec67f8a914a515"
+    },
+    "vendor/lib64/hw/gralloc.rocsource.so": {
+      "ELF_class": 2,
+      "e_machine": 183,
+      "sha256": "4fadaa3fb76e9c7db62c251e4bf5c0c34b4678a2267af03f140a5171e09f1028"
+    },
+    "vendor/lib/hw/gralloc.rocsource.so": {
+      "ELF_class": 1,
+      "e_machine": 40,
+      "sha256": "b2eee21a3defee618f42b2223b683465968e9145a7ae5250d2a35cafe69d7678"
+    }
+  },
+  "android_images_compiled": true,
+  "runtime_or_flash_accepted": false,
+  "release_allowed": false
+}

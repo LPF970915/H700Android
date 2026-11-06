@@ -10,6 +10,11 @@ roc_user_retired := system/etc/rgsp/leanback.sha256 system/etc/init/h700-network
 roc_user_retired_sources := device/roc/rgsp/configs/leanback.sha256 device/roc/rgsp/h700-network-validation-defaults.rc device/roc/rgsp/h700-network-validation-defaults.sh device/roc/rgsp/rgsp-wallpapers.rc device/roc/rgsp/rgsp-wallpapers.sh device/roc/rgsp/input/rgsp-stick-axes.rc device/roc/rgsp/input/rgsp-stick-axes.sh device/roc/rgsp/rgsp-input-bringup.rc device/roc/rgsp/rgsp-input-prepare.sh device/roc/rgsp/rgsp-kmsg-start.sh device/roc/rgsp/rgsp-wifi-adb-session.sh
 # BSP resolves inherited copies late; the first destination wins.
 PRODUCT_COPY_FILES := \
+    device/roc/roc_os_release_candidate/configs/rgsp_fix63_graphics.rc:system/etc/init/rgsp_fix63_graphics.rc \
+    device/roc/rgsp/prebuilts/local/mali_kbase.ko:vendor/modules/mali_kbase.ko \
+    device/roc/roc_os_release_candidate/configs/roc-source64-startup.rc:system/etc/init/roc-source64-startup.rc \
+    device/roc/roc_os_release_candidate/configs/h700-usb-configfs.rc:system/etc/init/h700-usb-configfs.rc \
+    device/roc/roc_os_release_candidate/configs/roc-audio-interface.rc:vendor/etc/init/roc-audio-interface.rc \
     device/roc/roc_os_release_candidate/configs/roc-user-build.txt:system/etc/roc-user-build.txt \
     device/roc/roc_os_release_candidate/configs/retired-service.rc:system/etc/init/h700-network-validation-defaults.rc \
     device/roc/roc_os_release_candidate/configs/retired-service.rc:system/etc/init/rgsp-wallpapers.rc \
@@ -30,7 +35,7 @@ PRODUCT_PACKAGES := $(filter-out CtsShimPrivPrebuilt CtsShimPrebuilt,$(PRODUCT_P
 GLOBAL_REMOVED_PACKAGES += CtsShimPrivPrebuilt CtsShimPrebuilt
 PRODUCT_PACKAGES += ROCReleaseProvisioning
 GLOBAL_REMOVED_PACKAGES += ROCProvisioning rgsp_kmsg_logger
-PRODUCT_SYSTEM_DEFAULT_PROPERTIES := ro.roc.user.candidate=rc1 $(PRODUCT_SYSTEM_DEFAULT_PROPERTIES)
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES := ro.roc.user.candidate=rc4 $(PRODUCT_SYSTEM_DEFAULT_PROPERTIES)
 PRODUCT_NAME := roc_os_release_candidate
 # Use the guarded H700 board configuration and internal device identity.
 PRODUCT_DEVICE := roc_os_source64

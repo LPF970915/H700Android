@@ -1,0 +1,191 @@
+{
+  "passed": true,
+  "actual_policy_checks": [
+    {
+      "domain": "hal_thermal_default",
+      "type": "sysfs_roc_thermal",
+      "class": "dir",
+      "permission": "open",
+      "allowed": true
+    },
+    {
+      "domain": "hal_thermal_default",
+      "type": "sysfs_roc_thermal",
+      "class": "dir",
+      "permission": "read",
+      "allowed": true
+    },
+    {
+      "domain": "hal_thermal_default",
+      "type": "sysfs_roc_thermal",
+      "class": "dir",
+      "permission": "getattr",
+      "allowed": true
+    },
+    {
+      "domain": "hal_thermal_default",
+      "type": "sysfs_roc_thermal",
+      "class": "dir",
+      "permission": "search",
+      "allowed": true
+    },
+    {
+      "domain": "hal_thermal_default",
+      "type": "sysfs_roc_thermal",
+      "class": "file",
+      "permission": "open",
+      "allowed": true
+    },
+    {
+      "domain": "hal_thermal_default",
+      "type": "sysfs_roc_thermal",
+      "class": "file",
+      "permission": "read",
+      "allowed": true
+    },
+    {
+      "domain": "hal_thermal_default",
+      "type": "sysfs_roc_thermal",
+      "class": "file",
+      "permission": "getattr",
+      "allowed": true
+    },
+    {
+      "domain": "hal_thermal_default",
+      "type": "sysfs_roc_thermal",
+      "class": "lnk_file",
+      "permission": "read",
+      "allowed": true
+    },
+    {
+      "domain": "hal_thermal_default",
+      "type": "sysfs_roc_thermal",
+      "class": "file",
+      "permission": "write",
+      "allowed": false
+    },
+    {
+      "domain": "hal_thermal_default",
+      "type": "sysfs_roc_thermal",
+      "class": "file",
+      "permission": "append",
+      "allowed": false
+    },
+    {
+      "domain": "hal_thermal_default",
+      "type": "sysfs_roc_thermal",
+      "class": "file",
+      "permission": "create",
+      "allowed": false
+    },
+    {
+      "domain": "hal_thermal_default",
+      "type": "sysfs_roc_thermal",
+      "class": "file",
+      "permission": "setattr",
+      "allowed": false
+    },
+    {
+      "domain": "hal_health_default",
+      "type": "sysfs_batteryinfo",
+      "class": "file",
+      "permission": "read",
+      "allowed": true
+    },
+    {
+      "domain": "hal_health_default",
+      "type": "sysfs_batteryinfo",
+      "class": "file",
+      "permission": "open",
+      "allowed": true
+    },
+    {
+      "domain": "init",
+      "type": "vendor_file",
+      "class": "system",
+      "permission": "module_load",
+      "allowed": true
+    },
+    {
+      "domain": "init",
+      "type": "system_lib_file",
+      "class": "system",
+      "permission": "module_load",
+      "allowed": false
+    },
+    {
+      "domain": "surfaceflinger",
+      "type": "gpu_device",
+      "class": "chr_file",
+      "permission": "open",
+      "allowed": true
+    },
+    {
+      "domain": "surfaceflinger",
+      "type": "gpu_device",
+      "class": "chr_file",
+      "permission": "read",
+      "allowed": true
+    },
+    {
+      "domain": "surfaceflinger",
+      "type": "gpu_device",
+      "class": "chr_file",
+      "permission": "write",
+      "allowed": true
+    },
+    {
+      "domain": "surfaceflinger",
+      "type": "gpu_device",
+      "class": "chr_file",
+      "permission": "ioctl",
+      "allowed": true
+    },
+    {
+      "domain": "adbd",
+      "type": "adb_keys_file",
+      "class": "file",
+      "permission": "read",
+      "allowed": true
+    },
+    {
+      "domain": "adbd",
+      "type": "adb_keys_file",
+      "class": "file",
+      "permission": "open",
+      "allowed": true
+    },
+    {
+      "domain": "init",
+      "type": "system_radio_prop",
+      "class": "property_service",
+      "permission": "set",
+      "allowed": true
+    },
+    {
+      "domain": "init",
+      "type": "configfs",
+      "class": "file",
+      "permission": "write",
+      "allowed": true
+    }
+  ],
+  "Mali_original_SHA_preserved": "987e2feb5621f455c139c9e93c0c2a972f6eee0478b755b2cdfecfeb249970a9",
+  "Mali_vendor_file_label": true,
+  "Native_userdata_context_valid": true,
+  "old_GSI_context_rejected": true,
+  "thermal_read_only": true,
+  "battery_exact_genfs": true,
+  "Hall_exact_child_retained": true,
+  "audio_5_interface_override_parsed": true,
+  "single_early_authenticated_USB_setup": true,
+  "config_files": {
+    "/system/etc/init/rgsp_fix63_graphics.rc": "a5374239d79a1ac540c4d62a780615ef28db7baa30d1de82ce75e58b3dde8ef8",
+    "/system/etc/init/roc-source64-startup.rc": "36c2d93f4e76d8aeb18912ee0d33b00b8cca43078a653f1dfe10ee97f1928db0",
+    "/system/etc/init/h700-usb-configfs.rc": "aef0c06688868a918fdfbd7bec4104334873029ed7bf300f020fdd0c1396538c",
+    "/vendor/etc/init/roc-user-input.rc": "9a86700ac58851c705d1dbb17377293ec6611ca81f923d76b9a67efd75d7387c",
+    "/vendor/etc/init/roc-audio-interface.rc": "43fcd2bb4c491156e1e80b69463856b3f890fa6b0040e60d0a1344f0db0265eb"
+  },
+  "runtime_retest_required": true,
+  "formal_release_allowed": false
+}

@@ -1,0 +1,52 @@
+{
+  "recorded_at": "2026-11-05T17:10:36.896054+00:00",
+  "access": "READ_ONLY",
+  "host_capacity": 63864569856,
+  "userdata_partition_bytes": 52904851968,
+  "userdata_fs_blocksize": 4096,
+  "userdata_fs_blocks": 12916223,
+  "boot_exact_RC1": true,
+  "boot_sha256": "477776fd1748fb2cfa6631d82594f4797f1ca9dfc2a92000ef3c420444f196ac",
+  "whole_system_vendor_readback": {
+    "started": "2026-11-06T00:56:28.8570108+08:00",
+    "access": "READ_ONLY",
+    "parts": [
+      {
+        "matches": true,
+        "name": "system",
+        "sha256": "a456fd08e2cf5166fd66c8308e18768659d2f638248a9d665db98fe9d702eab6",
+        "length": 8589934592,
+        "expected": "a456fd08e2cf5166fd66c8308e18768659d2f638248a9d665db98fe9d702eab6",
+        "offset": 222298112
+      },
+      {
+        "matches": true,
+        "name": "vendor",
+        "sha256": "b9015db67bf1f4684741b3487dfe791cd1e1f0866baf63d024ef3f5381d8d204",
+        "length": 2147483648,
+        "expected": "b9015db67bf1f4684741b3487dfe791cd1e1f0866baf63d024ef3f5381d8d204",
+        "offset": 8812232704
+      }
+    ],
+    "passed": true,
+    "finished": "2026-11-06T01:01:03.9291934+08:00"
+  },
+  "log_sha256": "e9771f7a3f9ad3383eabe208ce15ffdb955820030ed2b9a7d8368a5b1d9dc634",
+  "log": "[rgsp-single-card] TF1 internal userdata; TF2 removable\n[rgsp-single-card] Android root ready; switching root\n[rgsp-single-card] TF1 internal userdata; TF2 removable\n[rgsp-single-card] Android root ready; switching root\n",
+  "root_directory_names": [
+    ".",
+    "..",
+    "lost+found",
+    "rgsp-persist"
+  ],
+  "minimum_runtime_stage": "Two attempts reached shell pre-switch_root log, after module loading and filesystem mounts",
+  "exact_Android_init_error": "NOT_CAPTURED",
+  "boot0_checksums_valid": [
+    true,
+    true
+  ],
+  "boot0_parameter_difference": "Two identical copies differ in DRAM parameter/header checksum ranges; not automatically classified as corruption. All other prefix blocks except GPT match.",
+  "partial_capture_caution": "Initial512MiB alone could not read later directory inode; three additional64KiB ranges read and checked. No journal replay/fsck/repair performed.",
+  "reader_error_retained": "v3 hash reader Int32 Min overload failed before data hashing; v4 explicit Int64 fixed and full10GiB hashes pass.",
+  "physical_card_written": false
+}

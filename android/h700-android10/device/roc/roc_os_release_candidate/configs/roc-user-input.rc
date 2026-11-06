@@ -1,9 +1,3 @@
-# Relabel inherited devtmpfs nodes after Android policy loads and before init
-# starts Binder services. The boot handoff performs ownership without a shell
-# service running inside Android's init or su domain.
-on early-init
-    restorecon_recursive /dev
-
-on post-fs-data
-    restorecon_recursive /dev/input
-    restorecon_recursive /dev/snd
+# RC2 creates a fresh Android tmpfs /dev before loading policy. Real ueventd
+# coldboot owns device labels and DAC via the retained H700 ueventd rules.
+# No vendor_init recursion across all property, input, or audio device labels.

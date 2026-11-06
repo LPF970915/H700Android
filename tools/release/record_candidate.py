@@ -47,6 +47,20 @@ if phase=='images' and status==0:
    elf[name]={'ELF_class':bits,'e_machine':machine,'sha256':sha(p)}
   name='system/framework/wifi-service.rocsource.jar';p=target/name
   runtime_files[name]={'bytes':p.stat().st_size,'sha256':sha(p)}
+  module=target/'vendor/modules/mali_kbase.ko'
+  original_module=native/'device/roc/rgsp/prebuilts/local/mali_kbase.ko'
+  assert module.is_file() and sha(module)==sha(original_module),'Vendor Mali module missing or changed'
+  runtime_files['vendor/modules/mali_kbase.ko']={'bytes':module.stat().st_size,'sha256':sha(module)}
+  for inside,source_name in {
+    'system/etc/init/rgsp_fix63_graphics.rc':'rgsp_fix63_graphics.rc',
+    'system/etc/init/roc-source64-startup.rc':'roc-source64-startup.rc',
+    'system/etc/init/h700-usb-configfs.rc':'h700-usb-configfs.rc',
+    'vendor/etc/init/roc-audio-interface.rc':'roc-audio-interface.rc',
+    'vendor/etc/init/roc-user-input.rc':'roc-user-input.rc',
+  }.items():
+   p=target/inside;source=native/'device/roc/roc_os_release_candidate/configs'/source_name
+   assert p.is_file() and sha(p)==sha(source),'Reviewed RC copy not installed: '+inside
+   runtime_files[inside]={'bytes':p.stat().st_size,'sha256':sha(p)}
  except (AssertionError,OSError) as error:
   artifact_error=str(error)
 

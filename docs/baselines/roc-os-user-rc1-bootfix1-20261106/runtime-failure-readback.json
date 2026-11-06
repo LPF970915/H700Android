@@ -1,0 +1,167 @@
+{
+  "recorded_at": "2026-11-05T18:08:43.266251+00:00",
+  "runtime_passed": false,
+  "user_screen": "manufacturer logo; no lying Android robot this attempt",
+  "access": "READ_ONLY",
+  "boot": {
+    "boot_exact_Bootfix1": true,
+    "bytes": 67108864,
+    "sha256": "b52268737297007e6142d4ee92856511d23b3ff039366cc3af38e90f84c5740f"
+  },
+  "stage_log": "[rgsp-single-card] TF1 internal userdata; TF2 removable\n[roc-user-bootfix1] fresh tmpfs dev prepared\n[rgsp-single-card] Android root ready; switching root\n",
+  "stage_log_sha256": "d289314034ade43d91232e312809a16b62a9fe43ca992d1180e851fbfa0df7bd",
+  "Android_created_root_directories": [
+    ".",
+    "..",
+    "lost+found",
+    "rgsp-persist",
+    "bootchart",
+    "apex",
+    "app-staging",
+    "misc",
+    "local",
+    "unisoc_dbg",
+    "preloads",
+    "vendor",
+    "vendor_ce",
+    "vendor_de",
+    "data",
+    "app-private",
+    "app-ephemeral",
+    "app-asec",
+    "app-lib",
+    "app",
+    "property",
+    "tombstones",
+    "dalvik-cache",
+    "ota",
+    "ota_package",
+    "resource-cache",
+    "drm",
+    "mediadrm",
+    "anr",
+    "nfc",
+    "backup",
+    "ss",
+    "system",
+    "system_de",
+    "system_ce",
+    "misc_de",
+    "misc_ce",
+    "user",
+    "user_de",
+    "media",
+    "cache",
+    "adb",
+    "gsi",
+    "server_configurable_flags",
+    ".layout_version"
+  ],
+  "sampled_directory_entries": {
+    "/tombstones": {
+      ".": 2359297,
+      "..": 2
+    },
+    "/anr": {
+      ".": 1441794,
+      "..": 2
+    },
+    "/system/dropbox": {
+      ".": 1048579,
+      "..": 1048578
+    },
+    "/system": {
+      ".": 1048578,
+      "..": 2,
+      "dropbox": 1048579,
+      "heapdump": 1048580,
+      "users": 1048581
+    },
+    "/bootchart": {
+      ".": 131073,
+      "..": 2
+    },
+    "/cache": {
+      ".": 524290,
+      "..": 2,
+      "recovery": 524291,
+      "backup_stage": 524292,
+      "backup": 524293
+    },
+    "/vendor": {
+      ".": 1966081,
+      "..": 2,
+      "hardware": 1966082,
+      "tombstones": 1966083,
+      "wifi": 1966085,
+      "h700": 1966088
+    },
+    "/unisoc_dbg": {
+      ".": 1835009,
+      "..": 2
+    },
+    "/property": {
+      ".": 2228225,
+      "..": 2,
+      "persistent_properties": 2228227
+    },
+    "/cache/recovery": {
+      ".": 524291,
+      "..": 524290
+    },
+    "/vendor/tombstones": {
+      ".": 1966083,
+      "..": 1966081,
+      "wifi": 1966084
+    },
+    "/vendor/h700": {
+      ".": 1966088,
+      "..": 1966081
+    },
+    "/vendor/wifi": {
+      ".": 1966085,
+      "..": 1966081,
+      "hostapd": 1966086,
+      "wpa": 1966089
+    },
+    "/system/users": {
+      ".": 1048581,
+      "..": 1048578,
+      "0": 1048582
+    },
+    "/dalvik-cache": {
+      ".": 1310721,
+      "..": 2,
+      "arm": 1310724,
+      "arm64": 1310725
+    },
+    "/apex": {
+      ".": 2752513,
+      "..": 2,
+      "active": 2752514,
+      "backup": 2752515,
+      "sessions": 2752516
+    }
+  },
+  "capture_limits": {
+    "journal_not_replayed": true,
+    "partial_filesystem_capture": true,
+    "errors": [
+      {
+        "path": "/misc/logd",
+        "error": "AssertionError('Expected extents inode')"
+      },
+      {
+        "path": "/misc/bootstat",
+        "error": "AssertionError('Expected extents inode')"
+      },
+      {
+        "path": "/misc",
+        "error": "AssertionError('Expected extents inode')"
+      }
+    ],
+    "precise_error": "NOT_CAPTURED"
+  },
+  "meaning": "Fresh-device helper completed; Android init advanced to post-fs-data creating many directories, unlike RC1. Do not revert handoff fix solely because UI is absent.",
+  "next": "Private diagnostic image enables only existing host public-key-authenticated USB ADB before zygote-start; user/enforcing/root refusal/network ADB off preserved. No new allow rules or private signing-key operations."
+}

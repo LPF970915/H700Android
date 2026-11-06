@@ -1,5 +1,1 @@
-ROC OS ARM64 User RC1
-Product: roc_os_release_candidate-user
-Date: 2026-11-05
-Signing identity: production-v1
-Status: offline flashable test candidate; runtime release acceptance pending
+ROC OS ARM64 User RC4: hardware profile read access for signed apps and Light/Thermal HAL; RC2 boot/ADB retained
