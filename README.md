@@ -4,9 +4,15 @@
 
 [English](README.en.md) · [候选版本与已知问题](docs/RELEASE_OVERVIEW.md) · [项目历程与视频讲稿](docs/PROJECT_STORY.md) · [开发源码分支](https://github.com/LPF970915/H700Android/tree/codex/rg34xxsp-at4k-input-lockscreen)
 
-ROC OS 从 H700 上的 Android 启动与显示适配起步，逐步加入手柄导航、虚拟鼠标、小屏桌面、亮度与合盖服务、存储整合，并完成 ARM64 user 系统构建和生产签名候选镜像。当前主要开发、测试设备为 **RG34XXSP（H700、2GB RAM、双摇杆）**；早期也使用过 RGSP。其他 H700 机型尚不能视为兼容。
+ROC OS 从 H700 上的 Android 启动与显示适配起步，逐步加入手柄导航、虚拟鼠标、小屏桌面、亮度与合盖服务、存储整合，并完成 ARM64 user 系统构建和生产签名候选镜像。当前主要开发、测试设备为 **RG34XXSP（H700、2GB RAM、双摇杆）**；早期也使用过独立机型 ANBERNIC RG SP。**当前 RC5/Bootfix1 仅针对已测 RG34XXSP 2GB 配置，不是所有 H700 机型通刷包。**
 
 **截至 2026-11-07，项目处于发布准备阶段。RC5 已完成真机首启，但仍有四项已知功能问题；最新 RC5 Bootfix1 仅完成离线封装，尚未刷机验证。当前介绍不代表正式稳定版已经发布。**
+
+## 机型兼容范围
+
+用户将当前系统卡换到早期开发用的 **ANBERNIC RG SP** 后，设备停在厂商 Logo，电脑未发现 Android USB/ADB。RG SP 是独立机型，不是 RG35XXSP 的简称；[官方规格](https://anbernic.com/products/rg-sp)为 H700、1GB RAM、无摇杆。早期 RG SP 运行旧版本的记录不能延伸为最新整卡兼容承诺。
+
+源码存在明确阻断条件：当前启动流程要求 RG34XXSP 摇杆模块成功加载，而模块拒绝低于 1.5GiB 内存的设备。这与本次早停现象相符；尚无该次启动日志，不能认定它是实际停止位置或唯一根因。内部 `ro.product.device=rgsp` 是历史代号，不代表自动识别或支持真实 RG SP。该兼容问题与下述 RG34XXSP 四项使用故障分开记录。
 
 ## 已实现的功能
 

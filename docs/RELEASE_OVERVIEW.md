@@ -42,6 +42,12 @@ Bootfix1 解压后 raw SHA-256：
 
 Bootfix1 恢复自定义启动交接前的标准 `umask 000`。RC5 跳过 Android 第一阶段初始化的清零步骤，PID1 继承 `0022`，使首次创建的 Wi-Fi 目录从要求的 `0770` 变成 `0750`，系统服务缺少组写权限。已有目录在后续启动才被 chmod，造成首次失败与后来行为不同。修正版沿用 RC5 system/vendor，不重编 Android 主体；内核、DTB、命令行及除 init 内容外的全部 ramdisk 项保持一致。该修正针对 Wi-Fi 首次写入根因，不能宣称另外三项故障随之解决。
 
+## 跨机型兼容范围
+
+**当前 RC5/Bootfix1 仅针对已测 RG34XXSP 2GB 配置。** 用户将系统卡换到独立机型 ANBERNIC RG SP 后停在厂商 Logo，电脑无 Android USB/ADB 枚举。RG SP 并非 RG35XXSP 简称；[官方规格](https://anbernic.com/products/rg-sp)为 H700、1GB RAM、无摇杆。早期 RG SP 的旧版本运行记录不代表最新整卡支持该机型。
+
+启动源码强制加载 `h700_stick_axes.ko profile=rg34xxsp`，失败即停止进入 Android；模块明确拒绝低于 1.5GiB 内存的设备。这是与本次现象相符的源码阻断条件；没有取得该卡启动日志，实际停止点和唯一根因尚未实证，仍可能存在更早的内存或设备树适配差异。内部 `ro.product.device=rgsp` 只是历史代号，不代表按机型自动识别或适配。此项单列为兼容失败，不合并进 RG34XXSP 的四项使用故障，也不据此移除模块内存/GPIO 保护。
+
 ## 当前四项已知故障
 
 | 问题 | 实际影响与当前结论 |
@@ -71,6 +77,8 @@ As of November 7, 2026, **RC5 Bootfix1 is the latest local candidate**, **RC5 is
 The complete ARM64 user build, dedicated production keys and backup, production signing-role checks for 116 APKs, hardware boot with SELinux Enforcing and authenticated USB ADB are complete. On RC5, 11 readable critical files matched the delivered partitions; fresh provisioning, seven desktop entries and basic Home/Select/D-pad operation passed. Thermal HAL was ready with five finite temperature readings, and the fixed bring-up wake lock was actually released. Speaker/headphone switching was checked in an earlier stage. These results do not establish normal deep sleep, full thermal protection or freedom from intermittent recovery failures.
 
 The table and hashes above identify the exact local RC5 and Bootfix1 images. Both passed offline packaging and independent verification; **Bootfix1 has not been flashed or hardware-accepted**. It restores `umask 000` before the custom init handoff. RC5 had inherited `0022`, turning first-created Wi-Fi directories from requested mode `0770` into `0750` and denying group writes. Existing directories were chmodded on a later boot, explaining the different first/subsequent-boot behavior. Bootfix1 keeps RC5 system/vendor without rebuilding Android; kernel, DTB, command line and all other ramdisk entries remain unchanged.
+
+**Hardware scope:** current RC5/Bootfix1 candidates target only the tested RG34XXSP 2GB configuration. Moving the card to the separate ANBERNIC RG SP left it at the manufacturer logo with no Android USB/ADB enumeration. RG SP is not shorthand for RG35XXSP; its [official specifications](https://anbernic.com/products/rg-sp) list H700, 1GB RAM and a stickless design. Startup requires the RG34XXSP stick module, which rejects devices below 1.5GiB RAM. This source-level blocker is consistent with the early stop, but no boot log was obtained: the actual stopping point and sole cause are unproven, and earlier memory/device-tree differences may also exist. The internal `ro.product.device=rgsp` is a historical identifier, not hardware autodetection or support. Earlier RG SP builds do not establish current-image compatibility. This failure is separate from the four RG34XXSP usage issues and does not justify removing module memory/GPIO guards.
 
 Four RC5 issues remain open:
 
