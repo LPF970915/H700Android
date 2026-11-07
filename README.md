@@ -16,6 +16,8 @@ RG SP 是独立机型，不是 RG35XXSP 的简称；[官方规格](https://anber
 
 只读审计未发现按设备序列号或卡 CID 绑卡；首启扩容处理 GPT/userdata、文件系统检查和扩容。后续适配将全局 profile 固定为 `rg34xxsp`，并把原来按机型可选的摇杆模块变成 Android 启动前的强制依赖，收窄了实现的兼容范围。按此源码条件，即使新卡第一次就在 1GB RG SP 启动也会被阻断，并非先在 RG34XXSP 扩容后才绑定。新的 **H700 Universal Test1 已完成离线核验**：独立 boot 层已将摇杆模块改为可选扩展；无摇杆、1GB、模块拒绝/缺失、哈希不符或 ABI 不符时，跳过扩展、保留原控制器并继续 Android。模块 GPIO/ADC 与内存护栏保留；不再让扩展加载失败成为系统启动门槛。旧 1GiB 必停负例与新 10 组 shell 路径检查已通过，实际包内 init/helper、37 个启动根、10 个配对 ELF、116 个 APK 签名与完整范围/gzip 核验已通过；原 RG SP 首启已通过，其余机型和同包摇杆复验仍待完成。它沿用 RC5 images18 的 system/vendor、已有 kernel/DTB 和 umask000 修正，不全量重编 Android。
 
+**显示兼容限制：Universal Test1 在 640×480 的 RG35XX H 上收到黑屏反馈，尚不能正常使用。** 用户插 USB 听到系统音，但电脑未发现匹配 USB/ADB，实际 Android 启动阶段未知。实际镜像的 DTB 仍选择 `rg34xxsp_v1`、720×480 面板，vendor 也强制 720×480 帧缓冲；本次通用启动修复未实现面板选择。这是新增的显示兼容阻断，与原四项运行问题分开记录，不影响原 RG SP 首启通过结论。详见[兼容矩阵](docs/RELEASE_OVERVIEW.md)。
+
 ## 已实现的功能
 
 | 方向 | 内容与适用范围 |

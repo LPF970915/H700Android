@@ -80,7 +80,16 @@ Bootfix1 恢复自定义启动交接前的标准 `umask 000`。RC5 跳过 Androi
 | --- | --- |
 | RG34XXSP 2GB | RC5 完成部分验收；Universal Test1 同包摇杆复验待补；四项问题仍开放 |
 | 独立机型 RG SP 1GB | Universal Test1 直接刷入，1GB/无摇杆首启及 A/Home/Select/十字键通过；旧包 Logo 失败保留为历史 |
+| RG35XX H 640×480 | Universal Test1 黑屏；USB 连接有系统音，但无匹配 USB/ADB，Android 阶段未知；显示兼容阻断开放 |
 | 其他 H700 板型/内存配置 | 尚无当前候选的兼容结论，仍属于全 H700 目标的待适配/验证范围 |
+
+## RG35XX H 显示兼容阻断
+
+用户将同一 Universal Test1 卡移到 640×480 RG35XX H，反馈黑屏、插 USB 有系统音；电脑没有匹配的 PnP/ADB。声音不能证明 Android 已完成启动，目前没有真机日志确定黑屏发生阶段。
+
+对实际打包 boot 的 DTB 审计确认：`lcd_driver_name=rg34xxsp_v1`、`lcd_x=720`、`lcd_y=480`、时钟 26MHz、HT820/VT536。实际 vendor 显示配置仍为 `OverrideFramebufferSize=1`、720×480。上一轮仅移除了摇杆/RAM 的启动硬依赖，没有完成跨面板选择或显示配置适配，不能声称已支持全 H700 显示。
+
+此项作为独立兼容阻断保留；没有新镜像或修复结果，不能用单改 `wm size` 或盲改 DTB 宽度代替面板/时序适配。RG SP 1GB 首启与基础按键通过仍成立，四项原有运行问题也不改变状态。
 
 ## 当前四项已知故障
 
@@ -117,6 +126,8 @@ The table and hashes above identify the exact completed local RC5 and Bootfix1 i
 **Goal and current coverage:** one image for all H700 devices remains the goal. RC5 has RG34XXSP 2GB results; Universal Test1 has passed original 1GB stickless RG SP fresh boot and basic controls. The full model matrix remains incomplete. The following logo failure and blocking source condition concern the older RC5/Bootfix1 path, not the new successful Universal Test1 boot. Moving the card to the separate ANBERNIC RG SP left it at the manufacturer logo with no Android USB/ADB enumeration. RG SP is not shorthand for RG35XXSP; its [official specifications](https://anbernic.com/products/rg-sp) list H700, 1GB RAM and a stickless design. Startup requires the RG34XXSP stick module, which rejects devices below 1.5GiB RAM. This source-level blocker is consistent with the early stop, but no boot log was obtained: the actual stopping point and sole cause are unproven, and earlier memory/device-tree differences may also exist. The internal `ro.product.device=rgsp` is a historical identifier, not hardware autodetection or support. Earlier RG SP builds do not establish current-image compatibility. This failure is separate from the four RG34XXSP usage issues and does not justify removing module memory/GPIO guards.
 
 The read-only audit found no CPU/device-serial or card-CID binding in the inspected packaged growth script and layout. Growth handles GPT/userdata, filesystem checks and resizing; UUIDs are fixed per package rather than per device. Later migration hard-coded the global `rg34xxsp` profile and turned a previously optional stick module into a mandatory pre-Android dependency, narrowing compatibility. The same source condition would block a fresh card first booted on a 1GB RG SP; prior expansion on an RG34XXSP is not required. Universal Test1 has made the module optional and completed offline verification; hardware startup, board capabilities and service behavior still need validation while retaining hardware safety guards. Other H700 boards and memory configurations remain unverified.
+
+**RG35XX H display blocker:** moving the same Universal Test1 card to the 640×480 RG35XX H produced a black screen. The user heard a system sound on USB connection, but no matching computer PnP/ADB interface was detected. The Android boot stage remains unknown. The actual packaged DTB still specifies `lcd_driver_name=rg34xxsp_v1`, 720×480, a 26MHz clock and HT820/VT536; the vendor display configuration still forces a 720×480 framebuffer with `OverrideFramebufferSize=1`. Removing the stick/RAM dependency did not implement panel selection or display adaptation. This is an open display compatibility blocker, separate from the four runtime issues. No new image or display fix is available, and changing only `wm size` or DTB width would not establish a valid fix. The successful original RG SP boot remains valid; full H700 support is incomplete.
 
 Four RC5 issues remain open:
 
