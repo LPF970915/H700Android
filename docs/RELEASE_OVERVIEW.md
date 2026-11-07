@@ -2,7 +2,7 @@
 
 [中文首页](../README.md) · [English home](../README.en.md)
 
-更新日期：2026-11-07。最新完成离线封装和独立核验的候选为 **H700 Universal Test1**；此前候选 **RC5 Bootfix1** 保留；已取得实机结果的是 **RC5**；已冻结内测基线为 **RC4**。各自范围分别记录，不能合并为一次最终验收。当前 RG SP 使用旧专机路径卡停 Logo，并未自动刷入新包。
+更新日期：2026-11-07。最新完成离线封装和独立核验的候选为 **H700 Universal Test1**；此前候选 **RC5 Bootfix1** 保留；实机结果包含 **RG34XXSP 上的 RC5** 与 **原 RG SP 上的 Universal Test1**；已冻结内测基线为 **RC4**。各自范围分别记录，不能合并为一次最终验收。用户已直接在原 RG SP 手动刷入 Universal Test1，首启与基础操作通过，无需先放入 RG34XXSP 初始化。
 
 ## 已完成的工作
 
@@ -12,7 +12,7 @@
 
 ## H700 Universal Test1 离线完成
 
-最新本地候选：`ROC_OS_ARM64_H700_Universal_Test1_20261107.img.gz`。压缩包 **591,046,971 字节**；解压 **32,434,554,368 字节**；至少 64GB TF1。整卡封装、独立核验及 Windows SHA 通过，尚未刷入 RG SP。以下为身份核对信息，不是公开下载地址。
+最新本地候选：`ROC_OS_ARM64_H700_Universal_Test1_20261107.img.gz`。压缩包 **591,046,971 字节**；解压 **32,434,554,368 字节**；至少 64GB TF1。整卡封装、独立核验及 Windows SHA 通过，原 RG SP 首启已通过。以下为身份核对信息，不是公开下载地址。
 
 gzip SHA-256：
 
@@ -30,7 +30,13 @@ e1952c3b630be32b4dd706fadc09d98f203e74c87f555ec94562b278b4dbeea3
 
 新包沿用 RC5 images18 system/vendor、已有 H700 kernel/DTB 和 Wi-Fi umask000 修正，不全量重编 Android。该改动移除本轮引入的专机启动硬依赖，不能据此宣布所有板型及相关服务已经验收，也不关闭原有四项使用问题。
 
-## 已完成候选镜像身份
+## Universal Test1 原 RG SP 首启结果
+
+用户直接刷入上述同一 SHA 的镜像。认证 ADB 确认 boot_completed=1、MemTotal 996480 KiB、user/Enforcing、PID1 umask0000；专用摇杆模块未加载，Android 正常继续。首次 Android 画面约 122 秒出现，Mali 和 Thermal HAL Ready/五项有效温度通过，11 个可读关键文件与交付分区 SHA 一致。用户亲自确认显示系统、A 解锁、Home 下拉、Select 鼠标和十字键正常。最初反馈 Logo 后系统自行完成首启，诊断未通过重启、重刷、现场补丁或安全降级促成通过。
+
+这是原 RG SP 1GB/无摇杆的首启与基础操作通过；Universal Test1 的 RG34XXSP 摇杆复验、其他型号、长期使用及四项原有故障仍单列待验。
+
+## 较早候选镜像身份
 
 以下为本地候选身份，供核对版本使用，不是公开下载链接。
 
@@ -64,16 +70,16 @@ Bootfix1 恢复自定义启动交接前的标准 `umask 000`。RC5 跳过 Androi
 
 ## 跨机型兼容范围
 
-**项目目标是所有 H700 设备使用同一镜像；当前候选尚未达到该目标。** RC5 实测结果仅覆盖 RG34XXSP 2GB 配置，Bootfix1 尚未上机。 用户将系统卡换到独立机型 ANBERNIC RG SP 后停在厂商 Logo，电脑无 Android USB/ADB 枚举。RG SP 并非 RG35XXSP 简称；[官方规格](https://anbernic.com/products/rg-sp)为 H700、1GB RAM、无摇杆。早期 RG SP 的旧版本运行记录不代表最新整卡支持该机型。
+**项目目标是所有 H700 设备使用同一镜像，完整型号覆盖尚未完成。** RC5 已在 RG34XXSP 2GB 完成部分验收；Universal Test1 已在原 RG SP 1GB/无摇杆直接首启并通过基础操作。较早专机路径换卡到 RG SP 的 Logo 失败作为历史回归保留，不计作新包再次失败。RG SP 并非 RG35XXSP 简称，[官方规格](https://anbernic.com/products/rg-sp)为 H700、1GB RAM、无摇杆。
 
-启动源码强制加载 `h700_stick_axes.ko profile=rg34xxsp`，失败即停止进入 Android；模块明确拒绝低于 1.5GiB 内存的设备。这是与本次现象相符的源码阻断条件；没有取得该卡启动日志，实际停止点和唯一根因尚未实证，仍可能存在更早的内存或设备树适配差异。内部 `ro.product.device=rgsp` 只是历史代号，不代表按机型自动识别或适配。此项单列为兼容失败，不合并进 RG34XXSP 的四项使用故障，也不据此移除模块内存/GPIO 保护。
+较早 RC5/Bootfix1 启动源码强制加载 `h700_stick_axes.ko profile=rg34xxsp`，失败即停止进入 Android；模块明确拒绝低于 1.5GiB 内存的设备。这是与本次现象相符的源码阻断条件；没有取得该卡启动日志，实际停止点和唯一根因尚未实证，仍可能存在更早的内存或设备树适配差异。内部 `ro.product.device=rgsp` 只是历史代号，不代表按机型自动识别或适配。此项单列为兼容失败，不合并进 RG34XXSP 的四项使用故障，也不据此移除模块内存/GPIO 保护。
 
-只读审计未发现按 CPU/设备序列号或卡 CID 绑定；实际扩容脚本仅处理 GPT/userdata、fsck 与 resize，布局使用整包固定 UUID。后续迁移写死全局 `rg34xxsp` profile，并将原先可选的摇杆模块改成启动前强制依赖，是实现兼容范围收窄的回归。按此条件，新卡首次在 1GB RG SP 启动也会被阻断，不依赖此前是否在 RG34XXSP 扩容。上述为 RC5/Bootfix1 的兼容回归；新的 Universal Test1 已将模块改为可选并完成离线核验。整包启动、各板型能力与相关服务的实测仍待完成，不能以删除模块保护替代适配。
+只读审计未发现按 CPU/设备序列号或卡 CID 绑定；实际扩容脚本仅处理 GPT/userdata、fsck 与 resize，布局使用整包固定 UUID。后续迁移写死全局 `rg34xxsp` profile，并将原先可选的摇杆模块改成启动前强制依赖，是实现兼容范围收窄的回归。按此条件，新卡首次在 1GB RG SP 启动也会被阻断，不依赖此前是否在 RG34XXSP 扩容。上述为 RC5/Bootfix1 的兼容回归；新的 Universal Test1 已将模块改为可选并完成离线核验。原 RG SP 首启已实测通过，其他板型能力及相关服务的实测仍待完成，不能以删除模块保护替代适配。
 
 | 机型/配置 | 当前候选实测状态 |
 | --- | --- |
-| RG34XXSP 2GB | RC5 完成部分验收，仍有下列四项问题；Bootfix1 未上机 |
-| 独立机型 RG SP 1GB | 用户换卡后停厂商 Logo；有源码阻断条件，无启动日志确认实际停止点 |
+| RG34XXSP 2GB | RC5 完成部分验收；Universal Test1 同包摇杆复验待补；四项问题仍开放 |
+| 独立机型 RG SP 1GB | Universal Test1 直接刷入，1GB/无摇杆首启及 A/Home/Select/十字键通过；旧包 Logo 失败保留为历史 |
 | 其他 H700 板型/内存配置 | 尚无当前候选的兼容结论，仍属于全 H700 目标的待适配/验证范围 |
 
 ## 当前四项已知故障
@@ -100,15 +106,15 @@ RC4 冻结源码为 [`780df2bb`](https://github.com/LPF970915/H700Android/commit
 
 ## English release overview
 
-As of November 7, 2026, **H700 Universal Test1 is the latest offline-verified candidate**, **RC5 Bootfix1 is retained as an earlier candidate**, **RC5 has the existing hardware results**, and **RC4 remains the frozen internal-test baseline**. These are separate validation scopes. No public image download is designated here.
+As of November 7, 2026, **H700 Universal Test1 is the latest offline-verified candidate**, **RC5 Bootfix1 is retained as an earlier candidate**, **RC5 has RG34XXSP hardware results and Universal Test1 has original RG SP fresh-boot results**, and **RC4 remains the frozen internal-test baseline**. These are separate validation scopes. No public image download is designated here.
 
 The complete ARM64 user build, dedicated production keys and backup, production signing-role checks for 116 APKs, hardware boot with SELinux Enforcing and authenticated USB ADB are complete. On RC5, 11 readable critical files matched the delivered partitions; fresh provisioning, seven desktop entries and basic Home/Select/D-pad operation passed. Thermal HAL was ready with five finite temperature readings, and the fixed bring-up wake lock was actually released. Speaker/headphone switching was checked in an earlier stage. These results do not establish normal deep sleep, full thermal protection or freedom from intermittent recovery failures.
 
-The completed Universal Test1 file is `ROC_OS_ARM64_H700_Universal_Test1_20261107.img.gz`: **591,046,971 bytes** compressed, **32,434,554,368 bytes** raw, requiring a TF1 card of at least 64GB. The gzip/raw SHA-256 values above identify it; no public download is designated here. Its separate boot layer makes the stick module optional: refusal/absence, hash or ABI mismatch, no sticks or 1GB memory skips the extension, preserves the original controller and continues Android. Module memory/GPIO/ADC guards remain intact. The old mandatory-stop negative case and ten new shell exit-path checks passed; actual packaged init/helper, preserved kernel/DTB/command line, 37 startup roots, ten paired ELFs, 116 APK signatures, complete ranges, gzip and Windows SHA verification also passed. Hardware-family-wide validation remains pending. It reuses RC5 images18 system/vendor, the existing kernel/DTB and the umask000 fix without a full Android rebuild. This removes the introduced model-specific startup dependency; it does not establish every board/service as working or close the four existing issues. The RG SP is still using the old card path; no automatic flashing occurred.
+The completed Universal Test1 file is `ROC_OS_ARM64_H700_Universal_Test1_20261107.img.gz`: **591,046,971 bytes** compressed, **32,434,554,368 bytes** raw, requiring a TF1 card of at least 64GB. The gzip/raw SHA-256 values above identify it; no public download is designated here. Its separate boot layer makes the stick module optional: refusal/absence, hash or ABI mismatch, no sticks or 1GB memory skips the extension, preserves the original controller and continues Android. Module memory/GPIO/ADC guards remain intact. The old mandatory-stop negative case and ten new shell exit-path checks passed; actual packaged init/helper, preserved kernel/DTB/command line, 37 startup roots, ten paired ELFs, 116 APK signatures, complete ranges, gzip and Windows SHA verification also passed. Hardware-family-wide validation remains pending. It reuses RC5 images18 system/vendor, the existing kernel/DTB and the umask000 fix without a full Android rebuild. This removes the introduced model-specific startup dependency; it does not establish every board/service as working or close the four existing issues. The user directly flashed Universal Test1 to the original RG SP, without first initializing it on an RG34XXSP. Authenticated ADB confirmed boot_completed=1, MemTotal 996480 KiB, user/Enforcing, PID1 umask0000 and the specialized stick module unloaded. Android appeared after about 122 seconds. Mali, Thermal HAL readiness/five finite readings and 11 critical-file hashes passed. The user confirmed the system display, A unlock, Home quick settings, Select mouse and D-pad operation. This boot completed without diagnostic reboot/reflash, runtime patches or reduced security. The initial logo report for Universal Test1 was followed by successful startup; it is not another boot failure. Same-image RG34XXSP stick revalidation, other models and the four existing issues remain open.
 
 The table and hashes above identify the exact completed local RC5 and Bootfix1 images. Both passed offline packaging and independent verification; **Bootfix1 has not been flashed or hardware-accepted**. It restores `umask 000` before the custom init handoff. RC5 had inherited `0022`, turning first-created Wi-Fi directories from requested mode `0770` into `0750` and denying group writes. Existing directories were chmodded on a later boot, explaining the different first/subsequent-boot behavior. Bootfix1 keeps RC5 system/vendor without rebuilding Android; kernel, DTB, command line and all other ramdisk entries remain unchanged.
 
-**Goal and current coverage:** the goal is one image for all H700 devices; this remains unfinished. Current RC5 hardware results cover the RG34XXSP 2GB configuration only, and Bootfix1 is not yet hardware-tested. Moving the card to the separate ANBERNIC RG SP left it at the manufacturer logo with no Android USB/ADB enumeration. RG SP is not shorthand for RG35XXSP; its [official specifications](https://anbernic.com/products/rg-sp) list H700, 1GB RAM and a stickless design. Startup requires the RG34XXSP stick module, which rejects devices below 1.5GiB RAM. This source-level blocker is consistent with the early stop, but no boot log was obtained: the actual stopping point and sole cause are unproven, and earlier memory/device-tree differences may also exist. The internal `ro.product.device=rgsp` is a historical identifier, not hardware autodetection or support. Earlier RG SP builds do not establish current-image compatibility. This failure is separate from the four RG34XXSP usage issues and does not justify removing module memory/GPIO guards.
+**Goal and current coverage:** one image for all H700 devices remains the goal. RC5 has RG34XXSP 2GB results; Universal Test1 has passed original 1GB stickless RG SP fresh boot and basic controls. The full model matrix remains incomplete. The following logo failure and blocking source condition concern the older RC5/Bootfix1 path, not the new successful Universal Test1 boot. Moving the card to the separate ANBERNIC RG SP left it at the manufacturer logo with no Android USB/ADB enumeration. RG SP is not shorthand for RG35XXSP; its [official specifications](https://anbernic.com/products/rg-sp) list H700, 1GB RAM and a stickless design. Startup requires the RG34XXSP stick module, which rejects devices below 1.5GiB RAM. This source-level blocker is consistent with the early stop, but no boot log was obtained: the actual stopping point and sole cause are unproven, and earlier memory/device-tree differences may also exist. The internal `ro.product.device=rgsp` is a historical identifier, not hardware autodetection or support. Earlier RG SP builds do not establish current-image compatibility. This failure is separate from the four RG34XXSP usage issues and does not justify removing module memory/GPIO guards.
 
 The read-only audit found no CPU/device-serial or card-CID binding in the inspected packaged growth script and layout. Growth handles GPT/userdata, filesystem checks and resizing; UUIDs are fixed per package rather than per device. Later migration hard-coded the global `rg34xxsp` profile and turned a previously optional stick module into a mandatory pre-Android dependency, narrowing compatibility. The same source condition would block a fresh card first booted on a 1GB RG SP; prior expansion on an RG34XXSP is not required. Universal Test1 has made the module optional and completed offline verification; hardware startup, board capabilities and service behavior still need validation while retaining hardware safety guards. Other H700 boards and memory configurations remain unverified.
 
@@ -121,6 +127,6 @@ Four RC5 issues remain open:
 
 The last three issues may be related, but no common cause has been established. Reboot recovery is not a fix.
 
-Release metadata, public ADB defaults and the preauthorized workstation public key policy, redistribution permissions, real-card recovery/upgrade, final same-image power/storage/peripheral checks and source rebuild comparison remain open. Actual APK production signatures must not be confused with the remaining `dev-keys` metadata. Authentication is enabled, root is refused and network ADB is disabled. The scope should be described as a **public-preview candidate**, without claiming a completed stable release. Compatibility beyond the tested RG34XXSP is not established.
+Release metadata, public ADB defaults and the preauthorized workstation public key policy, redistribution permissions, real-card recovery/upgrade, final same-image power/storage/peripheral checks and source rebuild comparison remain open. Actual APK production signatures must not be confused with the remaining `dev-keys` metadata. Authentication is enabled, root is refused and network ADB is disabled. The scope should be described as a **public-preview candidate**, without claiming a completed stable release. Coverage now includes RC5 on RG34XXSP and Universal Test1 fresh boot/basic controls on the original RG SP; it does not establish all H700 models or same-image RG34XXSP stick behavior.
 
 The RC4 commit and tag linked above do not contain the uncommitted RC5/Bootfix1 work. Updating these documents does not change the image or accepted baseline.
