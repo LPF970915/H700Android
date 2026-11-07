@@ -62,13 +62,13 @@
 
 这段可以放在结尾解释支持范围：早期 RG SP 跑过旧版本，后来开发转到 RG34XXSP，最新整卡并未因此自动兼容全部 H700 机型。内部 `rgsp` 产品代号也不是自动识别机型的功能。项目目标一直是所有 H700 设备共用同一镜像。目前 RC5 实测覆盖 RG34XXSP 2GB，Bootfix1 尚未上机；跨机型目标尚未达到。这项失败与四项恢复/使用问题分开记录。
 
-扩容审计没有发现按序列号/CID 绑卡；后续迁移把全局 profile 固定到 `rg34xxsp`，并将可选摇杆模块变成启动前强制依赖，才收窄了实现范围。按源码条件，新卡首次在 1GB RG SP 启动也会碰到此阻断，与先在 RG34XXSP 扩容无关。视频应将这段讲成需要修正的兼容回归，不能解释成“其他机型本来就不是目标”。新的 Universal Test1 正在移除强制模块依赖；多机型验证仍需考虑相关服务，并保留模块的硬件保护。
+扩容审计没有发现按序列号/CID 绑卡；后续迁移把全局 profile 固定到 `rg34xxsp`，并将可选摇杆模块变成启动前强制依赖，才收窄了实现范围。按源码条件，新卡首次在 1GB RG SP 启动也会碰到此阻断，与先在 RG34XXSP 扩容无关。视频应将这段讲成需要修正的兼容回归，不能解释成“其他机型本来就不是目标”。新的 Universal Test1 已移除强制模块依赖并完成离线核验；多机型验证仍需考虑相关服务，并保留模块的硬件保护。
 
-## 最新进展 通用启动修正版正在封装
+## 最新进展 通用启动修正版离线完成
 
-在用户明确要求恢复全 H700 共用镜像后，独立 boot 层已把强制摇杆模块改为可选扩展。无摇杆、1GB、模块拒绝/缺失、哈希或 ABI 不符时，保留原控制器并继续 Android；模块自身的内存/GPIO/ADC 护栏保持。旧必停负例与新 10 组 shell 路径检查通过，新包 H700 Universal Test1 正在封装，尚无最终哈希或全系实机结论。
+在用户明确要求恢复全 H700 共用镜像后，独立 boot 层已把强制摇杆模块改为可选扩展。无摇杆、1GB、模块拒绝/缺失、哈希或 ABI 不符时，保留原控制器并继续 Android；模块自身的内存/GPIO/ADC 护栏保持。旧必停负例与新 10 组 shell 路径检查通过，新包 H700 Universal Test1 的整卡封装和独立核验已通过，确切文件与哈希见[发行概览](RELEASE_OVERVIEW.md)；尚无新包 RG SP 启动或全系实机结论。
 
-视频可补一句：“这次已经在启动层去掉专机扩展的强制依赖，新通用测试包正在制作；目标仍是全 H700 共用，但要等整包核验和实际机型测试，才能更新兼容结论。”新包沿用 system/vendor，不需要再全量重编；不要将封装中的文件说成可下载成品。
+视频可补一句：“这次已经在启动层去掉专机扩展的强制依赖，新通用测试包已经完成离线核验；目标仍是全 H700 共用，实际机型测试还要继续，才能更新兼容结论。”新包沿用 system/vendor，不需要再全量重编；离线完成不等于已公开上传或取得全系实机验收。
 
 ## 视频结构
 
@@ -105,7 +105,7 @@
 
 反复测试到后面，最难受的是刚想抓现场，连接断了；恢复连接需要重启，重启之后问题又暂时不出现。这个阶段已经花了很多时间，我决定先把现有成果、已知问题和版本边界整理出来，准备以预览候选的状态介绍给大家。
 
-如果你对这个项目感兴趣，可以看看仓库里的说明。它保存适配代码、工具和技术记录，完整上游和部分厂商组件仍是外部输入。我的目标是让所有 H700 设备共用一张系统镜像，目前还没有达到。现在 RC5 的实测覆盖 RG34XXSP 2GB 配置，Bootfix1 还没有上机。我把系统卡换到早期用过的独立机型 RG SP，结果停在厂商 Logo；源码里也存在与内存配置不符的启动阻断条件，但没有启动日志，不能说已经证实唯一原因。早期 RG SP 跑过旧版，不代表最新镜像已经通刷。审计也没有发现扩容按设备绑卡；后续适配把机型配置和可选模块写成了强制路径，收窄了兼容范围，现在已在独立启动层将摇杆模块恢复为可选，新通用包正在封装，实机结果仍要等待。下载和刷卡方式以最终对应版本的说明为准。反馈时带上机型、镜像版本和操作过程，会比单独说一句“不能用”更容易定位。
+如果你对这个项目感兴趣，可以看看仓库里的说明。它保存适配代码、工具和技术记录，完整上游和部分厂商组件仍是外部输入。我的目标是让所有 H700 设备共用一张系统镜像，目前还没有达到。现在 RC5 的实测覆盖 RG34XXSP 2GB 配置，Bootfix1 还没有上机。我把系统卡换到早期用过的独立机型 RG SP，结果停在厂商 Logo；源码里也存在与内存配置不符的启动阻断条件，但没有启动日志，不能说已经证实唯一原因。早期 RG SP 跑过旧版，不代表最新镜像已经通刷。审计也没有发现扩容按设备绑卡；后续适配把机型配置和可选模块写成了强制路径，收窄了兼容范围，现在已在独立启动层将摇杆模块恢复为可选，新通用包已完成离线核验，实机结果仍要等待。下载和刷卡方式以最终对应版本的说明为准。反馈时带上机型、镜像版本和操作过程，会比单独说一句“不能用”更容易定位。
 
 做完这段适配，我更能体会到，一个系统从出现桌面到适合日常操作，中间有很多看起来很小、实际绕不开的环节。ROC OS 已经走到了可以展示具体成果的阶段，剩余问题也会如实留在说明里。希望这次分享能让大家看到它目前的样子，也看到这些变化是怎么一点点做出来的。
 
@@ -119,13 +119,13 @@
 
 **简介草稿**
 
-ROC OS 是面向 H700 掌机的 Android 10 适配项目，当前主要在 RG34XXSP 上开发。视频介绍无触屏手柄导航、虚拟鼠标、ARM64 与双 ABI、存储整合，以及从工程系统走向 user/Enforcing 发行候选的过程。目前仍有 Wi-Fi 保存、开盖唤醒、USB 恢复与设置焦点问题，Bootfix1 仅通过离线核验，新 H700 Universal Test1 已把摇杆模块改为可选、正在封装。项目目标为全 H700 共用镜像，尚未达成；当前 RC5 实测覆盖 RG34XXSP 2GB，换卡到独立机型 RG SP 出现 Logo 早停，新的通用启动修复已进入封装，尚无全系实机结论，不能宣传已经通刷。项目状态、支持范围和后续下载以仓库说明为准。
+ROC OS 是面向 H700 掌机的 Android 10 适配项目，当前主要在 RG34XXSP 上开发。视频介绍无触屏手柄导航、虚拟鼠标、ARM64 与双 ABI、存储整合，以及从工程系统走向 user/Enforcing 发行候选的过程。目前仍有 Wi-Fi 保存、开盖唤醒、USB 恢复与设置焦点问题，Bootfix1 仅通过离线核验，新 H700 Universal Test1 已把摇杆模块改为可选，整卡离线及独立核验通过。项目目标为全 H700 共用镜像，尚未达成；当前 RC5 实测覆盖 RG34XXSP 2GB，换卡到独立机型 RG SP 出现 Logo 早停，新的通用启动修复已完成离线核验，尚无全系实机结论，不能宣传已经通刷。项目状态、支持范围和后续下载以仓库说明为准。
 
 项目：https://github.com/LPF970915/H700Android
 
 **English summary**
 
-ROC OS brings Android 10 to H700 handhelds, with development focused on the RG34XXSP. The project progressed from boot and display bring-up to controller navigation, a virtual mouse, ARM64 with ARM32 compatibility, storage integration, and a production-signed user build with SELinux Enforcing. The video follows those engineering steps and the setbacks along the way. RC5 still has four open issues affecting Wi-Fi persistence, lid-open wake, USB recovery and Settings focus. Bootfix1 targets the identified startup permission cause of the Wi-Fi failure, but has only passed offline checks. The goal is one image for all H700 devices, but this remains unfinished. Current RC5 hardware results cover only the RG34XXSP 2GB configuration; later adaptation narrowed startup compatibility by making model-specific configuration and a formerly optional module mandatory. The inspected growth path showed no device/card identity binding. Moving the card to the separate RG SP model resulted in a manufacturer-logo stop; a source-level blocker is identified, but no boot log establishes the sole cause. A new H700 Universal Test1 makes the stick extension optional and is being packaged, retaining module safety guards and the original controller when the extension is unavailable. Final hashes and all-model hardware validation remain pending; universal compatibility is not yet established. Refer to the repository for current scope and release status.
+ROC OS brings Android 10 to H700 handhelds, with development focused on the RG34XXSP. The project progressed from boot and display bring-up to controller navigation, a virtual mouse, ARM64 with ARM32 compatibility, storage integration, and a production-signed user build with SELinux Enforcing. The video follows those engineering steps and the setbacks along the way. RC5 still has four open issues affecting Wi-Fi persistence, lid-open wake, USB recovery and Settings focus. Bootfix1 targets the identified startup permission cause of the Wi-Fi failure, but has only passed offline checks. The goal is one image for all H700 devices, but this remains unfinished. Current RC5 hardware results cover only the RG34XXSP 2GB configuration; later adaptation narrowed startup compatibility by making model-specific configuration and a formerly optional module mandatory. The inspected growth path showed no device/card identity binding. Moving the card to the separate RG SP model resulted in a manufacturer-logo stop; a source-level blocker is identified, but no boot log establishes the sole cause. The new H700 Universal Test1 completed offline packaging and independent verification with an optional stick extension, retaining module safety guards and the original controller when the extension is unavailable. Exact image hashes are listed in the release overview; all-model hardware validation remains pending; universal compatibility is not yet established. Refer to the repository for current scope and release status.
 
 ## 事实核对索引
 

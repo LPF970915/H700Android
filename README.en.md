@@ -6,7 +6,7 @@
 
 ROC OS began with Android boot and display bring-up on H700 hardware. It now includes controller navigation, a virtual mouse, a small-screen desktop, brightness and lid services, storage integration, and an ARM64 user build with production-signed candidate images. The main development and test device is the **RG34XXSP with H700, 2GB RAM and dual sticks**; earlier work also used the separate ANBERNIC RG SP model. **The project goal is one image usable across all H700 devices. Current RC5 hardware results cover only the RG34XXSP 2GB configuration; Bootfix1 is not yet hardware-tested, and universal H700 compatibility has not been achieved.**
 
-**Status as of November 7, 2026: preparing for release. RC5 passed fresh-boot checks on hardware but still has four known functional issues. RC5 Bootfix1 passed offline packaging checks only and has not been flashed. A new H700 Universal Test1 startup candidate is being packaged; final hashes and whole-image validation are not yet available. A completed stable release has not been announced.**
+**Status as of November 7, 2026: preparing for release. RC5 passed fresh-boot checks on hardware but still has four known functional issues. RC5 Bootfix1 passed offline packaging checks only and has not been flashed. The latest H700 Universal Test1 completed offline packaging and independent verification; it has not been flashed to RG SP or validated across the H700 family. A completed stable release has not been announced.**
 
 ## Hardware compatibility
 
@@ -14,7 +14,7 @@ Moving the current system card to the earlier development device, **ANBERNIC RG 
 
 The source contains a blocking condition: startup requires the RG34XXSP stick module to load, while that module rejects devices with less than 1.5GiB RAM. This is consistent with the early stop, but no boot log was obtained; the actual stopping point and sole cause have not been proven. The internal `ro.product.device=rgsp` is a historical identifier, not RG SP autodetection or support. This compatibility failure is separate from the four RG34XXSP usage issues below.
 
-A read-only audit found no device-serial or card-CID binding in the inspected growth script and layout; first-boot growth handles GPT/userdata, filesystem checks and resizing. Later adaptation fixed the global profile to `rg34xxsp` and made the previously model-optional stick module mandatory before Android init, narrowing compatibility. Under this source condition, a fresh card first booted in a 1GB RG SP would also be blocked; prior expansion on an RG34XXSP is not required. **H700 Universal Test1 is now being packaged.** Its separate boot layer makes the stick module optional: no sticks, 1GB memory, module refusal/absence, hash mismatch or ABI mismatch skips the extension, retains the original controller and continues Android. Module GPIO/ADC and memory guards remain intact; extension failure no longer gates system startup. The old mandatory-stop negative case and ten new shell-path checks passed; whole-image and multi-model hardware validation are pending. It reuses RC5 images18 system/vendor, the existing kernel/DTB and the umask000 correction without a full Android rebuild.
+A read-only audit found no device-serial or card-CID binding in the inspected growth script and layout; first-boot growth handles GPT/userdata, filesystem checks and resizing. Later adaptation fixed the global profile to `rg34xxsp` and made the previously model-optional stick module mandatory before Android init, narrowing compatibility. Under this source condition, a fresh card first booted in a 1GB RG SP would also be blocked; prior expansion on an RG34XXSP is not required. **H700 Universal Test1 has completed offline verification.** Its separate boot layer makes the stick module optional: no sticks, 1GB memory, module refusal/absence, hash mismatch or ABI mismatch skips the extension, retains the original controller and continues Android. Module GPIO/ADC and memory guards remain intact; extension failure no longer gates system startup. The old mandatory-stop negative case and ten new shell-path checks passed; the actual packaged init/helper, 37 startup roots, ten paired ELFs, 116 APK signatures, full image ranges and gzip checks also passed. Multi-model hardware validation remains pending. It reuses RC5 images18 system/vendor, the existing kernel/DTB and the umask000 correction without a full Android rebuild.
 
 ## Features
 
@@ -36,7 +36,7 @@ The current desktop exposes seven entries: **AT4K, Gallery, Files, Settings, Cal
 | RC4 | Frozen controlled internal-test baseline, retained for comparison and rollback; not a stable release |
 | RC5 | Current hardware-tested version. Fresh boot, seven desktop entries, basic navigation, five temperatures and release of the fixed bring-up wake lock passed their respective checks |
 | RC5 Bootfix1 | Completed offline startup candidate, restoring the umask while retaining RC5 system/vendor. Hardware validation pending |
-| H700 Universal Test1 | New universal-startup candidate being packaged; stick extension is optional. Whole-image and all-model hardware checks are incomplete |
+| H700 Universal Test1 | Latest completed offline candidate with an optional stick extension. Whole-card and independent verification passed; new-image hardware results are pending |
 
 Four RC5 issues remain open:
 
