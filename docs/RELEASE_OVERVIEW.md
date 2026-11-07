@@ -44,9 +44,17 @@ Bootfix1 恢复自定义启动交接前的标准 `umask 000`。RC5 跳过 Androi
 
 ## 跨机型兼容范围
 
-**当前 RC5/Bootfix1 仅针对已测 RG34XXSP 2GB 配置。** 用户将系统卡换到独立机型 ANBERNIC RG SP 后停在厂商 Logo，电脑无 Android USB/ADB 枚举。RG SP 并非 RG35XXSP 简称；[官方规格](https://anbernic.com/products/rg-sp)为 H700、1GB RAM、无摇杆。早期 RG SP 的旧版本运行记录不代表最新整卡支持该机型。
+**项目目标是所有 H700 设备使用同一镜像；当前候选尚未达到该目标。** RC5 实测结果仅覆盖 RG34XXSP 2GB 配置，Bootfix1 尚未上机。 用户将系统卡换到独立机型 ANBERNIC RG SP 后停在厂商 Logo，电脑无 Android USB/ADB 枚举。RG SP 并非 RG35XXSP 简称；[官方规格](https://anbernic.com/products/rg-sp)为 H700、1GB RAM、无摇杆。早期 RG SP 的旧版本运行记录不代表最新整卡支持该机型。
 
 启动源码强制加载 `h700_stick_axes.ko profile=rg34xxsp`，失败即停止进入 Android；模块明确拒绝低于 1.5GiB 内存的设备。这是与本次现象相符的源码阻断条件；没有取得该卡启动日志，实际停止点和唯一根因尚未实证，仍可能存在更早的内存或设备树适配差异。内部 `ro.product.device=rgsp` 只是历史代号，不代表按机型自动识别或适配。此项单列为兼容失败，不合并进 RG34XXSP 的四项使用故障，也不据此移除模块内存/GPIO 保护。
+
+只读审计未发现按 CPU/设备序列号或卡 CID 绑定；实际扩容脚本仅处理 GPT/userdata、fsck 与 resize，布局使用整包固定 UUID。后续迁移写死全局 `rg34xxsp` profile，并将原先可选的摇杆模块改成启动前强制依赖，是实现兼容范围收窄的回归。按此条件，新卡首次在 1GB RG SP 启动也会被阻断，不依赖此前是否在 RG34XXSP 扩容。恢复按板型/能力选择模块及相关服务的多机型路径仍待完成，不能以删除模块保护替代适配。
+
+| 机型/配置 | 当前候选实测状态 |
+| --- | --- |
+| RG34XXSP 2GB | RC5 完成部分验收，仍有下列四项问题；Bootfix1 未上机 |
+| 独立机型 RG SP 1GB | 用户换卡后停厂商 Logo；有源码阻断条件，无启动日志确认实际停止点 |
+| 其他 H700 板型/内存配置 | 尚无当前候选的兼容结论，仍属于全 H700 目标的待适配/验证范围 |
 
 ## 当前四项已知故障
 
@@ -78,7 +86,9 @@ The complete ARM64 user build, dedicated production keys and backup, production 
 
 The table and hashes above identify the exact local RC5 and Bootfix1 images. Both passed offline packaging and independent verification; **Bootfix1 has not been flashed or hardware-accepted**. It restores `umask 000` before the custom init handoff. RC5 had inherited `0022`, turning first-created Wi-Fi directories from requested mode `0770` into `0750` and denying group writes. Existing directories were chmodded on a later boot, explaining the different first/subsequent-boot behavior. Bootfix1 keeps RC5 system/vendor without rebuilding Android; kernel, DTB, command line and all other ramdisk entries remain unchanged.
 
-**Hardware scope:** current RC5/Bootfix1 candidates target only the tested RG34XXSP 2GB configuration. Moving the card to the separate ANBERNIC RG SP left it at the manufacturer logo with no Android USB/ADB enumeration. RG SP is not shorthand for RG35XXSP; its [official specifications](https://anbernic.com/products/rg-sp) list H700, 1GB RAM and a stickless design. Startup requires the RG34XXSP stick module, which rejects devices below 1.5GiB RAM. This source-level blocker is consistent with the early stop, but no boot log was obtained: the actual stopping point and sole cause are unproven, and earlier memory/device-tree differences may also exist. The internal `ro.product.device=rgsp` is a historical identifier, not hardware autodetection or support. Earlier RG SP builds do not establish current-image compatibility. This failure is separate from the four RG34XXSP usage issues and does not justify removing module memory/GPIO guards.
+**Goal and current coverage:** the goal is one image for all H700 devices; this remains unfinished. Current RC5 hardware results cover the RG34XXSP 2GB configuration only, and Bootfix1 is not yet hardware-tested. Moving the card to the separate ANBERNIC RG SP left it at the manufacturer logo with no Android USB/ADB enumeration. RG SP is not shorthand for RG35XXSP; its [official specifications](https://anbernic.com/products/rg-sp) list H700, 1GB RAM and a stickless design. Startup requires the RG34XXSP stick module, which rejects devices below 1.5GiB RAM. This source-level blocker is consistent with the early stop, but no boot log was obtained: the actual stopping point and sole cause are unproven, and earlier memory/device-tree differences may also exist. The internal `ro.product.device=rgsp` is a historical identifier, not hardware autodetection or support. Earlier RG SP builds do not establish current-image compatibility. This failure is separate from the four RG34XXSP usage issues and does not justify removing module memory/GPIO guards.
+
+The read-only audit found no CPU/device-serial or card-CID binding in the inspected packaged growth script and layout. Growth handles GPT/userdata, filesystem checks and resizing; UUIDs are fixed per package rather than per device. Later migration hard-coded the global `rg34xxsp` profile and turned a previously optional stick module into a mandatory pre-Android dependency, narrowing compatibility. The same source condition would block a fresh card first booted on a 1GB RG SP; prior expansion on an RG34XXSP is not required. Model-aware module and service routing remains to be restored while retaining hardware safety guards. Other H700 boards and memory configurations remain unverified.
 
 Four RC5 issues remain open:
 

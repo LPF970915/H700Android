@@ -4,7 +4,7 @@
 
 [中文](README.md) · [Release status and known issues](docs/RELEASE_OVERVIEW.md) · [Project story and video outline](docs/PROJECT_STORY.md) · [Development branch](https://github.com/LPF970915/H700Android/tree/codex/rg34xxsp-at4k-input-lockscreen)
 
-ROC OS began with Android boot and display bring-up on H700 hardware. It now includes controller navigation, a virtual mouse, a small-screen desktop, brightness and lid services, storage integration, and an ARM64 user build with production-signed candidate images. The main development and test device is the **RG34XXSP with H700, 2GB RAM and dual sticks**; earlier work also used the separate ANBERNIC RG SP model. **Current RC5/Bootfix1 candidates target only the tested RG34XXSP 2GB configuration; they are not universal H700 images.**
+ROC OS began with Android boot and display bring-up on H700 hardware. It now includes controller navigation, a virtual mouse, a small-screen desktop, brightness and lid services, storage integration, and an ARM64 user build with production-signed candidate images. The main development and test device is the **RG34XXSP with H700, 2GB RAM and dual sticks**; earlier work also used the separate ANBERNIC RG SP model. **The project goal is one image usable across all H700 devices. Current RC5 hardware results cover only the RG34XXSP 2GB configuration; Bootfix1 is not yet hardware-tested, and universal H700 compatibility has not been achieved.**
 
 **Status as of November 7, 2026: preparing for release. RC5 passed fresh-boot checks on hardware but still has four known functional issues. RC5 Bootfix1 passed offline packaging checks only and has not been flashed. A completed stable release has not been announced.**
 
@@ -13,6 +13,8 @@ ROC OS began with Android boot and display bring-up on H700 hardware. It now inc
 Moving the current system card to the earlier development device, **ANBERNIC RG SP**, left it at the manufacturer logo with no Android USB/ADB detected by the computer. RG SP is a separate model, not shorthand for RG35XXSP. Its [official specifications](https://anbernic.com/products/rg-sp) list H700, 1GB RAM and a stickless design. Earlier RG SP results with older images do not establish compatibility with current candidates.
 
 The source contains a blocking condition: startup requires the RG34XXSP stick module to load, while that module rejects devices with less than 1.5GiB RAM. This is consistent with the early stop, but no boot log was obtained; the actual stopping point and sole cause have not been proven. The internal `ro.product.device=rgsp` is a historical identifier, not RG SP autodetection or support. This compatibility failure is separate from the four RG34XXSP usage issues below.
+
+A read-only audit found no device-serial or card-CID binding in the inspected growth script and layout; first-boot growth handles GPT/userdata, filesystem checks and resizing. Later adaptation fixed the global profile to `rg34xxsp` and made the previously model-optional stick module mandatory before Android init, narrowing compatibility. Under this source condition, a fresh card first booted in a 1GB RG SP would also be blocked; prior expansion on an RG34XXSP is not required. Restoring model-aware startup remains unfinished and should select modules by verified board capabilities while retaining GPIO/ADC and memory guards.
 
 ## Features
 
