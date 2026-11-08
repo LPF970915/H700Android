@@ -65,3 +65,9 @@ D 盘净增加 **98.71 GiB** 可用空间；VHDX 文件缩小 97.4 GiB。它与�
 删除计划保留 `/home/lpf/h700-android10` 唯一完整源码树、`/home/lpf/roc-os-user-20261104` 当前 user 增量输出、当前 USB/MTP 诊断 v2、项目仓库、签名密钥目录和 Native-only 签名链接、构建工具及 ROCreader。清理后收据确认源码和输出仍在，签名链接仍指向 `/home/lpf/.roc-os/keys/production-v1`。ver0.0.1 镜像与其 Recovery720 Test3 父镜像 SHA-256 复核未变。
 
 本阶段记录的是 WSL 文件系统内的可用空间增量，不等同于 Windows D 盘已增加同等容量。后续压缩尝试中，`wsl --manage Ubuntu --compact` 因 `ERROR_SHARING_VIOLATION` 失败；VHDX 大小仍为 355,219,800,064 字节，D 盘可用空间实测为 244,408,049,664 字节，尚未拿到这批 WSL 删除所释放的宿主机空间。压缩仍待解决 VHDX 占用句柄后完成。完整删除清单和收据留在本地 `out/storage-review-20261108/`，不上传机器路径清单。
+
+### 2026-11-08 压缩续查
+
+用户批准结束先前阻塞任务并压缩后，重新确认 Ubuntu 与 Docker WSL 发行版均为 `Stopped`，`Get-DiskImage` 显示 Ubuntu VHDX `Attached=False`。提权执行 `wsl --shutdown` 成功，但随后一次 `wsl --manage Ubuntu --compact` 仍以 `HCS/ERROR_SHARING_VIOLATION` 退出；VHDX 仍为 355,219,800,064 字节，D 盘可用空间为 244,408,029,184 字节，未观察到宿主空间回收。Restart Manager 未能提供可靠的持有者列表。
+
+用户随后明确批准重启 `WslService` 与 `vmcompute`。当前执行身份查询到两项服务仍在运行，但停止 `WslService` 被 Windows 拒绝（`OpenService FAILED 5 / Access is denied`），未有服务被停止，发行版仍保持停止。不得把此状态写成已完成压缩；需在具备 Windows 管理员服务控制权限的上下文中重启这两项服务，再执行一次官方 WSL 压缩并核对 VHDX 与 D 盘实测。此期间未运行编译、卡片/设备操作、格式化或额外清理；未触及四个已提交本地提交之外的源码变更。
