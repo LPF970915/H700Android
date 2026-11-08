@@ -15,7 +15,7 @@
 | 11 月 3—4 日：源码构建与存储整合 | Source64 完整分区构建、差异审计、首启修正、TF1 统一 userdata 与 TF2 外置存储、Light/Thermal 接入 | 从已有系统的补丁适配，走向独立产品源码构建；编译成功后仍需迁入和复验真实功能 |
 | 11 月 4—7 日：user 与 RC 迭代 | 将 eng/root 启动功能迁往 user 路径，建立生产签名、Enforcing 和认证 ADB；RC2 修启动环境，RC3 暴露 HAL 属性权限回归，RC4 修正并冻结内测基线 | 发行配置改变权限环境，工程镜像能运行的逻辑需要重新检查 |
 | 11 月 7 日晚：RC5 与发布取舍 | 七入口、自动初始化、有限 Wi-Fi 写入重试、限定唤醒锁释放；实机定位 umask 根因，形成 Bootfix1；保留四项开放问题并停止继续测试 | 发布介绍需要同时说清成果和边界，不能把临时恢复写成问题关闭 |
-| 11 月 8 日：显示自适应 Test2 | 取消固定帧缓冲、启动前面板数值时序选择、Hall 首样本保护；最终离线核验通过 | 实际 640/720 分支与其他面板仍待验，不能把源码与离线结果直接写成全系实测 |
+| 11 月 8 日：显示自适应 Test2 | 取消固定帧缓冲、启动前面板数值时序选择、Hall 首样本保护；最终离线核验通过、随后实机显示回归被否决 | old/boe 并不能单独判分辨率，Test2 已停止推荐；离线通过不等于运行验收 |
 
 完整源码构建仍依赖保留的厂商输入，内核/DTB 和部分二进制沿用；这里的“源码构建”不等于全套组件从零重写。
 
@@ -77,13 +77,13 @@
 
 口播可补充：“原 RG SP 的 1GB、无摇杆首启和按键已经通过，但 RG35XX H 这次出现了黑屏。继续检查才看到显示配置仍固定在原来的面板上，所以全 H700 共用镜像还没有完成，显示适配是新的明确缺口。”这段只说明已证实的配置限制和实际反馈，不宣称已经确定唯一黑屏根因，也不把修改逻辑分辨率说成修复。
 
-## 11 月 8 日 显示修复 Test2 离线完成
+## 11 月 8 日 Test2 离线通过后被实机否决
 
-最新候选 DisplayAuto Test2 已完成整卡封装和独立核验，文件名保留 20261107 起始日期，实际完成于 11 月 8 日。它取消 Android 固定帧缓冲宽高，使用原 U-Boot 的 LCD 探测在进入内核前选择数值时序：old 分支切到 640×480，boe/未知保留 720×480。保留实际注册驱动名，不写回环境、不按内存或摇杆阻断启动。Hall v2 还增加 OPEN→CLOSED 边沿条件，防止无 Hall 机器开机首样本误息屏；3613 项编译类检查通过。
+DisplayAuto Test2 曾完成整卡封装和独立核验，文件名保留 20261107 起始日期，实际完成于 11 月 8 日。它取消 Android 固定帧缓冲宽高，使用原 U-Boot 的 LCD 探测在进入内核前选择数值时序：old 分支切到 640×480，boe/未知保留 720×480。保留实际注册驱动名，不写回环境、不按内存或摇杆阻断启动。Hall v2 还增加 OPEN→CLOSED 边沿条件，防止无 Hall 机器开机首样本误息屏；3613 项编译类检查通过。
 
 视频可以讲检查如何拦下旧 APK 缓存、旧 system.img、错误驱动别名等问题：编译结束后还必须检查实际打包内容。最终离线包已通过，不能把失败的中间产物当作交付。文件和 SHA 见[发行概览](RELEASE_OVERVIEW.md)。
 
-口播补充：“现在已经做出显示修复的第二个测试包，离线核验通过。接下来还要看 35XX H 的真实画面，以及原来 720×480 机型是否保持正常。720×720 和其他面板也没有因此自动完成支持；先前四项运行问题仍然保留。”本段替换旧稿中‘没有显示修复包’的状态表述，不把 Hall 首样本修复讲成深睡恢复已通过。
+口播补充：“第二个显示测试包虽然通过了离线检查，实机却暴露了我们选面板的判断错误。原 RG SP 的 720 屏被切到 640，出现了花屏重影；35XX H 和 34XXSP 也有失败反馈，所以这个包已经撤回推荐。old/boe 不能单独用来判断分辨率，接下来需要可靠的硬件或面板识别。”这次是选择逻辑引入的回归，不能归咎于用户刷卡，也不能把离线通过讲成显示适配完成。没有新的显示验收通过包；四项既有问题仍保留。
 
 ## 视频结构
 
@@ -134,13 +134,13 @@
 
 **简介草稿**
 
-ROC OS 是面向 H700 掌机的 Android 10 适配项目，当前主要在 RG34XXSP 上开发。视频介绍无触屏手柄导航、虚拟鼠标、ARM64 与双 ABI、存储整合，以及从工程系统走向 user/Enforcing 发行候选的过程。目前仍有 Wi-Fi 保存、开盖唤醒、USB 恢复与设置焦点问题，Bootfix1 仅通过离线核验，新 H700 Universal Test1 已把摇杆模块改为可选，整卡离线及独立核验通过。项目目标为全 H700 共用镜像，尚未达成；当前 RC5 实测覆盖 RG34XXSP 2GB，换卡到独立机型 RG SP 出现 Logo 早停，新的通用启动修复已完成离线核验，原 RG SP 的 1GB/无摇杆首启与基础操作已通过，但全系矩阵尚未完成，不能宣传所有机型均已验收。Universal Test1 在 RG35XX H 640×480 上仍黑屏，DisplayAuto Test2 已完成面板时序/帧缓冲及 Hall 首样本修正的离线核验，640/720 实测回归及其他面板支持仍待完成。项目状态、支持范围和后续下载以仓库说明为准。
+ROC OS 是面向 H700 掌机的 Android 10 适配项目，当前主要在 RG34XXSP 上开发。视频介绍无触屏手柄导航、虚拟鼠标、ARM64 与双 ABI、存储整合，以及从工程系统走向 user/Enforcing 发行候选的过程。目前仍有 Wi-Fi 保存、开盖唤醒、USB 恢复与设置焦点问题，Bootfix1 仅通过离线核验，新 H700 Universal Test1 已把摇杆模块改为可选，整卡离线及独立核验通过。项目目标为全 H700 共用镜像，尚未达成；当前 RC5 实测覆盖 RG34XXSP 2GB，换卡到独立机型 RG SP 出现 Logo 早停，新的通用启动修复已完成离线核验，原 RG SP 的 1GB/无摇杆首启与基础操作已通过，但全系矩阵尚未完成，不能宣传所有机型均已验收。Universal Test1 在 RG35XX H 640×480 上仍黑屏，DisplayAuto Test2 曾通过离线检查，但实际误选原 RG SP 面板导致显示回归，现已拒绝、停止推荐；没有新的显示验收通过包。项目状态、支持范围和后续下载以仓库说明为准。
 
 项目：https://github.com/LPF970915/H700Android
 
 **English summary**
 
-ROC OS brings Android 10 to H700 handhelds, with development focused on the RG34XXSP. The project progressed from boot and display bring-up to controller navigation, a virtual mouse, ARM64 with ARM32 compatibility, storage integration, and a production-signed user build with SELinux Enforcing. The video follows those engineering steps and the setbacks along the way. RC5 still has four open issues affecting Wi-Fi persistence, lid-open wake, USB recovery and Settings focus. Bootfix1 targets the identified startup permission cause of the Wi-Fi failure, but has only passed offline checks. The goal is one image for all H700 devices, but this remains unfinished. Current RC5 hardware results cover only the RG34XXSP 2GB configuration; later adaptation narrowed startup compatibility by making model-specific configuration and a formerly optional module mandatory. The inspected growth path showed no device/card identity binding. Moving the card to the separate RG SP model resulted in a manufacturer-logo stop; a source-level blocker is identified, but no boot log establishes the sole cause. The new H700 Universal Test1 completed offline packaging and independent verification with an optional stick extension, retaining module safety guards and the original controller when the extension is unavailable. Exact image hashes are listed in the release overview; the original 1GB stickless RG SP has now passed direct fresh boot and A/Home/Select/D-pad checks without prior RG34XXSP initialization. Same-image RG34XXSP stick revalidation and the full model matrix remain pending; universal compatibility is not yet established. Universal Test1 showed a black screen on RG35XX H. The newer DisplayAuto Test2 completed offline panel-timing/framebuffer and initial Hall-sample corrections on November 8; real 640/720 branches and other panels remain unvalidated. Refer to the repository for current scope and release status.
+ROC OS brings Android 10 to H700 handhelds, with development focused on the RG34XXSP. The project progressed from boot and display bring-up to controller navigation, a virtual mouse, ARM64 with ARM32 compatibility, storage integration, and a production-signed user build with SELinux Enforcing. The video follows those engineering steps and the setbacks along the way. RC5 still has four open issues affecting Wi-Fi persistence, lid-open wake, USB recovery and Settings focus. Bootfix1 targets the identified startup permission cause of the Wi-Fi failure, but has only passed offline checks. The goal is one image for all H700 devices, but this remains unfinished. Current RC5 hardware results cover only the RG34XXSP 2GB configuration; later adaptation narrowed startup compatibility by making model-specific configuration and a formerly optional module mandatory. The inspected growth path showed no device/card identity binding. Moving the card to the separate RG SP model resulted in a manufacturer-logo stop; a source-level blocker is identified, but no boot log establishes the sole cause. The new H700 Universal Test1 completed offline packaging and independent verification with an optional stick extension, retaining module safety guards and the original controller when the extension is unavailable. Exact image hashes are listed in the release overview; the original 1GB stickless RG SP has now passed direct fresh boot and A/Home/Select/D-pad checks without prior RG34XXSP initialization. Same-image RG34XXSP stick revalidation and the full model matrix remain pending; universal compatibility is not yet established. Universal Test1 showed a black screen on RG35XX H. DisplayAuto Test2 passed historical offline checks but was rejected after physical display regression: its old/boe criterion selected 640×480 for the original RG SP 720 panel. It is no longer recommended; no replacement display package has passed. Refer to the repository for current scope and release status.
 
 ## 事实核对索引
 
