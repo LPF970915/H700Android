@@ -4,11 +4,25 @@
 
 更新日期：2026-11-08。**DisplayAuto Test2 已标记 `REJECTED_PHYSICAL_DISPLAY_REGRESSION`，停止推荐，不应继续试刷此包。** 离线封装与核验通过属于历史事实，后续实机结果已否决该显示选择方案。当前没有新的显示验收通过包，不要求用户再次盲刷；原 Universal Test1 的 RG SP 通过记录、RC4 历史冻结基线及四项既有运行问题保持原范围。
 
-## Recovery720 Test3 恢复包封装中
+## Recovery720 Test3 离线完成 实物回归待验
 
-**Test2 保持撤回。** Recovery720 Test3 正在封装，目标仅为撤销错误的分辨率选择、消除 720 屏回归；尚未完成，本文不指定文件大小、SHA 或下载。
+**Test2 保持撤回。** Recovery720 Test3 已完成离线封装与独立核验，目标仅为撤销错误分辨率选择、恢复 720 屏原路径；原 RG SP 新包实物回归仍待验。它不是 RG35XX H 修复版或全系通过结论，也未指定公开下载。
 
-恢复包恢复原启动环境、内核和 DTB 原字节，保留 images21 的 Android 原生 framebuffer 尺寸、Hall 首样本修复、可选摇杆扩展和认证 ADB；不新增内存或摇杆启动门槛。独立核验还须从实际整卡比较引导区和 DTB，不能以脚本检查代替。错误 Test2 的封装输入已按交付记录快照，旧写入入口已拒绝继续打包。
+文件：`ROC_OS_ARM64_Display_Recovery720_Test3_20261108.img.gz`，**591,043,825 字节**；解压 **32,434,554,368 字节**；至少 64GB TF1。
+
+gzip SHA-256：
+
+```text
+0d1fb206c3d4704e68118af8acda595b2638bd071fd392db14c5894b26780988
+```
+
+raw SHA-256：
+
+```text
+4b1203753c6403891cf2c185a6897909ce37c468e75216f7fd60b16589694a25
+```
+
+恢复包恢复原启动环境、内核和 DTB 原字节，保留 images21 的 Android 原生 framebuffer 尺寸、Hall 首样本修复、可选摇杆扩展和认证 ADB；不新增内存或摇杆启动门槛。独立核验已直接从实际整卡确认原环境、内核与 DTB 逐字节恢复；完整 gzip/分区、116 个 APK 签名、10 个配对 ELF 及 Windows SHA 均通过。这些离线结果不代替实物显示回归。错误 Test2 的封装输入已按交付记录快照，旧写入入口已拒绝继续打包。
 
 用户确认 RG35XX H 的原系统卡可正常开机，原固件路径待补充。可靠多机型方案仍需对照真实可启动固件的引导、DRAM 和面板资料。**Recovery720 不是 RG35XX H 修复版，也不是全系通过结论。** 四项既有运行问题仍开放，不要求用户再次盲刷。
 
@@ -151,7 +165,7 @@ RC4 冻结源码为 [`780df2bb`](https://github.com/LPF970915/H700Android/commit
 
 As of November 8, 2026, **DisplayAuto Test2 is rejected (`REJECTED_PHYSICAL_DISPLAY_REGRESSION`), no longer recommended and should not be flashed for further trials**; earlier **Universal Test1** results are retained, **RC5 Bootfix1 is retained as an earlier candidate**, **RC5 has RG34XXSP hardware results and Universal Test1 has original RG SP fresh-boot results**, and **RC4 remains the frozen internal-test baseline**. These are separate validation scopes. No public image download is designated here.
 
-**Recovery720 Test3 is being packaged:** it only reverts the incorrect display selection and restores the original boot environment, kernel and DTB while retaining images21 native framebuffer sizing, the initial Hall-sample correction, optional sticks and authenticated ADB. Final image identity and whole-card verification are pending. Test2 remains withdrawn; this recovery is not an RG35XX H fix or all-H700 acceptance. The user confirmed the RG35XX H stock card boots normally; its firmware path is awaited for comparison of actual boot, DRAM and panel configuration. No further blind flash is requested, and the four runtime issues remain open.
+**Recovery720 Test3 is offline verified, with physical retest pending:** it only reverts the incorrect display selection and restores the original boot environment, kernel and DTB while retaining images21 native framebuffer sizing, the initial Hall-sample correction, optional sticks and authenticated ADB. The file is `ROC_OS_ARM64_Display_Recovery720_Test3_20261108.img.gz`, 591,043,825 bytes compressed and 32,434,554,368 bytes raw, for TF1 cards of at least 64GB; gzip/raw hashes above identify it, not a public download. Independent checks directly confirmed original environment/kernel/DTB bytes in the whole-card image, full gzip/partition ranges, 116 APK signatures, ten paired ELFs and Windows SHA. Original RG SP physical recovery on this image remains unverified. Test2 remains withdrawn; this recovery is not an RG35XX H fix or all-H700 acceptance. The user confirmed the RG35XX H stock card boots normally; its firmware path is awaited for comparison of actual boot, DRAM and panel configuration. No further blind flash is requested, and the four runtime issues remain open.
 
 **Rejected Test2 identity:** `ROC_OS_ARM64_H700_DisplayAuto_Test2_20261107.img.gz` completed offline checks on November 8: 591,044,661 bytes compressed, 32,434,554,368 bytes raw. The hashes above identify this rejected file for traceability, not a recommended image or public download.
 
