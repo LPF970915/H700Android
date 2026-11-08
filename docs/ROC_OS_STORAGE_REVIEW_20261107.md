@@ -64,4 +64,4 @@ D 盘净增加 **98.71 GiB** 可用空间；VHDX 文件缩小 97.4 GiB。它与�
 
 删除计划保留 `/home/lpf/h700-android10` 唯一完整源码树、`/home/lpf/roc-os-user-20261104` 当前 user 增量输出、当前 USB/MTP 诊断 v2、项目仓库、签名密钥目录和 Native-only 签名链接、构建工具及 ROCreader。清理后收据确认源码和输出仍在，签名链接仍指向 `/home/lpf/.roc-os/keys/production-v1`。ver0.0.1 镜像与其 Recovery720 Test3 父镜像 SHA-256 复核未变。
 
-本阶段记录的是 WSL 文件系统内的可用空间增量，不等同于 Windows D 盘已增加同等容量；本轮没有重新测量宿主机 D 盘可用空间或压缩 WSL 虚拟磁盘。完整删除清单和收据留在本地 `out/storage-review-20261108/`，不上传机器路径清单。
+本阶段记录的是 WSL 文件系统内的可用空间增量，不等同于 Windows D 盘已增加同等容量。后续压缩尝试中，`wsl --manage Ubuntu --compact` 因 `ERROR_SHARING_VIOLATION` 失败；VHDX 大小仍为 355,219,800,064 字节，D 盘可用空间实测为 244,408,049,664 字节，尚未拿到这批 WSL 删除所释放的宿主机空间。压缩仍待解决 VHDX 占用句柄后完成。完整删除清单和收据留在本地 `out/storage-review-20261108/`，不上传机器路径清单。
