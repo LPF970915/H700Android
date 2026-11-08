@@ -4,19 +4,19 @@
 
 [English](README.en.md) · [候选版本与已知问题](docs/RELEASE_OVERVIEW.md) · [项目历程与视频讲稿](docs/PROJECT_STORY.md) · [开发源码分支](https://github.com/LPF970915/H700Android/tree/codex/rg34xxsp-at4k-input-lockscreen)
 
-ROC OS 从 H700 上的 Android 启动与显示适配起步，逐步加入手柄导航、虚拟鼠标、小屏桌面、亮度与合盖服务、存储整合，并完成 ARM64 user 系统构建和生产签名候选镜像。当前主要开发、测试设备为 **RG34XXSP（H700、2GB RAM、双摇杆）**；早期也使用过独立机型 ANBERNIC RG SP。**项目目标是所有 H700 设备共用同一镜像；RC5 已在 RG34XXSP 2GB 实测，最新 Universal Test1 已通过原 RG SP 1GB/无摇杆首启与基础操作；全 H700 型号矩阵尚未完成。**
+ROC OS 从 H700 上的 Android 启动与显示适配起步，逐步加入手柄导航、虚拟鼠标、小屏桌面、亮度与合盖服务、存储整合，并完成 ARM64 user 系统构建和生产签名候选镜像。当前主要开发、测试设备为 **RG34XXSP（H700、2GB RAM、双摇杆）**；早期也使用过独立机型 ANBERNIC RG SP。**项目目标是所有 H700 设备共用同一镜像；RC5 已在 RG34XXSP 2GB 实测，Universal Test1 已通过原 RG SP 1GB/无摇杆首启与基础操作；全 H700 型号矩阵尚未完成。**
 
-**截至 2026-11-07，项目处于发布准备阶段。RC5 已完成真机首启，但仍有四项已知功能问题；RC5 Bootfix1 已完成离线封装、尚未上机；最新 H700 Universal Test1 已完成整卡离线封装和独立核验，已在原 RG SP 直接刷入并通过首启及基础操作；全系实机验证仍未完成。当前介绍不代表正式稳定版已经发布。**
+**截至 2026-11-08，最新本地候选为 H700 DisplayAuto Test2，整卡离线封装、独立核验与 Windows SHA 通过，尚未取得新包实机结论。** 文件日期沿用修复起始日 20261107，实际完成于 11 月 8 日。原 RG SP 在 Universal Test1 上的首启与基础操作通过记录保留；RC5 四项既有问题仍开放。本项目仍处于发布准备阶段，未宣布正式稳定版。
 
 ## 机型兼容范围
 
-早前 RC5/Bootfix1 专机启动路径换卡到 **ANBERNIC RG SP** 后停在厂商 Logo。最新 **Universal Test1 已直接刷入原 RG SP 并成功启动**，无需先放入 RG34XXSP 初始化或扩容。认证 ADB 读到约 1GB 内存、user/Enforcing、PID1 umask0000；专用摇杆模块未加载，Android 仍正常继续。用户确认显示系统，A 解锁、Home 下拉、Select 鼠标和十字键四项正常；Mali、Thermal 五项温度和 11 个关键文件哈希检查通过。首次 Android 画面约 122 秒出现，此次初报 Logo 随后自行进入系统，不能记为新包失败。
+早前 RC5/Bootfix1 专机启动路径换卡到 **ANBERNIC RG SP** 后停在厂商 Logo。此前 **Universal Test1 已直接刷入原 RG SP 并成功启动**，无需先放入 RG34XXSP 初始化或扩容。认证 ADB 读到约 1GB 内存、user/Enforcing、PID1 umask0000；专用摇杆模块未加载，Android 仍正常继续。用户确认显示系统，A 解锁、Home 下拉、Select 鼠标和十字键四项正常；Mali、Thermal 五项温度和 11 个关键文件哈希检查通过。首次 Android 画面约 122 秒出现，此次初报 Logo 随后自行进入系统，不能记为新包失败。
 
 RG SP 是独立机型，不是 RG35XXSP 的简称；[官方规格](https://anbernic.com/products/rg-sp)为 H700、1GB RAM、无摇杆。旧包曾强制要求 RG34XXSP 摇杆模块成功加载，模块会拒绝低于 1.5GiB 的设备；新包已取消这项基础启动硬依赖，保留模块保护。内部 `ro.product.device=rgsp` 是历史代号，不是自动识别型号的功能。**Universal Test1 的 RG34XXSP 摇杆复验、其他 H700 机型及四项既有运行问题仍待验证。**
 
 只读审计未发现按设备序列号或卡 CID 绑卡；首启扩容处理 GPT/userdata、文件系统检查和扩容。后续适配将全局 profile 固定为 `rg34xxsp`，并把原来按机型可选的摇杆模块变成 Android 启动前的强制依赖，收窄了实现的兼容范围。按此源码条件，即使新卡第一次就在 1GB RG SP 启动也会被阻断，并非先在 RG34XXSP 扩容后才绑定。新的 **H700 Universal Test1 已完成离线核验**：独立 boot 层已将摇杆模块改为可选扩展；无摇杆、1GB、模块拒绝/缺失、哈希不符或 ABI 不符时，跳过扩展、保留原控制器并继续 Android。模块 GPIO/ADC 与内存护栏保留；不再让扩展加载失败成为系统启动门槛。旧 1GiB 必停负例与新 10 组 shell 路径检查已通过，实际包内 init/helper、37 个启动根、10 个配对 ELF、116 个 APK 签名与完整范围/gzip 核验已通过；原 RG SP 首启已通过，其余机型和同包摇杆复验仍待完成。它沿用 RC5 images18 的 system/vendor、已有 kernel/DTB 和 umask000 修正，不全量重编 Android。
 
-**显示兼容限制：Universal Test1 在 640×480 的 RG35XX H 上收到黑屏反馈，尚不能正常使用。** 用户插 USB 听到系统音，但电脑未发现匹配 USB/ADB，实际 Android 启动阶段未知。实际镜像的 DTB 仍选择 `rg34xxsp_v1`、720×480 面板，vendor 也强制 720×480 帧缓冲；本次通用启动修复未实现面板选择。这是新增的显示兼容阻断，与原四项运行问题分开记录，不影响原 RG SP 首启通过结论。详见[兼容矩阵](docs/RELEASE_OVERVIEW.md)。
+**显示兼容限制：Universal Test1 在 640×480 的 RG35XX H 上收到黑屏反馈，尚不能正常使用。** 用户插 USB 听到系统音，但电脑未发现匹配 USB/ADB，实际 Android 启动阶段未知。实际镜像的 DTB 仍选择 `rg34xxsp_v1`、720×480 面板，vendor 也强制 720×480 帧缓冲；本次通用启动修复未实现面板选择。这是新增的显示兼容阻断，与原四项运行问题分开记录，不影响原 RG SP 首启通过结论。后续 **DisplayAuto Test2 已取消固定帧缓冲宽高，并加入内核启动前的数值时序选择**：原 LCD 探测为 `old` 时选择 640×480 的 11 项参数，`boe`/未知保留父包 720×480；保留实际注册驱动名，不写回环境、不绑卡。Hall v2 另要求观察到 OPEN→CLOSED 才息屏，避免无 Hall 机器首样本低电平误触发。以上改动已离线核验，640×480 实际识别、720×480 回归及 720×720 等其他面板仍待实测，四项问题不因此关闭。详见[兼容矩阵与最新候选](docs/RELEASE_OVERVIEW.md)。
 
 ## 已实现的功能
 
@@ -38,9 +38,10 @@ RG SP 是独立机型，不是 RG35XXSP 的简称；[官方规格](https://anber
 | RC4 | 已冻结的受控内测基线，保留用于比较和回退；不等同于正式稳定版 |
 | RC5 | RG34XXSP 上的较早真机测试版本；干净首启、七项入口、基础导航、五项温度及固定 bringup 唤醒锁释放已通过各自检查 |
 | RC5 Bootfix1 | 已完成离线核验的启动候选，修正 umask；沿用 RC5 system/vendor，尚未取得真机结论 |
-| H700 Universal Test1 | 最新完成的离线候选，将摇杆扩展改为可选；整卡与独立核验通过，原 RG SP 1GB/无摇杆首启及基础操作通过，其他机型待验 |
+| H700 Universal Test1 | 较早通用启动候选，将摇杆扩展改为可选；整卡与独立核验通过，原 RG SP 1GB/无摇杆首启及基础操作通过，其他机型待验 |
+| H700 DisplayAuto Test2 | 最新离线候选：面板时序选择、取消固定帧缓冲及 Hall 首样本保护；实机面板分支与回归待验 |
 
-RC5 当前仍有以下问题：
+RC5 已确认、后续候选尚未关闭的四项问题：
 
 - **Wi-Fi 配置保存异常**：干净首启保存失败，用户重启后仍需重新输入密码。根因已定位，Bootfix1 已作针对性修正，实机效果待验证。
 - **开盖唤醒异常**：息屏、合盖后再开盖可能仍黑屏，本次测试需短按电源唤醒。

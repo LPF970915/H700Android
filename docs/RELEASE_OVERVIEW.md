@@ -2,7 +2,31 @@
 
 [中文首页](../README.md) · [English home](../README.en.md)
 
-更新日期：2026-11-07。最新完成离线封装和独立核验的候选为 **H700 Universal Test1**；此前候选 **RC5 Bootfix1** 保留；实机结果包含 **RG34XXSP 上的 RC5** 与 **原 RG SP 上的 Universal Test1**；已冻结内测基线为 **RC4**。各自范围分别记录，不能合并为一次最终验收。用户已直接在原 RG SP 手动刷入 Universal Test1，首启与基础操作通过，无需先放入 RG34XXSP 初始化。
+更新日期：2026-11-08。最新完成离线封装和独立核验的候选为 **H700 DisplayAuto Test2**，尚未取得新包实机结论；此前 **H700 Universal Test1** 的原 RG SP 首启通过记录保留；此前候选 **RC5 Bootfix1** 保留；实机结果包含 **RG34XXSP 上的 RC5** 与 **原 RG SP 上的 Universal Test1**；已冻结内测基线为 **RC4**。各自范围分别记录，不能合并为一次最终验收。用户已直接在原 RG SP 手动刷入 Universal Test1，首启与基础操作通过，无需先放入 RG34XXSP 初始化。
+
+## 最新候选 DisplayAuto Test2
+
+实际完成日为 **2026-11-08**，文件名沿用修复起始日。文件：`ROC_OS_ARM64_H700_DisplayAuto_Test2_20261107.img.gz`，压缩 **591,044,661 字节**，解压 **32,434,554,368 字节**，至少 64GB TF1。仅提供本地候选身份核对，未指定公开下载。
+
+gzip SHA-256：
+
+```text
+1745a1cd87a7a2281095675abe6ae0cb08f1543d2eef9fa2531caad89cdbd135
+```
+
+raw SHA-256：
+
+```text
+9651002dbd5dd022ba4f4f8c47cbc25264cb9a47e943ceb5fe2e54639124e4cc
+```
+
+Android 显示配置设为 `OverrideFramebufferSize=0` 并移除固定宽高；已有 HWC 与导航/鼠标读取实际屏幕尺寸。启动钩子在进入内核前使用原 U-Boot 的 LCD 探测：`lcd_type=old` 只在内存中切换 11 项 640×480 数值时序；`boe`/未知保留父包 720×480。保留实际内核注册驱动名，不修改 Boot0/U-Boot 可执行代码、内核和密钥，不 saveenv、不绑卡，也不引入 RAM/摇杆启动门槛。720×720 等其他面板尚未由此实现证明支持。
+
+Hall v2 要求先观察到 OPEN→CLOSED 边沿，避免无 Hall 机器初始低电平直接触发息屏；3613 项实际编译类检查通过。这是首样本保护，不能作为正常深睡/开盖恢复通过的证据。
+
+本轮增量产物为 images21/prepare38。116 个实际 APK 签名、10 个配对 ELF、37 个启动根、5 项 shell/CRC/vendor-prefix/实际内核检查、完整分区范围、gzip 与 Windows SHA 均通过；整包封装 483.527 秒、独立核验 32.973 秒。中途缓存旧 APK/镜像、消费者名称、原厂空环境条目和错误驱动别名等问题被检查拦截并保留失败记录，未交付失败包。
+
+**实机待验：640×480 RG35XX H 的真实探测与画面、720×480 RG SP/RG34XXSP 回归、720×720 及其他板型修订。** 四项既有 Wi-Fi/唤醒/USB/焦点问题仍开放，RC4 历史冻结基线不变。
 
 ## 已完成的工作
 
@@ -12,7 +36,7 @@
 
 ## H700 Universal Test1 离线完成
 
-最新本地候选：`ROC_OS_ARM64_H700_Universal_Test1_20261107.img.gz`。压缩包 **591,046,971 字节**；解压 **32,434,554,368 字节**；至少 64GB TF1。整卡封装、独立核验及 Windows SHA 通过，原 RG SP 首启已通过。以下为身份核对信息，不是公开下载地址。
+较早候选：`ROC_OS_ARM64_H700_Universal_Test1_20261107.img.gz`。压缩包 **591,046,971 字节**；解压 **32,434,554,368 字节**；至少 64GB TF1。整卡封装、独立核验及 Windows SHA 通过，原 RG SP 首启已通过。以下为身份核对信息，不是公开下载地址。
 
 gzip SHA-256：
 
@@ -80,7 +104,9 @@ Bootfix1 恢复自定义启动交接前的标准 `umask 000`。RC5 跳过 Androi
 | --- | --- |
 | RG34XXSP 2GB | RC5 完成部分验收；Universal Test1 同包摇杆复验待补；四项问题仍开放 |
 | 独立机型 RG SP 1GB | Universal Test1 直接刷入，1GB/无摇杆首启及 A/Home/Select/十字键通过；旧包 Logo 失败保留为历史 |
-| RG35XX H 640×480 | Universal Test1 黑屏；USB 连接有系统音，但无匹配 USB/ADB，Android 阶段未知；显示兼容阻断开放 |
+| RG35XX H 640×480 | Universal Test1 黑屏；DisplayAuto Test2 显示修正已离线通过，真实面板识别/画面待验 |
+| 720×480 RG SP/RG34XXSP | 既有版本记录保留；DisplayAuto Test2 的 720 分支与摇杆/按键回归待验 |
+| 720×720 及其他面板修订 | 未由当前两条分支证明支持，待适配/实测 |
 | 其他 H700 板型/内存配置 | 尚无当前候选的兼容结论，仍属于全 H700 目标的待适配/验证范围 |
 
 ## RG35XX H 显示兼容阻断
@@ -89,7 +115,7 @@ Bootfix1 恢复自定义启动交接前的标准 `umask 000`。RC5 跳过 Androi
 
 对实际打包 boot 的 DTB 审计确认：`lcd_driver_name=rg34xxsp_v1`、`lcd_x=720`、`lcd_y=480`、时钟 26MHz、HT820/VT536。实际 vendor 显示配置仍为 `OverrideFramebufferSize=1`、720×480。上一轮仅移除了摇杆/RAM 的启动硬依赖，没有完成跨面板选择或显示配置适配，不能声称已支持全 H700 显示。
 
-此项作为独立兼容阻断保留；没有新镜像或修复结果，不能用单改 `wm size` 或盲改 DTB 宽度代替面板/时序适配。RG SP 1GB 首启与基础按键通过仍成立，四项原有运行问题也不改变状态。
+此项作为独立兼容阻断保留；后续 DisplayAuto Test2 已完成面板数值时序选择、取消固定帧缓冲及 Hall 首样本保护的离线修复，实机效果待验。不能用单改 `wm size` 或盲改 DTB 宽度代替面板/时序适配。RG SP 1GB 首启与基础按键通过仍成立，四项原有运行问题也不改变状态。
 
 ## 当前四项已知故障
 
@@ -115,7 +141,13 @@ RC4 冻结源码为 [`780df2bb`](https://github.com/LPF970915/H700Android/commit
 
 ## English release overview
 
-As of November 7, 2026, **H700 Universal Test1 is the latest offline-verified candidate**, **RC5 Bootfix1 is retained as an earlier candidate**, **RC5 has RG34XXSP hardware results and Universal Test1 has original RG SP fresh-boot results**, and **RC4 remains the frozen internal-test baseline**. These are separate validation scopes. No public image download is designated here.
+As of November 8, 2026, **H700 DisplayAuto Test2 is the latest offline-verified candidate, with hardware validation pending**; earlier **Universal Test1** results are retained, **RC5 Bootfix1 is retained as an earlier candidate**, **RC5 has RG34XXSP hardware results and Universal Test1 has original RG SP fresh-boot results**, and **RC4 remains the frozen internal-test baseline**. These are separate validation scopes. No public image download is designated here.
+
+**DisplayAuto Test2, completed November 8:** `ROC_OS_ARM64_H700_DisplayAuto_Test2_20261107.img.gz` retains the repair start date in its filename. It is **591,044,661 bytes** compressed and **32,434,554,368 bytes** raw, requiring at least 64GB TF1. Its gzip/raw SHA-256 values are given in the latest-candidate section above; no public image download is designated.
+
+The new Android display configuration sets `OverrideFramebufferSize=0` and removes fixed dimensions. Existing HWC/navigation/mouse code reads actual dimensions. Before kernel entry, a hook uses the original U-Boot LCD probe: `old` selects eleven numeric 640×480 timing properties in RAM; `boe`/unknown keeps the parent 720×480 settings. The actual registered driver name, Boot0/U-Boot code, kernel and keys are retained. No saveenv, card binding or RAM/stick startup gate is added. Hall v2 requires an observed OPEN→CLOSED edge; 3,613 checks against the compiled class passed. This guards the initial low sample and does not establish normal suspend/resume.
+
+Incremental images21/prepare38, 116 APK signatures, ten paired ELFs, 37 startup roots, five shell/CRC/vendor-prefix/actual-kernel tests, complete image ranges, gzip and Windows SHA checks passed. Packaging took 483.527 seconds; independent verification took 32.973 seconds. Earlier rejected intermediates were retained, not delivered. Actual RG35XX H 640×480 selection/display, RG SP/RG34XXSP 720×480 regression and other panels including 720×720 remain pending. The four runtime issues and historical RC4 baseline are unchanged.
 
 The complete ARM64 user build, dedicated production keys and backup, production signing-role checks for 116 APKs, hardware boot with SELinux Enforcing and authenticated USB ADB are complete. On RC5, 11 readable critical files matched the delivered partitions; fresh provisioning, seven desktop entries and basic Home/Select/D-pad operation passed. Thermal HAL was ready with five finite temperature readings, and the fixed bring-up wake lock was actually released. Speaker/headphone switching was checked in an earlier stage. These results do not establish normal deep sleep, full thermal protection or freedom from intermittent recovery failures.
 
@@ -127,7 +159,7 @@ The table and hashes above identify the exact completed local RC5 and Bootfix1 i
 
 The read-only audit found no CPU/device-serial or card-CID binding in the inspected packaged growth script and layout. Growth handles GPT/userdata, filesystem checks and resizing; UUIDs are fixed per package rather than per device. Later migration hard-coded the global `rg34xxsp` profile and turned a previously optional stick module into a mandatory pre-Android dependency, narrowing compatibility. The same source condition would block a fresh card first booted on a 1GB RG SP; prior expansion on an RG34XXSP is not required. Universal Test1 has made the module optional and completed offline verification; hardware startup, board capabilities and service behavior still need validation while retaining hardware safety guards. Other H700 boards and memory configurations remain unverified.
 
-**RG35XX H display blocker:** moving the same Universal Test1 card to the 640×480 RG35XX H produced a black screen. The user heard a system sound on USB connection, but no matching computer PnP/ADB interface was detected. The Android boot stage remains unknown. The actual packaged DTB still specifies `lcd_driver_name=rg34xxsp_v1`, 720×480, a 26MHz clock and HT820/VT536; the vendor display configuration still forces a 720×480 framebuffer with `OverrideFramebufferSize=1`. Removing the stick/RAM dependency did not implement panel selection or display adaptation. This is an open display compatibility blocker, separate from the four runtime issues. No new image or display fix is available, and changing only `wm size` or DTB width would not establish a valid fix. The successful original RG SP boot remains valid; full H700 support is incomplete.
+**RG35XX H display blocker:** moving the same Universal Test1 card to the 640×480 RG35XX H produced a black screen. The user heard a system sound on USB connection, but no matching computer PnP/ADB interface was detected. The Android boot stage remains unknown. The actual packaged DTB still specifies `lcd_driver_name=rg34xxsp_v1`, 720×480, a 26MHz clock and HT820/VT536; the vendor display configuration still forces a 720×480 framebuffer with `OverrideFramebufferSize=1`. Removing the stick/RAM dependency did not implement panel selection or display adaptation. This is an open display compatibility blocker, separate from the four runtime issues. The subsequent DisplayAuto Test2 has completed an offline display/Hall correction as described above; its hardware effect is pending. Changing only `wm size` or DTB width would not establish a valid fix. The successful original RG SP boot remains valid; full H700 support is incomplete.
 
 Four RC5 issues remain open:
 
