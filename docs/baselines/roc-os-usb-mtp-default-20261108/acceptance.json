@@ -1,0 +1,72 @@
+{
+  "schema": 1,
+  "candidate": "ROC OS ARM64 ver0.0.1 RG SP Recovery720 MTP Default",
+  "status": {
+    "offline_packaging": "passed",
+    "independent_verification": "passed",
+    "windows_delivery_hash": "passed",
+    "physical_clean_userdata_boot": "pending",
+    "windows_mtp_file_copy_and_readback": "pending",
+    "all_h700_model_acceptance": "open",
+    "formal_release": "not_accepted"
+  },
+  "scope": "Recovery720 test image for RG SP; MTP and authenticated USB ADB are the boot defaults. No full Android rebuild was performed.",
+  "artifact": {
+    "path": "out/roc-os-h700-usb-mtp-default-verified-20261108/ROC_OS_ARM64_ver0.0.1.img.gz",
+    "bytes": 591043813,
+    "sha256": "e72580e8c4e4afc8b08b50570ad6beebf46a435ee6e8b32b7a943f21786a6346",
+    "same_content_archive_path": "out/roc-os-h700-usb-mtp-default-verified-20261108/ROC_OS_ARM64_Display_Recovery720_MTPDefault_Test4C_20261108.img.gz",
+    "same_content_archive_sha256": "e72580e8c4e4afc8b08b50570ad6beebf46a435ee6e8b32b7a943f21786a6346",
+    "raw_bytes": 32434554368,
+    "raw_sha256": "09935c4935ca579d6956388b2a3af509b4d6c4763e36a047091373a4218208e3",
+    "windows_sha256": "e72580e8c4e4afc8b08b50570ad6beebf46a435ee6e8b32b7a943f21786a6346"
+  },
+  "inputs": {
+    "base_image_sha256": "0d1fb206c3d4704e68118af8acda595b2638bd071fd392db14c5894b26780988",
+    "base_raw_sha256": "4b1203753c6403891cf2c185a6897909ce37c468e75216f7fd60b16589694a25",
+    "base_image_result_sha256": "15e65fb08ecf205cd7d4574b2472c19a4607d4925917d2e4db63c787e48409f0",
+    "base_final_check_sha256": "f7215e9779fbf33a3237b959bdf0604e41996111b26deac8828d66589755adac",
+    "base_recovery_acceptance_sha256": "43333e440f4771bac17c5ca515d34a5da9e2c593a16a604082c6d3f2cf28e610",
+    "prior_source_result_lock_sha256": "d300c21a6fc8aa7a3738a548e1427b5ba6e8015c47439d13ddbbf214552f7fa5",
+    "old_candidate_usb_config_sha256": "aef0c06688868a918fdfbd7bec4104334873029ed7bf300f020fdd0c1396538c",
+    "new_candidate_usb_config_sha256": "8523d9b7ca0d1c9cbdc6f6fec0b1f2303edce325bc69ebe52bb3b4e7fc9cb7de",
+    "package_tool_sha256": "b73a915a14acb3cc1fb6094a477e5370aa617f287651bd371141e3d8cb7e8ff7",
+    "independent_verifier_sha256": "be5d59f9ecffe11d79fca50bceef88c1d8aa9f380c6f8f0940cafbb991ae27",
+    "image_result_sha256": "8da24346187f2b993cdb355b1bc22613002dfc0d1f0e7fa522bc5a2b8eb44417",
+    "independent_verification_receipt_sha256": "ab4aa2fa929c00f1f6cd4167cd291d6a2e126060f4d459d8c168a75395c4c746"
+  },
+  "delta": {
+    "logical_file": "/system/etc/init/h700-usb-configfs.rc",
+    "change": "Set persist.sys.usb.config and sys.usb.config to mtp,adb in post-fs-data and boot triggers.",
+    "installed_sha256": "8523d9b7ca0d1c9cbdc6f6fec0b1f2303edce325bc69ebe52bb3b4e7fc9cb7de",
+    "mode_owner_context": "0644 root:root u:object_r:system_file:s0",
+    "security_policy_changed": false,
+    "USB_ADB_authentication_or_keys_changed": false,
+    "system_ext4_sha256_before": "391eca461929e400004a1565ae9f251a8ebdb382cca4360b0e82d1cd8eeddb02",
+    "system_ext4_sha256_after": "5da9a675fea3c7804c3682394eaef712dab8e26fcb33d97464c08304e4a2ea80"
+  },
+  "unchanged_ranges": {
+    "bootloader_environment_and_boot_prefix_sha256": "dddb456725f6ae0b0e3977c50747a23a8c91b66c55140959b9a58ab4f7ff425a",
+    "vendor_sha256": "bcf0706cd474b54b7f908aa234100a352773e0d603a11f4fa00787079e0f6fa0",
+    "clean_userdata_sha256": "637a02240df99491b9616503c69cd41638b7604c927675762e640014b3cd7d86",
+    "backup_gpt_sha256": "ba9ba2c16fbb57653f2d5b221bb2f0c2ee698550f1d9dc33df30b5565d23c5dc",
+    "kernel_and_dtb": "unchanged from Recovery720 Test3",
+    "primary_gpt": "unchanged from Recovery720 Test3"
+  },
+  "verification": {
+    "system_ext4_fsck": true,
+    "config_content_matches_candidate_source": true,
+    "config_metadata_and_selinux_context": true,
+    "non_system_ranges_byte_exact": true,
+    "gzip_full_stream_sha_matches_raw": true,
+    "independent_verifier": "out/roc-os-h700-usb-mtp-default-verified-20261108/independent-verification.json",
+    "windows_hash_matches_package_sha": true,
+    "physical_card_written": false,
+    "runtime_file_copy_tested": false
+  },
+  "preserved_attempts": [
+    "out/roc-os-usb-mtp-default-20261108 contains the first slow DrvFS packaging attempt; intermediate raw/gzip files were preserved.",
+    "The first local sparse-copy attempt remains in /home/lpf/roc-os-h700-usb-mtp-default-20261108-v1.",
+    "The first independent verifier parser failure is recorded in out/roc-os-h700-usb-mtp-default-verified-20261108/independent-verification-attempt-1.failure.txt."
+  ]
+}
