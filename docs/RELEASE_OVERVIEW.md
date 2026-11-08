@@ -4,6 +4,14 @@
 
 更新日期：2026-11-08。**DisplayAuto Test2 已标记 `REJECTED_PHYSICAL_DISPLAY_REGRESSION`，停止推荐，不应继续试刷此包。** 离线封装与核验通过属于历史事实，后续实机结果已否决该显示选择方案。当前没有新的显示验收通过包，不要求用户再次盲刷；原 Universal Test1 的 RG SP 通过记录、RC4 历史冻结基线及四项既有运行问题保持原范围。
 
+## Recovery720 Test3 恢复包封装中
+
+**Test2 保持撤回。** Recovery720 Test3 正在封装，目标仅为撤销错误的分辨率选择、消除 720 屏回归；尚未完成，本文不指定文件大小、SHA 或下载。
+
+恢复包恢复原启动环境、内核和 DTB 原字节，保留 images21 的 Android 原生 framebuffer 尺寸、Hall 首样本修复、可选摇杆扩展和认证 ADB；不新增内存或摇杆启动门槛。独立核验还须从实际整卡比较引导区和 DTB，不能以脚本检查代替。错误 Test2 的封装输入已按交付记录快照，旧写入入口已拒绝继续打包。
+
+用户确认 RG35XX H 的原系统卡可正常开机，原固件路径待补充。可靠多机型方案仍需对照真实可启动固件的引导、DRAM 和面板资料。**Recovery720 不是 RG35XX H 修复版，也不是全系通过结论。** 四项既有运行问题仍开放，不要求用户再次盲刷。
+
 ## 已拒绝 Test2 的身份与历史离线结果
 
 **以下仅用于识别已拒绝的文件，不是推荐刷写包。** 此包离线完成于 2026-11-08，文件名沿用修复起始日：`ROC_OS_ARM64_H700_DisplayAuto_Test2_20261107.img.gz`，压缩 591,044,661 字节，解压 32,434,554,368 字节。没有公开镜像上传；保留大小与哈希用于追溯。
@@ -142,6 +150,8 @@ RC4 冻结源码为 [`780df2bb`](https://github.com/LPF970915/H700Android/commit
 ## English release overview
 
 As of November 8, 2026, **DisplayAuto Test2 is rejected (`REJECTED_PHYSICAL_DISPLAY_REGRESSION`), no longer recommended and should not be flashed for further trials**; earlier **Universal Test1** results are retained, **RC5 Bootfix1 is retained as an earlier candidate**, **RC5 has RG34XXSP hardware results and Universal Test1 has original RG SP fresh-boot results**, and **RC4 remains the frozen internal-test baseline**. These are separate validation scopes. No public image download is designated here.
+
+**Recovery720 Test3 is being packaged:** it only reverts the incorrect display selection and restores the original boot environment, kernel and DTB while retaining images21 native framebuffer sizing, the initial Hall-sample correction, optional sticks and authenticated ADB. Final image identity and whole-card verification are pending. Test2 remains withdrawn; this recovery is not an RG35XX H fix or all-H700 acceptance. The user confirmed the RG35XX H stock card boots normally; its firmware path is awaited for comparison of actual boot, DRAM and panel configuration. No further blind flash is requested, and the four runtime issues remain open.
 
 **Rejected Test2 identity:** `ROC_OS_ARM64_H700_DisplayAuto_Test2_20261107.img.gz` completed offline checks on November 8: 591,044,661 bytes compressed, 32,434,554,368 bytes raw. The hashes above identify this rejected file for traceability, not a recommended image or public download.
 
