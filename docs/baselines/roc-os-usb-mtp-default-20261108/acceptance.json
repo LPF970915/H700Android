@@ -65,8 +65,14 @@
     "runtime_file_copy_tested": false
   },
   "preserved_attempts": [
-    "out/roc-os-usb-mtp-default-20261108 contains the first slow DrvFS packaging attempt; intermediate raw/gzip files were preserved.",
-    "The first local sparse-copy attempt remains in /home/lpf/roc-os-h700-usb-mtp-default-20261108-v1.",
     "The first independent verifier parser failure is recorded in out/roc-os-h700-usb-mtp-default-verified-20261108/independent-verification-attempt-1.failure.txt."
-  ]
+  ],
+  "storage_cleanup": {
+    "date": "2026-11-08",
+    "removed_reproducible_attempt_artifacts": [
+      "The first slow DrvFS package's raw image, system raw and gzip copy were removed under the user's approved Windows cleanup plan.",
+      "The first WSL sparse-copy stage was retained during D-drive cleanup and remains pending the scoped WSL cleanup review."
+    ],
+    "baseline_artifact_and_verification_receipts_retained": true
+  }
 }
