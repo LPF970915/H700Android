@@ -1,10 +1,17 @@
 # ROC OS 发行概览与候选版本
 
-2026-11-13 下载与构建资料更新：**0.0.1 镜像通过网盘提供，镜像本身不提交 Git**。见[公开下载与哈希](PUBLIC_DOWNLOADS.md)、[自行构建指南](PUBLIC_BUILD.md)和[公共输入验证状态](PUBLIC_BUILD_STATUS.md)。该更新不改变下述历史测试结果，也不代表全 H700 实机验收或正式稳定发行通过。
+## 当前公开状态（2026-11-13）
+
+- **镜像下载**：`ROC_OS_ARM64_ver0.0.1.img.gz` 通过 H700 网盘分享提供，提取码 `H700`；镜像本身不提交 Git。精确大小、SHA256 和链接见[公开下载与哈希](PUBLIC_DOWNLOADS.md)。它由 Recovery720 Test3 派生并设为默认 `mtp,adb`，与下列历史 Test3/Test2 文件不是同一个包。
+- **构建资料**：必要源码覆盖层、1,753 个目标文件清单、镜像输入提取、构建者自有签名及整卡打包工具已提交 main。Git 加 H616 基础源码包和指定 0.0.1 镜像覆盖现有流程的已知输入，核对未发现仍须补传的必要文件。
+- **已完成检查**：源码/镜像输入校验、8 项必要输入提取、启动与空 userdata 检查、使用参考分区的整卡组装读回；独立 Git 导出目录六项工具测试和语法/源码哈希检查通过。
+- **尚待验证**：干净环境按公开指南完整重编、打包及该自编镜像的实机验收。当前入口重编 Android 用户空间，沿用 0.0.1 启动组件；kernel、DTB、bootloader 全部从源码重编还需对应版本锁定、配置及构建步骤。
+
+见[自行构建指南](PUBLIC_BUILD.md)和[公共输入验证状态](PUBLIC_BUILD_STATUS.md)。本次仅更新说明，不执行编译、设备操作或刷卡，也不提升历史候选的验收结论。全 H700 机型/面板、四项既有运行问题与正式稳定发行验收仍未完成。
 
 [中文首页](../README.md) · [English home](../README.en.md)
 
-更新日期：2026-11-08。**DisplayAuto Test2 已标记 `REJECTED_PHYSICAL_DISPLAY_REGRESSION`，停止推荐，不应继续试刷此包。** 离线封装与核验通过属于历史事实，后续实机结果已否决该显示选择方案。当前没有新的显示验收通过包，不要求用户再次盲刷；原 Universal Test1 的 RG SP 通过记录、RC4 历史冻结基线及四项既有运行问题保持原范围。
+以下为截至 2026-11-08 的候选与实机记录，保留原验收范围。**DisplayAuto Test2 已标记 `REJECTED_PHYSICAL_DISPLAY_REGRESSION`，停止推荐，不应继续试刷此包。** 离线封装与核验通过属于历史事实，后续实机结果已否决该显示选择方案。当前没有新的显示验收通过包，不要求用户再次盲刷；原 Universal Test1 的 RG SP 通过记录、RC4 历史冻结基线及四项既有运行问题保持原范围。
 
 ## Recovery720 Test3 离线完成 实物回归待验
 
@@ -158,14 +165,16 @@ Bootfix1 恢复自定义启动交接前的标准 `umask 000`。RC5 跳过 Androi
 - 当前保留诊断 USB 和工作站公钥预授权；认证启用、root 拒绝、网络 ADB 关闭。面向他人的默认策略仍需确定。
 - 源码构建的 `dev-keys` 元数据尚待收口；实际 APK 的生产签名已核验，两者应分别说明。
 - 最终同包的长期待机、充电/低电/高温保护、当前 user 存储与外设范围、实卡恢复升级仍有未验收项；缺少验收不等于这些功能已被证明损坏。
-- 第三方应用与厂商组件的再分发许可、构建复现比对尚未闭环。公开仓库不包含全部重建输入。
+- 第三方应用与厂商组件的再分发许可、构建复现比对尚未闭环。Git 保存必要修改和工具，大型构建输入按当前指南从网盘取得；已核对的已知输入齐全，独立完整重编仍待验证。
 - 镜像烧录会覆盖目标卡。测试使用至少 64GB 专用 TF1；升级是否保留数据应以具体发布说明为准。
 
-RC4 冻结源码为 [`780df2bb`](https://github.com/LPF970915/H700Android/commit/780df2bbd30eb99c7a34acb47636c3c383947e2e)，标签为 [`baseline/roc-os-user-rc4-pilot-20261107`](https://github.com/LPF970915/H700Android/tree/baseline/roc-os-user-rc4-pilot-20261107)。此提交不包含尚未提交的 RC5/Bootfix1 增量。本次更新介绍文档，不改变镜像或验收基线。
+RC4 冻结源码为 [`780df2bb`](https://github.com/LPF970915/H700Android/commit/780df2bbd30eb99c7a34acb47636c3c383947e2e)，标签为 [`baseline/roc-os-user-rc4-pilot-20261107`](https://github.com/LPF970915/H700Android/tree/baseline/roc-os-user-rc4-pilot-20261107)。此 RC4 提交不包含后续 RC5/Bootfix1 增量；当前必要源码覆盖层及公共工具已在 main 的 `a66f1d3` 提交发布。构建请使用当前公共指南，本次说明更新不改变镜像或验收基线。
 
 ## English release overview
 
-As of November 8, 2026, **DisplayAuto Test2 is rejected (`REJECTED_PHYSICAL_DISPLAY_REGRESSION`), no longer recommended and should not be flashed for further trials**; earlier **Universal Test1** results are retained, **RC5 Bootfix1 is retained as an earlier candidate**, **RC5 has RG34XXSP hardware results and Universal Test1 has original RG SP fresh-boot results**, and **RC4 remains the frozen internal-test baseline**. These are separate validation scopes. No public image download is designated here.
+**Current public status — November 13, 2026:** the 0.0.1 test image is an external download, code `H700`, and is not committed to Git. Current main plus the H616 Android base archive and the pinned 0.0.1 image cover known inputs for the documented workflow; no further required upload was identified. Input preparation, eight image-input extractions, reference-partition assembly/readback and six tool tests in a separate Git archive checkout passed. A clean-environment full public rebuild and hardware acceptance of that rebuilt image remain pending. The workflow rebuilds Android userspace and retains the reference kernel, DTB, bootloader and base ramdisk; rebuilding those from source also requires matching version pins, configuration and build steps. See [downloads](PUBLIC_DOWNLOADS.md), [build guide](PUBLIC_BUILD.md) and [validation status](PUBLIC_BUILD_STATUS.md). Historical hardware results below retain their original scope; full H700 coverage and the four runtime issues remain open.
+
+As of November 8, 2026, **DisplayAuto Test2 is rejected (`REJECTED_PHYSICAL_DISPLAY_REGRESSION`), no longer recommended and should not be flashed for further trials**; earlier **Universal Test1** results are retained, **RC5 Bootfix1 is retained as an earlier candidate**, **RC5 has RG34XXSP hardware results and Universal Test1 has original RG SP fresh-boot results**, and **RC4 remains the frozen internal-test baseline**. These are separate validation scopes. These historical candidates are distinct from the externally shared 0.0.1 image listed above; use its exact filename and hashes for that download.
 
 **Recovery720 Test3 is offline verified, with physical retest pending:** it only reverts the incorrect display selection and restores the original boot environment, kernel and DTB while retaining images21 native framebuffer sizing, the initial Hall-sample correction, optional sticks and authenticated ADB. The file is `ROC_OS_ARM64_Display_Recovery720_Test3_20261108.img.gz`, 591,043,825 bytes compressed and 32,434,554,368 bytes raw, for TF1 cards of at least 64GB; gzip/raw hashes above identify it, not a public download. Independent checks directly confirmed original environment/kernel/DTB bytes in the whole-card image, full gzip/partition ranges, 116 APK signatures, ten paired ELFs and Windows SHA. Original RG SP physical recovery on this image remains unverified. Test2 remains withdrawn; this recovery is not an RG35XX H fix or all-H700 acceptance. The user confirmed the RG35XX H stock card boots normally; its firmware path is awaited for comparison of actual boot, DRAM and panel configuration. No further blind flash is requested, and the four runtime issues remain open.
 
@@ -198,4 +207,4 @@ The last three issues may be related, but no common cause has been established. 
 
 Release metadata, public ADB defaults and the preauthorized workstation public key policy, redistribution permissions, real-card recovery/upgrade, final same-image power/storage/peripheral checks and source rebuild comparison remain open. Actual APK production signatures must not be confused with the remaining `dev-keys` metadata. Authentication is enabled, root is refused and network ADB is disabled. The scope should be described as a **public-preview candidate**, without claiming a completed stable release. Coverage now includes RC5 on RG34XXSP and Universal Test1 fresh boot/basic controls on the original RG SP; it does not establish all H700 models or same-image RG34XXSP stick behavior.
 
-The RC4 commit and tag linked above do not contain the uncommitted RC5/Bootfix1 work. Updating these documents does not change the image or accepted baseline.
+The RC4 commit and tag linked above predate the RC5/Bootfix1 work. The required current source overlay and public tools are now on main in commit `a66f1d3`; use the current public build guide. This documentation update does not change an image or accepted hardware baseline.

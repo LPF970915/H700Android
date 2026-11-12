@@ -8,6 +8,17 @@ ROC OS began with Android boot and display bring-up on H700 hardware. It now inc
 
 **Withdrawal, November 8, 2026: DisplayAuto Test2 is rejected following a physical display regression. It is no longer recommended and should not be flashed for further trials.** It passed offline checks, but selected 640×480 for the original RG SP 720 panel, causing corruption/ghosting; RG35XX H and RG34XXSP also have failure reports. `old`/`boe` alone cannot identify resolution. Recovery720 Test3 passed offline verification of restored original 720 startup bytes; original RG SP physical retest is pending. It is not an RG35XX H fix or all-model acceptance. No replacement has passed physical display validation; reliable identification remains under investigation. Earlier Universal Test1 RG SP results and the four RC5 issues retain their scope.
 
+## Current download and build status — November 13, 2026
+
+| Item | Current status |
+| --- | --- |
+| Public image | `ROC_OS_ARM64_ver0.0.1.img.gz` is available through the external share, code `H700`; see [downloads and SHA256](docs/PUBLIC_DOWNLOADS.md). The image itself is not committed to Git |
+| Required build materials | Current `main`, the H616 base archive and the pinned 0.0.1 image cover the known inputs for the documented workflow. Input checks found no additional required file to upload |
+| Completed checks | 1,753 target files, extraction of eight image inputs, boot-component and empty-userdata checks, and full-card assembly/readback using reference partitions. Six tool tests passed in a separate Git archive checkout |
+| Pending validation | A clean-environment full build following the public guide, packaging and hardware boot/function checks of that rebuilt image. Full H700 model/panel coverage remains incomplete |
+
+Follow the [public build guide](docs/PUBLIC_BUILD.md) and [validation status](docs/PUBLIC_BUILD_STATUS.md). This workflow rebuilds Android userspace and retains the 0.0.1 kernel, DTB, bootloader and base ramdisk. Rebuilding those startup components from source also requires matching source-version pins, configuration and build steps. The earlier completed local ARM64 user build retains its original scope; this documentation update performs no full compilation or flashing.
+
 ## Hardware compatibility
 
 The older RC5/Bootfix1 startup path stopped at the logo when moved to the separate **ANBERNIC RG SP**. **Universal Test1 has now been flashed directly to that original RG SP and booted successfully**, without prior initialization or expansion on an RG34XXSP. Authenticated ADB confirmed approximately 1GB RAM, user/Enforcing and PID1 umask0000. Android continued with the specialized stick module unloaded. The user confirmed the system display, A unlock, Home quick settings, Select mouse and D-pad operation. Mali, five Thermal readings and 11 critical-file hashes passed checks. Android first appeared after about 122 seconds; the initial logo report for this new boot was followed by successful startup, not another failure.
@@ -35,6 +46,8 @@ The current desktop exposes seven entries: **AT4K, Gallery, Files, Settings, Cal
 
 | Version | Status |
 | --- | --- |
+| 0.0.1 | Current externally shared test image, derived from Recovery720 Test3 with `mtp,adb` defaults. See [exact download identity](docs/PUBLIC_DOWNLOADS.md). Offline checks passed; clean first boot, display recovery and actual MTP copy/readback acceptance remain pending |
+| Recovery720 Test3 | Historical candidate restoring the original 720 startup path; offline verified. Its file and hashes differ from 0.0.1 |
 | RC4 | Frozen controlled internal-test baseline, retained for comparison and rollback; not a stable release |
 | RC5 | Earlier RG34XXSP hardware-tested version. Fresh boot, seven desktop entries, basic navigation, five temperatures and release of the fixed bring-up wake lock passed their respective checks |
 | RC5 Bootfix1 | Completed offline startup candidate, restoring the umask while retaining RC5 system/vendor. Hardware validation pending |
@@ -54,7 +67,7 @@ See the bilingual [release overview](docs/RELEASE_OVERVIEW.md) for image identit
 
 ## Images and installation
 
-This repository contains adaptation code, configuration, build/checking tools and public engineering records. The 0.0.1 test image is available through the [H700_Android Baidu Netdisk share](https://pan.baidu.com/s/12mIL9R38oy65ldhGujHWuw?pwd=H700), code `H700`. See [downloads and checksums](docs/PUBLIC_DOWNLOADS.md) for exact identity and hardware limitations. Full H700 hardware coverage and stable-release acceptance remain incomplete. Use the version notes, supported hardware, filename and SHA-256 explicitly provided in a future [Release](https://github.com/LPF970915/H700Android/releases). A source commit or documentation update does not mean an image has been uploaded.
+This repository contains adaptation code, configuration, build/checking tools and public engineering records. The 0.0.1 test image is available through the [H700_Android Baidu Netdisk share](https://pan.baidu.com/s/12mIL9R38oy65ldhGujHWuw?pwd=H700), code `H700`. See [downloads and checksums](docs/PUBLIC_DOWNLOADS.md) for exact identity and hardware limitations. Full H700 hardware coverage and stable-release acceptance remain incomplete. Check the exact filename and SHA256 when downloading; hashes for historical candidates do not identify 0.0.1. Future versions will have their own release notes.
 
 Test images have been written with Rufus 4.7 to dedicated TF1 cards of at least 64GB. Whole-card flashing overwrites the target card: back up your data and verify the target disk. Do not assume the same image supports other H700 devices. Follow the exact image instructions for first boot, TF2 and upgrades.
 
@@ -62,7 +75,7 @@ Test images have been written with Rufus 4.7 to dedicated TF1 cards of at least 
 
 - **Build on your own computer:** follow the [public build guide](docs/PUBLIC_BUILD.md) and [validation status](docs/PUBLIC_BUILD_STATUS.md). The repository provides the final source overlay, hash-checked recipes for unchanged files, image input extraction, builder-owned signing and whole-card assembly. Large upstream archives and the reference image remain external downloads.
 - **H616 base source and reference images:** [H700_Android_Example on Baidu Netdisk](https://pan.baidu.com/s/1carfBOv4uB0bM9LoRLqmrw?pwd=H616), extraction code: `H616`. The share provides the H616 Android base source, Longan BSP and reference images. See the [source provenance](docs/H616_ANDROID10_PROVENANCE_20260902.md) for paths and existing checksums. H700 adaptations, hardware boot assets and build tools are still required; these base materials are not a flashable H700 image.
-- This is an **H700 adaptation layer and engineering record** built on AOSP / Allwinner vendor foundations. Full AOSP/Longan trees, large vendor inputs and some graphics prebuilts are external. Cloning this repository alone is insufficient for a complete rebuild.
+- This is an **H700 adaptation layer and engineering record** built on AOSP / Allwinner vendor foundations. Follow the guide with the Git materials, H616 Android base archive and pinned 0.0.1 image. Longan is kernel/BSP reference and is not compiled by this userspace workflow. No further large required input was identified; an independent full rebuild remains pending.
 - The kernel, DTB and some vendor components are retained verified inputs. The project does not claim every component was written from scratch or rebuilt from open source.
 - Current `main` provides the public build entry point and final source-overlay manifest. Historical development and RC4 records remain on the [development branch](https://github.com/LPF970915/H700Android/tree/codex/rg34xxsp-at4k-input-lockscreen) and [RC4 tag](https://github.com/LPF970915/H700Android/tree/baseline/roc-os-user-rc4-pilot-20261107). Follow the current guide rather than replaying historical preparation scripts.
 - Images are distributed through the external share above and are not committed to Git. Signing private keys, device identifiers, raw device logs and Wi-Fi/account data remain private. The repository does not provide game ROMs or commercial game assets.
@@ -70,6 +83,8 @@ Test images have been written with Rufus 4.7 to dedicated TF1 cards of at least 
 
 ## Documentation and feedback
 
+- [Current downloads and checksums](docs/PUBLIC_DOWNLOADS.md)
+- [Public build guide](docs/PUBLIC_BUILD.md) and [validation status](docs/PUBLIC_BUILD_STATUS.md)
 - [Bilingual release overview and known issues](docs/RELEASE_OVERVIEW.md)
 - [Historical versions](docs/HISTORY.md)
 - [Early v5i source restoration and build notes](docs/REPRODUCE_BASELINE_20261028.md), a historical guide rather than an RC5 build recipe

@@ -8,6 +8,17 @@ ROC OS 从 H700 上的 Android 启动与显示适配起步，逐步加入手柄�
 
 **重要撤回（2026-11-08）：DisplayAuto Test2 已因实机显示回归被拒绝，停止推荐，不应继续试刷此包。** 它曾通过离线核验，但原 RG SP 的 720 屏被错误选择为 640×480，出现花屏重影；RG35XX H 与 RG34XXSP 也有失败反馈。不能把 `old`/`boe` 单独当作分辨率判据。Recovery720 Test3 已完成原 720 启动路径恢复的离线核验，原 RG SP 实物回归待验；它不是 RG35XX H 修复版或全系通过结论。当前仍没有新的显示实体验收通过包，可靠面板识别尚在调查。原 Universal Test1 的 RG SP 通过记录和 RC5 四项问题保持原状态。
 
+## 当前发布与构建状态（2026-11-13）
+
+| 项目 | 当前状态 |
+| --- | --- |
+| 公开镜像 | `ROC_OS_ARM64_ver0.0.1.img.gz` 已通过网盘提供，提取码 `H700`；[下载与 SHA256](docs/PUBLIC_DOWNLOADS.md)。镜像本身不提交 Git |
+| 自行构建所需资料 | 当前 `main` 加 H616 基础源码包和指定 0.0.1 镜像，已覆盖现有流程的已知输入；清单核对未发现仍须补传的必要文件 |
+| 已完成检查 | 1,753 个目标文件核对、8 项镜像输入提取、启动组件与空 userdata 检查、参考分区整卡组装读回；六项工具测试在独立 Git 导出目录通过 |
+| 尚待完成 | 按公开指南在干净环境完整重编、打包并进行该自编镜像的实机首启与功能验收；全 H700 机型/面板覆盖仍未完成 |
+
+构建步骤见[公共构建指南](docs/PUBLIC_BUILD.md)，证据范围见[验证状态](docs/PUBLIC_BUILD_STATUS.md)。当前流程重编 Android 用户空间，kernel、DTB、bootloader 和基础 ramdisk 沿用 0.0.1；若要这些启动组件也全部从源码重编，还需补齐对应版本锁定、配置及构建步骤。此前已完成的本地 ARM64 user 全量构建保留原有结论，本次没有重新执行完整编译或刷卡。
+
 ## 机型兼容范围
 
 早前 RC5/Bootfix1 专机启动路径换卡到 **ANBERNIC RG SP** 后停在厂商 Logo。此前 **Universal Test1 已直接刷入原 RG SP 并成功启动**，无需先放入 RG34XXSP 初始化或扩容。认证 ADB 读到约 1GB 内存、user/Enforcing、PID1 umask0000；专用摇杆模块未加载，Android 仍正常继续。用户确认显示系统，A 解锁、Home 下拉、Select 鼠标和十字键四项正常；Mali、Thermal 五项温度和 11 个关键文件哈希检查通过。首次 Android 画面约 122 秒出现，此次初报 Logo 随后自行进入系统，不能记为新包失败。
@@ -35,6 +46,8 @@ RG SP 是独立机型，不是 RG35XXSP 的简称；[官方规格](https://anber
 
 | 版本 | 定位 |
 | --- | --- |
+| 0.0.1 | 当前网盘公开测试镜像，由 Recovery720 Test3 派生、默认 `mtp,adb`；精确身份见[下载与校验](docs/PUBLIC_DOWNLOADS.md)。离线校验通过，干净首启、显示回归和实际 MTP 复制读回仍待验收 |
+| Recovery720 Test3 | 恢复原 720 启动路径的历史候选，离线核验完成；其文件与 0.0.1 不同，哈希不可混用 |
 | RC4 | 已冻结的受控内测基线，保留用于比较和回退；不等同于正式稳定版 |
 | RC5 | RG34XXSP 上的较早真机测试版本；干净首启、七项入口、基础导航、五项温度及固定 bringup 唤醒锁释放已通过各自检查 |
 | RC5 Bootfix1 | 已完成离线核验的启动候选，修正 umask；沿用 RC5 system/vendor，尚未取得真机结论 |
@@ -54,7 +67,7 @@ RC5 已确认、后续候选尚未关闭的四项问题：
 
 ## 镜像与安装
 
-本仓库保存适配代码、配置、构建与核验工具、公开技术记录。0.0.1 镜像已通过 [H700_Android 网盘分享](https://pan.baidu.com/s/12mIL9R38oy65ldhGujHWuw?pwd=H700)提供下载，提取码 `H700`；文件哈希和适用边界见[下载与校验](docs/PUBLIC_DOWNLOADS.md)。它仍是测试版本，全 H700 实机兼容与正式稳定发行验收未完成。 后续发布以 [Releases](https://github.com/LPF970915/H700Android/releases) 中明确的版本说明、支持机型、文件名和 SHA-256 为准；源码提交或文档更新不代表镜像已上传。
+本仓库保存适配代码、配置、构建与核验工具、公开技术记录。0.0.1 镜像已通过 [H700_Android 网盘分享](https://pan.baidu.com/s/12mIL9R38oy65ldhGujHWuw?pwd=H700)提供下载，提取码 `H700`；文件哈希和适用边界见[下载与校验](docs/PUBLIC_DOWNLOADS.md)。它仍是测试版本，全 H700 实机兼容与正式稳定发行验收未完成。 下载时核对对应文件名和 SHA256；历史候选的哈希不能替代 0.0.1 的哈希。后续版本以对应发布说明为准。
 
 测试镜像曾使用 Rufus 4.7 写入至少 64GB 的专用 TF1 卡。整卡烧录会覆盖目标卡数据，应先备份并核对目标磁盘；其他 H700 设备不要直接套用。首启、TF2 与升级方式应遵循对应镜像说明。
 
@@ -62,7 +75,7 @@ RC5 已确认、后续候选尚未关闭的四项问题：
 
 - **在自己的电脑构建**：使用[公共构建指南](docs/PUBLIC_BUILD.md)和[验证状态](docs/PUBLIC_BUILD_STATUS.md)。仓库提供最终必要源码覆盖层、按哈希复制未修改文件的清单、镜像驱动提取、自建签名及整卡打包入口；大型基础源码和镜像通过网盘获取。
 - **H616 基础源码与参考镜像下载**：[H700_Android_Example（百度网盘）](https://pan.baidu.com/s/1carfBOv4uB0bM9LoRLqmrw?pwd=H616)，提取码：`H616`。包含 H616 Android 基础源码、Longan BSP 和参考镜像；文件路径与已有校验值见[来源记录](docs/H616_ANDROID10_PROVENANCE_20260902.md)。这些基础材料仍需配合 H700 适配、硬件启动资产及构建工具，不能直接视为可烧录的 H700 镜像。
-- 本仓库是基于 AOSP / Allwinner 厂商基础的 **H700 适配层与工程记录**。完整 AOSP/Longan、大型厂商输入、部分图形预编译组件不在仓库中，克隆仓库不等于具备完整重建输入。
+- 本仓库是基于 AOSP / Allwinner 厂商基础的 **H700 适配层与工程记录**。构建时按指南同时取得 Git 资料、H616 Android 基础源码包和指定 0.0.1 镜像；Longan 用于内核/BSP 参考，本用户空间入口不要求先编译 Longan。未发现须继续上传的大型必要输入，完整流程仍待独立重编验证。
 - 内核、DTB 和部分厂商组件沿用已验证输入；不宣称所有组件均由本项目从零编写或开源重编。
 - 当前 `main` 提供公共构建入口及最终源码覆盖清单；历史开发过程和 RC4 记录仍可查阅[开发分支](https://github.com/LPF970915/H700Android/tree/codex/rg34xxsp-at4k-input-lockscreen)及 [RC4 标签](https://github.com/LPF970915/H700Android/tree/baseline/roc-os-user-rc4-pilot-20261107)。请使用当前公共构建指南，不按日期重放历史准备脚本。
 - 镜像通过上述网盘提供，镜像本身不提交 Git。签名私钥、设备身份、原始设备日志和 Wi-Fi/账户数据不公开；仓库不提供游戏 ROM 或商业游戏资源。
@@ -70,6 +83,8 @@ RC5 已确认、后续候选尚未关闭的四项问题：
 
 ## 文档与反馈
 
+- [当前下载与文件校验](docs/PUBLIC_DOWNLOADS.md)
+- [公共构建指南](docs/PUBLIC_BUILD.md)与[验证状态](docs/PUBLIC_BUILD_STATUS.md)
 - [发行概览与已知问题（中英双语）](docs/RELEASE_OVERVIEW.md)
 - [历史版本查询](docs/HISTORY.md)
 - [早期 v5i 源码恢复与构建说明](docs/REPRODUCE_BASELINE_20261028.md)（历史基线，不是 RC5 一键构建教程）

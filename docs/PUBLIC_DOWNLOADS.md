@@ -26,4 +26,4 @@
 
 ## 自行构建
 
-请使用 [PUBLIC_BUILD.md](PUBLIC_BUILD.md)。构建者使用自己的签名，不需要官方私钥；未修改上游源文件、驱动和镜像不在 Git 中重复存储。当前验证进度见 [PUBLIC_BUILD_STATUS.md](PUBLIC_BUILD_STATUS.md)。
+当前 Git 仓库、H616 分享中的 `android.tar.gz` 和上述指定 0.0.1 镜像已覆盖现有构建流程的已知输入，核对未发现仍须补传的必要文件。请使用 [PUBLIC_BUILD.md](PUBLIC_BUILD.md)，构建者生成自己的签名，无须官方私钥。输入准备与工具检查已通过，干净环境完整重编和自编镜像实机验收仍待完成，详见 [PUBLIC_BUILD_STATUS.md](PUBLIC_BUILD_STATUS.md)。kernel、DTB、bootloader 和基础 ramdisk 沿用 0.0.1；这些组件全部从源码重编的版本锁定、配置和步骤仍需补齐。
