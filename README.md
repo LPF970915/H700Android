@@ -2,7 +2,7 @@
 
 **为 H700 掌机适配的 Android 10 系统，让没有触摸屏的设备也能用按键操作安卓。**
 
-[English](README.en.md) · [候选版本与已知问题](docs/RELEASE_OVERVIEW.md) · [项目历程与视频讲稿](docs/PROJECT_STORY.md) · [开发源码分支](https://github.com/LPF970915/H700Android/tree/codex/rg34xxsp-at4k-input-lockscreen)
+[English](README.en.md) · [候选版本与已知问题](docs/RELEASE_OVERVIEW.md) · [开发源码分支](https://github.com/LPF970915/H700Android/tree/codex/rg34xxsp-at4k-input-lockscreen)
 
 ROC OS 从 H700 上的 Android 启动与显示适配起步，逐步加入手柄导航、虚拟鼠标、小屏桌面、亮度与合盖服务、存储整合，并完成 ARM64 user 系统构建和生产签名候选镜像。当前主要开发、测试设备为 **RG34XXSP（H700、2GB RAM、双摇杆）**；早期也使用过独立机型 ANBERNIC RG SP。**项目目标是所有 H700 设备共用同一镜像；RC5 已在 RG34XXSP 2GB 实测，Universal Test1 已通过原 RG SP 1GB/无摇杆首启与基础操作；全 H700 型号矩阵尚未完成。**
 
@@ -69,7 +69,6 @@ RC5 已确认、后续候选尚未关闭的四项问题：
 ## 文档与反馈
 
 - [发行概览与已知问题（中英双语）](docs/RELEASE_OVERVIEW.md)
-- [项目历程、视频分镜与口播草稿](docs/PROJECT_STORY.md)
 - [历史版本查询](docs/HISTORY.md)
 - [早期 v5i 源码恢复与构建说明](docs/REPRODUCE_BASELINE_20261028.md)（历史基线，不是 RC5 一键构建教程）
 - [工具分类](tools/README.md)

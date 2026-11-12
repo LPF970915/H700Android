@@ -2,7 +2,7 @@
 
 **Android 10 adapted for H700 handhelds, with physical controls for devices without a touchscreen.**
 
-[中文](README.md) · [Release status and known issues](docs/RELEASE_OVERVIEW.md) · [Project story and video outline](docs/PROJECT_STORY.md) · [Development branch](https://github.com/LPF970915/H700Android/tree/codex/rg34xxsp-at4k-input-lockscreen)
+[中文](README.md) · [Release status and known issues](docs/RELEASE_OVERVIEW.md) · [Development branch](https://github.com/LPF970915/H700Android/tree/codex/rg34xxsp-at4k-input-lockscreen)
 
 ROC OS began with Android boot and display bring-up on H700 hardware. It now includes controller navigation, a virtual mouse, a small-screen desktop, brightness and lid services, storage integration, and an ARM64 user build with production-signed candidate images. The main development and test device is the **RG34XXSP with H700, 2GB RAM and dual sticks**; earlier work also used the separate ANBERNIC RG SP model. **The project goal is one image usable across all H700 devices. RC5 was tested on RG34XXSP 2GB; Universal Test1 passed fresh boot and basic controls on the original 1GB stickless RG SP. The full H700 model matrix remains incomplete.**
 
@@ -69,7 +69,6 @@ Test images have been written with Rufus 4.7 to dedicated TF1 cards of at least 
 ## Documentation and feedback
 
 - [Bilingual release overview and known issues](docs/RELEASE_OVERVIEW.md)
-- [Project story, video outline and narration draft, primarily Chinese](docs/PROJECT_STORY.md)
 - [Historical versions](docs/HISTORY.md)
 - [Early v5i source restoration and build notes](docs/REPRODUCE_BASELINE_20261028.md), a historical guide rather than an RC5 build recipe
 - [Tool index](tools/README.md)
