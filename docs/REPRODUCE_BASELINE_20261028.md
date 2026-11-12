@@ -17,6 +17,10 @@ python3 -m unittest discover -s tools -p test_h700_baseline_restore.py -v
 
 ## 外部输入
 
+2026-11-13 补充基础材料下载：[H700_Android_Example（百度网盘）](https://pan.baidu.com/s/1carfBOv4uB0bM9LoRLqmrw?pwd=H616)，提取码：`H616`。分享提供 H616 Android 基础源码、Longan BSP 与参考镜像；所需文件路径及已有校验值见下方和[来源记录](H616_ANDROID10_PROVENANCE_20260902.md)。
+
+该链接提供基础输入，不会使这份历史指南成为当前 ARM64 user 整卡镜像的一键构建教程；仍需补齐对应 H700 修改层、硬件启动资产及构建入口。
+
 基础输入详见 [来源记录](H616_ANDROID10_PROVENANCE_20260902.md)：
 
 - H616 `android.tar.gz`：22,273,432,977 字节，MD5 `c5dd785ecd45ca9a2b9c53b1092ee6ec`。

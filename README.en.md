@@ -60,6 +60,7 @@ Test images have been written with Rufus 4.7 to dedicated TF1 cards of at least 
 
 ## Source and scope
 
+- **H616 base source and reference images:** [H700_Android_Example on Baidu Netdisk](https://pan.baidu.com/s/1carfBOv4uB0bM9LoRLqmrw?pwd=H616), extraction code: `H616`. The share provides the H616 Android base source, Longan BSP and reference images. See the [source provenance](docs/H616_ANDROID10_PROVENANCE_20260902.md) for paths and existing checksums. H700 adaptations, hardware boot assets and build tools are still required; these base materials are not a flashable H700 image.
 - This is an **H700 adaptation layer and engineering record** built on AOSP / Allwinner vendor foundations. Full AOSP/Longan trees, large vendor inputs and some graphics prebuilts are external. Cloning this repository alone is insufficient for a complete rebuild.
 - The kernel, DTB and some vendor components are retained verified inputs. The project does not claim every component was written from scratch or rebuilt from open source.
 - The default `main` code remains an older frozen layer. Newer adaptation source and RC4 records are on the [development branch](https://github.com/LPF970915/H700Android/tree/codex/rg34xxsp-at4k-input-lockscreen) and [RC4 tag](https://github.com/LPF970915/H700Android/tree/baseline/roc-os-user-rc4-pilot-20261107). Local RC5/Bootfix1 progress does not mean all corresponding source changes have been pushed.

@@ -60,6 +60,7 @@ RC5 已确认、后续候选尚未关闭的四项问题：
 
 ## 源码与项目范围
 
+- **H616 基础源码与参考镜像下载**：[H700_Android_Example（百度网盘）](https://pan.baidu.com/s/1carfBOv4uB0bM9LoRLqmrw?pwd=H616)，提取码：`H616`。包含 H616 Android 基础源码、Longan BSP 和参考镜像；文件路径与已有校验值见[来源记录](docs/H616_ANDROID10_PROVENANCE_20260902.md)。这些基础材料仍需配合 H700 适配、硬件启动资产及构建工具，不能直接视为可烧录的 H700 镜像。
 - 本仓库是基于 AOSP / Allwinner 厂商基础的 **H700 适配层与工程记录**。完整 AOSP/Longan、大型厂商输入、部分图形预编译组件不在仓库中，克隆仓库不等于具备完整重建输入。
 - 内核、DTB 和部分厂商组件沿用已验证输入；不宣称所有组件均由本项目从零编写或开源重编。
 - 当前默认 `main` 的代码仍是较早冻结层。较新的适配源码与 RC4 记录见[开发分支](https://github.com/LPF970915/H700Android/tree/codex/rg34xxsp-at4k-input-lockscreen)及 [RC4 标签](https://github.com/LPF970915/H700Android/tree/baseline/roc-os-user-rc4-pilot-20261107)。RC5/Bootfix1 的本地进展不代表对应源码已全部推送。
