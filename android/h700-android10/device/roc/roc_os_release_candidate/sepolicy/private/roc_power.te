@@ -1,0 +1,11 @@
+type roc_power_release, domain;
+typeattribute roc_power_release coredomain;
+type roc_power_release_exec, exec_type, file_type, system_file_type;
+init_daemon_domain(roc_power_release)
+
+# Keep the existing sysfs labels and every existing reader/writer unchanged.
+# This short-lived non-root helper has no Binder interface and accepts no
+# arbitrary path or lock name; its sole write is the fixed bringup unlock.
+allow roc_power_release sysfs_type:dir search;
+allow roc_power_release sysfs_wake_lock:file { getattr open read write };
+allow roc_power_release self:capability2 block_suspend;

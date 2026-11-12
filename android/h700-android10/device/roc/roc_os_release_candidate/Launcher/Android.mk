@@ -1,0 +1,13 @@
+LOCAL_PATH := $(call my-dir)
+include $(CLEAR_VARS)
+LOCAL_MODULE := ROCReleaseLauncher
+LOCAL_MODULE_CLASS := APPS
+LOCAL_MODULE_TAGS := optional
+LOCAL_MODULE_SUFFIX := $(COMMON_ANDROID_PACKAGE_SUFFIX)
+# prepare_candidate.py copies the guarded retained APK here, outside Git.
+LOCAL_SRC_FILES := AT4K.apk
+LOCAL_CERTIFICATE := platform
+LOCAL_PRIVILEGED_MODULE := true
+LOCAL_INSTALLED_MODULE_STEM := AT4K.apk
+LOCAL_OVERRIDES_PACKAGES := AT4K
+include $(BUILD_PREBUILT)

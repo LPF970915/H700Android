@@ -1,0 +1,8 @@
+android_app {
+    name: "H700Rotation",
+    srcs: ["src/**/*.java"],
+    resource_dirs: ["res"],
+    certificate: "platform",
+    privileged: true,
+    platform_apis: true,
+}

@@ -1,5 +1,7 @@
 # 源码恢复与构建边界
 
+2026-11-13：当前 ARM64 user 构建请使用[公共构建指南](PUBLIC_BUILD.md)和[验证状态](PUBLIC_BUILD_STATUS.md)。以下内容保留为历史基线，不应按日期重放。
+
 标签：`baseline/h700-v5i-usb-network-20261028`。本仓库保存实测修改覆盖层，不是完整 AOSP 或可直接刷卡镜像。
 
 ## 验证 Git 快照

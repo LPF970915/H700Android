@@ -1,0 +1,12 @@
+service roc-power-release /system/bin/roc-power-release --qualified-rg34xxsp
+    class late_start
+    user system
+    group wakelock
+    capabilities BLOCK_SUSPEND
+    disabled
+    oneshot
+
+# Retain the protective handoff lock throughout startup; retire only this name
+# after the qualified candidate has completed Android startup.
+on property:sys.boot_completed=1 && property:persist.vendor.rgsp.input_profile=rg34xxsp && property:ro.roc.user.candidate=rc5
+    start roc-power-release

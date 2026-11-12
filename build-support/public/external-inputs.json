@@ -1,0 +1,64 @@
+{
+  "schema": 1,
+  "source_archives": [
+    {
+      "name": "android.tar.gz",
+      "bytes": 22273432977,
+      "md5": "c5dd785ecd45ca9a2b9c53b1092ee6ec",
+      "relative_path": "H700_Android_Example/Orange Pi Zero 2（H616）/H616_Android_Source_Code/android.tar.gz",
+      "sha256": "94f4b20c4805f3ab1a618e2ebf933d87fcc288632da692d870170e0f6d78ae09"
+    },
+    {
+      "name": "longan.tar.gz",
+      "bytes": 1405505469,
+      "md5": "11a2855d8b5c3430e3dd9dff6f40867e",
+      "relative_path": "H700_Android_Example/Orange Pi Zero 2（H616）/H616_Android_Source_Code/longan.tar.gz",
+      "required_for_userspace_build": false
+    }
+  ],
+  "source_download": {
+    "url": "https://pan.baidu.com/s/1carfBOv4uB0bM9LoRLqmrw?pwd=H616",
+    "code": "H616"
+  },
+  "reference_image": {
+    "filename": "ROC_OS_ARM64_ver0.0.1.img.gz",
+    "download_url": "https://pan.baidu.com/s/12mIL9R38oy65ldhGujHWuw?pwd=H700",
+    "code": "H700",
+    "bytes": 591043813,
+    "sha256": "e72580e8c4e4afc8b08b50570ad6beebf46a435ee6e8b32b7a943f21786a6346",
+    "raw_bytes": 32434554368,
+    "raw_sha256": "09935c4935ca579d6956388b2a3af509b4d6c4763e36a047091373a4218208e3",
+    "ranges": {
+      "prefix": {
+        "offset": 0,
+        "bytes": 222298112,
+        "sha256": "dddb456725f6ae0b0e3977c50747a23a8c91b66c55140959b9a58ab4f7ff425a"
+      },
+      "system": {
+        "offset": 222298112,
+        "bytes": 8589934592,
+        "sha256": "5da9a675fea3c7804c3682394eaef712dab8e26fcb33d97464c08304e4a2ea80"
+      },
+      "vendor": {
+        "offset": 8812232704,
+        "bytes": 2147483648,
+        "sha256": "bcf0706cd474b54b7f908aa234100a352773e0d603a11f4fa00787079e0f6fa0"
+      },
+      "backup_gpt": {
+        "offset": 32434552832,
+        "bytes": 1536,
+        "sha256": "ba9ba2c16fbb57653f2d5b221bb2f0c2ee698550f1d9dc33df30b5565d23c5dc"
+      }
+    },
+    "boot": {
+      "offset": 155189248,
+      "bytes": 67108864
+    },
+    "layout": {
+      "userdata_offset": 10959716352,
+      "userdata_bytes": 21474836480,
+      "userdata_uuid": "cd5e86c5-155f-5d96-8e90-12ec44abf24a"
+    },
+    "scope": "RG SP Recovery720 MTP-default image. Not an all-H700 compatibility acceptance. Hardware boot components retained; userdata is never imported by the public build tools."
+  }
+}

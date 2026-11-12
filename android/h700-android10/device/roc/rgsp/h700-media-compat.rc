@@ -1,0 +1,5 @@
+# The donor AwMetadataRetriever dereferences its failed legacy ION allocator.
+# Use the existing Android NuPlayer/Stagefright path on the explicit new profile.
+# This selects the player/retriever, not a particular hardware or software codec.
+on property:persist.vendor.rgsp.input_profile=rg34xxsp
+    setprop media.use_nuplayer true

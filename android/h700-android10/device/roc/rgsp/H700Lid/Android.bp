@@ -1,0 +1,8 @@
+android_app {
+    name: "H700Lid",
+    manifest: "AndroidManifest.xml",
+    srcs: ["src/**/*.java"],
+    platform_apis: true,
+    certificate: "platform",
+    privileged: true,
+}

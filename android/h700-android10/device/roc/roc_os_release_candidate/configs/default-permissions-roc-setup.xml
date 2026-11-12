@@ -1,0 +1,6 @@
+<exceptions>
+ <exception package="com.roc.os.provisioning">
+  <permission name="android.permission.READ_EXTERNAL_STORAGE" fixed="false"/>
+  <permission name="android.permission.WRITE_EXTERNAL_STORAGE" fixed="false"/>
+ </exception>
+</exceptions>

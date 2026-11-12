@@ -1,0 +1,12 @@
+service roc-os-branding /system/bin/sh /system/bin/roc-os-branding.sh
+    class late_start
+    user root
+    group root system
+    seclabel u:r:su:s0
+    disabled
+    oneshot
+    priority 19
+    ioprio idle 0
+
+on property:sys.boot_completed=1
+    start roc-os-branding

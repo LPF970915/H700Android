@@ -1,0 +1,11 @@
+on post-fs-data
+    # The inherited bootstrap can leave this vendor node labelled "device".
+    # Use the existing vendor contexts after /vendor is available.
+    restorecon /dev/disp
+
+service vendor.h700-light /vendor/bin/hw/android.hardware.light@2.0-service.rocsource
+    interface android.hardware.light@2.0::ILight default
+    class hal
+    user system
+    group system graphics
+    shutdown critical

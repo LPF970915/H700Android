@@ -1,0 +1,25 @@
+{
+  "schema": 1,
+  "files": [
+    {
+      "archive_name": "init",
+      "repository_path": "tools/release/user_boot_init_h700_display.sh",
+      "sha256": "454c666b454bfcafc1afa96ba9b7665ce1f9b62a2e730b7f7009fde71f39273a"
+    },
+    {
+      "archive_name": "grow/h700-optional-axes.sh",
+      "repository_path": "tools/release/h700_optional_axes.sh",
+      "sha256": "0997541365471b4fc6837e72753340d3ffe297b5cb8bfc8cdcf36c24b2132aea"
+    },
+    {
+      "archive_name": "grow/grow-userdata.sh",
+      "repository_path": "tools/source64/storage/grow_userdata.sh",
+      "sha256": "24b0a5cb0cf2322eeaed34add37eecd7f349f93e6ff1bac3a7e17f654c55dd9f"
+    },
+    {
+      "archive_name": "grow/prepare-android-dev-bootfix1.sh",
+      "repository_path": "tools/release/prepare_android_dev_bootfix1.sh",
+      "sha256": "71018104ae888cb5a34869a357df244a76ff37b6b4194fed0d1756e1736d6eeb"
+    }
+  ]
+}

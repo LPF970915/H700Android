@@ -1,0 +1,3 @@
+# Preserve exact vendor/native bytes used by source-manifest.json.
+overlay/** -text
+*.json text eol=lf

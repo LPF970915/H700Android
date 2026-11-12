@@ -54,17 +54,18 @@ See the bilingual [release overview](docs/RELEASE_OVERVIEW.md) for image identit
 
 ## Images and installation
 
-This repository contains adaptation code, configuration, build/checking tools and public engineering records. **This page does not yet designate a public image download.** Use the version notes, supported hardware, filename and SHA-256 explicitly provided in a future [Release](https://github.com/LPF970915/H700Android/releases). A source commit or documentation update does not mean an image has been uploaded.
+This repository contains adaptation code, configuration, build/checking tools and public engineering records. The 0.0.1 test image is available through the [H700_Android Baidu Netdisk share](https://pan.baidu.com/s/12mIL9R38oy65ldhGujHWuw?pwd=H700), code `H700`. See [downloads and checksums](docs/PUBLIC_DOWNLOADS.md) for exact identity and hardware limitations. Full H700 hardware coverage and stable-release acceptance remain incomplete. Use the version notes, supported hardware, filename and SHA-256 explicitly provided in a future [Release](https://github.com/LPF970915/H700Android/releases). A source commit or documentation update does not mean an image has been uploaded.
 
 Test images have been written with Rufus 4.7 to dedicated TF1 cards of at least 64GB. Whole-card flashing overwrites the target card: back up your data and verify the target disk. Do not assume the same image supports other H700 devices. Follow the exact image instructions for first boot, TF2 and upgrades.
 
 ## Source and scope
 
+- **Build on your own computer:** follow the [public build guide](docs/PUBLIC_BUILD.md) and [validation status](docs/PUBLIC_BUILD_STATUS.md). The repository provides the final source overlay, hash-checked recipes for unchanged files, image input extraction, builder-owned signing and whole-card assembly. Large upstream archives and the reference image remain external downloads.
 - **H616 base source and reference images:** [H700_Android_Example on Baidu Netdisk](https://pan.baidu.com/s/1carfBOv4uB0bM9LoRLqmrw?pwd=H616), extraction code: `H616`. The share provides the H616 Android base source, Longan BSP and reference images. See the [source provenance](docs/H616_ANDROID10_PROVENANCE_20260902.md) for paths and existing checksums. H700 adaptations, hardware boot assets and build tools are still required; these base materials are not a flashable H700 image.
 - This is an **H700 adaptation layer and engineering record** built on AOSP / Allwinner vendor foundations. Full AOSP/Longan trees, large vendor inputs and some graphics prebuilts are external. Cloning this repository alone is insufficient for a complete rebuild.
 - The kernel, DTB and some vendor components are retained verified inputs. The project does not claim every component was written from scratch or rebuilt from open source.
-- The default `main` code remains an older frozen layer. Newer adaptation source and RC4 records are on the [development branch](https://github.com/LPF970915/H700Android/tree/codex/rg34xxsp-at4k-input-lockscreen) and [RC4 tag](https://github.com/LPF970915/H700Android/tree/baseline/roc-os-user-rc4-pilot-20261107). Local RC5/Bootfix1 progress does not mean all corresponding source changes have been pushed.
-- Images, signing private keys, device identifiers, raw device logs and Wi-Fi/account data are excluded from this documentation publication. The repository does not provide game ROMs or commercial game assets.
+- Current `main` provides the public build entry point and final source-overlay manifest. Historical development and RC4 records remain on the [development branch](https://github.com/LPF970915/H700Android/tree/codex/rg34xxsp-at4k-input-lockscreen) and [RC4 tag](https://github.com/LPF970915/H700Android/tree/baseline/roc-os-user-rc4-pilot-20261107). Follow the current guide rather than replaying historical preparation scripts.
+- Images are distributed through the external share above and are not committed to Git. Signing private keys, device identifiers, raw device logs and Wi-Fi/account data remain private. The repository does not provide game ROMs or commercial game assets.
 - Components retain their respective licenses and notices. No single license grants rights to all third-party content. See [third-party inputs](docs/THIRD_PARTY_INPUTS.md).
 
 ## Documentation and feedback

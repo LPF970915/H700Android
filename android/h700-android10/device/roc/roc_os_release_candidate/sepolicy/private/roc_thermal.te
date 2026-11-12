@@ -1,0 +1,7 @@
+# Only the real H700 thermal class and device nodes receive this private type.
+# Server attribute is public; the concrete vendor domain is linked later.
+type sysfs_roc_thermal, fs_type, sysfs_type;
+r_dir_file(hal_thermal_server, sysfs_roc_thermal)
+# The BSP's more-specific CPU temp genfs entry retains sysfs_thermal.
+# Read that existing sensor file type without granting any thermal writes.
+allow hal_thermal_server sysfs_thermal:file r_file_perms;

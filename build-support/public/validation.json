@@ -1,0 +1,41 @@
+{
+  "schema": 1,
+  "date": "2026-11-13",
+  "scope": "Public input closure and offline build-component validation; not an independent clean full Android build or hardware acceptance.",
+  "upstream_archive": {
+    "bytes": 22273432977,
+    "sha256": "94f4b20c4805f3ab1a618e2ebf933d87fcc288632da692d870170e0f6d78ae09",
+    "md5": "c5dd785ecd45ca9a2b9c53b1092ee6ec",
+    "base_files_compared_to_retained_source_inventory": 760457,
+    "modified_base_files": 43,
+    "added_snapshot_files": 1660,
+    "previously_missing_ActivityRecord_delta_included": true,
+    "excluded_nonbuild_backup": "system/core/healthd/aw_healthd.cpp.orig"
+  },
+  "target_source_files": 1753,
+  "target_content_sha256": "d0e17f4aaffcda9a559aed5e923ed717d3a23cca6d71c399346111198518afb6",
+  "unit_tests_passed": 6,
+  "integration": {
+    "passed": true,
+    "source_target_files_verified": 1753,
+    "unmodified_source_inputs_copied": 1127,
+    "source_fixture_is_complete_AOSP": false,
+    "image_full_gzip_and_raw_verified": true,
+    "external_files_verified": 8,
+    "boot_scripts_match_published_source": true,
+    "separate_builder_fixture_keys_only": true,
+    "official_keys_read_or_copied": false,
+    "fresh_userdata_without_ADB_authorization": true,
+    "reference_user_security_properties_verified": true,
+    "boot_kernel_DTB_preserved": true,
+    "full_raw_card_assembly_and_range_readback": true,
+    "raw_card_bytes": 32434554368,
+    "assembly_uses_existing_reference_partitions": true,
+    "new_full_Android_build_executed": false,
+    "physical_device_accessed": false
+  },
+  "independent_clean_full_Android_build_passed": false,
+  "new_image_hardware_acceptance_passed": false,
+  "all_H700_models_accepted": false,
+  "large_archives_images_private_keys_ROMs_uploaded_to_Git": false
+}

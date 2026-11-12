@@ -1,0 +1,1 @@
+ROC OS ARM64 User RC5: minimal desktop, guarded Wi-Fi store retries and post-boot bringup-lock release; runtime final validation pending

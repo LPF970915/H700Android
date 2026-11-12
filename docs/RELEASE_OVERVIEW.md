@@ -1,5 +1,7 @@
 # ROC OS 发行概览与候选版本
 
+2026-11-13 下载与构建资料更新：**0.0.1 镜像通过网盘提供，镜像本身不提交 Git**。见[公开下载与哈希](PUBLIC_DOWNLOADS.md)、[自行构建指南](PUBLIC_BUILD.md)和[公共输入验证状态](PUBLIC_BUILD_STATUS.md)。该更新不改变下述历史测试结果，也不代表全 H700 实机验收或正式稳定发行通过。
+
 [中文首页](../README.md) · [English home](../README.en.md)
 
 更新日期：2026-11-08。**DisplayAuto Test2 已标记 `REJECTED_PHYSICAL_DISPLAY_REGRESSION`，停止推荐，不应继续试刷此包。** 离线封装与核验通过属于历史事实，后续实机结果已否决该显示选择方案。当前没有新的显示验收通过包，不要求用户再次盲刷；原 Universal Test1 的 RG SP 通过记录、RC4 历史冻结基线及四项既有运行问题保持原范围。

@@ -1,0 +1,8 @@
+cc_binary {
+    name: "roc-power-release",
+    srcs: ["Power/power_release.c"],
+    compile_multilib: "64",
+    shared_libs: ["liblog"],
+    cflags: ["-Wall", "-Wextra", "-Werror"],
+    init_rc: ["configs/roc-power-release.rc"],
+}

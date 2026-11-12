@@ -43,7 +43,7 @@ at4k_sha=700276cb79c1e11e974c3fc10ab2edebbb2d381e5af8c60a241b52d3f6e039af
 # Android's PRESIGNED packaging changes the ZIP, not the adapted dex/resources.
 packaged_sha=b6b2a3db335e5f2a27c284fc48ece6de9ccaf46a8886222aef07c17a26ee5d5b
 dock_sha=8c2a7cc5c7bcf08706ffc13f6a2140bc52305f82299703006bc08a9bc557cf08
-factory_sha=b2fa0343e903ad01c3854999dba70335ba4df5f5522dd931ed9d7189cf841a7d
+factory_sha=93041269d215dd450f4b559cb4fe57337267753d6ff7444ca142e17d07d997cf
 installed=$(pm path com.overdevs.at4k | sed -n 's/^package://p' | head -n 1)
 if [ -n "$installed" ]; then
     [ -f "$installed" ]

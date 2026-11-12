@@ -1,0 +1,7 @@
+cc_binary {
+ name: "android.hardware.thermal@2.0-service.rocsource",
+ vendor: true, relative_install_path: "hw", defaults: ["hidl_defaults"],
+ srcs: ["service.cpp"], init_rc: ["roc-thermal.rc"],
+ shared_libs: ["libbase", "libhidlbase", "libhidltransport", "libutils", "android.hardware.thermal@2.0", "android.hardware.thermal@1.0"],
+ cflags: ["-Wall", "-Wextra", "-Werror"],
+}

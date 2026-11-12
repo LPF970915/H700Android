@@ -54,17 +54,18 @@ RC5 已确认、后续候选尚未关闭的四项问题：
 
 ## 镜像与安装
 
-本仓库保存适配代码、配置、构建与核验工具、公开技术记录。**此页尚未指定公开下载镜像。** 后续发布以 [Releases](https://github.com/LPF970915/H700Android/releases) 中明确的版本说明、支持机型、文件名和 SHA-256 为准；源码提交或文档更新不代表镜像已上传。
+本仓库保存适配代码、配置、构建与核验工具、公开技术记录。0.0.1 镜像已通过 [H700_Android 网盘分享](https://pan.baidu.com/s/12mIL9R38oy65ldhGujHWuw?pwd=H700)提供下载，提取码 `H700`；文件哈希和适用边界见[下载与校验](docs/PUBLIC_DOWNLOADS.md)。它仍是测试版本，全 H700 实机兼容与正式稳定发行验收未完成。 后续发布以 [Releases](https://github.com/LPF970915/H700Android/releases) 中明确的版本说明、支持机型、文件名和 SHA-256 为准；源码提交或文档更新不代表镜像已上传。
 
 测试镜像曾使用 Rufus 4.7 写入至少 64GB 的专用 TF1 卡。整卡烧录会覆盖目标卡数据，应先备份并核对目标磁盘；其他 H700 设备不要直接套用。首启、TF2 与升级方式应遵循对应镜像说明。
 
 ## 源码与项目范围
 
+- **在自己的电脑构建**：使用[公共构建指南](docs/PUBLIC_BUILD.md)和[验证状态](docs/PUBLIC_BUILD_STATUS.md)。仓库提供最终必要源码覆盖层、按哈希复制未修改文件的清单、镜像驱动提取、自建签名及整卡打包入口；大型基础源码和镜像通过网盘获取。
 - **H616 基础源码与参考镜像下载**：[H700_Android_Example（百度网盘）](https://pan.baidu.com/s/1carfBOv4uB0bM9LoRLqmrw?pwd=H616)，提取码：`H616`。包含 H616 Android 基础源码、Longan BSP 和参考镜像；文件路径与已有校验值见[来源记录](docs/H616_ANDROID10_PROVENANCE_20260902.md)。这些基础材料仍需配合 H700 适配、硬件启动资产及构建工具，不能直接视为可烧录的 H700 镜像。
 - 本仓库是基于 AOSP / Allwinner 厂商基础的 **H700 适配层与工程记录**。完整 AOSP/Longan、大型厂商输入、部分图形预编译组件不在仓库中，克隆仓库不等于具备完整重建输入。
 - 内核、DTB 和部分厂商组件沿用已验证输入；不宣称所有组件均由本项目从零编写或开源重编。
-- 当前默认 `main` 的代码仍是较早冻结层。较新的适配源码与 RC4 记录见[开发分支](https://github.com/LPF970915/H700Android/tree/codex/rg34xxsp-at4k-input-lockscreen)及 [RC4 标签](https://github.com/LPF970915/H700Android/tree/baseline/roc-os-user-rc4-pilot-20261107)。RC5/Bootfix1 的本地进展不代表对应源码已全部推送。
-- 镜像、签名私钥、设备身份、原始设备日志和 Wi-Fi/账户数据不随文档发布。仓库不提供游戏 ROM 或商业游戏资源。
+- 当前 `main` 提供公共构建入口及最终源码覆盖清单；历史开发过程和 RC4 记录仍可查阅[开发分支](https://github.com/LPF970915/H700Android/tree/codex/rg34xxsp-at4k-input-lockscreen)及 [RC4 标签](https://github.com/LPF970915/H700Android/tree/baseline/roc-os-user-rc4-pilot-20261107)。请使用当前公共构建指南，不按日期重放历史准备脚本。
+- 镜像通过上述网盘提供，镜像本身不提交 Git。签名私钥、设备身份、原始设备日志和 Wi-Fi/账户数据不公开；仓库不提供游戏 ROM 或商业游戏资源。
 - 各组件遵循各自的许可与通知；仓库未为全部第三方内容授予统一许可。见[第三方来源](docs/THIRD_PARTY_INPUTS.md)。
 
 ## 文档与反馈

@@ -1,0 +1,14 @@
+package com.roc.rgsp.lid;
+
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+
+public final class BootReceiver extends BroadcastReceiver {
+    @Override public void onReceive(Context context, Intent intent) {
+        if (Intent.ACTION_BOOT_COMPLETED.equals(intent.getAction())
+                && LidService.supported() && LidService.enabled(context)) {
+            context.startForegroundService(new Intent(context, LidService.class));
+        }
+    }
+}
