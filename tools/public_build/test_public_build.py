@@ -12,6 +12,8 @@ import common
 import extract
 import pack
 import prepare
+import record_build
+import validate_manifest
 
 
 class PublicBuildTests(unittest.TestCase):
@@ -36,6 +38,70 @@ class PublicBuildTests(unittest.TestCase):
     def test_regular_file_only(self):
         with self.assertRaises(ValueError):
             common.regular('/dev/null')
+
+    def test_manifest_binding_rejects_stale_missing_or_failed_receipts(self):
+        with tempfile.TemporaryDirectory() as t:
+            repository = Path(t)
+            support = repository / 'build-support/public'
+            support.mkdir(parents=True)
+            manifest = support / 'source-manifest.json'
+            manifest.write_bytes(b'current source revision')
+            current = common.sha(manifest)
+            with patch.object(common, 'REPO', repository):
+                self.assertEqual(common.require_manifest_binding(
+                    {'passed': True, 'source_manifest_sha256': current}), current)
+                for receipt in [
+                    {'passed': True, 'source_manifest_sha256': '0' * 64},
+                    {'passed': True},
+                    {'passed': False, 'source_manifest_sha256': current},
+                    {'passed': 'true', 'source_manifest_sha256': current},
+                ]:
+                    with self.assertRaisesRegex(ValueError, 'current public source manifest'):
+                        common.require_manifest_binding(receipt)
+
+    def test_prepared_tree_rejects_manifest_change(self):
+        with tempfile.TemporaryDirectory() as t:
+            root = Path(t)
+            support = root / 'build-support/public'
+            support.mkdir(parents=True)
+            manifest = support / 'source-manifest.json'
+            payload = b'revision one'
+            manifest.write_text(json.dumps({'files': [
+                {'path': 'staged', 'sha256': hashlib.sha256(payload).hexdigest(),
+                 'bytes': len(payload), 'mode': 0o644}]}))
+            source = root / 'source'
+            marker = source / '.roc-public/prepare.json'
+            marker.parent.mkdir(parents=True)
+            (source / 'staged').write_bytes(payload)
+            (source / 'staged').chmod(0o644)
+            marker.write_text(json.dumps({'passed': True, 'source_manifest_sha256': common.sha(manifest)}))
+            with patch.object(common, 'REPO', root), patch.object(record_build, 'REPO', root):
+                self.assertTrue(record_build.prepared_receipt(source)['passed'])
+                (source / 'staged').write_bytes(b'changed source')
+                with self.assertRaisesRegex(ValueError, 'SHA256 mismatch'):
+                    record_build.prepared_receipt(source)
+                (source / 'staged').write_bytes(payload)
+                (source / 'staged').chmod(0o600)
+                with self.assertRaisesRegex(ValueError, 'mode mismatch'):
+                    record_build.prepared_receipt(source)
+                (source / 'staged').chmod(0o644)
+                manifest.write_bytes(b'revision two')
+                with self.assertRaisesRegex(ValueError, 'current public source manifest'):
+                    record_build.prepared_receipt(source)
+
+    def test_pack_rejects_stale_receipt_before_reading_images_or_creating_output(self):
+        with tempfile.TemporaryDirectory() as t:
+            root = Path(t)
+            product = root / 'product'
+            product.mkdir()
+            (product / 'public-build.json').write_text(json.dumps({
+                'passed': True, 'product': 'roc_os_release_candidate-user',
+                'source_manifest_sha256': '0' * 64, 'images': {}}))
+            output = root / 'output'
+            args = type('Args', (), {'inputs': root / 'inputs', 'product': product, 'output': output})()
+            with self.assertRaisesRegex(ValueError, 'current public source manifest'):
+                pack.main(args)
+            self.assertFalse(output.exists())
 
     def test_assembly_readback_and_overlap(self):
         with tempfile.TemporaryDirectory() as t:
@@ -83,16 +149,59 @@ class PublicBuildTests(unittest.TestCase):
             self.assertTrue((source / 'device/roc/product/.private-signing').is_symlink())
 
     def test_all_manifest_payloads_and_dependencies_are_available(self):
-        manifest = common.load('source-manifest.json')
-        by_path = {e['path']: e for e in manifest['files']}
-        for entry in manifest['files']:
-            self.assertEqual(len(entry['sha256']), 64)
-            item = entry['input']
-            self.assertFalse(entry['path'].endswith(('.pk8', '.temporary.pem')))
-            if item['kind'] == 'repository':
-                common.require_hash(common.inside(common.REPO, item['path']), entry['sha256'])
-            elif item['kind'] == 'source' and item['path'] in by_path:
-                self.assertEqual(entry['sha256'], by_path[item['path']]['sha256'])
+        result = validate_manifest.validate(common.SUPPORT / 'source-manifest.json')
+        self.assertTrue(result['passed'])
+        self.assertFalse(result['independent_clean_full_Android_build_passed'])
+
+    def test_manifest_validation_rejects_duplicate_unsafe_or_changed_repository_inputs(self):
+        with tempfile.TemporaryDirectory() as t:
+            root = Path(t)
+            (root / 'payload').write_bytes(b'known source')
+            entry = {'path': 'output', 'bytes': 12, 'mode': 0o644,
+                     'sha256': common.sha(root / 'payload'),
+                     'input': {'kind': 'repository', 'path': 'payload'}}
+            manifest = {'files': [entry], 'signing_link': 'keys', 'base_checks': {},
+                        'statistics': {'files': 1, 'new_payload_bytes': 0,
+                                       'input_kinds': {'repository': 1}}}
+            path = root / 'manifest.json'
+            path.write_text(json.dumps(manifest))
+            self.assertTrue(validate_manifest.validate(path, root)['passed'])
+            manifest['files'].append(dict(entry))
+            path.write_text(json.dumps(manifest))
+            with self.assertRaisesRegex(ValueError, 'Duplicate output path'):
+                validate_manifest.validate(path, root)
+            manifest['files'].pop()
+            entry['path'] = '../escape'
+            path.write_text(json.dumps(manifest))
+            with self.assertRaisesRegex(ValueError, 'Unsafe manifest path'):
+                validate_manifest.validate(path, root)
+            entry['path'] = 'output'
+            entry['bytes'] = 13
+            path.write_text(json.dumps(manifest))
+            with self.assertRaisesRegex(ValueError, 'byte count mismatch'):
+                validate_manifest.validate(path, root)
+            entry['bytes'] = 12
+            path.write_text(json.dumps(manifest))
+            (root / 'payload').write_bytes(b'stale source')
+            with self.assertRaisesRegex(ValueError, 'SHA256 mismatch'):
+                validate_manifest.validate(path, root)
+
+    def test_manifest_validation_rejects_copy_content_mismatch_and_cycles(self):
+        with tempfile.TemporaryDirectory() as t:
+            root = Path(t)
+            entries = [{'path': name, 'bytes': 4, 'mode': 0o644, 'sha256': 'a' * 64,
+                        'input': {'kind': 'source', 'path': other}}
+                       for name, other in [('a', 'b'), ('b', 'a')]]
+            manifest = {'files': entries, 'signing_link': 'keys', 'base_checks': {},
+                        'statistics': {'files': 2, 'new_payload_bytes': 0, 'input_kinds': {'source': 2}}}
+            path = root / 'manifest.json'
+            path.write_text(json.dumps(manifest))
+            with self.assertRaisesRegex(ValueError, 'Copy dependency cycle'):
+                validate_manifest.validate(path, root)
+            entries[1]['sha256'] = 'b' * 64
+            path.write_text(json.dumps(manifest))
+            with self.assertRaisesRegex(ValueError, 'different source content'):
+                validate_manifest.validate(path, root)
 
 
 if __name__ == '__main__':

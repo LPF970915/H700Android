@@ -9,7 +9,7 @@ import os
 import stat
 import struct
 import sys
-from common import REPO, copy_sparse, load, regular, require_hash, run, sha, write_json
+from common import REPO, copy_sparse, load, regular, require_hash, require_manifest_binding, run, sha, write_json
 sys.path.insert(0, str(REPO / 'tools'))
 from android_bootimg import read_header, component_offsets, pack as pack_boot
 from android_sparse_to_raw import convert
@@ -154,6 +154,8 @@ def main(args):
     built = json.loads(regular(product / 'public-build.json').read_text())
     if not built['passed'] or built['product'] != 'roc_os_release_candidate-user':
         raise ValueError('A successful public user build receipt is required')
+    manifest_sha = require_manifest_binding(built)
+    build_receipt_sha = sha(product / 'public-build.json')
     for name in ['system.img', 'vendor.img', 'ramdisk.img']:
         require_hash(product / name, built['images'][name])
     spec = load('external-inputs.json')['reference_image']
@@ -182,6 +184,7 @@ def main(args):
     if actual != raw_hash:
         raise ValueError('Complete gzip readback mismatch')
     write_json(output / 'result.json', {'passed': True, 'bytes': packed.stat().st_size,
+               'source_manifest_sha256': manifest_sha, 'public_build_receipt_sha256': build_receipt_sha,
                'sha256': sha(packed), 'raw_bytes': raw.stat().st_size, 'raw_sha256': raw_hash,
                'system_input_sha256': sha(product / 'system.img'), 'vendor_input_sha256': sha(product / 'vendor.img'),
                'hardware_kernel_dtb_retained': True, 'userdata_created_empty': True,

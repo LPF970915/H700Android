@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.roc.rgsp.navtrial" android:versionCode="16" android:versionName="2.2-source64-select-fallback">
+    package="com.roc.rgsp.navtrial" android:versionCode="17" android:versionName="2.3-axis-guard">
     <uses-sdk android:minSdkVersion="29" android:targetSdkVersion="29" />
     <uses-permission android:name="android.permission.EXPAND_STATUS_BAR" />
     <application android:label="RGSP D-pad Navigation" android:allowBackup="false">

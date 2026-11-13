@@ -1804,12 +1804,12 @@
     },
     {
       "path": "device/roc/roc_os_release_candidate/Android.mk",
-      "bytes": 669,
-      "sha256": "a84cf138519efa936829c10ae994dfb07293b9954f7047295e4254ec8b703a39",
+      "bytes": 731,
+      "sha256": "41040fd248a4a9d460f2349f37b4be156559285d1d073a377dfedcedacd46f47",
       "mode": 420,
       "input": {
         "kind": "repository",
-        "path": "android/h700-android10/device/roc/roc_os_release_candidate/Android.mk"
+        "path": "build-support/public/overlay/device/roc/roc_os_release_candidate/Android.mk"
       }
     },
     {
@@ -2106,22 +2106,22 @@
     },
     {
       "path": "device/roc/roc_os_release_candidate/release_properties.mk",
-      "bytes": 962,
-      "sha256": "f654e1ba23db2c45f1d351bef9864fd26592ca5c352bca6c5231ce7c9cee8687",
+      "bytes": 1229,
+      "sha256": "de71deeefa83414500da553724ab596ac833c02e15d537fb92a62b41e58488a9",
       "mode": 420,
       "input": {
         "kind": "repository",
-        "path": "android/h700-android10/device/roc/roc_os_release_candidate/release_properties.mk"
+        "path": "build-support/public/overlay/device/roc/roc_os_release_candidate/release_properties.mk"
       }
     },
     {
       "path": "device/roc/roc_os_release_candidate/roc_os_release_candidate.mk",
-      "bytes": 5676,
-      "sha256": "25a69781989c1261b09d906382daa1be669e7281862987cb3a56d2ad1ee98561",
+      "bytes": 5692,
+      "sha256": "b25ca2a7c5433e617e8da164574a879ea9acb8b0761577cf2b11f4659ffd12c7",
       "mode": 420,
       "input": {
         "kind": "repository",
-        "path": "android/h700-android10/device/roc/roc_os_release_candidate/roc_os_release_candidate.mk"
+        "path": "build-support/public/overlay/device/roc/roc_os_release_candidate/roc_os_release_candidate.mk"
       }
     },
     {
@@ -2326,8 +2326,8 @@
     },
     {
       "path": "device/roc/roc_os_source64/Navigation/AndroidManifest.xml",
-      "bytes": 899,
-      "sha256": "a94f6d6d3bdaafefaf273aa1b7fc159d0af7138d9ac82b4e3f14844bb2cfaca0",
+      "bytes": 885,
+      "sha256": "ea014c1013bd08a3747bba709c75a438c8c28e15f92e50dee04c7ee7594dc110",
       "mode": 511,
       "input": {
         "kind": "repository",
@@ -2396,8 +2396,8 @@
     },
     {
       "path": "device/roc/roc_os_source64/Navigation/src/com/roc/rgsp/navtrial/NavigationService.java",
-      "bytes": 68190,
-      "sha256": "26010678339217441cae7f0a610c2c7a1f2704db6b0c7ca78da9d6b84cb05464",
+      "bytes": 80596,
+      "sha256": "7310bf4b78161b9f11ab5e1f41f28206dbb52f14ae66e6c4c7a1283b28827457",
       "mode": 511,
       "input": {
         "kind": "repository",
@@ -17543,6 +17543,46 @@
         "kind": "repository",
         "path": "android/h700-android10/snapshots/v5i-native35-20261028/system/vold/model/PublicVolume.cpp"
       }
+    },
+    {
+      "path": "device/roc/roc_os_source64/Navigation/src/com/roc/rgsp/navtrial/AxisNavigation.java",
+      "bytes": 9221,
+      "sha256": "8b1604b25da9749abb316845d9862dc5c0c1bae39e9ff34b2744a014017c32b4",
+      "mode": 420,
+      "input": {
+        "kind": "repository",
+        "path": "build-support/public/overlay/device/roc/roc_os_source64/Navigation/src/com/roc/rgsp/navtrial/AxisNavigation.java"
+      }
+    },
+    {
+      "path": "device/roc/roc_os_release_candidate/TimeDefaults/Android.mk",
+      "mode": 420,
+      "bytes": 292,
+      "sha256": "8238cd3ce716816f1830b0d7d6b0b5c723e526412148976d9a2652c03511655f",
+      "input": {
+        "kind": "repository",
+        "path": "build-support/public/overlay/device/roc/roc_os_release_candidate/TimeDefaults/Android.mk"
+      }
+    },
+    {
+      "path": "device/roc/roc_os_release_candidate/TimeDefaults/AndroidManifest.xml",
+      "mode": 420,
+      "bytes": 423,
+      "sha256": "6ecc60aa24bba1aacc539f081b2a3c942857e47a3727cc8148ea9aa756d03c54",
+      "input": {
+        "kind": "repository",
+        "path": "build-support/public/overlay/device/roc/roc_os_release_candidate/TimeDefaults/AndroidManifest.xml"
+      }
+    },
+    {
+      "path": "device/roc/roc_os_release_candidate/TimeDefaults/res/values/config.xml",
+      "mode": 420,
+      "bytes": 193,
+      "sha256": "776a194886f3401a70b6134a4662f8917fa44a21ca1b864f29e5546a9e7c32eb",
+      "input": {
+        "kind": "repository",
+        "path": "build-support/public/overlay/device/roc/roc_os_release_candidate/TimeDefaults/res/values/config.xml"
+      }
     }
   ],
   "base_checks": {
@@ -17561,10 +17601,10 @@
     "unmodified upstream source bodies"
   ],
   "statistics": {
-    "files": 1753,
-    "new_payload_bytes": 1937841,
+    "files": 1757,
+    "new_payload_bytes": 1642343,
     "input_kinds": {
-      "repository": 620,
+      "repository": 624,
       "image": 8,
       "source": 1125
     }

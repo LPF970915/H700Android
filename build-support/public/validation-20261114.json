@@ -1,0 +1,91 @@
+{
+  "schema": 1,
+  "date": "2026-11-14",
+  "scope": "0.0.2 current public source closure and offline public-tool checks only; the 2026-11-13 integration run is historical and was not repeated.",
+  "output_version": "0.0.2",
+  "source_manifest": {
+    "passed": true,
+    "scope": "Repository payload hash/size closure and source-copy recipes only; base source bodies and image payloads are not read by this check.",
+    "source_manifest_sha256": "cab5547fb59a219ceaf38cf330c097e15e2bf07029cc44e7fc1f63eb7c655968",
+    "target_identity_sha256": "7fce3849530b6d55dae2c3998b3034ce0dddac72ad3322a98f8b21d5b3240c70",
+    "target_identity_algorithm": "SHA256 of UTF-8 JSON, sort_keys=true, ensure_ascii=true, separators=comma/colon, no final newline; path-sorted records of path,bytes,mode,sha256.",
+    "files": 1757,
+    "new_payload_bytes": 1642343,
+    "input_kinds": {
+      "repository": 624,
+      "image": 8,
+      "source": 1125
+    },
+    "new_payload_bytes_definition": "Unique repository input paths under build-support/public/overlay/",
+    "repository_target_bytes_verified": 4766063,
+    "source_copy_dependencies_verified": 5,
+    "unique_base_source_inputs_not_read": 1120,
+    "image_payloads_not_read": 8,
+    "independent_clean_full_Android_build_passed": false,
+    "hardware_acceptance_performed": false
+  },
+  "changed_target_entries_since_20261113": [
+    "device/roc/roc_os_release_candidate/Android.mk",
+    "device/roc/roc_os_release_candidate/TimeDefaults/Android.mk",
+    "device/roc/roc_os_release_candidate/TimeDefaults/AndroidManifest.xml",
+    "device/roc/roc_os_release_candidate/TimeDefaults/res/values/config.xml",
+    "device/roc/roc_os_release_candidate/release_properties.mk",
+    "device/roc/roc_os_release_candidate/roc_os_release_candidate.mk",
+    "device/roc/roc_os_source64/Navigation/AndroidManifest.xml",
+    "device/roc/roc_os_source64/Navigation/src/com/roc/rgsp/navtrial/AxisNavigation.java",
+    "device/roc/roc_os_source64/Navigation/src/com/roc/rgsp/navtrial/NavigationService.java"
+  ],
+  "other_target_entries_and_manifest_policy_unchanged": true,
+  "statistics_note": "new_payload_bytes was recomputed from unique current overlay input paths; the prior count predated canonical-origin remapping. All repository target payload bytes are reported separately by the validator.",
+  "pinned_reference_input_version": "0.0.1",
+  "external_inputs_sha256": "d94b61e4a9624c076d621efda5b75b9e8324984e399a31bf5ff17c7c527ce811",
+  "boot_sources_sha256": "5c0883ac1d841af316409d05a5590cdc1504f724036faf43255d1fec5a104042",
+  "unit_tests": {
+    "passed": true,
+    "count": 11,
+    "seconds": 7.143,
+    "command": "PYTHONDONTWRITEBYTECODE=1 python3 tools/public_build/test_public_build.py",
+    "negative_cases_include": [
+      "unsafe paths and symlink escape",
+      "non-regular device input",
+      "wrong reference image before output",
+      "missing, stale, failed or non-boolean successful manifest receipts",
+      "prepared-target content or mode changed after preparation",
+      "manifest revision changed after preparation",
+      "stale build receipt before reading partition images or creating package output",
+      "overlapping image assembly ranges",
+      "duplicate target or incorrect source byte count",
+      "repository content hash mismatch",
+      "source-copy content mismatch or dependency cycle"
+    ]
+  },
+  "additional_checks": {
+    "Python_changed_scripts_parse": true,
+    "build_shell_syntax": true,
+    "GNU_make_version_properties_survive_late_assignment": true,
+    "release_properties": {
+      "ro.roc.os.version": "0.0.2",
+      "BUILD_DISPLAY_ID": "ROC_OS_ARM64_ver0.0.2"
+    },
+    "build_checks_manifest_and_listed_prepared_files_before_compile": true,
+    "success_receipt_rechecks_manifest_and_listed_prepared_files": true,
+    "package_checks_current_manifest_and_partition_hashes_before_output": true,
+    "package_result_retains_manifest_and_build_receipt_sha256": true
+  },
+  "tool_sha256": {
+    "common.py": "e6f5d23e8198f1b493bb29dcfdb237dd17f950131c3159748b2c56f26b130da7",
+    "record_build.py": "d500d77c5b1e93960ce3edf21b64f8ea3884428e8bbe62b367d7834bab4950f6",
+    "build.sh": "81e07a6e9110b58f9c33d31b5098bb1e0251e5312812ac48df64cbf85f21c30e",
+    "pack.py": "89e4adc5d222423690f315eb41193b8e818782b7b0b9cb5255ae3c18427c7cd1",
+    "test_public_build.py": "5ad6cc19a119e993f9a3f01c78baf944e8b1808fd91dcbbc5304f9ab7992bd54",
+    "validate_manifest.py": "12e9fe3b81697c373ebccdf2f42e8fc5b92acd52ed72ec1f6a36f700d980c004"
+  },
+  "historical_validation_sha256": "a0be7ab350b02a0fe5127bd11894e582c8be0b76ef152901116c211c397eef7c",
+  "historical_integration_repeated": false,
+  "new_full_Android_build_executed": false,
+  "new_whole_card_image_validated_by_this_record": false,
+  "physical_device_accessed_by_this_validation": false,
+  "independent_clean_full_Android_build_passed": false,
+  "all_H700_models_accepted": false,
+  "private_keys_or_personal_data_included": false
+}

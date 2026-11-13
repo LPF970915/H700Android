@@ -7,6 +7,7 @@ output_root=$(realpath -m "$2")
 script_root=$(dirname "$(realpath "$0")")
 test -f "$source_root/.roc-public/prepare.json"
 test -L "$source_root/device/roc/roc_os_release_candidate/.private-signing"
+python3 "$script_root/record_build.py" --source "$source_root" --check-only
 [[ "$output_root" != "$source_root" && "$output_root" != "$source_root/"* ]] || exit 2
 cg=$(awk -F: '$1 == "0" {print $3}' /proc/self/cgroup)
 read -r quota period < "/sys/fs/cgroup$cg/cpu.max"

@@ -4,6 +4,9 @@ import android.accessibilityservice.AccessibilityService;
 import android.accessibilityservice.AccessibilityServiceInfo;
 import android.app.KeyguardManager;
 import android.content.Context;
+import android.content.BroadcastReceiver;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.res.Configuration;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -11,6 +14,7 @@ import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.PixelFormat;
 import android.graphics.Rect;
+import android.hardware.input.InputManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -18,6 +22,8 @@ import android.os.Looper;
 import android.os.PowerManager;
 import android.os.SystemClock;
 import android.util.SparseBooleanArray;
+import android.util.SparseIntArray;
+import android.util.SparseLongArray;
 import android.view.KeyEvent;
 import android.view.InputDevice;
 import android.view.MotionEvent;
@@ -67,6 +73,39 @@ public final class NavigationService extends AccessibilityService {
     private int menuHomeCount, menuShadeCount;
     private boolean shadeBack;
     private int lastInputKey, lastInputScan, lastInputAction, shadeCloseCount;
+    private boolean axisSynthetic;
+    private String inputOrigin = "external-key";
+    private InputManager inputManager;
+    private final SparseIntArray deviceGenerations = new SparseIntArray();
+    private final String[] diagnostics = new String[128];
+    private int diagnosticNext, diagnosticSize;
+    private int selectionActions, ringRedraws;
+    private boolean receiverRegistered;
+    private void trace(String detail) {
+        diagnostics[diagnosticNext] = SystemClock.uptimeMillis() + " elapsed="
+                + SystemClock.elapsedRealtime() + " " + detail;
+        diagnosticNext = (diagnosticNext + 1) % diagnostics.length;
+        diagnosticSize = Math.min(diagnostics.length, diagnosticSize + 1);
+    }
+    private void inputDeviceChanged(int id) {
+        deviceGenerations.put(id, deviceGenerations.get(id) + 1);
+        if (ring != null) ring.deviceChanged(id);
+        trace("device-change id=" + id + " generation=" + deviceGenerations.get(id));
+    }
+    private final InputManager.InputDeviceListener inputListener = new InputManager.InputDeviceListener() {
+        @Override public void onInputDeviceAdded(int id) { inputDeviceChanged(id); }
+        @Override public void onInputDeviceRemoved(int id) { inputDeviceChanged(id); }
+        @Override public void onInputDeviceChanged(int id) { inputDeviceChanged(id); }
+    };
+    private final BroadcastReceiver screenReceiver = new BroadcastReceiver() {
+        @Override public void onReceive(Context context, Intent intent) {
+            if (ring != null) ring.stopRepeat("screen:" + intent.getAction());
+            held.clear(); armedIdentity = null; armedKey = 0;
+            trace("screen action=" + intent.getAction());
+            handler.removeCallbacks(refreshTask);
+            handler.postDelayed(refreshTask, 100);
+        }
+    };
     private final Runnable menuHold = () -> {
         if (menu.fireLong(SystemClock.uptimeMillis())) menuAction(MenuHotkey.QUICK_SETTINGS);
         scheduleMenu();
@@ -112,6 +151,13 @@ public final class NavigationService extends AccessibilityService {
                         | WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN,
                 PixelFormat.TRANSLUCENT);
         windows.addView(ring, overlayParams);
+        inputManager = (InputManager) getSystemService(INPUT_SERVICE);
+        inputManager.registerInputDeviceListener(inputListener, handler);
+        IntentFilter screenFilter = new IntentFilter(Intent.ACTION_SCREEN_OFF);
+        screenFilter.addAction(Intent.ACTION_SCREEN_ON);
+        screenFilter.addAction(Intent.ACTION_USER_PRESENT);
+        registerReceiver(screenReceiver, screenFilter);
+        receiverRegistered = true;
         if (android.provider.Settings.Global.getInt(getContentResolver(), "rgsp_mouse_enabled", 1)==1) {
         mouse = new MouseController(this, handler, windows, new MouseController.Surface() {
             @Override public void show(float x, float y, boolean pressed) {
@@ -119,6 +165,7 @@ public final class NavigationService extends AccessibilityService {
             }
 
             @Override public void capture(boolean capture) {
+                ring.stopRepeat("mouse-capture");
                 // HAT motion requires window focus on this Android 10 BSP.
                 // ALT_FOCUSABLE_IM leaves the real editor/IME relationship intact.
                 overlayParams.flags |= WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM;
@@ -127,6 +174,7 @@ public final class NavigationService extends AccessibilityService {
             }
 
             @Override public void ended() {
+                ring.stopRepeat("mouse-ended");
                 overlayParams.flags &= ~WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM;
                 overlayFocus(false);
                 windows.updateViewLayout(ring, overlayParams);
@@ -138,25 +186,35 @@ public final class NavigationService extends AccessibilityService {
     }
 
     @Override public void onAccessibilityEvent(AccessibilityEvent event) {
-        if(event.getEventType()==AccessibilityEvent.TYPE_WINDOW_STATE_CHANGED && ring!=null) ring.stopRepeat();
+        int type = event.getEventType();
+        if (type == AccessibilityEvent.TYPE_WINDOW_STATE_CHANGED && ring != null)
+            ring.stopRepeat("window-state");
+        if (type == AccessibilityEvent.TYPE_WINDOW_STATE_CHANGED
+                || type == AccessibilityEvent.TYPE_VIEW_SCROLLED
+                || type == AccessibilityEvent.TYPE_VIEW_FOCUSED)
+            trace("accessibility type=" + type + " window=" + event.getWindowId());
         handler.removeCallbacks(refreshTask);
         handler.postDelayed(refreshTask, 100);
     }
 
     @Override public void onConfigurationChanged(Configuration configuration) {
         super.onConfigurationChanged(configuration);
-        if(ring!=null) ring.stopRepeat();
+        if(ring!=null) ring.stopRepeat("configuration");
         held.clear(); armedIdentity=null; armedKey=0;
         handler.removeCallbacks(refreshTask);handler.postDelayed(refreshTask,250);
     }
 
     @Override public void onInterrupt() {
+        if (ring != null) ring.stopRepeat("interrupt");
         menu.clear(); handler.removeCallbacks(menuHold);
         if (mouse != null) mouse.exit();
         clearSelection();
     }
 
     @Override public void onDestroy() {
+        if (ring != null) ring.stopRepeat("destroy");
+        if (inputManager != null) inputManager.unregisterInputDeviceListener(inputListener);
+        if (receiverRegistered) unregisterReceiver(screenReceiver);
         if (mouse != null) mouse.destroy();
         handler.removeCallbacksAndMessages(null);
         clearSelection();
@@ -326,7 +384,7 @@ public final class NavigationService extends AccessibilityService {
             windows.updateViewLayout(ring, overlayParams);
         }
         if (focus) ring.requestFocus();
-        else ring.stopRepeat();
+        else ring.stopRepeat("overlay-release");
     }
 
     private void releaseForAction() {
@@ -841,24 +899,32 @@ public final class NavigationService extends AccessibilityService {
         overlayFocus(false);
     }
 
-    private void select(AccessibilityNodeInfo node) {
+    private void select(AccessibilityNodeInfo node) { select(node, true); }
+
+    private void select(AccessibilityNodeInfo node, boolean requestActions) {
         boolean changed = selected == null || !selected.equals(node);
         if (selected != null) selected.recycle();
         selected = AccessibilityNodeInfo.obtain(node);
         selectedIdentity = identity(node);
-        if (changed) {
+        boolean focusResult = false, showResult = false;
+        if (requestActions && changed) {
             if (!"settings".equals(mode)
                     || supportsAction(node, AccessibilityNodeInfo.ACTION_FOCUS)) {
-                node.performAction(AccessibilityNodeInfo.ACTION_FOCUS);
+                focusResult = node.performAction(AccessibilityNodeInfo.ACTION_FOCUS);
+                selectionActions++;
             }
             if (("files".equals(mode)
                     || ("settings".equals(mode) && insideSettingsList(node)))
                     && !node.isEditable()
                     && supportsAction(node, AccessibilityNodeInfo.AccessibilityAction.ACTION_SHOW_ON_SCREEN.getId())) {
-                node.performAction(AccessibilityNodeInfo.AccessibilityAction.ACTION_SHOW_ON_SCREEN.getId());
+                showResult = node.performAction(AccessibilityNodeInfo.AccessibilityAction.ACTION_SHOW_ON_SCREEN.getId());
+                selectionActions++;
             }
         }
         Rect bounds = focusBounds(node);
+        trace("select origin=" + (requestActions ? inputOrigin : "refresh")
+                + " window=" + node.getWindowId() + " bounds=" + bounds.toShortString()
+                + " actions=" + requestActions + " focus=" + focusResult + " show=" + showResult);
         // AT4K buttons already draw their native selected state.
         if (ring != null) ring.show(AT4K.equals(String.valueOf(node.getPackageName())) ? null : bounds);
     }
@@ -1002,13 +1068,20 @@ public final class NavigationService extends AccessibilityService {
         // pending direction until the actual layout removes it or it expires.
         awaitingScroll(root);
         if (index < 0) index = initial(items);
-        if (index >= 0) select(items.get(index)); else clearSelection();
+        if (index >= 0) select(items.get(index), false); else clearSelection();
         if (index >= 0) overlayFocus(true);
         recycle(items);
         root.recycle();
     }
 
     @Override protected boolean onKeyEvent(KeyEvent event) {
+        if (!axisSynthetic) inputOrigin = "external-key";
+        if (!axisSynthetic && event.getAction() == KeyEvent.ACTION_DOWN
+                && event.getKeyCode() >= Direction.UP && event.getKeyCode() <= Direction.RIGHT
+                && ring != null && ring.axis.active()) ring.stopRepeat("physical-key-takeover");
+        trace("key origin=" + inputOrigin + " device=" + event.getDeviceId()
+                + " source=" + event.getSource() + " code=" + event.getKeyCode()
+                + " action=" + event.getAction() + " repeat=" + event.getRepeatCount() + " flags=" + event.getFlags());
         lastInputKey = event.getKeyCode(); lastInputScan = event.getScanCode();
         lastInputAction = event.getAction();
         int menuResult = menu.update(event.getDeviceId(), event.getKeyCode(), event.getScanCode(),
@@ -1265,6 +1338,8 @@ public final class NavigationService extends AccessibilityService {
                     : AccessibilityNodeInfo.ACTION_SCROLL_FORWARD;
             if (matches && node.isScrollable() && node.isVisibleToUser()
                     && node.performAction(action)) {
+                trace("scroll origin=" + inputOrigin + " direction=" + key
+                        + " window=" + node.getWindowId() + " action=" + action);
                 node.recycle();
                 pendingScroll=key;
                 pendingScrollWindow=selected.getWindowId();
@@ -1288,11 +1363,17 @@ public final class NavigationService extends AccessibilityService {
         writer.println("menuHome=" + menuHomeCount + " menuShade=" + menuShadeCount);
         writer.println("lastInput=" + lastInputKey + "/" + lastInputScan + "/" + lastInputAction
                 + " shadeClose=" + shadeCloseCount);
-        writer.println("navigationVersion=36 mode=" + mode + " moveTopId=" + moveTop
+        writer.println("navigationVersion=38 mode=" + mode + " moveTopId=" + moveTop
                 + " keyDownCount=" + keyDownCount + " actionCount=" + actionCount
                 + " lastAction=" + lastAction + " navigationCallbacks=" + navigationCallbacks
                 + " lastKeyScope=" + lastKeyScope + " flags=" + (serviceInfo == null ? 0 : serviceInfo.flags));
         if (mouse != null) mouse.dump(writer);
+        writer.println("selectionActions=" + selectionActions + " ringRedraws=" + ringRedraws
+                + " inputOrigin=" + inputOrigin + " diagnosticCapacity=" + diagnostics.length);
+        if (ring != null) ring.dumpAxis(writer);
+        for (int i = 0; i < diagnosticSize; i++)
+            writer.println("navTrace " + diagnostics[(diagnosticNext - diagnosticSize + i
+                    + diagnostics.length) % diagnostics.length]);
         if (selected != null) {
             Rect bounds = new Rect();
             selected.getBoundsInScreen(bounds);
@@ -1306,6 +1387,10 @@ public final class NavigationService extends AccessibilityService {
     }
 
     private final class FocusRing extends View {
+        private int axisDirection(float x, float y) {
+            return x < -0.5f ? Direction.LEFT : x > 0.5f ? Direction.RIGHT
+                    : y < -0.5f ? Direction.UP : y > 0.5f ? Direction.DOWN : 0;
+        }
         private final Paint paint = new Paint();
         private final Paint outline = new Paint(Paint.ANTI_ALIAS_FLAG);
         private Rect bounds;
@@ -1315,14 +1400,26 @@ public final class NavigationService extends AccessibilityService {
         private final Paint cursorPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         private final Paint cursorGlowPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         private final Path cursorShape = new Path();
-        private int axisKey;
+        private final AxisNavigation axis = new AxisNavigation();
+        private final SparseLongArray lastMotionTimes = new SparseLongArray();
+        private boolean repeatQueued;
+        private int axisDeviceGeneration, axisWindow = -1;
+        private long axisAcceptedAt;
+        private String rawAxes = "none";
         private final Runnable repeat = new Runnable() {
             @Override public void run() {
-                if (axisKey == 0) return;
-                if ((axisKey==Direction.LEFT || axisKey==Direction.RIGHT)
-                        && selected!=null && selected.getRangeInfo()!=null) {stopRepeat();return;}
-                navigate(axisKey);
-                handler.postDelayed(this, 160);
+                repeatQueued = false;
+                if (!axis.active()) return;
+                if (!axisAllowed() || !ownerPresent()) {stopRepeat("repeat-context");return;}
+                int key = axis.repeat(SystemClock.uptimeMillis());
+                if (key == 0) {trace(axis.describe(SystemClock.uptimeMillis()));return;}
+                if (rangeDirection(key)) {stopRepeat("range-single-step");return;}
+                long token = axis.generation();
+                navigate(key, "axis-repeat");
+                // Navigation can synchronously change focus or stop this owner.
+                // Never resurrect its task after a lifecycle callback cancels it.
+                if (axis.active() && axis.generation() == token && axisAllowed() && ownerPresent())
+                    scheduleRepeat(AxisNavigation.REPEAT_MS);
             }
         };
 
@@ -1351,19 +1448,75 @@ public final class NavigationService extends AccessibilityService {
             cursorShape.close();
         }
 
-        void stopRepeat() {
-            axisKey = 0;
+        private boolean rangeDirection(int key) {
+            return (key == Direction.LEFT || key == Direction.RIGHT)
+                    && selected != null && selected.getRangeInfo() != null;
+        }
+
+        private void scheduleRepeat(long delay) {
             handler.removeCallbacks(repeat);
+            repeatQueued = false;
+            if (!axis.active()) return;
+            long remaining = axis.remaining(SystemClock.uptimeMillis());
+            if (remaining <= 0) {axis.repeat(SystemClock.uptimeMillis());return;}
+            repeatQueued = true;
+            handler.postDelayed(repeat, Math.min(delay, remaining));
+        }
+
+        void stopRepeat(String reason) {
+            boolean wasActive = axis.active() || repeatQueued;
+            axis.stop(reason, true);
+            handler.removeCallbacks(repeat);
+            repeatQueued = false;
+            if (wasActive) trace("axis-stop " + reason + " " + axis.describe(SystemClock.uptimeMillis()));
+        }
+
+        void deviceChanged(int id) {
+            axis.deviceChanged(id);
+            lastMotionTimes.delete(id);
+            if (!axis.active()) {handler.removeCallbacks(repeat);repeatQueued = false;}
+        }
+
+        private boolean ownerPresent() {
+            InputDevice device = InputDevice.getDevice(axis.ownerDevice());
+            return device != null && deviceGenerations.get(device.getId()) == axisDeviceGeneration
+                    && (device.getSources() & axis.ownerSource()) == axis.ownerSource();
+        }
+
+        private boolean axisAllowed() {
+            if (!hasWindowFocus() || !isFocused() || (mouse != null && mouse.isActive())
+                    || SystemClock.uptimeMillis() < releaseUntil) return false;
+            AccessibilityNodeInfo root = applicationRoot();
+            if (root == null) return false;
+            String currentMode = scope(root);
+            boolean allowed = ("settings".equals(currentMode) || "files".equals(currentMode)
+                    || "locales".equals(currentMode) || "shade".equals(currentMode))
+                    && (!axis.active() || root.getWindowId() == axisWindow);
+            root.recycle();
+            return allowed;
+        }
+
+        void dumpAxis(PrintWriter writer) {
+            writer.println(axis.describe(SystemClock.uptimeMillis()) + " repeatQueued=" + repeatQueued
+                    + " deviceGeneration=" + axisDeviceGeneration + " axisWindow=" + axisWindow
+                    + " acceptedAt=" + axisAcceptedAt + " rawAxes=" + rawAxes);
         }
 
         @Override public void onWindowFocusChanged(boolean hasFocus) {
             super.onWindowFocusChanged(hasFocus);
-            if(!hasFocus) {stopRepeat();held.clear();menu.clear();armedIdentity=null;armedKey=0; if(mouse!=null) mouse.windowFocusLost();}
+            if(!hasFocus) {stopRepeat("window-focus-lost");held.clear();menu.clear();armedIdentity=null;armedKey=0; if(mouse!=null) mouse.windowFocusLost();}
         }
 
-        private void navigate(int key) {
-            NavigationService.this.onKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, key));
-            NavigationService.this.onKeyEvent(new KeyEvent(KeyEvent.ACTION_UP, key));
+        private void navigate(int key, String origin) {
+            axisSynthetic = true;
+            inputOrigin = origin;
+            try {
+                NavigationService.this.onKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, key));
+                NavigationService.this.onKeyEvent(new KeyEvent(KeyEvent.ACTION_UP, key));
+            } finally {
+                axisSynthetic = false;
+                inputOrigin = "external-key";
+            }
         }
 
         @Override public boolean dispatchKeyEvent(KeyEvent event) {
@@ -1379,35 +1532,91 @@ public final class NavigationService extends AccessibilityService {
         }
 
         @Override public boolean onGenericMotionEvent(MotionEvent event) {
-            if (mouse != null && mouse.onMotion(event)) return true;
+            if (mouse != null && mouse.isActive()) {
+                if (axis.active()) stopRepeat("mouse-motion");
+                if (mouse.onMotion(event)) return true;
+            }
             if (event.isFromSource(InputDevice.SOURCE_JOYSTICK)
-                    && event.getActionMasked()==MotionEvent.ACTION_CANCEL) {stopRepeat();return true;}
+                    && event.getActionMasked()==MotionEvent.ACTION_CANCEL) {
+                axis.cancel(event.getDeviceId(), event.getSource());
+                if (!axis.active()) {handler.removeCallbacks(repeat);repeatQueued = false;}
+                trace("axis-cancel device=" + event.getDeviceId() + " source=" + event.getSource());
+                return true;
+            }
             if (event.isFromSource(InputDevice.SOURCE_JOYSTICK)
                     && event.getActionMasked() == MotionEvent.ACTION_MOVE) {
-                float x = event.getAxisValue(MotionEvent.AXIS_HAT_X);
-                float y = event.getAxisValue(MotionEvent.AXIS_HAT_Y);
-                if (Math.abs(x) < 0.5f && Math.abs(y) < 0.5f) {
-                    float[] stick = MouseController.sticks(event);
-                    x = stick[0]; y = stick[1];
+                long now = SystemClock.uptimeMillis();
+                int id = event.getDeviceId();
+                InputDevice device = event.getDevice();
+                if (device != null && (device.getSources() & event.getSource()) != event.getSource()) {
+                    trace("axis-rejected-source device=" + id + " source=" + event.getSource());
+                    return true;
                 }
-                int key = x < -0.5f ? Direction.LEFT : x > 0.5f ? Direction.RIGHT
-                        : y < -0.5f ? Direction.UP : y > 0.5f ? Direction.DOWN : 0;
-                if (key != axisKey) {
-                    stopRepeat();
-                    axisKey = key;
-                    if (key != 0) {
-                        navigate(key);
-                        if((key!=Direction.LEFT && key!=Direction.RIGHT)
-                                || selected==null || selected.getRangeInfo()==null) handler.postDelayed(repeat, 400);
+                if (id < 0 || device == null || event.getEventTime() > now
+                        || now - event.getEventTime() > 1000
+                        || event.getEventTime() < lastMotionTimes.get(id, 0)) {
+                    if (id == axis.ownerDevice() && (device == null
+                            || event.getSource() == axis.ownerSource())) stopRepeat("stale-or-missing-device");
+                    trace("axis-rejected device=" + id + " age=" + (now-event.getEventTime()));
+                    return true;
+                }
+                for (int value : new int[]{MotionEvent.AXIS_HAT_X, MotionEvent.AXIS_HAT_Y,
+                        MotionEvent.AXIS_X, MotionEvent.AXIS_Y, MotionEvent.AXIS_Z,
+                        MotionEvent.AXIS_RZ, MotionEvent.AXIS_RX, MotionEvent.AXIS_RY}) {
+                    float raw = event.getAxisValue(value);
+                    if (Float.isNaN(raw) || Float.isInfinite(raw)) {
+                        axis.cancel(id, event.getSource());
+                        if (!axis.active()) {handler.removeCallbacks(repeat);repeatQueued = false;}
+                        trace("axis-invalid device=" + id + " axis=" + value);
+                        return true;
                     }
                 }
+                lastMotionTimes.put(id, event.getEventTime());
+                float hx = event.getAxisValue(MotionEvent.AXIS_HAT_X);
+                float hy = event.getAxisValue(MotionEvent.AXIS_HAT_Y);
+                float[] stick = MouseController.sticks(event);
+                if (Float.isNaN(stick[0]) || Float.isInfinite(stick[0])
+                        || Float.isNaN(stick[1]) || Float.isInfinite(stick[1])) {
+                    axis.cancel(id, event.getSource());
+                    if (!axis.active()) {handler.removeCallbacks(repeat);repeatQueued = false;}
+                    trace("axis-invalid-normalized device=" + id);
+                    return true;
+                }
+                rawAxes = id + "/" + event.getSource() + " hat=" + hx + "," + hy
+                        + " rawXY=" + event.getAxisValue(MotionEvent.AXIS_X) + "," + event.getAxisValue(MotionEvent.AXIS_Y)
+                        + " rawZRZ=" + event.getAxisValue(MotionEvent.AXIS_Z) + "," + event.getAxisValue(MotionEvent.AXIS_RZ)
+                        + " rawRXRY=" + event.getAxisValue(MotionEvent.AXIS_RX) + "," + event.getAxisValue(MotionEvent.AXIS_RY)
+                        + " normalized=" + stick[0] + "," + stick[1];
+                if (!axisAllowed()) {stopRepeat("motion-context");return true;}
+                long before = axis.generation();
+                int key = axis.update(now, id, event.getSource(), axisDirection(hx, hy),
+                        axisDirection(stick[0], stick[1]));
+                if (!axis.active()) {
+                    handler.removeCallbacks(repeat); repeatQueued = false;
+                }
+                if (key != 0) {
+                    axisDeviceGeneration = deviceGenerations.get(id);
+                    AccessibilityNodeInfo root = applicationRoot();
+                    axisWindow = root == null ? -1 : root.getWindowId();
+                    if (root != null) root.recycle();
+                    axisAcceptedAt = now;
+                    long token = axis.generation();
+                    navigate(key, "axis-motion");
+                    if (axis.active() && axis.generation() == token && axisAllowed() && ownerPresent()) {
+                        if (rangeDirection(key)) stopRepeat("range-single-step");
+                        else scheduleRepeat(AxisNavigation.FIRST_REPEAT_MS);
+                    }
+                }
+                if (axis.generation() != before) trace("axis-motion " + rawAxes + " " + axis.describe(now));
                 return true;
             }
             return super.onGenericMotionEvent(event);
         }
 
         void show(Rect rect) {
+            if (bounds == null ? rect == null : bounds.equals(rect)) return;
             bounds = rect == null ? null : new Rect(rect);
+            ringRedraws++;
             invalidate();
         }
 

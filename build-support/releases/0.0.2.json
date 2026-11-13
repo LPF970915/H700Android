@@ -1,0 +1,88 @@
+{
+  "schema": 1,
+  "version": "0.0.2",
+  "date": "2026-11-14",
+  "artifact": "ROC_OS_ARM64_ver0.0.2.img.gz",
+  "bytes": 591062358,
+  "sha256": "3c188e843041a593546f4971fc3c8a348eca0a84f719e21b27e338a67b3507fd",
+  "raw_bytes": 32434554368,
+  "raw_sha256": "3dc04c277af7c1843b31110295c48f54126df46b6eb8eb4d892a78b7c0cc27a4",
+  "base_version": "0.0.1",
+  "base_gzip_sha256": "e72580e8c4e4afc8b08b50570ad6beebf46a435ee6e8b32b7a943f21786a6346",
+  "base_raw_sha256": "09935c4935ca579d6956388b2a3af509b4d6c4763e36a047091373a4218208e3",
+  "source_manifest_sha256": "cab5547fb59a219ceaf38cf330c097e15e2bf07029cc44e7fc1f63eb7c655968",
+  "navigation": {
+    "versionCode": 17,
+    "versionName": "2.3-axis-guard",
+    "sha256": "780e5bc74af0ee375626628fd4e4970e77a8d10e78b4cfc21c339b8b25d6f4e5",
+    "Axis_checks": 79,
+    "virtual_Service_checks": 32,
+    "same_boot_34XXSP_update_and_three_recovery_cycles_observed": true
+  },
+  "time_defaults": {
+    "package": "com.roc.os.time.defaults",
+    "sha256": "5f4bba3f134cab9d60024badf468a62a7d6709b30836277d3630e65d0d66e842",
+    "installed_path": "/system/product/overlay/ROCTimeDefaults.apk",
+    "default_ntp_server": "ntp.aliyun.com",
+    "actual_framework_product_policy_idmap_lookup_passed": true
+  },
+  "platform_certificate_sha256": "fc30e834b3c2914a0646d0b46c4faaa045aa8d46189950012555a5f2c36745c9",
+  "filesystem_delta": {
+    "added": [
+      "/system/product/overlay/ROCTimeDefaults.apk"
+    ],
+    "removed": [
+      "/system/app/ROCNavigation/oat/arm64/ROCNavigation.odex",
+      "/system/app/ROCNavigation/oat/arm64/ROCNavigation.vdex"
+    ],
+    "changed": [
+      "/system/app/ROCNavigation/ROCNavigation.apk",
+      "/system/build.prop"
+    ]
+  },
+  "ranges": {
+    "prefix": {
+      "offset": 0,
+      "bytes": 222298112,
+      "base_sha256": "dddb456725f6ae0b0e3977c50747a23a8c91b66c55140959b9a58ab4f7ff425a",
+      "sha256": "dddb456725f6ae0b0e3977c50747a23a8c91b66c55140959b9a58ab4f7ff425a"
+    },
+    "system": {
+      "offset": 222298112,
+      "bytes": 8589934592,
+      "base_sha256": "5da9a675fea3c7804c3682394eaef712dab8e26fcb33d97464c08304e4a2ea80",
+      "sha256": "fe7877aa2f5e8821405ae49bd43382d209c0da8e0215fa245a284980f3dd66ad"
+    },
+    "vendor": {
+      "offset": 8812232704,
+      "bytes": 2147483648,
+      "base_sha256": "bcf0706cd474b54b7f908aa234100a352773e0d603a11f4fa00787079e0f6fa0",
+      "sha256": "bcf0706cd474b54b7f908aa234100a352773e0d603a11f4fa00787079e0f6fa0"
+    },
+    "userdata": {
+      "offset": 10959716352,
+      "bytes": 21474836480,
+      "base_sha256": "637a02240df99491b9616503c69cd41638b7604c927675762e640014b3cd7d86",
+      "sha256": "637a02240df99491b9616503c69cd41638b7604c927675762e640014b3cd7d86"
+    },
+    "backup_gpt": {
+      "offset": 32434552832,
+      "bytes": 1536,
+      "base_sha256": "ba9ba2c16fbb57653f2d5b221bb2f0c2ee698550f1d9dc33df30b5565d23c5dc",
+      "sha256": "ba9ba2c16fbb57653f2d5b221bb2f0c2ee698550f1d9dc33df30b5565d23c5dc"
+    }
+  },
+  "offline_package_passed": true,
+  "independent_gzip_readback_passed": true,
+  "independent_report_sha256": "0116267b5823696c0955d211f588e33a69ceca3082e853205bf3f9355b74e668",
+  "windows_gzip_hash_passed": true,
+  "Android_full_rebuild_performed": false,
+  "boot_vendor_userdata_unchanged_from_0_0_1": true,
+  "diagnostic_ADB_authorization_retained": true,
+  "fresh_0_0_2_card_boot_accepted": false,
+  "next_boot_automatic_time_sync_accepted": false,
+  "RTC_retention_accepted": false,
+  "flicker_fixed": false,
+  "all_H700_models_accepted": false,
+  "image_uploaded": false
+}

@@ -1,0 +1,9 @@
+LOCAL_PATH := $(call my-dir)
+include $(CLEAR_VARS)
+LOCAL_PACKAGE_NAME := ROCTimeDefaults
+LOCAL_CERTIFICATE := platform
+LOCAL_RESOURCE_DIR := $(LOCAL_PATH)/res
+LOCAL_AAPT_FLAGS += --auto-add-overlay
+LOCAL_PRODUCT_MODULE := true
+LOCAL_PRIVATE_PLATFORM_APIS := true
+include $(BUILD_RRO_PACKAGE)

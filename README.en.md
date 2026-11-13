@@ -1,5 +1,9 @@
 # ROC OS · H700 Android 10
 
+## Local 0.0.2 package — November 14, 2026
+
+0.0.2 is packaged locally and independently verified. It includes Navigation17 repeat/wake cleanup, a default NTP server and version identity. Source and tests are updated; fresh full-card boot, automatic time sync and rare flicker retain their separate acceptance boundaries. The image has not been uploaded; the external download remains 0.0.1. See [0.0.2 notes and hashes](docs/ROC_OS_0.0.2_20261114.md).
+
 **Android 10 adapted for H700 handhelds, with physical controls for devices without a touchscreen.**
 
 [中文](README.md) · [Release status and known issues](docs/RELEASE_OVERVIEW.md) · [Development branch](https://github.com/LPF970915/H700Android/tree/codex/rg34xxsp-at4k-input-lockscreen)

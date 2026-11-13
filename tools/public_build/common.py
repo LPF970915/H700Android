@@ -69,3 +69,11 @@ def require_hash(path, expected):
     if not expected or sha(path) != expected:
         raise ValueError(f'SHA256 mismatch: {path}')
     return path
+
+
+def require_manifest_binding(receipt):
+    expected = sha(regular(REPO / 'build-support/public/source-manifest.json'))
+    if receipt.get('passed') is not True or receipt.get('source_manifest_sha256') != expected:
+        raise ValueError('Receipt does not match the current public source manifest; '
+                         'prepare a separate tree for this source revision')
+    return expected

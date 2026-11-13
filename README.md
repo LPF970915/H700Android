@@ -1,5 +1,9 @@
 # ROC OS · H700 Android 10
 
+## 0.0.2 本地封装（2026-11-14）
+
+0.0.2 已完成本地封装及独立镜像核验，包含 Navigation17 的连发/唤醒清理修复、默认 NTP 源和版本标识。源码与测试同步更新；整卡首启、自动校时及低概率频闪仍保留各自验收边界。镜像尚未上传，网盘现有下载仍为0.0.1。详见[0.0.2 说明与哈希](docs/ROC_OS_0.0.2_20261114.md)。
+
 **为 H700 掌机适配的 Android 10 系统，让没有触摸屏的设备也能用按键操作安卓。**
 
 [English](README.en.md) · [候选版本与已知问题](docs/RELEASE_OVERVIEW.md) · [开发源码分支](https://github.com/LPF970915/H700Android/tree/codex/rg34xxsp-at4k-input-lockscreen)

@@ -1,0 +1,4 @@
+<resources>
+    <!-- Resource default only; Settings.Global.NTP_SERVER still takes precedence. -->
+    <string name="config_ntpServer" translatable="false">ntp.aliyun.com</string>
+</resources>
