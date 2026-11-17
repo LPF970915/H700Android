@@ -1,0 +1,47 @@
+{
+  "schema": "roc.h700.test10-stick-live-result.v1",
+  "recorded_local_date": "2026-11-17",
+  "model": "rg35xxh",
+  "image": "Test10",
+  "physical_actions_completed": true,
+  "events": {
+    "ABS_X": 0,
+    "ABS_Y": 0,
+    "ABS_Z": 0,
+    "ABS_RUDDER": 0,
+    "BTN_THUMBL": 2,
+    "BTN_THUMBR": 2,
+    "ABS_HAT0Y": 2
+  },
+  "diagnostic_lines": 134,
+  "all_diagnostic_lines_adc_control": true,
+  "all_diagnostic_lines_ctrl_00890000": true,
+  "all_diagnostic_lines_raw_invalid": true,
+  "control_readback": {
+    "ctrl": "0x00890000",
+    "select": "0x00000001",
+    "ccu": "0x00010001",
+    "centers": [
+      2092,
+      2058,
+      2066,
+      2036
+    ]
+  },
+  "fault_rejection_proven": true,
+  "physical_fix_verified": false,
+  "test10_module_sha256": "0c80d226a0be754997e987234e61032620448246bec467611b0a6506c0c964e0",
+  "swap_total_KiB": 2097148,
+  "swap_free_KiB": 2092004,
+  "device_rebooted": false,
+  "module_reloaded": false,
+  "security_changed": false,
+  "raw_evidence_is_private": true,
+  "controls": {
+    "out\\test10-rg35xxh-live-20261117\\physical-input-v1.private.txt": "5b7fe5afa7204a9f304e382d3495e6c2f79ba50755b20c2cecf45d71e514de88",
+    "out\\test10-rg35xxh-live-20261117\\kernel-stick-diagnostic-v1.private.txt": "d218392e9c1c439417bb0caa35ce5f3ff44f5f35f569e6bb54b08a239700f8cd",
+    "out\\test10-rg35xxh-live-20261117\\physical-input-v1-result.json": "76ac37ad66bca5b094a6129bac2ed22eeabad835ac2415c4dd04f5e77dd64087",
+    "out\\test10-rg35xxh-live-20261117\\bugreport-v1.private.zip": "12e9cf8a1adf965358c1fd2b6e423681a1b49e5ad1e884173c2c2af4910d1d8a"
+  },
+  "capture_ended": true
+}

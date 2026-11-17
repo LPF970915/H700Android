@@ -1,0 +1,125 @@
+{
+  "schema": "roc.h700.release-0.0.3.independent.v1",
+  "passed": true,
+  "version": "0.0.3",
+  "independent": true,
+  "producer_imported": false,
+  "device_accessed": false,
+  "images_modified": false,
+  "new_release_image_physically_tested": false,
+  "all_H700_models_accepted": false,
+  "GPT": [
+    {
+      "name": "special",
+      "offset": 37748736,
+      "bytes": 67108864
+    },
+    {
+      "name": "boot-resource",
+      "offset": 104857600,
+      "bytes": 33554432
+    },
+    {
+      "name": "env",
+      "offset": 138412032,
+      "bytes": 16777216
+    },
+    {
+      "name": "boot",
+      "offset": 155189248,
+      "bytes": 67108864
+    },
+    {
+      "name": "system",
+      "offset": 222298112,
+      "bytes": 8589934592
+    },
+    {
+      "name": "vendor",
+      "offset": 8812232704,
+      "bytes": 2147483648
+    },
+    {
+      "name": "userdata",
+      "offset": 10959716352,
+      "bytes": 21474836480
+    }
+  ],
+  "system": {
+    "path": "/system/build.prop",
+    "parent_sha256": "da093cf8ae3d0efa577565e37adee01de73a167df8473e5064de931e4a7006e2",
+    "sha256": "a29ff5fc9d9cf0bff5a73bb5f8a56ab26e180a0c62c91e01371dd09b4f9a7902",
+    "bytes": 5609,
+    "properties": {
+      "ro.build.display.id": "ROC_OS_ARM64_ver0.0.3",
+      "ro.roc.os.version": "0.0.3"
+    },
+    "file_byte_offsets": [
+      887,
+      5607
+    ],
+    "ext4_block_size": 4096,
+    "independent_bmap_offsets": [
+      {
+        "offset": 375706487,
+        "before": 50,
+        "after": 51
+      },
+      {
+        "offset": 375711207,
+        "before": 50,
+        "after": 51
+      }
+    ],
+    "all_other_properties_byte_exact": true,
+    "inode_metadata_and_extent_stat_byte_exact": true,
+    "readonly_fsck_passed": true
+  },
+  "gzip_sha256": "34dcf5f43c0a75675530ff9b6c052351985d51b379a6e6189b388f331c6aaa52",
+  "gzip_bytes": 591772793,
+  "raw_sha256": "42e08665eeeb953dba41eac8978b0c8fb8707e041dede5495409f4787bac8e5e",
+  "raw_bytes": 32434554368,
+  "parent_raw_sha256": "4998df90707eaab2d319bd77d6bf1ae4b262a598895338afafefe4d25704b43c",
+  "parent_gzip_sha256": "f78a8910ab46688fff862a69985db51a289550a13bdb839df38320c50e259dfe",
+  "parent_acceptance_sha256": "5946a9d78db74a79e7c0a104b1389af09010c5e0564af43b2dd0911eb2eab382",
+  "complete_gzip_parent_and_raw_byte_comparison": true,
+  "exactly_two_version_bytes_changed": true,
+  "differences": [
+    {
+      "offset": 375706487,
+      "before": 50,
+      "after": 51
+    },
+    {
+      "offset": 375711207,
+      "before": 50,
+      "after": 51
+    }
+  ],
+  "ranges": {
+    "prefix": "bb7a8d1d2fb12ab284501b7aeb9ff3a57b7b9f12aff4a9db04529e9bcde484ac",
+    "system": "7930bff5dbaa170e2825b3550f1a41061c004770cc9c1c9694dc1e8dae6e292b",
+    "vendor": "68183115705bdf104ec78c6232d38dcdb81143bed9bc5d2ed9ad1762b027e430",
+    "userdata": "637a02240df99491b9616503c69cd41638b7604c927675762e640014b3cd7d86",
+    "backup_gpt": "ba9ba2c16fbb57653f2d5b221bb2f0c2ee698550f1d9dc33df30b5565d23c5dc"
+  },
+  "all_boot_vendor_userdata_GPT_and_other_system_bytes_byte_exact": true,
+  "controls": {
+    "/mnt/d/Works/H700Android/out/roc-os-0.0.3-20261117/image-result.json": "581a70b8accc592831d4d5934c37118c0e6aa2b1aa554c35d43a7a8b4721134f",
+    "/mnt/d/Works/H700Android/tools/release/verify_003.py": "33a4426b83cc3edbf729c10d8a34bb4e68a7c8735573c61555587c838d9e6c11",
+    "/mnt/d/Works/H700Android/out/roc-os-h700-stick-adc-control-test11-20261117/acceptance.json": "5946a9d78db74a79e7c0a104b1389af09010c5e0564af43b2dd0911eb2eab382",
+    "/mnt/d/Works/H700Android/out/roc-os-0.0.3-20261117/input-lock.json": "2c6ead2cbaece992287285ef55afb60590a6ae95f99b68845dad904a096d122a",
+    "/mnt/d/Works/H700Android/tools/release/package_003.py": "a8415d19354bf4fc90fa6db2befdcb979582d08bc9fd3d5a9fe5b84909ca5ffa",
+    "/mnt/d/Works/H700Android/tools/release/package_003.ps1": "85b30834c8c88c18f930de57681e3d3c098d5e11be8f073bdf526e6d9f78d122",
+    "/mnt/d/Works/H700Android/tools/release/check_003_source.py": "b692dc5bad16beb0c867475418d713e0c581ba9b13d33face5548b70d3f5a924",
+    "/mnt/d/Works/H700Android/tools/release/package_002.py": "edf9cfbc02e15dd2fbc8f4bada792bbd4f8a0bdb9c16f6f5a6c657f20cd90cec",
+    "/mnt/d/Works/H700Android/tools/release/verify_002.py": "a737f350f8e8765b21105bc32ee497ef74f35ac6cea98d1c956caed88ab957a6",
+    "/mnt/d/Works/H700Android/tools/package_h700_v6a.py": "60dc0136f0c04c16d1ffda2257f063a018f48232e1374bfee0505483425def71",
+    "/mnt/d/Works/H700Android/build-support/public/source-manifest.json": "b883f1fd7cc43b5ff3f8fe2a476608ac40f8d28f281f2ead2e88691045854657",
+    "/mnt/d/Works/H700Android/build-support/public/overlay/device/roc/roc_os_release_candidate/release_properties.mk": "0068cb467c7143924fedfe0718fdcbacb789aa033d56d75d0a5c86bdeda39b9c",
+    "/mnt/d/Works/H700Android/docs/SPACE_REVIEW_20261028.md": "847b55c93f1c0a36983ada5a500d4311b18022ef86b2db2aa3dc5614f0f400d6",
+    "/mnt/d/Works/H700Android/out/ROC_OS_CURRENT_BASELINE.txt": "13d9aa968d3613056719cdfde0ad615160901da12325aa3124d043daef5ce0df",
+    "/mnt/d/Works/H700Android/out/ROC_OS_CURRENT_CANDIDATE.txt": "927d19c726edae10a34a30f971abc71939543b873831c9cb43c1949829d6622c"
+  },
+  "elapsed_seconds": 219.15193838300002
+}

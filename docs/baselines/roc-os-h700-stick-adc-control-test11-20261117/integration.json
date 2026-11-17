@@ -1,0 +1,25 @@
+{
+  "passed": true,
+  "schema": "roc.h700.stick-adc-control-integration.v1",
+  "module_sha256": "bb5229fda37b9e8eeee562b4042d7564e294a86cc22ba5108a3ac5ad82da4f23",
+  "parent_module_sha256": "5a017572b601ac8ae70216852cce3763428d5fa5793c4767812c8caf7b2d0deb",
+  "swap_prefix_byte_exact": true,
+  "default_swap_bytes": 2147483648,
+  "only_loader_change": "pinned module SHA256",
+  "controls": {
+    "/mnt/d/Works/H700Android/tools/memory_swap_v1/h700_optional_axes.sh": "b9174a17353fe4256e390b4ee436ecda6a95e8f26ff455b3dd830f6e4c5c0fbe",
+    "/mnt/d/Works/H700Android/tools/memory_swap_v1/rgsp-stick-axes.sh": "5ee9b45b60f7eb0761fd7a7b059398ec330511e10672138becd8d36ede12bdbf",
+    "/mnt/d/Works/H700Android/tools/memory_swap_v1/swap_prefix.sh": "31b8728b89640b832f7b2015904ee355d6539843b641c4b367ebc2a9ece25e70",
+    "/mnt/d/Works/H700Android/tools/input_profiles/stick_recovery_build_v2/prepare_loaders.py": "a7e66d98a033557ad555801773eaa0dae6ee7b2c8e16d5f62ba8e9d953d45d36",
+    "/mnt/d/Works/H700Android/tools/input_profiles/stick_sampling_v2/test_loaders.py": "edec742ef3196e4aa3a56e30999cce55f2e6cefa42f3fc8d77d36526719bb1b8"
+  },
+  "artifacts": {
+    "/mnt/d/Works/H700Android/out/stick-adc-control-repair-20261117-v1/module-v1/h700_stick_axes.ko": "bb5229fda37b9e8eeee562b4042d7564e294a86cc22ba5108a3ac5ad82da4f23",
+    "/mnt/d/Works/H700Android/out/stick-adc-control-repair-20261117-v1/integration-v1/h700_optional_axes.sh": "6188e45dbca5d7c9d2648d891f6d3e91d09f1e0f7efba0d11d221bd4ac6fe002",
+    "/mnt/d/Works/H700Android/out/stick-adc-control-repair-20261117-v1/integration-v1/rgsp-stick-axes.sh": "2853594445a0c0d79d20c257fc932439b31aa320a2c536c1986be6e22050f37a"
+  },
+  "loaders_receipt_sha256": "5f094cf0016c01e72a87921c5708bd0ca0a62523d7b0667110e0f7979e36e372",
+  "images_mutated": false,
+  "device_accessed": false,
+  "physical_acceptance": false
+}

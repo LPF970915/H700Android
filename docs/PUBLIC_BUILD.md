@@ -23,6 +23,14 @@
 
 11 月 15 日进一步加入 Navigation18 和 ViewRoot 导航恢复保护，当前清单有 1,759 个目标、626 个仓库输入。当前公共导航回归、输入闭合和 11 项公共工具测试通过，见 [validation-20261115.json](../build-support/public/validation-20261115.json)。真实增量生产构建已完成 framework、双 ABI ART 和完整依赖 preopt，并合入共用 Test6；整卡封装、独立镜像验收及 Windows 哈希核对通过，实机尚未验收。详见 [导航恢复修复](ROC_OS_NAVIGATION_RESUME_FIX_20261115.md)及 [Test6 说明](ROC_OS_H700_MANUAL_SELECTOR_TEST6_20261115.md)。外部启动资产继续固定为指定 0.0.1 输入；独立环境完整重编与该自编镜像的实机验收仍待完成。
 
+## 0.0.3 当前版本（2026-11-17）
+
+公共覆盖层版本已同步为 0.0.3，当前清单仍含 1,759 个目标、626 个仓库输入。新版本检查见 [validation-20261117-003.json](../build-support/public/validation-20261117-003.json)；前述 11 月 14／15 日的冻结记录保留原范围。
+
+作者的正式 0.0.3 整卡保留 Test11 已获 RG35XX H 用户确认的摇杆修复，只更新精确父包的两处等长版本字符。十二机型启动器、面板试屏、摇杆、交换空间及正式封装工具的源码入口见[组件地图](TEST10_SOURCE_MAP.md)，发行身份见 [0.0.3 说明](ROC_OS_0.0.3_20261117.md)。
+
+本指南仍构建 Android 用户空间并保留指定 0.0.1 启动资产，尚未把作者增量启动／封装依赖接成干净克隆的一步完整流程。其输出与正式 0.0.3 的差异及独立公开重编状态见 [PUBLIC_BUILD_STATUS.md](PUBLIC_BUILD_STATUS.md)。
+
 ## 1. 下载外部大文件
 
 | 输入 | 获取方式 | 用途 |
@@ -126,7 +134,7 @@ python3 "$REPO/tools/public_build/validate_manifest.py"
 python3 "$REPO/tools/public_build/test_public_build.py"
 ```
 
-该检查不读取完整基础源码和参考镜像载荷，不能代替后续准备、编译和实机验证。0.0.2 的版本、当前 Navigation18、ViewRoot 导航保护和时间默认配置来自当前源码覆盖层；外部启动资产继续固定为 0.0.1 输入，避免让新输出成为自身构建前提。
+该检查不读取完整基础源码和参考镜像载荷，不能代替后续准备、编译和实机验证。0.0.3 版本、Navigation18、ViewRoot 导航保护和时间默认配置来自当前源码覆盖层；外部启动资产继续固定为 0.0.1 输入，避免让新输出成为自身构建前提。
 
 ## 6. 编译 Android 分区
 

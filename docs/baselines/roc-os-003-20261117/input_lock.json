@@ -1,0 +1,15 @@
+{
+  "tools/release/package_003.py": "a8415d19354bf4fc90fa6db2befdcb979582d08bc9fd3d5a9fe5b84909ca5ffa",
+  "tools/release/verify_003.py": "33a4426b83cc3edbf729c10d8a34bb4e68a7c8735573c61555587c838d9e6c11",
+  "tools/release/package_003.ps1": "85b30834c8c88c18f930de57681e3d3c098d5e11be8f073bdf526e6d9f78d122",
+  "tools/release/check_003_source.py": "b692dc5bad16beb0c867475418d713e0c581ba9b13d33face5548b70d3f5a924",
+  "tools/release/package_002.py": "edf9cfbc02e15dd2fbc8f4bada792bbd4f8a0bdb9c16f6f5a6c657f20cd90cec",
+  "tools/release/verify_002.py": "a737f350f8e8765b21105bc32ee497ef74f35ac6cea98d1c956caed88ab957a6",
+  "tools/package_h700_v6a.py": "60dc0136f0c04c16d1ffda2257f063a018f48232e1374bfee0505483425def71",
+  "build-support/public/source-manifest.json": "b883f1fd7cc43b5ff3f8fe2a476608ac40f8d28f281f2ead2e88691045854657",
+  "build-support/public/overlay/device/roc/roc_os_release_candidate/release_properties.mk": "0068cb467c7143924fedfe0718fdcbacb789aa033d56d75d0a5c86bdeda39b9c",
+  "out/roc-os-h700-stick-adc-control-test11-20261117/acceptance.json": "5946a9d78db74a79e7c0a104b1389af09010c5e0564af43b2dd0911eb2eab382",
+  "docs/SPACE_REVIEW_20261028.md": "847b55c93f1c0a36983ada5a500d4311b18022ef86b2db2aa3dc5614f0f400d6",
+  "out/ROC_OS_CURRENT_BASELINE.txt": "13d9aa968d3613056719cdfde0ad615160901da12325aa3124d043daef5ce0df",
+  "out/ROC_OS_CURRENT_CANDIDATE.txt": "927d19c726edae10a34a30f971abc71939543b873831c9cb43c1949829d6622c"
+}

@@ -1,0 +1,462 @@
+{
+  "schema": "roc.h700.release003.acceptance.v1",
+  "version": "0.0.3",
+  "date": "2026-11-17",
+  "recorded_at": "2026-11-17T23:11:36.517963+08:00",
+  "release_kind": "official",
+  "user_authorized_release": true,
+  "offline_passed": true,
+  "image": {
+    "path": "out/roc-os-0.0.3-20261117/ROC_OS_ARM64_ver0.0.3.img.gz",
+    "bytes": 591772793,
+    "sha256": "34dcf5f43c0a75675530ff9b6c052351985d51b379a6e6189b388f331c6aaa52",
+    "raw_bytes": 32434554368,
+    "raw_sha256": "42e08665eeeb953dba41eac8978b0c8fb8707e041dede5495409f4787bac8e5e",
+    "minimum_card_GB": 64
+  },
+  "release_delta": {
+    "parent": "0.0.2 Test11",
+    "exactly_two_version_bytes_changed": true,
+    "file": "/system/build.prop",
+    "properties": {
+      "ro.build.display.id": "ROC_OS_ARM64_ver0.0.3",
+      "ro.roc.os.version": "0.0.3"
+    },
+    "all_other_full_card_bytes_identical_to_Test11": true
+  },
+  "implementation": {
+    "one_shared_manual_model_image": true,
+    "integrated_model_ids": [
+      "rg34xx",
+      "rg34xxsp",
+      "rgsp",
+      "rgcubexx",
+      "rg35xxplus",
+      "rg35xx_2025",
+      "rg28xx",
+      "rg35xxh",
+      "rg40xxh",
+      "rg40xxv",
+      "rg35xxsp",
+      "rg35xxpro"
+    ],
+    "menu_models": 12,
+    "electrical_profiles": 10,
+    "first_boot_model": "rg35xxh",
+    "menu_preview_models": [
+      "rg35xxh",
+      "rg34xxsp",
+      "rgcubexx"
+    ],
+    "loading_text": "加载中，请稍后",
+    "no_RAM_identity_gate": true,
+    "Navigation18_framework_ART_Lid4_time_USB_security_byte_exact": true,
+    "kernel_DTB_environment_UBoot_byte_exact": true,
+    "changed_CPIO_payloads": [
+      "grow/h700-optional-axes.sh"
+    ],
+    "changed_vendor_payloads": [
+      "/modules/h700_stick_axes.ko",
+      "/bin/rgsp-stick-axes.sh"
+    ],
+    "models": {
+      "rg34xx": {
+        "model_id": "rg34xx",
+        "label": "34XX",
+        "geometry": "720x480",
+        "form_factor": "landscape",
+        "lid": false,
+        "sticks": 0,
+        "wifi": null,
+        "aliases": [],
+        "panel_profile": 2,
+        "native_size": [
+          720,
+          480
+        ],
+        "display_rotation": 0,
+        "reference_assumption": null,
+        "ram_gate": false,
+        "physical_accepted": false
+      },
+      "rg34xxsp": {
+        "model_id": "rg34xxsp",
+        "label": "34XX SP",
+        "geometry": "720x480",
+        "form_factor": "clamshell",
+        "lid": true,
+        "sticks": 2,
+        "wifi": null,
+        "aliases": [],
+        "panel_profile": 0,
+        "native_size": [
+          720,
+          480
+        ],
+        "display_rotation": 0,
+        "reference_assumption": null,
+        "ram_gate": false,
+        "physical_accepted": false
+      },
+      "rgsp": {
+        "model_id": "rgsp",
+        "label": "RGSP",
+        "geometry": "720x480",
+        "form_factor": "clamshell",
+        "lid": true,
+        "sticks": 0,
+        "wifi": null,
+        "aliases": [],
+        "panel_profile": 0,
+        "native_size": [
+          720,
+          480
+        ],
+        "display_rotation": 0,
+        "reference_assumption": null,
+        "ram_gate": false,
+        "physical_accepted": false
+      },
+      "rgcubexx": {
+        "model_id": "rgcubexx",
+        "label": "CubeXX",
+        "geometry": "720x720",
+        "form_factor": "landscape",
+        "lid": false,
+        "sticks": 2,
+        "wifi": null,
+        "aliases": [],
+        "panel_profile": 3,
+        "native_size": [
+          720,
+          720
+        ],
+        "display_rotation": 0,
+        "reference_assumption": null,
+        "ram_gate": false,
+        "physical_accepted": false
+      },
+      "rg35xxplus": {
+        "model_id": "rg35xxplus",
+        "label": "35XX Plus",
+        "geometry": "640x480",
+        "form_factor": "portrait",
+        "lid": false,
+        "sticks": 0,
+        "wifi": null,
+        "aliases": [],
+        "panel_profile": 4,
+        "native_size": [
+          640,
+          480
+        ],
+        "display_rotation": 0,
+        "reference_assumption": null,
+        "ram_gate": false,
+        "physical_accepted": false
+      },
+      "rg35xx_2025": {
+        "model_id": "rg35xx_2025",
+        "label": "35XX+（2025）",
+        "geometry": "640x480",
+        "form_factor": "portrait",
+        "lid": false,
+        "sticks": 0,
+        "wifi": false,
+        "aliases": [
+          "35XX+",
+          "35XX 2025",
+          "35XX2025版"
+        ],
+        "panel_profile": 4,
+        "native_size": [
+          640,
+          480
+        ],
+        "display_rotation": 0,
+        "reference_assumption": "uses Plus reference; 2025-specific hardware unverified",
+        "ram_gate": false,
+        "physical_accepted": false
+      },
+      "rg28xx": {
+        "model_id": "rg28xx",
+        "label": "28XX",
+        "geometry": "640x480",
+        "form_factor": "landscape",
+        "lid": false,
+        "sticks": 0,
+        "wifi": false,
+        "aliases": [],
+        "panel_profile": 5,
+        "native_size": [
+          480,
+          640
+        ],
+        "display_rotation": 90,
+        "reference_assumption": null,
+        "ram_gate": false,
+        "physical_accepted": false
+      },
+      "rg35xxh": {
+        "model_id": "rg35xxh",
+        "label": "35XX H",
+        "geometry": "640x480",
+        "form_factor": "landscape",
+        "lid": false,
+        "sticks": 2,
+        "wifi": null,
+        "aliases": [],
+        "panel_profile": 1,
+        "native_size": [
+          640,
+          480
+        ],
+        "display_rotation": 0,
+        "reference_assumption": null,
+        "ram_gate": false,
+        "physical_accepted": false
+      },
+      "rg40xxh": {
+        "model_id": "rg40xxh",
+        "label": "40XX H",
+        "geometry": "640x480",
+        "form_factor": "landscape",
+        "lid": false,
+        "sticks": 2,
+        "wifi": null,
+        "aliases": [],
+        "panel_profile": 6,
+        "native_size": [
+          640,
+          480
+        ],
+        "display_rotation": 0,
+        "reference_assumption": null,
+        "ram_gate": false,
+        "physical_accepted": false
+      },
+      "rg40xxv": {
+        "model_id": "rg40xxv",
+        "label": "40XX V",
+        "geometry": "640x480",
+        "form_factor": "portrait",
+        "lid": false,
+        "sticks": 1,
+        "wifi": null,
+        "aliases": [],
+        "panel_profile": 7,
+        "native_size": [
+          640,
+          480
+        ],
+        "display_rotation": 0,
+        "reference_assumption": null,
+        "ram_gate": false,
+        "physical_accepted": false
+      },
+      "rg35xxsp": {
+        "model_id": "rg35xxsp",
+        "label": "35XX SP",
+        "geometry": "640x480",
+        "form_factor": "clamshell",
+        "lid": true,
+        "sticks": 0,
+        "wifi": null,
+        "aliases": [],
+        "panel_profile": 8,
+        "native_size": [
+          640,
+          480
+        ],
+        "display_rotation": 0,
+        "reference_assumption": null,
+        "ram_gate": false,
+        "physical_accepted": false
+      },
+      "rg35xxpro": {
+        "model_id": "rg35xxpro",
+        "label": "35XX Pro",
+        "geometry": "640x480",
+        "form_factor": "portrait",
+        "lid": false,
+        "sticks": 2,
+        "wifi": null,
+        "aliases": [],
+        "panel_profile": 9,
+        "native_size": [
+          640,
+          480
+        ],
+        "display_rotation": 0,
+        "reference_assumption": null,
+        "ram_gate": false,
+        "physical_accepted": false
+      }
+    },
+    "module_sha256": "bb5229fda37b9e8eeee562b4042d7564e294a86cc22ba5108a3ac5ad82da4f23",
+    "independent_clicks_from_ADC": true,
+    "bounded_managed_ADC_recovery": true,
+    "preserves_calibration_after_resume": true,
+    "ADC_CTRL_mode_bits": "18:19",
+    "ADC_CTRL_ready_mask": "0x000d0000",
+    "ADC_CTRL_ready_value": "0x00090000",
+    "preserves_unrelated_CTRL_bits": true
+  },
+  "swap": {
+    "default_enabled": true,
+    "bytes": 2147483648,
+    "usable_KiB": 2097148,
+    "file": "/data/roc-swap/swapfile-2g",
+    "minimum_remaining_free_bytes": 536870912,
+    "first_boot_allocation": true,
+    "reuse_without_reformat": true,
+    "failure_nonfatal": true,
+    "dd_wait_deadline_seconds": 300,
+    "strict_total_IO_deadline": false,
+    "actual_host_swapon": false,
+    "physical_acceptance": false
+  },
+  "inherited_tests": {
+    "actual_C_host_scenarios": 38,
+    "frozen_parent_negative_scenarios": 6,
+    "actual_C_host_checks": 1846,
+    "final_loader_cases": 45,
+    "inherited_swap_cases": 22,
+    "reference_CRCs_matched": 410,
+    "local_CRCs_matched": 418,
+    "module_imports_matched": 43,
+    "complete_gzip_raw_byte_comparison": true,
+    "Windows_SHA256": true,
+    "vendor_nodes": 511,
+    "frozen_controls": 114,
+    "frozen_Test10_actual_C_field_readback_reproduction": true
+  },
+  "proofs": {
+    "package": {
+      "path": "docs/baselines/roc-os-003-20261117/package.json",
+      "sha256": "581a70b8accc592831d4d5934c37118c0e6aa2b1aa554c35d43a7a8b4721134f"
+    },
+    "independent": {
+      "path": "docs/baselines/roc-os-003-20261117/independent.json",
+      "sha256": "1f81bd1a875002b37d87ade2395126d36b8c8eb7c7816bdce80fe8c5fcaf4345"
+    },
+    "windows_hash": {
+      "path": "docs/baselines/roc-os-003-20261117/windows_hash.json",
+      "sha256": "5c767e11054f56c7a65b2ca2756f513ee43714b9688556676478b301fbddf83f"
+    },
+    "source_check": {
+      "path": "docs/baselines/roc-os-003-20261117/source_check.json",
+      "sha256": "2e06d5db22f2356d38ddfba4730a8b620a746ebc17f93730d534f71fa2f32fa2"
+    },
+    "input_lock": {
+      "path": "docs/baselines/roc-os-003-20261117/input_lock.json",
+      "sha256": "2c6ead2cbaece992287285ef55afb60590a6ae95f99b68845dad904a096d122a"
+    },
+    "Test11_user_confirmation": {
+      "path": "docs/baselines/roc-os-003-20261117/Test11_user_confirmation.json",
+      "sha256": "61c6c75db136bf5c0a021a8f19c88e5d690e036c207dcef20f29e3bb61908774"
+    },
+    "Test11_parent_acceptance": {
+      "path": "docs/baselines/roc-os-h700-stick-adc-control-test11-20261117/acceptance.json",
+      "sha256": "5946a9d78db74a79e7c0a104b1389af09010c5e0564af43b2dd0911eb2eab382"
+    }
+  },
+  "foreground_execution_logs": {
+    "package": {
+      "path": "out/roc-os-0.0.3-20261117-logs/roc-h700-release003-package-20261117-225950.log",
+      "sha256": "508aef02d648ca5f4b155c34fbd675c2458a507b89a3d9875249d6c8339df471"
+    },
+    "verify": {
+      "path": "out/roc-os-0.0.3-20261117-logs/roc-h700-release003-verify-20261117-230625.log",
+      "sha256": "27c1deb333c901d98e9a8f028d14f1e96894bc5dddf94fa484e4f64295bf61bb"
+    },
+    "public-check": {
+      "path": "out/roc-os-0.0.3-20261117-logs/roc-h700-release003-public-check-20261117-231017.log",
+      "sha256": "1d38a72b18ff3c4f7a14bfa1a4faf19d540bbeddede06b12d327149b58570b33"
+    }
+  },
+  "Test11_public_proofs": {
+    "abi": {
+      "path": "docs/baselines/roc-os-h700-stick-adc-control-test11-20261117/abi.json",
+      "sha256": "c0153368bc47d0b0275006e3fbd504d3802c81b0fdbbb2348ad54f52969515c8"
+    },
+    "acceptance": {
+      "path": "docs/baselines/roc-os-h700-stick-adc-control-test11-20261117/acceptance.json",
+      "sha256": "5946a9d78db74a79e7c0a104b1389af09010c5e0564af43b2dd0911eb2eab382"
+    },
+    "artifact_review": {
+      "path": "docs/baselines/roc-os-h700-stick-adc-control-test11-20261117/artifact_review.json",
+      "sha256": "8753c414036fc615be1f53dd4147dc7483efa7c201e151a5fb36dfe68e911b83"
+    },
+    "candidate": {
+      "path": "docs/baselines/roc-os-h700-stick-adc-control-test11-20261117/candidate.json",
+      "sha256": "47e23d128904f2c8e679581ae60abf35dc819ff9dab05826be03d1ec65fa8d19"
+    },
+    "host": {
+      "path": "docs/baselines/roc-os-h700-stick-adc-control-test11-20261117/host.json",
+      "sha256": "f0a4dc6df0c6c7c6d96ebf3e7aaea8e2e7133b2c906315630194a2d3e77846ce"
+    },
+    "independent": {
+      "path": "docs/baselines/roc-os-h700-stick-adc-control-test11-20261117/independent.json",
+      "sha256": "7950a13534d6abef26468b4661bd0d85d3a0d731f0f98bb58b1fcdea5abf4859"
+    },
+    "integration": {
+      "path": "docs/baselines/roc-os-h700-stick-adc-control-test11-20261117/integration.json",
+      "sha256": "90566d413fdb4a863367da53b851f944171ff3410973329e3836dba9060fa7d4"
+    },
+    "kernel_binding": {
+      "path": "docs/baselines/roc-os-h700-stick-adc-control-test11-20261117/kernel_binding.json",
+      "sha256": "e4bc841abe89e2f71acfa08d69bcd4c45ff8dda324f05d000d443220b81d462a"
+    },
+    "loaders": {
+      "path": "docs/baselines/roc-os-h700-stick-adc-control-test11-20261117/loaders.json",
+      "sha256": "5f094cf0016c01e72a87921c5708bd0ca0a62523d7b0667110e0f7979e36e372"
+    },
+    "manifest": {
+      "path": "docs/baselines/roc-os-h700-stick-adc-control-test11-20261117/manifest.json",
+      "sha256": "a964c3f39cf26b17ae6b4fdbdc560f067107ec1470b62c13fc5d297cfef982f2"
+    },
+    "memory": {
+      "path": "docs/baselines/roc-os-h700-stick-adc-control-test11-20261117/memory.json",
+      "sha256": "fc14cd6b7092ba62b85aa71132b0c42cd5ff584818a970d9ebe8bbe7b9431d0c"
+    },
+    "module": {
+      "path": "docs/baselines/roc-os-h700-stick-adc-control-test11-20261117/module.json",
+      "sha256": "0012cee1a9f4a5903ff0eb2aabdbd88acb2e6ddaaed503b50d951e34f1affa08"
+    },
+    "package": {
+      "path": "docs/baselines/roc-os-h700-stick-adc-control-test11-20261117/package.json",
+      "sha256": "064ab38239e8995cd0cc2bf5f9f8c9118765dbe914545dec19b37979f5be79a2"
+    },
+    "preparation": {
+      "path": "docs/baselines/roc-os-h700-stick-adc-control-test11-20261117/preparation.json",
+      "sha256": "db9ea944d91ca5a64b17e832d001124b1e5d236eba8f12f389a4fc8adf6087d6"
+    },
+    "previous_Test10_live_failure": {
+      "path": "docs/baselines/roc-os-h700-stick-adc-control-test11-20261117/previous_Test10_live_failure.json",
+      "sha256": "7abf7dac7daa3e88a7b260b44fc9023ff075f828c58bcd6f1999b9574cad26a8"
+    },
+    "source_review": {
+      "path": "docs/baselines/roc-os-h700-stick-adc-control-test11-20261117/source_review.json",
+      "sha256": "7e86884478321abb32c7befa7da216338a98b01a86aad04eec4866b4995b8cc6"
+    },
+    "windows_hash": {
+      "path": "docs/baselines/roc-os-h700-stick-adc-control-test11-20261117/windows_hash.json",
+      "sha256": "0c0b5e841325c7dae216f7ef768529582b986817a896deaae954d9a639ea5ac5"
+    }
+  },
+  "source_manifest_sha256": "b883f1fd7cc43b5ff3f8fe2a476608ac40f8d28f281f2ead2e88691045854657",
+  "public_tool_tests": 11,
+  "Test11_rg35xxh_stick_fix_user_confirmed": true,
+  "fresh_0_0_3_card_boot_accepted": false,
+  "all_H700_models_accepted": false,
+  "navigation_wake_fault_conclusively_closed": false,
+  "flicker_fixed": false,
+  "image_uploaded": false,
+  "Android_full_rebuild_performed": false,
+  "preserved_records": {
+    "docs/SPACE_REVIEW_20261028.md": "847b55c93f1c0a36983ada5a500d4311b18022ef86b2db2aa3dc5614f0f400d6",
+    "out/ROC_OS_CURRENT_BASELINE.txt": "13d9aa968d3613056719cdfde0ad615160901da12325aa3124d043daef5ce0df",
+    "out/ROC_OS_CURRENT_CANDIDATE.txt": "927d19c726edae10a34a30f971abc71939543b873831c9cb43c1949829d6622c"
+  }
+}

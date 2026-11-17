@@ -63,3 +63,8 @@ android/h700-android10/device/roc/roc_os_release_candidate/sepolicy/private/prop
 /tools/release/package_h700_navigation_test6.ps1 -text
 /tools/release/package_h700_twelve_model.ps1 -text
 /tools/release/run_navigation_test6_stage.ps1 -text
+
+# Preserve exact 0.0.3 and Test11 runner inputs across checkout and archive.
+/tools/input_profiles/stick_recovery_build_v2/run.ps1 -text
+/tools/input_profiles/stick_recovery_package_v2/run.ps1 -text
+/tools/release/package_003.ps1 -text

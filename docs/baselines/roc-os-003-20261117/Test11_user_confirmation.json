@@ -1,0 +1,21 @@
+{
+  "schema": "roc.h700.Test11.user-confirmation.v1",
+  "date": "2026-11-17",
+  "source": "Direct user reply in the current development conversation",
+  "requested_test": "Flash Test11; select RG35XX H; boot Android and check both stick directions",
+  "user_reply": "本次修复有效，将其封装为正式的0.0.3包，且同步现状到git并修改说明",
+  "tested_image": {
+    "path": "out/roc-os-h700-stick-adc-control-test11-20261117/ROC_OS_ARM64_ver0.0.2_H700_ManualModel_Test11_ADCControl_20261117.img.gz",
+    "bytes": 591772828,
+    "sha256": "f78a8910ab46688fff862a69985db51a289550a13bdb839df38320c50e259dfe",
+    "raw_bytes": 32434554368,
+    "raw_sha256": "4998df90707eaab2d319bd77d6bf1ae4b262a598895338afafefe4d25704b43c",
+    "minimum_card_GB": 64
+  },
+  "model": "rg35xxh",
+  "stick_fix_user_confirmed": true,
+  "new_device_logs_collected": false,
+  "fresh_0_0_3_card_boot_accepted": false,
+  "all_H700_models_accepted": false,
+  "wake_resume_acceptance_inferred": false
+}

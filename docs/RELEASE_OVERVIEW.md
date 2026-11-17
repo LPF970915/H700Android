@@ -1,56 +1,54 @@
 # ROC OS 发行概览
 
-更新日期：2026-11-17。当前最新本地候选为 **0.0.2 Test10**，已完成整卡封装、完整独立验证和 Windows SHA256 核对。它通过手动机型菜单供十二种 H700 设备共用；实体摇杆恢复、同包导航恢复及完整机型覆盖仍待确认。
+更新日期：2026-11-17。当前正式版本为 **0.0.3**，通过手动机型菜单供十二种 H700 设备共用。用户确认 Test11 的 RG35XX H 摇杆修复有效后，本次保留该实现并将镜像内部版本更新为 0.0.3。
 
-本页以当前候选为准。早期 RC、自动面板试验和中间测试包的故障过程保留在[历史记录](HISTORY.md)及对应日期文档，不再逐项列作当前版本问题。旧问题没有被删除或冒写成已修复。
+当前说明以该版本为准。早期 RC、面板识别试验和中间测试包的过程保留在[历史记录](HISTORY.md)及对应日期文档中。
 
 ## 版本与分发
 
 | 项目 | 当前状态 |
 | --- | --- |
-| 最新本地候选 | `ROC_OS_ARM64_ver0.0.2_H700_ManualModel_Test10_StickRecovery_20261117.img.gz` |
-| 压缩大小 | 591,771,367 字节 |
-| gzip SHA256 | `ad6cec97dafc641cc4729273f3aea40dc4a4047cef32080bbbfbb88b056f8535` |
+| 正式镜像 | `ROC_OS_ARM64_ver0.0.3.img.gz` |
+| 压缩大小 | 591,772,793 字节 |
+| gzip SHA256 | `34dcf5f43c0a75675530ff9b6c052351985d51b379a6e6189b388f331c6aaa52` |
 | 解压大小 | 32,434,554,368 字节 |
-| raw SHA256 | `b200fc3fe65cecc1bbf5d8fdf68e6643060c3e6faec499f276a4c4192ec44afe` |
-| 本地交付 | Test10 已完成，建议至少 64GB 测试 TF1、TF2 留空 |
-| 公开网盘 | 仍提供 0.0.1，Test10 尚未上传；[公开下载与校验](PUBLIC_DOWNLOADS.md) |
-| 版本定位 | 测试候选，未提升正式稳定版或历史接受基线 |
+| raw SHA256 | `42e08665eeeb953dba41eac8978b0c8fb8707e041dede5495409f4787bac8e5e` |
+| 包内版本 | `ROC_OS_ARM64_ver0.0.3`／`ro.roc.os.version=0.0.3` |
+| 本地交付 | 至少 64GB TF1，首次测试 TF2 留空 |
+| 公开网盘 | 仍提供 0.0.1，0.0.3 尚未上传；[下载与校验](PUBLIC_DOWNLOADS.md) |
 
-完整证明见 [Test10 工程说明](ROC_OS_H700_STICK_RECOVERY_TEST10_20261117.md)与[验收记录](baselines/roc-os-h700-stick-recovery-test10-20261117/acceptance.json)。Git 同步源码和说明不等于上传镜像资产。
+发布身份见 [0.0.3.json](../build-support/releases/0.0.3.json)，详细校验见 [0.0.3 发行说明](ROC_OS_0.0.3_20261117.md)。Git 同步源码和说明不等于镜像资产已上传。
 
-## 当前候选的变化
+## 主要变化
 
-Test10 保留十二机型启动菜单、三档面板试屏、保存默认／重选和“加载中，请稍后”提示。720×480 包括 34XX、34XXSP、RGSP，720×720 为 CubeXX，其余八项使用 640×480；各型号仍有各自的电气配置。首次菜单以 35XX H 640×480 开始，音量键在 35XX H、34XXSP、CubeXX 三个代表配置间切换，看到菜单后再选实际型号。具体步骤见[当前状态](CURRENT_STATUS.md)。
+0.0.3 保留十二机型启动菜单、三档面板试屏、保存默认／重选和“加载中，请稍后”提示。720×480 包括 34XX、34XXSP、RGSP，720×720 为 CubeXX，其余八项为 640×480；各机型使用对应面板初始化。首次菜单以 35XX H 640×480 开始，音量键在 35XX H、34XXSP、CubeXX 三个代表配置间切换，看到菜单后选择实际型号。步骤见[当前状态](CURRENT_STATUS.md)。
 
-Navigation18 及框架连发／唤醒保护已进入真实生产系统：短按立即响应，长按 400ms 后每 160ms 连发，同一会话最多 10 秒，需真实松开或轴回中重新放行；熄屏与窗口变化取消旧会话。此前完成的 framework、双 ABI ART 和依赖 preopt 产物继续包含在 Test10。
+Navigation18 及框架导航保护处理熄屏／窗口变化后的旧输入，短按立即响应，长按 400ms 后每 160ms 连发，同一会话最多 10 秒；松开或轴回中后重新放行。真实生产构建的 framework、双 ABI ART 和依赖 preopt 产物继续保留。
 
-针对 Test9 的双机摇杆反馈，本包更新公共摇杆模块及两份加载脚本。新候选分开处理 ADC 轴与 L3／R3 点击，对本模块已管理且没有争用迹象的 ADC 做受限恢复，保留中心和回中保护。默认 2GiB TF1 交换空间代码逐字保留，首次分配、后续复用，失败继续启动 Android。Lid4、时间默认源、USB 及生产签名／user／Enforcing 配置保持。
+公共摇杆驱动修正 ADC 模式位检查，解决 Test10 的 35XX H“L3／R3 正常但方向无事件”。新实现保留 ADC 所有权、校准中心、回中和有界恢复保护。用户已确认 Test11 的本次修复有效，0.0.3 沿用同一驱动与加载脚本。
+
+默认 2GiB TF1 交换空间首次分配、后续复用，失败继续启动 Android。Lid4、时间默认源、USB、生产签名与 user／Enforcing 配置继续保留。
 
 ## 验证范围
 
-| 范围 | 结论 |
+| 范围 | 当前结论 |
 | --- | --- |
-| 整卡文件 | 完整 gzip 解压与 raw 逐字比较、完整父包回读、GPT 和各分区范围通过 |
-| 变更边界 | 相对固定 Test8 仅变更一个 ramdisk helper、vendor 摇杆模块及加载脚本；其余启动和系统内容按字节保留 |
-| 文件元数据 | CPIO 成员、vendor 511 个节点及属主／模式／标签／时间检查通过 |
-| 新摇杆软件检查 | 实际 C 的 26 个正向场景、5 个旧代码负面对照、802 项检查及 45 个加载脚本场景通过 |
-| 模块匹配 | 410 个参考 CRC、418 个本地 CRC、43 项导入，以及实际内核导出／重定位匹配通过 |
-| 默认交换空间 | 继承 22 个脚本场景，前缀字节与 Test9 一致；主机未启用 swap |
-| 实体使用 | 当前没有连接硬件，不用离线通过代替摇杆、导航恢复、swap 或全机型验收 |
+| 摇杆根因与实现 | Test10 的 USB 原始输入和 ADC 诊断定位模式位误判；新实际 C 的 38 个正向场景、6 个旧代码负控及 1846 项检查通过 |
+| 模块与加载 | 410 个参考 CRC、418 个本地 CRC、43 项导入及实际内核导出／重定位匹配；45 个加载脚本场景通过 |
+| RG35XX H 实体反馈 | 用户确认 Test11 修复有效；本次未追加 USB 原始输入取证 |
+| 正式 0.0.3 封装 | 以精确 Test11 为父包，只更新 system 版本属性；完整验证与文件身份见发行说明 |
+| 新包及全机型 | 0.0.3 新封装包未另行刷机验收；十二机型完整覆盖仍在进行 |
 
-## 当前待验证事项
+后续按实际新包验证恢复后导航、其他机型显示／摇杆，以及交换空间、翻盖／休眠、USB 与校时等表现。不把历史测试故障直接列作 0.0.3 已确认缺陷，也不把单机修复扩大成全机型验收。
 
-优先验证 34XXSP 与 35XX H 的摇杆方向、回中、L3／R3 和熄屏恢复后的输入；同时确认 Navigation18 是否阻止此前解锁后持续导航的问题。旧反馈没有故障时完整 ADC／原始事件读回，因此唯一物理触发原因尚未证明。
+## 源码与构建
 
-十二机型菜单均已放行，但全部实物的显示／启动没有完成覆盖。实际 SwapTotal、首次分配等待和应用表现，以及同包 Wi-Fi、翻盖／休眠、USB 恢复、校时／RTC 保时及低概率频闪需分别验证。它们是当前验收边界，不能直接把早期 RC 的表现当作 Test10 已确认故障。
+公共 Android 覆盖层包含 1,759 个目标、626 个仓库输入，已包含 Navigation18 与 ViewRoot 保护。公共 Android 用户空间构建入口保留指定 0.0.1 启动资产；作者的十二机型启动与 0.0.3 增量链入口见[源码地图](TEST10_SOURCE_MAP.md)。
 
-## 源码与构建范围
-
-当前公共 Android 覆盖层含 1,759 个目标、626 个仓库输入，已包括 Navigation18 和 ViewRoot 保护。作者已完成真实 framework／双 ABI ART 生产构建并将其合入本包；公开 Android 用户空间构建入口仍采用指定 0.0.1 的启动资产。最新源文件与作者增量链见 [Test10 源码地图](TEST10_SOURCE_MAP.md)，可执行公共入口及其边界见[构建指南](PUBLIC_BUILD.md)和[构建状态](PUBLIC_BUILD_STATUS.md)。
+可执行入口与其验证范围见[构建指南](PUBLIC_BUILD.md)和[构建状态](PUBLIC_BUILD_STATUS.md)。当前没有声称干净克隆能一步逐字重现作者正式整卡。
 
 ## English summary
 
-As of November 17, 2026, **0.0.2 Test10** is the latest local twelve-model candidate. Whole-card packaging, independent verification and Windows SHA256 checks passed. It includes manual model selection, three panel trials, loading feedback, Navigation18 and framework guards, a shared stick recovery candidate, default 2GiB swap and Lid4. Hardware acceptance of the new stick repair, navigation after resume, swap and all twelve models remains pending. The public external download is still 0.0.1; Test10 has not been uploaded.
+As of November 17, 2026, **0.0.3** is the current release. It retains the Test11 stick repair confirmed by the user on RG35XX H, manual selection for twelve models, three panel trials, loading feedback, Navigation18 and framework guards, default 2GiB swap and Lid4.
 
-Historical candidate failures remain in their dated records instead of being presented as confirmed defects in Test10. The public Android overlay contains 1,759 targets and 626 repository inputs, while its build entry retains the pinned 0.0.1 boot assets. It does not establish a clean-clone reproduction of the author's incremental Test10 packaging chain. See the [source map](TEST10_SOURCE_MAP.md), [current status](CURRENT_STATUS.md), [downloads](PUBLIC_DOWNLOADS.md) and [build validation scope](PUBLIC_BUILD_STATUS.md).
+The release package updates the embedded system version from the exact Test11 parent. The newly packaged 0.0.3 image has not had a separate hardware acceptance run, and complete coverage of all twelve models remains in progress. The public external download is still 0.0.1; 0.0.3 has not been uploaded. See the [release notes](ROC_OS_0.0.3_20261117.md), [current status](CURRENT_STATUS.md), [downloads](PUBLIC_DOWNLOADS.md) and [build validation scope](PUBLIC_BUILD_STATUS.md).

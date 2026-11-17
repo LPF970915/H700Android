@@ -1,0 +1,73 @@
+{
+  "schema": "roc.h700.stick-adc-control-candidate.v1",
+  "software_checks_passed": true,
+  "recorded_local_date": "2026-11-17",
+  "status": "isolated compiled candidate; no new whole-card image",
+  "artifacts": {
+    "module": {
+      "path": "/mnt/d/Works/H700Android/out/stick-adc-control-repair-20261117-v1/module-v1/h700_stick_axes.ko",
+      "sha256": "bb5229fda37b9e8eeee562b4042d7564e294a86cc22ba5108a3ac5ad82da4f23"
+    },
+    "early_helper": {
+      "path": "/mnt/d/Works/H700Android/out/stick-adc-control-repair-20261117-v1/integration-v1/h700_optional_axes.sh",
+      "sha256": "6188e45dbca5d7c9d2648d891f6d3e91d09f1e0f7efba0d11d221bd4ac6fe002"
+    },
+    "android_loader": {
+      "path": "/mnt/d/Works/H700Android/out/stick-adc-control-repair-20261117-v1/integration-v1/rgsp-stick-axes.sh",
+      "sha256": "2853594445a0c0d79d20c257fc932439b31aa320a2c536c1986be6e22050f37a"
+    }
+  },
+  "proofs": {
+    "host": {
+      "path": "/mnt/d/Works/H700Android/out/stick-adc-control-repair-20261117-v1/host-final/host-result.json",
+      "sha256": "f0a4dc6df0c6c7c6d96ebf3e7aaea8e2e7133b2c906315630194a2d3e77846ce"
+    },
+    "module": {
+      "path": "/mnt/d/Works/H700Android/out/stick-adc-control-repair-20261117-v1/module-v1/result.json",
+      "sha256": "0012cee1a9f4a5903ff0eb2aabdbd88acb2e6ddaaed503b50d951e34f1affa08"
+    },
+    "abi": {
+      "path": "/mnt/d/Works/H700Android/out/stick-adc-control-repair-20261117-v1/module-v1/kernel-abi.json",
+      "sha256": "c0153368bc47d0b0275006e3fbd504d3802c81b0fdbbb2348ad54f52969515c8"
+    },
+    "kernel_binding": {
+      "path": "/mnt/d/Works/H700Android/out/stick-adc-control-repair-20261117-v1/module-v1/kernel-binding.json",
+      "sha256": "e4bc841abe89e2f71acfa08d69bcd4c45ff8dda324f05d000d443220b81d462a"
+    },
+    "loaders": {
+      "path": "/mnt/d/Works/H700Android/out/stick-adc-control-repair-20261117-v1/loaders-v1/result.json",
+      "sha256": "5f094cf0016c01e72a87921c5708bd0ca0a62523d7b0667110e0f7979e36e372"
+    },
+    "integration": {
+      "path": "/mnt/d/Works/H700Android/out/stick-adc-control-repair-20261117-v1/integration-v1/result.json",
+      "sha256": "90566d413fdb4a863367da53b851f944171ff3410973329e3836dba9060fa7d4"
+    },
+    "source_review": {
+      "path": "/mnt/d/Works/H700Android/out/stick-adc-control-repair-20261117-v1/source-review.json",
+      "sha256": "7e86884478321abb32c7befa7da216338a98b01a86aad04eec4866b4995b8cc6"
+    }
+  },
+  "host_candidate_cases": 38,
+  "host_negative_control_cases": 6,
+  "host_checks": 1846,
+  "loader_cases": 45,
+  "all_twelve_profiles_retained": true,
+  "default_swap_bytes": 2147483648,
+  "swap_prefix_byte_exact": true,
+  "parent_sources_preserved": true,
+  "images_mutated": false,
+  "new_whole_card_packaged": false,
+  "device_accessed": false,
+  "physical_acceptance": false,
+  "adc_control_rejection_proven": true,
+  "physical_fix_verified": false,
+  "limitations": [
+    "Hardware APIs are simulated in host tests.",
+    "Failure-time CTRL is known; successful physical repair is not yet tested.",
+    "GPIO mux restoration and closed-clock acquisition are outside this repair.",
+    "No artifact was loaded on the device; the live Test10 scene is preserved."
+  ],
+  "controls": {
+    "/mnt/d/Works/H700Android/tools/input_profiles/stick_recovery_build_v2/record.py": "c73fa462aae3f37709736519a4a6b3941d8b26907a60f6309cb9ed177f0e856a"
+  }
+}

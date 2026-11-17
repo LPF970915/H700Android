@@ -1,0 +1,21 @@
+{
+  "schema": "roc.h700.stick-adc-control-inputs.v1",
+  "inputs": {
+    "module": {
+      "path": "/mnt/d/Works/H700Android/out/stick-adc-control-repair-20261117-v1/module-v1/h700_stick_axes.ko",
+      "sha256": "bb5229fda37b9e8eeee562b4042d7564e294a86cc22ba5108a3ac5ad82da4f23"
+    },
+    "early_helper": {
+      "path": "/mnt/d/Works/H700Android/out/stick-adc-control-repair-20261117-v1/integration-v1/h700_optional_axes.sh",
+      "sha256": "6188e45dbca5d7c9d2648d891f6d3e91d09f1e0f7efba0d11d221bd4ac6fe002"
+    },
+    "android_loader": {
+      "path": "/mnt/d/Works/H700Android/out/stick-adc-control-repair-20261117-v1/integration-v1/rgsp-stick-axes.sh",
+      "sha256": "2853594445a0c0d79d20c257fc932439b31aa320a2c536c1986be6e22050f37a"
+    }
+  },
+  "candidate_receipt": {
+    "path": "/mnt/d/Works/H700Android/out/stick-adc-control-repair-20261117-v1/candidate.json",
+    "sha256": "47e23d128904f2c8e679581ae60abf35dc819ff9dab05826be03d1ec65fa8d19"
+  }
+}

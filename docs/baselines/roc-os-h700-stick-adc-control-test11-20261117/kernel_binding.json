@@ -1,0 +1,29 @@
+{
+  "passed": true,
+  "module_sha256": "bb5229fda37b9e8eeee562b4042d7564e294a86cc22ba5108a3ac5ad82da4f23",
+  "original_kernel_sha256": "3328c2fab9f19f7ea6a80e34b0a76238cf594bc631f77e05fec32f8adabad042",
+  "cards": [
+    {
+      "image": "test7",
+      "kernel_sha256": "2495e91a0a2a9aca0845a7d364c023a068b7e2f06cafe490927ffde8b8490670",
+      "exports_matched": 8715,
+      "relative_records_matched": 93585,
+      "module_imports_matched": 43
+    },
+    {
+      "image": "test8",
+      "kernel_sha256": "62c4feb1650f1c311e79ebfe75a979bac89f3da77f1ab6e46ad46a8924fdb6e6",
+      "exports_matched": 8715,
+      "relative_records_matched": 93585,
+      "module_imports_matched": 43
+    },
+    {
+      "image": "test9",
+      "kernel_sha256": "62c4feb1650f1c311e79ebfe75a979bac89f3da77f1ab6e46ad46a8924fdb6e6",
+      "exports_matched": 8715,
+      "relative_records_matched": 93585,
+      "module_imports_matched": 43
+    }
+  ],
+  "module_version_crc_rewriting": false
+}

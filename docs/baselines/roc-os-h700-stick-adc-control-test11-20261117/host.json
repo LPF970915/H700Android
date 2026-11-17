@@ -1,0 +1,497 @@
+{
+  "schema": "roc.h700.stick-recovery-v4-host.v1",
+  "passed": true,
+  "candidate_scenarios": 38,
+  "negative_control_scenarios": 6,
+  "frozen_v3_real_readback_scenarios": 1,
+  "frozen_v2_legacy_fixture_scenarios": 5,
+  "checks": 1846,
+  "source_sha256": {
+    "h700_stick_axes.c": "ba608d34bacc10db39bea563588081f7514b8a03aea9972699205c5ca439b91f",
+    "axis_math.h": "41f0dabaa85341815c907847f656222d3c56fa058bc3e6752a07bb2efa1df04b",
+    "h700_profile_policy.h": "c1daa59474115df29433a4beecc1d4b62bc05f340c1f6d81fd18c182d802cb15",
+    "h700_profile_table.h": "f81e3355a450250f322917786301e03873ee1e100e5175f6298344688182892c",
+    "Makefile": "fe66fea7768d572acda4912225e2c49ef3059a73f5b6981fd9a4cbd5489875f1"
+  },
+  "controls": {
+    "/mnt/d/Works/H700Android/tools/input_profiles/stick_recovery_v4/h700_stick_axes.c": "ba608d34bacc10db39bea563588081f7514b8a03aea9972699205c5ca439b91f",
+    "/mnt/d/Works/H700Android/tools/input_profiles/stick_recovery_v4/axis_math.h": "41f0dabaa85341815c907847f656222d3c56fa058bc3e6752a07bb2efa1df04b",
+    "/mnt/d/Works/H700Android/tools/input_profiles/stick_recovery_v4/h700_profile_policy.h": "c1daa59474115df29433a4beecc1d4b62bc05f340c1f6d81fd18c182d802cb15",
+    "/mnt/d/Works/H700Android/tools/input_profiles/stick_recovery_v4/h700_profile_table.h": "f81e3355a450250f322917786301e03873ee1e100e5175f6298344688182892c",
+    "/mnt/d/Works/H700Android/tools/input_profiles/stick_recovery_v4/Makefile": "fe66fea7768d572acda4912225e2c49ef3059a73f5b6981fd9a4cbd5489875f1",
+    "/mnt/d/Works/H700Android/tools/input_profiles/stick_recovery_v4/test_kernel_shim.h": "6240b4ca392bd2f54f71c7d5976c0abdcf249668dceaccdfc8250ca2ed6b3166",
+    "/mnt/d/Works/H700Android/tools/input_profiles/stick_recovery_v4/test_recovery.c": "fb9e58de0c4f74e461273ae282efcda6e88bbf52d3ef53e827fbe85d91167ad9",
+    "/mnt/d/Works/H700Android/tools/input_profiles/stick_recovery_v4/run_host.py": "0a5ef89dcc5b03c3d613efab8ed2de6993fb5ec45bd3a3b8f71427fdeed012c2",
+    "/mnt/d/Works/H700Android/tools/input_profiles/stick_recovery_v4/parent-inputs.json": "e7519b06a4ba64d9ba2b134ae43027bc0437fc5e9cc569106ded43786fd16872",
+    "/mnt/d/Works/H700Android/tools/input_profiles/stick_recovery_v4/README.md": "15343028cb343a0e4e577c7f4e3baedcf4b3928ab4886ec9ddc16b0c75ad447e",
+    "/mnt/d/Works/H700Android/tools/input_profiles/stick_recovery_v3/h700_stick_axes.c": "4f141d23544ae24af31164ef94b3462ac4d26513baf0e6e7a9c2ff7973a8d9ba",
+    "/mnt/d/Works/H700Android/tools/input_profiles/stick_recovery_v3/axis_math.h": "41f0dabaa85341815c907847f656222d3c56fa058bc3e6752a07bb2efa1df04b",
+    "/mnt/d/Works/H700Android/tools/input_profiles/stick_recovery_v3/h700_profile_policy.h": "c1daa59474115df29433a4beecc1d4b62bc05f340c1f6d81fd18c182d802cb15",
+    "/mnt/d/Works/H700Android/tools/input_profiles/stick_recovery_v3/h700_profile_table.h": "f81e3355a450250f322917786301e03873ee1e100e5175f6298344688182892c",
+    "/mnt/d/Works/H700Android/tools/input_profiles/stick_recovery_v3/test_kernel_shim.h": "8fd92077c2e571ec65cce02c48d91af38e273ee699a2477ab3f236d32dc4a443",
+    "/mnt/d/Works/H700Android/tools/input_profiles/stick_sampling_v2/h700_stick_axes.c": "31825f757a4ce95b3c96510db02acb08e3865b1d0467ac0baa634cfc7d164507",
+    "/mnt/d/Works/H700Android/tools/input_profiles/stick_sampling_v2/axis_math.h": "41f0dabaa85341815c907847f656222d3c56fa058bc3e6752a07bb2efa1df04b",
+    "/mnt/d/Works/H700Android/tools/input_profiles/stick_sampling_v2/h700_profile_policy.h": "4b4c510c41cf6a620d152515044dc9c1e8af0a96fd7146ae3157e3dc45d298ec",
+    "/mnt/d/Works/H700Android/tools/input_profiles/stick_sampling_v2/h700_profile_table.h": "f81e3355a450250f322917786301e03873ee1e100e5175f6298344688182892c",
+    "/mnt/d/Works/H700Android/tools/input_profiles/stick_sampling_v2/test_kernel_shim.h": "65764beeb04ec42ada3d0d9bfa445f95ae9e7e5ee9e17d126a15f1d08f9f761d"
+  },
+  "details": {
+    "candidate": {
+      "compile_command": [
+        "gcc",
+        "-std=gnu11",
+        "-O2",
+        "-Wall",
+        "-Wextra",
+        "-Werror",
+        "-Wno-sign-compare",
+        "/mnt/d/Works/H700Android/tools/input_profiles/stick_recovery_v4/test_recovery.c",
+        "-o",
+        "/mnt/d/Works/H700Android/out/stick-adc-control-repair-20261117-v1/host-final/candidate"
+      ],
+      "binary_sha256": "0c75e1e58a699aba1875245f5da617d1160c85cbd56a2da30e254a9b18a8582f",
+      "runs": [
+        {
+          "case": [
+            "healthy",
+            "rg34xxsp"
+          ],
+          "exit_code": 0,
+          "stdout": "PASS healthy / 214 checks; actual C, hardware mocked\n",
+          "stderr": ""
+        },
+        {
+          "case": [
+            "healthy",
+            "rg35xxh"
+          ],
+          "exit_code": 0,
+          "stdout": "PASS healthy / 214 checks; actual C, hardware mocked\n",
+          "stderr": ""
+        },
+        {
+          "case": [
+            "healthy",
+            "rg40xxh"
+          ],
+          "exit_code": 0,
+          "stdout": "PASS healthy / 214 checks; actual C, hardware mocked\n",
+          "stderr": ""
+        },
+        {
+          "case": [
+            "healthy",
+            "rg40xxv"
+          ],
+          "exit_code": 0,
+          "stdout": "PASS healthy / 214 checks; actual C, hardware mocked\n",
+          "stderr": ""
+        },
+        {
+          "case": [
+            "healthy",
+            "rgcubexx"
+          ],
+          "exit_code": 0,
+          "stdout": "PASS healthy / 214 checks; actual C, hardware mocked\n",
+          "stderr": ""
+        },
+        {
+          "case": [
+            "healthy",
+            "rg35xxpro"
+          ],
+          "exit_code": 0,
+          "stdout": "PASS healthy / 214 checks; actual C, hardware mocked\n",
+          "stderr": ""
+        },
+        {
+          "case": [
+            "adc-fault-clicks"
+          ],
+          "exit_code": 0,
+          "stdout": "PASS adc-fault-clicks / 17 checks; actual C, hardware mocked\n",
+          "stderr": ""
+        },
+        {
+          "case": [
+            "ccu-fault-clicks"
+          ],
+          "exit_code": 0,
+          "stdout": "PASS ccu-fault-clicks / 18 checks; actual C, hardware mocked\n",
+          "stderr": ""
+        },
+        {
+          "case": [
+            "recover-disabled"
+          ],
+          "exit_code": 0,
+          "stdout": "PASS recover-disabled / 21 checks; actual C, hardware mocked\n",
+          "stderr": ""
+        },
+        {
+          "case": [
+            "recover-mode"
+          ],
+          "exit_code": 0,
+          "stdout": "PASS recover-mode / 21 checks; actual C, hardware mocked\n",
+          "stderr": ""
+        },
+        {
+          "case": [
+            "recover-selection"
+          ],
+          "exit_code": 0,
+          "stdout": "PASS recover-selection / 21 checks; actual C, hardware mocked\n",
+          "stderr": ""
+        },
+        {
+          "case": [
+            "recover-single-cycle"
+          ],
+          "exit_code": 0,
+          "stdout": "PASS recover-single-cycle / 21 checks; actual C, hardware mocked\n",
+          "stderr": ""
+        },
+        {
+          "case": [
+            "recover-burst"
+          ],
+          "exit_code": 0,
+          "stdout": "PASS recover-burst / 21 checks; actual C, hardware mocked\n",
+          "stderr": ""
+        },
+        {
+          "case": [
+            "ctrl-readback-fixture"
+          ],
+          "exit_code": 0,
+          "stdout": "PASS ctrl-readback-fixture / 7 checks; actual C, hardware mocked\n",
+          "stderr": ""
+        },
+        {
+          "case": [
+            "live-ctrl-readback"
+          ],
+          "exit_code": 0,
+          "stdout": "PASS live-ctrl-readback / 34 checks; actual C, hardware mocked\n",
+          "stderr": ""
+        },
+        {
+          "case": [
+            "startup-single"
+          ],
+          "exit_code": 0,
+          "stdout": "PASS startup-single / 13 checks; actual C, hardware mocked\n",
+          "stderr": ""
+        },
+        {
+          "case": [
+            "startup-single-cycle"
+          ],
+          "exit_code": 0,
+          "stdout": "PASS startup-single-cycle / 13 checks; actual C, hardware mocked\n",
+          "stderr": ""
+        },
+        {
+          "case": [
+            "startup-burst"
+          ],
+          "exit_code": 0,
+          "stdout": "PASS startup-burst / 13 checks; actual C, hardware mocked\n",
+          "stderr": ""
+        },
+        {
+          "case": [
+            "startup-disabled"
+          ],
+          "exit_code": 0,
+          "stdout": "PASS startup-disabled / 13 checks; actual C, hardware mocked\n",
+          "stderr": ""
+        },
+        {
+          "case": [
+            "pm-hibernation"
+          ],
+          "exit_code": 0,
+          "stdout": "PASS pm-hibernation / 20 checks; actual C, hardware mocked\n",
+          "stderr": ""
+        },
+        {
+          "case": [
+            "pm-suspend"
+          ],
+          "exit_code": 0,
+          "stdout": "PASS pm-suspend / 20 checks; actual C, hardware mocked\n",
+          "stderr": ""
+        },
+        {
+          "case": [
+            "pm-restore"
+          ],
+          "exit_code": 0,
+          "stdout": "PASS pm-restore / 20 checks; actual C, hardware mocked\n",
+          "stderr": ""
+        },
+        {
+          "case": [
+            "bounded-fault"
+          ],
+          "exit_code": 0,
+          "stdout": "PASS bounded-fault / 20 checks; actual C, hardware mocked\n",
+          "stderr": ""
+        },
+        {
+          "case": [
+            "refuse-selection"
+          ],
+          "exit_code": 0,
+          "stdout": "PASS refuse-selection / 13 checks; actual C, hardware mocked\n",
+          "stderr": ""
+        },
+        {
+          "case": [
+            "refuse-adc-owner"
+          ],
+          "exit_code": 0,
+          "stdout": "PASS refuse-adc-owner / 13 checks; actual C, hardware mocked\n",
+          "stderr": ""
+        },
+        {
+          "case": [
+            "refuse-missing-node"
+          ],
+          "exit_code": 0,
+          "stdout": "PASS refuse-missing-node / 13 checks; actual C, hardware mocked\n",
+          "stderr": ""
+        },
+        {
+          "case": [
+            "refuse-lost-claims"
+          ],
+          "exit_code": 0,
+          "stdout": "PASS refuse-lost-claims / 13 checks; actual C, hardware mocked\n",
+          "stderr": ""
+        },
+        {
+          "case": [
+            "unstable-success-budget"
+          ],
+          "exit_code": 0,
+          "stdout": "PASS unstable-success-budget / 15 checks; actual C, hardware mocked\n",
+          "stderr": ""
+        },
+        {
+          "case": [
+            "exit-unrelated-selection"
+          ],
+          "exit_code": 0,
+          "stdout": "PASS exit-unrelated-selection / 9 checks; actual C, hardware mocked\n",
+          "stderr": ""
+        },
+        {
+          "case": [
+            "exit-unrelated-driver"
+          ],
+          "exit_code": 0,
+          "stdout": "PASS exit-unrelated-driver / 9 checks; actual C, hardware mocked\n",
+          "stderr": ""
+        },
+        {
+          "case": [
+            "exit-clock-off"
+          ],
+          "exit_code": 0,
+          "stdout": "PASS exit-clock-off / 10 checks; actual C, hardware mocked\n",
+          "stderr": ""
+        },
+        {
+          "case": [
+            "single"
+          ],
+          "exit_code": 0,
+          "stdout": "PASS single / 17 checks; actual C, hardware mocked\n",
+          "stderr": ""
+        },
+        {
+          "case": [
+            "no-sticks",
+            "rg34xx"
+          ],
+          "exit_code": 0,
+          "stdout": "PASS no-sticks / 6 checks; actual C, hardware mocked\n",
+          "stderr": ""
+        },
+        {
+          "case": [
+            "no-sticks",
+            "rgsp"
+          ],
+          "exit_code": 0,
+          "stdout": "PASS no-sticks / 6 checks; actual C, hardware mocked\n",
+          "stderr": ""
+        },
+        {
+          "case": [
+            "no-sticks",
+            "rg35xxplus"
+          ],
+          "exit_code": 0,
+          "stdout": "PASS no-sticks / 6 checks; actual C, hardware mocked\n",
+          "stderr": ""
+        },
+        {
+          "case": [
+            "no-sticks",
+            "rg35xx_2025"
+          ],
+          "exit_code": 0,
+          "stdout": "PASS no-sticks / 6 checks; actual C, hardware mocked\n",
+          "stderr": ""
+        },
+        {
+          "case": [
+            "no-sticks",
+            "rg28xx"
+          ],
+          "exit_code": 0,
+          "stdout": "PASS no-sticks / 6 checks; actual C, hardware mocked\n",
+          "stderr": ""
+        },
+        {
+          "case": [
+            "no-sticks",
+            "rg35xxsp"
+          ],
+          "exit_code": 0,
+          "stdout": "PASS no-sticks / 6 checks; actual C, hardware mocked\n",
+          "stderr": ""
+        }
+      ],
+      "CTRL_bits_8_9_ignored": true,
+      "CTRL_mode_field": "18:19",
+      "fixture": "H700_real_CTRL_readback"
+    },
+    "frozen_v3_negative": {
+      "compile_command": [
+        "gcc",
+        "-DDRIVER_SOURCE=\"/mnt/d/Works/H700Android/tools/input_profiles/stick_recovery_v3/h700_stick_axes.c\"",
+        "-std=gnu11",
+        "-O2",
+        "-Wall",
+        "-Wextra",
+        "-Werror",
+        "-Wno-sign-compare",
+        "/mnt/d/Works/H700Android/tools/input_profiles/stick_recovery_v4/test_recovery.c",
+        "-o",
+        "/mnt/d/Works/H700Android/out/stick-adc-control-repair-20261117-v1/host-final/frozen_v3_negative"
+      ],
+      "binary_sha256": "d2727c113edc3f5366826afba7eefb78383d366c32e363862e4f064a3e82bd25",
+      "runs": [
+        {
+          "case": [
+            "frozen-v3-live-readback-blocked"
+          ],
+          "exit_code": 0,
+          "stdout": "PASS frozen-v3-live-readback-blocked / 25 checks; actual C, hardware mocked\n",
+          "stderr": ""
+        }
+      ],
+      "CTRL_bits_8_9_ignored": true,
+      "CTRL_mode_field": "18:19",
+      "fixture": "H700_real_CTRL_readback"
+    },
+    "frozen_v2_negative": {
+      "compile_command": [
+        "gcc",
+        "-DH700_LEGACY_V2_FIXTURE=1",
+        "-DDRIVER_SOURCE=\"/mnt/d/Works/H700Android/tools/input_profiles/stick_sampling_v2/h700_stick_axes.c\"",
+        "-std=gnu11",
+        "-O2",
+        "-Wall",
+        "-Wextra",
+        "-Werror",
+        "-Wno-sign-compare",
+        "/mnt/d/Works/H700Android/tools/input_profiles/stick_recovery_v4/test_recovery.c",
+        "-o",
+        "/mnt/d/Works/H700Android/out/stick-adc-control-repair-20261117-v1/host-final/frozen_v2_negative"
+      ],
+      "binary_sha256": "c44b7d7e79f202bacfcf6653dfa916ac03b967e351bff495192d8c0e7d104a67",
+      "runs": [
+        {
+          "case": [
+            "legacy-adc-click-blocked"
+          ],
+          "exit_code": 0,
+          "stdout": "PASS legacy-adc-click-blocked / 14 checks; actual C, hardware mocked\n",
+          "stderr": ""
+        },
+        {
+          "case": [
+            "legacy-ccu-click-blocked"
+          ],
+          "exit_code": 0,
+          "stdout": "PASS legacy-ccu-click-blocked / 15 checks; actual C, hardware mocked\n",
+          "stderr": ""
+        },
+        {
+          "case": [
+            "legacy-control-not-restored"
+          ],
+          "exit_code": 0,
+          "stdout": "PASS legacy-control-not-restored / 14 checks; actual C, hardware mocked\n",
+          "stderr": ""
+        },
+        {
+          "case": [
+            "legacy-selection-unchecked"
+          ],
+          "exit_code": 0,
+          "stdout": "PASS legacy-selection-unchecked / 13 checks; actual C, hardware mocked\n",
+          "stderr": ""
+        },
+        {
+          "case": [
+            "legacy-post-no-reconfigure"
+          ],
+          "exit_code": 0,
+          "stdout": "PASS legacy-post-no-reconfigure / 20 checks; actual C, hardware mocked\n",
+          "stderr": ""
+        }
+      ],
+      "CTRL_bits_8_9_ignored": false,
+      "CTRL_mode_field": "retained old array fixture",
+      "fixture": "retained_v2_plain_array"
+    }
+  },
+  "actual_candidate_C_executed": true,
+  "actual_frozen_v3_C_executed": true,
+  "actual_frozen_v2_C_executed": true,
+  "real_readback_fixture": {
+    "CTRL_reserved_write_ignored_mask": "0x00000300",
+    "CTRL_mode_mask": "0x000c0000",
+    "CTRL_continuous": "0x00080000",
+    "CTRL_enable": "0x00010000",
+    "captured_CTRL": "0x00890000",
+    "captured_centers": [
+      2092,
+      2058,
+      2066,
+      2036
+    ],
+    "data_read_requires_continuous_enabled_channel0_and_clock": true
+  },
+  "PM_values": {
+    "HIBERNATION_PREPARE": 1,
+    "POST_HIBERNATION": 2,
+    "SUSPEND_PREPARE": 3,
+    "POST_SUSPEND": 4,
+    "RESTORE_PREPARE": 5,
+    "POST_RESTORE": 6
+  },
+  "hardware_apis_mocked": true,
+  "physical_acceptance": false,
+  "device_accessed": false,
+  "kernel_module_built": false,
+  "limitations": "ADC/MMIO/GPIO/time/workqueue/DT are host fixtures. No physical raw data, real IRQ timing, actual suspend, electrical identification or module load is exercised."
+}

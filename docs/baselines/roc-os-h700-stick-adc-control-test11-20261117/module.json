@@ -1,0 +1,35 @@
+{
+  "schema": "roc.h700.stick-adc-control-module.v1",
+  "passed": true,
+  "elapsed_seconds": 23.026952973999997,
+  "source_sha256": {
+    "h700_stick_axes.c": "ba608d34bacc10db39bea563588081f7514b8a03aea9972699205c5ca439b91f",
+    "axis_math.h": "41f0dabaa85341815c907847f656222d3c56fa058bc3e6752a07bb2efa1df04b",
+    "h700_profile_policy.h": "c1daa59474115df29433a4beecc1d4b62bc05f340c1f6d81fd18c182d802cb15",
+    "h700_profile_table.h": "f81e3355a450250f322917786301e03873ee1e100e5175f6298344688182892c",
+    "Makefile": "fe66fea7768d572acda4912225e2c49ef3059a73f5b6981fd9a4cbd5489875f1"
+  },
+  "module_sha256": "bb5229fda37b9e8eeee562b4042d7564e294a86cc22ba5108a3ac5ad82da4f23",
+  "module_path": "/mnt/d/Works/H700Android/out/stick-adc-control-repair-20261117-v1/module-v1/h700_stick_axes.ko",
+  "module_bytes": 30800,
+  "host_receipt_sha256": "f0a4dc6df0c6c7c6d96ebf3e7aaea8e2e7133b2c906315630194a2d3e77846ce",
+  "kernel_binding_sha256": "e4bc841abe89e2f71acfa08d69bcd4c45ff8dda324f05d000d443220b81d462a",
+  "controls": {
+    "/mnt/d/Works/H700Android/tools/input_profiles/stick_recovery_build_v2/build.py": "cdf6131c5f372ed1d46a8bfc75b2d81aef9bda108fa88b824b729b82c7f3c2a1",
+    "/mnt/d/Works/H700Android/tools/input_profiles/stick_build_v2/postverify.py": "d86f527c3ebd6cf88ecf4b0a8bdfc17d1d8169cfa5d57101020e758d7f958716",
+    "/mnt/d/Works/H700Android/tools/h700_kernel_abi.py": "babaecce331d926cd5eee1f5fc1a0a1fe3c843a24787cd5ea49552cfd08fccba",
+    "/mnt/d/Works/H700Android/out/stick-adc-control-repair-20261117-v1/host-final/host-result.json": "f0a4dc6df0c6c7c6d96ebf3e7aaea8e2e7133b2c906315630194a2d3e77846ce",
+    "/mnt/d/Works/H700Android/out/test8-sticks-runtime-20261117/module-v3/result.json": "41285b3b4d69d918bb3d2ea4e5ad4d21d67114a06029b30088fb436b4288af7d",
+    "/home/lpf/roc-os-h700-stick-adc-control-20261117-v1/.config": "8d76497d7ab68f05d545ec17c56805440e3ed0c9ddd8594ff9ad2bb557d41baa",
+    "/home/lpf/roc-os-h700-stick-adc-control-20261117-v1/Module.symvers": "8471ea52c16e05c1904f1b6844a78f4d1238751ecedb8724ec39286f66d32c46",
+    "/mnt/d/Works/H700Android/out/stick-adc-control-repair-20261117-v1/module-v1/h700_stick_axes.ko": "bb5229fda37b9e8eeee562b4042d7564e294a86cc22ba5108a3ac5ad82da4f23",
+    "/mnt/d/Works/H700Android/out/stick-adc-control-repair-20261117-v1/module-v1/kernel-abi.json": "c0153368bc47d0b0275006e3fbd504d3802c81b0fdbbb2348ad54f52969515c8",
+    "/mnt/d/Works/H700Android/out/stick-adc-control-repair-20261117-v1/module-v1/kernel-binding.json": "e4bc841abe89e2f71acfa08d69bcd4c45ff8dda324f05d000d443220b81d462a"
+  },
+  "parent_cache_preserved": true,
+  "kernel_module_loaded": false,
+  "physical_acceptance": false,
+  "device_accessed": false,
+  "images_mutated": false,
+  "module_version_crc_rewriting": false
+}

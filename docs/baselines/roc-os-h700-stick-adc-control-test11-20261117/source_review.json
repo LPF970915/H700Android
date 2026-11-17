@@ -1,0 +1,114 @@
+{
+  "schema": "roc.h700.stick-recovery-v4.independent-source-review.v1",
+  "reviewed_at": "2026-11-17T21:44:59.155621+08:00",
+  "reviewer": "gpadc_register_audit",
+  "source_sha256": "ba608d34bacc10db39bea563588081f7514b8a03aea9972699205c5ca439b91f",
+  "policy_sha256": "c1daa59474115df29433a4beecc1d4b62bc05f340c1f6d81fd18c182d802cb15",
+  "reviewed_files_sha256": {
+    "Makefile": "fe66fea7768d572acda4912225e2c49ef3059a73f5b6981fd9a4cbd5489875f1",
+    "README.md": "15343028cb343a0e4e577c7f4e3baedcf4b3928ab4886ec9ddc16b0c75ad447e",
+    "axis_math.h": "41f0dabaa85341815c907847f656222d3c56fa058bc3e6752a07bb2efa1df04b",
+    "h700_profile_policy.h": "c1daa59474115df29433a4beecc1d4b62bc05f340c1f6d81fd18c182d802cb15",
+    "h700_profile_table.h": "f81e3355a450250f322917786301e03873ee1e100e5175f6298344688182892c",
+    "h700_stick_axes.c": "ba608d34bacc10db39bea563588081f7514b8a03aea9972699205c5ca439b91f",
+    "parent-inputs.json": "e7519b06a4ba64d9ba2b134ae43027bc0437fc5e9cc569106ded43786fd16872",
+    "run_host.py": "0a5ef89dcc5b03c3d613efab8ed2de6993fb5ec45bd3a3b8f71427fdeed012c2",
+    "test_kernel_shim.h": "6240b4ca392bd2f54f71c7d5976c0abdcf249668dceaccdfc8250ca2ed6b3166",
+    "test_recovery.c": "fb9e58de0c4f74e461273ae282efcda6e88bbf52d3ef53e827fbe85d91167ad9"
+  },
+  "scope": "Independent static review of actual v4 production diff, model/neutral policy, counted MMIO fixture, actual-C test source and runner. No device access, no module loading, no build or physical acceptance in this review.",
+  "checks": {
+    "ctrl_offset_matches_local_bsp_and_uboot_and_upstream": true,
+    "mode_18_19_enable_16_matches_two_local_implementations_and_upstream": true,
+    "captured_00890000_is_enabled_continuous_and_old_gate_rejects_it": true,
+    "production_delta_limited_to_ctrl_definitions_configuration_readiness_and_comments": true,
+    "configuration_preserves_saved_ctrl_bits_outside_mode_and_enable": true,
+    "autocalibration_bit_23_preserved": true,
+    "profile_policy_axis_math_table_makefile_byte_identical_to_v3": true,
+    "ccu_disabled_short_circuits_adc_access": true,
+    "recovery_preserves_initial_centers": true,
+    "active_adc_dt_or_unrelated_selection_refuses_recovery": true,
+    "cleanup_refuses_unrelated_adc_selection": true,
+    "digital_clicks_sampled_before_adc_readiness": true,
+    "adc_fault_resets_axis_gate_only": true,
+    "pm_resets_axis_and_click_gates": true,
+    "axis_gate_requires_three_real_samples": true,
+    "recovery_writes_keep_existing_one_second_and_three_attempt_budget": true,
+    "stable_second_required_before_budget_reset": true,
+    "no_new_gpio_or_ccu_write": true,
+    "no_ram_or_fixed_model_boot_gate": true,
+    "six_stick_profiles_and_six_no_stick_profiles_exercised_in_runner_definition": true,
+    "fixture_ignores_reserved_8_9_writes_and_requires_real_continuous_enable_data_state": true,
+    "actual_frozen_v3_negative_reproduces_field_gate_budget_and_click_pattern_by_test_definition": true,
+    "v2_legacy_negative_fixture_explicitly_separated": true,
+    "report_contains_no_device_identity_or_serial": true
+  },
+  "register_evidence": {
+    "local_bsp_root": "/home/lpf/h700-android10/longan",
+    "local_sources": [
+      {
+        "path": "kernel/linux-4.9/drivers/input/sensor/sunxi_gpadc.h",
+        "sha256": "d1b5e651fbe8f55b764df1d1acf6111e2840ba2b7d46aa6cedb7feb83830d5f5",
+        "lines": "27-29,44,55-57",
+        "finding": "Offsets +0 sample rate/+4 CTRL/+8 select/+0x80 CH0 and enable bit16. Header old mode mask 3<<8 conflicts with actual implementation."
+      },
+      {
+        "path": "kernel/linux-4.9/drivers/input/sensor/sunxi_gpadc.c",
+        "sha256": "207ea864a933218d00b4359b645106e67df08da7923be61d0bd93fcf2c4dfbfb",
+        "lines": "290-297,303-312",
+        "finding": "Actual mode_select writes mode<<18; enable uses bit16."
+      },
+      {
+        "path": "brandy/brandy-2.0/u-boot-2018/drivers/phy_key/sunxi_gpkey.c",
+        "sha256": "48f5fbb19f9be3ffde20c6d5b2aa9b17bc3e8bef32fb7af4a269fa99a1612b46",
+        "lines": "28-37",
+        "finding": "Continuous conversion explicitly clears bit18 and sets bit19 plus bit16."
+      },
+      {
+        "path": "brandy/brandy-2.0/u-boot-2018/include/physical_key.h",
+        "sha256": "cf5917022cf27e538f39b7cd1562060e12d0fa061b7bbc18d855a8a1d65474e9",
+        "lines": "39-43",
+        "finding": "CTRL+4, selection+8 and channel0 data+0x80."
+      },
+      {
+        "path": "brandy/brandy-2.0/u-boot-2018/arch/arm/include/asm/arch-sunxi/cpu_ncat.h",
+        "sha256": "012c3751bbddc6a94726b862de4e7db53c542e09aacff01b37b0e9771ba67883",
+        "lines": "132",
+        "finding": "GPADC base0x05070000."
+      }
+    ],
+    "primary_upstream_fixed_tag": [
+      {
+        "url": "https://raw.githubusercontent.com/torvalds/linux/v6.11/drivers/iio/adc/sun20i-gpadc-iio.c",
+        "lines": "20-37",
+        "finding": "CTRL+4; AUTO_CALI BIT23; MODE_MASK GENMASK(19,18); ADC_EN BIT16."
+      },
+      {
+        "url": "https://raw.githubusercontent.com/torvalds/linux/v6.11/arch/arm64/boot/dts/allwinner/sun50i-h616.dtsi",
+        "lines": "606-615",
+        "finding": "H616 adc@5070000 uses allwinner,sun50i-h616-gpadc plus allwinner,sun20i-d1-gpadc fallback."
+      },
+      {
+        "url": "https://raw.githubusercontent.com/torvalds/linux/v6.11/Documentation/devicetree/bindings/iio/adc/allwinner,sun20i-d1-gpadc.yaml",
+        "lines": "16-19",
+        "finding": "H616 compatible requires D1 fallback."
+      }
+    ],
+    "field_values_without_device_identity": {
+      "ctrl": "0x00890000",
+      "select": "0x00000001",
+      "ccu": "0x00010001",
+      "decode": "bit23 auto-calibration + mode2 in bits18:19 continuous + enable bit16"
+    },
+    "conclusion": "For this captured RG35XX H state the Test10 CTRL readiness predicate is wrong. It rejects a valid enabled continuous ADC before sampling, independently of GPIO clicks; this explains raw_valid0 and three failed recovery readbacks without needing an ADC clock-loss hypothesis."
+  },
+  "boundaries": [
+    "This receipt is static review plus bounded arithmetic assertions; actual-C host results and module ABI require their separate execution receipts.",
+    "No actual embedded-kernel or U-Boot machine-code disassembly was performed in this subtask. Retained local implementation evidence is distinguished from runtime binary proof.",
+    "Local config has CONFIG_INPUT_SENSOR disabled; retained sunxi_gpadc source is register-definition evidence, not proof of an active competing GPADC driver.",
+    "Fixture readback semantics are supported by the captured state and primary sources; tests do not establish electrical timing, physical axis direction, Android navigation or wake acceptance.",
+    "Initial 24-sample center calibration and existing seven-register setup/restore behavior are preserved; this change does not generalize every ADC owner or board electrical profile.",
+    "Test10 image/sources/receipts remain frozen; physical acceptance remains pending for the new module."
+  ],
+  "blockers": []
+}

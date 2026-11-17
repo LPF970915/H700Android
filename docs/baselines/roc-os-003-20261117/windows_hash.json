@@ -1,0 +1,9 @@
+{
+  "schema": "roc.h700.release003.windows-hash.v1",
+  "passed": true,
+  "version": "0.0.3",
+  "bytes": 591772793,
+  "sha256": "34dcf5f43c0a75675530ff9b6c052351985d51b379a6e6189b388f331c6aaa52",
+  "algorithm": "Windows Get-FileHash SHA256",
+  "image": "out/roc-os-0.0.3-20261117/ROC_OS_ARM64_ver0.0.3.img.gz"
+}

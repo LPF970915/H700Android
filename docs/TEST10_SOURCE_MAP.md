@@ -1,10 +1,10 @@
-# Test10 组件源码入口
+# 0.0.3 组件源码入口
 
-更新于 2026-11-17。本页说明当前整卡的源码组成与复核入口；使用方法见[当前状态](CURRENT_STATUS.md)，镜像与离线检查见 [Test10 记录](ROC_OS_H700_STICK_RECOVERY_TEST10_20261117.md)。
+更新于 2026-11-17。本页从 Test10 源码地图继续维护，列出正式 0.0.3 的实现与依赖入口。使用方法见[当前状态](CURRENT_STATUS.md)，发行身份与封装范围见 [0.0.3 说明](ROC_OS_0.0.3_20261117.md)。旧 Test10／Test11 源码和证明保留各自目录。
 
 ## Android 用户空间
 
-[公共构建指南](PUBLIC_BUILD.md)通过 [source-manifest.json](../build-support/public/source-manifest.json)解析覆盖层、基础源码复制关系和指定镜像输入。当前清单包括 Navigation18 与完整 ViewRoot 修复，保持其冻结 SHA256，不为本次说明调整旧收据。
+[公共构建指南](PUBLIC_BUILD.md)通过 [source-manifest.json](../build-support/public/source-manifest.json)解析覆盖层、基础源码复制关系和指定镜像输入。当前覆盖层版本为 0.0.3，已包含 Navigation18 和 ViewRoot 修复；更新后的输入检查单独记录，不修改冻结历史收据。
 
 | 内容 | 入口 |
 | --- | --- |
@@ -23,28 +23,40 @@
 | 启动前面板配置与交接 | [h700_manual_selector_twelve.py](../tools/release/h700_manual_selector_twelve.py)、[early_profile_bridge_rescue.py](../tools/boot_selector/twelve_model/early_profile_bridge_rescue.py) |
 | Lid4 翻盖适配 | [build_lid_twelve.py](../tools/boot_selector/build_lid_twelve.py)、[LidProfile.java](../tools/boot_selector/twelve_model/lid/LidProfile.java) |
 
-Lid4 由构建工具在保留的基础 Lid 源码副本上生成；仅查看基础应用的旧 versionCode 不能代表当前整卡实际 Lid4。菜单试屏只循环三个代表，最终机型依然使用相应电气初始化。
+Lid4 由构建工具在保留的基础 Lid 源码副本上生成；基础应用的旧 versionCode 不代表整卡实际 Lid4。菜单试屏只循环三个代表配置，最终型号使用自己的面板初始化。
 
 ## 摇杆与交换空间
 
+| 内容 | 当前入口 |
+| --- | --- |
+| ADC 控制位修复驱动 | [h700_stick_axes.c](../tools/input_profiles/stick_recovery_v4/h700_stick_axes.c)、[策略](../tools/input_profiles/stick_recovery_v4/h700_profile_policy.h) |
+| 实际候选 C 与冻结旧 C 负控 | [run_host.py](../tools/input_profiles/stick_recovery_v4/run_host.py)、[test_recovery.c](../tools/input_profiles/stick_recovery_v4/test_recovery.c) |
+| 模块编译与两份加载脚本生成 | [build.py](../tools/input_profiles/stick_recovery_build_v2/build.py)、[prepare_loaders.py](../tools/input_profiles/stick_recovery_build_v2/prepare_loaders.py) |
+| 默认 2GiB swap | [swap_prefix.sh](../tools/memory_swap_v1/swap_prefix.sh)、[test_swap.py](../tools/memory_swap_v1/test_swap.py) |
+| Test11 集成封装与独立验证 | [package.py](../tools/input_profiles/stick_recovery_package_v2/package.py)、[verify.py](../tools/input_profiles/stick_recovery_package_v2/verify.py) |
+
+方向 ADC 检查使用实际 H700 模式位 18～19 与启用位 16，保留其他控制位。L3／R3 与方向采样独立；有界恢复不写 CCU、不强开时钟、不恢复 GPIO 复用。用户已确认该 Test11 修复在 RG35XX H 有效。驱动、早期 helper 和 Android loader 须配套更新；默认 2GiB swap 前缀按字节继承。
+
+## 正式 0.0.3 封装
+
 | 内容 | 入口 |
 | --- | --- |
-| 当前恢复驱动 | [h700_stick_axes.c](../tools/input_profiles/stick_recovery_v3/h700_stick_axes.c)、[策略](../tools/input_profiles/stick_recovery_v3/h700_profile_policy.h) |
-| 真实候选 C 与冻结旧 C 负面对照 | [run_host.py](../tools/input_profiles/stick_recovery_v3/run_host.py)、[test_recovery.c](../tools/input_profiles/stick_recovery_v3/test_recovery.c) |
-| 新模块编译与两份加载脚本生成 | [build.py](../tools/input_profiles/stick_recovery_build_v1/build.py)、[prepare_loaders.py](../tools/input_profiles/stick_recovery_build_v1/prepare_loaders.py) |
-| 默认 2GiB swap | [swap_prefix.sh](../tools/memory_swap_v1/swap_prefix.sh)、[test_swap.py](../tools/memory_swap_v1/test_swap.py) |
-| Test10 定点封装与独立完整验证 | [package.py](../tools/input_profiles/stick_recovery_package_v1/package.py)、[verify.py](../tools/input_profiles/stick_recovery_package_v1/verify.py) |
+| 版本属性定点封装 | [package_003.py](../tools/release/package_003.py) |
+| 独立整卡验证 | [verify_003.py](../tools/release/verify_003.py) |
+| 资源限制包装器 | [package_003.ps1](../tools/release/package_003.ps1) |
+| 源码版本一致性检查 | [check_003_source.py](../tools/release/check_003_source.py) |
+| 正式收据生成 | [record_003.py](../tools/release/record_003.py) |
+| 机器可读发行身份与验收 | [0.0.3.json](../build-support/releases/0.0.3.json)、[acceptance.json](baselines/roc-os-003-20261117/acceptance.json) |
 
-驱动、早期 helper 和 Android loader 需要同批更新。L3／R3 不再依赖 ADC 放行；受限恢复不写 CCU、不强开时钟、不恢复 GPIO 复用，实际效果尚待硬件确认。swap 前缀相对 Test9 逐字保留，两份脚本仅替换固定的新模块 SHA256。
+正式包以精确 Test11 为父，仅修改 `/system/build.prop` 两处等长版本字符，其余 raw 字节保留。公共源码覆盖版本同步为 0.0.3，源清单与公开验证另行更新；Test11 冻结收据不回写。
 
-## 在公开源码上运行主机回归
+## 主机回归入口
 
-Linux 中安装 GCC、Python 和 JDK 后，可通过资源限制包装器执行。各次 `--output`／`--work` 必须使用新的目录，保留旧结果。路径示例可替换；以下测试不访问掌机，不启用主机 swap。
+Linux 中安装 GCC、Python 和 JDK 后，可通过资源限制包装器运行。每次输出与工作目录使用新路径，保留旧结果。测试不访问掌机，不启用主机 swap。
 
 ```sh
 python3 -B tools/public_build/validate_manifest.py
 
-# 下列命令由普通用户运行；需要已可用的 sudo/systemd 环境。
 sudo -v
 bash tools/public_build/run-limited.sh \
   python3 -B tools/public_build/test_public_build.py
@@ -55,14 +67,14 @@ bash tools/public_build/run-limited.sh \
   --work /path/to/fresh-navigation-tests
 
 bash tools/public_build/run-limited.sh \
-  python3 -B tools/input_profiles/stick_recovery_v3/run_host.py \
+  python3 -B tools/input_profiles/stick_recovery_v4/run_host.py \
   --output /path/to/fresh-stick-tests
 ```
 
-摇杆主机测试预期 26 个候选场景、5 个旧代码负面对照、802 项检查，硬件 API 采用模拟。导航主机测试也有虚拟 Android 边界，不能替代真机。
+当前摇杆回归预期 38 个候选场景、6 个冻结旧代码负控、1846 项检查，并模拟真实保留位读回行为。硬件 API、导航时钟和部分 Android 边界采用测试替身，主机检查不能替代实体机型覆盖。
 
 ## 作者流程的边界
 
-Test10 封装脚本绑定固定的 Test8 父镜像、既有 BSP 和历史审计产物，部分路径为作者缓存。面板机器码证明还依赖本地的探针与 FDT 审计缓存。公开这些源码使实现和变更可审阅，**不代表当前已提供从干净 clone 一步重建相同 Test10 整卡的便携流程**。
+Test11 封装仍绑定固定 Test8 父镜像、BSP 和历史审计产物，部分路径为作者缓存；面板机器码证明也依赖既有探针与 FDT 审计。0.0.3 再绑定精确 Test11 做版本定点更新。公开源码供实现和变更审阅，不代表干净克隆能一步重建同字节正式整卡。
 
-公共 Android 用户空间构建入口继续使用指定 0.0.1 启动资产；独立重编全部启动组件和移植 Test10 作者流程是另外的工作。完整整卡离线检查通过与实体机型验收分别记录，历史失败和冻结证明继续保留。
+公共 Android 用户空间入口继续使用指定 0.0.1 启动资产。完整整卡离线检查、用户实测反馈与独立公开重编分别记录，历史失败及冻结证明继续保留。

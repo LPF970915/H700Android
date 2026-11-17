@@ -1,0 +1,41 @@
+{
+  "schema": 1,
+  "version": "0.0.3",
+  "date": "2026-11-17",
+  "release_kind": "official",
+  "artifact": "ROC_OS_ARM64_ver0.0.3.img.gz",
+  "bytes": 591772793,
+  "sha256": "34dcf5f43c0a75675530ff9b6c052351985d51b379a6e6189b388f331c6aaa52",
+  "raw_bytes": 32434554368,
+  "raw_sha256": "42e08665eeeb953dba41eac8978b0c8fb8707e041dede5495409f4787bac8e5e",
+  "base_version": "0.0.2 Test11",
+  "base_gzip_sha256": "f78a8910ab46688fff862a69985db51a289550a13bdb839df38320c50e259dfe",
+  "base_raw_sha256": "4998df90707eaab2d319bd77d6bf1ae4b262a598895338afafefe4d25704b43c",
+  "source_manifest": "build-support/public/source-manifest.json",
+  "source_manifest_sha256": "b883f1fd7cc43b5ff3f8fe2a476608ac40f8d28f281f2ead2e88691045854657",
+  "acceptance": "docs/baselines/roc-os-003-20261117/acceptance.json",
+  "acceptance_sha256": "6973dba4261f9f51c735ace20b3a3607ebad0ba88877457d808dd0726135ad7c",
+  "release_properties": {
+    "ro.build.display.id": "ROC_OS_ARM64_ver0.0.3",
+    "ro.roc.os.version": "0.0.3"
+  },
+  "model_count": 12,
+  "resolution_groups": [
+    "640x480",
+    "720x480",
+    "720x720"
+  ],
+  "stick_module_sha256": "bb5229fda37b9e8eeee562b4042d7564e294a86cc22ba5108a3ac5ad82da4f23",
+  "swap_default_bytes": 2147483648,
+  "swap_default_enabled": true,
+  "navigation_version_code": 18,
+  "offline_package_passed": true,
+  "independent_gzip_readback_passed": true,
+  "windows_gzip_hash_passed": true,
+  "Test11_rg35xxh_stick_fix_user_confirmed": true,
+  "fresh_0_0_3_card_boot_accepted": false,
+  "all_H700_models_accepted": false,
+  "diagnostic_ADB_authorization_retained": true,
+  "image_uploaded": false,
+  "Android_full_rebuild_performed": false
+}

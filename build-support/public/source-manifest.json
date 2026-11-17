@@ -2107,7 +2107,7 @@
     {
       "path": "device/roc/roc_os_release_candidate/release_properties.mk",
       "bytes": 1229,
-      "sha256": "de71deeefa83414500da553724ab596ac833c02e15d537fb92a62b41e58488a9",
+      "sha256": "0068cb467c7143924fedfe0718fdcbacb789aa033d56d75d0a5c86bdeda39b9c",
       "mode": 420,
       "input": {
         "kind": "repository",

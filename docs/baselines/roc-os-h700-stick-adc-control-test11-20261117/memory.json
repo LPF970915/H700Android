@@ -1,0 +1,219 @@
+{
+  "schema": "roc.h700.swap2g-host.v1",
+  "passed": true,
+  "swap_bytes": 2147483648,
+  "default_enabled": true,
+  "physical_acceptance": false,
+  "actual_host_swapon": false,
+  "helper_sha256": "b9174a17353fe4256e390b4ee436ecda6a95e8f26ff455b3dd830f6e4c5c0fbe",
+  "reuse_size_or_space_guard": true,
+  "failure_nonfatal": true,
+  "no_RAM_identity_gate": true,
+  "kernel_evidence": {
+    "path": "/mnt/d/Works/H700Android/out/memory-swap-20261117/boot-audit-v3/kernel-evidence.json",
+    "sha256": "30bf4ed485cfd8abf04697a765bc351805c343c79ab5dfe7ea3a7edc55b494c6"
+  },
+  "busybox_evidence": {
+    "path": "/mnt/d/Works/H700Android/out/memory-swap-20261117/boot-audit-v3/result.json",
+    "sha256": "ac0ebb8a130da4f8207f70ee54143a269e18170a2f1ae868d91ff8d4c4a5ad62"
+  },
+  "controls": {
+    "/mnt/d/Works/H700Android/tools/memory_swap_v1/h700_optional_axes.sh": "b9174a17353fe4256e390b4ee436ecda6a95e8f26ff455b3dd830f6e4c5c0fbe",
+    "/mnt/d/Works/H700Android/tools/memory_swap_v1/swap_prefix.sh": "31b8728b89640b832f7b2015904ee355d6539843b641c4b367ebc2a9ece25e70",
+    "/mnt/d/Works/H700Android/tools/memory_swap_v1/compose.py": "e501ed053a298798e8470c783dd74d64b6f6c66aeafe4761afbf19d3c91a7a09",
+    "/mnt/d/Works/H700Android/tools/memory_swap_v1/test_swap.py": "e673c7786d9c614899471d50eb951306eddca041e2b3659b003ca425f8c0320e",
+    "/mnt/d/Works/H700Android/tools/input_profiles/stick_sampling_v2/h700_optional_axes.sh": "0dc671d689fd3b71bc4a95cf9122f4f6c2fa6aa7d5bc7c32e7a1e3d6925e2ade",
+    "/mnt/d/Works/H700Android/out/memory-swap-20261117/boot-audit-v3/result.json": "ac0ebb8a130da4f8207f70ee54143a269e18170a2f1ae868d91ff8d4c4a5ad62",
+    "/mnt/d/Works/H700Android/out/memory-swap-20261117/boot-audit-v3/kernel-evidence.json": "30bf4ed485cfd8abf04697a765bc351805c343c79ab5dfe7ea3a7edc55b494c6",
+    "/mnt/d/Works/H700Android/out/memory-swap-20261117/boot-audit-v3/init.test8.sh": "eb4fa443bca07535270ef432f6acb79125227d72f7cfe54071fbea8485033f29",
+    "/mnt/d/Works/H700Android/out/memory-swap-20261117/boot-audit-v3/applets.txt": "8ca2a2bce366f02b3ee89a1c9e54e7ebf1041764895d7fd1bbbcdad0335edc56",
+    "/mnt/d/Works/H700Android/out/memory-swap-20261117/boot-audit-v3/busybox": "ac739b9a7263faf678d29691e10fabd7edcee61fc18cf4aed57c8d270d0894c7",
+    "/mnt/d/Works/H700Android/tools/memory_swap_v1/audit_boot.py": "707c7c6983e0e7b9e81dc0cf6f7d0d5dc074f0b1e84ba29bf6a2cf6e8518a996",
+    "/mnt/d/Works/H700Android/tools/memory_swap_v1/composition.json": "00bfe9505a8b59a9d925053e6c6f0bef8966fcdd917324dca739a0362f472f2d",
+    "/home/lpf/h700-android10/longan/kernel/linux-4.9/mm/swapfile.c": "a59cb5ab38bf7d86eb50acb1e05a2e7a8d3631be787565d934360fcb016b5747",
+    "/home/lpf/h700-android10/longan/kernel/linux-4.9/mm/page_io.c": "ad5e0b7dfc13d2193c9314f1ab62a93432aa238331e57810c4e8cbbd36e4307a",
+    "/home/lpf/h700-android10/longan/kernel/linux-4.9/fs/ext4/inode.c": "84f891d9dd365f64bebfabee0c45bfeaede28fa02c2caf2037b06ff06fe76464",
+    "/mnt/d/Works/H700Android/android/h700-android10/device/roc/rgsp/input/kernel/h700-4.9.170.config": "565948300ae2d0f68a8ec85a18be033cde06ad4c46a988bebf708b9ce35cb119",
+    "/mnt/d/Works/H700Android/out/memory-swap-20261117/boot-audit-v3/sysroot/lib/ld-linux-aarch64.so.1": "5f67413980a53e1ff7ac2202ccb7f9f9fc86f2e28a092e4cc1c098666e93509b",
+    "/mnt/d/Works/H700Android/out/memory-swap-20261117/boot-audit-v3/sysroot/lib/libblkid.so.1.1.0": "0f6d226cfd03eb71cd8a601c0af1073f4a268774f891223a2cdeb8a300c9a1a5",
+    "/mnt/d/Works/H700Android/out/memory-swap-20261117/boot-audit-v3/sysroot/lib/libc.so.6": "b36a672ef219782931572a1c33fd2bfdf7abcd902bfa8a108ee81aee3c43f2ab",
+    "/mnt/d/Works/H700Android/out/memory-swap-20261117/boot-audit-v3/sysroot/lib/libcrypt.so.1": "100c9f2c1928a04e6240fd15b00674599302775452d5389b2c2ed2bc9e8fc5c4",
+    "/mnt/d/Works/H700Android/out/memory-swap-20261117/boot-audit-v3/sysroot/lib/libdl.so.2": "cc0b887144a3231319c6e717d28936c2c735861a71b63b5f9d5d739b7bdf7616",
+    "/mnt/d/Works/H700Android/out/memory-swap-20261117/boot-audit-v3/sysroot/lib/libgcc_s.so.1": "e4b94b4635f75baf760ee872ae4d54968dd2e4034b97e02214266a3fb2ebeae6",
+    "/mnt/d/Works/H700Android/out/memory-swap-20261117/boot-audit-v3/sysroot/lib/libm.so.6": "9c300e54e6239c3d3bcdf81b4ff12cfa569717fd247d0b1cd4c120f83bfc183b",
+    "/mnt/d/Works/H700Android/out/memory-swap-20261117/boot-audit-v3/sysroot/lib/libnsl.so.1": "02bbd6167e125cf7b31756e2f1deaea35d08253702b00a757606f9660ea35247",
+    "/mnt/d/Works/H700Android/out/memory-swap-20261117/boot-audit-v3/sysroot/lib/libnss_dns.so.2": "f9a9eb2efadd5afc6de039ec50b43def568e0045737d05092f50afd95f6b58e9",
+    "/mnt/d/Works/H700Android/out/memory-swap-20261117/boot-audit-v3/sysroot/lib/libnss_files.so.2": "a802d45dff07964193a51ac2e1ba56fb4d3b5844cc7798d151f08afe89a2d732",
+    "/mnt/d/Works/H700Android/out/memory-swap-20261117/boot-audit-v3/sysroot/lib/libpthread.so.0": "b8aecb8855c34ee8e861c9eaf4cdad2c0a868455331cecc1af22fd12eef3bf00",
+    "/mnt/d/Works/H700Android/out/memory-swap-20261117/boot-audit-v3/sysroot/lib/libresolv.so.2": "56a220c8593dee146a6f76d505cbab5edf2053fd84816be7e2621daf5ae2b855",
+    "/mnt/d/Works/H700Android/out/memory-swap-20261117/boot-audit-v3/sysroot/lib/librt.so.1": "eb46a18f9d0d991eb66082855fc7d660d49398f41c98a37292b698ebf01e0e6d",
+    "/mnt/d/Works/H700Android/out/memory-swap-20261117/boot-audit-v3/sysroot/lib/libutil.so.1": "435e28a822c943c3690008bb52ebb799cc92499fa3c447a081118be419e9fcb1",
+    "/mnt/d/Works/H700Android/out/memory-swap-20261117/boot-audit-v3/sysroot/lib/libuuid.so.1.3.0": "9b402341c8e3d0af1c4b32792854e16001a19b76e0161e0f4d06ae8862f53513"
+  },
+  "cases": 22,
+  "rows": [
+    {
+      "name": "first_create_zero_stick",
+      "passed": true,
+      "swapon_calls_mocked": 1,
+      "normal_input_helper_continued": true,
+      "elapsed_seconds": 2.4992441569999926
+    },
+    {
+      "name": "reuse_without_reformat",
+      "passed": true,
+      "swapon_calls_mocked": 1,
+      "normal_input_helper_continued": true,
+      "elapsed_seconds": 0.8293833860000035
+    },
+    {
+      "name": "already_active",
+      "passed": true,
+      "swapon_calls_mocked": 0,
+      "normal_input_helper_continued": true,
+      "elapsed_seconds": 0.6384024890000006
+    },
+    {
+      "name": "active_smaller_swap_preserved",
+      "passed": true,
+      "swapon_calls_mocked": 0,
+      "normal_input_helper_continued": true,
+      "elapsed_seconds": 0.6214020900000037
+    },
+    {
+      "name": "smaller_header_rejected",
+      "passed": true,
+      "swapon_calls_mocked": 0,
+      "normal_input_helper_continued": true,
+      "elapsed_seconds": 0.7208650799999958
+    },
+    {
+      "name": "free_space_guard",
+      "passed": true,
+      "swapon_calls_mocked": 0,
+      "normal_input_helper_continued": true,
+      "elapsed_seconds": 0.5044754169999948
+    },
+    {
+      "name": "different_filesystem",
+      "passed": true,
+      "swapon_calls_mocked": 0,
+      "normal_input_helper_continued": true,
+      "elapsed_seconds": 0.21709085000000528
+    },
+    {
+      "name": "readonly_data",
+      "passed": true,
+      "swapon_calls_mocked": 0,
+      "normal_input_helper_continued": true,
+      "elapsed_seconds": 0.23706275499999663
+    },
+    {
+      "name": "dd_error",
+      "passed": true,
+      "swapon_calls_mocked": 0,
+      "normal_input_helper_continued": true,
+      "elapsed_seconds": 0.6023293400000114
+    },
+    {
+      "name": "dd_short_write",
+      "passed": true,
+      "swapon_calls_mocked": 0,
+      "normal_input_helper_continued": true,
+      "elapsed_seconds": 1.875191934
+    },
+    {
+      "name": "dd_creation_deadline",
+      "passed": true,
+      "swapon_calls_mocked": 0,
+      "normal_input_helper_continued": true,
+      "elapsed_seconds": 1.8419640259999994
+    },
+    {
+      "name": "mkswap_error",
+      "passed": true,
+      "swapon_calls_mocked": 0,
+      "normal_input_helper_continued": true,
+      "elapsed_seconds": 1.9008855400000044
+    },
+    {
+      "name": "sync_error",
+      "passed": true,
+      "swapon_calls_mocked": 0,
+      "normal_input_helper_continued": true,
+      "elapsed_seconds": 2.0141219589999935
+    },
+    {
+      "name": "swapon_error_nonfatal",
+      "passed": true,
+      "swapon_calls_mocked": 1,
+      "normal_input_helper_continued": true,
+      "elapsed_seconds": 2.272004338000002
+    },
+    {
+      "name": "wrong_size_preserved",
+      "passed": true,
+      "swapon_calls_mocked": 0,
+      "normal_input_helper_continued": true,
+      "elapsed_seconds": 0.48143448700000135
+    },
+    {
+      "name": "wrong_mode_preserved",
+      "passed": true,
+      "swapon_calls_mocked": 0,
+      "normal_input_helper_continued": true,
+      "elapsed_seconds": 0.4935818869999906
+    },
+    {
+      "name": "hardlink_preserved",
+      "passed": true,
+      "swapon_calls_mocked": 0,
+      "normal_input_helper_continued": true,
+      "elapsed_seconds": 0.4590001880000045
+    },
+    {
+      "name": "final_symlink_preserved",
+      "passed": true,
+      "swapon_calls_mocked": 0,
+      "normal_input_helper_continued": true,
+      "elapsed_seconds": 0.3409344899999951
+    },
+    {
+      "name": "stage_symlink_preserved",
+      "passed": true,
+      "swapon_calls_mocked": 0,
+      "normal_input_helper_continued": true,
+      "elapsed_seconds": 0.3473965910000061
+    },
+    {
+      "name": "active_stage_preserved",
+      "passed": true,
+      "swapon_calls_mocked": 0,
+      "normal_input_helper_continued": true,
+      "elapsed_seconds": 0.3977241889999874
+    },
+    {
+      "name": "interrupted_stage_recreated",
+      "passed": true,
+      "swapon_calls_mocked": 1,
+      "normal_input_helper_continued": true,
+      "elapsed_seconds": 2.524073403000017
+    },
+    {
+      "name": "two_stick_model_still_gets_swap",
+      "passed": true,
+      "swapon_calls_mocked": 1,
+      "normal_input_helper_continued": true,
+      "elapsed_seconds": 2.353237220000011
+    }
+  ],
+  "scaled_creation_bytes": 8388608,
+  "real_mkswap_exact_2GiB_header": true,
+  "mkswap_2GiB_fixture_sparse_not_usable_swap": true,
+  "free_space_and_swapon_and_sync_mocked": true,
+  "data_files_and_dd_fsync_and_mkswap_real": true,
+  "fixture_owner_uid_gid_substituted": true,
+  "production_create_timeout_seconds": 300,
+  "deadline_scope": "dd wait only; no strict total IO deadline or D-state termination guarantee",
+  "boot_or_device_changed": false
+}

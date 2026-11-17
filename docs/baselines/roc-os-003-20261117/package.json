@@ -1,0 +1,74 @@
+{
+  "schema": "roc.h700.release003.package.v1",
+  "version": "0.0.3",
+  "passed": true,
+  "physical_card_written": false,
+  "device_accessed": false,
+  "Android_full_rebuild_performed": false,
+  "all_H700_models_accepted": false,
+  "fresh_0_0_3_card_boot_accepted": false,
+  "image": "/mnt/d/Works/H700Android/out/roc-os-0.0.3-20261117/ROC_OS_ARM64_ver0.0.3.img.gz",
+  "bytes": 591772793,
+  "sha256": "34dcf5f43c0a75675530ff9b6c052351985d51b379a6e6189b388f331c6aaa52",
+  "raw": "/home/lpf/roc-os-003-20261117-v1/ROC_OS_ARM64_ver0.0.3.img",
+  "raw_bytes": 32434554368,
+  "raw_sha256": "42e08665eeeb953dba41eac8978b0c8fb8707e041dede5495409f4787bac8e5e",
+  "base_gzip_sha256": "f78a8910ab46688fff862a69985db51a289550a13bdb839df38320c50e259dfe",
+  "base_raw_sha256": "4998df90707eaab2d319bd77d6bf1ae4b262a598895338afafefe4d25704b43c",
+  "base_acceptance_sha256": "5946a9d78db74a79e7c0a104b1389af09010c5e0564af43b2dd0911eb2eab382",
+  "source_manifest_sha256": "b883f1fd7cc43b5ff3f8fe2a476608ac40f8d28f281f2ead2e88691045854657",
+  "edits": [
+    {
+      "property": "ro.build.display.id",
+      "property_file_offset": 887,
+      "image_offset": 375706487,
+      "before": 50,
+      "after": 51
+    },
+    {
+      "property": "ro.roc.os.version",
+      "property_file_offset": 5607,
+      "image_offset": 375711207,
+      "before": 50,
+      "after": 51
+    }
+  ],
+  "changed_bytes": 2,
+  "build_prop_before_sha256": "da093cf8ae3d0efa577565e37adee01de73a167df8473e5064de931e4a7006e2",
+  "build_prop_after_sha256": "a29ff5fc9d9cf0bff5a73bb5f8a56ab26e180a0c62c91e01371dd09b4f9a7902",
+  "property_metadata_byte_exact": true,
+  "system_fsck_passed": true,
+  "ranges": {
+    "prefix": {
+      "offset": 0,
+      "bytes": 222298112,
+      "base_sha256": "bb7a8d1d2fb12ab284501b7aeb9ff3a57b7b9f12aff4a9db04529e9bcde484ac",
+      "sha256": "bb7a8d1d2fb12ab284501b7aeb9ff3a57b7b9f12aff4a9db04529e9bcde484ac"
+    },
+    "system": {
+      "offset": 222298112,
+      "bytes": 8589934592,
+      "base_sha256": "0c78ac63b65afcd75ff9a872cea84e97c50de68edaf69dc46edefedb1decbcd6",
+      "sha256": "7930bff5dbaa170e2825b3550f1a41061c004770cc9c1c9694dc1e8dae6e292b"
+    },
+    "vendor": {
+      "offset": 8812232704,
+      "bytes": 2147483648,
+      "base_sha256": "68183115705bdf104ec78c6232d38dcdb81143bed9bc5d2ed9ad1762b027e430",
+      "sha256": "68183115705bdf104ec78c6232d38dcdb81143bed9bc5d2ed9ad1762b027e430"
+    },
+    "userdata": {
+      "offset": 10959716352,
+      "bytes": 21474836480,
+      "base_sha256": "637a02240df99491b9616503c69cd41638b7604c927675762e640014b3cd7d86",
+      "sha256": "637a02240df99491b9616503c69cd41638b7604c927675762e640014b3cd7d86"
+    },
+    "backup_gpt": {
+      "offset": 32434552832,
+      "bytes": 1536,
+      "base_sha256": "ba9ba2c16fbb57653f2d5b221bb2f0c2ee698550f1d9dc33df30b5565d23c5dc",
+      "sha256": "ba9ba2c16fbb57653f2d5b221bb2f0c2ee698550f1d9dc33df30b5565d23c5dc"
+    }
+  },
+  "elapsed_seconds": 375.279455417
+}

@@ -1,0 +1,50 @@
+{
+  "schema": "roc.h700.release003.source-check.v1",
+  "passed": true,
+  "version": "0.0.3",
+  "source_manifest_sha256": "b883f1fd7cc43b5ff3f8fe2a476608ac40f8d28f281f2ead2e88691045854657",
+  "public_tool_tests": 11,
+  "manifest_validation": {
+    "passed": true,
+    "scope": "Repository payload hash/size closure and source-copy recipes only; base source bodies and image payloads are not read by this check.",
+    "source_manifest_sha256": "b883f1fd7cc43b5ff3f8fe2a476608ac40f8d28f281f2ead2e88691045854657",
+    "target_identity_sha256": "28969f6d96756013a4aca0dfd913e5026d254c11b2989faa1f69725a4ca8e130",
+    "target_identity_algorithm": "SHA256 of UTF-8 JSON, sort_keys=true, ensure_ascii=true, separators=comma/colon, no final newline; path-sorted records of path,bytes,mode,sha256.",
+    "files": 1759,
+    "new_payload_bytes": 2071649,
+    "input_kinds": {
+      "repository": 626,
+      "image": 8,
+      "source": 1125
+    },
+    "new_payload_bytes_definition": "Unique repository input paths under build-support/public/overlay/",
+    "repository_target_bytes_verified": 5195369,
+    "source_copy_dependencies_verified": 5,
+    "unique_base_source_inputs_not_read": 1120,
+    "image_payloads_not_read": 8,
+    "independent_clean_full_Android_build_passed": false,
+    "hardware_acceptance_performed": false
+  },
+  "effective_display_id": "ROC_OS_ARM64_ver0.0.3",
+  "effective_version": "0.0.3",
+  "commands": [
+    {
+      "name": "public-tools",
+      "returncode": 0,
+      "log_sha256": "8b927bdb2dd5da66ba42b6b9ed7a2ab768f788c337fa94297154bb2d6d4b116a"
+    },
+    {
+      "name": "manifest",
+      "returncode": 0,
+      "log_sha256": "07fef2d3c1b57f2bbc801bd6c045a85421b7c018ab82d885de4286bc88f83d1c"
+    },
+    {
+      "name": "version-properties",
+      "returncode": 0,
+      "log_sha256": "90da6fbd06ac5cd0606fbafbdbc24f06ddfb9df3983ca432a8a1b86a9bbd2ba0"
+    }
+  ],
+  "Android_full_rebuild_performed": false,
+  "device_accessed": false,
+  "elapsed_seconds": 54.27718381799991
+}

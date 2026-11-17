@@ -1,0 +1,8 @@
+{
+  "schema": "roc.h700.test11-windows-sha.v1",
+  "passed": true,
+  "checked_at": "2026-11-17T22:06:56.8019606+08:00",
+  "method": "Windows Get-FileHash SHA256",
+  "sha256": "f78a8910ab46688fff862a69985db51a289550a13bdb839df38320c50e259dfe",
+  "bytes": 591772828
+}
