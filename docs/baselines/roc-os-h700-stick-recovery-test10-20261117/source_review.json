@@ -1,0 +1,29 @@
+{
+  "schema": "roc.h700.stick-recovery-v3.independent-source-review.v1",
+  "reviewed_at": "2026-11-17T03:35:42.3421773+08:00",
+  "reviewer": "stick_history_regression",
+  "source_sha256": "4f141d23544ae24af31164ef94b3462ac4d26513baf0e6e7a9c2ff7973a8d9ba",
+  "policy_sha256": "c1daa59474115df29433a4beecc1d4b62bc05f340c1f6d81fd18c182d802cb15",
+  "checks": {
+    "ccu_disabled_short_circuits_adc_access": true,
+    "recovery_preserves_initial_centers": true,
+    "recovery_uses_owned_initial_adc_configuration": true,
+    "active_adc_dt_or_unrelated_selection_refuses_recovery": true,
+    "cleanup_refuses_unrelated_adc_selection": true,
+    "digital_clicks_sampled_before_adc_readiness": true,
+    "adc_fault_resets_axis_gate_only": true,
+    "pm_resets_axis_and_click_gates": true,
+    "axis_gate_requires_three_real_samples": true,
+    "recovery_actual_writes_budgeted": true,
+    "stable_second_before_budget_reset": true,
+    "no_new_gpio_or_ccu_write": true,
+    "no_ram_or_fixed_model_boot_gate": true
+  },
+  "boundaries": [
+    "Static source review only; hardware not connected and no physical acceptance.",
+    "Recovery covers managed ADC register state; GPIO direction/mux and enable restoration remains outside this candidate.",
+    "Cold initialization retains historical 24-sample center calibration with 1024..3072 guard; recovery never recalibrates.",
+    "Test fixtures emulate hardware; real PM constants now match Linux suspend.h."
+  ],
+  "blockers": []
+}

@@ -36,7 +36,7 @@ final class AxisNavigation {
     private int ownerKind, direction;
     private long generation, startedAt, deadline;
     private long lastNow = Long.MIN_VALUE;
-    private long immediateCount, repeatCount, capacityDrops;
+    private long immediateCount, repeatCount, capacityDrops, blockedObservations;
     private String lastStop = "initial";
 
     /** Returns a direction only when this sample requires an immediate step. */
@@ -92,6 +92,26 @@ final class AxisNavigation {
             return start(now, input, STICK, input.stick);
         }
         return 0;
+    }
+
+    /**
+     * Record a validated sample while the wrapper cannot navigate. This path
+     * never starts an owner or returns a direction. Only the same stream's
+     * actual neutral sample can rearm a blocked channel.
+     */
+    void observeBlocked(long now, int device, int source, int hatKey, int stickKey) {
+        if (!time(now)) return;
+        if (owner != null) stop("blocked-motion", true);
+        int hat = valid(hatKey), stick = valid(stickKey);
+        // A newly reported source must not bypass a known residual direction.
+        if (hat != 0 || stick != 0) requireNewSourceNeutral(device);
+        Input input = input(device, source);
+        if (input == null) return;
+        input.hat = hat;
+        input.stick = stick;
+        input.hatReady = hat == 0;
+        input.stickReady = stick == 0;
+        blockedObservations++;
     }
 
     /** The Android wrapper schedules the first call at 400ms, then every 160ms. */
@@ -154,7 +174,8 @@ final class AxisNavigation {
                 .append(" axisStartedAt=").append(startedAt).append(" axisRemainingMs=").append(remaining(now))
                 .append(" axisImmediate=").append(immediateCount).append(" axisRepeats=").append(repeatCount)
                 .append(" axisStop=").append(lastStop).append(" axisInputs=").append(inputs.size())
-                .append(" axisCapacityDrops=").append(capacityDrops).append(" axisGates=");
+                .append(" axisCapacityDrops=").append(capacityDrops)
+                .append(" axisBlockedObservations=").append(blockedObservations).append(" axisGates=");
         for (Input input : inputs.values()) {
             text.append('[').append(input.device).append('/').append(input.source)
                     .append(" hat=").append(input.hat).append(':').append(input.hatReady ? "ready" : "neutral-required")

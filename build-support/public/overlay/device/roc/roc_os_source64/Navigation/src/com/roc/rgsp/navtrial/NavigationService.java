@@ -74,6 +74,12 @@ public final class NavigationService extends AccessibilityService {
     private boolean shadeBack;
     private int lastInputKey, lastInputScan, lastInputAction, shadeCloseCount;
     private boolean axisSynthetic;
+    private boolean keySynthetic;
+    private final KeyNavigation physicalKeys = new KeyNavigation();
+    private Runnable physicalRepeat;
+    private long physicalTaskGeneration;
+    private int physicalWindow = -1;
+    private String physicalScope = "inactive";
     private String inputOrigin = "external-key";
     private InputManager inputManager;
     private final SparseIntArray deviceGenerations = new SparseIntArray();
@@ -89,6 +95,8 @@ public final class NavigationService extends AccessibilityService {
     }
     private void inputDeviceChanged(int id) {
         deviceGenerations.put(id, deviceGenerations.get(id) + 1);
+        if (physicalKeys.ownerDevice() == id) stopPhysicalKeys("device-change");
+        physicalKeys.deviceChanged(id);
         if (ring != null) ring.deviceChanged(id);
         trace("device-change id=" + id + " generation=" + deviceGenerations.get(id));
     }
@@ -99,25 +107,64 @@ public final class NavigationService extends AccessibilityService {
     };
     private final BroadcastReceiver screenReceiver = new BroadcastReceiver() {
         @Override public void onReceive(Context context, Intent intent) {
-            if (ring != null) ring.stopRepeat("screen:" + intent.getAction());
-            held.clear(); armedIdentity = null; armedKey = 0;
+            stopInputSession("screen:" + intent.getAction());
+            clearSelection();
+            mode = "inactive";
             trace("screen action=" + intent.getAction());
             handler.removeCallbacks(refreshTask);
             handler.postDelayed(refreshTask, 100);
         }
     };
-    private final Runnable menuHold = () -> {
-        if (menu.fireLong(SystemClock.uptimeMillis())) menuAction(MenuHotkey.QUICK_SETTINGS);
-        scheduleMenu();
-    };
+    private Runnable menuHold;
+    private long menuGeneration;
+
+    private boolean interactionAllowed() {
+        return ((PowerManager) getSystemService(POWER_SERVICE)).isInteractive()
+                && !((KeyguardManager) getSystemService(KEYGUARD_SERVICE)).isKeyguardLocked();
+    }
+
+    private void cancelMenu() {
+        menuGeneration++;
+        if (menuHold != null) handler.removeCallbacks(menuHold);
+        menuHold = null;
+        menu.clear();
+    }
+
+    private void stopInputSession(String reason) {
+        if (ring != null) ring.stopRepeat(reason);
+        stopPhysicalKeys(reason);
+        cancelMenu();
+        held.clear(); armedIdentity = null; armedKey = 0; shadeBack = false;
+        handler.removeCallbacks(documentLongPress);
+        if (mouse != null) mouse.suspendInput();
+    }
+
+    private boolean guardInteraction(String reason) {
+        if (interactionAllowed()) return true;
+        // The live power/keyguard state may change before the broadcast arrives.
+        stopInputSession(reason);
+        return false;
+    }
 
     private void scheduleMenu() {
-        handler.removeCallbacks(menuHold);
+        if (menuHold != null) handler.removeCallbacks(menuHold);
+        menuHold = null;
+        final long token = ++menuGeneration;
+        if (!interactionAllowed()) { cancelMenu(); return; }
         long delay = menu.nextDelay(SystemClock.uptimeMillis());
-        if (delay >= 0) handler.postDelayed(menuHold, delay);
+        if (delay < 0) return;
+        menuHold = () -> {
+            if (token != menuGeneration) return;
+            menuHold = null;
+            if (!guardInteraction("menu-unavailable")) return;
+            if (menu.fireLong(SystemClock.uptimeMillis())) menuAction(MenuHotkey.QUICK_SETTINGS);
+            if (token == menuGeneration) scheduleMenu();
+        };
+        handler.postDelayed(menuHold, delay);
     }
 
     private void menuAction(int action) {
+        if (!guardInteraction("menu-action-unavailable")) return;
         if (mouse != null) mouse.exit();
         releaseForAction(); clearSelection(); held.clear();
         if (action == MenuHotkey.HOME) {
@@ -166,6 +213,7 @@ public final class NavigationService extends AccessibilityService {
 
             @Override public void capture(boolean capture) {
                 ring.stopRepeat("mouse-capture");
+                stopPhysicalKeys("mouse-capture");
                 // HAT motion requires window focus on this Android 10 BSP.
                 // ALT_FOCUSABLE_IM leaves the real editor/IME relationship intact.
                 overlayParams.flags |= WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM;
@@ -175,6 +223,7 @@ public final class NavigationService extends AccessibilityService {
 
             @Override public void ended() {
                 ring.stopRepeat("mouse-ended");
+                stopPhysicalKeys("mouse-ended");
                 overlayParams.flags &= ~WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM;
                 overlayFocus(false);
                 windows.updateViewLayout(ring, overlayParams);
@@ -189,6 +238,7 @@ public final class NavigationService extends AccessibilityService {
         int type = event.getEventType();
         if (type == AccessibilityEvent.TYPE_WINDOW_STATE_CHANGED && ring != null)
             ring.stopRepeat("window-state");
+        if (type == AccessibilityEvent.TYPE_WINDOW_STATE_CHANGED) stopPhysicalKeys("window-state");
         if (type == AccessibilityEvent.TYPE_WINDOW_STATE_CHANGED
                 || type == AccessibilityEvent.TYPE_VIEW_SCROLLED
                 || type == AccessibilityEvent.TYPE_VIEW_FOCUSED)
@@ -200,19 +250,22 @@ public final class NavigationService extends AccessibilityService {
     @Override public void onConfigurationChanged(Configuration configuration) {
         super.onConfigurationChanged(configuration);
         if(ring!=null) ring.stopRepeat("configuration");
+        stopPhysicalKeys("configuration");
         held.clear(); armedIdentity=null; armedKey=0;
         handler.removeCallbacks(refreshTask);handler.postDelayed(refreshTask,250);
     }
 
     @Override public void onInterrupt() {
         if (ring != null) ring.stopRepeat("interrupt");
-        menu.clear(); handler.removeCallbacks(menuHold);
+        stopPhysicalKeys("interrupt");
+        cancelMenu();
         if (mouse != null) mouse.exit();
         clearSelection();
     }
 
     @Override public void onDestroy() {
         if (ring != null) ring.stopRepeat("destroy");
+        stopPhysicalKeys("destroy");
         if (inputManager != null) inputManager.unregisterInputDeviceListener(inputListener);
         if (receiverRegistered) unregisterReceiver(screenReceiver);
         if (mouse != null) mouse.destroy();
@@ -320,8 +373,12 @@ public final class NavigationService extends AccessibilityService {
     }
 
     private boolean managed() {
-        return "locales".equals(mode) || "files".equals(mode) || "settings".equals(mode)
-                || "shade".equals(mode);
+        return managedScope(mode);
+    }
+
+    private static boolean managedScope(String currentMode) {
+        return "locales".equals(currentMode) || "files".equals(currentMode) || "settings".equals(currentMode)
+                || "shade".equals(currentMode);
     }
 
     private boolean shadeRoot(AccessibilityNodeInfo root) {
@@ -338,10 +395,7 @@ public final class NavigationService extends AccessibilityService {
     }
 
     private AccessibilityNodeInfo applicationRoot() {
-        if (!((PowerManager) getSystemService(POWER_SERVICE)).isInteractive()
-                || ((KeyguardManager) getSystemService(KEYGUARD_SERVICE)).isKeyguardLocked()) {
-            return null;
-        }
+        if (!interactionAllowed()) return null;
         AccessibilityNodeInfo result = null;
         AccessibilityNodeInfo shade = null;
         boolean systemFocused = false;
@@ -384,7 +438,7 @@ public final class NavigationService extends AccessibilityService {
             windows.updateViewLayout(ring, overlayParams);
         }
         if (focus) ring.requestFocus();
-        else ring.stopRepeat("overlay-release");
+        else { ring.stopRepeat("overlay-release"); stopPhysicalKeys("overlay-release"); }
     }
 
     private void releaseForAction() {
@@ -1032,7 +1086,11 @@ public final class NavigationService extends AccessibilityService {
     }
 
     private void refresh() {
+        if (!guardInteraction("refresh-unavailable")) {
+            clearSelection(); mode = "inactive"; return;
+        }
         if (mouse != null && mouse.isActive()) {
+            stopPhysicalKeys("refresh-mouse");
             if (selected != null) selected.recycle();
             selected = null;
             ring.show(null);
@@ -1047,6 +1105,7 @@ public final class NavigationService extends AccessibilityService {
         AccessibilityNodeInfo root = applicationRoot();
         mode = scope(root);
         if (!managed()) {
+            stopPhysicalKeys("refresh-unmanaged");
             clearSelection();
             if (root != null) root.recycle();
             return;
@@ -1074,9 +1133,122 @@ public final class NavigationService extends AccessibilityService {
         root.recycle();
     }
 
+    private void cancelPhysicalRepeat() {
+        physicalTaskGeneration++;
+        if (physicalRepeat != null) handler.removeCallbacks(physicalRepeat);
+        physicalRepeat = null;
+    }
+
+    private void stopPhysicalKeys(String reason) {
+        cancelPhysicalRepeat();
+        physicalKeys.stop(SystemClock.uptimeMillis(), reason);
+        physicalWindow = -1; physicalScope = "inactive";
+        for (int key = Direction.UP; key <= Direction.RIGHT; key++) held.delete(key);
+    }
+
+    private void observeUnavailableDirection(KeyEvent event) {
+        if (axisSynthetic || keySynthetic || !KeyNavigation.direction(event.getKeyCode())) return;
+        long now = SystemClock.uptimeMillis();
+        if (event.getAction() == KeyEvent.ACTION_UP) {
+            physicalKeys.up(now, event.getEventTime(), event.getDeviceId(), event.getSource(),
+                    event.getKeyCode(), event.getScanCode(), event.isCanceled());
+            if (!physicalKeys.active()) cancelPhysicalRepeat();
+        } else if (event.getAction() == KeyEvent.ACTION_DOWN) {
+            physicalKeys.blockedDown(now, event.getEventTime(), event.getDeviceId(), event.getSource(),
+                    event.getKeyCode(), event.getScanCode());
+        }
+    }
+
+    private boolean physicalContextAllowed() {
+        if (!interactionAllowed() || (mouse != null && mouse.isActive())
+                || SystemClock.uptimeMillis() < releaseUntil) return false;
+        AccessibilityNodeInfo root = applicationRoot();
+        if (root == null) return false;
+        String currentMode = scope(root);
+        boolean allowed = managedScope(currentMode) && currentMode.equals(physicalScope)
+                && root.getWindowId() == physicalWindow;
+        root.recycle();
+        return allowed;
+    }
+
+    private void emitPhysicalDirection(int key) {
+        keySynthetic = true;
+        inputOrigin = "key-repeat";
+        try {
+            onKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, key));
+            onKeyEvent(new KeyEvent(KeyEvent.ACTION_UP, key));
+        } finally {
+            keySynthetic = false;
+            inputOrigin = "external-key";
+        }
+    }
+
+    private void schedulePhysicalRepeat() {
+        cancelPhysicalRepeat();
+        if (!physicalKeys.active()) return;
+        final long ownerToken = physicalKeys.generation();
+        final long taskToken = physicalTaskGeneration;
+        long delay = physicalKeys.nextDelay(SystemClock.uptimeMillis());
+        physicalRepeat = () -> {
+            // A removed task can already be in the queue. It must not erase a
+            // newer task or emit into the page that replaced its owner window.
+            if (taskToken != physicalTaskGeneration || ownerToken != physicalKeys.generation()) return;
+            physicalRepeat = null;
+            if (!physicalContextAllowed()) { stopPhysicalKeys("key-repeat-context"); return; }
+            int key = physicalKeys.repeat(SystemClock.uptimeMillis());
+            if (key != 0) emitPhysicalDirection(key);
+            if (physicalKeys.active() && physicalKeys.generation() == ownerToken
+                    && taskToken == physicalTaskGeneration && physicalContextAllowed())
+                schedulePhysicalRepeat();
+        };
+        handler.postDelayed(physicalRepeat, delay);
+    }
+
+    /** True consumes only raw physical directions owned by managed navigation. */
+    private boolean physicalDirection(KeyEvent event) {
+        if (axisSynthetic || keySynthetic || !KeyNavigation.direction(event.getKeyCode())) return false;
+        long now = SystemClock.uptimeMillis();
+        AccessibilityNodeInfo root = applicationRoot();
+        String currentMode = scope(root);
+        boolean allowed = root != null && managedScope(currentMode)
+                && (mouse == null || !mouse.isActive()) && now >= releaseUntil;
+        int window = root == null ? -1 : root.getWindowId();
+        if (root != null) root.recycle();
+        if (event.getAction() == KeyEvent.ACTION_UP) {
+            boolean owned = physicalKeys.up(now, event.getEventTime(), event.getDeviceId(), event.getSource(),
+                    event.getKeyCode(), event.getScanCode(), event.isCanceled());
+            if (!physicalKeys.active()) cancelPhysicalRepeat();
+            if (owned) held.delete(event.getKeyCode());
+            // A game still receives its releases. Observe an old debt without
+            // claiming a new key stream after our managed page has disappeared.
+            if (!allowed) stopPhysicalKeys("key-up-unmanaged");
+            return allowed && owned;
+        }
+        if (event.getAction() != KeyEvent.ACTION_DOWN) return false;
+        if (!allowed) { stopPhysicalKeys("key-down-unmanaged"); return false; }
+        if (physicalKeys.active() && (physicalWindow != window || !physicalScope.equals(currentMode)))
+            stopPhysicalKeys("key-owner-context");
+        if (event.isCanceled()) {
+            observeUnavailableDirection(event);
+            return true;
+        }
+        int decision = physicalKeys.down(now, event.getEventTime(), event.getDeviceId(), event.getSource(),
+                event.getKeyCode(), event.getScanCode(), event.getRepeatCount());
+        if (decision == KeyNavigation.STEP) {
+            physicalWindow = window; physicalScope = currentMode;
+            schedulePhysicalRepeat();
+            return false;
+        }
+        return true;
+    }
+
     @Override protected boolean onKeyEvent(KeyEvent event) {
-        if (!axisSynthetic) inputOrigin = "external-key";
-        if (!axisSynthetic && event.getAction() == KeyEvent.ACTION_DOWN
+        if (!guardInteraction("key-unavailable")) {
+            observeUnavailableDirection(event);
+            return mouse != null && mouse.onKey(event);
+        }
+        if (!axisSynthetic && !keySynthetic) inputOrigin = "external-key";
+        if (!axisSynthetic && !keySynthetic && event.getAction() == KeyEvent.ACTION_DOWN
                 && event.getKeyCode() >= Direction.UP && event.getKeyCode() <= Direction.RIGHT
                 && ring != null && ring.axis.active()) ring.stopRepeat("physical-key-takeover");
         trace("key origin=" + inputOrigin + " device=" + event.getDeviceId()
@@ -1088,7 +1260,10 @@ public final class NavigationService extends AccessibilityService {
                 (event.getFlags() & KeyEvent.FLAG_FALLBACK) != 0,
                 event.getAction() == KeyEvent.ACTION_DOWN, event.isCanceled(), event.getEventTime());
         scheduleMenu();
-        if (mouse != null && mouse.onKey(event)) return true;
+        if (mouse != null && mouse.onKey(event)) {
+            if (event.getAction() == KeyEvent.ACTION_UP) observeUnavailableDirection(event);
+            return true;
+        }
         if (menuResult != MenuHotkey.PASS) {
             if (menuResult == MenuHotkey.HOME || menuResult == MenuHotkey.QUICK_SETTINGS)
                 menuAction(menuResult);
@@ -1114,6 +1289,7 @@ public final class NavigationService extends AccessibilityService {
                 && event.getAction()==KeyEvent.ACTION_DOWN) {
             releaseForAction();return false;
         }
+        if (physicalDirection(event)) return true;
         if (event.getAction() == KeyEvent.ACTION_UP && held.get(key)) {
             held.delete(key);
             handler.removeCallbacks(documentLongPress);
@@ -1255,6 +1431,7 @@ public final class NavigationService extends AccessibilityService {
     }
 
     private void activateLongDocument() {
+        if (!guardInteraction("document-unavailable")) return;
         String expected = armedIdentity;
         if (expected == null || !held.get(armedKey)) return;
         // A long confirm selects a document through DocumentsUI's own action.
@@ -1363,7 +1540,7 @@ public final class NavigationService extends AccessibilityService {
         writer.println("menuHome=" + menuHomeCount + " menuShade=" + menuShadeCount);
         writer.println("lastInput=" + lastInputKey + "/" + lastInputScan + "/" + lastInputAction
                 + " shadeClose=" + shadeCloseCount);
-        writer.println("navigationVersion=38 mode=" + mode + " moveTopId=" + moveTop
+        writer.println("navigationVersion=39 mode=" + mode + " moveTopId=" + moveTop
                 + " keyDownCount=" + keyDownCount + " actionCount=" + actionCount
                 + " lastAction=" + lastAction + " navigationCallbacks=" + navigationCallbacks
                 + " lastKeyScope=" + lastKeyScope + " flags=" + (serviceInfo == null ? 0 : serviceInfo.flags));
@@ -1371,6 +1548,8 @@ public final class NavigationService extends AccessibilityService {
         writer.println("selectionActions=" + selectionActions + " ringRedraws=" + ringRedraws
                 + " inputOrigin=" + inputOrigin + " diagnosticCapacity=" + diagnostics.length);
         if (ring != null) ring.dumpAxis(writer);
+        writer.println(physicalKeys.describe(SystemClock.uptimeMillis()) + " keyRepeatQueued=" + (physicalRepeat != null)
+                + " keyWindow=" + physicalWindow + " keyScope=" + physicalScope);
         for (int i = 0; i < diagnosticSize; i++)
             writer.println("navTrace " + diagnostics[(diagnosticNext - diagnosticSize + i
                     + diagnostics.length) % diagnostics.length]);
@@ -1484,6 +1663,7 @@ public final class NavigationService extends AccessibilityService {
         }
 
         private boolean axisAllowed() {
+            if (!guardInteraction("axis-unavailable")) return false;
             if (!hasWindowFocus() || !isFocused() || (mouse != null && mouse.isActive())
                     || SystemClock.uptimeMillis() < releaseUntil) return false;
             AccessibilityNodeInfo root = applicationRoot();
@@ -1504,7 +1684,7 @@ public final class NavigationService extends AccessibilityService {
 
         @Override public void onWindowFocusChanged(boolean hasFocus) {
             super.onWindowFocusChanged(hasFocus);
-            if(!hasFocus) {stopRepeat("window-focus-lost");held.clear();menu.clear();armedIdentity=null;armedKey=0; if(mouse!=null) mouse.windowFocusLost();}
+            if(!hasFocus) {stopRepeat("window-focus-lost");stopPhysicalKeys("window-focus-lost");held.clear();cancelMenu();handler.removeCallbacks(documentLongPress);armedIdentity=null;armedKey=0; if(mouse!=null) mouse.windowFocusLost();}
         }
 
         private void navigate(int key, String origin) {
@@ -1520,6 +1700,10 @@ public final class NavigationService extends AccessibilityService {
         }
 
         @Override public boolean dispatchKeyEvent(KeyEvent event) {
+            if (!guardInteraction("dispatch-key-unavailable")) {
+                observeUnavailableDirection(event);
+                return mouse != null && mouse.onKey(event);
+            }
             int code = event.getKeyCode();
             if (code == KeyEvent.KEYCODE_BUTTON_B || code == KeyEvent.KEYCODE_BACK
                     || code == KeyEvent.KEYCODE_ESCAPE) {
@@ -1532,12 +1716,10 @@ public final class NavigationService extends AccessibilityService {
         }
 
         @Override public boolean onGenericMotionEvent(MotionEvent event) {
-            if (mouse != null && mouse.isActive()) {
-                if (axis.active()) stopRepeat("mouse-motion");
-                if (mouse.onMotion(event)) return true;
-            }
+            if (!interactionAllowed()) stopInputSession("motion-unavailable");
             if (event.isFromSource(InputDevice.SOURCE_JOYSTICK)
                     && event.getActionMasked()==MotionEvent.ACTION_CANCEL) {
+                if (mouse != null && mouse.isActive()) mouse.onMotion(event);
                 axis.cancel(event.getDeviceId(), event.getSource());
                 if (!axis.active()) {handler.removeCallbacks(repeat);repeatQueued = false;}
                 trace("axis-cancel device=" + event.getDeviceId() + " source=" + event.getSource());
@@ -1587,7 +1769,14 @@ public final class NavigationService extends AccessibilityService {
                         + " rawZRZ=" + event.getAxisValue(MotionEvent.AXIS_Z) + "," + event.getAxisValue(MotionEvent.AXIS_RZ)
                         + " rawRXRY=" + event.getAxisValue(MotionEvent.AXIS_RX) + "," + event.getAxisValue(MotionEvent.AXIS_RY)
                         + " normalized=" + stick[0] + "," + stick[1];
-                if (!axisAllowed()) {stopRepeat("motion-context");return true;}
+                boolean mouseHandled = mouse != null && mouse.isActive() && mouse.onMotion(event);
+                if (mouseHandled || !axisAllowed()) {
+                    stopRepeat("motion-context");
+                    axis.observeBlocked(now, id, event.getSource(), axisDirection(hx, hy),
+                            axisDirection(stick[0], stick[1]));
+                    trace("axis-blocked " + rawAxes + " " + axis.describe(now));
+                    return true;
+                }
                 long before = axis.generation();
                 int key = axis.update(now, id, event.getSource(), axisDirection(hx, hy),
                         axisDirection(stick[0], stick[1]));

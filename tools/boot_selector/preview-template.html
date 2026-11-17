@@ -1,0 +1,137 @@
+<div id="h700-model-selector">
+  <div class="preview-toolbar">
+    <label for="h700-preview-screen">预览屏幕</label>
+    <select id="h700-preview-screen" aria-label="预览实体屏幕尺寸">
+      <option value="640x480">640 × 480</option>
+      <option value="720x480">720 × 480</option>
+      <option value="720x720">720 × 720</option>
+    </select>
+  </div>
+  <div class="preview-stage viz-dotted-background">
+    <div class="physical-screen" aria-label="启动机型选择页预览">
+      <form class="boot-menu" aria-label="选择你的机型">
+        <h2>选择你的机型</h2>
+        <div class="model-picker" role="group" aria-label="左右切换机型">
+          <button class="model-previous cursor-interaction" type="button" aria-label="上一个机型">←</button>
+          <output class="model-name" aria-live="polite"></output>
+          <button class="model-next cursor-interaction" type="button" aria-label="下一个机型">→</button>
+        </div>
+        <dl class="model-facts" aria-label="机型对应信息，只读">
+          <div><dt>分辨率</dt><dd class="model-geometry"></dd></div>
+          <div><dt>翻盖机型</dt><dd class="model-lid"></dd></div>
+          <div><dt>摇杆</dt><dd class="model-sticks"></dd></div>
+        </dl>
+        <label class="save-choice cursor-interaction"><input type="checkbox" name="saveDefault"><span>保存为启动默认，下次跳过此页</span></label>
+        <button class="boot-action cursor-interaction" type="button">启动系统</button>
+        <p class="key-hint">← → 切换机型　A 确认</p>
+      </form>
+    </div>
+  </div>
+  <output class="preview-result" aria-live="polite">交互预览 · 尚未接入设备启动器</output>
+</div>
+<style>
+#h700-model-selector { --preview-fg:light-dark(#222,#eee); --preview-bg:light-dark(#fff,#202020); width:100%; color:var(--preview-fg); }
+#h700-model-selector .preview-toolbar { display:flex; flex-wrap:wrap; align-items:center; gap:12px; margin-bottom:16px; font:14px/1.4 system-ui,sans-serif; }
+#h700-model-selector .preview-toolbar select { font:inherit; padding:8px; background:var(--preview-bg); color:var(--preview-fg); border:1px solid light-dark(#aaa,#777); border-radius:4px; }
+#h700-model-selector .preview-stage { width:100%; display:flex; justify-content:center; padding:12px 0; }
+#h700-model-selector .physical-screen { position:relative; overflow:hidden; width:100%; max-width:640px; aspect-ratio:4/3; background:#000; color:#fff; }
+#h700-model-selector .boot-menu { position:absolute; box-sizing:border-box; width:640px; height:480px; padding:22px 40px 18px; margin:0; transform-origin:top left; font:30px/34px "Microsoft YaHei","Noto Sans CJK SC",sans-serif; color:#fff; background:#000; }
+#h700-model-selector .boot-menu h2 { margin:0 0 6px; font-size:30px; line-height:36px; font-weight:500; }
+#h700-model-selector .model-picker { display:grid; grid-template-columns:56px minmax(0,1fr) 56px; align-items:center; gap:12px; height:48px; }
+#h700-model-selector .model-picker button { box-sizing:border-box; min-height:48px; padding:0 8px; border:1px solid #fff; border-radius:0; background:#000; color:#fff; font:inherit; }
+#h700-model-selector .model-name { text-align:center; white-space:nowrap; font-weight:500; }
+#h700-model-selector .model-facts { margin:8px 0 0; }
+#h700-model-selector .model-facts div { display:grid; grid-template-columns:180px 1fr; min-height:34px; }
+#h700-model-selector .model-facts dt, #h700-model-selector .model-facts dd { margin:0; }
+#h700-model-selector .save-choice { margin-top:12px; display:flex; align-items:center; gap:12px; min-height:34px; font-size:30px; white-space:nowrap; }
+#h700-model-selector input { width:22px; height:22px; margin:0; flex:none; accent-color:#fff; }
+#h700-model-selector .boot-action { margin-top:12px; padding:4px 24px; min-height:44px; border:1px solid #fff; border-radius:0; font:inherit; font-weight:500; color:#000; background:#fff; }
+#h700-model-selector .key-hint { margin:10px 0 0; font-size:30px; line-height:32px; color:#bbb; }
+#h700-model-selector .preview-result { display:block; margin-top:12px; font:14px/1.5 system-ui,sans-serif; min-height:22px; }
+</style>
+<script>
+(() => {
+  const catalog = __H700_MODEL_CATALOG_JSON__;
+  const root = document.getElementById('h700-model-selector');
+  const physical = root.querySelector('.physical-screen');
+  const menu = root.querySelector('.boot-menu');
+  const viewport = root.querySelector('#h700-preview-screen');
+  const result = root.querySelector('.preview-result');
+  const previous = root.querySelector('.model-previous');
+  const next = root.querySelector('.model-next');
+  const save = menu.elements.saveDefault;
+  const start = root.querySelector('.boot-action');
+  const byId = new Map(catalog.map(model => [model.model_id, model]));
+  const defaultModelId = 'rg34xxsp';
+  let modelId = defaultModelId;
+  let physicalGeometry = '640x480';
+  let confirmed = false;
+  const validGeometry = value => ['640x480','720x480','720x720'].includes(value);
+  function applyState(widgetState) {
+    const state = widgetState?.modelContent?.startupModelSelection;
+    if (state?.schema === 2 && byId.has(state.model_id)) {
+      const changed = modelId !== state.model_id || save.checked !== (state.saveDefault === true);
+      modelId = state.model_id;
+      save.checked = state.saveDefault === true;
+      if (changed) confirmed = false;
+    }
+    const geometry = widgetState?.privateContent?.physicalGeometry;
+    if (validGeometry(geometry)) { physicalGeometry = geometry; viewport.value = geometry; }
+  }
+  applyState(window.openai?.widgetState);
+  function selection() { return {schema:2,model_id:modelId,saveDefault:save.checked}; }
+  function remember() {
+    window.openai?.setWidgetState?.({modelContent:{startupModelSelection:selection()},privateContent:{physicalGeometry}})?.catch(() => {});
+  }
+  function layout() {
+    const [w,h] = physicalGeometry.split('x').map(Number);
+    physical.style.maxWidth = w + 'px';
+    physical.style.aspectRatio = w + ' / ' + h;
+    const scale = physical.getBoundingClientRect().width / w;
+    menu.style.transform = 'scale(' + scale + ')';
+    menu.style.left = ((w - 640) / 2 * scale) + 'px';
+    menu.style.top = ((h - 480) / 2 * scale) + 'px';
+    physical.setAttribute('aria-label', physicalGeometry + '屏幕中的640×480机型选择页');
+  }
+  function render() {
+    const model = byId.get(modelId);
+    menu.dataset.modelId = modelId;
+    root.querySelector('.model-name').textContent = model.label;
+    root.querySelector('.model-geometry').textContent = model.geometry.replace('x',' × ');
+    root.querySelector('.model-lid').textContent = model.lid ? '是' : '否';
+    root.querySelector('.model-sticks').textContent = ['无摇杆','单摇杆','双摇杆'][model.sticks];
+    result.textContent = '预览选择：' + model.label + ' · ' + (save.checked ? '保存启动默认' : '仅本次使用');
+    if (confirmed) result.textContent += '（仅预览，未启动或写入设备）';
+  }
+  function cycle(step) {
+    const index = catalog.findIndex(model => model.model_id === modelId);
+    modelId = catalog[(index + step + catalog.length) % catalog.length].model_id;
+    confirmed = false; render(); remember();
+  }
+  previous.addEventListener('click', () => cycle(-1));
+  next.addEventListener('click', () => cycle(1));
+  save.addEventListener('change', () => { confirmed = false; render(); remember(); });
+  start.addEventListener('click', () => { confirmed = true; render(); remember(); });
+  menu.addEventListener('submit', event => event.preventDefault());
+  menu.addEventListener('keydown', event => {
+    const target = event.target;
+    const modelFocused = target === previous || target === next;
+    if (modelFocused && (event.key === 'ArrowLeft' || event.key === 'ArrowRight')) {
+      event.preventDefault(); cycle(event.key === 'ArrowLeft' ? -1 : 1);
+    } else if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+      event.preventDefault();
+      const focusTargets = [next, save, start];
+      const index = modelFocused ? 0 : focusTargets.indexOf(target);
+      const step = event.key === 'ArrowDown' ? 1 : -1;
+      focusTargets[(index + step + focusTargets.length) % focusTargets.length].focus();
+    } else if (event.key.toLowerCase() === 'a') {
+      event.preventDefault();
+      if (modelFocused) save.focus(); else target.click();
+    }
+  });
+  viewport.addEventListener('change', () => { physicalGeometry = viewport.value; layout(); remember(); });
+  window.addEventListener('openai:set_globals', event => { applyState(event.detail?.globals?.widgetState); render(); layout(); });
+  new ResizeObserver(layout).observe(physical);
+  render(); layout();
+})();
+</script>

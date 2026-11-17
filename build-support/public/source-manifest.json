@@ -2,7 +2,7 @@
   "schema": 1,
   "base_source_md5": "c5dd785ecd45ca9a2b9c53b1092ee6ec",
   "source_target": "roc_os_release_candidate-user",
-  "scope": "Final retained ARM64 user source overlay; prebuilt H700 kernel/bootloader retained from 0.0.1. Independent clean full rebuild not yet executed.",
+  "scope": "ARM64 user source overlay with Navigation18 and scoped ViewRoot resume/input-repeat repair. Production framework/ART preopt and a new whole-card image are not built by this source integration. Prebuilt H700 kernel/bootloader retained from 0.0.1; independent clean full rebuild not yet executed.",
   "files": [
     {
       "path": "build/make/core/build_id.mk",
@@ -2326,8 +2326,8 @@
     },
     {
       "path": "device/roc/roc_os_source64/Navigation/AndroidManifest.xml",
-      "bytes": 885,
-      "sha256": "ea014c1013bd08a3747bba709c75a438c8c28e15f92e50dee04c7ee7594dc110",
+      "bytes": 887,
+      "sha256": "917f4be3195e947642c7c70963261a12f4394fda18428aee979319f349f5fbcd",
       "mode": 511,
       "input": {
         "kind": "repository",
@@ -2376,8 +2376,8 @@
     },
     {
       "path": "device/roc/roc_os_source64/Navigation/src/com/roc/rgsp/navtrial/MouseController.java",
-      "bytes": 22776,
-      "sha256": "35aaf4f8520aad0b7a3a4fbc6e52873b13f00206c67496e015e5906591f3af1e",
+      "bytes": 23465,
+      "sha256": "050047a15f986e8415d0071adb26a524fcef478cf313a42cdeca50dcf06637cb",
       "mode": 511,
       "input": {
         "kind": "repository",
@@ -2396,8 +2396,8 @@
     },
     {
       "path": "device/roc/roc_os_source64/Navigation/src/com/roc/rgsp/navtrial/NavigationService.java",
-      "bytes": 80596,
-      "sha256": "7310bf4b78161b9f11ab5e1f41f28206dbb52f14ae66e6c4c7a1283b28827457",
+      "bytes": 89675,
+      "sha256": "c2e72e7e65fffdee4c562138f17cd2dc297ef7a11939d6a4db5dcf515678e0b8",
       "mode": 511,
       "input": {
         "kind": "repository",
@@ -17546,8 +17546,8 @@
     },
     {
       "path": "device/roc/roc_os_source64/Navigation/src/com/roc/rgsp/navtrial/AxisNavigation.java",
-      "bytes": 9221,
-      "sha256": "8b1604b25da9749abb316845d9862dc5c0c1bae39e9ff34b2744a014017c32b4",
+      "bytes": 10178,
+      "sha256": "c9d6eb3eca6464b0399be10abbcc369bea6bdd3f5786cdb38673897692be8145",
       "mode": 420,
       "input": {
         "kind": "repository",
@@ -17583,6 +17583,26 @@
         "kind": "repository",
         "path": "build-support/public/overlay/device/roc/roc_os_release_candidate/TimeDefaults/res/values/config.xml"
       }
+    },
+    {
+      "path": "device/roc/roc_os_source64/Navigation/src/com/roc/rgsp/navtrial/KeyNavigation.java",
+      "bytes": 7496,
+      "sha256": "dc25c9570e106a3bf677c6d83ceff278f4eeea0c60dbcc229478ddc20950a3d4",
+      "mode": 420,
+      "input": {
+        "kind": "repository",
+        "path": "build-support/public/overlay/device/roc/roc_os_source64/Navigation/src/com/roc/rgsp/navtrial/KeyNavigation.java"
+      }
+    },
+    {
+      "path": "frameworks/base/core/java/android/view/ViewRootImpl.java",
+      "bytes": 411083,
+      "sha256": "e8110bc34ac032346b2da3fb625799420a72b278cc9e58e7d4b2aadf2b2044b3",
+      "mode": 420,
+      "input": {
+        "kind": "repository",
+        "path": "build-support/public/overlay/frameworks/base/core/java/android/view/ViewRootImpl.java"
+      }
     }
   ],
   "base_checks": {
@@ -17591,7 +17611,8 @@
     "hardware/aw/gpu/mali-bifrost/mali-g31/arm/lib/libGLES_mali.so": "05dc81f866b7ab947d20f283f25dcd96ca2f56ffd48e637b68778c1a994a6925",
     "hardware/aw/gpu/mali-bifrost/mali-g31/arm64/lib64/libGLES_mali.so": "03333d495e3566c7d85ca2e000da569a16ce8f022ea25c0ea61950c891d5c7f8",
     "prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8/sysroot/usr/lib/libncurses.so.5": "19494299d25cbb3dd6a19b7de3906b8b33881998801d423deeadc6e2259460f5",
-    "prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8/sysroot/usr/lib/libtinfo.so.5": "87ec5f63974b9a4646309fa6e0033ef45b2cdea6c98a319f98596ea613a91ddd"
+    "prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8/sysroot/usr/lib/libtinfo.so.5": "87ec5f63974b9a4646309fa6e0033ef45b2cdea6c98a319f98596ea613a91ddd",
+    "frameworks/base/core/java/android/view/ViewRootImpl.java": "0eadf38bc8ceb599dcf57eb2d6a8b9e818a19ecedca1143b3a361682c0e64639"
   },
   "signing_link": "device/roc/roc_os_release_candidate/.private-signing",
   "exclusions": [
@@ -17601,10 +17622,10 @@
     "unmodified upstream source bodies"
   ],
   "statistics": {
-    "files": 1757,
-    "new_payload_bytes": 1642343,
+    "files": 1759,
+    "new_payload_bytes": 2071649,
     "input_kinds": {
-      "repository": 624,
+      "repository": 626,
       "image": 8,
       "source": 1125
     }

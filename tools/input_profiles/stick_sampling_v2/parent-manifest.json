@@ -1,0 +1,15 @@
+{
+  "schema": "roc.h700.stick-sampling-v2-parent.v1",
+  "date": "2026-11-17",
+  "parent": "Test8",
+  "source_sha256": {
+    "h700_profile_table.h": "f81e3355a450250f322917786301e03873ee1e100e5175f6298344688182892c",
+    "h700_stick_axes.c": "51f97b645423e04deb5fcac96dd94906b38a5a4ecc475001d3fb64b7a2dbe2f8",
+    "test_kernel_shim.h": "a09ed3be530be54f1e4fd89182ff1f345d65fef33c946dc67eacd4cad97fa3e1",
+    "test_driver.c": "684bf426c22a8b153e4476f84067eee2797db7da8fe63b62803d4dec07376e74",
+    "Makefile": "fe66fea7768d572acda4912225e2c49ef3059a73f5b6981fd9a4cbd5489875f1",
+    "h700_profile_policy.h": "3cbb0baecc79ff02fa9ec0319be9a5e1d8eca442a4143fcea240f2471766a1a1",
+    "axis_math.h": "41f0dabaa85341815c907847f656222d3c56fa058bc3e6752a07bb2efa1df04b"
+  },
+  "scope": "Copied candidate only; original Test8 sources and receipts untouched; hardware root cause unproven"
+}

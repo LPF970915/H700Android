@@ -1,0 +1,138 @@
+{
+  "schema": 1,
+  "date": "2026-11-15",
+  "scope": "Navigation18 and scoped ViewRoot source repair, offline host/API/APK checks and public input closure. No new production framework/ART or whole-card image.",
+  "source_manifest": {
+    "passed": true,
+    "scope": "Repository payload hash/size closure and source-copy recipes only; base source bodies and image payloads are not read by this check.",
+    "source_manifest_sha256": "c48f7f5dd07c73916ad5b5b10b0c215ab87e254a81453749393a15575761d8b9",
+    "target_identity_sha256": "aea8635d7cc4da14180cdbbeef7f16c144022de8a913a9f7a7fad4b7a50473c4",
+    "target_identity_algorithm": "SHA256 of UTF-8 JSON, sort_keys=true, ensure_ascii=true, separators=comma/colon, no final newline; path-sorted records of path,bytes,mode,sha256.",
+    "files": 1759,
+    "new_payload_bytes": 2071649,
+    "input_kinds": {
+      "repository": 626,
+      "image": 8,
+      "source": 1125
+    },
+    "new_payload_bytes_definition": "Unique repository input paths under build-support/public/overlay/",
+    "repository_target_bytes_verified": 5195369,
+    "source_copy_dependencies_verified": 5,
+    "unique_base_source_inputs_not_read": 1120,
+    "image_payloads_not_read": 8,
+    "independent_clean_full_Android_build_passed": false,
+    "hardware_acceptance_performed": false
+  },
+  "changed_target_entries_since_20261114": [
+    "device/roc/roc_os_source64/Navigation/AndroidManifest.xml",
+    "device/roc/roc_os_source64/Navigation/src/com/roc/rgsp/navtrial/AxisNavigation.java",
+    "device/roc/roc_os_source64/Navigation/src/com/roc/rgsp/navtrial/KeyNavigation.java",
+    "device/roc/roc_os_source64/Navigation/src/com/roc/rgsp/navtrial/MouseController.java",
+    "device/roc/roc_os_source64/Navigation/src/com/roc/rgsp/navtrial/NavigationService.java",
+    "frameworks/base/core/java/android/view/ViewRootImpl.java"
+  ],
+  "other_target_entries_and_external_input_policy_unchanged": true,
+  "original_Native_ViewRoot_sha256": "0eadf38bc8ceb599dcf57eb2d6a8b9e818a19ecedca1143b3a361682c0e64639",
+  "original_Native_Navigation_unchanged": true,
+  "navigation": {
+    "passed": true,
+    "versionCode": 18,
+    "versionName": "2.4-resume-guard",
+    "diagnostics": 39,
+    "source_inputs": 13,
+    "helper_suites": 8,
+    "axis_checks": 79,
+    "allowed_service_fragment_checks": 32,
+    "resume_checks": 58,
+    "resume_scenarios": [
+      "validated-blocked-MOVE-retained;channel-specific-neutral",
+      "known-neutral-and-new-device-first-press;source-isolation",
+      "screen-broadcast-retires-menu-select-document;fresh-hotkeys-recover",
+      "live-interactive-keyguard-block-before-broadcast",
+      "generation-guards-preserve-newer-menu-select-requests",
+      "mouse-consumed-UP-balanced;old-Select-UP-does-not-toggle",
+      "mouse-A-hold-live-lock-guard",
+      "mouse-capture-records-blocked-axis-before-return",
+      "stale-and-nonfinite-samples-do-not-unlock"
+    ],
+    "key_navigation_checks": 163,
+    "key_wrapper_checks": 73,
+    "key_wrapper_scenarios": [
+      "managed-raw-DOWNs-use-local-400-160-timer",
+      "absolute-10s-cap-requires-real-UP",
+      "unmanaged-game-passthrough-and-window-owner",
+      "axis-mouse-and-non-DPAD-buttons-preserved",
+      "retired-and-reentrant-key-callbacks-cannot-resurrect",
+      "live-power-keyguard-and-event-time-boundaries",
+      "unavailable-Ring-observes-real-UP-and-preserves-canceled-debt"
+    ],
+    "public_host_result_sha256": "0dbf59e1630be742c7391a630608c3b697c4ec2f0c0415ec55989b91fd1ac91b",
+    "public_host_child_result_sha256": "9da32295edfc23867943b7781d966c22de749865e9bfd8326eb8186c3c6fa034",
+    "virtual_Android_boundary": true,
+    "hardware_reproduction": false
+  },
+  "framework": {
+    "passed": true,
+    "original_source_sha256": "0eadf38bc8ceb599dcf57eb2d6a8b9e818a19ecedca1143b3a361682c0e64639",
+    "candidate_source_sha256": "e8110bc34ac032346b2da3fb625799420a72b278cc9e58e7d4b2aadf2b2044b3",
+    "scope_packages": [
+      "com.overdevs.at4k",
+      "com.android.settings",
+      "com.android.documentsui",
+      "com.android.systemui"
+    ],
+    "joystick_checks": 6754,
+    "joystick_scenarios": 17,
+    "dpad_checks": 144,
+    "dpad_scenarios": 11,
+    "full_source_real_Android_classpath_compile_passed": true,
+    "compile_check_class_files": 51,
+    "production_framework_jar_built": false,
+    "ART_boot_images_built": false
+  },
+  "Navigation18_APK": {
+    "passed": true,
+    "bytes": 94687,
+    "sha256": "2fc26c6b7a171355586480a03748f5ec1141a668ecddf706d12a56b20ef34749",
+    "Android10_production_signature_verified": true,
+    "DEX_integrity_verified": true,
+    "zipalign_verified": true,
+    "unique_members_and_signing_payload_verified": true,
+    "source_inputs_equal_current_public_overlay": true,
+    "installed": false,
+    "complete_framework_fix_by_APK_alone": false
+  },
+  "unit_tests": {
+    "passed": true,
+    "count": 11,
+    "seconds": 27.283,
+    "wall_seconds": 27.648740542,
+    "command": "python3 -B tools/public_build/test_public_build.py"
+  },
+  "Python_changed_scripts_parse": true,
+  "tool_sha256": {
+    "tools/navigation_guard/apply_dpad_guard.py": "255395bb81958996201f662d403951e4097284c168ba3b91a2676416883e6ba9",
+    "tools/navigation_guard/apply_joystick_guard.py": "728a02169f1f1d4a0a4fa3c8127bf9bb8e1c6197783a6311bac412e1c70535d1",
+    "tools/navigation_guard/build_framework_candidate.py": "6ade79e620bb3c58081214ef64998fbc04ef3b0b6215dc0265f8fd42671e7ebf",
+    "tools/navigation_tests/run_source64.py": "bc055af34e505de6096371d2b095e449f8d7a947559737e278761074fa5fbf29",
+    "tools/navigation_tests/test_dpad_guard.py": "eb1fb3011ee7b21512d22d6d3e7357943e20cfc2c4283d58fce372f6dcd524a6",
+    "tools/navigation_tests/test_native_joystick_candidate.py": "9308ae28174417dead4cfda20af288d8dd4d57f1bb574b6265c16bdbab50310e",
+    "tools/navigation_tests/test_navigation_resume_candidate.py": "dfc81746e12049afdb8655ea0442ef97a0b145f909b6378f1088e56a8e6e7a59",
+    "tools/release/build_navigation_resume_fix.py": "856b94b39c96865f2ab7865cd2b2657f07f81e10a3764392548bf35b38554581",
+    "tools/public_build/test_public_build.py": "5ad6cc19a119e993f9a3f01c78baf944e8b1808fd91dcbbc5304f9ab7992bd54",
+    "tools/public_build/validate_manifest.py": "12e9fe3b81697c373ebccdf2f42e8fc5b92acd52ed72ec1f6a36f700d980c004",
+    "build-support/public/source-manifest.json": "c48f7f5dd07c73916ad5b5b10b0c215ab87e254a81453749393a15575761d8b9"
+  },
+  "historical_validation_sha256": "2e338cd110056ecdeae174ea83b78298910ccbc20b8e9595d7fb903ae0ac64cc",
+  "new_full_Android_build_executed": false,
+  "new_whole_card_image_built": false,
+  "physical_device_accessed": false,
+  "hardware_acceptance_performed": false,
+  "all_H700_models_accepted": false,
+  "private_keys_or_personal_data_included": false,
+  "press_timing_ms": {
+    "first_repeat": 400,
+    "repeat_interval": 160,
+    "absolute_continuous_limit": 10000
+  }
+}

@@ -46,8 +46,10 @@ final class MouseController {
     private String lastResult = "none";
     private Runnable selectToggle;
     private int selectToggleDevice = Integer.MIN_VALUE;
+    private long selectToggleGeneration;
     private final Runnable dragWatchdog = () -> stopDrag();
     private final Runnable aTimer = () -> {
+        if (!allowed()) { suspendInput(); return; }
         if (aKey != null && active && !busy) {
             aLong = true;
             touch(true);
@@ -59,7 +61,7 @@ final class MouseController {
             long now = SystemClock.uptimeMillis();
             if (now - geometryAt >= 200) {
                 geometryAt = now;
-                if (!allowed()) { exit(); return; }
+                if (!allowed()) { suspendInput(); return; }
                 updateGeometry();
             }
             float dx = 0, dy = 0;
@@ -158,6 +160,13 @@ final class MouseController {
         if (wasActive) surface.ended();
     }
 
+    /** Retire all pending hotkeys and motion at a screen/lock boundary. */
+    void suspendInput() {
+        exit();
+        hotkey.clear();
+        // exit() deliberately retains consumed DOWN identities until their UP.
+    }
+
     void destroy() {
         destroyed = true;
         exit();
@@ -187,6 +196,7 @@ final class MouseController {
     }
 
     private void cancelSelectToggle() {
+        selectToggleGeneration++;
         if (selectToggle != null) handler.removeCallbacks(selectToggle);
         selectToggle = null;
         selectToggleDevice = Integer.MIN_VALUE;
@@ -196,11 +206,15 @@ final class MouseController {
         cancelSelectToggle();
         final boolean wasActive = active;
         final int token = generation;
+        final long toggleToken = selectToggleGeneration;
         selectToggleDevice = device;
         selectToggle = () -> {
+            // A retired callback must not erase a newer pending Select action.
+            if (toggleToken != selectToggleGeneration) return;
             selectToggle = null;
             selectToggleDevice = Integer.MIN_VALUE;
-            if (destroyed || token != generation || active != wasActive || !allowed()) return;
+            if (!allowed()) { suspendInput(); return; }
+            if (destroyed || token != generation || active != wasActive) return;
             if (active) exit(); else enter();
             if (active != wasActive) {
                 Toast.makeText(service, active ? "鼠标已开启" : "鼠标已关闭", Toast.LENGTH_SHORT).show();
@@ -217,10 +231,7 @@ final class MouseController {
         boolean up = event.getAction() == KeyEvent.ACTION_UP;
         boolean owned = consumed.containsKey(identity);
         if (!allowed()) {
-            if (active) exit();
-            hotkey.clear();
-            handler.removeCallbacks(aTimer);
-            aKey = null;
+            suspendInput();
             if (up && owned) consumed.remove(identity);
             return owned;
         }
@@ -303,6 +314,11 @@ final class MouseController {
     }
 
     boolean onMotion(MotionEvent event) {
+        if (!allowed()) {
+            boolean wasActive = active;
+            suspendInput();
+            return wasActive && event.isFromSource(InputDevice.SOURCE_JOYSTICK);
+        }
         if (!active || !event.isFromSource(InputDevice.SOURCE_JOYSTICK)) return false;
         if (event.getActionMasked() == MotionEvent.ACTION_CANCEL) {
             clearMovement(); return true;

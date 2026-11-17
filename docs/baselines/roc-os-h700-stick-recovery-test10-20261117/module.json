@@ -1,0 +1,35 @@
+{
+  "schema": "roc.h700.stick-recovery-module.v1",
+  "passed": true,
+  "elapsed_seconds": 18.712383253000013,
+  "source_sha256": {
+    "h700_stick_axes.c": "4f141d23544ae24af31164ef94b3462ac4d26513baf0e6e7a9c2ff7973a8d9ba",
+    "axis_math.h": "41f0dabaa85341815c907847f656222d3c56fa058bc3e6752a07bb2efa1df04b",
+    "h700_profile_policy.h": "c1daa59474115df29433a4beecc1d4b62bc05f340c1f6d81fd18c182d802cb15",
+    "h700_profile_table.h": "f81e3355a450250f322917786301e03873ee1e100e5175f6298344688182892c",
+    "Makefile": "fe66fea7768d572acda4912225e2c49ef3059a73f5b6981fd9a4cbd5489875f1"
+  },
+  "module_sha256": "0c80d226a0be754997e987234e61032620448246bec467611b0a6506c0c964e0",
+  "module_path": "/mnt/d/Works/H700Android/out/stick-regression-repair-20261117-v1/module-v1/h700_stick_axes.ko",
+  "module_bytes": 30800,
+  "host_receipt_sha256": "4bddd2d9ea5d52482c92759228b9f5f6bb0eb3d9a2aadb6eca05277127bb8e9a",
+  "kernel_binding_sha256": "e3c49c206d2291b9fe65511f13b23bf31349a4181171f00cac115594390f7523",
+  "controls": {
+    "/mnt/d/Works/H700Android/tools/input_profiles/stick_recovery_build_v1/build.py": "1e736533dcdd465b3323f1606aedb6dff9dcc2eebf29e45ecef604e1421bea36",
+    "/mnt/d/Works/H700Android/tools/input_profiles/stick_build_v2/postverify.py": "d86f527c3ebd6cf88ecf4b0a8bdfc17d1d8169cfa5d57101020e758d7f958716",
+    "/mnt/d/Works/H700Android/tools/h700_kernel_abi.py": "babaecce331d926cd5eee1f5fc1a0a1fe3c843a24787cd5ea49552cfd08fccba",
+    "/mnt/d/Works/H700Android/out/stick-regression-repair-20261117-v1/host-final/host-result.json": "4bddd2d9ea5d52482c92759228b9f5f6bb0eb3d9a2aadb6eca05277127bb8e9a",
+    "/mnt/d/Works/H700Android/out/test8-sticks-runtime-20261117/module-v3/result.json": "41285b3b4d69d918bb3d2ea4e5ad4d21d67114a06029b30088fb436b4288af7d",
+    "/home/lpf/roc-os-h700-stick-recovery-20261117-v1/.config": "8d76497d7ab68f05d545ec17c56805440e3ed0c9ddd8594ff9ad2bb557d41baa",
+    "/home/lpf/roc-os-h700-stick-recovery-20261117-v1/Module.symvers": "8471ea52c16e05c1904f1b6844a78f4d1238751ecedb8724ec39286f66d32c46",
+    "/mnt/d/Works/H700Android/out/stick-regression-repair-20261117-v1/module-v1/h700_stick_axes.ko": "0c80d226a0be754997e987234e61032620448246bec467611b0a6506c0c964e0",
+    "/mnt/d/Works/H700Android/out/stick-regression-repair-20261117-v1/module-v1/kernel-abi.json": "6c35b75aee684023180908de88403d46391ef58a72853eac0908521fa379fcad",
+    "/mnt/d/Works/H700Android/out/stick-regression-repair-20261117-v1/module-v1/kernel-binding.json": "e3c49c206d2291b9fe65511f13b23bf31349a4181171f00cac115594390f7523"
+  },
+  "parent_cache_preserved": true,
+  "kernel_module_loaded": false,
+  "physical_acceptance": false,
+  "device_accessed": false,
+  "images_mutated": false,
+  "module_version_crc_rewriting": false
+}

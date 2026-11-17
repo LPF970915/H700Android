@@ -12,9 +12,11 @@ import re
 import shutil
 import subprocess
 import sys
+import xml.etree.ElementTree as ET
 
 REPO = Path(__file__).resolve().parents[2]
-PREFIX = 'device/roc/roc_os_source64/Navigation/src/com/roc/rgsp/navtrial/'
+PREFIX = 'device/roc/roc_os_source64/Navigation/'
+SOURCE_DIRECTORY = 'src/com/roc/rgsp/navtrial/'
 JAVA_PACKAGE = 'com.roc.rgsp.navtrial.'
 HELPERS = {
     'AxisNavigation': 'AxisNavigationTest',
@@ -24,7 +26,32 @@ HELPERS = {
     'MouseHotkey': 'Source64MouseHotkeyTest',
     'PointerPosition': 'PointerPositionTest',
     'StickVector': 'StickVectorTest',
+    'KeyNavigation': 'KeyNavigationTest',
 }
+NAVIGATION_INPUTS = {
+    'Android.bp', 'AndroidManifest.xml', 'res/xml/navigation_service.xml',
+    *(SOURCE_DIRECTORY + name + '.java' for name in (*HELPERS, 'NavigationService', 'MouseController')),
+}
+RESUME_SCENARIOS = [
+    'validated-blocked-MOVE-retained;channel-specific-neutral',
+    'known-neutral-and-new-device-first-press;source-isolation',
+    'screen-broadcast-retires-menu-select-document;fresh-hotkeys-recover',
+    'live-interactive-keyguard-block-before-broadcast',
+    'generation-guards-preserve-newer-menu-select-requests',
+    'mouse-consumed-UP-balanced;old-Select-UP-does-not-toggle',
+    'mouse-A-hold-live-lock-guard',
+    'mouse-capture-records-blocked-axis-before-return',
+    'stale-and-nonfinite-samples-do-not-unlock',
+]
+KEY_WRAPPER_SCENARIOS = [
+    'managed-raw-DOWNs-use-local-400-160-timer',
+    'absolute-10s-cap-requires-real-UP',
+    'unmanaged-game-passthrough-and-window-owner',
+    'axis-mouse-and-non-DPAD-buttons-preserved',
+    'retired-and-reentrant-key-callbacks-cannot-resurrect',
+    'live-power-keyguard-and-event-time-boundaries',
+    'unavailable-Ring-observes-real-UP-and-preserves-canceled-debt',
+]
 
 
 def sha(path):
@@ -45,12 +72,14 @@ def resolve_sources(manifest):
     recipe = json.loads(manifest.read_text(encoding='utf-8'))
     if recipe.get('schema') != 1 or not isinstance(recipe.get('files'), list):
         raise ValueError('Unsupported public source manifest')
-    required = {PREFIX + name + '.java' for name in (*HELPERS, 'NavigationService')}
+    required = {PREFIX + name for name in NAVIGATION_INPUTS}
     resolved = {}
     for entry in recipe['files']:
         destination = entry.get('path')
-        if destination not in required:
+        if not isinstance(destination, str) or not destination.startswith(PREFIX):
             continue
+        if destination not in required:
+            raise ValueError('Unexpected Navigation manifest source: ' + destination)
         if destination in resolved:
             raise ValueError('Duplicate manifest source: ' + destination)
         origin = entry.get('input', {})
@@ -65,6 +94,21 @@ def resolve_sources(manifest):
     if set(resolved) != required:
         raise ValueError('Manifest sources missing: ' + str(sorted(required - set(resolved))))
     return resolved
+
+
+def snapshot_hashes(root):
+    return {str(path): sha(path) for path in sorted(root.rglob('*')) if path.is_file()}
+
+
+def validate_candidate(candidate, expected):
+    if snapshot_hashes(candidate) != expected:
+        raise AssertionError('Complete Navigation snapshot differs from the manifest')
+    manifest = ET.parse(candidate / 'AndroidManifest.xml').getroot()
+    android = '{http://schemas.android.com/apk/res/android}'
+    if (manifest.get('package') != 'com.roc.rgsp.navtrial'
+            or manifest.get(android + 'versionCode') != '18'
+            or manifest.get(android + 'versionName') != '2.4-resume-guard'):
+        raise AssertionError('Public host regressions require Navigation18 2.4-resume-guard')
 
 
 def executable(value):
@@ -97,16 +141,22 @@ def main():
     finally:
         result.write_text(json.dumps(report, indent=2, ensure_ascii=False) + '\n', encoding='utf-8')
     print(json.dumps({'passed': True, 'axis_checks': 79, 'service_fragment_checks': 32,
+                      'resume_checks': report['resume_checks'], 'resume_scenarios': 9,
+                      'key_navigation_checks': report['key_navigation_checks'],
+                      'key_wrapper_checks': report['key_wrapper_checks'], 'key_wrapper_scenarios': 7,
                       'Source64MouseHotkey': 'PASS', 'result': str(result)}))
 
 
 def run_tests(args, work, report):
     javac, java = executable(args.javac), executable(args.java)
     manifest = args.manifest.resolve()
-    sources = resolve_sources(manifest)
     manifest_sha = sha(manifest)
+    sources = resolve_sources(manifest)
+    assert sha(manifest) == manifest_sha, 'Manifest changed while resolving sources'
     test_root = Path(__file__).resolve().parent
-    controls = [Path(__file__).resolve(), test_root / 'test_navigation_service_fix.py']
+    resume_runner = test_root / 'test_navigation_resume_candidate.py'
+    legacy_extractor = test_root / 'test_navigation_service_fix.py'
+    controls = [Path(__file__).resolve(), resume_runner, legacy_extractor]
     tests = {name: test_root / 'com/roc/rgsp/navtrial' / (test + '.java')
              for name, test in HELPERS.items()}
     controls.extend(tests.values())
@@ -119,17 +169,27 @@ def run_tests(args, work, report):
     manifest_snapshot = work / 'source-manifest.json'
     shutil.copyfile(manifest, manifest_snapshot)
     assert sha(manifest_snapshot) == manifest_sha
-    candidate, test_copy, classes = work / 'sources', work / 'tests', work / 'classes'
+    candidate, test_copy, classes = work / 'sources/Navigation', work / 'tests', work / 'classes'
     for directory in (candidate, test_copy, classes):
-        directory.mkdir()
+        directory.mkdir(parents=True)
+    expected_candidate = {}
     for destination, item in sources.items():
-        target = candidate / PurePosixPath(destination).name
+        target = candidate / destination[len(PREFIX):]
+        target.parent.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(item['path'], target)
         assert sha(target) == item['sha256']
+        expected_candidate[str(target)] = item['sha256']
+    expected_controls = {}
     for path in controls:
-        target = test_copy / path.name
+        target = test_copy / path.relative_to(test_root)
+        target.parent.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(path, target)
         assert sha(target) == control_sha[str(path)]
+        expected_controls[str(target)] = control_sha[str(path)]
+    validate_candidate(candidate, expected_candidate)
+    assert snapshot_hashes(test_copy) == expected_controls, 'Test snapshot input set differs'
+    report.update({'Navigation_snapshot': str(candidate), 'Navigation_snapshot_sha256': expected_candidate,
+                   'test_snapshot_sha256': expected_controls})
 
     def command(argv, name):
         process = subprocess.run([str(value) for value in argv], text=True,
@@ -145,8 +205,8 @@ def run_tests(args, work, report):
 
     command([javac, '-version'], 'javac-version')
     command([java, '-version'], 'java-version')
-    java_files = [candidate / (name + '.java') for name in HELPERS]
-    java_files += [test_copy / path.name for path in tests.values()]
+    java_files = [candidate / SOURCE_DIRECTORY / (name + '.java') for name in HELPERS]
+    java_files += [test_copy / path.relative_to(test_root) for path in tests.values()]
     command([javac, '-J-Xmx512m', '-encoding', 'UTF-8', '-source', '8', '-target', '8',
              '-d', classes, *java_files], 'compile-helpers')
     outcomes = {}
@@ -161,25 +221,66 @@ def run_tests(args, work, report):
             raise AssertionError('Expected all 79 production AxisNavigation checks')
         outcomes[test] = output.strip()
     report['helper_results'] = outcomes
-    fragment_result = work / 'service-fragments-result.json'
-    fragment_script = test_copy / 'test_navigation_service_fix.py'
-    command([sys.executable, '-B', fragment_script,
-             '--source', candidate / 'NavigationService.java', '--axis', candidate / 'AxisNavigation.java',
-             '--javac', javac, '--java', java, '--work', work / 'service-fragments',
-             '--result', fragment_result], 'service-fragments')
+    fragment_work = work / 'service-fragments'
+    fragment_result = fragment_work / 'result.json'
+    fragment_script = test_copy / resume_runner.relative_to(test_root)
+    command([sys.executable, '-B', fragment_script, '--candidate', candidate,
+             '--javac', javac, '--java', java, '--work', fragment_work], 'service-fragments')
     fragments = json.loads(fragment_result.read_text())
     assert fragments['passed'] is True and fragments['hardware_reproduction'] is False
-    assert fragments['source_sha256'] == sources[PREFIX + 'NavigationService.java']['sha256']
-    assert fragments['axis_sha256'] == sources[PREFIX + 'AxisNavigation.java']['sha256']
-    assert fragments['test_script_sha256'] == control_sha[str(test_root / 'test_navigation_service_fix.py')]
+    assert fragments['emit_only'] is False, 'Generated fragments alone are not an execution pass'
+    assert fragments['candidate_inputs_sha256'] == expected_candidate, 'Resume test used different candidate inputs'
+    transitive_controls = (resume_runner, legacy_extractor, tests['AxisNavigation'], tests['KeyNavigation'])
+    expected_transitive_controls = {str(test_copy / path.relative_to(test_root)): control_sha[str(path)]
+                                    for path in transitive_controls}
+    assert fragments['test_controls_sha256'] == expected_transitive_controls, 'Resume test controls differ'
+    assert fragments['candidate_version'] == {
+        'versionCode': 18, 'versionName': '2.4-resume-guard', 'diagnostics': 39}
+    assert fragments['legacy_allowed_guard_stub'] is True
+    assert fragments['static_checks'] and all(value is True for value in fragments['static_checks'].values())
+    assert all(fragments[key] is False for key in
+               ('device_accessed', 'production_modified', 'APK_built', 'HOME_fix_proven'))
+    assert len(fragments['commands']) == 6
+    assert all(item['returncode'] == 0 for item in fragments['commands'])
+    assert re.search(r'^PASS: 79 production AxisNavigation state-machine checks\s*$',
+                     fragments['commands'][1]['output'], re.M), 'Expected all 79 AxisNavigation checks'
     assert re.search(r'^PASS: 32 actual Service fragment checks\s*$',
-                     fragments['commands'][-1]['output'], re.M), 'Expected all 32 actual Service fragment checks'
+                     fragments['commands'][2]['output'], re.M), 'Expected all 32 actual Service fragment checks'
+    resume_output = fragments['commands'][3]['output']
+    resume_pass = re.search(r'^PASS: (\d+) actual candidate resume fragment checks\s*$', resume_output, re.M)
+    assert resume_pass and int(resume_pass.group(1)) > 0, 'Expected executed candidate resume checks'
+    assert type(fragments['resume_checks']) is int and fragments['resume_checks'] == int(resume_pass.group(1))
+    assert fragments['scenarios'] == RESUME_SCENARIOS
+    assert re.findall(r'^SCENARIO (.+)$', resume_output, re.M) == RESUME_SCENARIOS
+    key_navigation_pass = re.search(r'^PASS: (\d+) production KeyNavigation timing checks\s*$',
+                                    fragments['commands'][4]['output'], re.M)
+    key_wrapper_output = fragments['commands'][5]['output']
+    key_wrapper_pass = re.search(r'^PASS: (\d+) actual candidate key wrapper checks\s*$', key_wrapper_output, re.M)
+    assert key_navigation_pass and key_wrapper_pass, 'Expected executed physical key checks'
+    assert type(fragments['key_navigation_checks']) is int and fragments['key_navigation_checks'] == int(key_navigation_pass.group(1)) > 0
+    assert type(fragments['key_wrapper_checks']) is int and fragments['key_wrapper_checks'] == int(key_wrapper_pass.group(1)) > 0
+    assert fragments['key_wrapper_scenarios'] == KEY_WRAPPER_SCENARIOS
+    assert re.findall(r'^KEY_SCENARIO (.+)$', key_wrapper_output, re.M) == KEY_WRAPPER_SCENARIOS
+    # Retain the original public result location for tooling that reads this receipt.
+    public_fragment_result = work / 'service-fragments-result.json'
+    shutil.copyfile(fragment_result, public_fragment_result)
+    assert sha(public_fragment_result) == sha(fragment_result)
     assert sha(manifest) == manifest_sha, 'Manifest changed during test run'
+    assert sha(manifest_snapshot) == manifest_sha, 'Manifest snapshot changed during test run'
     assert resolve_sources(manifest) == sources, 'Manifest input changed during test run'
     assert all(sha(path) == digest for path, digest in control_sha.items()), 'Test input changed'
+    validate_candidate(candidate, expected_candidate)
+    assert snapshot_hashes(test_copy) == expected_controls, 'Test snapshot changed during test run'
+    assert sha(javac) == report['executables']['javac_sha256'] and sha(java) == report['executables']['java_sha256']
     report.update({'axis_checks': 79, 'service_fragment_checks': 32,
-                   'service_fragment_result': str(fragment_result),
-                   'service_fragment_result_sha256': sha(fragment_result),
+                   'resume_checks': fragments['resume_checks'], 'resume_scenarios': fragments['scenarios'],
+                   'key_navigation_checks': fragments['key_navigation_checks'],
+                   'key_wrapper_checks': fragments['key_wrapper_checks'],
+                   'key_wrapper_scenarios': fragments['key_wrapper_scenarios'],
+                   'legacy_allowed_guard_stub': True, 'Navigation_input_count': len(expected_candidate),
+                   'service_fragment_result': str(public_fragment_result),
+                   'service_fragment_result_sha256': sha(public_fragment_result),
+                   'complete_candidate_and_transitive_test_inputs_verified': True,
                    'all_manifest_and_test_inputs_unchanged': True})
 
 

@@ -1,0 +1,12 @@
+{
+  "schema": "roc.h700.swap-helper-composition.v1",
+  "passed": true,
+  "parent_helper_path": "/mnt/d/Works/H700Android/tools/input_profiles/stick_sampling_v2/h700_optional_axes.sh",
+  "parent_helper_sha256": "0dc671d689fd3b71bc4a95cf9122f4f6c2fa6aa7d5bc7c32e7a1e3d6925e2ade",
+  "prefix_path": "/mnt/d/Works/H700Android/tools/memory_swap_v1/swap_prefix.sh",
+  "prefix_sha256": "31b8728b89640b832f7b2015904ee355d6539843b641c4b367ebc2a9ece25e70",
+  "helper_path": "/mnt/d/Works/H700Android/tools/memory_swap_v1/h700_optional_axes.sh",
+  "helper_sha256": "b9174a17353fe4256e390b4ee436ecda6a95e8f26ff455b3dd830f6e4c5c0fbe",
+  "axes_logic_byte_exact_suffix": true,
+  "swap_before_any_model_gate": true
+}

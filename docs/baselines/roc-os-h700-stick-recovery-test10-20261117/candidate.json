@@ -1,0 +1,72 @@
+{
+  "schema": "roc.h700.stick-regression-repair-candidate.v1",
+  "software_checks_passed": true,
+  "recorded_local_date": "2026-11-17",
+  "status": "isolated compiled candidate; no new whole-card image",
+  "artifacts": {
+    "module": {
+      "path": "/mnt/d/Works/H700Android/out/stick-regression-repair-20261117-v1/module-v1/h700_stick_axes.ko",
+      "sha256": "0c80d226a0be754997e987234e61032620448246bec467611b0a6506c0c964e0"
+    },
+    "early_helper": {
+      "path": "/mnt/d/Works/H700Android/out/stick-regression-repair-20261117-v1/integration-v2/h700_optional_axes.sh",
+      "sha256": "c9075cce3763c286b1ffcf01bf4d48561ee1e8cafb325a16a69fc5999018dfc4"
+    },
+    "android_loader": {
+      "path": "/mnt/d/Works/H700Android/out/stick-regression-repair-20261117-v1/integration-v2/rgsp-stick-axes.sh",
+      "sha256": "f20760e2b59214a6fe2a843d4d293f7bec413af27a0c73de987c269402819611"
+    }
+  },
+  "proofs": {
+    "host": {
+      "path": "/mnt/d/Works/H700Android/out/stick-regression-repair-20261117-v1/host-final/host-result.json",
+      "sha256": "4bddd2d9ea5d52482c92759228b9f5f6bb0eb3d9a2aadb6eca05277127bb8e9a"
+    },
+    "module": {
+      "path": "/mnt/d/Works/H700Android/out/stick-regression-repair-20261117-v1/module-v1/result.json",
+      "sha256": "41e0266db20f431f3393cf3b53d13470cb857af9df8cca790adf94af630985be"
+    },
+    "abi": {
+      "path": "/mnt/d/Works/H700Android/out/stick-regression-repair-20261117-v1/module-v1/kernel-abi.json",
+      "sha256": "6c35b75aee684023180908de88403d46391ef58a72853eac0908521fa379fcad"
+    },
+    "kernel_binding": {
+      "path": "/mnt/d/Works/H700Android/out/stick-regression-repair-20261117-v1/module-v1/kernel-binding.json",
+      "sha256": "e3c49c206d2291b9fe65511f13b23bf31349a4181171f00cac115594390f7523"
+    },
+    "loaders": {
+      "path": "/mnt/d/Works/H700Android/out/stick-regression-repair-20261117-v1/loaders-v1/result.json",
+      "sha256": "2126b87a994401b1c9e87cbcafcc6a2857a87ab5955402cace77ca2cd91d342d"
+    },
+    "integration": {
+      "path": "/mnt/d/Works/H700Android/out/stick-regression-repair-20261117-v1/integration-v2/result.json",
+      "sha256": "6575f2828d5ca3987b474330752eda38d29fc42b7ee5b2747374c1833d8a14b8"
+    },
+    "source_review": {
+      "path": "/mnt/d/Works/H700Android/out/stick-history-regression-20261117-v1/v3-source-review.json",
+      "sha256": "af4c27cf7bb0281f25bc12e3c3a6504e6804ce81efddca0f0d234f3b0db9d5fc"
+    }
+  },
+  "host_candidate_cases": 26,
+  "host_negative_control_cases": 5,
+  "host_checks": 802,
+  "loader_cases": 45,
+  "all_twelve_profiles_retained": true,
+  "default_swap_bytes": 2147483648,
+  "swap_prefix_byte_exact": true,
+  "parent_sources_preserved": true,
+  "images_mutated": false,
+  "new_whole_card_packaged": false,
+  "device_accessed": false,
+  "physical_acceptance": false,
+  "exact_hardware_trigger_proven": false,
+  "limitations": [
+    "Hardware APIs are simulated in host tests.",
+    "No failure-time ADC/CCU/GPIO readback is available.",
+    "GPIO mux restoration and closed-clock acquisition are outside this repair.",
+    "No artifact was loaded on a device or used to replace Test9 bytes."
+  ],
+  "controls": {
+    "/mnt/d/Works/H700Android/tools/input_profiles/stick_recovery_build_v1/record.py": "1c2257cabd9017f534109c8773450f555f35bddd7f417f4cc438aec6a7b506ea"
+  }
+}

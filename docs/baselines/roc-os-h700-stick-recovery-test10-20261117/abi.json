@@ -1,0 +1,8 @@
+{
+  "kernel_sha256": "3328c2fab9f19f7ea6a80e34b0a76238cf594bc631f77e05fec32f8adabad042",
+  "kernel_exports": 8715,
+  "reference_crcs_matched": 410,
+  "local_crcs_matched": 418,
+  "module_imports_matched": 43,
+  "module_sha256": "0c80d226a0be754997e987234e61032620448246bec467611b0a6506c0c964e0"
+}

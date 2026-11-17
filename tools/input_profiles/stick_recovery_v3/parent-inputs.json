@@ -1,0 +1,13 @@
+{
+  "schema": "roc.h700.stick-recovery-parent.v1",
+  "parent_directory": "tools/input_profiles/stick_sampling_v2",
+  "parent_source_sha256": {
+    "h700_stick_axes.c": "31825f757a4ce95b3c96510db02acb08e3865b1d0467ac0baa634cfc7d164507",
+    "axis_math.h": "41f0dabaa85341815c907847f656222d3c56fa058bc3e6752a07bb2efa1df04b",
+    "h700_profile_policy.h": "4b4c510c41cf6a620d152515044dc9c1e8af0a96fd7146ae3157e3dc45d298ec",
+    "h700_profile_table.h": "f81e3355a450250f322917786301e03873ee1e100e5175f6298344688182892c",
+    "Makefile": "fe66fea7768d572acda4912225e2c49ef3059a73f5b6981fd9a4cbd5489875f1"
+  },
+  "parent_module_sha256": "5a017572b601ac8ae70216852cce3763428d5fa5793c4767812c8caf7b2d0deb",
+  "frozen_parent_unchanged": true
+}

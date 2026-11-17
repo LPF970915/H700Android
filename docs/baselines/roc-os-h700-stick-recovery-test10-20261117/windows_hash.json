@@ -1,0 +1,10 @@
+{
+  "schema": "roc.h700.windows-image-sha256.v1",
+  "passed": true,
+  "checked_at": "2026-11-17T12:58:02.6279880+08:00",
+  "path": "D:\\Works\\H700Android\\out\\roc-os-h700-stick-recovery-test10-20261117\\ROC_OS_ARM64_ver0.0.2_H700_ManualModel_Test10_StickRecovery_20261117.img.gz",
+  "bytes": 591771367,
+  "sha256": "ad6cec97dafc641cc4729273f3aea40dc4a4047cef32080bbbfbb88b056f8535",
+  "expected_sha256": "ad6cec97dafc641cc4729273f3aea40dc4a4047cef32080bbbfbb88b056f8535",
+  "whole_file_read": true
+}

@@ -1,0 +1,329 @@
+{
+  "schema": "roc.h700.stick-sampling-v2-loader-tests.v1",
+  "passed": true,
+  "cases": 45,
+  "rows": [
+    {
+      "name": "early-rg34xx",
+      "passed": true,
+      "insmod_calls": 0,
+      "mother_busybox_shell_and_hash": true,
+      "module_load_mocked": true
+    },
+    {
+      "name": "android-rg34xx",
+      "passed": true,
+      "insmod_calls": 0,
+      "Android_commands_mocked": true
+    },
+    {
+      "name": "early-rg34xxsp",
+      "passed": true,
+      "insmod_calls": 1,
+      "mother_busybox_shell_and_hash": true,
+      "module_load_mocked": true
+    },
+    {
+      "name": "android-rg34xxsp",
+      "passed": true,
+      "insmod_calls": 1,
+      "Android_commands_mocked": true
+    },
+    {
+      "name": "early-rgsp",
+      "passed": true,
+      "insmod_calls": 0,
+      "mother_busybox_shell_and_hash": true,
+      "module_load_mocked": true
+    },
+    {
+      "name": "android-rgsp",
+      "passed": true,
+      "insmod_calls": 0,
+      "Android_commands_mocked": true
+    },
+    {
+      "name": "early-rgcubexx",
+      "passed": true,
+      "insmod_calls": 1,
+      "mother_busybox_shell_and_hash": true,
+      "module_load_mocked": true
+    },
+    {
+      "name": "android-rgcubexx",
+      "passed": true,
+      "insmod_calls": 1,
+      "Android_commands_mocked": true
+    },
+    {
+      "name": "early-rg35xxplus",
+      "passed": true,
+      "insmod_calls": 0,
+      "mother_busybox_shell_and_hash": true,
+      "module_load_mocked": true
+    },
+    {
+      "name": "android-rg35xxplus",
+      "passed": true,
+      "insmod_calls": 0,
+      "Android_commands_mocked": true
+    },
+    {
+      "name": "early-rg35xx_2025",
+      "passed": true,
+      "insmod_calls": 0,
+      "mother_busybox_shell_and_hash": true,
+      "module_load_mocked": true
+    },
+    {
+      "name": "android-rg35xx_2025",
+      "passed": true,
+      "insmod_calls": 0,
+      "Android_commands_mocked": true
+    },
+    {
+      "name": "early-rg28xx",
+      "passed": true,
+      "insmod_calls": 0,
+      "mother_busybox_shell_and_hash": true,
+      "module_load_mocked": true
+    },
+    {
+      "name": "android-rg28xx",
+      "passed": true,
+      "insmod_calls": 0,
+      "Android_commands_mocked": true
+    },
+    {
+      "name": "early-rg35xxh",
+      "passed": true,
+      "insmod_calls": 1,
+      "mother_busybox_shell_and_hash": true,
+      "module_load_mocked": true
+    },
+    {
+      "name": "android-rg35xxh",
+      "passed": true,
+      "insmod_calls": 1,
+      "Android_commands_mocked": true
+    },
+    {
+      "name": "early-rg40xxh",
+      "passed": true,
+      "insmod_calls": 1,
+      "mother_busybox_shell_and_hash": true,
+      "module_load_mocked": true
+    },
+    {
+      "name": "android-rg40xxh",
+      "passed": true,
+      "insmod_calls": 1,
+      "Android_commands_mocked": true
+    },
+    {
+      "name": "early-rg40xxv",
+      "passed": true,
+      "insmod_calls": 1,
+      "mother_busybox_shell_and_hash": true,
+      "module_load_mocked": true
+    },
+    {
+      "name": "android-rg40xxv",
+      "passed": true,
+      "insmod_calls": 1,
+      "Android_commands_mocked": true
+    },
+    {
+      "name": "early-rg35xxsp",
+      "passed": true,
+      "insmod_calls": 0,
+      "mother_busybox_shell_and_hash": true,
+      "module_load_mocked": true
+    },
+    {
+      "name": "android-rg35xxsp",
+      "passed": true,
+      "insmod_calls": 0,
+      "Android_commands_mocked": true
+    },
+    {
+      "name": "early-rg35xxpro",
+      "passed": true,
+      "insmod_calls": 1,
+      "mother_busybox_shell_and_hash": true,
+      "module_load_mocked": true
+    },
+    {
+      "name": "android-rg35xxpro",
+      "passed": true,
+      "insmod_calls": 1,
+      "Android_commands_mocked": true
+    },
+    {
+      "name": "early-bad_hash",
+      "passed": true,
+      "insmod_calls": 0,
+      "mother_busybox_shell_and_hash": true,
+      "module_load_mocked": true
+    },
+    {
+      "name": "early-wrong_kernel",
+      "passed": true,
+      "insmod_calls": 0,
+      "mother_busybox_shell_and_hash": true,
+      "module_load_mocked": true
+    },
+    {
+      "name": "early-metadata_mismatch",
+      "passed": true,
+      "insmod_calls": 0,
+      "mother_busybox_shell_and_hash": true,
+      "module_load_mocked": true
+    },
+    {
+      "name": "early-noncanonical",
+      "passed": true,
+      "insmod_calls": 0,
+      "mother_busybox_shell_and_hash": true,
+      "module_load_mocked": true
+    },
+    {
+      "name": "early-missing_model",
+      "passed": true,
+      "insmod_calls": 0,
+      "mother_busybox_shell_and_hash": true,
+      "module_load_mocked": true
+    },
+    {
+      "name": "early-loaded_same",
+      "passed": true,
+      "insmod_calls": 0,
+      "mother_busybox_shell_and_hash": true,
+      "module_load_mocked": true
+    },
+    {
+      "name": "early-loaded_other",
+      "passed": true,
+      "insmod_calls": 0,
+      "mother_busybox_shell_and_hash": true,
+      "module_load_mocked": true
+    },
+    {
+      "name": "early-hardware_refusal_nonfatal",
+      "passed": true,
+      "insmod_calls": 1,
+      "mother_busybox_shell_and_hash": true,
+      "module_load_mocked": true
+    },
+    {
+      "name": "android-bad_hash",
+      "passed": true,
+      "insmod_calls": 0,
+      "Android_commands_mocked": true
+    },
+    {
+      "name": "android-wrong_kernel",
+      "passed": true,
+      "insmod_calls": 0,
+      "Android_commands_mocked": true
+    },
+    {
+      "name": "android-metadata_mismatch",
+      "passed": true,
+      "insmod_calls": 0,
+      "Android_commands_mocked": true
+    },
+    {
+      "name": "android-noncanonical",
+      "passed": true,
+      "insmod_calls": 0,
+      "Android_commands_mocked": true
+    },
+    {
+      "name": "android-missing_model",
+      "passed": true,
+      "insmod_calls": 0,
+      "Android_commands_mocked": true
+    },
+    {
+      "name": "android-loaded_same",
+      "passed": true,
+      "insmod_calls": 0,
+      "Android_commands_mocked": true
+    },
+    {
+      "name": "android-loaded_other",
+      "passed": true,
+      "insmod_calls": 0,
+      "Android_commands_mocked": true
+    },
+    {
+      "name": "android-hardware_refusal_nonfatal",
+      "passed": true,
+      "insmod_calls": 1,
+      "Android_commands_mocked": true
+    },
+    {
+      "name": "early-missing_module",
+      "passed": true,
+      "insmod_calls": 0,
+      "mother_busybox_shell_and_hash": true,
+      "module_load_mocked": true
+    },
+    {
+      "name": "early-duplicate_model",
+      "passed": true,
+      "insmod_calls": 0,
+      "mother_busybox_shell_and_hash": true,
+      "module_load_mocked": true
+    },
+    {
+      "name": "early-duplicate_sticks",
+      "passed": true,
+      "insmod_calls": 0,
+      "mother_busybox_shell_and_hash": true,
+      "module_load_mocked": true
+    },
+    {
+      "name": "early-missing_sticks",
+      "passed": true,
+      "insmod_calls": 0,
+      "mother_busybox_shell_and_hash": true,
+      "module_load_mocked": true
+    },
+    {
+      "name": "early-injection",
+      "passed": true,
+      "insmod_calls": 0,
+      "mother_busybox_shell_and_hash": true,
+      "module_load_mocked": true
+    }
+  ],
+  "module_path": "/mnt/d/Works/H700Android/out/stick-regression-repair-20261117-v1/module-v1/h700_stick_axes.ko",
+  "module_sha256": "0c80d226a0be754997e987234e61032620448246bec467611b0a6506c0c964e0",
+  "mother_busybox_sha256": "ac739b9a7263faf678d29691e10fabd7edcee61fc18cf4aed57c8d270d0894c7",
+  "mother_libraries_sha256": {
+    "lib/ld-linux-aarch64.so.1": "5f67413980a53e1ff7ac2202ccb7f9f9fc86f2e28a092e4cc1c098666e93509b",
+    "lib/libblkid.so.1.1.0": "0f6d226cfd03eb71cd8a601c0af1073f4a268774f891223a2cdeb8a300c9a1a5",
+    "lib/libc.so.6": "b36a672ef219782931572a1c33fd2bfdf7abcd902bfa8a108ee81aee3c43f2ab",
+    "lib/libcrypt.so.1": "100c9f2c1928a04e6240fd15b00674599302775452d5389b2c2ed2bc9e8fc5c4",
+    "lib/libdl.so.2": "cc0b887144a3231319c6e717d28936c2c735861a71b63b5f9d5d739b7bdf7616",
+    "lib/libgcc_s.so.1": "e4b94b4635f75baf760ee872ae4d54968dd2e4034b97e02214266a3fb2ebeae6",
+    "lib/libm.so.6": "9c300e54e6239c3d3bcdf81b4ff12cfa569717fd247d0b1cd4c120f83bfc183b",
+    "lib/libnsl.so.1": "02bbd6167e125cf7b31756e2f1deaea35d08253702b00a757606f9660ea35247",
+    "lib/libnss_dns.so.2": "f9a9eb2efadd5afc6de039ec50b43def568e0045737d05092f50afd95f6b58e9",
+    "lib/libnss_files.so.2": "a802d45dff07964193a51ac2e1ba56fb4d3b5844cc7798d151f08afe89a2d732",
+    "lib/libpthread.so.0": "b8aecb8855c34ee8e861c9eaf4cdad2c0a868455331cecc1af22fd12eef3bf00",
+    "lib/libresolv.so.2": "56a220c8593dee146a6f76d505cbab5edf2053fd84816be7e2621daf5ae2b855",
+    "lib/librt.so.1": "eb46a18f9d0d991eb66082855fc7d660d49398f41c98a37292b698ebf01e0e6d",
+    "lib/libutil.so.1": "435e28a822c943c3690008bb52ebb799cc92499fa3c447a081118be419e9fcb1",
+    "lib/libuuid.so.1.3.0": "9b402341c8e3d0af1c4b32792854e16001a19b76e0161e0f4d06ae8862f53513"
+  },
+  "source_sha256": {
+    "h700_optional_axes.sh": "c9075cce3763c286b1ffcf01bf4d48561ee1e8cafb325a16a69fc5999018dfc4",
+    "rgsp-stick-axes.sh": "f20760e2b59214a6fe2a843d4d293f7bec413af27a0c73de987c269402819611",
+    "test_loaders.py": "edec742ef3196e4aa3a56e30999cce55f2e6cefa42f3fc8d77d36526719bb1b8"
+  },
+  "hardware_module_not_loaded": true,
+  "scope": "actual candidate shell scripts; insmod and Android commands mocked"
+}

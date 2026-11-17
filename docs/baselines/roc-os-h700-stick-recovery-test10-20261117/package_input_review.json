@@ -1,0 +1,47 @@
+{
+  "schema": "roc.h700.test10-independent-package-input-review.v1",
+  "passed": true,
+  "reviewer": "test10_inputs_review",
+  "reviewed_at": "2026-11-17T12:46:43.145888+08:00",
+  "tool_sha256": {
+    "/mnt/d/Works/H700Android/tools/input_profiles/stick_recovery_package_v1/package.py": "6ca34650af0707b7a102c786fe8274f587b5fca5f534d15818c6149280a552ed",
+    "/mnt/d/Works/H700Android/tools/input_profiles/stick_recovery_package_v1/verify.py": "d65894b5ebf762c4cebf4bc78a2c439a453d800ec5237b6a7c53b07a92167830",
+    "/mnt/d/Works/H700Android/tools/input_profiles/stick_recovery_package_v1/run.ps1": "31e69a04f6af7c97a8cb63115e4c7c05a3dc7844fa2d05fa38cd98b77329b183",
+    "/mnt/d/Works/H700Android/tools/input_profiles/stick_recovery_package_v1/inputs.json": "4a54880d774c06187dc5b9ab971b6f42741f472ff53805cd9a42222a1d2dda94"
+  },
+  "producer_controls": 92,
+  "independent_required_controls": 87,
+  "artifacts": {
+    "module": {
+      "path": "/mnt/d/Works/H700Android/out/stick-regression-repair-20261117-v1/module-v1/h700_stick_axes.ko",
+      "sha256": "0c80d226a0be754997e987234e61032620448246bec467611b0a6506c0c964e0"
+    },
+    "early_helper": {
+      "path": "/mnt/d/Works/H700Android/out/stick-regression-repair-20261117-v1/integration-v2/h700_optional_axes.sh",
+      "sha256": "c9075cce3763c286b1ffcf01bf4d48561ee1e8cafb325a16a69fc5999018dfc4"
+    },
+    "android_loader": {
+      "path": "/mnt/d/Works/H700Android/out/stick-regression-repair-20261117-v1/integration-v2/rgsp-stick-axes.sh",
+      "sha256": "f20760e2b59214a6fe2a843d4d293f7bec413af27a0c73de987c269402819611"
+    }
+  },
+  "checks": {
+    "all_inputs_and_proof_hashes_match": true,
+    "producer_and_independent_schema_checks_pass": true,
+    "all_independent_required_controls_in_producer": true,
+    "test8_parent_range_kernel_and_name_agree": true,
+    "module_and_both_loaders_updated_together": true,
+    "test9_swap_prefix_only_module_sha_change": true,
+    "default_2gib_and_22_inherited_swap_cases_bound": true,
+    "twelve_model_boot_preservation_by_exact_parent_and_bounded_delta": true,
+    "independent_complete_gzip_raw_comparison_present": true,
+    "independent_full_cpio_and_vendor_metadata_checks_present": true,
+    "resource_global_lock_and_foreground_wait_preserved": true
+  },
+  "boundaries": [
+    "Only small source, input and receipt files were read; no full image was read.",
+    "No packaging, compilation, device access or card write was performed.",
+    "Complete produced image verification and physical acceptance remain separate."
+  ],
+  "blockers": []
+}

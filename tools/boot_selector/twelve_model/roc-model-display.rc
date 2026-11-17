@@ -1,0 +1,5 @@
+# RG28XX uses a native 480x640 panel mounted sideways. SurfaceFlinger reads
+# this enum in its constructor, before displaying the logical 640x480 desktop.
+# Other models keep the image's ordinary orientation default.
+on early-init && property:ro.boot.roc_model=rg28xx
+    setprop ro.surface_flinger.primary_display_orientation ORIENTATION_90

@@ -1,0 +1,141 @@
+{
+  "schema": "roc.h700.test6.runtime-supplement.v1",
+  "recorded_at": "2026-11-16T13:11:29.286032+00:00",
+  "offline_acceptance_retained_unchanged": true,
+  "user_report": {
+    "model": "RG35XX H",
+    "power_only": true,
+    "TF2_empty": true,
+    "menu_ever_visible": false,
+    "icon": "lying green Android robot without text",
+    "icon_delay": "a few seconds"
+  },
+  "usb_before_poweroff": {
+    "samples": 3,
+    "present_each_sample": true,
+    "manufacturer": "USB Developer",
+    "vid": "1F3A",
+    "pid": "1010",
+    "interface": "FF/42/03",
+    "windows_problem_code": 28,
+    "adb_transport_available": false,
+    "fastboot_transport_available": false,
+    "driver_installed_by_agent": false,
+    "device_commands_sent": false
+  },
+  "boot_stage": "U-Boot Fastboot at USB capture; prior Linux entry not established",
+  "actual_card": {
+    "unique_dynamic_non_system_USB_identity_guard": true,
+    "primary_backup_GPT_consistent": true,
+    "GPT_mode": "backup_relocated_userdata_seed_preserve_anomaly",
+    "whole_prefix_bytes": 222298112,
+    "whole_prefix_sha256": "48a4abb3b930322ab840078e64b30ca41db940bb475dcb3b00096d0c56003c12",
+    "TOC_environment_and_boot_match_Test6": true,
+    "prefix_different_4KiB_blocks": [
+      {
+        "offset": 0,
+        "bytes": 4096
+      },
+      {
+        "offset": 8192,
+        "bytes": 4096
+      },
+      {
+        "offset": 262144,
+        "bytes": 4096
+      }
+    ],
+    "system_identity": {
+      "scope": "offline target-file identity only; not complete system integrity or runtime acceptance",
+      "files": [
+        {
+          "id": "navigation18",
+          "path": "/system/app/ROCNavigation/ROCNavigation.apk",
+          "bytes": 98794,
+          "sha256": "8b3227dc5db5d3fa79a6d99d26647f4c2746f4ecd864609f0d23a29ff61c55d8",
+          "expected_sha256": "8b3227dc5db5d3fa79a6d99d26647f4c2746f4ecd864609f0d23a29ff61c55d8",
+          "passed": true
+        },
+        {
+          "id": "framework_test6",
+          "path": "/system/framework/framework.jar",
+          "bytes": 24647518,
+          "sha256": "60ab589c7f638dd03954dc379d614ee5ca3242bf0708aec7cd88c578c0f4c8e0",
+          "expected_sha256": "60ab589c7f638dd03954dc379d614ee5ca3242bf0708aec7cd88c578c0f4c8e0",
+          "passed": true
+        }
+      ],
+      "full_system_integrity_claimed": false
+    },
+    "userdata_superblock": {
+      "filesystem_bytes": 21474836480,
+      "superblock_sha256": "7dcf36dae92139eabb77c0289c46e600375e757899415ef7705a09e86d4bdf82",
+      "mount_count": 0,
+      "mount_time": 0,
+      "state_valid": true,
+      "needs_recovery": false,
+      "error_count": 0
+    },
+    "rgsp_persist_found": false,
+    "userdata_grown": false,
+    "stage1_bookkeeping": "Original outer failed because child ExitCode was null; completed child capture reconciled separately without rereading card or inventing an exit code.",
+    "stage2_inner_and_outer_passed": true,
+    "all_readers_closed": true,
+    "card_written_by_agent": false,
+    "mounted_by_agent": false,
+    "journal_replayed": false,
+    "filesystem_repaired": false
+  },
+  "conclusions": [
+    "Observed USB and exact packaged icon support U-Boot Fastboot, not Android Recovery.",
+    "Actual bootloader, complete environment and boot partition match the Test5/Test6 shared prefix.",
+    "Actual Navigation18 and framework files match Test6, confirming the intended test payload in checked ranges.",
+    "Unexpanded seed userdata with zero mount count/time and no startup directory does not support a completed Android handoff.",
+    "RTC fastboot reason is consumed before dispatch; card evidence cannot recover the original RTC value.",
+    "Static actual user init can request bootloader on fatal; this path exists but has no occurrence evidence in this attempt.",
+    "Remaining cause requires early UART trace; no replacement package or speculative live/card patch was made."
+  ],
+  "physical_menu_accepted": false,
+  "physical_Android_display_accepted": false,
+  "physical_navigation_accepted": false,
+  "all_H700_models_accepted": false,
+  "next_step": "Receive-only UART capture from before power-on; adapter/pads/electrical level must be identified first.",
+  "evidence": [
+    {
+      "path": "out/test6-fastboot-readonly-20261116/card-inspection-v1/attempt-20261116-130211-243-817fe24b.private/inspection.private/result.private.json",
+      "sha256": "cc775e43d3da16dd4575329adebf0382cfc3c862e1d29895fba8717a13838f3e"
+    },
+    {
+      "path": "out/test6-fastboot-readonly-20261116/card-inspection-v1/attempt-20261116-130211-243-817fe24b.private/runner-result.private.json",
+      "sha256": "9f04a7d1a32e3706c8363752f7f29c8540306453d1fbc64bfbc0c0fe4b8dc8f3"
+    },
+    {
+      "path": "out/test6-fastboot-readonly-20261116/card-inspection-v1/attempt-20261116-130211-243-817fe24b.private/reconciliation.private.json",
+      "sha256": "5ea890a4169f10f21fbc9bd0481b093b7166c584ca8f0af733a0fa540187a969"
+    },
+    {
+      "path": "out/test6-fastboot-readonly-20261116/userdata-system-inspection-v1/attempt-20261116-130703-237-0fbbd30f.private/inspection.private/result.private.json",
+      "sha256": "d9021a93f9d8672b87874d800c2bb9611f00d6bdca68e0c92d8cbc195f04f352"
+    },
+    {
+      "path": "out/test6-fastboot-readonly-20261116/userdata-system-inspection-v1/attempt-20261116-130703-237-0fbbd30f.private/runner-result.private.json",
+      "sha256": "182de5bee37e7ebace333a751f4a966e61782d37bdadc3c47a87f89274b9eeb7"
+    },
+    {
+      "path": "out/test6-fastboot-readonly-20261116/captured-prefix-analysis-v1.json",
+      "sha256": "453767b70e800edb2d696988fc2d5d4e756e259e93ba82b2df162b6afeff0998"
+    },
+    {
+      "path": "out/test6-fastboot-readonly-20261116/native-audit-v1/findings.json",
+      "sha256": "1078017bbd8f06747c12fc5e4fa4c7d7ace31ac8371b1219d22fdcacbaeda896"
+    },
+    {
+      "path": "out/test6-fastboot-readonly-20261116/boot-policy-review-v1/result.json",
+      "sha256": "e91ddb4315bbc96d33f3cb22f82e1f340e5a93c4483db06e0c8ef3c7fd5f8588"
+    },
+    {
+      "path": "out/test6-fastboot-readonly-20261116/linux-reboot-review-v1/result.json",
+      "sha256": "b7326be3e6b50096c8be8d763bb29281bf50004573767aa997d64ad10aad3475"
+    }
+  ]
+}
