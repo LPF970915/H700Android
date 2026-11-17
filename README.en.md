@@ -4,7 +4,7 @@
 
 [中文](README.md) · [Current status](docs/CURRENT_STATUS.md) · [Downloads and hashes](docs/PUBLIC_DOWNLOADS.md) · [Build guide](docs/PUBLIC_BUILD.md)
 
-Updated **November 17, 2026**. The current release is **0.0.3**, one full-card image with a startup menu for twelve H700 models. It retains the Test11 stick repair, which the user confirmed works on **RG35XX H**. The 0.0.3 package is delivered locally; the public external download remains **0.0.1**, and the new package has not been uploaded.
+Updated **November 17, 2026**. The current release is **0.0.3**, one full-card image with a startup menu for twelve H700 models. It retains the Test11 stick repair, which the user confirmed works on **RG35XX H**. The [image download share](docs/PUBLIC_DOWNLOADS.md) is a permanent, regularly updated location for the latest release, historical releases and test images. New official images are added when their release information is published in Git; **0.0.3** is now available there.
 
 ## Current features
 
@@ -40,7 +40,7 @@ On first boot, press power normally to enter the menu. The initial panel trial u
 | Expanded size | 32,434,554,368 bytes |
 | Embedded version | `ROC_OS_ARM64_ver0.0.3` / `ro.roc.os.version=0.0.3` |
 | Hardware evidence | The user confirmed the Test11 stick repair on RG35XX H; the newly packaged 0.0.3 image has not had a separate hardware acceptance run |
-| Public download | External storage still hosts 0.0.1; see [downloads and exact file identity](docs/PUBLIC_DOWNLOADS.md) |
+| Public download | Permanent share with 0.0.3, historical releases and test images; see [downloads and exact file identity](docs/PUBLIC_DOWNLOADS.md) |
 
 Use a TF1 card of at least 64GB and leave TF2 empty for the first test. Initial userdata preparation and allocation of the 2GiB swap file take time; later boots reuse it. See the [0.0.3 release notes](docs/ROC_OS_0.0.3_20261117.md) for the package changes, complete verification and hardware scope.
 

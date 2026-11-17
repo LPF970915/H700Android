@@ -36,6 +36,10 @@
   "fresh_0_0_3_card_boot_accepted": false,
   "all_H700_models_accepted": false,
   "diagnostic_ADB_authorization_retained": true,
-  "image_uploaded": false,
+  "image_uploaded": true,
+  "download_url": "https://pan.baidu.com/s/12mIL9R38oy65ldhGujHWuw?pwd=H700",
+  "download_code": "H700",
+  "download_share_policy": "Permanent share for latest official releases, historical releases and test images; official images are synchronized when release information is published in Git.",
+  "upload_status_source": "Maintainer confirmation and share listing, 2026-11-17",
   "Android_full_rebuild_performed": false
 }

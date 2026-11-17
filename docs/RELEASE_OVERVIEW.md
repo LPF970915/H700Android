@@ -15,9 +15,9 @@
 | raw SHA256 | `42e08665eeeb953dba41eac8978b0c8fb8707e041dede5495409f4787bac8e5e` |
 | 包内版本 | `ROC_OS_ARM64_ver0.0.3`／`ro.roc.os.version=0.0.3` |
 | 本地交付 | 至少 64GB TF1，首次测试 TF2 留空 |
-| 公开网盘 | 仍提供 0.0.1，0.0.3 尚未上传；[下载与校验](PUBLIC_DOWNLOADS.md) |
+| 公开网盘 | 长期更新的统一入口，包含 0.0.3、历史版及测试版；[下载与校验](PUBLIC_DOWNLOADS.md) |
 
-发布身份见 [0.0.3.json](../build-support/releases/0.0.3.json)，详细校验见 [0.0.3 发行说明](ROC_OS_0.0.3_20261117.md)。Git 同步源码和说明不等于镜像资产已上传。
+发布身份见 [0.0.3.json](../build-support/releases/0.0.3.json)，详细校验见 [0.0.3 发行说明](ROC_OS_0.0.3_20261117.md)。维护者在 Git 公布正式版信息时，同步将最新镜像放入该网盘。
 
 ## 主要变化
 
@@ -51,4 +51,4 @@ Navigation18 及框架导航保护处理熄屏／窗口变化后的旧输入，�
 
 As of November 17, 2026, **0.0.3** is the current release. It retains the Test11 stick repair confirmed by the user on RG35XX H, manual selection for twelve models, three panel trials, loading feedback, Navigation18 and framework guards, default 2GiB swap and Lid4.
 
-The release package updates the embedded system version from the exact Test11 parent. The newly packaged 0.0.3 image has not had a separate hardware acceptance run, and complete coverage of all twelve models remains in progress. The public external download is still 0.0.1; 0.0.3 has not been uploaded. See the [release notes](ROC_OS_0.0.3_20261117.md), [current status](CURRENT_STATUS.md), [downloads](PUBLIC_DOWNLOADS.md) and [build validation scope](PUBLIC_BUILD_STATUS.md).
+The release package updates the embedded system version from the exact Test11 parent. The newly packaged 0.0.3 image has not had a separate hardware acceptance run, and complete coverage of all twelve models remains in progress. The permanent download share now includes 0.0.3, historical releases and test images. New official images are added when their release information is published in Git. See the [release notes](ROC_OS_0.0.3_20261117.md), [current status](CURRENT_STATUS.md), [downloads](PUBLIC_DOWNLOADS.md) and [build validation scope](PUBLIC_BUILD_STATUS.md).
