@@ -1,0 +1,66 @@
+{
+  "version": "0.0.4",
+  "passed": true,
+  "artifact": "ROC_OS_ARM64_ver0.0.4.img.gz",
+  "bytes": 735536681,
+  "sha256": "4a4e9fd4e980b7d9effd3d23f4d423bedd8a615705de3175d6bb333b4df0e53e",
+  "raw_bytes": 32434554368,
+  "raw_sha256": "f71c6ada45033c9b57f1de1f3d0c536847c9df21f585378a89ab6bad42862fe4",
+  "base_gzip_sha256": "60872656ddc9f0f71ec026d965f7c2a3e17f5eaebc484e7c6867da86f970b87d",
+  "base_raw_sha256": "8f4041e00d4b3ba58b39710a95e455a6e8510656cd3ea5fdd201f40e0af09e76",
+  "changed_byte_offsets": [
+    375706487,
+    375711207
+  ],
+  "changed_properties": [
+    "ro.build.display.id",
+    "ro.roc.os.version"
+  ],
+  "ranges": {
+    "prefix": "5184f01ed3b1d7e765c3ed1c87a3ce247c10201bffdaad143dd0e1ded16af9d7",
+    "system": "a5dc32fda6dec33ac6cb7eb36fae467d125ae7251a718faa733faddd54206091",
+    "vendor": "68183115705bdf104ec78c6232d38dcdb81143bed9bc5d2ed9ad1762b027e430",
+    "userdata": "637a02240df99491b9616503c69cd41638b7604c927675762e640014b3cd7d86",
+    "backup_gpt": "ba9ba2c16fbb57653f2d5b221bb2f0c2ee698550f1d9dc33df30b5565d23c5dc"
+  },
+  "gpt": [
+    {
+      "name": "special",
+      "offset": 37748736,
+      "bytes": 67108864
+    },
+    {
+      "name": "boot-resource",
+      "offset": 104857600,
+      "bytes": 33554432
+    },
+    {
+      "name": "env",
+      "offset": 138412032,
+      "bytes": 16777216
+    },
+    {
+      "name": "boot",
+      "offset": 155189248,
+      "bytes": 67108864
+    },
+    {
+      "name": "system",
+      "offset": 222298112,
+      "bytes": 8589934592
+    },
+    {
+      "name": "vendor",
+      "offset": 8812232704,
+      "bytes": 2147483648
+    },
+    {
+      "name": "userdata",
+      "offset": 10959716352,
+      "bytes": 21474836480
+    }
+  ],
+  "system_fsck_passed": true,
+  "unchanged_build_prop_inode": true,
+  "full_gzip_readback": true
+}

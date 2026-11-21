@@ -1,0 +1,3886 @@
+{
+  "selftest": {
+    "pass": true,
+    "checks": 927038,
+    "timeout_checks": 63,
+    "rescue_checks": 5235,
+    "models": 12,
+    "hardware_io": false
+  },
+  "cases": [
+    {
+      "initial": null,
+      "keys": "DDA",
+      "chosen": "rg35xxh",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rg35xxh",
+      "keys": "DDA",
+      "chosen": "rg35xxh",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rg35xxh",
+      "keys": "LDDA",
+      "chosen": "rg28xx",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rg35xxh",
+      "keys": "LLDDA",
+      "chosen": "rg35xx_2025",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rg35xxh",
+      "keys": "LLLDDA",
+      "chosen": "rg35xxplus",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rg35xxh",
+      "keys": "LLLLDDA",
+      "chosen": "rg35xxpro",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rg35xxh",
+      "keys": "LLLLLDDA",
+      "chosen": "rg35xxsp",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rg35xxh",
+      "keys": "LLLLLLDDA",
+      "chosen": "rg35xxh",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rg35xxh",
+      "keys": "DDA",
+      "chosen": "rg35xxh",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rg35xxh",
+      "keys": "RDDA",
+      "chosen": "rg35xxsp",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rg35xxh",
+      "keys": "RRDDA",
+      "chosen": "rg35xxpro",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rg35xxh",
+      "keys": "RRRDDA",
+      "chosen": "rg35xxplus",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rg35xxh",
+      "keys": "RRRRDDA",
+      "chosen": "rg35xx_2025",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rg35xxh",
+      "keys": "RRRRRDDA",
+      "chosen": "rg28xx",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rg35xxh",
+      "keys": "RRRRRRDDA",
+      "chosen": "rg35xxh",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rg35xxh",
+      "keys": "DADA",
+      "chosen": "rg35xxh",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rg35xxh",
+      "keys": "RRN",
+      "chosen": "rg40xxv",
+      "blind": false,
+      "preview": true
+    },
+    {
+      "initial": "rg35xxh",
+      "keys": "N",
+      "chosen": "rg40xxv",
+      "blind": true,
+      "preview": true
+    },
+    {
+      "initial": "rg35xxh",
+      "keys": "RRP",
+      "chosen": "rgcubexx",
+      "blind": false,
+      "preview": true
+    },
+    {
+      "initial": "rg35xxh",
+      "keys": "P",
+      "chosen": "rgcubexx",
+      "blind": true,
+      "preview": true
+    },
+    {
+      "initial": "rg35xxplus",
+      "keys": "DDA",
+      "chosen": "rg35xxplus",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rg35xxplus",
+      "keys": "LDDA",
+      "chosen": "rg35xxpro",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rg35xxplus",
+      "keys": "LLDDA",
+      "chosen": "rg35xxsp",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rg35xxplus",
+      "keys": "LLLDDA",
+      "chosen": "rg35xxh",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rg35xxplus",
+      "keys": "LLLLDDA",
+      "chosen": "rg28xx",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rg35xxplus",
+      "keys": "LLLLLDDA",
+      "chosen": "rg35xx_2025",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rg35xxplus",
+      "keys": "LLLLLLDDA",
+      "chosen": "rg35xxplus",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rg35xxplus",
+      "keys": "DDA",
+      "chosen": "rg35xxplus",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rg35xxplus",
+      "keys": "RDDA",
+      "chosen": "rg35xx_2025",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rg35xxplus",
+      "keys": "RRDDA",
+      "chosen": "rg28xx",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rg35xxplus",
+      "keys": "RRRDDA",
+      "chosen": "rg35xxh",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rg35xxplus",
+      "keys": "RRRRDDA",
+      "chosen": "rg35xxsp",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rg35xxplus",
+      "keys": "RRRRRDDA",
+      "chosen": "rg35xxpro",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rg35xxplus",
+      "keys": "RRRRRRDDA",
+      "chosen": "rg35xxplus",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rg35xxplus",
+      "keys": "DADA",
+      "chosen": "rg35xxplus",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rg35xxplus",
+      "keys": "RRN",
+      "chosen": "rg40xxv",
+      "blind": false,
+      "preview": true
+    },
+    {
+      "initial": "rg35xxplus",
+      "keys": "N",
+      "chosen": "rg40xxv",
+      "blind": true,
+      "preview": true
+    },
+    {
+      "initial": "rg35xxplus",
+      "keys": "RRP",
+      "chosen": "rgcubexx",
+      "blind": false,
+      "preview": true
+    },
+    {
+      "initial": "rg35xxplus",
+      "keys": "P",
+      "chosen": "rgcubexx",
+      "blind": true,
+      "preview": true
+    },
+    {
+      "initial": "rg35xx_2025",
+      "keys": "DDA",
+      "chosen": "rg35xx_2025",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rg35xx_2025",
+      "keys": "LDDA",
+      "chosen": "rg35xxplus",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rg35xx_2025",
+      "keys": "LLDDA",
+      "chosen": "rg35xxpro",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rg35xx_2025",
+      "keys": "LLLDDA",
+      "chosen": "rg35xxsp",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rg35xx_2025",
+      "keys": "LLLLDDA",
+      "chosen": "rg35xxh",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rg35xx_2025",
+      "keys": "LLLLLDDA",
+      "chosen": "rg28xx",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rg35xx_2025",
+      "keys": "LLLLLLDDA",
+      "chosen": "rg35xx_2025",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rg35xx_2025",
+      "keys": "DDA",
+      "chosen": "rg35xx_2025",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rg35xx_2025",
+      "keys": "RDDA",
+      "chosen": "rg28xx",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rg35xx_2025",
+      "keys": "RRDDA",
+      "chosen": "rg35xxh",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rg35xx_2025",
+      "keys": "RRRDDA",
+      "chosen": "rg35xxsp",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rg35xx_2025",
+      "keys": "RRRRDDA",
+      "chosen": "rg35xxpro",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rg35xx_2025",
+      "keys": "RRRRRDDA",
+      "chosen": "rg35xxplus",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rg35xx_2025",
+      "keys": "RRRRRRDDA",
+      "chosen": "rg35xx_2025",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rg35xx_2025",
+      "keys": "DADA",
+      "chosen": "rg35xx_2025",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rg35xx_2025",
+      "keys": "RRN",
+      "chosen": "rg40xxv",
+      "blind": false,
+      "preview": true
+    },
+    {
+      "initial": "rg35xx_2025",
+      "keys": "N",
+      "chosen": "rg40xxv",
+      "blind": true,
+      "preview": true
+    },
+    {
+      "initial": "rg35xx_2025",
+      "keys": "RRP",
+      "chosen": "rgcubexx",
+      "blind": false,
+      "preview": true
+    },
+    {
+      "initial": "rg35xx_2025",
+      "keys": "P",
+      "chosen": "rgcubexx",
+      "blind": true,
+      "preview": true
+    },
+    {
+      "initial": "rg28xx",
+      "keys": "DDA",
+      "chosen": "rg28xx",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rg28xx",
+      "keys": "LDDA",
+      "chosen": "rg35xx_2025",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rg28xx",
+      "keys": "LLDDA",
+      "chosen": "rg35xxplus",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rg28xx",
+      "keys": "LLLDDA",
+      "chosen": "rg35xxpro",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rg28xx",
+      "keys": "LLLLDDA",
+      "chosen": "rg35xxsp",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rg28xx",
+      "keys": "LLLLLDDA",
+      "chosen": "rg35xxh",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rg28xx",
+      "keys": "LLLLLLDDA",
+      "chosen": "rg28xx",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rg28xx",
+      "keys": "DDA",
+      "chosen": "rg28xx",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rg28xx",
+      "keys": "RDDA",
+      "chosen": "rg35xxh",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rg28xx",
+      "keys": "RRDDA",
+      "chosen": "rg35xxsp",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rg28xx",
+      "keys": "RRRDDA",
+      "chosen": "rg35xxpro",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rg28xx",
+      "keys": "RRRRDDA",
+      "chosen": "rg35xxplus",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rg28xx",
+      "keys": "RRRRRDDA",
+      "chosen": "rg35xx_2025",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rg28xx",
+      "keys": "RRRRRRDDA",
+      "chosen": "rg28xx",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rg28xx",
+      "keys": "DADA",
+      "chosen": "rg28xx",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rg28xx",
+      "keys": "RRN",
+      "chosen": "rg40xxv",
+      "blind": false,
+      "preview": true
+    },
+    {
+      "initial": "rg28xx",
+      "keys": "N",
+      "chosen": "rg40xxv",
+      "blind": true,
+      "preview": true
+    },
+    {
+      "initial": "rg28xx",
+      "keys": "RRP",
+      "chosen": "rgcubexx",
+      "blind": false,
+      "preview": true
+    },
+    {
+      "initial": "rg28xx",
+      "keys": "P",
+      "chosen": "rgcubexx",
+      "blind": true,
+      "preview": true
+    },
+    {
+      "initial": "rg35xxpro",
+      "keys": "DDA",
+      "chosen": "rg35xxpro",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rg35xxpro",
+      "keys": "LDDA",
+      "chosen": "rg35xxsp",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rg35xxpro",
+      "keys": "LLDDA",
+      "chosen": "rg35xxh",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rg35xxpro",
+      "keys": "LLLDDA",
+      "chosen": "rg28xx",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rg35xxpro",
+      "keys": "LLLLDDA",
+      "chosen": "rg35xx_2025",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rg35xxpro",
+      "keys": "LLLLLDDA",
+      "chosen": "rg35xxplus",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rg35xxpro",
+      "keys": "LLLLLLDDA",
+      "chosen": "rg35xxpro",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rg35xxpro",
+      "keys": "DDA",
+      "chosen": "rg35xxpro",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rg35xxpro",
+      "keys": "RDDA",
+      "chosen": "rg35xxplus",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rg35xxpro",
+      "keys": "RRDDA",
+      "chosen": "rg35xx_2025",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rg35xxpro",
+      "keys": "RRRDDA",
+      "chosen": "rg28xx",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rg35xxpro",
+      "keys": "RRRRDDA",
+      "chosen": "rg35xxh",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rg35xxpro",
+      "keys": "RRRRRDDA",
+      "chosen": "rg35xxsp",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rg35xxpro",
+      "keys": "RRRRRRDDA",
+      "chosen": "rg35xxpro",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rg35xxpro",
+      "keys": "DADA",
+      "chosen": "rg35xxpro",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rg35xxpro",
+      "keys": "RRN",
+      "chosen": "rg40xxv",
+      "blind": false,
+      "preview": true
+    },
+    {
+      "initial": "rg35xxpro",
+      "keys": "N",
+      "chosen": "rg40xxv",
+      "blind": true,
+      "preview": true
+    },
+    {
+      "initial": "rg35xxpro",
+      "keys": "RRP",
+      "chosen": "rgcubexx",
+      "blind": false,
+      "preview": true
+    },
+    {
+      "initial": "rg35xxpro",
+      "keys": "P",
+      "chosen": "rgcubexx",
+      "blind": true,
+      "preview": true
+    },
+    {
+      "initial": "rg35xxsp",
+      "keys": "DDA",
+      "chosen": "rg35xxsp",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rg35xxsp",
+      "keys": "LDDA",
+      "chosen": "rg35xxh",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rg35xxsp",
+      "keys": "LLDDA",
+      "chosen": "rg28xx",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rg35xxsp",
+      "keys": "LLLDDA",
+      "chosen": "rg35xx_2025",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rg35xxsp",
+      "keys": "LLLLDDA",
+      "chosen": "rg35xxplus",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rg35xxsp",
+      "keys": "LLLLLDDA",
+      "chosen": "rg35xxpro",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rg35xxsp",
+      "keys": "LLLLLLDDA",
+      "chosen": "rg35xxsp",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rg35xxsp",
+      "keys": "DDA",
+      "chosen": "rg35xxsp",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rg35xxsp",
+      "keys": "RDDA",
+      "chosen": "rg35xxpro",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rg35xxsp",
+      "keys": "RRDDA",
+      "chosen": "rg35xxplus",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rg35xxsp",
+      "keys": "RRRDDA",
+      "chosen": "rg35xx_2025",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rg35xxsp",
+      "keys": "RRRRDDA",
+      "chosen": "rg28xx",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rg35xxsp",
+      "keys": "RRRRRDDA",
+      "chosen": "rg35xxh",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rg35xxsp",
+      "keys": "RRRRRRDDA",
+      "chosen": "rg35xxsp",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rg35xxsp",
+      "keys": "DADA",
+      "chosen": "rg35xxsp",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rg35xxsp",
+      "keys": "RRN",
+      "chosen": "rg40xxv",
+      "blind": false,
+      "preview": true
+    },
+    {
+      "initial": "rg35xxsp",
+      "keys": "N",
+      "chosen": "rg40xxv",
+      "blind": true,
+      "preview": true
+    },
+    {
+      "initial": "rg35xxsp",
+      "keys": "RRP",
+      "chosen": "rgcubexx",
+      "blind": false,
+      "preview": true
+    },
+    {
+      "initial": "rg35xxsp",
+      "keys": "P",
+      "chosen": "rgcubexx",
+      "blind": true,
+      "preview": true
+    },
+    {
+      "initial": "rg40xxv",
+      "keys": "DDA",
+      "chosen": "rg40xxv",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rg40xxv",
+      "keys": "LDDA",
+      "chosen": "rg40xxh",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rg40xxv",
+      "keys": "LLDDA",
+      "chosen": "rg40xxv",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rg40xxv",
+      "keys": "DDA",
+      "chosen": "rg40xxv",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rg40xxv",
+      "keys": "RDDA",
+      "chosen": "rg40xxh",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rg40xxv",
+      "keys": "RRDDA",
+      "chosen": "rg40xxv",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rg40xxv",
+      "keys": "DADA",
+      "chosen": "rg40xxv",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rg40xxv",
+      "keys": "RRN",
+      "chosen": "rg34xxsp",
+      "blind": false,
+      "preview": true
+    },
+    {
+      "initial": "rg40xxv",
+      "keys": "N",
+      "chosen": "rg34xxsp",
+      "blind": true,
+      "preview": true
+    },
+    {
+      "initial": "rg40xxv",
+      "keys": "RRP",
+      "chosen": "rg35xxh",
+      "blind": false,
+      "preview": true
+    },
+    {
+      "initial": "rg40xxv",
+      "keys": "P",
+      "chosen": "rg35xxh",
+      "blind": true,
+      "preview": true
+    },
+    {
+      "initial": "rg40xxh",
+      "keys": "DDA",
+      "chosen": "rg40xxh",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rg40xxh",
+      "keys": "LDDA",
+      "chosen": "rg40xxv",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rg40xxh",
+      "keys": "LLDDA",
+      "chosen": "rg40xxh",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rg40xxh",
+      "keys": "DDA",
+      "chosen": "rg40xxh",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rg40xxh",
+      "keys": "RDDA",
+      "chosen": "rg40xxv",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rg40xxh",
+      "keys": "RRDDA",
+      "chosen": "rg40xxh",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rg40xxh",
+      "keys": "DADA",
+      "chosen": "rg40xxh",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rg40xxh",
+      "keys": "RRN",
+      "chosen": "rg34xxsp",
+      "blind": false,
+      "preview": true
+    },
+    {
+      "initial": "rg40xxh",
+      "keys": "N",
+      "chosen": "rg34xxsp",
+      "blind": true,
+      "preview": true
+    },
+    {
+      "initial": "rg40xxh",
+      "keys": "RRP",
+      "chosen": "rg35xxh",
+      "blind": false,
+      "preview": true
+    },
+    {
+      "initial": "rg40xxh",
+      "keys": "P",
+      "chosen": "rg35xxh",
+      "blind": true,
+      "preview": true
+    },
+    {
+      "initial": "rg34xxsp",
+      "keys": "DDA",
+      "chosen": "rg34xxsp",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rg34xxsp",
+      "keys": "LDDA",
+      "chosen": "rgsp",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rg34xxsp",
+      "keys": "LLDDA",
+      "chosen": "rg34xxsp",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rg34xxsp",
+      "keys": "DDA",
+      "chosen": "rg34xxsp",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rg34xxsp",
+      "keys": "RDDA",
+      "chosen": "rgsp",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rg34xxsp",
+      "keys": "RRDDA",
+      "chosen": "rg34xxsp",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rg34xxsp",
+      "keys": "DADA",
+      "chosen": "rg34xxsp",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rg34xxsp",
+      "keys": "RRN",
+      "chosen": "rg34xx",
+      "blind": false,
+      "preview": true
+    },
+    {
+      "initial": "rg34xxsp",
+      "keys": "N",
+      "chosen": "rg34xx",
+      "blind": true,
+      "preview": true
+    },
+    {
+      "initial": "rg34xxsp",
+      "keys": "RRP",
+      "chosen": "rg40xxv",
+      "blind": false,
+      "preview": true
+    },
+    {
+      "initial": "rg34xxsp",
+      "keys": "P",
+      "chosen": "rg40xxv",
+      "blind": true,
+      "preview": true
+    },
+    {
+      "initial": "rgsp",
+      "keys": "DDA",
+      "chosen": "rgsp",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rgsp",
+      "keys": "LDDA",
+      "chosen": "rg34xxsp",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rgsp",
+      "keys": "LLDDA",
+      "chosen": "rgsp",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rgsp",
+      "keys": "DDA",
+      "chosen": "rgsp",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rgsp",
+      "keys": "RDDA",
+      "chosen": "rg34xxsp",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rgsp",
+      "keys": "RRDDA",
+      "chosen": "rgsp",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rgsp",
+      "keys": "DADA",
+      "chosen": "rgsp",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rgsp",
+      "keys": "RRN",
+      "chosen": "rg34xx",
+      "blind": false,
+      "preview": true
+    },
+    {
+      "initial": "rgsp",
+      "keys": "N",
+      "chosen": "rg34xx",
+      "blind": true,
+      "preview": true
+    },
+    {
+      "initial": "rgsp",
+      "keys": "RRP",
+      "chosen": "rg40xxv",
+      "blind": false,
+      "preview": true
+    },
+    {
+      "initial": "rgsp",
+      "keys": "P",
+      "chosen": "rg40xxv",
+      "blind": true,
+      "preview": true
+    },
+    {
+      "initial": "rg34xx",
+      "keys": "DDA",
+      "chosen": "rg34xx",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rg34xx",
+      "keys": "LDDA",
+      "chosen": "rg34xx",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rg34xx",
+      "keys": "DDA",
+      "chosen": "rg34xx",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rg34xx",
+      "keys": "RDDA",
+      "chosen": "rg34xx",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rg34xx",
+      "keys": "DADA",
+      "chosen": "rg34xx",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rg34xx",
+      "keys": "RRN",
+      "chosen": "rgcubexx",
+      "blind": false,
+      "preview": true
+    },
+    {
+      "initial": "rg34xx",
+      "keys": "N",
+      "chosen": "rgcubexx",
+      "blind": true,
+      "preview": true
+    },
+    {
+      "initial": "rg34xx",
+      "keys": "RRP",
+      "chosen": "rg34xxsp",
+      "blind": false,
+      "preview": true
+    },
+    {
+      "initial": "rg34xx",
+      "keys": "P",
+      "chosen": "rg34xxsp",
+      "blind": true,
+      "preview": true
+    },
+    {
+      "initial": "rgcubexx",
+      "keys": "DDA",
+      "chosen": "rgcubexx",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rgcubexx",
+      "keys": "LDDA",
+      "chosen": "rgcubexx",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rgcubexx",
+      "keys": "DDA",
+      "chosen": "rgcubexx",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rgcubexx",
+      "keys": "RDDA",
+      "chosen": "rgcubexx",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rgcubexx",
+      "keys": "DADA",
+      "chosen": "rgcubexx",
+      "blind": false,
+      "preview": false
+    },
+    {
+      "initial": "rgcubexx",
+      "keys": "RRN",
+      "chosen": "rg35xxh",
+      "blind": false,
+      "preview": true
+    },
+    {
+      "initial": "rgcubexx",
+      "keys": "N",
+      "chosen": "rg35xxh",
+      "blind": true,
+      "preview": true
+    },
+    {
+      "initial": "rgcubexx",
+      "keys": "RRP",
+      "chosen": "rg34xx",
+      "blind": false,
+      "preview": true
+    },
+    {
+      "initial": "rgcubexx",
+      "keys": "P",
+      "chosen": "rg34xx",
+      "blind": true,
+      "preview": true
+    }
+  ],
+  "state": {
+    "saved_models": 12,
+    "previews_read_back": 60,
+    "invalid_previews_rejected": 7
+  },
+  "hook": [
+    {
+      "case": "start-rg35xxh-0-rg35xxh",
+      "actions": [
+        "status",
+        "clear-next"
+      ],
+      "returncode": 0,
+      "final_environment": {
+        "saved": "",
+        "next": "",
+        "next_start": ""
+      }
+    },
+    {
+      "case": "start-rg35xxh-1-rg35xxh",
+      "actions": [
+        "status",
+        "save"
+      ],
+      "returncode": 0,
+      "final_environment": {
+        "saved": "rg35xxh",
+        "next": "",
+        "next_start": ""
+      }
+    },
+    {
+      "case": "start-rg35xxplus-0-rg35xxh",
+      "actions": [
+        "status",
+        "once"
+      ],
+      "returncode": 77,
+      "final_environment": {
+        "saved": "",
+        "next": "rg35xxplus",
+        "next_start": "1"
+      }
+    },
+    {
+      "case": "start-rg35xxplus-1-rg35xxh",
+      "actions": [
+        "status",
+        "save"
+      ],
+      "returncode": 77,
+      "final_environment": {
+        "saved": "rg35xxplus",
+        "next": "",
+        "next_start": ""
+      }
+    },
+    {
+      "case": "start-rg35xx_2025-0-rg35xxh",
+      "actions": [
+        "status",
+        "once"
+      ],
+      "returncode": 77,
+      "final_environment": {
+        "saved": "",
+        "next": "rg35xx_2025",
+        "next_start": "1"
+      }
+    },
+    {
+      "case": "start-rg35xx_2025-1-rg35xxh",
+      "actions": [
+        "status",
+        "save"
+      ],
+      "returncode": 77,
+      "final_environment": {
+        "saved": "rg35xx_2025",
+        "next": "",
+        "next_start": ""
+      }
+    },
+    {
+      "case": "start-rg28xx-0-rg35xxh",
+      "actions": [
+        "status",
+        "once"
+      ],
+      "returncode": 77,
+      "final_environment": {
+        "saved": "",
+        "next": "rg28xx",
+        "next_start": "1"
+      }
+    },
+    {
+      "case": "start-rg28xx-1-rg35xxh",
+      "actions": [
+        "status",
+        "save"
+      ],
+      "returncode": 77,
+      "final_environment": {
+        "saved": "rg28xx",
+        "next": "",
+        "next_start": ""
+      }
+    },
+    {
+      "case": "start-rg35xxpro-0-rg35xxh",
+      "actions": [
+        "status",
+        "once"
+      ],
+      "returncode": 77,
+      "final_environment": {
+        "saved": "",
+        "next": "rg35xxpro",
+        "next_start": "1"
+      }
+    },
+    {
+      "case": "start-rg35xxpro-1-rg35xxh",
+      "actions": [
+        "status",
+        "save"
+      ],
+      "returncode": 77,
+      "final_environment": {
+        "saved": "rg35xxpro",
+        "next": "",
+        "next_start": ""
+      }
+    },
+    {
+      "case": "start-rg35xxsp-0-rg35xxh",
+      "actions": [
+        "status",
+        "once"
+      ],
+      "returncode": 77,
+      "final_environment": {
+        "saved": "",
+        "next": "rg35xxsp",
+        "next_start": "1"
+      }
+    },
+    {
+      "case": "start-rg35xxsp-1-rg35xxh",
+      "actions": [
+        "status",
+        "save"
+      ],
+      "returncode": 77,
+      "final_environment": {
+        "saved": "rg35xxsp",
+        "next": "",
+        "next_start": ""
+      }
+    },
+    {
+      "case": "preview-down-rg35xxh",
+      "actions": [
+        "status",
+        "preview",
+        "status"
+      ],
+      "returncode": 77,
+      "final_environment": {
+        "saved": "rgsp",
+        "next": "rg40xxv",
+        "next_start": "2"
+      }
+    },
+    {
+      "case": "preview-up-rg35xxh",
+      "actions": [
+        "status",
+        "preview",
+        "status"
+      ],
+      "returncode": 77,
+      "final_environment": {
+        "saved": "rgsp",
+        "next": "rgcubexx",
+        "next_start": "2"
+      }
+    },
+    {
+      "case": "reject-rg34xx-rg35xxh",
+      "actions": [
+        "status"
+      ],
+      "returncode": 1,
+      "final_environment": null
+    },
+    {
+      "case": "reject-rgcubexx-rg35xxh",
+      "actions": [
+        "status"
+      ],
+      "returncode": 1,
+      "final_environment": null
+    },
+    {
+      "case": "reject-rgsp-rg35xxh",
+      "actions": [
+        "status"
+      ],
+      "returncode": 1,
+      "final_environment": null
+    },
+    {
+      "case": "reject-rg40xxv-rg35xxh",
+      "actions": [
+        "status"
+      ],
+      "returncode": 1,
+      "final_environment": null
+    },
+    {
+      "case": "reject-rg40xxh-rg35xxh",
+      "actions": [
+        "status"
+      ],
+      "returncode": 1,
+      "final_environment": null
+    },
+    {
+      "case": "reject-rg34xxsp-rg35xxh",
+      "actions": [
+        "status"
+      ],
+      "returncode": 1,
+      "final_environment": null
+    },
+    {
+      "case": "start_saved-rg35xxh",
+      "actions": [
+        "status",
+        "clear-next"
+      ],
+      "returncode": 0,
+      "final_environment": {
+        "saved": "",
+        "next": "",
+        "next_start": ""
+      }
+    },
+    {
+      "case": "start_once-rg35xxh",
+      "actions": [
+        "status",
+        "clear-next"
+      ],
+      "returncode": 0,
+      "final_environment": {
+        "saved": "",
+        "next": "",
+        "next_start": ""
+      }
+    },
+    {
+      "case": "start-rg35xxh-0-rg35xxplus",
+      "actions": [
+        "status",
+        "once"
+      ],
+      "returncode": 77,
+      "final_environment": {
+        "saved": "",
+        "next": "rg35xxh",
+        "next_start": "1"
+      }
+    },
+    {
+      "case": "start-rg35xxh-1-rg35xxplus",
+      "actions": [
+        "status",
+        "save"
+      ],
+      "returncode": 77,
+      "final_environment": {
+        "saved": "rg35xxh",
+        "next": "",
+        "next_start": ""
+      }
+    },
+    {
+      "case": "start-rg35xxplus-0-rg35xxplus",
+      "actions": [
+        "status",
+        "clear-next"
+      ],
+      "returncode": 0,
+      "final_environment": {
+        "saved": "",
+        "next": "",
+        "next_start": ""
+      }
+    },
+    {
+      "case": "start-rg35xxplus-1-rg35xxplus",
+      "actions": [
+        "status",
+        "save"
+      ],
+      "returncode": 0,
+      "final_environment": {
+        "saved": "rg35xxplus",
+        "next": "",
+        "next_start": ""
+      }
+    },
+    {
+      "case": "start-rg35xx_2025-0-rg35xxplus",
+      "actions": [
+        "status",
+        "once"
+      ],
+      "returncode": 77,
+      "final_environment": {
+        "saved": "",
+        "next": "rg35xx_2025",
+        "next_start": "1"
+      }
+    },
+    {
+      "case": "start-rg35xx_2025-1-rg35xxplus",
+      "actions": [
+        "status",
+        "save"
+      ],
+      "returncode": 77,
+      "final_environment": {
+        "saved": "rg35xx_2025",
+        "next": "",
+        "next_start": ""
+      }
+    },
+    {
+      "case": "start-rg28xx-0-rg35xxplus",
+      "actions": [
+        "status",
+        "once"
+      ],
+      "returncode": 77,
+      "final_environment": {
+        "saved": "",
+        "next": "rg28xx",
+        "next_start": "1"
+      }
+    },
+    {
+      "case": "start-rg28xx-1-rg35xxplus",
+      "actions": [
+        "status",
+        "save"
+      ],
+      "returncode": 77,
+      "final_environment": {
+        "saved": "rg28xx",
+        "next": "",
+        "next_start": ""
+      }
+    },
+    {
+      "case": "start-rg35xxpro-0-rg35xxplus",
+      "actions": [
+        "status",
+        "once"
+      ],
+      "returncode": 77,
+      "final_environment": {
+        "saved": "",
+        "next": "rg35xxpro",
+        "next_start": "1"
+      }
+    },
+    {
+      "case": "start-rg35xxpro-1-rg35xxplus",
+      "actions": [
+        "status",
+        "save"
+      ],
+      "returncode": 77,
+      "final_environment": {
+        "saved": "rg35xxpro",
+        "next": "",
+        "next_start": ""
+      }
+    },
+    {
+      "case": "start-rg35xxsp-0-rg35xxplus",
+      "actions": [
+        "status",
+        "once"
+      ],
+      "returncode": 77,
+      "final_environment": {
+        "saved": "",
+        "next": "rg35xxsp",
+        "next_start": "1"
+      }
+    },
+    {
+      "case": "start-rg35xxsp-1-rg35xxplus",
+      "actions": [
+        "status",
+        "save"
+      ],
+      "returncode": 77,
+      "final_environment": {
+        "saved": "rg35xxsp",
+        "next": "",
+        "next_start": ""
+      }
+    },
+    {
+      "case": "preview-down-rg35xxplus",
+      "actions": [
+        "status",
+        "preview",
+        "status"
+      ],
+      "returncode": 77,
+      "final_environment": {
+        "saved": "rgsp",
+        "next": "rg40xxv",
+        "next_start": "2"
+      }
+    },
+    {
+      "case": "preview-up-rg35xxplus",
+      "actions": [
+        "status",
+        "preview",
+        "status"
+      ],
+      "returncode": 77,
+      "final_environment": {
+        "saved": "rgsp",
+        "next": "rgcubexx",
+        "next_start": "2"
+      }
+    },
+    {
+      "case": "reject-rg34xx-rg35xxplus",
+      "actions": [
+        "status"
+      ],
+      "returncode": 1,
+      "final_environment": null
+    },
+    {
+      "case": "reject-rgcubexx-rg35xxplus",
+      "actions": [
+        "status"
+      ],
+      "returncode": 1,
+      "final_environment": null
+    },
+    {
+      "case": "reject-rgsp-rg35xxplus",
+      "actions": [
+        "status"
+      ],
+      "returncode": 1,
+      "final_environment": null
+    },
+    {
+      "case": "reject-rg40xxv-rg35xxplus",
+      "actions": [
+        "status"
+      ],
+      "returncode": 1,
+      "final_environment": null
+    },
+    {
+      "case": "reject-rg40xxh-rg35xxplus",
+      "actions": [
+        "status"
+      ],
+      "returncode": 1,
+      "final_environment": null
+    },
+    {
+      "case": "reject-rg34xxsp-rg35xxplus",
+      "actions": [
+        "status"
+      ],
+      "returncode": 1,
+      "final_environment": null
+    },
+    {
+      "case": "start_saved-rg35xxplus",
+      "actions": [
+        "status",
+        "clear-next"
+      ],
+      "returncode": 0,
+      "final_environment": {
+        "saved": "",
+        "next": "",
+        "next_start": ""
+      }
+    },
+    {
+      "case": "start_once-rg35xxplus",
+      "actions": [
+        "status",
+        "clear-next"
+      ],
+      "returncode": 0,
+      "final_environment": {
+        "saved": "",
+        "next": "",
+        "next_start": ""
+      }
+    },
+    {
+      "case": "start-rg35xxh-0-rg35xx_2025",
+      "actions": [
+        "status",
+        "once"
+      ],
+      "returncode": 77,
+      "final_environment": {
+        "saved": "",
+        "next": "rg35xxh",
+        "next_start": "1"
+      }
+    },
+    {
+      "case": "start-rg35xxh-1-rg35xx_2025",
+      "actions": [
+        "status",
+        "save"
+      ],
+      "returncode": 77,
+      "final_environment": {
+        "saved": "rg35xxh",
+        "next": "",
+        "next_start": ""
+      }
+    },
+    {
+      "case": "start-rg35xxplus-0-rg35xx_2025",
+      "actions": [
+        "status",
+        "once"
+      ],
+      "returncode": 77,
+      "final_environment": {
+        "saved": "",
+        "next": "rg35xxplus",
+        "next_start": "1"
+      }
+    },
+    {
+      "case": "start-rg35xxplus-1-rg35xx_2025",
+      "actions": [
+        "status",
+        "save"
+      ],
+      "returncode": 77,
+      "final_environment": {
+        "saved": "rg35xxplus",
+        "next": "",
+        "next_start": ""
+      }
+    },
+    {
+      "case": "start-rg35xx_2025-0-rg35xx_2025",
+      "actions": [
+        "status",
+        "clear-next"
+      ],
+      "returncode": 0,
+      "final_environment": {
+        "saved": "",
+        "next": "",
+        "next_start": ""
+      }
+    },
+    {
+      "case": "start-rg35xx_2025-1-rg35xx_2025",
+      "actions": [
+        "status",
+        "save"
+      ],
+      "returncode": 0,
+      "final_environment": {
+        "saved": "rg35xx_2025",
+        "next": "",
+        "next_start": ""
+      }
+    },
+    {
+      "case": "start-rg28xx-0-rg35xx_2025",
+      "actions": [
+        "status",
+        "once"
+      ],
+      "returncode": 77,
+      "final_environment": {
+        "saved": "",
+        "next": "rg28xx",
+        "next_start": "1"
+      }
+    },
+    {
+      "case": "start-rg28xx-1-rg35xx_2025",
+      "actions": [
+        "status",
+        "save"
+      ],
+      "returncode": 77,
+      "final_environment": {
+        "saved": "rg28xx",
+        "next": "",
+        "next_start": ""
+      }
+    },
+    {
+      "case": "start-rg35xxpro-0-rg35xx_2025",
+      "actions": [
+        "status",
+        "once"
+      ],
+      "returncode": 77,
+      "final_environment": {
+        "saved": "",
+        "next": "rg35xxpro",
+        "next_start": "1"
+      }
+    },
+    {
+      "case": "start-rg35xxpro-1-rg35xx_2025",
+      "actions": [
+        "status",
+        "save"
+      ],
+      "returncode": 77,
+      "final_environment": {
+        "saved": "rg35xxpro",
+        "next": "",
+        "next_start": ""
+      }
+    },
+    {
+      "case": "start-rg35xxsp-0-rg35xx_2025",
+      "actions": [
+        "status",
+        "once"
+      ],
+      "returncode": 77,
+      "final_environment": {
+        "saved": "",
+        "next": "rg35xxsp",
+        "next_start": "1"
+      }
+    },
+    {
+      "case": "start-rg35xxsp-1-rg35xx_2025",
+      "actions": [
+        "status",
+        "save"
+      ],
+      "returncode": 77,
+      "final_environment": {
+        "saved": "rg35xxsp",
+        "next": "",
+        "next_start": ""
+      }
+    },
+    {
+      "case": "preview-down-rg35xx_2025",
+      "actions": [
+        "status",
+        "preview",
+        "status"
+      ],
+      "returncode": 77,
+      "final_environment": {
+        "saved": "rgsp",
+        "next": "rg40xxv",
+        "next_start": "2"
+      }
+    },
+    {
+      "case": "preview-up-rg35xx_2025",
+      "actions": [
+        "status",
+        "preview",
+        "status"
+      ],
+      "returncode": 77,
+      "final_environment": {
+        "saved": "rgsp",
+        "next": "rgcubexx",
+        "next_start": "2"
+      }
+    },
+    {
+      "case": "reject-rg34xx-rg35xx_2025",
+      "actions": [
+        "status"
+      ],
+      "returncode": 1,
+      "final_environment": null
+    },
+    {
+      "case": "reject-rgcubexx-rg35xx_2025",
+      "actions": [
+        "status"
+      ],
+      "returncode": 1,
+      "final_environment": null
+    },
+    {
+      "case": "reject-rgsp-rg35xx_2025",
+      "actions": [
+        "status"
+      ],
+      "returncode": 1,
+      "final_environment": null
+    },
+    {
+      "case": "reject-rg40xxv-rg35xx_2025",
+      "actions": [
+        "status"
+      ],
+      "returncode": 1,
+      "final_environment": null
+    },
+    {
+      "case": "reject-rg40xxh-rg35xx_2025",
+      "actions": [
+        "status"
+      ],
+      "returncode": 1,
+      "final_environment": null
+    },
+    {
+      "case": "reject-rg34xxsp-rg35xx_2025",
+      "actions": [
+        "status"
+      ],
+      "returncode": 1,
+      "final_environment": null
+    },
+    {
+      "case": "start_saved-rg35xx_2025",
+      "actions": [
+        "status",
+        "clear-next"
+      ],
+      "returncode": 0,
+      "final_environment": {
+        "saved": "",
+        "next": "",
+        "next_start": ""
+      }
+    },
+    {
+      "case": "start_once-rg35xx_2025",
+      "actions": [
+        "status",
+        "clear-next"
+      ],
+      "returncode": 0,
+      "final_environment": {
+        "saved": "",
+        "next": "",
+        "next_start": ""
+      }
+    },
+    {
+      "case": "start-rg35xxh-0-rg28xx",
+      "actions": [
+        "status",
+        "once"
+      ],
+      "returncode": 77,
+      "final_environment": {
+        "saved": "",
+        "next": "rg35xxh",
+        "next_start": "1"
+      }
+    },
+    {
+      "case": "start-rg35xxh-1-rg28xx",
+      "actions": [
+        "status",
+        "save"
+      ],
+      "returncode": 77,
+      "final_environment": {
+        "saved": "rg35xxh",
+        "next": "",
+        "next_start": ""
+      }
+    },
+    {
+      "case": "start-rg35xxplus-0-rg28xx",
+      "actions": [
+        "status",
+        "once"
+      ],
+      "returncode": 77,
+      "final_environment": {
+        "saved": "",
+        "next": "rg35xxplus",
+        "next_start": "1"
+      }
+    },
+    {
+      "case": "start-rg35xxplus-1-rg28xx",
+      "actions": [
+        "status",
+        "save"
+      ],
+      "returncode": 77,
+      "final_environment": {
+        "saved": "rg35xxplus",
+        "next": "",
+        "next_start": ""
+      }
+    },
+    {
+      "case": "start-rg35xx_2025-0-rg28xx",
+      "actions": [
+        "status",
+        "once"
+      ],
+      "returncode": 77,
+      "final_environment": {
+        "saved": "",
+        "next": "rg35xx_2025",
+        "next_start": "1"
+      }
+    },
+    {
+      "case": "start-rg35xx_2025-1-rg28xx",
+      "actions": [
+        "status",
+        "save"
+      ],
+      "returncode": 77,
+      "final_environment": {
+        "saved": "rg35xx_2025",
+        "next": "",
+        "next_start": ""
+      }
+    },
+    {
+      "case": "start-rg28xx-0-rg28xx",
+      "actions": [
+        "status",
+        "clear-next"
+      ],
+      "returncode": 0,
+      "final_environment": {
+        "saved": "",
+        "next": "",
+        "next_start": ""
+      }
+    },
+    {
+      "case": "start-rg28xx-1-rg28xx",
+      "actions": [
+        "status",
+        "save"
+      ],
+      "returncode": 0,
+      "final_environment": {
+        "saved": "rg28xx",
+        "next": "",
+        "next_start": ""
+      }
+    },
+    {
+      "case": "start-rg35xxpro-0-rg28xx",
+      "actions": [
+        "status",
+        "once"
+      ],
+      "returncode": 77,
+      "final_environment": {
+        "saved": "",
+        "next": "rg35xxpro",
+        "next_start": "1"
+      }
+    },
+    {
+      "case": "start-rg35xxpro-1-rg28xx",
+      "actions": [
+        "status",
+        "save"
+      ],
+      "returncode": 77,
+      "final_environment": {
+        "saved": "rg35xxpro",
+        "next": "",
+        "next_start": ""
+      }
+    },
+    {
+      "case": "start-rg35xxsp-0-rg28xx",
+      "actions": [
+        "status",
+        "once"
+      ],
+      "returncode": 77,
+      "final_environment": {
+        "saved": "",
+        "next": "rg35xxsp",
+        "next_start": "1"
+      }
+    },
+    {
+      "case": "start-rg35xxsp-1-rg28xx",
+      "actions": [
+        "status",
+        "save"
+      ],
+      "returncode": 77,
+      "final_environment": {
+        "saved": "rg35xxsp",
+        "next": "",
+        "next_start": ""
+      }
+    },
+    {
+      "case": "preview-down-rg28xx",
+      "actions": [
+        "status",
+        "preview",
+        "status"
+      ],
+      "returncode": 77,
+      "final_environment": {
+        "saved": "rgsp",
+        "next": "rg40xxv",
+        "next_start": "2"
+      }
+    },
+    {
+      "case": "preview-up-rg28xx",
+      "actions": [
+        "status",
+        "preview",
+        "status"
+      ],
+      "returncode": 77,
+      "final_environment": {
+        "saved": "rgsp",
+        "next": "rgcubexx",
+        "next_start": "2"
+      }
+    },
+    {
+      "case": "reject-rg34xx-rg28xx",
+      "actions": [
+        "status"
+      ],
+      "returncode": 1,
+      "final_environment": null
+    },
+    {
+      "case": "reject-rgcubexx-rg28xx",
+      "actions": [
+        "status"
+      ],
+      "returncode": 1,
+      "final_environment": null
+    },
+    {
+      "case": "reject-rgsp-rg28xx",
+      "actions": [
+        "status"
+      ],
+      "returncode": 1,
+      "final_environment": null
+    },
+    {
+      "case": "reject-rg40xxv-rg28xx",
+      "actions": [
+        "status"
+      ],
+      "returncode": 1,
+      "final_environment": null
+    },
+    {
+      "case": "reject-rg40xxh-rg28xx",
+      "actions": [
+        "status"
+      ],
+      "returncode": 1,
+      "final_environment": null
+    },
+    {
+      "case": "reject-rg34xxsp-rg28xx",
+      "actions": [
+        "status"
+      ],
+      "returncode": 1,
+      "final_environment": null
+    },
+    {
+      "case": "start_saved-rg28xx",
+      "actions": [
+        "status",
+        "clear-next"
+      ],
+      "returncode": 0,
+      "final_environment": {
+        "saved": "",
+        "next": "",
+        "next_start": ""
+      }
+    },
+    {
+      "case": "start_once-rg28xx",
+      "actions": [
+        "status",
+        "clear-next"
+      ],
+      "returncode": 0,
+      "final_environment": {
+        "saved": "",
+        "next": "",
+        "next_start": ""
+      }
+    },
+    {
+      "case": "start-rg35xxh-0-rg35xxpro",
+      "actions": [
+        "status",
+        "once"
+      ],
+      "returncode": 77,
+      "final_environment": {
+        "saved": "",
+        "next": "rg35xxh",
+        "next_start": "1"
+      }
+    },
+    {
+      "case": "start-rg35xxh-1-rg35xxpro",
+      "actions": [
+        "status",
+        "save"
+      ],
+      "returncode": 77,
+      "final_environment": {
+        "saved": "rg35xxh",
+        "next": "",
+        "next_start": ""
+      }
+    },
+    {
+      "case": "start-rg35xxplus-0-rg35xxpro",
+      "actions": [
+        "status",
+        "once"
+      ],
+      "returncode": 77,
+      "final_environment": {
+        "saved": "",
+        "next": "rg35xxplus",
+        "next_start": "1"
+      }
+    },
+    {
+      "case": "start-rg35xxplus-1-rg35xxpro",
+      "actions": [
+        "status",
+        "save"
+      ],
+      "returncode": 77,
+      "final_environment": {
+        "saved": "rg35xxplus",
+        "next": "",
+        "next_start": ""
+      }
+    },
+    {
+      "case": "start-rg35xx_2025-0-rg35xxpro",
+      "actions": [
+        "status",
+        "once"
+      ],
+      "returncode": 77,
+      "final_environment": {
+        "saved": "",
+        "next": "rg35xx_2025",
+        "next_start": "1"
+      }
+    },
+    {
+      "case": "start-rg35xx_2025-1-rg35xxpro",
+      "actions": [
+        "status",
+        "save"
+      ],
+      "returncode": 77,
+      "final_environment": {
+        "saved": "rg35xx_2025",
+        "next": "",
+        "next_start": ""
+      }
+    },
+    {
+      "case": "start-rg28xx-0-rg35xxpro",
+      "actions": [
+        "status",
+        "once"
+      ],
+      "returncode": 77,
+      "final_environment": {
+        "saved": "",
+        "next": "rg28xx",
+        "next_start": "1"
+      }
+    },
+    {
+      "case": "start-rg28xx-1-rg35xxpro",
+      "actions": [
+        "status",
+        "save"
+      ],
+      "returncode": 77,
+      "final_environment": {
+        "saved": "rg28xx",
+        "next": "",
+        "next_start": ""
+      }
+    },
+    {
+      "case": "start-rg35xxpro-0-rg35xxpro",
+      "actions": [
+        "status",
+        "clear-next"
+      ],
+      "returncode": 0,
+      "final_environment": {
+        "saved": "",
+        "next": "",
+        "next_start": ""
+      }
+    },
+    {
+      "case": "start-rg35xxpro-1-rg35xxpro",
+      "actions": [
+        "status",
+        "save"
+      ],
+      "returncode": 0,
+      "final_environment": {
+        "saved": "rg35xxpro",
+        "next": "",
+        "next_start": ""
+      }
+    },
+    {
+      "case": "start-rg35xxsp-0-rg35xxpro",
+      "actions": [
+        "status",
+        "once"
+      ],
+      "returncode": 77,
+      "final_environment": {
+        "saved": "",
+        "next": "rg35xxsp",
+        "next_start": "1"
+      }
+    },
+    {
+      "case": "start-rg35xxsp-1-rg35xxpro",
+      "actions": [
+        "status",
+        "save"
+      ],
+      "returncode": 77,
+      "final_environment": {
+        "saved": "rg35xxsp",
+        "next": "",
+        "next_start": ""
+      }
+    },
+    {
+      "case": "preview-down-rg35xxpro",
+      "actions": [
+        "status",
+        "preview",
+        "status"
+      ],
+      "returncode": 77,
+      "final_environment": {
+        "saved": "rgsp",
+        "next": "rg40xxv",
+        "next_start": "2"
+      }
+    },
+    {
+      "case": "preview-up-rg35xxpro",
+      "actions": [
+        "status",
+        "preview",
+        "status"
+      ],
+      "returncode": 77,
+      "final_environment": {
+        "saved": "rgsp",
+        "next": "rgcubexx",
+        "next_start": "2"
+      }
+    },
+    {
+      "case": "reject-rg34xx-rg35xxpro",
+      "actions": [
+        "status"
+      ],
+      "returncode": 1,
+      "final_environment": null
+    },
+    {
+      "case": "reject-rgcubexx-rg35xxpro",
+      "actions": [
+        "status"
+      ],
+      "returncode": 1,
+      "final_environment": null
+    },
+    {
+      "case": "reject-rgsp-rg35xxpro",
+      "actions": [
+        "status"
+      ],
+      "returncode": 1,
+      "final_environment": null
+    },
+    {
+      "case": "reject-rg40xxv-rg35xxpro",
+      "actions": [
+        "status"
+      ],
+      "returncode": 1,
+      "final_environment": null
+    },
+    {
+      "case": "reject-rg40xxh-rg35xxpro",
+      "actions": [
+        "status"
+      ],
+      "returncode": 1,
+      "final_environment": null
+    },
+    {
+      "case": "reject-rg34xxsp-rg35xxpro",
+      "actions": [
+        "status"
+      ],
+      "returncode": 1,
+      "final_environment": null
+    },
+    {
+      "case": "start_saved-rg35xxpro",
+      "actions": [
+        "status",
+        "clear-next"
+      ],
+      "returncode": 0,
+      "final_environment": {
+        "saved": "",
+        "next": "",
+        "next_start": ""
+      }
+    },
+    {
+      "case": "start_once-rg35xxpro",
+      "actions": [
+        "status",
+        "clear-next"
+      ],
+      "returncode": 0,
+      "final_environment": {
+        "saved": "",
+        "next": "",
+        "next_start": ""
+      }
+    },
+    {
+      "case": "start-rg35xxh-0-rg35xxsp",
+      "actions": [
+        "status",
+        "once"
+      ],
+      "returncode": 77,
+      "final_environment": {
+        "saved": "",
+        "next": "rg35xxh",
+        "next_start": "1"
+      }
+    },
+    {
+      "case": "start-rg35xxh-1-rg35xxsp",
+      "actions": [
+        "status",
+        "save"
+      ],
+      "returncode": 77,
+      "final_environment": {
+        "saved": "rg35xxh",
+        "next": "",
+        "next_start": ""
+      }
+    },
+    {
+      "case": "start-rg35xxplus-0-rg35xxsp",
+      "actions": [
+        "status",
+        "once"
+      ],
+      "returncode": 77,
+      "final_environment": {
+        "saved": "",
+        "next": "rg35xxplus",
+        "next_start": "1"
+      }
+    },
+    {
+      "case": "start-rg35xxplus-1-rg35xxsp",
+      "actions": [
+        "status",
+        "save"
+      ],
+      "returncode": 77,
+      "final_environment": {
+        "saved": "rg35xxplus",
+        "next": "",
+        "next_start": ""
+      }
+    },
+    {
+      "case": "start-rg35xx_2025-0-rg35xxsp",
+      "actions": [
+        "status",
+        "once"
+      ],
+      "returncode": 77,
+      "final_environment": {
+        "saved": "",
+        "next": "rg35xx_2025",
+        "next_start": "1"
+      }
+    },
+    {
+      "case": "start-rg35xx_2025-1-rg35xxsp",
+      "actions": [
+        "status",
+        "save"
+      ],
+      "returncode": 77,
+      "final_environment": {
+        "saved": "rg35xx_2025",
+        "next": "",
+        "next_start": ""
+      }
+    },
+    {
+      "case": "start-rg28xx-0-rg35xxsp",
+      "actions": [
+        "status",
+        "once"
+      ],
+      "returncode": 77,
+      "final_environment": {
+        "saved": "",
+        "next": "rg28xx",
+        "next_start": "1"
+      }
+    },
+    {
+      "case": "start-rg28xx-1-rg35xxsp",
+      "actions": [
+        "status",
+        "save"
+      ],
+      "returncode": 77,
+      "final_environment": {
+        "saved": "rg28xx",
+        "next": "",
+        "next_start": ""
+      }
+    },
+    {
+      "case": "start-rg35xxpro-0-rg35xxsp",
+      "actions": [
+        "status",
+        "once"
+      ],
+      "returncode": 77,
+      "final_environment": {
+        "saved": "",
+        "next": "rg35xxpro",
+        "next_start": "1"
+      }
+    },
+    {
+      "case": "start-rg35xxpro-1-rg35xxsp",
+      "actions": [
+        "status",
+        "save"
+      ],
+      "returncode": 77,
+      "final_environment": {
+        "saved": "rg35xxpro",
+        "next": "",
+        "next_start": ""
+      }
+    },
+    {
+      "case": "start-rg35xxsp-0-rg35xxsp",
+      "actions": [
+        "status",
+        "clear-next"
+      ],
+      "returncode": 0,
+      "final_environment": {
+        "saved": "",
+        "next": "",
+        "next_start": ""
+      }
+    },
+    {
+      "case": "start-rg35xxsp-1-rg35xxsp",
+      "actions": [
+        "status",
+        "save"
+      ],
+      "returncode": 0,
+      "final_environment": {
+        "saved": "rg35xxsp",
+        "next": "",
+        "next_start": ""
+      }
+    },
+    {
+      "case": "preview-down-rg35xxsp",
+      "actions": [
+        "status",
+        "preview",
+        "status"
+      ],
+      "returncode": 77,
+      "final_environment": {
+        "saved": "rgsp",
+        "next": "rg40xxv",
+        "next_start": "2"
+      }
+    },
+    {
+      "case": "preview-up-rg35xxsp",
+      "actions": [
+        "status",
+        "preview",
+        "status"
+      ],
+      "returncode": 77,
+      "final_environment": {
+        "saved": "rgsp",
+        "next": "rgcubexx",
+        "next_start": "2"
+      }
+    },
+    {
+      "case": "reject-rg34xx-rg35xxsp",
+      "actions": [
+        "status"
+      ],
+      "returncode": 1,
+      "final_environment": null
+    },
+    {
+      "case": "reject-rgcubexx-rg35xxsp",
+      "actions": [
+        "status"
+      ],
+      "returncode": 1,
+      "final_environment": null
+    },
+    {
+      "case": "reject-rgsp-rg35xxsp",
+      "actions": [
+        "status"
+      ],
+      "returncode": 1,
+      "final_environment": null
+    },
+    {
+      "case": "reject-rg40xxv-rg35xxsp",
+      "actions": [
+        "status"
+      ],
+      "returncode": 1,
+      "final_environment": null
+    },
+    {
+      "case": "reject-rg40xxh-rg35xxsp",
+      "actions": [
+        "status"
+      ],
+      "returncode": 1,
+      "final_environment": null
+    },
+    {
+      "case": "reject-rg34xxsp-rg35xxsp",
+      "actions": [
+        "status"
+      ],
+      "returncode": 1,
+      "final_environment": null
+    },
+    {
+      "case": "start_saved-rg35xxsp",
+      "actions": [
+        "status",
+        "clear-next"
+      ],
+      "returncode": 0,
+      "final_environment": {
+        "saved": "",
+        "next": "",
+        "next_start": ""
+      }
+    },
+    {
+      "case": "start_once-rg35xxsp",
+      "actions": [
+        "status",
+        "clear-next"
+      ],
+      "returncode": 0,
+      "final_environment": {
+        "saved": "",
+        "next": "",
+        "next_start": ""
+      }
+    },
+    {
+      "case": "start-rg40xxv-0-rg40xxv",
+      "actions": [
+        "status",
+        "once"
+      ],
+      "returncode": 77,
+      "final_environment": {
+        "saved": "",
+        "next": "rg40xxv",
+        "next_start": "1"
+      }
+    },
+    {
+      "case": "start-rg40xxv-1-rg40xxv",
+      "actions": [
+        "status",
+        "save"
+      ],
+      "returncode": 77,
+      "final_environment": {
+        "saved": "rg40xxv",
+        "next": "",
+        "next_start": ""
+      }
+    },
+    {
+      "case": "start-rg40xxh-0-rg40xxv",
+      "actions": [
+        "status",
+        "once"
+      ],
+      "returncode": 77,
+      "final_environment": {
+        "saved": "",
+        "next": "rg40xxh",
+        "next_start": "1"
+      }
+    },
+    {
+      "case": "start-rg40xxh-1-rg40xxv",
+      "actions": [
+        "status",
+        "save"
+      ],
+      "returncode": 77,
+      "final_environment": {
+        "saved": "rg40xxh",
+        "next": "",
+        "next_start": ""
+      }
+    },
+    {
+      "case": "preview-down-rg40xxv",
+      "actions": [
+        "status",
+        "preview",
+        "status"
+      ],
+      "returncode": 77,
+      "final_environment": {
+        "saved": "rgsp",
+        "next": "rg34xxsp",
+        "next_start": "2"
+      }
+    },
+    {
+      "case": "preview-up-rg40xxv",
+      "actions": [
+        "status",
+        "preview",
+        "status"
+      ],
+      "returncode": 77,
+      "final_environment": {
+        "saved": "rgsp",
+        "next": "rg35xxh",
+        "next_start": "2"
+      }
+    },
+    {
+      "case": "reject-rg35xxh-rg40xxv",
+      "actions": [
+        "status"
+      ],
+      "returncode": 1,
+      "final_environment": null
+    },
+    {
+      "case": "reject-rg34xx-rg40xxv",
+      "actions": [
+        "status"
+      ],
+      "returncode": 1,
+      "final_environment": null
+    },
+    {
+      "case": "reject-rgcubexx-rg40xxv",
+      "actions": [
+        "status"
+      ],
+      "returncode": 1,
+      "final_environment": null
+    },
+    {
+      "case": "reject-rgsp-rg40xxv",
+      "actions": [
+        "status"
+      ],
+      "returncode": 1,
+      "final_environment": null
+    },
+    {
+      "case": "reject-rg28xx-rg40xxv",
+      "actions": [
+        "status"
+      ],
+      "returncode": 1,
+      "final_environment": null
+    },
+    {
+      "case": "reject-rg35xx_2025-rg40xxv",
+      "actions": [
+        "status"
+      ],
+      "returncode": 1,
+      "final_environment": null
+    },
+    {
+      "case": "reject-rg35xxsp-rg40xxv",
+      "actions": [
+        "status"
+      ],
+      "returncode": 1,
+      "final_environment": null
+    },
+    {
+      "case": "reject-rg34xxsp-rg40xxv",
+      "actions": [
+        "status"
+      ],
+      "returncode": 1,
+      "final_environment": null
+    },
+    {
+      "case": "reject-rg35xxpro-rg40xxv",
+      "actions": [
+        "status"
+      ],
+      "returncode": 1,
+      "final_environment": null
+    },
+    {
+      "case": "reject-rg35xxplus-rg40xxv",
+      "actions": [
+        "status"
+      ],
+      "returncode": 1,
+      "final_environment": null
+    },
+    {
+      "case": "start_saved-rg40xxv",
+      "actions": [
+        "status",
+        "clear-next"
+      ],
+      "returncode": 0,
+      "final_environment": {
+        "saved": "",
+        "next": "",
+        "next_start": ""
+      }
+    },
+    {
+      "case": "start_once-rg40xxv",
+      "actions": [
+        "status",
+        "clear-next"
+      ],
+      "returncode": 0,
+      "final_environment": {
+        "saved": "",
+        "next": "",
+        "next_start": ""
+      }
+    },
+    {
+      "case": "start-rg40xxv-0-rg40xxh",
+      "actions": [
+        "status",
+        "once"
+      ],
+      "returncode": 77,
+      "final_environment": {
+        "saved": "",
+        "next": "rg40xxv",
+        "next_start": "1"
+      }
+    },
+    {
+      "case": "start-rg40xxv-1-rg40xxh",
+      "actions": [
+        "status",
+        "save"
+      ],
+      "returncode": 77,
+      "final_environment": {
+        "saved": "rg40xxv",
+        "next": "",
+        "next_start": ""
+      }
+    },
+    {
+      "case": "start-rg40xxh-0-rg40xxh",
+      "actions": [
+        "status",
+        "clear-next"
+      ],
+      "returncode": 0,
+      "final_environment": {
+        "saved": "",
+        "next": "",
+        "next_start": ""
+      }
+    },
+    {
+      "case": "start-rg40xxh-1-rg40xxh",
+      "actions": [
+        "status",
+        "save"
+      ],
+      "returncode": 0,
+      "final_environment": {
+        "saved": "rg40xxh",
+        "next": "",
+        "next_start": ""
+      }
+    },
+    {
+      "case": "preview-down-rg40xxh",
+      "actions": [
+        "status",
+        "preview",
+        "status"
+      ],
+      "returncode": 77,
+      "final_environment": {
+        "saved": "rgsp",
+        "next": "rg34xxsp",
+        "next_start": "2"
+      }
+    },
+    {
+      "case": "preview-up-rg40xxh",
+      "actions": [
+        "status",
+        "preview",
+        "status"
+      ],
+      "returncode": 77,
+      "final_environment": {
+        "saved": "rgsp",
+        "next": "rg35xxh",
+        "next_start": "2"
+      }
+    },
+    {
+      "case": "reject-rg35xxh-rg40xxh",
+      "actions": [
+        "status"
+      ],
+      "returncode": 1,
+      "final_environment": null
+    },
+    {
+      "case": "reject-rg34xx-rg40xxh",
+      "actions": [
+        "status"
+      ],
+      "returncode": 1,
+      "final_environment": null
+    },
+    {
+      "case": "reject-rgcubexx-rg40xxh",
+      "actions": [
+        "status"
+      ],
+      "returncode": 1,
+      "final_environment": null
+    },
+    {
+      "case": "reject-rgsp-rg40xxh",
+      "actions": [
+        "status"
+      ],
+      "returncode": 1,
+      "final_environment": null
+    },
+    {
+      "case": "reject-rg28xx-rg40xxh",
+      "actions": [
+        "status"
+      ],
+      "returncode": 1,
+      "final_environment": null
+    },
+    {
+      "case": "reject-rg35xx_2025-rg40xxh",
+      "actions": [
+        "status"
+      ],
+      "returncode": 1,
+      "final_environment": null
+    },
+    {
+      "case": "reject-rg35xxsp-rg40xxh",
+      "actions": [
+        "status"
+      ],
+      "returncode": 1,
+      "final_environment": null
+    },
+    {
+      "case": "reject-rg34xxsp-rg40xxh",
+      "actions": [
+        "status"
+      ],
+      "returncode": 1,
+      "final_environment": null
+    },
+    {
+      "case": "reject-rg35xxpro-rg40xxh",
+      "actions": [
+        "status"
+      ],
+      "returncode": 1,
+      "final_environment": null
+    },
+    {
+      "case": "reject-rg35xxplus-rg40xxh",
+      "actions": [
+        "status"
+      ],
+      "returncode": 1,
+      "final_environment": null
+    },
+    {
+      "case": "start_saved-rg40xxh",
+      "actions": [
+        "status",
+        "clear-next"
+      ],
+      "returncode": 0,
+      "final_environment": {
+        "saved": "",
+        "next": "",
+        "next_start": ""
+      }
+    },
+    {
+      "case": "start_once-rg40xxh",
+      "actions": [
+        "status",
+        "clear-next"
+      ],
+      "returncode": 0,
+      "final_environment": {
+        "saved": "",
+        "next": "",
+        "next_start": ""
+      }
+    },
+    {
+      "case": "start-rg34xxsp-0-rg34xxsp",
+      "actions": [
+        "status",
+        "clear-next"
+      ],
+      "returncode": 0,
+      "final_environment": {
+        "saved": "",
+        "next": "",
+        "next_start": ""
+      }
+    },
+    {
+      "case": "start-rg34xxsp-1-rg34xxsp",
+      "actions": [
+        "status",
+        "save"
+      ],
+      "returncode": 0,
+      "final_environment": {
+        "saved": "rg34xxsp",
+        "next": "",
+        "next_start": ""
+      }
+    },
+    {
+      "case": "start-rgsp-0-rg34xxsp",
+      "actions": [
+        "status",
+        "once"
+      ],
+      "returncode": 77,
+      "final_environment": {
+        "saved": "",
+        "next": "rgsp",
+        "next_start": "1"
+      }
+    },
+    {
+      "case": "start-rgsp-1-rg34xxsp",
+      "actions": [
+        "status",
+        "save"
+      ],
+      "returncode": 77,
+      "final_environment": {
+        "saved": "rgsp",
+        "next": "",
+        "next_start": ""
+      }
+    },
+    {
+      "case": "preview-down-rg34xxsp",
+      "actions": [
+        "status",
+        "preview",
+        "status"
+      ],
+      "returncode": 77,
+      "final_environment": {
+        "saved": "rgsp",
+        "next": "rg34xx",
+        "next_start": "2"
+      }
+    },
+    {
+      "case": "preview-up-rg34xxsp",
+      "actions": [
+        "status",
+        "preview",
+        "status"
+      ],
+      "returncode": 77,
+      "final_environment": {
+        "saved": "rgsp",
+        "next": "rg40xxv",
+        "next_start": "2"
+      }
+    },
+    {
+      "case": "reject-rg35xxh-rg34xxsp",
+      "actions": [
+        "status"
+      ],
+      "returncode": 1,
+      "final_environment": null
+    },
+    {
+      "case": "reject-rg34xx-rg34xxsp",
+      "actions": [
+        "status"
+      ],
+      "returncode": 1,
+      "final_environment": null
+    },
+    {
+      "case": "reject-rgcubexx-rg34xxsp",
+      "actions": [
+        "status"
+      ],
+      "returncode": 1,
+      "final_environment": null
+    },
+    {
+      "case": "reject-rg28xx-rg34xxsp",
+      "actions": [
+        "status"
+      ],
+      "returncode": 1,
+      "final_environment": null
+    },
+    {
+      "case": "reject-rg40xxv-rg34xxsp",
+      "actions": [
+        "status"
+      ],
+      "returncode": 1,
+      "final_environment": null
+    },
+    {
+      "case": "reject-rg35xx_2025-rg34xxsp",
+      "actions": [
+        "status"
+      ],
+      "returncode": 1,
+      "final_environment": null
+    },
+    {
+      "case": "reject-rg40xxh-rg34xxsp",
+      "actions": [
+        "status"
+      ],
+      "returncode": 1,
+      "final_environment": null
+    },
+    {
+      "case": "reject-rg35xxsp-rg34xxsp",
+      "actions": [
+        "status"
+      ],
+      "returncode": 1,
+      "final_environment": null
+    },
+    {
+      "case": "reject-rg35xxpro-rg34xxsp",
+      "actions": [
+        "status"
+      ],
+      "returncode": 1,
+      "final_environment": null
+    },
+    {
+      "case": "reject-rg35xxplus-rg34xxsp",
+      "actions": [
+        "status"
+      ],
+      "returncode": 1,
+      "final_environment": null
+    },
+    {
+      "case": "start_saved-rg34xxsp",
+      "actions": [
+        "status",
+        "clear-next"
+      ],
+      "returncode": 0,
+      "final_environment": {
+        "saved": "",
+        "next": "",
+        "next_start": ""
+      }
+    },
+    {
+      "case": "start_once-rg34xxsp",
+      "actions": [
+        "status",
+        "clear-next"
+      ],
+      "returncode": 0,
+      "final_environment": {
+        "saved": "",
+        "next": "",
+        "next_start": ""
+      }
+    },
+    {
+      "case": "start-rg34xxsp-0-rgsp",
+      "actions": [
+        "status",
+        "once"
+      ],
+      "returncode": 77,
+      "final_environment": {
+        "saved": "",
+        "next": "rg34xxsp",
+        "next_start": "1"
+      }
+    },
+    {
+      "case": "start-rg34xxsp-1-rgsp",
+      "actions": [
+        "status",
+        "save"
+      ],
+      "returncode": 77,
+      "final_environment": {
+        "saved": "rg34xxsp",
+        "next": "",
+        "next_start": ""
+      }
+    },
+    {
+      "case": "start-rgsp-0-rgsp",
+      "actions": [
+        "status",
+        "clear-next"
+      ],
+      "returncode": 0,
+      "final_environment": {
+        "saved": "",
+        "next": "",
+        "next_start": ""
+      }
+    },
+    {
+      "case": "start-rgsp-1-rgsp",
+      "actions": [
+        "status",
+        "save"
+      ],
+      "returncode": 0,
+      "final_environment": {
+        "saved": "rgsp",
+        "next": "",
+        "next_start": ""
+      }
+    },
+    {
+      "case": "preview-down-rgsp",
+      "actions": [
+        "status",
+        "preview",
+        "status"
+      ],
+      "returncode": 77,
+      "final_environment": {
+        "saved": "rgsp",
+        "next": "rg34xx",
+        "next_start": "2"
+      }
+    },
+    {
+      "case": "preview-up-rgsp",
+      "actions": [
+        "status",
+        "preview",
+        "status"
+      ],
+      "returncode": 77,
+      "final_environment": {
+        "saved": "rgsp",
+        "next": "rg40xxv",
+        "next_start": "2"
+      }
+    },
+    {
+      "case": "reject-rg35xxh-rgsp",
+      "actions": [
+        "status"
+      ],
+      "returncode": 1,
+      "final_environment": null
+    },
+    {
+      "case": "reject-rg34xx-rgsp",
+      "actions": [
+        "status"
+      ],
+      "returncode": 1,
+      "final_environment": null
+    },
+    {
+      "case": "reject-rgcubexx-rgsp",
+      "actions": [
+        "status"
+      ],
+      "returncode": 1,
+      "final_environment": null
+    },
+    {
+      "case": "reject-rg28xx-rgsp",
+      "actions": [
+        "status"
+      ],
+      "returncode": 1,
+      "final_environment": null
+    },
+    {
+      "case": "reject-rg40xxv-rgsp",
+      "actions": [
+        "status"
+      ],
+      "returncode": 1,
+      "final_environment": null
+    },
+    {
+      "case": "reject-rg35xx_2025-rgsp",
+      "actions": [
+        "status"
+      ],
+      "returncode": 1,
+      "final_environment": null
+    },
+    {
+      "case": "reject-rg40xxh-rgsp",
+      "actions": [
+        "status"
+      ],
+      "returncode": 1,
+      "final_environment": null
+    },
+    {
+      "case": "reject-rg35xxsp-rgsp",
+      "actions": [
+        "status"
+      ],
+      "returncode": 1,
+      "final_environment": null
+    },
+    {
+      "case": "reject-rg35xxpro-rgsp",
+      "actions": [
+        "status"
+      ],
+      "returncode": 1,
+      "final_environment": null
+    },
+    {
+      "case": "reject-rg35xxplus-rgsp",
+      "actions": [
+        "status"
+      ],
+      "returncode": 1,
+      "final_environment": null
+    },
+    {
+      "case": "start_saved-rgsp",
+      "actions": [
+        "status",
+        "clear-next"
+      ],
+      "returncode": 0,
+      "final_environment": {
+        "saved": "",
+        "next": "",
+        "next_start": ""
+      }
+    },
+    {
+      "case": "start_once-rgsp",
+      "actions": [
+        "status",
+        "clear-next"
+      ],
+      "returncode": 0,
+      "final_environment": {
+        "saved": "",
+        "next": "",
+        "next_start": ""
+      }
+    },
+    {
+      "case": "start-rg34xx-0-rg34xx",
+      "actions": [
+        "status",
+        "once"
+      ],
+      "returncode": 77,
+      "final_environment": {
+        "saved": "",
+        "next": "rg34xx",
+        "next_start": "1"
+      }
+    },
+    {
+      "case": "start-rg34xx-1-rg34xx",
+      "actions": [
+        "status",
+        "save"
+      ],
+      "returncode": 77,
+      "final_environment": {
+        "saved": "rg34xx",
+        "next": "",
+        "next_start": ""
+      }
+    },
+    {
+      "case": "preview-down-rg34xx",
+      "actions": [
+        "status",
+        "preview",
+        "status"
+      ],
+      "returncode": 77,
+      "final_environment": {
+        "saved": "rgsp",
+        "next": "rgcubexx",
+        "next_start": "2"
+      }
+    },
+    {
+      "case": "preview-up-rg34xx",
+      "actions": [
+        "status",
+        "preview",
+        "status"
+      ],
+      "returncode": 77,
+      "final_environment": {
+        "saved": "rgsp",
+        "next": "rg34xxsp",
+        "next_start": "2"
+      }
+    },
+    {
+      "case": "reject-rg35xxh-rg34xx",
+      "actions": [
+        "status"
+      ],
+      "returncode": 1,
+      "final_environment": null
+    },
+    {
+      "case": "reject-rgcubexx-rg34xx",
+      "actions": [
+        "status"
+      ],
+      "returncode": 1,
+      "final_environment": null
+    },
+    {
+      "case": "reject-rgsp-rg34xx",
+      "actions": [
+        "status"
+      ],
+      "returncode": 1,
+      "final_environment": null
+    },
+    {
+      "case": "reject-rg28xx-rg34xx",
+      "actions": [
+        "status"
+      ],
+      "returncode": 1,
+      "final_environment": null
+    },
+    {
+      "case": "reject-rg40xxv-rg34xx",
+      "actions": [
+        "status"
+      ],
+      "returncode": 1,
+      "final_environment": null
+    },
+    {
+      "case": "reject-rg35xx_2025-rg34xx",
+      "actions": [
+        "status"
+      ],
+      "returncode": 1,
+      "final_environment": null
+    },
+    {
+      "case": "reject-rg40xxh-rg34xx",
+      "actions": [
+        "status"
+      ],
+      "returncode": 1,
+      "final_environment": null
+    },
+    {
+      "case": "reject-rg35xxsp-rg34xx",
+      "actions": [
+        "status"
+      ],
+      "returncode": 1,
+      "final_environment": null
+    },
+    {
+      "case": "reject-rg34xxsp-rg34xx",
+      "actions": [
+        "status"
+      ],
+      "returncode": 1,
+      "final_environment": null
+    },
+    {
+      "case": "reject-rg35xxpro-rg34xx",
+      "actions": [
+        "status"
+      ],
+      "returncode": 1,
+      "final_environment": null
+    },
+    {
+      "case": "reject-rg35xxplus-rg34xx",
+      "actions": [
+        "status"
+      ],
+      "returncode": 1,
+      "final_environment": null
+    },
+    {
+      "case": "start_saved-rg34xx",
+      "actions": [
+        "status",
+        "clear-next"
+      ],
+      "returncode": 0,
+      "final_environment": {
+        "saved": "",
+        "next": "",
+        "next_start": ""
+      }
+    },
+    {
+      "case": "start_once-rg34xx",
+      "actions": [
+        "status",
+        "clear-next"
+      ],
+      "returncode": 0,
+      "final_environment": {
+        "saved": "",
+        "next": "",
+        "next_start": ""
+      }
+    },
+    {
+      "case": "start-rgcubexx-0-rgcubexx",
+      "actions": [
+        "status",
+        "clear-next"
+      ],
+      "returncode": 0,
+      "final_environment": {
+        "saved": "",
+        "next": "",
+        "next_start": ""
+      }
+    },
+    {
+      "case": "start-rgcubexx-1-rgcubexx",
+      "actions": [
+        "status",
+        "save"
+      ],
+      "returncode": 0,
+      "final_environment": {
+        "saved": "rgcubexx",
+        "next": "",
+        "next_start": ""
+      }
+    },
+    {
+      "case": "preview-down-rgcubexx",
+      "actions": [
+        "status",
+        "preview",
+        "status"
+      ],
+      "returncode": 77,
+      "final_environment": {
+        "saved": "rgsp",
+        "next": "rg35xxh",
+        "next_start": "2"
+      }
+    },
+    {
+      "case": "preview-up-rgcubexx",
+      "actions": [
+        "status",
+        "preview",
+        "status"
+      ],
+      "returncode": 77,
+      "final_environment": {
+        "saved": "rgsp",
+        "next": "rg34xx",
+        "next_start": "2"
+      }
+    },
+    {
+      "case": "reject-rg35xxh-rgcubexx",
+      "actions": [
+        "status"
+      ],
+      "returncode": 1,
+      "final_environment": null
+    },
+    {
+      "case": "reject-rg34xx-rgcubexx",
+      "actions": [
+        "status"
+      ],
+      "returncode": 1,
+      "final_environment": null
+    },
+    {
+      "case": "reject-rgsp-rgcubexx",
+      "actions": [
+        "status"
+      ],
+      "returncode": 1,
+      "final_environment": null
+    },
+    {
+      "case": "reject-rg28xx-rgcubexx",
+      "actions": [
+        "status"
+      ],
+      "returncode": 1,
+      "final_environment": null
+    },
+    {
+      "case": "reject-rg40xxv-rgcubexx",
+      "actions": [
+        "status"
+      ],
+      "returncode": 1,
+      "final_environment": null
+    },
+    {
+      "case": "reject-rg35xx_2025-rgcubexx",
+      "actions": [
+        "status"
+      ],
+      "returncode": 1,
+      "final_environment": null
+    },
+    {
+      "case": "reject-rg40xxh-rgcubexx",
+      "actions": [
+        "status"
+      ],
+      "returncode": 1,
+      "final_environment": null
+    },
+    {
+      "case": "reject-rg35xxsp-rgcubexx",
+      "actions": [
+        "status"
+      ],
+      "returncode": 1,
+      "final_environment": null
+    },
+    {
+      "case": "reject-rg34xxsp-rgcubexx",
+      "actions": [
+        "status"
+      ],
+      "returncode": 1,
+      "final_environment": null
+    },
+    {
+      "case": "reject-rg35xxpro-rgcubexx",
+      "actions": [
+        "status"
+      ],
+      "returncode": 1,
+      "final_environment": null
+    },
+    {
+      "case": "reject-rg35xxplus-rgcubexx",
+      "actions": [
+        "status"
+      ],
+      "returncode": 1,
+      "final_environment": null
+    },
+    {
+      "case": "start_saved-rgcubexx",
+      "actions": [
+        "status",
+        "clear-next"
+      ],
+      "returncode": 0,
+      "final_environment": {
+        "saved": "",
+        "next": "",
+        "next_start": ""
+      }
+    },
+    {
+      "case": "start_once-rgcubexx",
+      "actions": [
+        "status",
+        "clear-next"
+      ],
+      "returncode": 0,
+      "final_environment": {
+        "saved": "",
+        "next": "",
+        "next_start": ""
+      }
+    }
+  ]
+}

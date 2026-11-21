@@ -1,0 +1,52 @@
+{
+  "schema": 1,
+  "version": "0.0.4",
+  "date": "2026-11-22",
+  "release_kind": "official",
+  "artifact": "ROC_OS_ARM64_ver0.0.4.img.gz",
+  "bytes": 735536681,
+  "sha256": "4a4e9fd4e980b7d9effd3d23f4d423bedd8a615705de3175d6bb333b4df0e53e",
+  "raw_bytes": 32434554368,
+  "raw_sha256": "f71c6ada45033c9b57f1de1f3d0c536847c9df21f585378a89ab6bad42862fe4",
+  "base_gzip_sha256": "60872656ddc9f0f71ec026d965f7c2a3e17f5eaebc484e7c6867da86f970b87d",
+  "base_raw_sha256": "8f4041e00d4b3ba58b39710a95e455a6e8510656cd3ea5fdd201f40e0af09e76",
+  "base_version": "0.0.3 Test20 (Test14 five-panel build)",
+  "release_properties": {
+    "ro.build.display.id": "ROC_OS_ARM64_ver0.0.4",
+    "ro.roc.os.version": "0.0.4"
+  },
+  "source_manifest": "build-support/public/source-manifest.json",
+  "source_manifest_sha256": "f29b3f0524eb5f8b89822c02dec74f45a6c1e302ff9276c6b4d6c75dfb0f0ee9",
+  "model_count": 12,
+  "groups": [
+    [
+      "rg35xxh",
+      "rg35xxplus",
+      "rg35xx_2025",
+      "rg28xx",
+      "rg35xxpro",
+      "rg35xxsp"
+    ],
+    [
+      "rg40xxv",
+      "rg40xxh"
+    ],
+    [
+      "rg34xxsp",
+      "rgsp"
+    ],
+    [
+      "rg34xx"
+    ],
+    [
+      "rgcubexx"
+    ]
+  ],
+  "changed_bytes_vs_test20": 2,
+  "user_report": "Maintainer confirmed Test20 worked on every unit they had available. Individual units were not enumerated.",
+  "verification": "docs/baselines/roc-os-004-20261122/verify-result.json",
+  "fresh_004_hardware_retest_recorded": false,
+  "download_url": "https://pan.baidu.com/s/12mIL9R38oy65ldhGujHWuw?pwd=H700",
+  "download_code": "H700",
+  "image_distribution": "Maintainer synchronizes the image to the permanent external share."
+}

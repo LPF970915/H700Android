@@ -16,6 +16,18 @@ public final class ProvisionPolicy {
   for(String s:existing.split(":"))if(s.split(";",2)[0].equals(component))return existing;
   return existing+":"+component;
  }
+ public static String defaultKeyboardList(String existing,String keyboard) {
+  StringBuilder enabled = new StringBuilder();
+  if(existing!=null && !"null".equals(existing)) {
+   for(String entry:existing.split(":")) {
+    String id=entry.split(";",2)[0];
+    if(id.isEmpty()||id.equals("com.android.inputmethod.latin/.LatinIME"))continue;
+    if(enabled.length()>0)enabled.append(':');
+    enabled.append(entry);
+   }
+  }
+  return addComponent(enabled.toString(),keyboard);
+ }
  public static String[] hiddenLauncherEntries() {
   // Activities only: never disable WebView, ContactsProvider or whole packages.
   return new String[]{

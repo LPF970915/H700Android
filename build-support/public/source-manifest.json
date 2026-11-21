@@ -2,7 +2,7 @@
   "schema": 1,
   "base_source_md5": "c5dd785ecd45ca9a2b9c53b1092ee6ec",
   "source_target": "roc_os_release_candidate-user",
-  "scope": "ARM64 user source overlay with Navigation18 and scoped ViewRoot resume/input-repeat repair. Production framework/ART preopt and a new whole-card image are not built by this source integration. Prebuilt H700 kernel/bootloader retained from 0.0.1; independent clean full rebuild not yet executed.",
+  "scope": "ROC OS 0.0.4 Android userspace overlay with the H700 gamepad mapping, offline Chinese IME, digital L2/R2 axes, gamepad checker and Navigation18. Official five-panel boot selection is applied in the separate card packaging stage.",
   "files": [
     {
       "path": "build/make/core/build_id.mk",
@@ -56,8 +56,8 @@
     },
     {
       "path": "device/roc/rgsp/ANBERNIC-keys.kl",
-      "bytes": 878,
-      "sha256": "a1de983c27e5991f29479fe3f34fada59e4f2fd871dd72c5fe2a9489490158c9",
+      "bytes": 871,
+      "sha256": "d1fde93cb65889223b009a8a323d5d02eb97601013122fcab5f0d1c0d22c860e",
       "mode": 511,
       "input": {
         "kind": "repository",
@@ -1845,6 +1845,36 @@
       }
     },
     {
+      "path": "device/roc/roc_os_release_candidate/GamepadCheck/Android.bp",
+      "bytes": 101,
+      "sha256": "16f1a5c12a9b66dc08610442fef5a42c648cbff1e5061e1aacc574e200252683",
+      "mode": 420,
+      "input": {
+        "kind": "repository",
+        "path": "tools/input_probe/gamepad/Android.bp"
+      }
+    },
+    {
+      "path": "device/roc/roc_os_release_candidate/GamepadCheck/AndroidManifest.xml",
+      "bytes": 854,
+      "sha256": "4fd31055264bc6c9c39fcd0457496955ce5b6411a8b66007368590740718ab6e",
+      "mode": 420,
+      "input": {
+        "kind": "repository",
+        "path": "tools/input_probe/gamepad/AndroidManifest.xml"
+      }
+    },
+    {
+      "path": "device/roc/roc_os_release_candidate/GamepadCheck/GamepadCheck.java",
+      "bytes": 7466,
+      "sha256": "4f80d1fe55d031ed6a8eba9b6a33571d68ecd1d28f6af013b0f32814b4233747",
+      "mode": 420,
+      "input": {
+        "kind": "repository",
+        "path": "tools/input_probe/gamepad/GamepadCheck.java"
+      }
+    },
+    {
       "path": "device/roc/roc_os_release_candidate/Lid/Android.mk",
       "bytes": 364,
       "sha256": "42e43c6b7527db40cf04d0eee3380c8cfb30a72b1e84546e5e9c40b51f281b60",
@@ -1926,8 +1956,8 @@
     },
     {
       "path": "device/roc/roc_os_release_candidate/Provisioning/src/com/roc/os/provisioning/ProvisionPolicy.java",
-      "bytes": 1327,
-      "sha256": "4f29937cb2e15b7ffa250f7af833e0783795b4e7f8541ba957dd0c7ec760cbf8",
+      "bytes": 1804,
+      "sha256": "b765ee3b61438adf29454ff3eb19736795b6ed448baa80ec29801ad75388a530",
       "mode": 420,
       "input": {
         "kind": "repository",
@@ -1936,12 +1966,42 @@
     },
     {
       "path": "device/roc/roc_os_release_candidate/Provisioning/src/com/roc/os/provisioning/ProvisionReceiver.java",
-      "bytes": 10890,
-      "sha256": "37fc63689db5320f9d3e519fbc62abe00765d06a4cb84e8c9bd8969be7c3a62b",
+      "bytes": 10897,
+      "sha256": "15235dd5d28cbdab89983b02de90cd9aa5b48b5f88c9732fb275d97782267749",
       "mode": 420,
       "input": {
         "kind": "repository",
         "path": "android/h700-android10/device/roc/roc_os_release_candidate/Provisioning/src/com/roc/os/provisioning/ProvisionReceiver.java"
+      }
+    },
+    {
+      "path": "device/roc/roc_os_release_candidate/TimeDefaults/Android.mk",
+      "mode": 420,
+      "bytes": 292,
+      "sha256": "8238cd3ce716816f1830b0d7d6b0b5c723e526412148976d9a2652c03511655f",
+      "input": {
+        "kind": "repository",
+        "path": "build-support/public/overlay/device/roc/roc_os_release_candidate/TimeDefaults/Android.mk"
+      }
+    },
+    {
+      "path": "device/roc/roc_os_release_candidate/TimeDefaults/AndroidManifest.xml",
+      "mode": 420,
+      "bytes": 423,
+      "sha256": "6ecc60aa24bba1aacc539f081b2a3c942857e47a3727cc8148ea9aa756d03c54",
+      "input": {
+        "kind": "repository",
+        "path": "build-support/public/overlay/device/roc/roc_os_release_candidate/TimeDefaults/AndroidManifest.xml"
+      }
+    },
+    {
+      "path": "device/roc/roc_os_release_candidate/TimeDefaults/res/values/config.xml",
+      "mode": 420,
+      "bytes": 193,
+      "sha256": "776a194886f3401a70b6134a4662f8917fa44a21ca1b864f29e5546a9e7c32eb",
+      "input": {
+        "kind": "repository",
+        "path": "build-support/public/overlay/device/roc/roc_os_release_candidate/TimeDefaults/res/values/config.xml"
       }
     },
     {
@@ -2017,7 +2077,7 @@
     {
       "path": "device/roc/roc_os_release_candidate/configs/leanback.sha256",
       "bytes": 65,
-      "sha256": "b2b42b359e0eb7b807a4d7cfc6ca50ce2731744c0f97dab66a2bbf4788b33c3a",
+      "sha256": "0cdf31cc41a021535620c5809f3cb8da43eda7e133567721afba7079276345ec",
       "mode": 420,
       "input": {
         "kind": "repository",
@@ -2065,6 +2125,26 @@
       }
     },
     {
+      "path": "device/roc/roc_os_release_candidate/configs/roc-pinyin.NOTICE",
+      "bytes": 10690,
+      "sha256": "b5830d96fb5a7e7e7ebcc295f352846b4b998e78fdc8f9aa68e134d2e4b39986",
+      "mode": 420,
+      "input": {
+        "kind": "repository",
+        "path": "build-support/public/overlay/device/roc/roc_os_release_candidate/configs/roc-pinyin.NOTICE"
+      }
+    },
+    {
+      "path": "device/roc/roc_os_release_candidate/configs/roc-pinyin.tsv.gz",
+      "bytes": 841260,
+      "sha256": "50ac45e3513fb2a1943d14fff36b0fb529ed1db5f42a0d2bab97cfa264ca739b",
+      "mode": 420,
+      "input": {
+        "kind": "repository",
+        "path": "build-support/public/overlay/device/roc/roc_os_release_candidate/configs/roc-pinyin.tsv.gz"
+      }
+    },
+    {
       "path": "device/roc/roc_os_release_candidate/configs/roc-power-release.rc",
       "bytes": 486,
       "sha256": "ab3f0096a945acc8f32ecd9e8470fb5c5e1df2363155942785b51eeb45387c3d",
@@ -2107,7 +2187,7 @@
     {
       "path": "device/roc/roc_os_release_candidate/release_properties.mk",
       "bytes": 1229,
-      "sha256": "0068cb467c7143924fedfe0718fdcbacb789aa033d56d75d0a5c86bdeda39b9c",
+      "sha256": "66de0dc922d80100f610c00bd30affbdbd4b0df82a62194f1254ab81a838c973",
       "mode": 420,
       "input": {
         "kind": "repository",
@@ -2116,8 +2196,8 @@
     },
     {
       "path": "device/roc/roc_os_release_candidate/roc_os_release_candidate.mk",
-      "bytes": 5692,
-      "sha256": "b25ca2a7c5433e617e8da164574a879ea9acb8b0761577cf2b11f4659ffd12c7",
+      "bytes": 5912,
+      "sha256": "3819eb6688987995c0ed3caf2a3b1645a2bdff331f0dff2ddf738d48d9c4f26f",
       "mode": 420,
       "input": {
         "kind": "repository",
@@ -2345,6 +2425,16 @@
       }
     },
     {
+      "path": "device/roc/roc_os_source64/Navigation/src/com/roc/rgsp/navtrial/AxisNavigation.java",
+      "bytes": 10178,
+      "sha256": "c9d6eb3eca6464b0399be10abbcc369bea6bdd3f5786cdb38673897692be8145",
+      "mode": 420,
+      "input": {
+        "kind": "repository",
+        "path": "build-support/public/overlay/device/roc/roc_os_source64/Navigation/src/com/roc/rgsp/navtrial/AxisNavigation.java"
+      }
+    },
+    {
       "path": "device/roc/roc_os_source64/Navigation/src/com/roc/rgsp/navtrial/Direction.java",
       "bytes": 1823,
       "sha256": "93fee55862da85fb7d6302f818dddc46693126f52326e57adcb7d8ac6bb49723",
@@ -2362,6 +2452,16 @@
       "input": {
         "kind": "repository",
         "path": "android/h700-android10/device/roc/rgsp/RGSPNavigation/src/com/roc/rgsp/navtrial/FocusIdentity.java"
+      }
+    },
+    {
+      "path": "device/roc/roc_os_source64/Navigation/src/com/roc/rgsp/navtrial/KeyNavigation.java",
+      "bytes": 7496,
+      "sha256": "dc25c9570e106a3bf677c6d83ceff278f4eeea0c60dbcc229478ddc20950a3d4",
+      "mode": 420,
+      "input": {
+        "kind": "repository",
+        "path": "build-support/public/overlay/device/roc/roc_os_source64/Navigation/src/com/roc/rgsp/navtrial/KeyNavigation.java"
       }
     },
     {
@@ -14575,6 +14675,16 @@
       }
     },
     {
+      "path": "frameworks/base/core/java/android/view/ViewRootImpl.java",
+      "bytes": 411083,
+      "sha256": "e8110bc34ac032346b2da3fb625799420a72b278cc9e58e7d4b2aadf2b2044b3",
+      "mode": 420,
+      "input": {
+        "kind": "repository",
+        "path": "build-support/public/overlay/frameworks/base/core/java/android/view/ViewRootImpl.java"
+      }
+    },
+    {
       "path": "frameworks/base/packages/SystemUI/src/com/android/systemui/globalactions/GlobalActionsDialog.java",
       "bytes": 74850,
       "sha256": "eda061f1bfb7c4dbe3f9bed93ded4b3f42f19bb6c957ef94b98edb888280a8b4",
@@ -14586,12 +14696,12 @@
     },
     {
       "path": "frameworks/base/packages/SystemUI/src/com/android/systemui/statusbar/phone/StatusBarWindowView.java",
-      "bytes": 30612,
-      "sha256": "55bc570630861eb276467929cac43235ddd7c9664b2cec0bbfbfff26e47f10e2",
+      "bytes": 30538,
+      "sha256": "4db64c03288d8be38ca62eac3c5905ee08801b93f7dec9233ca93cde77debc7c",
       "mode": 420,
       "input": {
         "kind": "repository",
-        "path": "android/h700-android10/snapshots/v5i-native35-20261028/frameworks/base/packages/SystemUI/src/com/android/systemui/statusbar/phone/StatusBarWindowView.java"
+        "path": "build-support/public/overlay/frameworks/base/packages/SystemUI/src/com/android/systemui/statusbar/phone/StatusBarWindowView.java"
       }
     },
     {
@@ -14662,6 +14772,16 @@
       "input": {
         "kind": "repository",
         "path": "android/h700-android10/snapshots/v5i-native35-20261028/frameworks/base/services/java/com/android/server/SystemServer.java"
+      }
+    },
+    {
+      "path": "frameworks/native/services/inputflinger/InputReader.cpp",
+      "bytes": 305691,
+      "sha256": "219cafb716ad63aa20e3b69934aa99d1aaecf34075a7efba8be245b8f1b0fe85",
+      "mode": 420,
+      "input": {
+        "kind": "repository",
+        "path": "build-support/public/overlay/frameworks/native/services/inputflinger/InputReader.cpp"
       }
     },
     {
@@ -17386,12 +17506,12 @@
     },
     {
       "path": "packages/inputmethods/LeanbackIME/src/com/android/inputmethod/leanback/LeanbackKeyboardContainer.java",
-      "bytes": 59906,
-      "sha256": "a1ff7fac2018fe2a407894b8c4510a503744281a7ff829bec66560ff8c250965",
+      "bytes": 60867,
+      "sha256": "0acae87ad81a5c9c793e139e1a80acf44ff886e6729e5eb8d2ba586436981ae7",
       "mode": 420,
       "input": {
         "kind": "repository",
-        "path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/src/com/android/inputmethod/leanback/LeanbackKeyboardContainer.java"
+        "path": "build-support/public/overlay/packages/inputmethods/LeanbackIME/src/com/android/inputmethod/leanback/LeanbackKeyboardContainer.java"
       }
     },
     {
@@ -17445,13 +17565,23 @@
       }
     },
     {
-      "path": "packages/inputmethods/LeanbackIME/src/com/android/inputmethod/leanback/service/LeanbackImeService.java",
-      "bytes": 15022,
-      "sha256": "c2e6d2d666bd589b0a3975dd3d79ec1183e396eb4db980beece3b380d0b8de2d",
+      "path": "packages/inputmethods/LeanbackIME/src/com/android/inputmethod/leanback/PinyinDictionary.java",
+      "bytes": 4670,
+      "sha256": "a96370d30b5a642bfb6054effb88c59e8476b44905bad3ae81643eb85f0a6953",
       "mode": 420,
       "input": {
         "kind": "repository",
-        "path": "android/h700-android10/snapshots/v5i-native35-20261028/packages/inputmethods/LeanbackIME/src/com/android/inputmethod/leanback/service/LeanbackImeService.java"
+        "path": "build-support/public/overlay/packages/inputmethods/LeanbackIME/src/com/android/inputmethod/leanback/PinyinDictionary.java"
+      }
+    },
+    {
+      "path": "packages/inputmethods/LeanbackIME/src/com/android/inputmethod/leanback/service/LeanbackImeService.java",
+      "bytes": 21781,
+      "sha256": "7e6c23413d8ac6241131b882dbdf87929ab71e9e05f08695a99a19bf078c242f",
+      "mode": 420,
+      "input": {
+        "kind": "repository",
+        "path": "build-support/public/overlay/packages/inputmethods/LeanbackIME/src/com/android/inputmethod/leanback/service/LeanbackImeService.java"
       }
     },
     {
@@ -17543,66 +17673,6 @@
         "kind": "repository",
         "path": "android/h700-android10/snapshots/v5i-native35-20261028/system/vold/model/PublicVolume.cpp"
       }
-    },
-    {
-      "path": "device/roc/roc_os_source64/Navigation/src/com/roc/rgsp/navtrial/AxisNavigation.java",
-      "bytes": 10178,
-      "sha256": "c9d6eb3eca6464b0399be10abbcc369bea6bdd3f5786cdb38673897692be8145",
-      "mode": 420,
-      "input": {
-        "kind": "repository",
-        "path": "build-support/public/overlay/device/roc/roc_os_source64/Navigation/src/com/roc/rgsp/navtrial/AxisNavigation.java"
-      }
-    },
-    {
-      "path": "device/roc/roc_os_release_candidate/TimeDefaults/Android.mk",
-      "mode": 420,
-      "bytes": 292,
-      "sha256": "8238cd3ce716816f1830b0d7d6b0b5c723e526412148976d9a2652c03511655f",
-      "input": {
-        "kind": "repository",
-        "path": "build-support/public/overlay/device/roc/roc_os_release_candidate/TimeDefaults/Android.mk"
-      }
-    },
-    {
-      "path": "device/roc/roc_os_release_candidate/TimeDefaults/AndroidManifest.xml",
-      "mode": 420,
-      "bytes": 423,
-      "sha256": "6ecc60aa24bba1aacc539f081b2a3c942857e47a3727cc8148ea9aa756d03c54",
-      "input": {
-        "kind": "repository",
-        "path": "build-support/public/overlay/device/roc/roc_os_release_candidate/TimeDefaults/AndroidManifest.xml"
-      }
-    },
-    {
-      "path": "device/roc/roc_os_release_candidate/TimeDefaults/res/values/config.xml",
-      "mode": 420,
-      "bytes": 193,
-      "sha256": "776a194886f3401a70b6134a4662f8917fa44a21ca1b864f29e5546a9e7c32eb",
-      "input": {
-        "kind": "repository",
-        "path": "build-support/public/overlay/device/roc/roc_os_release_candidate/TimeDefaults/res/values/config.xml"
-      }
-    },
-    {
-      "path": "device/roc/roc_os_source64/Navigation/src/com/roc/rgsp/navtrial/KeyNavigation.java",
-      "bytes": 7496,
-      "sha256": "dc25c9570e106a3bf677c6d83ceff278f4eeea0c60dbcc229478ddc20950a3d4",
-      "mode": 420,
-      "input": {
-        "kind": "repository",
-        "path": "build-support/public/overlay/device/roc/roc_os_source64/Navigation/src/com/roc/rgsp/navtrial/KeyNavigation.java"
-      }
-    },
-    {
-      "path": "frameworks/base/core/java/android/view/ViewRootImpl.java",
-      "bytes": 411083,
-      "sha256": "e8110bc34ac032346b2da3fb625799420a72b278cc9e58e7d4b2aadf2b2044b3",
-      "mode": 420,
-      "input": {
-        "kind": "repository",
-        "path": "build-support/public/overlay/frameworks/base/core/java/android/view/ViewRootImpl.java"
-      }
     }
   ],
   "base_checks": {
@@ -17612,7 +17682,8 @@
     "hardware/aw/gpu/mali-bifrost/mali-g31/arm64/lib64/libGLES_mali.so": "03333d495e3566c7d85ca2e000da569a16ce8f022ea25c0ea61950c891d5c7f8",
     "prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8/sysroot/usr/lib/libncurses.so.5": "19494299d25cbb3dd6a19b7de3906b8b33881998801d423deeadc6e2259460f5",
     "prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8/sysroot/usr/lib/libtinfo.so.5": "87ec5f63974b9a4646309fa6e0033ef45b2cdea6c98a319f98596ea613a91ddd",
-    "frameworks/base/core/java/android/view/ViewRootImpl.java": "0eadf38bc8ceb599dcf57eb2d6a8b9e818a19ecedca1143b3a361682c0e64639"
+    "frameworks/base/core/java/android/view/ViewRootImpl.java": "0eadf38bc8ceb599dcf57eb2d6a8b9e818a19ecedca1143b3a361682c0e64639",
+    "frameworks/native/services/inputflinger/InputReader.cpp": "54d30315220337fa3516b515aaffda8d5eb990ea8072a2171ebe34c03f00df58"
   },
   "signing_link": "device/roc/roc_os_release_candidate/.private-signing",
   "exclusions": [
@@ -17622,10 +17693,10 @@
     "unmodified upstream source bodies"
   ],
   "statistics": {
-    "files": 1759,
-    "new_payload_bytes": 2071649,
+    "files": 1766,
+    "new_payload_bytes": 3347366,
     "input_kinds": {
-      "repository": 626,
+      "repository": 633,
       "image": 8,
       "source": 1125
     }

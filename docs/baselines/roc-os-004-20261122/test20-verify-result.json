@@ -1,0 +1,122 @@
+{
+  "passed": true,
+  "image": "ROC_OS_ARM64_ver0.0.3_H700_Test20_FivePanel_Test14.img.gz",
+  "image_sha256": "60872656ddc9f0f71ec026d965f7c2a3e17f5eaebc484e7c6867da86f970b87d",
+  "bytes": 735536685,
+  "parent": "ROC_OS_ARM64_ver0.0.3_H700_Test14_USBDevice_GamepadCheck_20261120.img.gz",
+  "parent_sha256": "a6bea615982ac7893d53383da9d8709fd5db11be039ae263285d5fec3ed60969",
+  "raw": {
+    "bytes": 32434554368,
+    "sha256": "8f4041e00d4b3ba58b39710a95e455a6e8510656cd3ea5fdd201f40e0af09e76",
+    "ranges": {
+      "prefix": "5184f01ed3b1d7e765c3ed1c87a3ce247c10201bffdaad143dd0e1ded16af9d7",
+      "system": "78885afe478ffdf4684e69a31eddd8359eeaf7f8c83778f68a3d34067ed9624a",
+      "vendor": "68183115705bdf104ec78c6232d38dcdb81143bed9bc5d2ed9ad1762b027e430",
+      "userdata": "637a02240df99491b9616503c69cd41638b7604c927675762e640014b3cd7d86",
+      "backup_gpt": "ba9ba2c16fbb57653f2d5b221bb2f0c2ee698550f1d9dc33df30b5565d23c5dc"
+    }
+  },
+  "gpt": [
+    {
+      "name": "special",
+      "offset": 37748736,
+      "bytes": 67108864
+    },
+    {
+      "name": "boot-resource",
+      "offset": 104857600,
+      "bytes": 33554432
+    },
+    {
+      "name": "env",
+      "offset": 138412032,
+      "bytes": 16777216
+    },
+    {
+      "name": "boot",
+      "offset": 155189248,
+      "bytes": 67108864
+    },
+    {
+      "name": "system",
+      "offset": 222298112,
+      "bytes": 8589934592
+    },
+    {
+      "name": "vendor",
+      "offset": 8812232704,
+      "bytes": 2147483648
+    },
+    {
+      "name": "userdata",
+      "offset": 10959716352,
+      "bytes": 21474836480
+    }
+  ],
+  "groups": [
+    [
+      "rg35xxh",
+      "rg35xxplus",
+      "rg35xx_2025",
+      "rg28xx",
+      "rg35xxpro",
+      "rg35xxsp"
+    ],
+    [
+      "rg40xxv",
+      "rg40xxh"
+    ],
+    [
+      "rg34xxsp",
+      "rgsp"
+    ],
+    [
+      "rg34xx"
+    ],
+    [
+      "rgcubexx"
+    ]
+  ],
+  "volume_down": [
+    "rg35xxh",
+    "rg40xxv",
+    "rg34xxsp",
+    "rg34xx",
+    "rgcubexx"
+  ],
+  "bootlogo": {
+    "source_sha256": "0688cf2a9dbe548cd615be49d01c42693c65d7b0850d9ab02890eb9d3dc89f0a",
+    "sha256": "99cb9ca8e1cae40ff5b3a07bae87be3a6f8c0ea39d13bf1ebaf86d4791e7db45",
+    "old_size": [
+      720,
+      480
+    ],
+    "size": [
+      480,
+      320
+    ],
+    "file_bytes": 460854
+  },
+  "rg34xx_frm": 0,
+  "early_cases": 86,
+  "kernel_handoffs": 24,
+  "menu_cases": 177,
+  "hook_cases": 238,
+  "changed_ramdisk_payloads": {
+    "grow/roc-boot-selector": {
+      "before_sha256": "e98522da0fa44bce97c502b13cfead073dd93b8fc38ddc7f241ebda11ef61f4d",
+      "after_sha256": "35717b332c00b7794b70e31a664c737e37f5890f1b0f1095deb625eb1d974b12"
+    },
+    "grow/roc-boot-state": {
+      "before_sha256": "e0dcd75d62edc21eaeb8bedc8f733db17b4c5aecd3469e65b0e61fc9c59235a5",
+      "after_sha256": "950601759649606441199af8c61d6653ea2a90e4ae11cd2d82f60f2a348e273e"
+    },
+    "grow/roc-selector-init.sh": {
+      "before_sha256": "9a61941cab19dc492b364ce0e5baa323eeda1f71a84856cf11d37eb582d380ed",
+      "after_sha256": "d8ff5cd31e28ef00d0eebca85fdcfcb8bc2af1e7a55686ab9e640595cae81fc3"
+    }
+  },
+  "physical_test20_verified": false,
+  "tests_sha256": "410e279e1476121d4967106ebab7b4da9d0fce667d32810edef31187729abbb9",
+  "handoff_sha256": "c45ae7edd5b167ec4f06a93e86ee9646bfb9cbe406943b8e2bca71245f6f546f"
+}

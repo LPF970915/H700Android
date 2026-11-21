@@ -29,6 +29,8 @@ PRODUCT_COPY_FILES := \
     device/roc/roc_os_release_candidate/configs/retired-helper.sh:system/bin/rgsp-wifi-adb-session.sh \
     device/roc/roc_os_release_candidate/configs/roc-user-input.rc:vendor/etc/init/roc-user-input.rc \
     device/roc/roc_os_release_candidate/configs/default-permissions-roc-setup.xml:system/etc/default-permissions/default-permissions-roc-setup.xml \
+    device/roc/roc_os_release_candidate/configs/roc-pinyin.tsv.gz:system/etc/rgsp/roc-pinyin.tsv.gz \
+    device/roc/roc_os_release_candidate/configs/roc-pinyin.NOTICE:system/etc/rgsp/roc-pinyin.NOTICE \
     device/roc/roc_os_release_candidate/configs/leanback.sha256:system/etc/rgsp/leanback.sha256 \
     $(PRODUCT_COPY_FILES)
 PRODUCT_PACKAGES := $(filter-out ROCProvisioning rgsp_kmsg_logger,$(PRODUCT_PACKAGES))
@@ -44,7 +46,7 @@ PRODUCT_NAME := roc_os_release_candidate
 PRODUCT_DEVICE := roc_os_source64
 PRODUCT_MODEL := ROC OS
 PRODUCT_PACKAGES := $(filter-out AT4K,$(PRODUCT_PACKAGES))
-PRODUCT_PACKAGES += ROCReleaseLauncher
+PRODUCT_PACKAGES += ROCReleaseLauncher ROCGamepadCheck
 GLOBAL_REMOVED_PACKAGES += AT4K
 ifeq ($(TARGET_PRODUCT),roc_os_release_candidate)
 ifneq ($(TARGET_BUILD_VARIANT),user)

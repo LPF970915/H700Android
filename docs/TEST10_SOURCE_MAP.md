@@ -1,10 +1,10 @@
-# 0.0.3 组件源码入口
+# 0.0.4 组件源码入口
 
-更新于 2026-11-17。本页从 Test10 源码地图继续维护，列出正式 0.0.3 的实现与依赖入口。使用方法见[当前状态](CURRENT_STATUS.md)，发行身份与封装范围见 [0.0.3 说明](ROC_OS_0.0.3_20261117.md)。旧 Test10／Test11 源码和证明保留各自目录。
+2026-11-22。下表列出正式版新增改动和此前共用组件。
 
 ## Android 用户空间
 
-[公共构建指南](PUBLIC_BUILD.md)通过 [source-manifest.json](../build-support/public/source-manifest.json)解析覆盖层、基础源码复制关系和指定镜像输入。当前覆盖层版本为 0.0.3，已包含 Navigation18 和 ViewRoot 修复；更新后的输入检查单独记录，不修改冻结历史收据。
+[公共构建指南](PUBLIC_BUILD.md)通过 [source-manifest.json](../build-support/public/source-manifest.json)解析覆盖层、基础源码复制关系和指定镜像输入。当前覆盖层版本为 0.0.4，已包含 Navigation18 和 ViewRoot 修复；更新后的输入检查单独记录，不修改冻结历史收据。
 
 | 内容 | 入口 |
 | --- | --- |
@@ -18,12 +18,12 @@
 | 内容 | 入口 |
 | --- | --- |
 | 十二型号、分辨率、杆数及面板关系 | [models.py](../tools/boot_selector/twelve_model/models.py) |
-| 机型菜单、三档音量试屏与加载显示 | [selector_rescue.c](../tools/boot_selector/twelve_model/selector_rescue.c)、[build_native_rescue.py](../tools/boot_selector/twelve_model/build_native_rescue.py) |
+| 五组面板生成与切换 | [five_panel_menu.py](../tools/boot_selector/twelve_model/five_panel_menu.py)、 [selector_rescue.c](../tools/boot_selector/twelve_model/selector_rescue.c)、[build_native_rescue.py](../tools/boot_selector/twelve_model/build_native_rescue.py) |
 | 保存默认、单次启动与返回菜单 | [boot_state_preview.c](../tools/boot_selector/twelve_model/boot_state_preview.c)、[selector_init_rescue.sh](../tools/boot_selector/twelve_model/selector_init_rescue.sh) |
 | 启动前面板配置与交接 | [h700_manual_selector_twelve.py](../tools/release/h700_manual_selector_twelve.py)、[early_profile_bridge_rescue.py](../tools/boot_selector/twelve_model/early_profile_bridge_rescue.py) |
 | Lid4 翻盖适配 | [build_lid_twelve.py](../tools/boot_selector/build_lid_twelve.py)、[LidProfile.java](../tools/boot_selector/twelve_model/lid/LidProfile.java) |
 
-Lid4 由构建工具在保留的基础 Lid 源码副本上生成；基础应用的旧 versionCode 不代表整卡实际 Lid4。菜单试屏只循环三个代表配置，最终型号使用自己的面板初始化。
+Lid4 由构建工具在保留的基础 Lid 源码副本上生成；基础应用的旧 versionCode 不代表整卡实际 Lid4。音量切换五个代表配置，最终型号使用自己的面板初始化。
 
 ## 摇杆与交换空间
 
@@ -37,18 +37,16 @@ Lid4 由构建工具在保留的基础 Lid 源码副本上生成；基础应用�
 
 方向 ADC 检查使用实际 H700 模式位 18～19 与启用位 16，保留其他控制位。L3／R3 与方向采样独立；有界恢复不写 CCU、不强开时钟、不恢复 GPIO 复用。用户已确认该 Test11 修复在 RG35XX H 有效。驱动、早期 helper 和 Android loader 须配套更新；默认 2GiB swap 前缀按字节继承。
 
-## 正式 0.0.3 封装
+## 0.0.4 新增源码与整卡封装
 
 | 内容 | 入口 |
 | --- | --- |
-| 版本属性定点封装 | [package_003.py](../tools/release/package_003.py) |
-| 独立整卡验证 | [verify_003.py](../tools/release/verify_003.py) |
-| 资源限制包装器 | [package_003.ps1](../tools/release/package_003.ps1) |
-| 源码版本一致性检查 | [check_003_source.py](../tools/release/check_003_source.py) |
-| 正式收据生成 | [record_003.py](../tools/release/record_003.py) |
-| 机器可读发行身份与验收 | [0.0.3.json](../build-support/releases/0.0.3.json)、[acceptance.json](baselines/roc-os-003-20261117/acceptance.json) |
-
-正式包以精确 Test11 为父，仅修改 `/system/build.prop` 两处等长版本字符，其余 raw 字节保留。公共源码覆盖版本同步为 0.0.3，源清单与公开验证另行更新；Test11 冻结收据不回写。
+| 菜单和机型分组回归 | [test_five_panel_menu.py](../tools/boot_selector/twelve_model/test_five_panel_menu.py) |
+| Logo 尺寸适配、Test14 至五面板 Test20 | [fit_bootlogo.py](../tools/boot_selector/twelve_model/fit_bootlogo.py)、[五面板封装](../tools/release/package_h700_five_panel_test20.py) |
+| USB 设备模式与手柄检测 | [Test14 封装](../tools/release/package_h700_usb_device_test14.py)、[GamepadCheck](../tools/input_probe/gamepad) |
+| 数字扳机 | [InputReader.cpp](../build-support/public/overlay/frameworks/native/services/inputflinger/InputReader.cpp)、[扳机测试](../tools/input_profiles/test_digital_triggers.py) |
+| A 键和中文拼音键盘 | [按键表](../android/h700-android10/device/roc/rgsp/ANBERNIC-keys.kl)、[LeanbackIME 覆盖层](../build-support/public/overlay/packages/inputmethods/LeanbackIME)、[词典生成器](../tools/ime/build_pinyin_dictionary.py) |
+| 正式版制作与验证 | [package_004.py](../tools/release/package_004.py)、[整卡回读](baselines/roc-os-004-20261122/verify-result.json) |
 
 ## 主机回归入口
 

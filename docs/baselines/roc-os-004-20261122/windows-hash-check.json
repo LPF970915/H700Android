@@ -1,0 +1,7 @@
+{
+  "passed": true,
+  "artifact": "ROC_OS_ARM64_ver0.0.4.img.gz",
+  "bytes": 735536681,
+  "sha256": "4a4e9fd4e980b7d9effd3d23f4d423bedd8a615705de3175d6bb333b4df0e53e",
+  "verifier": "Windows Get-FileHash SHA256"
+}

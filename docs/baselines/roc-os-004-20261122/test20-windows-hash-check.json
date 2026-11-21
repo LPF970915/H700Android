@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "image": "ROC_OS_ARM64_ver0.0.3_H700_Test20_FivePanel_Test14.img.gz",
+  "bytes": 735536685,
+  "sha256": "60872656ddc9f0f71ec026d965f7c2a3e17f5eaebc484e7c6867da86f970b87d",
+  "algorithm": "Windows Get-FileHash SHA256",
+  "fat_reader": "7-Zip FAT",
+  "other_boot_resources_verified": 23,
+  "bootlogo_pixels": [
+    480,
+    320
+  ],
+  "physical_test20_verified": false
+}

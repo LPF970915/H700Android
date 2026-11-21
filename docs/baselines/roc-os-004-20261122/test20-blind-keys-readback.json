@@ -1,0 +1,70 @@
+{
+  "passed": true,
+  "source": "final gzip ramdisk",
+  "selector_sha256": "35717b332c00b7794b70e31a664c737e37f5890f1b0f1095deb625eb1d974b12",
+  "normal_confirm_without_fb_rejected": true,
+  "release_required": true,
+  "physical_hardware": false,
+  "cases": [
+    {
+      "active": "rg35xxh",
+      "key": 114,
+      "target": "rg40xxv",
+      "returncode": 4
+    },
+    {
+      "active": "rg35xxh",
+      "key": 115,
+      "target": "rgcubexx",
+      "returncode": 4
+    },
+    {
+      "active": "rg40xxv",
+      "key": 114,
+      "target": "rg34xxsp",
+      "returncode": 4
+    },
+    {
+      "active": "rg40xxv",
+      "key": 115,
+      "target": "rg35xxh",
+      "returncode": 4
+    },
+    {
+      "active": "rg34xxsp",
+      "key": 114,
+      "target": "rg34xx",
+      "returncode": 4
+    },
+    {
+      "active": "rg34xxsp",
+      "key": 115,
+      "target": "rg40xxv",
+      "returncode": 4
+    },
+    {
+      "active": "rg34xx",
+      "key": 114,
+      "target": "rgcubexx",
+      "returncode": 4
+    },
+    {
+      "active": "rg34xx",
+      "key": 115,
+      "target": "rg34xxsp",
+      "returncode": 4
+    },
+    {
+      "active": "rgcubexx",
+      "key": 114,
+      "target": "rg35xxh",
+      "returncode": 4
+    },
+    {
+      "active": "rgcubexx",
+      "key": 115,
+      "target": "rg34xx",
+      "returncode": 4
+    }
+  ]
+}

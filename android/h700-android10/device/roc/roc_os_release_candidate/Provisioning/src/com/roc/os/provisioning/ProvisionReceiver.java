@@ -144,7 +144,7 @@ public final class ProvisionReceiver extends BroadcastReceiver {
   boolean fresh=ProvisionPolicy.fresh(state.getBoolean("complete",false),Settings.Global.getInt(c.getContentResolver(),"roc_factory_legacy_complete",0)==1);
   if(fresh) {
    checkKeyboard(c);
-   secure(c,Settings.Secure.ENABLED_INPUT_METHODS,ProvisionPolicy.addComponent(Settings.Secure.getString(c.getContentResolver(),Settings.Secure.ENABLED_INPUT_METHODS),IME));
+   secure(c,Settings.Secure.ENABLED_INPUT_METHODS,ProvisionPolicy.defaultKeyboardList(Settings.Secure.getString(c.getContentResolver(),Settings.Secure.ENABLED_INPUT_METHODS),IME));
    secure(c,Settings.Secure.DEFAULT_INPUT_METHOD,IME);
    secure(c,"show_ime_with_hard_keyboard","1");
    home(c);

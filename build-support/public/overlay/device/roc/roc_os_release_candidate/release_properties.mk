@@ -9,6 +9,6 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES := ro.secure=1 ro.adb.secure=1 ro.debuggable=0
 PRODUCT_PACKAGES := $(filter-out su Superuser,$(PRODUCT_PACKAGES))
 GLOBAL_REMOVED_PACKAGES += su Superuser
 
-# Match the official 0.0.3 card identity without changing the Android API version.
-PRODUCT_SYSTEM_DEFAULT_PROPERTIES := ro.roc.os.version=0.0.3 $(filter-out ro.roc.os.version=%,$(PRODUCT_SYSTEM_DEFAULT_PROPERTIES))
-override BUILD_DISPLAY_ID := ROC_OS_ARM64_ver0.0.3
+# Match the official 0.0.4 card identity without changing the Android API version.
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES := ro.roc.os.version=0.0.4 $(filter-out ro.roc.os.version=%,$(PRODUCT_SYSTEM_DEFAULT_PROPERTIES))
+override BUILD_DISPLAY_ID := ROC_OS_ARM64_ver0.0.4

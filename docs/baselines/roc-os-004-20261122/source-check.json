@@ -1,0 +1,30 @@
+{
+  "passed": true,
+  "source_manifest_sha256": "f29b3f0524eb5f8b89822c02dec74f45a6c1e302ff9276c6b4d6c75dfb0f0ee9",
+  "public_manifest": {
+    "passed": true,
+    "scope": "Repository payload hash/size closure and source-copy recipes only; base source bodies and image payloads are not read by this check.",
+    "source_manifest_sha256": "f29b3f0524eb5f8b89822c02dec74f45a6c1e302ff9276c6b4d6c75dfb0f0ee9",
+    "target_identity_sha256": "e59b577b7231f859449a3fd7b1b4ae40e99651e17bc647bff1eb9f5be43454d2",
+    "target_identity_algorithm": "SHA256 of UTF-8 JSON, sort_keys=true, ensure_ascii=true, separators=comma/colon, no final newline; path-sorted records of path,bytes,mode,sha256.",
+    "files": 1766,
+    "new_payload_bytes": 3347366,
+    "input_kinds": {
+      "repository": 633,
+      "image": 8,
+      "source": 1125
+    },
+    "new_payload_bytes_definition": "Unique repository input paths under build-support/public/overlay/",
+    "repository_target_bytes_verified": 6374444,
+    "source_copy_dependencies_verified": 5,
+    "unique_base_source_inputs_not_read": 1120,
+    "image_payloads_not_read": 8,
+    "independent_clean_full_Android_build_passed": false,
+    "hardware_acceptance_performed": false
+  },
+  "public_tool_tests": 11,
+  "arm64_picker_cases": 177,
+  "compiled_components_byte_identical_to_test20": true,
+  "dual_trigger_mapper_test": true,
+  "effective_version": "ROC_OS_ARM64_ver0.0.4"
+}
